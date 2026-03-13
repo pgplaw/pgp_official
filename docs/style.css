@@ -279,17 +279,29 @@ a {
 }
 
 .post-card__media button {
+  display: block;
+  width: 100%;
   padding: 0;
   border: 0;
   background: transparent;
   cursor: pointer;
 }
 
-.post-card__media img,
-.post-card__media video {
+.post-card__media:not(.post-card__media--gallery) img,
+.post-card__media:not(.post-card__media--gallery) video {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: clamp(220px, 28vw, 360px);
+  object-fit: contain;
+  object-position: center;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.post-card__media--gallery img,
+.post-card__media--gallery video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   background: rgba(0, 0, 0, 0.08);
 }
