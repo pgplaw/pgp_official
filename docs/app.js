@@ -187,6 +187,9 @@ function renderPostCard(post) {
 
   const text = post.text_html || escapeHtml(post.text || '').replace(/\n/g, '<br>');
   const commentsLabel = post.comments_count ? `Комментарии (${compactNumber(post.comments_count)})` : 'Комментарии';
+  const shouldShowComments =
+    Boolean(state.feed?.source?.comments_enabled) &&
+    (post.comments_count > 0 || post.comments_url || post.comments_available);
 
   article.innerHTML = `
     ${buildMedia(post)}
@@ -200,7 +203,7 @@ function renderPostCard(post) {
         <span class="chip">ID: ${post.id}</span>
       </div>
       <div class="post-card__links">
-        <button class="button button--ghost comments-trigger" type="button" data-post-id="${post.id}">${commentsLabel}</button>
+        ${shouldShowComments ? `<button class="button button--ghost comments-trigger" type="button" data-post-id="${post.id}">${commentsLabel}</button>` : ''}
         <a class="post-card__link" href="${post.tg_url}" target="_blank" rel="noopener">Открыть в Telegram</a>
       </div>
     </div>
@@ -214,9 +217,12 @@ function renderPostCard(post) {
     });
   }
 
-  article.querySelector('.comments-trigger').addEventListener('click', () => {
-    window.location.hash = `comments-${post.id}`;
-  });
+  const commentsButton = article.querySelector('.comments-trigger');
+  if (commentsButton) {
+    commentsButton.addEventListener('click', () => {
+      window.location.hash = `comments-${post.id}`;
+    });
+  }
 
   return article;
 }
