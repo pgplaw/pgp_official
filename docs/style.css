@@ -137,15 +137,18 @@ a {
   align-content: start;
   align-self: start;
   justify-self: end;
+  justify-items: center;
   width: min(100%, 320px);
   min-width: 0;
   padding: 24px 22px;
   border-radius: var(--radius-lg);
+  text-align: center;
 }
 
 .hero__row {
   display: grid;
   gap: 8px;
+  justify-items: center;
 }
 
 .meta-label {
@@ -177,6 +180,7 @@ a {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  justify-content: center;
   padding-top: 4px;
 }
 
