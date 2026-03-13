@@ -1,9 +1,5 @@
-const CACHE_NAME = 'telegram-pages-mirror-v1';
+const CACHE_NAME = 'telegram-pages-mirror-v2';
 const STATIC_ASSETS = [
-  './',
-  './index.html',
-  './style.css',
-  './app.js',
   './manifest.webmanifest',
   './assets/icon.svg',
   './assets/icon-192.png',
@@ -28,17 +24,27 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
+  const isLocalAsset = url.origin === self.location.origin;
+  const isDynamicData = isLocalAsset && url.pathname.includes('/data/');
+  const isAppShellAsset =
+    isLocalAsset &&
+    /\.(?:html|css|js|webmanifest|svg|png|jpg|jpeg)$/i.test(url.pathname);
 
-  if (event.request.mode === 'navigate' || url.pathname.includes('/data/')) {
+  if (event.request.mode === 'navigate' || isDynamicData || isAppShellAsset) {
     event.respondWith(
       fetch(event.request)
         .then((response) => {
+          if (!response || response.status !== 200) return response;
           const clone = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
           return response;
         })
         .catch(() => caches.match(event.request))
     );
+    return;
+  }
+
+  if (!isLocalAsset) {
     return;
   }
 
