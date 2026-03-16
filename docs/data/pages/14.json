@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-16T10:45:32.788282+00:00",
+  "generated_at": "2026-03-16T14:06:56.736104+00:00",
   "pagination": {
     "page": 14,
     "page_size": 16,
@@ -7,6 +7,28 @@
     "total_pages": 16
   },
   "posts": [
+    {
+      "id": 1453,
+      "date": "2025-08-04T07:04:26+00:00",
+      "text": "✍️ Рассказываем о тонкостях русского языка в новом посте #PGграмотность.\n\n❓Когда трудно, но не сложно?\n\nЧитайте примеры использования слов в карточке правописания!",
+      "text_html": "✍️ Рассказываем о тонкостях русского языка в новом посте #PGграмотность.<br><br>❓Когда трудно, но не сложно?<br><br>Читайте примеры использования слов в карточке правописания!",
+      "views": 1150,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/media/posts/thumbs/1453-1-d4db87999368.jpg",
+          "full_url": "data/media/posts/1453-1-d4db87999368.jpg"
+        },
+        {
+          "thumb_url": "data/media/posts/thumbs/1453-2-6d9f243d19d3.jpg",
+          "full_url": "data/media/posts/1453-2-6d9f243d19d3.jpg"
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/pgp_official/1453",
+      "permalink": "posts/1453/"
+    },
     {
       "id": 1448,
       "date": "2025-08-01T16:25:02+00:00",
@@ -17,24 +39,24 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/media/posts/thumbs/1448-1-99c6f1345790.jpg",
-          "full_url": "data/media/posts/1448-1-99c6f1345790.jpg"
+          "thumb_url": "data/media/posts/thumbs/1448-1-d7533d83277d.jpg",
+          "full_url": "data/media/posts/1448-1-d7533d83277d.jpg"
         },
         {
           "thumb_url": "data/media/posts/thumbs/1448-2-4be966e0fc26.jpg",
           "full_url": "data/media/posts/1448-2-4be966e0fc26.jpg"
         },
         {
-          "thumb_url": "data/media/posts/thumbs/1448-3-7b61c9616e41.jpg",
-          "full_url": "data/media/posts/1448-3-7b61c9616e41.jpg"
+          "thumb_url": "data/media/posts/thumbs/1448-3-13972a4faf43.jpg",
+          "full_url": "data/media/posts/1448-3-13972a4faf43.jpg"
         },
         {
-          "thumb_url": "data/media/posts/thumbs/1448-4-a31c9f5c73b1.jpg",
-          "full_url": "data/media/posts/1448-4-a31c9f5c73b1.jpg"
+          "thumb_url": "data/media/posts/thumbs/1448-4-ea4eb202f6b8.jpg",
+          "full_url": "data/media/posts/1448-4-ea4eb202f6b8.jpg"
         },
         {
-          "thumb_url": "data/media/posts/thumbs/1448-5-d07298731e21.jpg",
-          "full_url": "data/media/posts/1448-5-d07298731e21.jpg"
+          "thumb_url": "data/media/posts/thumbs/1448-5-5c3613f8622e.jpg",
+          "full_url": "data/media/posts/1448-5-5c3613f8622e.jpg"
         }
       ],
       "video_url": null,
@@ -51,8 +73,8 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/media/posts/thumbs/1447-1-dfcd976c214a.jpg",
-          "full_url": "data/media/posts/1447-1-dfcd976c214a.jpg"
+          "thumb_url": "data/media/posts/thumbs/1447-1-adbd047f5f34.jpg",
+          "full_url": "data/media/posts/1447-1-adbd047f5f34.jpg"
         }
       ],
       "video_url": null,
@@ -69,8 +91,8 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/media/posts/thumbs/1446-1-633c236990c0.jpg",
-          "full_url": "data/media/posts/1446-1-633c236990c0.jpg"
+          "thumb_url": "data/media/posts/thumbs/1446-1-306bf1a2258f.jpg",
+          "full_url": "data/media/posts/1446-1-306bf1a2258f.jpg"
         }
       ],
       "video_url": null,
@@ -87,8 +109,8 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/media/posts/thumbs/1445-1-5b292d073cf2.jpg",
-          "full_url": "data/media/posts/1445-1-5b292d073cf2.jpg"
+          "thumb_url": "data/media/posts/thumbs/1445-1-901c326a8479.jpg",
+          "full_url": "data/media/posts/1445-1-901c326a8479.jpg"
         }
       ],
       "video_url": null,
@@ -105,8 +127,8 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/media/posts/thumbs/1444-1-891a4bf09c4c.jpg",
-          "full_url": "data/media/posts/1444-1-891a4bf09c4c.jpg"
+          "thumb_url": "data/media/posts/thumbs/1444-1-10f3007fa0b3.jpg",
+          "full_url": "data/media/posts/1444-1-10f3007fa0b3.jpg"
         }
       ],
       "video_url": null,
@@ -123,8 +145,8 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/media/posts/thumbs/1443-1-e87678545a8d.jpg",
-          "full_url": "data/media/posts/1443-1-e87678545a8d.jpg"
+          "thumb_url": "data/media/posts/thumbs/1443-1-9621b4edd386.jpg",
+          "full_url": "data/media/posts/1443-1-9621b4edd386.jpg"
         }
       ],
       "video_url": null,
@@ -141,8 +163,8 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/media/posts/thumbs/1442-1-5970d5bb4563.jpg",
-          "full_url": "data/media/posts/1442-1-5970d5bb4563.jpg"
+          "thumb_url": "data/media/posts/thumbs/1442-1-0402f5a0ba7b.jpg",
+          "full_url": "data/media/posts/1442-1-0402f5a0ba7b.jpg"
         }
       ],
       "video_url": null,
@@ -177,8 +199,8 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/media/posts/thumbs/1440-1-b043cf3f8d4c.jpg",
-          "full_url": "data/media/posts/1440-1-b043cf3f8d4c.jpg"
+          "thumb_url": "data/media/posts/thumbs/1440-1-fa68a61cdfa4.jpg",
+          "full_url": "data/media/posts/1440-1-fa68a61cdfa4.jpg"
         }
       ],
       "video_url": null,
@@ -195,12 +217,12 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/media/posts/thumbs/1438-1-2daa90ceb65d.jpg",
-          "full_url": "data/media/posts/1438-1-2daa90ceb65d.jpg"
+          "thumb_url": "data/media/posts/thumbs/1438-1-d360c45af71a.jpg",
+          "full_url": "data/media/posts/1438-1-d360c45af71a.jpg"
         },
         {
-          "thumb_url": "data/media/posts/thumbs/1438-2-0a9ecfb45408.jpg",
-          "full_url": "data/media/posts/1438-2-0a9ecfb45408.jpg"
+          "thumb_url": "data/media/posts/thumbs/1438-2-69f8987172e9.jpg",
+          "full_url": "data/media/posts/1438-2-69f8987172e9.jpg"
         }
       ],
       "video_url": null,
@@ -308,24 +330,6 @@
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1430",
       "permalink": "posts/1430/"
-    },
-    {
-      "id": 1429,
-      "date": "2025-07-14T08:03:58+00:00",
-      "text": "⚡️ Открыта запись на пятый поток «Школы трудового права»!\n\n😱 Ошибки в трудовом праве стоят дорого: штрафы от ГИТ, споры с уволенными сотрудниками, компенсации и восстановление на работе по решению суда и др.\n\n💪 Знание трудового права — не роскошь, а инструмент управления рисками. Научитесь защищать интересы компании грамотно! А чтобы быть в курсе ключевых законодательных изменений и актуальной судебной практики, правильно анализировать и принимать решения для минимизации рисков - регистрируйтесь на новый поток онлайн-курса «Школа трудового права 5.0»!\n\nСтарт в сентябре!\n\n👉 Подробнее о курсе и пакетах участия по ссылке!\n\nЖдем всех, кто с нами уже не первый год, а также тех, кто так и не решился на прохождение тренингов и упустил много полезной информации!",
-      "text_html": "⚡️ Открыта запись на пятый поток «Школы трудового права»!<br><br>😱 Ошибки в трудовом праве стоят дорого: штрафы от ГИТ, споры с уволенными сотрудниками, компенсации и восстановление на работе по решению суда и др.<br><br>💪 Знание трудового права — не роскошь, а инструмент управления рисками. Научитесь защищать интересы компании грамотно! А чтобы быть в курсе ключевых законодательных изменений и актуальной судебной практики, правильно анализировать и принимать решения для минимизации рисков - регистрируйтесь на новый поток онлайн-курса «Школа трудового права 5.0»!<br><br>Старт в сентябре!<br><br>👉 Подробнее о курсе и пакетах участия по <a href=\"https://pgplaw.tilda.ws/employment_law_school\" target=\"_blank\" rel=\"noopener noreferrer\">ссылке</a>!<br><br>Ждем всех, кто с нами уже не первый год, а также тех, кто так и не решился на прохождение тренингов и упустил много полезной информации!",
-      "views": 1200,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/media/posts/thumbs/1429-1-8dcafe4e9dc7.jpg",
-          "full_url": "data/media/posts/1429-1-8dcafe4e9dc7.jpg"
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1429",
-      "permalink": "posts/1429/"
     }
   ]
 }
