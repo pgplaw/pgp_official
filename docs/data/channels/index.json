@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-17T20:56:03.036Z",
+  "generated_at": "2026-03-17T21:14:57.304Z",
   "site": {
     "site_name": "Pepeliaev Group | Практики",
     "site_description": "Зеркало Telegram-каналов практик «Пепеляев Групп». Выберите нужное направление в верхнем меню.",
@@ -13,6 +13,7 @@
     {
       "key": "pgp-official",
       "label": "Pepeliaev Group | Пепеляев Групп",
+      "menu_subtitle": null,
       "channel_username": "pgp_official",
       "channel_title": "Pepeliaev Group | Пепеляев Групп",
       "site_description": "Официальный канал юридической компании «Пепеляев Групп». Новости компании, правовые обзоры законодательства и судебной практики, комментарии экспертов.",
@@ -26,6 +27,7 @@
     {
       "key": "pg-antitrust",
       "label": "PG Antitrust | Антимонопольное право",
+      "menu_subtitle": null,
       "channel_username": "PgAntitrust",
       "channel_title": "PG Antitrust | Антимонопольное право",
       "site_description": "Канал практики антимонопольного права «Пепеляев Групп»: комментарии, обзоры и новости регулирования.",
@@ -39,6 +41,7 @@
     {
       "key": "pg-tax",
       "label": "PG Tax | Налоги",
+      "menu_subtitle": null,
       "channel_username": "PG_Tax",
       "channel_title": "PG Tax | Налоги",
       "site_description": "Канал налоговой практики «Пепеляев Групп»: аналитика, обзоры и комментарии по налоговым вопросам.",
@@ -52,6 +55,7 @@
     {
       "key": "pg-real-estate",
       "label": "PG Real Estate | Недвижимость",
+      "menu_subtitle": null,
       "channel_username": "PG_RealEstate",
       "channel_title": "PG Real Estate | Недвижимость",
       "site_description": "Канал практики недвижимости «Пепеляев Групп»: сделки, регулирование, судебная практика и отраслевые обновления.",
@@ -65,6 +69,7 @@
     {
       "key": "investment-law",
       "label": "СпецИнвестРежимы",
+      "menu_subtitle": "Экономика",
       "channel_username": "InvestmentLaw",
       "channel_title": "СпецИнвестРежимы",
       "site_description": "Канал о специальных инвестиционных режимах: льготы, проекты, регулирование и правоприменительная практика.",
@@ -78,6 +83,7 @@
     {
       "key": "pg-ecology",
       "label": "PG Ecology | Экология",
+      "menu_subtitle": null,
       "channel_username": "pgecology",
       "channel_title": "PG Ecology | Экология",
       "site_description": "Канал экологической практики «Пепеляев Групп»: требования, надзор, комплаенс и ключевые изменения регулирования.",
@@ -91,6 +97,7 @@
     {
       "key": "bankrotstvo-mustknow",
       "label": "Банкротство | Взгляд эксперта",
+      "menu_subtitle": null,
       "channel_username": "bankrotstvo_mustknow",
       "channel_title": "Банкротство | Взгляд эксперта",
       "site_description": "Канал о банкротстве и реструктуризации: обзоры практики, комментарии экспертов и важные кейсы.",
@@ -104,6 +111,7 @@
     {
       "key": "pg-employment",
       "label": "PG Employment | Трудовое право",
+      "menu_subtitle": null,
       "channel_username": "pgEmployment",
       "channel_title": "PG Employment | Трудовое право",
       "site_description": "Канал трудовой практики «Пепеляев Групп»: кадровые изменения, споры, комплаенс и судебная практика.",

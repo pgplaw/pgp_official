@@ -205,7 +205,7 @@ function renderChannelMenu() {
     const rawLabel = channel.label || channel.channel_title || channel.channel_username || 'Channel';
     const parts = rawLabel.split('|').map((part) => part.trim()).filter(Boolean);
     const title = parts[0] || rawLabel;
-    const subtitle = parts[1] || `@${channel.channel_username || 'channel'}`;
+    const subtitle = channel.menu_subtitle || parts[1] || `@${channel.channel_username || 'channel'}`;
     return `
       <button
         class="channel-tab${isActive ? ' is-active' : ''}"
@@ -216,11 +216,15 @@ function renderChannelMenu() {
         title="${escapeHtml(rawLabel)}"
       >
         <span class="channel-tab__meta">${isActive ? 'Открыт' : 'Канал'}</span>
-        <span class="channel-tab__title">${escapeHtml(title)}</span>
-        <span class="channel-tab__subtitle">${escapeHtml(subtitle)}</span>
+        <span class="channel-tab__title">${formatTextWithSoftBreaks(title)}</span>
+        <span class="channel-tab__subtitle">${formatTextWithSoftBreaks(subtitle)}</span>
       </button>
     `;
   }).join('');
+}
+
+function formatTextWithSoftBreaks(value) {
+  return escapeHtml(String(value || '').trim()).replace(/([a-zа-яё])([A-ZА-ЯЁ])/g, '$1<wbr>$2');
 }
 
 function renderHeroTitle(title) {
@@ -229,11 +233,11 @@ function renderHeroTitle(title) {
 
   const parts = rawTitle.split('|').map((part) => part.trim()).filter(Boolean);
   if (parts.length < 2) {
-    return `<span class="hero__title-line">${escapeHtml(rawTitle)}</span>`;
+    return `<span class="hero__title-line">${formatTextWithSoftBreaks(rawTitle)}</span>`;
   }
 
   return parts.map((part, index) => `
-    <span class="hero__title-line${index === 0 ? ' hero__title-line--lead' : ''}">${escapeHtml(part)}</span>
+    <span class="hero__title-line${index === 0 ? ' hero__title-line--lead' : ''}">${formatTextWithSoftBreaks(part)}</span>
   `).join('');
 }
 

@@ -82,10 +82,9 @@ a {
 .channel-nav::before {
   content: "";
   position: absolute;
-  inset: 0 0 auto;
-  height: 8px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
+  inset: 0 18px auto;
+  height: 6px;
+  border-radius: 999px;
   background: linear-gradient(90deg, var(--accent) 0%, #92278f 55%, var(--signal) 100%);
   pointer-events: none;
 }
@@ -274,8 +273,8 @@ a {
   line-height: 0.96;
   letter-spacing: -0.05em;
   text-wrap: balance;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .hero h1 {

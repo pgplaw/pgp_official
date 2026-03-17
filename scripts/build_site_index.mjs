@@ -105,6 +105,7 @@ const catalog = {
   channels: config.channels.map((channel) => ({
     key: channel.key,
     label: channel.label || channel.channel_title,
+    menu_subtitle: channel.menu_subtitle || null,
     channel_username: channel.channel_username,
     channel_title: channel.channel_title,
     site_description: channel.site_description,
