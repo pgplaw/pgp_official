@@ -2,8 +2,6 @@
 
 const CHANNELS_INDEX_URL = 'data/channels/index.json';
 const DEFAULT_PAGE_SIZE = 16;
-const AUTO_REFRESH_INTERVAL_MINUTES = 5;
-const AUTO_REFRESH_NOTE = `Лента актуализируется каждые ${AUTO_REFRESH_INTERVAL_MINUTES} минут.`;
 
 const state = {
   catalog: null,
@@ -28,7 +26,6 @@ const elements = {
   channelAvatar: document.getElementById('channelAvatar'),
   channelLink: document.getElementById('channelLink'),
   updatedText: document.getElementById('updatedText'),
-  refreshNote: document.getElementById('refreshNote'),
   refreshButton: document.getElementById('refreshButton'),
   themeButton: document.getElementById('themeButton'),
   feedMeta: document.getElementById('feedMeta'),
@@ -208,11 +205,6 @@ function setStatus(target, message) {
   target.textContent = message;
 }
 
-function setRefreshNote(message = AUTO_REFRESH_NOTE) {
-  if (!elements.refreshNote) return;
-  elements.refreshNote.textContent = message;
-}
-
 function renderChannelMenu() {
   const channels = getCatalogChannels();
   elements.channelMenu.style.setProperty('--channel-count', String(channels.length || 1));
@@ -267,7 +259,7 @@ function renderHeader(site, generatedAt) {
   elements.siteDescription.textContent = description;
   elements.channelLink.textContent = handle;
   elements.channelLink.href = site.channel_username ? `https://t.me/${site.channel_username}` : 'https://t.me';
-  elements.updatedText.textContent = `${timeAgo(generatedAt)} (${formatDate(generatedAt)})`;
+  elements.updatedText.textContent = formatDate(generatedAt);
   document.title = title;
 
   if (site.avatar_path) {
@@ -455,7 +447,6 @@ async function appendNextPage() {
       await loadPage(state.loadedPages.size + 1);
     }
   } catch (error) {
-    setRefreshNote(AUTO_REFRESH_NOTE);
     elements.loadMoreButton.disabled = false;
     return;
   }
@@ -583,7 +574,6 @@ async function loadFeed(channelKey, force = false) {
   elements.errorState.classList.add('hidden');
   elements.postFeed.innerHTML = '';
   showFeedView();
-  setRefreshNote(force ? 'Обновление ленты...' : AUTO_REFRESH_NOTE);
 
   try {
     const response = await fetch(buildFeedUrl(channelKey, force), { cache: 'no-store' });
@@ -602,18 +592,15 @@ async function loadFeed(channelKey, force = false) {
 
     if (!state.posts.length) {
       elements.emptyState.classList.remove('hidden');
-      setRefreshNote(AUTO_REFRESH_NOTE);
       updateFeedMeta();
       updateLoadMoreVisibility();
       handleRoute();
       return;
     }
 
-    setRefreshNote(AUTO_REFRESH_NOTE);
     resetFeed();
     handleRoute();
   } catch (error) {
-    setRefreshNote(AUTO_REFRESH_NOTE);
     elements.loadingState.classList.add('hidden');
     elements.errorState.classList.remove('hidden');
     elements.errorMessage.textContent = `Ошибка: ${error.message}`;
