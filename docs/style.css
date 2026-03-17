@@ -577,22 +577,24 @@ a {
 }
 
 :root[data-theme="dark"] #loadMoreButton {
-  border-color: rgba(206, 174, 226, 0.24);
-  background: linear-gradient(180deg, rgba(206, 174, 226, 0.2), rgba(39, 44, 62, 0.92));
-  color: var(--text);
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.22);
+  border-color: rgba(206, 174, 226, 0.22);
+  background: linear-gradient(180deg, rgba(52, 58, 80, 0.98), rgba(30, 35, 51, 0.98));
+  color: rgba(253, 254, 254, 0.92);
+  box-shadow:
+    0 16px 30px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 :root[data-theme="dark"] #loadMoreButton:hover:not(:disabled) {
-  border-color: rgba(236, 199, 235, 0.42);
-  background: linear-gradient(180deg, rgba(236, 199, 235, 0.28), rgba(39, 44, 62, 0.96));
+  border-color: rgba(236, 199, 235, 0.46);
+  background: linear-gradient(180deg, rgba(78, 62, 98, 0.98), rgba(38, 43, 61, 0.98));
   color: white;
 }
 
 :root[data-theme="dark"] #loadMoreButton:disabled {
   border-color: rgba(206, 174, 226, 0.18);
-  background: linear-gradient(180deg, rgba(206, 174, 226, 0.14), rgba(39, 44, 62, 0.88));
-  color: rgba(253, 254, 254, 0.72);
+  background: linear-gradient(180deg, rgba(47, 52, 72, 0.96), rgba(30, 35, 51, 0.94));
+  color: rgba(253, 254, 254, 0.66);
   box-shadow: none;
 }
 
