@@ -1,92 +1,108 @@
 # Telegram Pages Mirror
 
-Статическое зеркало публичного Telegram-канала на `GitHub Pages`.
+Статическое зеркало нескольких публичных Telegram-каналов на `GitHub Pages`.
 
-Сейчас репозиторий уже преднастроен под канал `@pgp_official`.
+Проект публикует один сайт с верхним горизонтальным меню, где каждая вкладка переключает ленту на отдельный канал. Данные обновляются через `GitHub Actions` каждые 15 минут, без собственного сервера.
 
-Проект делает три вещи:
-- публикует сайт, который открывается в обычном браузере и ставится как иконка на телефон;
-- каждые 15 минут подтягивает посты канала в JSON через `GitHub Actions`;
-- подтягивает комментарии через пользовательскую Telegram session, если заданы secrets.
+Сейчас в конфиг уже включены каналы:
 
-## Что внутри
+- `PG Antitrust | Антимонопольное право`
+- `PG Tax | Налоги`
+- `PG Real Estate | Недвижимость`
+- `СпецИнвестРежимы`
+- `PG Ecology | Экология`
+- `Банкротство | Взгляд эксперта`
+- `PG Employment | Трудовое право`
+
+## Как устроено
 
 ```text
 telegram-pages-mirror/
-├── config/channel.json          # Настройка канала и брендинга
+├── config/channels.json         # Список каналов и общий брендинг сайта
 ├── docs/                        # Статика для GitHub Pages
-│   ├── data/posts.json
-│   ├── data/comments/*.json
+│   ├── data/channels/           # JSON по каждому каналу
+│   ├── channels/<key>/posts/    # Отдельные страницы постов
 │   ├── index.html
 │   ├── app.js
 │   ├── style.css
 │   └── manifest.webmanifest
-├── scripts/sync_channel.py      # Сбор постов и комментариев
-├── scripts/generate_session.py  # Локальная генерация user session
-└── .github/workflows/           # Автоматический sync и session helper workflows
+├── scripts/build_site_index.mjs # Каталог каналов и стартовые заглушки
+├── scripts/sync_channels.mjs    # Оркестрация sync по всем каналам
+├── scripts/sync_channel.py      # Сбор одного канала: посты, медиа, комментарии
+└── .github/workflows/sync.yml   # Периодический sync и commit обратно в repo
 ```
 
 ## Как это работает
 
-1. `GitHub Pages` отдает статический фронт из папки `docs/`.
-2. Workflow `Sync Telegram Mirror` запускается каждые 15 минут.
-3. Скрипт `scripts/sync_channel.py`:
-   - читает публичную страницу `https://t.me/s/<channel>`;
-   - сохраняет посты в `docs/data/posts.json`;
-   - обновляет `docs/data/comments/<post_id>.json`, если настроены Telegram secrets.
-4. Фронт читает готовые JSON-файлы и рисует ленту без сервера.
+1. `GitHub Pages` отдает сайт из папки `docs/`.
+2. `scripts/build_site_index.mjs` создает каталог каналов и стартовые `posts.json`, чтобы фронт не падал до первого sync.
+3. Workflow `Sync Telegram Mirror` каждые 15 минут запускает `scripts/sync_channels.mjs`.
+4. `scripts/sync_channels.mjs` последовательно вызывает `scripts/sync_channel.py` для каждого канала из `config/channels.json`.
+5. Каждый канал пишет данные в свой namespace:
+   - `docs/data/channels/<key>/posts.json`
+   - `docs/data/channels/<key>/pages/*.json`
+   - `docs/data/channels/<key>/posts/*.json`
+   - `docs/data/channels/<key>/comments/*.json`
+   - `docs/channels/<key>/posts/<post_id>/index.html`
 
-## Быстрый старт
+## Настройка каналов
 
-### 1. Создайте репозиторий и загрузите проект
+Все каналы описываются в `config/channels.json`.
 
-Залейте содержимое этой папки в новый GitHub repo.
+Для каждого канала можно задать:
 
-### 2. Настройте канал
-
-Если вы оставляете проект для `@pgp_official`, этот шаг можно пропустить.
-
-Если захотите переключить проект на другой канал, откройте `config/channel.json` и замените значения:
-
+- `key`
+- `label`
 - `channel_username`
 - `channel_title`
-- `site_name`
 - `site_description`
-
-Опционально:
-
+- `accent_color`
+- `background_color`
+- `avatar_path`
 - `messages_limit`
 - `comments_posts_limit`
 - `comments_max_age_days`
-- `accent_color`
-- `background_color`
 
-### 3. Включите GitHub Pages
+`default_channel_key` определяет, какая вкладка откроется первой.
 
-В репозитории:
+## Публикация
 
-1. `Settings -> Pages`
-2. `Build and deployment -> Source -> Deploy from a branch`
-3. Branch: `main`
-4. Folder: `/docs`
+1. Откройте `Settings -> Pages`.
+2. Выберите `Deploy from a branch`.
+3. Укажите ветку `main`.
+4. Укажите папку `/docs`.
 
-После этого сайт будет доступен по адресу:
+Сайт будет доступен по адресу:
 
 ```text
 https://<github-username>.github.io/<repo-name>/
 ```
 
-### 4. Запустите первый sync вручную
+Формат прямой ссылки на конкретную вкладку:
 
-Откройте `Actions -> Sync Telegram Mirror -> Run workflow`.
+```text
+https://<github-username>.github.io/<repo-name>/?channel=<channel-key>
+```
 
-Если comments secrets еще не настроены, сайт все равно заработает, но только с лентой постов.
+Например:
 
-## Настройка комментариев
+```text
+https://najvud.github.io/pep_group/?channel=pg-tax
+```
 
-Для чтения комментариев нужен пользовательский Telegram session string, потому что comments threads доступны не через Bot API.
+## Автообновление
 
-### Какие secrets нужны
+Workflow `Sync Telegram Mirror` уже настроен на cron:
+
+```text
+*/15 * * * *
+```
+
+То есть сайт сам обновляет ленты примерно раз в 15 минут. Нужно учитывать, что `GitHub Actions schedule` не гарантирует идеальную точность и иногда может стартовать с задержкой.
+
+## Комментарии
+
+Посты и медиа можно зеркалить без Telegram secrets. Комментарии требуют пользовательскую Telegram session.
 
 Добавьте в `Settings -> Secrets and variables -> Actions`:
 
@@ -94,61 +110,11 @@ https://<github-username>.github.io/<repo-name>/
 - `TELEGRAM_API_HASH`
 - `TELEGRAM_SESSION_STR`
 
-### Как получить API ID и API HASH
-
-1. Перейдите на `https://my.telegram.org`
-2. Откройте `API development tools`
-3. Создайте приложение
-4. Скопируйте `api_id` и `api_hash`
-
-### Как получить TELEGRAM_SESSION_STR
-
-Есть два пути.
-
-#### Вариант A. Через локальный Python
-
-```bash
-pip install -r requirements.txt
-python scripts/generate_session.py
-```
-
-Скрипт попросит номер телефона и код из Telegram, после чего выведет `TELEGRAM_SESSION_STR`.
-
-#### Вариант B. Полностью через GitHub Actions
-
-1. Откройте workflow `Generate Telegram Session Step 1`
-2. Передайте `phone`, `api_id`, `api_hash`
-3. Заберите из логов:
-   - `partial_session`
-   - `phone_code_hash`
-4. Откройте workflow `Generate Telegram Session Step 2`
-5. Передайте:
-   - `partial_session`
-   - `phone_code_hash`
-   - код из Telegram
-   - `phone`, `api_id`, `api_hash`
-   - `password`, если включен 2FA
-6. Заберите из логов итоговый `TELEGRAM_SESSION_STR`
-7. Сохраните его в repository secret
+Без этих secrets сайт продолжит работать, но только как зеркало постов.
 
 ## Ограничения
 
-- Канал должен быть публичным.
-- Это read-only зеркало. Писать комментарии или посты из сайта нельзя.
-- `GitHub Actions schedule` может иногда задерживаться. Формально cron стоит на каждые 15 минут, но GitHub не гарантирует идеальную точность.
-- Комментарии доступны только если Telegram account из `TELEGRAM_SESSION_STR` имеет доступ к связанному discussion thread.
-- Медиа в комментариях сейчас сохраняются как текстовые placeholders, если комментарий без текста.
-
-## Что уже заложено для развития
-
-- фронт без фреймворка, чтобы быстро править UI;
-- скользящее обновление комментариев по последним постам и по окну свежести;
-- стабильные JSON-файлы: если контент не изменился, пустого коммита не будет.
-
-## Ближайшие улучшения
-
-- локальное зеркалирование фото и видео в repo или release assets;
-- поиск по постам;
-- фильтрация по дате;
-- richer rendering для media-only comments;
-- отдельная страница поста.
+- Каналы должны быть публичными.
+- Это read-only зеркало: писать посты и комментарии с сайта нельзя.
+- Комментарии доступны только если у канала есть discussion thread и Telegram account из `TELEGRAM_SESSION_STR` имеет к нему доступ.
+- Локально в этом проекте нет backend-сервера: весь runtime завязан на `GitHub Pages` и `GitHub Actions`.

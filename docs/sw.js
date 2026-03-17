@@ -1,4 +1,4 @@
-const CACHE_NAME = 'telegram-pages-mirror-v4';
+const CACHE_NAME = 'telegram-pages-mirror-v5';
 const STATIC_ASSETS = [
   './manifest.webmanifest',
   './assets/icon.svg',
@@ -6,7 +6,7 @@ const STATIC_ASSETS = [
   './assets/icon-512.png',
   './assets/apple-touch-icon.png',
   './assets/channel-avatar.jpg',
-  './data/posts.json'
+  './data/channels/index.json'
 ];
 
 self.addEventListener('install', (event) => {

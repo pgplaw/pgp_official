@@ -1,0 +1,64 @@
+{
+  "site_name": "Pepeliaev Group | Практики",
+  "site_description": "Зеркало Telegram-каналов практик «Пепеляев Групп». Выберите нужное направление в верхнем меню.",
+  "short_name": "PG Channels",
+  "language": "ru",
+  "accent_color": "#91278d",
+  "background_color": "#f5f7fa",
+  "avatar_path": "assets/channel-avatar.jpg",
+  "default_channel_key": "pg-antitrust",
+  "messages_limit": 250,
+  "comments_posts_limit": 40,
+  "comments_max_age_days": 7,
+  "channels": [
+    {
+      "key": "pg-antitrust",
+      "label": "PG Antitrust | Антимонопольное право",
+      "channel_username": "PgAntitrust",
+      "channel_title": "PG Antitrust | Антимонопольное право",
+      "site_description": "Канал практики антимонопольного права «Пепеляев Групп»: комментарии, обзоры и новости регулирования."
+    },
+    {
+      "key": "pg-tax",
+      "label": "PG Tax | Налоги",
+      "channel_username": "PG_Tax",
+      "channel_title": "PG Tax | Налоги",
+      "site_description": "Канал налоговой практики «Пепеляев Групп»: аналитика, обзоры и комментарии по налоговым вопросам."
+    },
+    {
+      "key": "pg-real-estate",
+      "label": "PG Real Estate | Недвижимость",
+      "channel_username": "PG_RealEstate",
+      "channel_title": "PG Real Estate | Недвижимость",
+      "site_description": "Канал практики недвижимости «Пепеляев Групп»: сделки, регулирование, судебная практика и отраслевые обновления."
+    },
+    {
+      "key": "investment-law",
+      "label": "СпецИнвестРежимы",
+      "channel_username": "InvestmentLaw",
+      "channel_title": "СпецИнвестРежимы",
+      "site_description": "Канал о специальных инвестиционных режимах: льготы, проекты, регулирование и правоприменительная практика."
+    },
+    {
+      "key": "pg-ecology",
+      "label": "PG Ecology | Экология",
+      "channel_username": "pgecology",
+      "channel_title": "PG Ecology | Экология",
+      "site_description": "Канал экологической практики «Пепеляев Групп»: требования, надзор, комплаенс и ключевые изменения регулирования."
+    },
+    {
+      "key": "bankrotstvo-mustknow",
+      "label": "Банкротство | Взгляд эксперта",
+      "channel_username": "bankrotstvo_mustknow",
+      "channel_title": "Банкротство | Взгляд эксперта",
+      "site_description": "Канал о банкротстве и реструктуризации: обзоры практики, комментарии экспертов и важные кейсы."
+    },
+    {
+      "key": "pg-employment",
+      "label": "PG Employment | Трудовое право",
+      "channel_username": "pgEmployment",
+      "channel_title": "PG Employment | Трудовое право",
+      "site_description": "Канал трудовой практики «Пепеляев Групп»: кадровые изменения, споры, комплаенс и судебная практика."
+    }
+  ]
+}

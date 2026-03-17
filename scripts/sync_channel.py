@@ -24,13 +24,16 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "channel.json"
 DOCS_DIR = ROOT / "docs"
 DATA_DIR = DOCS_DIR / "data"
-POSTS_PATH = DATA_DIR / "posts.json"
-COMMENTS_DIR = DATA_DIR / "comments"
-PAGES_DIR = DATA_DIR / "pages"
-POST_DETAILS_DIR = DATA_DIR / "posts"
-POSTS_MEDIA_DIR = DATA_DIR / "media" / "posts"
+CHANNEL_KEY = (os.environ.get("TG_CHANNEL_KEY") or "").strip()
+CHANNELS_DATA_DIR = DATA_DIR / "channels"
+CHANNEL_DATA_DIR = CHANNELS_DATA_DIR / CHANNEL_KEY if CHANNEL_KEY else DATA_DIR
+POSTS_PATH = CHANNEL_DATA_DIR / "posts.json"
+COMMENTS_DIR = CHANNEL_DATA_DIR / "comments"
+PAGES_DIR = CHANNEL_DATA_DIR / "pages"
+POST_DETAILS_DIR = CHANNEL_DATA_DIR / "posts"
+POSTS_MEDIA_DIR = CHANNEL_DATA_DIR / "media" / "posts"
 POSTS_THUMBS_DIR = POSTS_MEDIA_DIR / "thumbs"
-POST_PAGES_DIR = DOCS_DIR / "posts"
+POST_PAGES_DIR = DOCS_DIR / "channels" / CHANNEL_KEY / "posts" if CHANNEL_KEY else DOCS_DIR / "posts"
 MANIFEST_PATH = DOCS_DIR / "manifest.webmanifest"
 FEED_PAGE_SIZE = 16
 
@@ -127,7 +130,7 @@ def load_config() -> SiteConfig:
     )
 
     if not config.channel_username or config.channel_username == "replace-with-channel-username":
-        raise SystemExit("Set channel_username in config/channel.json before running the sync.")
+        raise SystemExit("Set TG_CHANNEL_USERNAME or channel_username in config/channel.json before running the sync.")
 
     if not config.channel_title:
         config.channel_title = config.channel_username
@@ -584,6 +587,7 @@ def build_site_payload(config: SiteConfig) -> dict[str, Any]:
 
 def build_source_payload(config: SiteConfig, comments_enabled: bool) -> dict[str, Any]:
     return {
+        "channel_key": CHANNEL_KEY or config.channel_username.lower(),
         "channel_url": config.channel_web_url,
         "comments_enabled": comments_enabled,
     }
@@ -647,6 +651,8 @@ def shorten_text(value: str | None, limit: int) -> str:
 
 
 def post_permalink(post_id: int) -> str:
+    if CHANNEL_KEY:
+        return f"channels/{CHANNEL_KEY}/posts/{post_id}/"
     return f"posts/{post_id}/"
 
 
@@ -656,6 +662,7 @@ def enrich_posts(posts: list[dict[str, Any]]) -> None:
 
 
 def render_post_page_media(post: dict[str, Any]) -> str:
+    root_prefix = "../../../" if CHANNEL_KEY else "../../"
     photos = [normalize_photo_entry(photo) for photo in post.get("photos") or []]
     photos = [photo for photo in photos if photo]
     if not photos and not post.get("video_url"):
@@ -665,9 +672,10 @@ def render_post_page_media(post: dict[str, Any]) -> str:
     for index, photo in enumerate(photos):
         media_items.append(
             (
-                '<a class="media-trigger" href="../../{full_url}" target="_blank" rel="noopener">'
-                '<img src="../../{thumb_url}" alt="Media {index}" loading="lazy" decoding="async"></a>'
+                '<a class="media-trigger" href="{root_prefix}{full_url}" target="_blank" rel="noopener">'
+                '<img src="{root_prefix}{thumb_url}" alt="Media {index}" loading="lazy" decoding="async"></a>'
             ).format(
+                root_prefix=root_prefix,
                 full_url=html_lib.escape(photo["full_url"]),
                 thumb_url=html_lib.escape(photo["thumb_url"]),
                 index=index + 1,
@@ -684,11 +692,13 @@ def render_post_page_media(post: dict[str, Any]) -> str:
 
 
 def render_post_page_html(config: SiteConfig, post: dict[str, Any], comments_enabled: bool) -> str:
+    root_prefix = "../../../" if CHANNEL_KEY else "../../"
+    feed_href = f"{root_prefix}?channel={CHANNEL_KEY}" if CHANNEL_KEY else root_prefix
     title = shorten_text(post.get("text") or f"Пост #{post['id']}", 72) or f"Пост #{post['id']}"
     description = shorten_text(strip_tags(post.get("text_html") or post.get("text") or ""), 180) or config.site_description
     first_photo = normalize_photo_entry((post.get("photos") or [None])[0])
-    og_image = f"../../{first_photo['full_url']}" if first_photo else f"../../{config.avatar_path}"
-    comments_link = f'../../#comments-{post["id"]}' if comments_enabled else "../../"
+    og_image = f"{root_prefix}{first_photo['full_url']}" if first_photo else f"{root_prefix}{config.avatar_path}"
+    comments_link = f'{feed_href}#comments-{post["id"]}' if comments_enabled else feed_href
     comments_cta = ""
     if comments_enabled and (post.get("comments_count") or post.get("comments_url") or post.get("comments_available")):
         comments_cta = (
@@ -709,14 +719,14 @@ def render_post_page_html(config: SiteConfig, post: dict[str, Any], comments_ena
   <meta property="og:image" content="{html_lib.escape(og_image)}">
   <meta property="article:published_time" content="{html_lib.escape(post.get("date") or "")}">
   <meta name="theme-color" content="{html_lib.escape(config.accent_color)}">
-  <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
-  <link rel="icon" href="../../assets/icon-192.png" sizes="192x192" type="image/png">
-  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
-  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="icon" href="{root_prefix}assets/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="{root_prefix}assets/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="{root_prefix}assets/apple-touch-icon.png">
+  <link rel="manifest" href="{root_prefix}manifest.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="{root_prefix}style.css">
   <script>
     (function() {{
       var theme = localStorage.getItem('theme');
@@ -732,7 +742,7 @@ def render_post_page_html(config: SiteConfig, post: dict[str, Any], comments_ena
         <h1 class="post-page-title">{html_lib.escape(title)}</h1>
       </div>
       <div class="post-header__actions">
-        <a class="button button--ghost" href="../../">К ленте</a>
+        <a class="button button--ghost" href="{feed_href}">К ленте</a>
         <a class="button button--primary" href="{html_lib.escape(post["tg_url"])}" target="_blank" rel="noopener">В Telegram</a>
       </div>
     </header>
@@ -860,7 +870,8 @@ def write_post_detail_files(config: SiteConfig, posts: list[dict[str, Any]], com
 
 def main() -> int:
     config = load_config()
-    write_manifest(config)
+    if not CHANNEL_KEY:
+        write_manifest(config)
 
     posts = collect_posts(config)
     existing_payload = load_json(POSTS_PATH, {})

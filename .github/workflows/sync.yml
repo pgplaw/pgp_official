@@ -4,6 +4,14 @@ on:
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/sync.yml"
+      - "config/channels.json"
+      - "scripts/**"
+      - "requirements.txt"
 
 permissions:
   contents: write
@@ -28,21 +36,29 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Sync Telegram channel to static JSON
+      - name: Build multi-channel site index
+        run: node scripts/build_site_index.mjs
+
+      - name: Sync configured Telegram channels
         env:
           TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
           TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
           TELEGRAM_SESSION_STR: ${{ secrets.TELEGRAM_SESSION_STR }}
-        run: python scripts/sync_channel.py
+        run: node scripts/sync_channels.mjs
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/data docs/posts docs/manifest.webmanifest
+          git add docs/data docs/channels docs/manifest.webmanifest
           if git diff --cached --quiet; then
             echo "No changes."
           else

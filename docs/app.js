@@ -1,24 +1,25 @@
 'use strict';
 
-const FEED_URL = 'data/posts.json';
-const PAGES_DIR = 'data/pages';
-const COMMENTS_DIR = 'data/comments';
-const PAGE_SIZE = 16;
+const CHANNELS_INDEX_URL = 'data/channels/index.json';
+const DEFAULT_PAGE_SIZE = 16;
 
 const state = {
+  catalog: null,
+  activeChannelKey: null,
   feed: null,
   posts: [],
   rendered: 0,
   loadedPages: new Set(),
   totalPages: 1,
   totalPosts: 0,
-  pageSize: PAGE_SIZE,
+  pageSize: DEFAULT_PAGE_SIZE,
   viewerItems: [],
   viewerIndex: 0,
   mediaRegistry: {},
 };
 
 const elements = {
+  channelMenu: document.getElementById('channelMenu'),
   siteTitle: document.getElementById('siteTitle'),
   siteDescription: document.getElementById('siteDescription'),
   channelAvatarWrap: document.getElementById('channelAvatarWrap'),
@@ -102,17 +103,76 @@ function normalizePhoto(photo) {
   if (typeof photo === 'string') {
     return { thumb_url: photo, full_url: photo };
   }
+
   const thumbUrl = photo.thumb_url || photo.thumb || photo.url || photo.full_url || photo.full;
   const fullUrl = photo.full_url || photo.full || photo.url || photo.thumb_url || photo.thumb;
   if (!thumbUrl && !fullUrl) return null;
+
   return {
     thumb_url: thumbUrl || fullUrl,
     full_url: fullUrl || thumbUrl,
   };
 }
 
+function getChannelKeyFromLocation() {
+  const url = new URL(window.location.href);
+  return url.searchParams.get('channel');
+}
+
+function getCatalogChannels() {
+  return state.catalog?.channels || [];
+}
+
+function getCatalogSite() {
+  return state.catalog?.site || {};
+}
+
+function getChannelByKey(channelKey) {
+  return getCatalogChannels().find((channel) => channel.key === channelKey) || null;
+}
+
+function resolveChannelKey(requestedKey) {
+  const channels = getCatalogChannels();
+  if (!channels.length) return null;
+  if (requestedKey && getChannelByKey(requestedKey)) return requestedKey;
+  return state.catalog?.default_channel_key || channels[0].key;
+}
+
+function updateChannelUrl(channelKey, { replace = false, clearHash = false } = {}) {
+  const url = new URL(window.location.href);
+  url.searchParams.set('channel', channelKey);
+  if (clearHash) url.hash = '';
+
+  if (replace) {
+    window.history.replaceState({}, '', url);
+  } else {
+    window.history.pushState({}, '', url);
+  }
+}
+
+function buildChannelRoot(channelKey) {
+  return `data/channels/${channelKey}`;
+}
+
+function buildFeedUrl(channelKey, force = false) {
+  return `${buildChannelRoot(channelKey)}/posts.json${force ? `?t=${Date.now()}` : ''}`;
+}
+
+function buildPageUrl(channelKey, pageNumber) {
+  return `${buildChannelRoot(channelKey)}/pages/${pageNumber}.json`;
+}
+
+function buildCommentsUrl(channelKey, postId) {
+  return `${buildChannelRoot(channelKey)}/comments/${postId}.json?t=${Date.now()}`;
+}
+
 function getPostPageUrl(post) {
-  return post?.permalink || `posts/${post.id}/`;
+  if (post?.permalink) return post.permalink;
+  return `channels/${state.activeChannelKey}/posts/${post.id}/`;
+}
+
+function getActiveChannelMeta() {
+  return getChannelByKey(state.activeChannelKey);
 }
 
 function applyTheme(theme) {
@@ -137,12 +197,31 @@ function setStatus(target, message) {
   target.textContent = message;
 }
 
+function renderChannelMenu() {
+  const channels = getCatalogChannels();
+  elements.channelMenu.innerHTML = channels.map((channel) => {
+    const isActive = channel.key === state.activeChannelKey;
+    return `
+      <button
+        class="channel-tab${isActive ? ' is-active' : ''}"
+        type="button"
+        data-channel-key="${channel.key}"
+        aria-pressed="${isActive ? 'true' : 'false'}"
+      >
+        ${escapeHtml(channel.label || channel.channel_title)}
+      </button>
+    `;
+  }).join('');
+}
+
 function renderHeader(site, generatedAt) {
-  const title = site.channel_title || site.site_name || 'Telegram Pages Mirror';
+  const catalogSite = getCatalogSite();
+  const title = site.channel_title || site.site_name || catalogSite.site_name || 'Telegram Channels';
+  const description = site.site_description || catalogSite.site_description || '';
   const handle = site.channel_username ? `@${site.channel_username}` : '@channel';
 
   elements.siteTitle.textContent = title;
-  elements.siteDescription.textContent = site.site_description || 'Статическая браузерная лента для публичного Telegram-канала.';
+  elements.siteDescription.textContent = description;
   elements.channelLink.textContent = handle;
   elements.channelLink.href = site.channel_username ? `https://t.me/${site.channel_username}` : 'https://t.me';
   elements.updatedText.textContent = `${timeAgo(generatedAt)} (${formatDate(generatedAt)})`;
@@ -161,15 +240,16 @@ function renderHeader(site, generatedAt) {
     const themeColorMeta = document.querySelector('meta[name="theme-color"]');
     if (themeColorMeta) themeColorMeta.setAttribute('content', site.accent_color);
   }
+
   if (site.background_color) {
     document.documentElement.style.setProperty('--bg', site.background_color);
   }
 
-  const description = site.site_description || 'Статическая браузерная лента для публичного Telegram-канала.';
   const descriptionMeta = document.querySelector('meta[name="description"]');
   const ogTitleMeta = document.querySelector('meta[property="og:title"]');
   const ogDescriptionMeta = document.querySelector('meta[property="og:description"]');
   const ogImageMeta = document.querySelector('meta[property="og:image"]');
+
   if (descriptionMeta) descriptionMeta.setAttribute('content', description);
   if (ogTitleMeta) ogTitleMeta.setAttribute('content', title);
   if (ogDescriptionMeta) ogDescriptionMeta.setAttribute('content', description);
@@ -193,8 +273,9 @@ function buildMedia(post) {
   if (!media.length) return '';
 
   const galleryClass = media.length > 1 ? 'post-card__media post-card__media--gallery' : 'post-card__media';
-  const mediaId = `media-${post.id}`;
+  const mediaId = `${state.activeChannelKey}-media-${post.id}`;
   state.mediaRegistry[mediaId] = media;
+
   const items = media.map((item, index) => {
     const content = item.type === 'video'
       ? `<video src="${item.url}" preload="metadata" muted playsinline controls></video>`
@@ -290,7 +371,7 @@ async function loadPage(pageNumber) {
     return;
   }
 
-  const response = await fetch(`${PAGES_DIR}/${pageNumber}.json`, { cache: 'no-store' });
+  const response = await fetch(buildPageUrl(state.activeChannelKey, pageNumber), { cache: 'no-store' });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
   const payload = await response.json();
@@ -380,7 +461,7 @@ async function showComments(postId) {
   elements.commentsView.classList.remove('hidden');
 
   try {
-    const response = await fetch(`${COMMENTS_DIR}/${postId}.json?t=${Date.now()}`, { cache: 'no-store' });
+    const response = await fetch(buildCommentsUrl(state.activeChannelKey, postId), { cache: 'no-store' });
     if (response.status === 404) {
       elements.commentsLoading.classList.add('hidden');
       elements.commentsEmpty.classList.remove('hidden');
@@ -416,20 +497,27 @@ async function showComments(postId) {
 function handleRoute() {
   const match = window.location.hash.match(/^#comments-(\d+)$/);
   if (match) {
-    showComments(match[1]);
+    void showComments(match[1]);
     return;
   }
+
   showFeedView();
 }
 
-async function loadFeed(force = false) {
+async function loadFeed(channelKey, force = false) {
+  state.activeChannelKey = channelKey;
+  state.mediaRegistry = {};
+  renderChannelMenu();
+
   elements.loadingState.classList.remove('hidden');
   elements.emptyState.classList.add('hidden');
   elements.errorState.classList.add('hidden');
+  elements.postFeed.innerHTML = '';
+  showFeedView();
   setStatus(elements.statusBanner, force ? 'Принудительное обновление из браузера...' : null);
 
   try {
-    const response = await fetch(`${FEED_URL}${force ? `?t=${Date.now()}` : ''}`, { cache: 'no-store' });
+    const response = await fetch(buildFeedUrl(channelKey, force), { cache: 'no-store' });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     state.feed = await response.json();
@@ -437,17 +525,17 @@ async function loadFeed(force = false) {
     state.posts = state.feed.posts || [];
     state.totalPosts = Number(pagination.total_posts) || state.posts.length;
     state.totalPages = Number(pagination.total_pages) || 1;
-    state.pageSize = Number(pagination.page_size) || PAGE_SIZE;
+    state.pageSize = Number(pagination.page_size) || DEFAULT_PAGE_SIZE;
     state.loadedPages = new Set(state.posts.length ? [1] : []);
-    state.mediaRegistry = {};
 
-    renderHeader(state.feed.site || {}, state.feed.generated_at);
+    renderHeader(state.feed.site || getActiveChannelMeta() || getCatalogSite(), state.feed.generated_at);
     elements.loadingState.classList.add('hidden');
 
     if (!state.posts.length) {
       elements.emptyState.classList.remove('hidden');
       updateFeedMeta();
       updateLoadMoreVisibility();
+      handleRoute();
       return;
     }
 
@@ -464,14 +552,84 @@ async function loadFeed(force = false) {
   }
 }
 
+async function switchChannel(channelKey, { replace = false, force = false } = {}) {
+  const resolvedChannelKey = resolveChannelKey(channelKey);
+  if (!resolvedChannelKey) return;
+
+  const shouldClearHash = window.location.hash.startsWith('#comments-');
+  const shouldUpdateUrl = getChannelKeyFromLocation() !== resolvedChannelKey || shouldClearHash;
+  if (shouldUpdateUrl) {
+    updateChannelUrl(resolvedChannelKey, { replace, clearHash: shouldClearHash });
+  }
+
+  await loadFeed(resolvedChannelKey, force);
+}
+
+async function loadCatalog() {
+  elements.loadingState.classList.remove('hidden');
+  elements.emptyState.classList.add('hidden');
+  elements.errorState.classList.add('hidden');
+
+  try {
+    const response = await fetch(`${CHANNELS_INDEX_URL}?t=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    state.catalog = await response.json();
+    const initialChannelKey = resolveChannelKey(getChannelKeyFromLocation());
+
+    if (!initialChannelKey) {
+      throw new Error('Каталог каналов пуст.');
+    }
+
+    renderChannelMenu();
+
+    if (getChannelKeyFromLocation() !== initialChannelKey) {
+      updateChannelUrl(initialChannelKey, { replace: true });
+    }
+
+    await loadFeed(initialChannelKey);
+  } catch (error) {
+    elements.loadingState.classList.add('hidden');
+    elements.errorState.classList.remove('hidden');
+    elements.errorMessage.textContent = `Ошибка: ${error.message}`;
+  }
+}
+
+function handleLocationChange() {
+  if (!state.catalog) return;
+
+  const nextChannelKey = resolveChannelKey(getChannelKeyFromLocation());
+  if (nextChannelKey && nextChannelKey !== state.activeChannelKey) {
+    void loadFeed(nextChannelKey);
+    return;
+  }
+
+  handleRoute();
+}
+
 initTheme();
 
 elements.themeButton.addEventListener('click', () => {
-  const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  applyTheme(next);
+  const nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  applyTheme(nextTheme);
 });
 
-elements.refreshButton.addEventListener('click', () => loadFeed(true));
+elements.channelMenu.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-channel-key]');
+  if (!button) return;
+
+  const nextChannelKey = button.dataset.channelKey;
+  if (!nextChannelKey || nextChannelKey === state.activeChannelKey) return;
+
+  void switchChannel(nextChannelKey);
+});
+
+elements.refreshButton.addEventListener('click', () => {
+  if (state.activeChannelKey) {
+    void loadFeed(state.activeChannelKey, true);
+  }
+});
+
 elements.loadMoreButton.addEventListener('click', appendNextPage);
 elements.backButton.addEventListener('click', () => {
   if (window.location.hash.startsWith('#comments-')) {
@@ -493,7 +651,9 @@ elements.viewerNext.addEventListener('click', () => {
   state.viewerIndex = (state.viewerIndex + 1) % state.viewerItems.length;
   renderViewer();
 });
+
 window.addEventListener('hashchange', handleRoute);
+window.addEventListener('popstate', handleLocationChange);
 window.addEventListener('keydown', (event) => {
   if (elements.viewer.classList.contains('hidden')) return;
   if (event.key === 'Escape') closeViewer();
@@ -507,4 +667,4 @@ if ('serviceWorker' in navigator) {
     .catch(() => {});
 }
 
-loadFeed();
+loadCatalog();

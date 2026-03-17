@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pepeliaev Group | Пепеляев Групп</title>
-  <meta name="description" content="Официальный канал юридической компании «Пепеляев Групп». Новости компании, правовые обзоры законодательства и судебной практики, комментарии экспертов.">
+  <title>Pepeliaev Group | Практики</title>
+  <meta name="description" content="Зеркало Telegram-каналов практик «Пепеляев Групп». Выберите нужное направление в верхнем меню.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Pepeliaev Group | Пепеляев Групп">
-  <meta property="og:description" content="Официальный канал юридической компании «Пепеляев Групп». Новости компании, правовые обзоры законодательства и судебной практики, комментарии экспертов.">
+  <meta property="og:title" content="Pepeliaev Group | Практики">
+  <meta property="og:description" content="Зеркало Telegram-каналов практик «Пепеляев Групп». Выберите нужное направление в верхнем меню.">
   <meta property="og:image" content="assets/channel-avatar.jpg">
   <meta name="theme-color" content="#91278d">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="PGP">
+  <meta name="apple-mobile-web-app-title" content="PG Channels">
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/icon-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -24,14 +24,18 @@
 </head>
 <body>
   <div class="site-shell">
+    <nav class="channel-nav" aria-label="Каналы практик">
+      <div id="channelMenu" class="channel-tabs"></div>
+    </nav>
+
     <header class="hero">
       <div id="channelAvatarWrap" class="hero__avatar hidden">
         <img id="channelAvatar" src="assets/channel-avatar.jpg" alt="Аватар канала">
       </div>
       <div class="hero__copy">
-        <h1 id="siteTitle">Pepeliaev Group | Пепеляев Групп</h1>
+        <h1 id="siteTitle">Pepeliaev Group | Практики</h1>
         <p id="siteDescription" class="hero__description">
-          Официальный канал юридической компании «Пепеляев Групп». Новости компании, правовые обзоры законодательства и судебной практики, комментарии экспертов.
+          Зеркало Telegram-каналов практик «Пепеляев Групп». Выберите нужное направление в верхнем меню.
         </p>
       </div>
 
@@ -64,11 +68,11 @@
         </div>
         <div id="emptyState" class="empty-state hidden">
           <h2>Лента пока пустая</h2>
-          <p>После первого запуска GitHub Action здесь появятся посты.</p>
+          <p>После первого запуска GitHub Action здесь появятся посты выбранного канала.</p>
         </div>
         <div id="errorState" class="empty-state hidden">
           <h2>Не удалось загрузить данные</h2>
-          <p id="errorMessage">Проверьте, что JSON уже сгенерирован.</p>
+          <p id="errorMessage">Проверьте, что каталог каналов уже сгенерирован.</p>
         </div>
         <div id="loadMoreWrap" class="load-more hidden">
           <button id="loadMoreButton" class="button button--ghost" type="button">Показать еще</button>
