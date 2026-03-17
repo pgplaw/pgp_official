@@ -223,13 +223,27 @@ function renderChannelMenu() {
   }).join('');
 }
 
+function renderHeroTitle(title) {
+  const rawTitle = String(title || '').trim();
+  if (!rawTitle) return '';
+
+  const parts = rawTitle.split('|').map((part) => part.trim()).filter(Boolean);
+  if (parts.length < 2) {
+    return `<span class="hero__title-line">${escapeHtml(rawTitle)}</span>`;
+  }
+
+  return parts.map((part, index) => `
+    <span class="hero__title-line${index === 0 ? ' hero__title-line--lead' : ''}">${escapeHtml(part)}</span>
+  `).join('');
+}
+
 function renderHeader(site, generatedAt) {
   const catalogSite = getCatalogSite();
   const title = site.channel_title || site.site_name || catalogSite.site_name || 'Telegram Channels';
   const description = site.site_description || catalogSite.site_description || '';
   const handle = site.channel_username ? `@${site.channel_username}` : '@channel';
 
-  elements.siteTitle.textContent = title;
+  elements.siteTitle.innerHTML = renderHeroTitle(title);
   elements.siteDescription.textContent = description;
   elements.channelLink.textContent = handle;
   elements.channelLink.href = site.channel_username ? `https://t.me/${site.channel_username}` : 'https://t.me';

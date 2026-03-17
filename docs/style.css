@@ -269,9 +269,30 @@ a {
 .hero h1,
 .comments-toolbar h2 {
   margin: 0;
-  font-size: clamp(2.2rem, 5vw, 4.4rem);
-  line-height: 0.95;
+  max-width: 100%;
+  font-size: clamp(2rem, 4.55vw, 4rem);
+  line-height: 0.96;
   letter-spacing: -0.05em;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.hero h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.04em;
+}
+
+.hero__title-line {
+  display: block;
+  max-width: 100%;
+}
+
+.hero__title-line--lead {
+  font-size: 0.86em;
+  line-height: 1;
 }
 
 .hero__description {
