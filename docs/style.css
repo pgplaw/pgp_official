@@ -165,11 +165,23 @@ a {
   -webkit-line-clamp: 2;
 }
 
-.channel-tab:hover {
+.channel-tab:not(.is-active):hover {
   transform: translateY(-2px);
   border-color: rgba(145, 39, 141, 0.28);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 236, 249, 0.95));
+  background: color-mix(in srgb, var(--bg-strong) 84%, var(--accent) 16%);
   box-shadow: 0 18px 34px rgba(145, 39, 141, 0.12);
+}
+
+.channel-tab:not(.is-active):hover .channel-tab__meta {
+  color: var(--accent-strong);
+}
+
+.channel-tab:not(.is-active):hover .channel-tab__title {
+  color: var(--text);
+}
+
+.channel-tab:not(.is-active):hover .channel-tab__subtitle {
+  color: var(--muted);
 }
 
 .channel-tab.is-active {
