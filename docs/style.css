@@ -80,13 +80,7 @@ a {
 }
 
 .channel-nav::before {
-  content: "";
-  position: absolute;
-  inset: 0 18px auto;
-  height: 6px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent) 0%, #92278f 55%, var(--signal) 100%);
-  pointer-events: none;
+  content: none;
 }
 
 .channel-tabs {
@@ -94,7 +88,7 @@ a {
   grid-template-columns: repeat(var(--channel-count, 1), minmax(0, 1fr));
   align-items: stretch;
   gap: 10px;
-  padding: 10px 0 0;
+  padding: 0;
 }
 
 .channel-tabs::-webkit-scrollbar {
@@ -214,7 +208,7 @@ a {
   display: grid;
   gap: 20px;
   grid-template-columns: 140px minmax(0, 1.5fr) minmax(280px, 0.85fr);
-  align-items: start;
+  align-items: center;
   padding: 28px;
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
@@ -226,12 +220,7 @@ a {
 }
 
 .hero::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 10px;
-  background: linear-gradient(90deg, var(--accent) 0%, #92278f 55%, var(--signal) 100%);
-  pointer-events: none;
+  content: none;
 }
 
 .hero__avatar {
@@ -241,7 +230,7 @@ a {
   overflow: hidden;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
-  align-self: start;
+  align-self: center;
   background: var(--bg-strong);
 }
 
@@ -254,6 +243,7 @@ a {
 
 .hero__copy {
   min-width: 0;
+  align-self: center;
 }
 
 .eyebrow {
@@ -317,7 +307,7 @@ a {
   display: grid;
   gap: 18px;
   align-content: start;
-  align-self: start;
+  align-self: center;
   justify-self: end;
   justify-items: center;
   width: min(100%, 320px);
@@ -699,7 +689,7 @@ a {
   .channel-tabs {
     display: flex;
     gap: 8px;
-    padding: 2px 0 0;
+    padding: 0;
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -741,6 +731,8 @@ a {
   .hero h1 {
     font-size: clamp(1.9rem, 9vw, 2.8rem);
     line-height: 1.02;
+    align-items: center;
+    text-align: center;
   }
 
   .hero__description {
@@ -825,7 +817,7 @@ a {
   }
 
   .channel-tabs {
-    padding: 2px 0 0;
+    padding: 0;
   }
 
   .channel-tab {
