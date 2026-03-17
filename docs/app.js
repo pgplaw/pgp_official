@@ -283,6 +283,28 @@ function renderHeader(site, generatedAt) {
   if (ogImageMeta && site.avatar_path) ogImageMeta.setAttribute('content', site.avatar_path);
 }
 
+function buildResponsiveImageTag(item, index, isGallery) {
+  const fallbackSrc = item.thumb_url || item.full_url;
+  if (!fallbackSrc) return '';
+
+  const srcSet = item.thumb_url && item.full_url && item.thumb_url !== item.full_url
+    ? `${item.thumb_url} 640w, ${item.full_url} 1600w`
+    : '';
+  const sizes = isGallery
+    ? '(max-width: 480px) calc(100vw - 44px), (max-width: 860px) calc(50vw - 28px), 520px'
+    : '(max-width: 860px) calc(100vw - 44px), 980px';
+
+  return `
+    <img
+      src="${fallbackSrc}"
+      ${srcSet ? `srcset="${srcSet}" sizes="${sizes}"` : ''}
+      alt="Media ${index + 1}"
+      loading="lazy"
+      decoding="async"
+    >
+  `;
+}
+
 function buildMedia(post) {
   const media = [];
 
@@ -302,11 +324,12 @@ function buildMedia(post) {
   const galleryClass = media.length > 1 ? 'post-card__media post-card__media--gallery' : 'post-card__media';
   const mediaId = `${state.activeChannelKey}-media-${post.id}`;
   state.mediaRegistry[mediaId] = media;
+  const isGallery = media.length > 1;
 
   const items = media.map((item, index) => {
     const content = item.type === 'video'
       ? `<video src="${item.url}" preload="metadata" muted playsinline controls></video>`
-      : `<img src="${item.thumb_url}" alt="Media ${index + 1}" loading="lazy" decoding="async">`;
+      : buildResponsiveImageTag(item, index, isGallery);
     return `<button class="media-trigger" type="button" data-index="${index}">${content}</button>`;
   }).join('');
 

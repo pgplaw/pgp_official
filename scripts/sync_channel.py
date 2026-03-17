@@ -36,6 +36,7 @@ POSTS_THUMBS_DIR = POSTS_MEDIA_DIR / "thumbs"
 POST_PAGES_DIR = DOCS_DIR / "channels" / CHANNEL_KEY / "posts" if CHANNEL_KEY else DOCS_DIR / "posts"
 MANIFEST_PATH = DOCS_DIR / "manifest.webmanifest"
 FEED_PAGE_SIZE = 16
+IMAGE_VARIANT_VERSION = "v2"
 
 BASE_HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; TelegramPagesMirror/1.0)",
@@ -200,15 +201,15 @@ def optimize_image_variants(raw_bytes: bytes, full_path: Path, thumb_path: Path)
                 image = image.convert("RGB")
 
             full_image = image.copy()
-            full_image.thumbnail((1600, 1600))
+            full_image.thumbnail((1800, 1800))
             if not full_path.exists():
-                full_image.save(full_path, format="JPEG", quality=82, optimize=True, progressive=True)
+                full_image.save(full_path, format="JPEG", quality=86, optimize=True, progressive=True)
                 changes_detected = True
 
             thumb_image = image.copy()
-            thumb_image.thumbnail((640, 640))
+            thumb_image.thumbnail((960, 960))
             if not thumb_path.exists():
-                thumb_image.save(thumb_path, format="JPEG", quality=68, optimize=True, progressive=True)
+                thumb_image.save(thumb_path, format="JPEG", quality=78, optimize=True, progressive=True)
                 changes_detected = True
     except Exception as error:  # pragma: no cover - runtime/image libs path
         log.warning("Image optimization fallback used: %s", error)
@@ -244,7 +245,7 @@ def mirror_post_photos(posts: list[dict[str, Any]]) -> bool:
                 continue
 
             digest = hashlib.sha256(full_source.encode("utf-8")).hexdigest()[:12]
-            filename = f"{post['id']}-{index + 1}-{digest}.jpg"
+            filename = f"{post['id']}-{index + 1}-{digest}-{IMAGE_VARIANT_VERSION}.jpg"
             full_path = POSTS_MEDIA_DIR / filename
             thumb_path = POSTS_THUMBS_DIR / filename
 
@@ -673,7 +674,10 @@ def render_post_page_media(post: dict[str, Any]) -> str:
         media_items.append(
             (
                 '<a class="media-trigger" href="{root_prefix}{full_url}" target="_blank" rel="noopener">'
-                '<img src="{root_prefix}{thumb_url}" alt="Media {index}" loading="lazy" decoding="async"></a>'
+                '<img src="{root_prefix}{thumb_url}" '
+                'srcset="{root_prefix}{thumb_url} 640w, {root_prefix}{full_url} 1600w" '
+                'sizes="(max-width: 860px) calc(100vw - 44px), 980px" '
+                'alt="Media {index}" loading="lazy" decoding="async"></a>'
             ).format(
                 root_prefix=root_prefix,
                 full_url=html_lib.escape(photo["full_url"]),
