@@ -490,6 +490,23 @@ a {
   padding: 22px 22px 16px;
 }
 
+.post-card__forwarded {
+  margin-bottom: 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.post-card__forwarded a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.post-card__forwarded a:hover {
+  color: var(--accent-strong);
+}
+
 .post-card__text {
   font-size: 1rem;
   line-height: 1.72;

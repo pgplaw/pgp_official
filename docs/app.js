@@ -391,11 +391,37 @@ function buildMedia(post) {
   return `<div class="${galleryClass}" data-media-id="${mediaId}">${items}</div>`;
 }
 
+function resolveForwardedSource(post) {
+  const forwarded = post.forwarded_from;
+  if (!forwarded) return null;
+
+  const username = forwarded.channel_username || '';
+  const localChannel = username
+    ? getCatalogChannels().find((channel) => String(channel.channel_username || '').toLowerCase() === String(username).toLowerCase())
+    : null;
+  const label = forwarded.channel_title || localChannel?.channel_title || (username ? `@${username}` : 'источника');
+
+  if (localChannel) {
+    return {
+      label,
+      href: `?channel=${localChannel.key}`,
+      external: false,
+    };
+  }
+
+  return {
+    label,
+    href: forwarded.channel_url || forwarded.source_url || (username ? `https://t.me/s/${username}` : '#'),
+    external: true,
+  };
+}
+
 function renderPostCard(post) {
   const article = document.createElement('article');
   article.className = 'post-card';
 
   const text = post.text_html || escapeHtml(post.text || '').replace(/\n/g, '<br>');
+  const forwarded = resolveForwardedSource(post);
   const commentsLabel = post.comments_count ? `Комментарии (${compactNumber(post.comments_count)})` : 'Комментарии';
   const shouldShowComments =
     Boolean(state.feed?.source?.comments_enabled) &&
@@ -404,6 +430,7 @@ function renderPostCard(post) {
   article.innerHTML = `
     ${buildMedia(post)}
     <div class="post-card__body">
+      ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
       ${text ? `<div class="post-card__text">${text}</div>` : ''}
     </div>
     <div class="post-card__footer">

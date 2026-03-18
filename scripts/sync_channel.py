@@ -479,6 +479,61 @@ def build_text_fields(raw_html: str) -> tuple[str | None, str | None]:
     return plain, html_markup
 
 
+def extract_forwarded_source(block: str) -> dict[str, str] | None:
+    if "Переслано из" not in block and "forwarded" not in block.lower():
+        return None
+
+    source_url = None
+    for pattern in (
+        r'tgme_widget_message_forwarded_from[^>]*>[\s\S]*?href="([^"]+)"',
+        r'Переслано из:?[\s\S]{0,800}?href="([^"]+)"',
+        r'Переслано из:?[\s\S]{0,800}?(https?://t\.me/[^\s"<]+)',
+    ):
+        match = re.search(pattern, block, re.IGNORECASE)
+        if match:
+            source_url = urljoin("https://t.me", html_lib.unescape(match.group(1)).strip())
+            break
+
+    if not source_url:
+        return None
+
+    username_match = re.search(r"https?://t\.me/(?:s/)?([^/?#]+)/?", source_url, re.IGNORECASE)
+    if not username_match:
+        return {
+            "source_url": source_url,
+            "channel_url": source_url,
+        }
+
+    channel_username = username_match.group(1)
+    channel_url = f"https://t.me/s/{channel_username}"
+
+    channel_title = None
+    title_patterns = (
+        r'tgme_widget_message_forwarded_from[^>]*>[\s\S]*?<a[^>]*>(.*?)</a>',
+        r'Переслано из:?[\s\S]{0,300}?<a[^>]*>(.*?)</a>',
+    )
+    for pattern in title_patterns:
+        match = re.search(pattern, block, re.IGNORECASE | re.DOTALL)
+        if not match:
+            continue
+
+        candidate = re.sub(r"<[^>]+>", "", match.group(1))
+        candidate = html_lib.unescape(candidate).strip()
+        if candidate and "t.me/" not in candidate.lower() and "переслано из" not in candidate.lower():
+            channel_title = candidate
+            break
+
+    result = {
+        "source_url": source_url,
+        "channel_url": channel_url,
+        "channel_username": channel_username,
+    }
+    if channel_title:
+        result["channel_title"] = channel_title
+
+    return result
+
+
 def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
     blocks = re.split(r'(?=<div class="tgme_widget_message_wrap)', html_text)
     posts: list[dict[str, Any]] = []
@@ -509,6 +564,7 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
         video_url = urljoin("https://t.me", html_lib.unescape(video_match.group(1))) if video_match else None
         raw_text = text_match.group(1) if text_match else ""
         text, text_html = build_text_fields(raw_text)
+        forwarded_from = extract_forwarded_source(block)
 
         if not text and not photos and not video_url:
             continue
@@ -529,6 +585,7 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
                 "photos": photos,
                 "video_url": video_url,
                 "tg_url": f"https://t.me/{config.channel_username}/{post_id}",
+                "forwarded_from": forwarded_from,
             }
         )
 
