@@ -326,7 +326,7 @@ function renderHeader(site, generatedAt) {
   const catalogSite = getCatalogSite();
   const activeChannel = getActiveChannelMeta();
   const title = activeChannel?.channel_title || site.channel_title || site.site_name || catalogSite.site_name || 'Telegram Channels';
-  const description = activeChannel?.site_description || site.site_description || catalogSite.site_description || '';
+  const description = site.site_description || activeChannel?.site_description || catalogSite.site_description || '';
   const handle = site.channel_username ? `@${site.channel_username}` : '@channel';
   const avatarSrc = resolveHeroAvatar(site);
   const fallbackAvatar = catalogSite.avatar_path || 'assets/channel-avatar.jpg';

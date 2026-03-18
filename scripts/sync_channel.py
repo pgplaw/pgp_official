@@ -383,6 +383,30 @@ def parse_channel_avatar_url(html_text: str, channel_web_url: str) -> str | None
     return None
 
 
+def parse_channel_description(html_text: str) -> str | None:
+    patterns = (
+        r'tgme_channel_info_description[^>]*>(.*?)</div>',
+        r'tgme_page_description[^>]*>(.*?)</div>',
+        r'<meta\s+property="og:description"\s+content="([^"]+)"',
+    )
+
+    for pattern in patterns:
+        match = re.search(pattern, html_text, re.IGNORECASE | re.DOTALL)
+        if not match:
+            continue
+
+        raw_value = match.group(1)
+        normalized = re.sub(r"<br\s*/?>", "\n", raw_value, flags=re.IGNORECASE)
+        normalized = re.sub(r"</p>\s*<p[^>]*>", "\n\n", normalized, flags=re.IGNORECASE)
+        normalized = strip_tags(normalized)
+        normalized = html_lib.unescape(normalized)
+        normalized = collapse_whitespace(normalized)
+        if normalized:
+            return normalized
+
+    return None
+
+
 def mirror_channel_avatar(config: SiteConfig, html_text: str) -> bool:
     avatar_url = parse_channel_avatar_url(html_text, config.channel_web_url)
     if not avatar_url:
@@ -1518,6 +1542,9 @@ def main() -> int:
         raise
 
     avatar_changed = mirror_channel_avatar(config, initial_page_html)
+    parsed_channel_description = parse_channel_description(initial_page_html)
+    if parsed_channel_description:
+        config.site_description = parsed_channel_description
     posts = collect_posts(config, initial_page_html=initial_page_html)
     if not posts and existing_payload.get("posts"):
         log.warning("No posts were collected for @%s. Existing mirror data was left untouched.", config.channel_username)
