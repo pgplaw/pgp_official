@@ -548,6 +548,104 @@ function updateInstallButtonState() {
   elements.installAppButton.setAttribute('title', installed ? 'Приложение уже установлено' : 'Установить приложение');
 }
 
+function isTelegramWebUrl(value) {
+  try {
+    const url = new URL(value, window.location.href);
+    return /^(?:www\.)?(?:t|telegram)\.me$/i.test(url.hostname);
+  } catch (_) {
+    return false;
+  }
+}
+
+function buildTelegramAppHref(value) {
+  try {
+    const url = new URL(value, window.location.href);
+    if (!isTelegramWebUrl(url.href)) return null;
+
+    const parts = url.pathname.split('/').filter(Boolean);
+    if (!parts.length) return null;
+
+    if (parts[0] === 's') {
+      parts.shift();
+    }
+
+    const domain = parts[0];
+    const post = parts[1];
+    if (!domain) return null;
+
+    return post
+      ? `tg://resolve?domain=${encodeURIComponent(domain)}&post=${encodeURIComponent(post)}`
+      : `tg://resolve?domain=${encodeURIComponent(domain)}`;
+  } catch (_) {
+    return null;
+  }
+}
+
+function openTelegramAnchor(anchor) {
+  const webHref = anchor.dataset.telegramWebHref || anchor.href;
+  const appHref = anchor.dataset.telegramAppHref || buildTelegramAppHref(webHref);
+
+  if (!appHref) {
+    window.location.href = webHref;
+    return;
+  }
+
+  let fallbackTimerId = null;
+  const cleanup = () => {
+    if (fallbackTimerId) {
+      window.clearTimeout(fallbackTimerId);
+      fallbackTimerId = null;
+    }
+    window.removeEventListener('blur', cleanup);
+    document.removeEventListener('visibilitychange', handleVisibilityChange);
+    window.removeEventListener('pagehide', cleanup);
+  };
+
+  const handleVisibilityChange = () => {
+    if (document.visibilityState === 'hidden') {
+      cleanup();
+    }
+  };
+
+  fallbackTimerId = window.setTimeout(() => {
+    const pageStillVisible = document.visibilityState === 'visible' && document.hasFocus();
+    cleanup();
+    if (!pageStillVisible) return;
+    window.location.href = webHref;
+  }, 900);
+
+  window.addEventListener('blur', cleanup, { once: true });
+  document.addEventListener('visibilitychange', handleVisibilityChange);
+  window.addEventListener('pagehide', cleanup, { once: true });
+  window.location.href = appHref;
+}
+
+function bindTelegramDeepLinks(root) {
+  if (!root) return;
+
+  root.querySelectorAll('a[href]').forEach((anchor) => {
+    if (anchor.dataset.telegramBound === 'true') return;
+    if (!isTelegramWebUrl(anchor.getAttribute('href') || anchor.href)) return;
+
+    const webHref = anchor.href;
+    const appHref = buildTelegramAppHref(webHref);
+    if (!appHref) return;
+
+    anchor.dataset.telegramBound = 'true';
+    anchor.dataset.telegramWebHref = webHref;
+    anchor.dataset.telegramAppHref = appHref;
+
+    anchor.addEventListener('click', (event) => {
+      if (event.defaultPrevented) return;
+      if (event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+      event.preventDefault();
+      openTelegramAnchor(anchor);
+    });
+  });
+}
+
 function setupChannelMenuWheelScroll() {
   if (!elements.channelMenu || elements.channelMenu.dataset.wheelScrollBound === 'true') return;
 
@@ -926,6 +1024,8 @@ function renderPostCard(post) {
     });
   }
 
+  bindTelegramDeepLinks(article);
+
   return article;
 }
 
@@ -1025,6 +1125,7 @@ function renderComment(comment) {
     </div>
     <div class="comment-card__text">${sanitizeCommentText(comment.text)}</div>
   `;
+  bindTelegramDeepLinks(node);
   return node;
 }
 
