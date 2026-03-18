@@ -46,6 +46,11 @@ BASE_HEADERS = {
     "Accept-Language": "ru-RU,ru;q=0.9,en;q=0.8",
 }
 FETCH_RETRY_DELAYS = (1.0, 2.5, 5.0)
+FAST_EXTERNAL_RETRY_DELAYS: tuple[float, ...] = ()
+EXTERNAL_PAGE_TIMEOUT_SECONDS = 8
+EXTERNAL_IMAGE_TIMEOUT_SECONDS = 10
+MIN_EXTERNAL_OVERRIDE_WIDTH = 1000
+FAILED_EXTERNAL_PREVIEW_HOSTS: set[str] = set()
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("telegram-pages-mirror")
@@ -149,25 +154,33 @@ def load_config() -> SiteConfig:
     return config
 
 
-def fetch_url(url: str, *, binary: bool = False) -> str | bytes:
+def fetch_url(
+    url: str,
+    *,
+    binary: bool = False,
+    timeout: int = 30,
+    retry_delays: tuple[float, ...] = FETCH_RETRY_DELAYS,
+    log_failures: bool = True,
+) -> str | bytes:
     headers = BASE_HEADERS if not binary else {
         **BASE_HEADERS,
         "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
     }
 
     last_error: Exception | None = None
-    for attempt, delay in enumerate((0.0, *FETCH_RETRY_DELAYS), start=1):
+    for attempt, delay in enumerate((0.0, *retry_delays), start=1):
         if delay:
             time.sleep(delay)
 
         try:
             request = Request(url, headers=headers)
-            with urlopen(request, timeout=30) as response:
+            with urlopen(request, timeout=timeout) as response:
                 payload = response.read()
                 return payload if binary else payload.decode("utf-8", errors="replace")
         except Exception as error:  # pragma: no cover - network/runtime path
             last_error = error
-            log.warning("Fetch attempt %s failed for %s: %s", attempt, url, error)
+            if log_failures:
+                log.warning("Fetch attempt %s failed for %s: %s", attempt, url, error)
 
     if last_error:
         raise last_error
@@ -175,12 +188,24 @@ def fetch_url(url: str, *, binary: bool = False) -> str | bytes:
     raise RuntimeError(f"Unable to fetch {url}")
 
 
-def fetch_page(url: str) -> str:
-    return str(fetch_url(url, binary=False))
+def fetch_page(
+    url: str,
+    *,
+    timeout: int = 30,
+    retry_delays: tuple[float, ...] = FETCH_RETRY_DELAYS,
+    log_failures: bool = True,
+) -> str:
+    return str(fetch_url(url, binary=False, timeout=timeout, retry_delays=retry_delays, log_failures=log_failures))
 
 
-def fetch_binary(url: str) -> bytes:
-    return bytes(fetch_url(url, binary=True))
+def fetch_binary(
+    url: str,
+    *,
+    timeout: int = 30,
+    retry_delays: tuple[float, ...] = FETCH_RETRY_DELAYS,
+    log_failures: bool = True,
+) -> bytes:
+    return bytes(fetch_url(url, binary=True, timeout=timeout, retry_delays=retry_delays, log_failures=log_failures))
 
 
 def build_telegram_avatar_url(channel_username: str) -> str:
@@ -564,6 +589,18 @@ def get_image_dimensions(raw_bytes: bytes) -> tuple[int, int] | None:
         return None
 
 
+def preview_is_already_large_enough(current_bytes: bytes | None) -> bool:
+    if not current_bytes:
+        return False
+
+    size = get_image_dimensions(current_bytes)
+    if not size:
+        return False
+
+    width, height = size
+    return max(width, height) >= MIN_EXTERNAL_OVERRIDE_WIDTH
+
+
 def choose_better_preview_bytes(current_bytes: bytes | None, candidate_bytes: bytes | None) -> bytes | None:
     if not candidate_bytes:
         return None
@@ -673,14 +710,28 @@ def fetch_external_preview_override(post: dict[str, Any], current_bytes: bytes |
     if len(photos) != 1:
         return None
 
+    if preview_is_already_large_enough(current_bytes):
+        return None
+
     links = extract_external_links(post.get("text_html"))
     if not links:
         return None
 
     for link_url in reversed(links):
+        hostname = (urlparse(link_url).hostname or "").lower()
+        if hostname in FAILED_EXTERNAL_PREVIEW_HOSTS:
+            continue
+
         try:
-            page_html = fetch_page(link_url)
+            page_html = fetch_page(
+                link_url,
+                timeout=EXTERNAL_PAGE_TIMEOUT_SECONDS,
+                retry_delays=FAST_EXTERNAL_RETRY_DELAYS,
+                log_failures=False,
+            )
         except Exception as error:  # pragma: no cover - network/runtime path
+            if hostname:
+                FAILED_EXTERNAL_PREVIEW_HOSTS.add(hostname)
             log.warning("Failed to fetch external page for post %s: %s", post.get("id"), error)
             continue
 
@@ -689,8 +740,16 @@ def fetch_external_preview_override(post: dict[str, Any], current_bytes: bytes |
             continue
 
         try:
-            candidate_bytes = fetch_binary(preview_url)
+            candidate_bytes = fetch_binary(
+                preview_url,
+                timeout=EXTERNAL_IMAGE_TIMEOUT_SECONDS,
+                retry_delays=FAST_EXTERNAL_RETRY_DELAYS,
+                log_failures=False,
+            )
         except Exception as error:  # pragma: no cover - network/runtime path
+            preview_host = (urlparse(preview_url).hostname or "").lower()
+            if preview_host:
+                FAILED_EXTERNAL_PREVIEW_HOSTS.add(preview_host)
             log.warning("Failed to fetch external preview image for post %s: %s", post.get("id"), error)
             continue
 
@@ -1021,9 +1080,10 @@ async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[s
             results[post_id] = [telegram_page_override]
             current_bytes = telegram_page_override
 
-        external_override = fetch_external_preview_override(post, current_bytes=current_bytes)
-        if external_override:
-            results[post_id] = [external_override]
+        if not telegram_page_override:
+            external_override = fetch_external_preview_override(post, current_bytes=current_bytes)
+            if external_override:
+                results[post_id] = [external_override]
 
     return results
 
