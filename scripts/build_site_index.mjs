@@ -14,6 +14,10 @@ const pageSize = 16;
 
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const generatedAt = new Date().toISOString();
+const defaultChannel =
+  config.channels.find((channel) => channel.key === config.default_channel_key)
+  || config.channels[0]
+  || null;
 
 function ensureDir(targetPath) {
   fs.mkdirSync(targetPath, { recursive: true });
@@ -30,6 +34,14 @@ function buildTelegramAvatarUrl(channelUsername) {
   }
 
   return `https://t.me/i/userpic/320/${channelUsername}.jpg`;
+}
+
+function resolveAppIconPath() {
+  if (defaultChannel) {
+    return resolveChannelAvatarPath(defaultChannel);
+  }
+
+  return config.avatar_path;
 }
 
 function resolveChannelAvatarPath(channel) {
@@ -74,6 +86,7 @@ function buildEmptyFeed(channel) {
 }
 
 ensureDir(channelsDataDir);
+const appIconPath = resolveAppIconPath();
 
 const manifest = {
   name: config.site_name,
@@ -86,21 +99,9 @@ const manifest = {
   lang: config.language,
   icons: [
     {
-      src: 'assets/icon.svg',
-      sizes: 'any',
-      type: 'image/svg+xml',
-      purpose: 'any maskable'
-    },
-    {
-      src: 'assets/icon-192.png',
-      sizes: '192x192',
-      type: 'image/png',
-      purpose: 'any maskable'
-    },
-    {
-      src: 'assets/icon-512.png',
-      sizes: '512x512',
-      type: 'image/png',
+      src: appIconPath,
+      sizes: '320x320',
+      type: 'image/jpeg',
       purpose: 'any maskable'
     }
   ]
@@ -116,7 +117,7 @@ const catalog = {
     language: config.language,
     accent_color: config.accent_color,
     background_color: config.background_color,
-    avatar_path: config.avatar_path,
+    avatar_path: appIconPath,
   },
   default_channel_key: config.default_channel_key || config.channels[0]?.key || null,
   channels: config.channels.map((channel) => ({

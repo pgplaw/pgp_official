@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-03-18T19:16:50.056Z",
+  "generated_at": "2026-03-18T19:33:33.935Z",
   "site": {
     "site_name": "Pepeliaev Group | Практики",
     "site_description": "Зеркало Telegram-каналов практик «Пепеляев Групп». Выберите нужное направление в верхнем меню.",
     "language": "ru",
     "accent_color": "#91278d",
     "background_color": "#f5f7fa",
-    "avatar_path": "assets/channel-avatar.jpg"
+    "avatar_path": "data/channels/pgp-official/media/channel-avatar.jpg"
   },
   "default_channel_key": "pgp-official",
   "channels": [
@@ -68,8 +68,8 @@
     },
     {
       "key": "investment-law",
-      "label": "СпецИнвестРежимы",
-      "menu_subtitle": "Экономика",
+      "label": "Investment Law | СпецИнвестРежимы",
+      "menu_subtitle": null,
       "channel_username": "InvestmentLaw",
       "channel_title": "СпецИнвестРежимы",
       "site_description": "Канал о специальных инвестиционных режимах: льготы, проекты, регулирование и правоприменительная практика.",
@@ -96,7 +96,7 @@
     },
     {
       "key": "bankrotstvo-mustknow",
-      "label": "Банкротство | Взгляд эксперта",
+      "label": "Bankruptcy | Банкротство",
       "menu_subtitle": null,
       "channel_username": "bankrotstvo_mustknow",
       "channel_title": "Банкротство | Взгляд эксперта",

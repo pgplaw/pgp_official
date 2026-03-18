@@ -5,7 +5,7 @@
   "language": "ru",
   "accent_color": "#91278d",
   "background_color": "#f5f7fa",
-  "avatar_path": "assets/channel-avatar.jpg",
+  "avatar_path": "data/channels/pgp-official/media/channel-avatar.jpg",
   "default_channel_key": "pgp-official",
   "messages_limit": 1200,
   "recent_posts_months": 3,
@@ -42,8 +42,7 @@
     },
     {
       "key": "investment-law",
-      "label": "СпецИнвестРежимы",
-      "menu_subtitle": "Экономика",
+      "label": "Investment Law | СпецИнвестРежимы",
       "channel_username": "InvestmentLaw",
       "channel_title": "СпецИнвестРежимы",
       "site_description": "Канал о специальных инвестиционных режимах: льготы, проекты, регулирование и правоприменительная практика."
@@ -57,7 +56,7 @@
     },
     {
       "key": "bankrotstvo-mustknow",
-      "label": "Банкротство | Взгляд эксперта",
+      "label": "Bankruptcy | Банкротство",
       "channel_username": "bankrotstvo_mustknow",
       "channel_title": "Банкротство | Взгляд эксперта",
       "site_description": "Канал о банкротстве и реструктуризации: обзоры практики, комментарии экспертов и важные кейсы."

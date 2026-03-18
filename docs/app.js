@@ -30,8 +30,7 @@ const elements = {
   channelLink: document.getElementById('channelLink'),
   updatedText: document.getElementById('updatedText'),
   refreshButton: document.getElementById('refreshButton'),
-  themeButton: document.getElementById('themeButton'),
-  feedMeta: document.getElementById('feedMeta'),
+  themeToggle: document.getElementById('themeToggle'),
   feedView: document.getElementById('feedView'),
   postFeed: document.getElementById('postFeed'),
   loadingState: document.getElementById('loadingState'),
@@ -91,20 +90,6 @@ function compactNumber(value) {
   if (number >= 1000000) return `${(number / 1000000).toFixed(1)}M`;
   if (number >= 1000) return `${(number / 1000).toFixed(1)}K`;
   return String(number);
-}
-
-function formatCount(value) {
-  const number = Number(value || 0);
-  return new Intl.NumberFormat('ru-RU').format(number);
-}
-
-function pluralizeMonths(value) {
-  const number = Number(value || 0);
-  const mod10 = number % 10;
-  const mod100 = number % 100;
-  if (mod10 === 1 && mod100 !== 11) return 'месяц';
-  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return 'месяца';
-  return 'месяцев';
 }
 
 function linkifyEscaped(text) {
@@ -204,6 +189,9 @@ function resolveHeroAvatar(site) {
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
+  if (elements.themeToggle) {
+    elements.themeToggle.checked = theme === 'dark';
+  }
 }
 
 function initTheme() {
@@ -255,8 +243,8 @@ function renderChannelMenu() {
     const isActive = channel.key === state.activeChannelKey;
     const rawLabel = channel.label || channel.channel_title || channel.channel_username || 'Channel';
     const parts = rawLabel.split('|').map((part) => part.trim()).filter(Boolean);
-    const title = parts[0] || rawLabel;
-    const subtitle = channel.menu_subtitle || parts[1] || `@${channel.channel_username || 'channel'}`;
+    const title = parts[1] || channel.menu_title || channel.channel_title || rawLabel;
+    const subtitle = parts[0] || channel.menu_subtitle || `@${channel.channel_username || 'channel'}`;
     return `
       <button
         class="channel-tab${isActive ? ' is-active' : ''}"
@@ -445,18 +433,9 @@ function applyMediaFill(image) {
   if (!trigger || trigger.dataset.fillReady === 'true') return;
 
   const fillColor = getAverageEdgeColor(image);
-  const naturalWidth = image.naturalWidth || image.width || 0;
-  const naturalHeight = image.naturalHeight || image.height || 0;
   if (!fillColor) return;
 
   trigger.style.setProperty('--media-fill', fillColor);
-  if (naturalWidth > 0 && naturalHeight > 0) {
-    const isLowResWideBanner = naturalWidth <= 1100 && naturalWidth / naturalHeight >= 1.6;
-    if (isLowResWideBanner) {
-      trigger.dataset.lowRes = 'true';
-      trigger.style.setProperty('--media-max-width', `${Math.max(560, Math.round(naturalWidth * 0.9))}px`);
-    }
-  }
   trigger.dataset.fillReady = 'true';
 }
 
@@ -516,7 +495,6 @@ function renderPostCard(post) {
     <div class="post-card__footer">
       <div class="post-card__stats">
         <span class="chip">${formatDate(post.date)}</span>
-        <span class="chip">Просмотры: ${formatCount(post.views)}</span>
       </div>
       <div class="post-card__links">
         ${shouldShowComments ? `<button class="button button--ghost comments-trigger" type="button" data-post-id="${post.id}">${commentsLabel}</button>` : ''}
@@ -545,29 +523,7 @@ function renderPostCard(post) {
 }
 
 function updateFeedMeta() {
-  if (!state.feed) {
-    elements.feedMeta.classList.add('hidden');
-    return;
-  }
-
-  const postsCount = state.totalPosts || state.posts.length;
-  const renderedCount = Math.min(state.rendered, postsCount);
-  const recentMonths = Number(state.feed?.source?.recent_posts_months) || 3;
-  elements.feedMeta.innerHTML = `
-    <div class="feed-meta__item">
-      <span class="feed-meta__label">Посты за ${recentMonths} ${pluralizeMonths(recentMonths)}</span>
-      <strong class="feed-meta__value">${postsCount}</strong>
-    </div>
-    <div class="feed-meta__item">
-      <span class="feed-meta__label">Показано в ленте</span>
-      <strong class="feed-meta__value">${renderedCount}</strong>
-    </div>
-    <div class="feed-meta__item">
-      <span class="feed-meta__label">Страниц</span>
-      <strong class="feed-meta__value">${state.totalPages || 1}</strong>
-    </div>
-  `;
-  elements.feedMeta.classList.remove('hidden');
+  return;
 }
 
 function resetFeed() {
@@ -819,10 +775,11 @@ function handleLocationChange() {
 
 initTheme();
 
-elements.themeButton.addEventListener('click', () => {
-  const nextTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  applyTheme(nextTheme);
-});
+if (elements.themeToggle) {
+  elements.themeToggle.addEventListener('change', (event) => {
+    applyTheme(event.target.checked ? 'dark' : 'light');
+  });
+}
 
 elements.channelMenu.addEventListener('click', (event) => {
   const button = event.target.closest('[data-channel-key]');

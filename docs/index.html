@@ -8,14 +8,13 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Pepeliaev Group | Практики">
   <meta property="og:description" content="Зеркало Telegram-каналов практик «Пепеляев Групп». Выберите нужное направление в верхнем меню.">
-  <meta property="og:image" content="assets/channel-avatar.jpg">
+  <meta property="og:image" content="data/channels/pgp-official/media/channel-avatar.jpg">
   <meta name="theme-color" content="#91278d">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="PG Channels">
-  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
-  <link rel="icon" href="assets/icon-192.png" sizes="192x192" type="image/png">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Pepeliaev">
+  <link rel="icon" href="data/channels/pgp-official/media/channel-avatar.jpg" sizes="320x320" type="image/jpeg">
+  <link rel="apple-touch-icon" href="data/channels/pgp-official/media/channel-avatar.jpg">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +29,7 @@
 
     <header class="hero">
       <div id="channelAvatarWrap" class="hero__avatar hidden">
-        <img id="channelAvatar" src="assets/channel-avatar.jpg" alt="Аватар канала">
+        <img id="channelAvatar" src="data/channels/pgp-official/media/channel-avatar.jpg" alt="Аватар канала">
       </div>
       <div class="hero__copy">
         <h1 id="siteTitle">Pepeliaev Group | Практики</h1>
@@ -51,15 +50,39 @@
           <span id="updatedText">—</span>
         </div>
         <div class="hero__actions">
-          <button id="refreshButton" class="button button--primary" type="button">Обновить</button>
-          <button id="themeButton" class="button button--ghost" type="button">Тема</button>
+          <button id="refreshButton" class="icon-button icon-button--refresh" type="button" aria-label="Обновить ленту" title="Обновить ленту">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 12a8 8 0 1 1-2.343-5.657" />
+              <path d="M20 4v6h-6" />
+            </svg>
+          </button>
+          <label class="theme-toggle" for="themeToggle" aria-label="Переключить тему">
+            <input id="themeToggle" class="theme-toggle__input" type="checkbox" aria-label="Темная тема">
+            <span class="theme-toggle__track">
+              <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="4.25" />
+                  <path d="M12 2.75v2.5M12 18.75v2.5M21.25 12h-2.5M5.25 12h-2.5M18.54 5.46l-1.77 1.77M7.23 16.77l-1.77 1.77M18.54 18.54l-1.77-1.77M7.23 7.23 5.46 5.46" />
+                </svg>
+              </span>
+              <span class="theme-toggle__thumb" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20 15.25A7.25 7.25 0 0 1 9.75 5a7.35 7.35 0 1 0 10.25 10.25Z" />
+                </svg>
+              </span>
+              <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20 15.25A7.25 7.25 0 1 1 12.75 3 5.75 5.75 0 0 0 20 15.25Z" />
+                </svg>
+              </span>
+            </span>
+          </label>
         </div>
       </div>
     </header>
 
     <main class="content">
       <section id="feedView" class="feed-view">
-        <div id="feedMeta" class="feed-meta hidden"></div>
         <div id="postFeed" class="post-feed" role="feed" aria-label="Посты канала"></div>
         <div id="loadingState" class="empty-state">
           <div class="spinner"></div>
