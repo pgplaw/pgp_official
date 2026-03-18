@@ -917,6 +917,10 @@ a {
     width: 100%;
   }
 
+  .post-card__stats {
+    justify-content: center;
+  }
+
   .post-card__links {
     justify-content: space-between;
     gap: 12px;

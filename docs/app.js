@@ -2,8 +2,8 @@
 
 const CHANNELS_INDEX_URL = 'data/channels/index.json';
 const DEFAULT_PAGE_SIZE = 16;
-const GITHUB_SYNC_RUNS_URL = 'https://api.github.com/repos/najvud/pep_group/actions/workflows/sync.yml/runs?branch=main&per_page=5';
-const GITHUB_SYNC_POLL_INTERVAL_MS = 5 * 60 * 1000;
+const SYNC_STATUS_URL = 'data/sync-status.json';
+const SYNC_STATUS_POLL_INTERVAL_MS = 60 * 1000;
 
 const state = {
   catalog: null,
@@ -216,18 +216,11 @@ function clearSyncStatusPolling() {
 }
 
 async function fetchLatestSuccessfulSyncTime() {
-  const response = await fetch(`${GITHUB_SYNC_RUNS_URL}&t=${Date.now()}`, {
-    cache: 'no-store',
-    headers: {
-      Accept: 'application/vnd.github+json',
-    },
-  });
+  const response = await fetch(`${SYNC_STATUS_URL}?t=${Date.now()}`, { cache: 'no-store' });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
   const payload = await response.json();
-  const runs = Array.isArray(payload.workflow_runs) ? payload.workflow_runs : [];
-  const run = runs.find((entry) => entry.status === 'completed' && entry.conclusion === 'success');
-  return run?.updated_at || run?.run_started_at || null;
+  return payload?.last_successful_sync_at || null;
 }
 
 async function updateSyncTimestamp(fallbackIso) {
@@ -248,7 +241,7 @@ function startSyncStatusPolling(fallbackIso) {
   void updateSyncTimestamp(fallbackIso);
   state.syncStatusPollId = window.setInterval(() => {
     void updateSyncTimestamp(fallbackIso);
-  }, GITHUB_SYNC_POLL_INTERVAL_MS);
+  }, SYNC_STATUS_POLL_INTERVAL_MS);
 }
 
 function renderChannelMenu() {
