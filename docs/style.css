@@ -63,7 +63,7 @@ a {
 .site-shell {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 28px 0 80px;
+  padding: 28px 0 36px;
 }
 
 .channel-nav {
@@ -1185,7 +1185,7 @@ a {
   .site-shell {
     width: min(100% - 20px, 1120px);
     padding-top: 12px;
-    padding-bottom: 56px;
+    padding-bottom: 28px;
   }
 
   .channel-nav {
@@ -1344,7 +1344,7 @@ a {
   .site-shell {
     width: calc(100% - 12px);
     padding-top: 8px;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
   }
 
   .channel-tabs {
