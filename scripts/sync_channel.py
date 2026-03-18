@@ -1093,15 +1093,12 @@ async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[s
                 log.warning("Failed to fetch current preview for post %s: %s", post_id, error)
                 current_bytes = None
 
-        telegram_page_override = fetch_telegram_post_page_override(post, current_bytes=current_bytes)
-        if telegram_page_override:
-            results[post_id] = [telegram_page_override]
-            current_bytes = telegram_page_override
-
-        if not telegram_page_override:
-            external_override = fetch_external_preview_override(post, current_bytes=current_bytes)
-            if external_override:
-                results[post_id] = [external_override]
+        # Telegram HTML post pages can include surrounding feed context and end up
+        # repeating the wrong preview across neighboring posts. Keep the safer
+        # sources only: direct Telegram API media and external page previews.
+        external_override = fetch_external_preview_override(post, current_bytes=current_bytes)
+        if external_override:
+            results[post_id] = [external_override]
 
     return results
 
