@@ -5,7 +5,7 @@ const DEFAULT_PAGE_SIZE = 16;
 const AUTO_REFRESH_INTERVAL_MINUTES = 5;
 const SYNC_STATUS_POLL_INTERVAL_MS = 30 * 1000;
 const LONG_PRESS_COPY_DELAY_MS = 650;
-const CHANNEL_CAROUSEL_TRANSITION_MS = 340;
+const CHANNEL_CAROUSEL_TRANSITION_MS = 420;
 
 const state = {
   catalog: null,
@@ -26,7 +26,8 @@ const state = {
   channelAccentCache: {},
   channelCarouselTouch: null,
   channelCarouselAnimating: false,
-  channelCarouselPendingEntryDirection: null,
+  channelCarouselTransition: null,
+  channelCarouselAutotest: null,
 };
 
 const elements = {
@@ -321,7 +322,7 @@ async function ensureChannelAccent(channel) {
   if (!accentHex) return;
 
   state.channelAccentCache[channelKey] = accentHex;
-  if (channelKey === state.activeChannelKey) {
+  if (channelKey === state.activeChannelKey && !state.channelCarouselAnimating) {
     renderChannelMenu();
   }
 }
@@ -585,8 +586,18 @@ function isMobileCarouselViewport() {
   return window.matchMedia('(max-width: 860px)').matches;
 }
 
-function getChannelCarouselSlideDistance() {
-  return window.matchMedia('(max-width: 480px)').matches ? 76 : 92;
+function getChannelCarouselTransitionDuration() {
+  const url = new URL(window.location.href);
+  return url.searchParams.get('autotest') === 'carousel' ? 820 : CHANNEL_CAROUSEL_TRANSITION_MS;
+}
+
+function getChannelCarouselSlideDistance(stage) {
+  const width = Math.max(
+    stage?.getBoundingClientRect?.().width || 0,
+    stage?.clientWidth || 0,
+    window.matchMedia('(max-width: 480px)').matches ? 280 : 340,
+  );
+  return Math.round(width + 24);
 }
 
 function cleanupChannelCarouselSurface(surface) {
@@ -594,65 +605,217 @@ function cleanupChannelCarouselSurface(surface) {
   surface.style.removeProperty('transform');
   surface.style.removeProperty('opacity');
   surface.style.removeProperty('transition');
-  surface.classList.remove('is-entering-next', 'is-entering-prev', 'is-exiting-next', 'is-exiting-prev', 'channel-carousel__ghost');
+  surface.classList.remove(
+    'channel-carousel__surface--outgoing',
+    'channel-carousel__surface--incoming',
+    'channel-carousel__surface--settled',
+  );
+  surface.removeAttribute('aria-hidden');
+  surface.querySelectorAll('button').forEach((button) => button.removeAttribute('tabindex'));
 }
 
-function animateChannelCarouselTransition(surface, direction) {
-  const stage = elements.channelCarousel?.querySelector('.channel-carousel__stage');
-  const ghost = stage?.querySelector('.channel-carousel__ghost');
-  if (!surface || !ghost || prefersReducedMotion()) return;
+function getChannelCarouselTransformX(surface) {
+  const inlineTransform = surface?.style?.transform || '';
+  const computedTransform = surface ? window.getComputedStyle(surface).transform : '';
+  const transform = computedTransform && computedTransform !== 'none' ? computedTransform : inlineTransform;
+  const match3d = transform.match(/translate3d\((-?\d+(?:\.\d+)?)px/i);
+  if (match3d) return Number(match3d[1]) || 0;
 
-  const enterOffset = direction === 'next' ? getChannelCarouselSlideDistance() : -getChannelCarouselSlideDistance();
+  const match2d = transform.match(/translateX\((-?\d+(?:\.\d+)?)px/i);
+  if (match2d) return Number(match2d[1]) || 0;
+
+  if (transform.startsWith('matrix3d(')) {
+    const parts = transform.slice(9, -1).split(',').map((part) => Number(part.trim()));
+    return Number.isFinite(parts[12]) ? parts[12] : 0;
+  }
+
+  if (transform.startsWith('matrix(')) {
+    const parts = transform.slice(7, -1).split(',').map((part) => Number(part.trim()));
+    return Number.isFinite(parts[4]) ? parts[4] : 0;
+  }
+
+  return 0;
+}
+
+function finishChannelCarouselTransition() {
+  if (!state.channelCarouselTransition) return;
+
+  const { resolve, timeoutId } = state.channelCarouselTransition;
+  if (timeoutId) {
+    window.clearTimeout(timeoutId);
+  }
+
+  state.channelCarouselTransition = null;
+  state.channelCarouselAnimating = false;
+  resolve?.();
+}
+
+function recordChannelCarouselAutotest(stage) {
+  const autotest = state.channelCarouselAutotest;
+  if (!autotest || !stage) return;
+
+  const surfaces = [...stage.querySelectorAll('.channel-carousel__surface')];
+  const movingSurfaces = surfaces.filter((surface) => Math.abs(getChannelCarouselTransformX(surface)) > 2);
+
+  if (surfaces.length >= 2) {
+    autotest.observedDualLayer = true;
+  }
+
+  if (movingSurfaces.length >= 2) {
+    autotest.observedMotion = true;
+  }
+}
+
+function probeChannelCarouselAutotest(stage) {
+  const autotest = state.channelCarouselAutotest;
+  if (!autotest || autotest.probing) return;
+
+  autotest.probing = true;
+  let framesRemaining = 18;
+
+  const tick = () => {
+    recordChannelCarouselAutotest(stage);
+    framesRemaining -= 1;
+
+    if (framesRemaining > 0 && state.channelCarouselAnimating) {
+      requestAnimationFrame(tick);
+      return;
+    }
+
+    autotest.probing = false;
+  };
+
+  requestAnimationFrame(tick);
+}
+
+function scheduleChannelCarouselAutotest() {
+  const url = new URL(window.location.href);
+  if (url.searchParams.get('autotest') !== 'carousel' || state.channelCarouselAutotest?.running) {
+    return;
+  }
+
+  const channels = getCatalogChannels();
+  if (channels.length < 2 || !isMobileCarouselViewport()) {
+    document.body.dataset.carouselTestResult = 'skipped';
+    return;
+  }
+
+  state.channelCarouselAutotest = {
+    running: true,
+    observedDualLayer: false,
+    observedMotion: false,
+  };
+
+  window.setTimeout(() => {
+    const nextButton = elements.channelCarousel?.querySelector('.channel-carousel__nav--next');
+    nextButton?.click();
+  }, 250);
+
+  window.setTimeout(() => {
+    recordChannelCarouselAutotest(elements.channelCarousel?.querySelector('.channel-carousel__stage'));
+  }, 420);
+
+  window.setTimeout(() => {
+    const stage = elements.channelCarousel?.querySelector('.channel-carousel__stage');
+    const activeSurfaces = stage ? [...stage.querySelectorAll('[data-channel-carousel-surface]')] : [];
+    const allSurfaces = stage ? [...stage.querySelectorAll('.channel-carousel__surface')] : [];
+    const dualLayer = Boolean(state.channelCarouselAutotest?.observedDualLayer);
+    const motion = Boolean(state.channelCarouselAutotest?.observedMotion);
+    const animating = Boolean(state.channelCarouselAnimating);
+    const passed =
+      Boolean(stage) &&
+      dualLayer &&
+      motion &&
+      activeSurfaces.length === 1 &&
+      allSurfaces.length === 1 &&
+      !animating;
+
+    document.body.dataset.carouselTestResult = passed ? 'pass' : 'fail';
+    document.body.dataset.carouselTestDetails = [
+      `dual:${dualLayer}`,
+      `motion:${motion}`,
+      `active:${activeSurfaces.length}`,
+      `all:${allSurfaces.length}`,
+      `animating:${animating}`,
+    ].join('|');
+    state.channelCarouselAutotest.running = false;
+  }, 1650);
+}
+
+function animateChannelCarouselTransition(stage, currentSurface, nextSurface, direction) {
+  if (!stage || !currentSurface || !nextSurface || prefersReducedMotion()) {
+    finishChannelCarouselTransition();
+    return;
+  }
+
+  const slideDistance = getChannelCarouselSlideDistance(stage);
+  const transitionDuration = getChannelCarouselTransitionDuration();
+  const enterOffset = direction === 'next' ? slideDistance : -slideDistance;
   const exitOffset = -enterOffset;
-  const easing = 'cubic-bezier(0.22, 1, 0.36, 1)';
+  const easing = 'cubic-bezier(0.16, 1, 0.3, 1)';
+  const currentOffset = getChannelCarouselTransformX(currentSurface);
 
-  cleanupChannelCarouselSurface(surface);
-  ghost.style.transition = 'none';
-  surface.style.transition = 'none';
-  surface.style.transform = `translate3d(${enterOffset}px, 0, 0)`;
-  surface.style.opacity = '1';
-
-  requestAnimationFrame(() => {
-    ghost.style.transition = `transform ${CHANNEL_CAROUSEL_TRANSITION_MS}ms ${easing}, opacity ${CHANNEL_CAROUSEL_TRANSITION_MS}ms ease`;
-    surface.style.transition = `transform ${CHANNEL_CAROUSEL_TRANSITION_MS}ms ${easing}`;
-    ghost.style.transform = `translate3d(${exitOffset}px, 0, 0)`;
-    ghost.style.opacity = '0.92';
-    surface.style.transform = 'translate3d(0, 0, 0)';
+  stage.querySelectorAll('.channel-carousel__surface').forEach((surface) => {
+    if (surface !== currentSurface && surface !== nextSurface) {
+      surface.remove();
+    }
   });
 
-  surface.addEventListener('transitionend', () => {
-    cleanupChannelCarouselSurface(surface);
-  }, { once: true });
+  stage.classList.add('channel-carousel__stage--animating');
 
-  ghost.addEventListener('transitionend', () => {
-    ghost.remove();
-  }, { once: true });
-}
+  currentSurface.style.removeProperty('transition');
+  currentSurface.classList.remove(
+    'channel-carousel__surface--outgoing',
+    'channel-carousel__surface--incoming',
+    'channel-carousel__surface--settled',
+  );
+  cleanupChannelCarouselSurface(nextSurface);
 
-function createChannelCarouselGhost(direction, sourceSurface) {
-  if (!elements.channelCarousel || !sourceSurface || prefersReducedMotion()) return;
-
-  const stage = elements.channelCarousel.querySelector('.channel-carousel__stage');
-  if (!stage) return;
-
-  const ghost = sourceSurface.cloneNode(true);
-  ghost.classList.add('channel-carousel__ghost');
-  ghost.removeAttribute('data-channel-carousel-surface');
-  ghost.querySelectorAll('[data-channel-shift]').forEach((node) => node.removeAttribute('data-channel-shift'));
-  ghost.querySelectorAll('button').forEach((button) => {
+  currentSurface.removeAttribute('data-channel-carousel-surface');
+  currentSurface.classList.add('channel-carousel__surface--outgoing');
+  currentSurface.setAttribute('aria-hidden', 'true');
+  currentSurface.querySelectorAll('button').forEach((button) => {
     button.disabled = true;
     button.tabIndex = -1;
   });
 
-  if (sourceSurface.style.transform) {
-    ghost.style.transform = sourceSurface.style.transform;
-  }
+  nextSurface.classList.add('channel-carousel__surface--incoming');
+  nextSurface.style.transition = 'none';
+  nextSurface.style.transform = `translate3d(${enterOffset}px, 0, 0)`;
+  nextSurface.style.opacity = '1';
+  currentSurface.style.opacity = '1';
 
-  if (sourceSurface.style.opacity) {
-    ghost.style.opacity = sourceSurface.style.opacity;
-  }
+  const finalize = () => {
+    if (!stage.contains(nextSurface)) return;
 
-  stage.appendChild(ghost);
+    currentSurface.remove();
+    cleanupChannelCarouselSurface(nextSurface);
+    nextSurface.classList.add('channel-carousel__surface--settled');
+    stage.classList.remove('channel-carousel__stage--animating');
+    finishChannelCarouselTransition();
+    recordChannelCarouselAutotest(stage);
+  };
+
+  const transitionTimeoutId = window.setTimeout(finalize, transitionDuration + 120);
+  state.channelCarouselTransition.timeoutId = transitionTimeoutId;
+  probeChannelCarouselAutotest(stage);
+
+  requestAnimationFrame(() => {
+    currentSurface.style.transition = `transform ${transitionDuration}ms ${easing}`;
+    nextSurface.style.transition = `transform ${transitionDuration}ms ${easing}`;
+    currentSurface.style.transform = `translate3d(${currentOffset + exitOffset}px, 0, 0)`;
+    nextSurface.style.transform = 'translate3d(0, 0, 0)';
+    if (state.channelCarouselAutotest) {
+      state.channelCarouselAutotest.observedMotion = true;
+    }
+    recordChannelCarouselAutotest(stage);
+  });
+
+  nextSurface.addEventListener('transitionend', (event) => {
+    if (event.propertyName === 'transform') {
+      finalize();
+    }
+  }, { once: true });
 }
 
 async function moveChannelCarousel(offset) {
@@ -663,17 +826,25 @@ async function moveChannelCarousel(offset) {
   const surface = elements.channelCarousel?.querySelector('[data-channel-carousel-surface]');
   const shouldAnimate = isMobileCarouselViewport() && !prefersReducedMotion() && surface;
 
-  state.channelCarouselAnimating = true;
-
   try {
     if (shouldAnimate && surface) {
-      state.channelCarouselPendingEntryDirection = direction;
-      createChannelCarouselGhost(direction, surface);
+      const transitionPromise = new Promise((resolve) => {
+        state.channelCarouselTransition = {
+          direction,
+          resolve,
+          timeoutId: null,
+        };
+      });
+      state.channelCarouselAnimating = true;
+
+      await switchChannel(nextChannelKey, { scrollToTop: true });
+      await transitionPromise;
+      return;
     }
 
     await switchChannel(nextChannelKey, { scrollToTop: true });
   } finally {
-    state.channelCarouselAnimating = false;
+    finishChannelCarouselTransition();
   }
 }
 
@@ -977,7 +1148,13 @@ function renderMobileChannelCarousel() {
   const hasMultiple = channels.length > 1;
 
   const markup = `
-    <div class="channel-carousel__surface" style="${escapeHtml(buildChannelAccentStyle(activeChannel))}" data-channel-carousel-surface="true" aria-label="${escapeHtml(rawLabel)}">
+    <div
+      class="channel-carousel__surface channel-carousel__surface--settled"
+      style="${escapeHtml(buildChannelAccentStyle(activeChannel))}"
+      data-channel-carousel-surface="true"
+      data-channel-key="${escapeHtml(activeChannel.key)}"
+      aria-label="${escapeHtml(rawLabel)}"
+    >
       <button
         class="channel-carousel__nav channel-carousel__nav--prev"
         type="button"
@@ -1018,19 +1195,31 @@ function renderMobileChannelCarousel() {
   const template = document.createElement('template');
   template.innerHTML = markup.trim();
   const nextSurface = template.content.firstElementChild;
+  const shouldAnimate =
+    Boolean(state.channelCarouselTransition) &&
+    Boolean(previousSurface) &&
+    previousSurface.dataset.channelKey !== activeChannel.key &&
+    isMobileCarouselViewport() &&
+    !prefersReducedMotion();
 
-  if (previousSurface) {
-    previousSurface.remove();
+  if (!shouldAnimate) {
+    stage.classList.remove('channel-carousel__stage--animating');
+    stage.innerHTML = '';
+    stage.appendChild(nextSurface);
+    finishChannelCarouselTransition();
+    scheduleChannelCarouselAutotest();
+    return;
   }
+
   stage.appendChild(nextSurface);
-
-  const pendingDirection = state.channelCarouselPendingEntryDirection;
-  if (pendingDirection && isMobileCarouselViewport() && !prefersReducedMotion()) {
-    state.channelCarouselPendingEntryDirection = null;
-    requestAnimationFrame(() => {
-      animateChannelCarouselTransition(nextSurface, pendingDirection);
-    });
-  }
+  requestAnimationFrame(() => {
+    animateChannelCarouselTransition(
+      stage,
+      previousSurface,
+      nextSurface,
+      state.channelCarouselTransition?.direction || 'next',
+    );
+  });
 }
 
 function formatTextWithSoftBreaks(value) {
@@ -1557,6 +1746,7 @@ async function loadCatalog() {
     }
 
     await loadFeed(initialChannelKey);
+    scheduleChannelCarouselAutotest();
   } catch (error) {
     elements.loadingState.classList.add('hidden');
     elements.errorState.classList.remove('hidden');
