@@ -65,7 +65,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/data docs/channels docs/manifest.webmanifest
+          git add -A -- docs/data docs/manifest.webmanifest
+          if [ -d docs/channels ]; then
+            git add -A -- docs/channels
+          fi
           if git diff --cached --quiet; then
             echo "No changes."
           else
