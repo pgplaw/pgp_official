@@ -696,15 +696,28 @@ def select_posts_for_comment_refresh(posts: list[dict[str, Any]], config: SiteCo
 def select_posts_for_high_res_media(posts: list[dict[str, Any]]) -> list[int]:
     selected: list[int] = []
     for index, post in enumerate(posts):
-        if index >= FEED_PAGE_SIZE * 2:
+        if index >= FEED_PAGE_SIZE * 3:
             break
         if post.get("video_url"):
             continue
         photos = post.get("photos") or []
-        if len(photos) != 1:
+        if not photos:
             continue
         selected.append(post["id"])
     return selected
+
+
+def get_downloadable_photo_targets(message: Any) -> list[Any]:
+    targets: list[Any] = []
+
+    if getattr(message, "photo", None):
+        targets.append(message.photo)
+
+    webpage = getattr(getattr(message, "media", None), "webpage", None)
+    if webpage and getattr(webpage, "photo", None):
+        targets.append(webpage.photo)
+
+    return targets
 
 
 async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[str, Any]]) -> dict[int, list[bytes]]:
@@ -734,15 +747,37 @@ async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[s
         for post_id in selected_ids:
             try:
                 message = await client.get_messages(channel, ids=post_id)
-                if not message or not getattr(message, "photo", None):
+                if not message:
                     continue
 
-                raw_bytes = await client.download_media(message.photo, file=bytes)
-                if not raw_bytes:
+                photo_targets = get_downloadable_photo_targets(message)
+                grouped_id = getattr(message, "grouped_id", None)
+
+                if grouped_id:
+                    ids = list(range(max(1, post_id - 10), post_id + 11))
+                    neighbours = await client.get_messages(channel, ids=ids)
+                    album_targets: list[Any] = []
+                    for neighbour in neighbours:
+                        if not neighbour or getattr(neighbour, "grouped_id", None) != grouped_id:
+                            continue
+                        album_targets.extend(get_downloadable_photo_targets(neighbour))
+                    if album_targets:
+                        photo_targets = album_targets
+
+                if not photo_targets:
                     continue
 
-                results[post_id] = [raw_bytes]
-                log.info("Fetched high-resolution media for post %s", post_id)
+                downloaded: list[bytes] = []
+                for target in photo_targets:
+                    raw_bytes = await client.download_media(target, file=bytes)
+                    if raw_bytes:
+                        downloaded.append(raw_bytes)
+
+                if not downloaded:
+                    continue
+
+                results[post_id] = downloaded
+                log.info("Fetched high-resolution media for post %s (%s item(s))", post_id, len(downloaded))
             except Exception as error:  # pragma: no cover - network/runtime path
                 log.warning("High-resolution media sync failed on post %s: %s", post_id, error)
 
