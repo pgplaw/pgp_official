@@ -9,6 +9,7 @@ const configPath = path.join(rootDir, 'config', 'channels.json');
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
 const failures = [];
+let successCount = 0;
 
 for (const channel of config.channels) {
   const env = {
@@ -35,12 +36,23 @@ for (const channel of config.channels) {
     stdio: 'inherit',
   });
 
-  if (result.status !== 0) {
+  if (result.error || result.status !== 0) {
     failures.push(channel.key);
+    if (result.error) {
+      console.error(`Channel ${channel.key} failed to start: ${result.error.message}`);
+    }
+    continue;
   }
+
+  successCount += 1;
 }
 
 if (failures.length) {
   console.error(`Failed channels: ${failures.join(', ')}`);
-  process.exit(1);
+
+  if (successCount === 0) {
+    process.exit(1);
+  }
+
+  console.error(`Partial sync completed successfully for ${successCount} channel(s).`);
 }

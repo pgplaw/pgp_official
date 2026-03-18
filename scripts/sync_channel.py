@@ -1002,12 +1002,13 @@ def main() -> int:
     if not CHANNEL_KEY:
         write_manifest(config)
 
+    existing_payload = load_json(POSTS_PATH, {})
     initial_page_html = fetch_page(config.channel_web_url)
     avatar_changed = mirror_channel_avatar(config, initial_page_html)
     posts = collect_posts(config, initial_page_html=initial_page_html)
-    existing_payload = load_json(POSTS_PATH, {})
     if not posts and existing_payload.get("posts"):
-        raise SystemExit("No posts were collected. Existing mirror data was left untouched.")
+        log.warning("No posts were collected for @%s. Existing mirror data was left untouched.", config.channel_username)
+        return 0
 
     comments_enabled, comment_results = asyncio.run(fetch_comments_for_posts(config, posts))
 
