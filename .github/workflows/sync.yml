@@ -56,24 +56,10 @@ jobs:
 
       - name: Show sync diagnostics
         if: always()
+        continue-on-error: true
         run: |
           git status --short
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          base = Path("docs/data/channels")
-          for posts_path in sorted(base.glob("*/posts.json")):
-              try:
-                  payload = json.loads(posts_path.read_text("utf-8"))
-              except Exception as error:
-                  print(f"{posts_path}: failed to read ({error})")
-                  continue
-
-              generated_at = payload.get("generated_at")
-              total_posts = payload.get("pagination", {}).get("total_posts")
-              print(f"{posts_path}: generated_at={generated_at}, total_posts={total_posts}")
-          PY
+          python scripts/print_sync_diagnostics.py
 
       - name: Commit and push if changed
         run: |
