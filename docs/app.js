@@ -591,101 +591,83 @@ function getChannelCarouselTransitionDuration() {
   return url.searchParams.get('autotest') === 'carousel' ? 980 : CHANNEL_CAROUSEL_TRANSITION_MS;
 }
 
-function getChannelCarouselSlideDistance(stage) {
-  const width = Math.max(
+function finishChannelCarouselTransition() {
+  if (state.channelCarouselTransition?.timeoutId) {
+    window.clearTimeout(state.channelCarouselTransition.timeoutId);
+  }
+  state.channelCarouselTransition = null;
+  state.channelCarouselAnimating = false;
+}
+
+function getChannelCarouselStage() {
+  return elements.channelCarousel?.querySelector('.channel-carousel__stage') || null;
+}
+
+function getChannelCarouselTrack() {
+  return elements.channelCarousel?.querySelector('[data-channel-carousel-track]') || null;
+}
+
+function getChannelCarouselWidth(stage = getChannelCarouselStage()) {
+  return Math.max(
     stage?.getBoundingClientRect?.().width || 0,
     stage?.clientWidth || 0,
     window.matchMedia('(max-width: 480px)').matches ? 280 : 340,
   );
-  return Math.round(width + 24);
 }
 
-function cleanupChannelCarouselSurface(surface) {
-  if (!surface) return;
-  surface.style.removeProperty('transform');
-  surface.style.removeProperty('opacity');
-  surface.style.removeProperty('transition');
-  surface.classList.remove(
-    'channel-carousel__surface--outgoing',
-    'channel-carousel__surface--incoming',
-    'channel-carousel__surface--settled',
-  );
-  surface.removeAttribute('aria-hidden');
-  surface.querySelectorAll('button').forEach((button) => button.removeAttribute('tabindex'));
+function setChannelCarouselShift(track, shift) {
+  if (!track) return;
+  track.style.setProperty('--channel-carousel-shift', `${Math.round(shift)}px`);
 }
 
-function getChannelCarouselTransformX(surface) {
-  const inlineTransform = surface?.style?.transform || '';
-  const computedTransform = surface ? window.getComputedStyle(surface).transform : '';
-  const transform = computedTransform && computedTransform !== 'none' ? computedTransform : inlineTransform;
-  const match3d = transform.match(/translate3d\((-?\d+(?:\.\d+)?)px/i);
-  if (match3d) return Number(match3d[1]) || 0;
-
-  const match2d = transform.match(/translateX\((-?\d+(?:\.\d+)?)px/i);
-  if (match2d) return Number(match2d[1]) || 0;
-
-  if (transform.startsWith('matrix3d(')) {
-    const parts = transform.slice(9, -1).split(',').map((part) => Number(part.trim()));
-    return Number.isFinite(parts[12]) ? parts[12] : 0;
-  }
-
-  if (transform.startsWith('matrix(')) {
-    const parts = transform.slice(7, -1).split(',').map((part) => Number(part.trim()));
-    return Number.isFinite(parts[4]) ? parts[4] : 0;
-  }
-
-  return 0;
+function getRelativeChannel(offset) {
+  const key = getRelativeChannelKey(offset);
+  return key ? getChannelByKey(key) : null;
 }
 
-function finishChannelCarouselTransition() {
-  if (!state.channelCarouselTransition) return;
+function buildMobileChannelCarouselSurface(channel, index, total, { current = false } = {}) {
+  const safeChannel = channel || getActiveChannelMeta() || {};
+  const { title, subtitle, rawLabel } = getChannelMenuLabels(safeChannel);
+  const hasMultiple = total > 1;
 
-  const { resolve, timeoutId } = state.channelCarouselTransition;
-  if (timeoutId) {
-    window.clearTimeout(timeoutId);
-  }
-
-  state.channelCarouselTransition = null;
-  state.channelCarouselAnimating = false;
-  resolve?.();
-}
-
-function recordChannelCarouselAutotest(stage) {
-  const autotest = state.channelCarouselAutotest;
-  if (!autotest || !stage) return;
-
-  const surfaces = [...stage.querySelectorAll('.channel-carousel__surface')];
-  const movingSurfaces = surfaces.filter((surface) => Math.abs(getChannelCarouselTransformX(surface)) > 2);
-
-  if (surfaces.length >= 2) {
-    autotest.observedDualLayer = true;
-  }
-
-  if (movingSurfaces.length >= 2) {
-    autotest.observedMotion = true;
-  }
-}
-
-function probeChannelCarouselAutotest(stage) {
-  const autotest = state.channelCarouselAutotest;
-  if (!autotest || autotest.probing) return;
-
-  autotest.probing = true;
-  let framesRemaining = 18;
-
-  const tick = () => {
-    recordChannelCarouselAutotest(stage);
-    framesRemaining -= 1;
-
-    if (framesRemaining > 0 && state.channelCarouselAnimating) {
-      requestAnimationFrame(tick);
-      return;
-    }
-
-    autotest.probing = false;
-  };
-
-  requestAnimationFrame(tick);
+  return `
+    <article
+      class="channel-carousel__surface${current ? ' channel-carousel__surface--current' : ''}"
+      style="${escapeHtml(buildChannelAccentStyle(safeChannel))}"
+      data-channel-carousel-surface="true"
+      data-channel-key="${escapeHtml(safeChannel.key || '')}"
+      aria-label="${escapeHtml(rawLabel)}"
+      ${current ? 'aria-current="true"' : 'aria-hidden="true"'}
+    >
+      <button
+        class="channel-carousel__nav channel-carousel__nav--prev"
+        type="button"
+        data-channel-shift="-1"
+        aria-label="РџСЂРµРґС‹РґСѓС‰РёР№ РєР°РЅР°Р»"
+        ${hasMultiple ? '' : 'disabled'}
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m14.5 6.5-5.5 5.5 5.5 5.5" />
+        </svg>
+      </button>
+      <div class="channel-carousel__content">
+        <span class="channel-carousel__meta">РљР°РЅР°Р» ${index + 1} РёР· ${total}</span>
+        <span class="channel-carousel__title">${formatTextWithSoftBreaks(title)}</span>
+        <span class="channel-carousel__subtitle">${formatTextWithSoftBreaks(subtitle)}</span>
+      </div>
+      <button
+        class="channel-carousel__nav channel-carousel__nav--next"
+        type="button"
+        data-channel-shift="1"
+        aria-label="РЎР»РµРґСѓСЋС‰РёР№ РєР°РЅР°Р»"
+        ${hasMultiple ? '' : 'disabled'}
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m9.5 6.5 5.5 5.5-5.5 5.5" />
+        </svg>
+      </button>
+    </article>
+  `;
 }
 
 function scheduleChannelCarouselAutotest() {
@@ -702,148 +684,92 @@ function scheduleChannelCarouselAutotest() {
 
   state.channelCarouselAutotest = {
     running: true,
-    observedDualLayer: false,
     observedMotion: false,
   };
 
   window.setTimeout(() => {
-    const nextButton = elements.channelCarousel?.querySelector('.channel-carousel__nav--next');
+    const nextButton = elements.channelCarousel?.querySelector('.channel-carousel__surface--current .channel-carousel__nav--next');
     nextButton?.click();
   }, 250);
 
   window.setTimeout(() => {
-    recordChannelCarouselAutotest(elements.channelCarousel?.querySelector('.channel-carousel__stage'));
-  }, 420);
-
-  window.setTimeout(() => {
-    const stage = elements.channelCarousel?.querySelector('.channel-carousel__stage');
-    const activeSurfaces = stage ? [...stage.querySelectorAll('[data-channel-carousel-surface]')] : [];
-    const allSurfaces = stage ? [...stage.querySelectorAll('.channel-carousel__surface')] : [];
-    const dualLayer = Boolean(state.channelCarouselAutotest?.observedDualLayer);
-    const motion = Boolean(state.channelCarouselAutotest?.observedMotion);
-    const animating = Boolean(state.channelCarouselAnimating);
+    const track = getChannelCarouselTrack();
+    const currentSurface = elements.channelCarousel?.querySelector('.channel-carousel__surface--current');
     const passed =
-      Boolean(stage) &&
-      dualLayer &&
-      motion &&
-      activeSurfaces.length === 1 &&
-      allSurfaces.length === 1 &&
-      !animating;
+      Boolean(track) &&
+      Boolean(currentSurface) &&
+      Boolean(state.channelCarouselAutotest?.observedMotion) &&
+      !state.channelCarouselAnimating;
 
     document.body.dataset.carouselTestResult = passed ? 'pass' : 'fail';
     document.body.dataset.carouselTestDetails = [
-      `dual:${dualLayer}`,
-      `motion:${motion}`,
-      `active:${activeSurfaces.length}`,
-      `all:${allSurfaces.length}`,
-      `animating:${animating}`,
+      `motion:${Boolean(state.channelCarouselAutotest?.observedMotion)}`,
+      `current:${Boolean(currentSurface)}`,
+      `animating:${Boolean(state.channelCarouselAnimating)}`,
     ].join('|');
     state.channelCarouselAutotest.running = false;
   }, 1900);
 }
 
-function animateChannelCarouselTransition(stage, currentSurface, nextSurface, direction) {
-  if (!stage || !currentSurface || !nextSurface || prefersReducedMotion()) {
-    finishChannelCarouselTransition();
-    return;
+function animateChannelCarouselShift(track, targetShift, { duration = getChannelCarouselTransitionDuration() } = {}) {
+  if (!track || prefersReducedMotion()) {
+    setChannelCarouselShift(track, targetShift);
+    return Promise.resolve();
   }
 
-  const slideDistance = getChannelCarouselSlideDistance(stage);
-  const transitionDuration = getChannelCarouselTransitionDuration();
-  const enterOffset = direction === 'next' ? slideDistance : -slideDistance;
-  const exitOffset = -enterOffset;
-  const easing = 'cubic-bezier(0.22, 0.88, 0.24, 1)';
-  const currentOffset = getChannelCarouselTransformX(currentSurface);
+  return new Promise((resolve) => {
+    const easing = 'cubic-bezier(0.2, 0.9, 0.24, 1)';
+    const transitionState = { timeoutId: null };
+    let settled = false;
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      track.style.removeProperty('transition');
+      if (state.channelCarouselTransition === transitionState) {
+        state.channelCarouselTransition = null;
+      }
+      resolve();
+    };
 
-  stage.querySelectorAll('.channel-carousel__surface').forEach((surface) => {
-    if (surface !== currentSurface && surface !== nextSurface) {
-      surface.remove();
-    }
+    transitionState.timeoutId = window.setTimeout(finish, duration + 120);
+    state.channelCarouselTransition = transitionState;
+
+    track.style.transition = `transform ${duration}ms ${easing}`;
+    requestAnimationFrame(() => {
+      setChannelCarouselShift(track, targetShift);
+      if (state.channelCarouselAutotest) {
+        state.channelCarouselAutotest.observedMotion = true;
+      }
+    });
+
+    track.addEventListener('transitionend', (event) => {
+      if (event.propertyName === 'transform') {
+        finish();
+      }
+    }, { once: true });
   });
-
-  stage.classList.add('channel-carousel__stage--animating');
-
-  currentSurface.style.removeProperty('transition');
-  currentSurface.classList.remove(
-    'channel-carousel__surface--outgoing',
-    'channel-carousel__surface--incoming',
-    'channel-carousel__surface--settled',
-  );
-  cleanupChannelCarouselSurface(nextSurface);
-
-  currentSurface.removeAttribute('data-channel-carousel-surface');
-  currentSurface.classList.add('channel-carousel__surface--outgoing');
-  currentSurface.setAttribute('aria-hidden', 'true');
-  currentSurface.querySelectorAll('button').forEach((button) => {
-    button.disabled = true;
-    button.tabIndex = -1;
-  });
-
-  nextSurface.classList.add('channel-carousel__surface--incoming');
-  nextSurface.style.transition = 'none';
-  nextSurface.style.transform = `translate3d(${enterOffset}px, 0, 0)`;
-  nextSurface.style.opacity = '1';
-  currentSurface.style.opacity = '1';
-
-  const finalize = () => {
-    if (!stage.contains(nextSurface)) return;
-
-    currentSurface.remove();
-    cleanupChannelCarouselSurface(nextSurface);
-    nextSurface.classList.add('channel-carousel__surface--settled');
-    stage.classList.remove('channel-carousel__stage--animating');
-    finishChannelCarouselTransition();
-    recordChannelCarouselAutotest(stage);
-  };
-
-  const transitionTimeoutId = window.setTimeout(finalize, transitionDuration + 120);
-  state.channelCarouselTransition.timeoutId = transitionTimeoutId;
-  probeChannelCarouselAutotest(stage);
-
-  requestAnimationFrame(() => {
-    currentSurface.style.transition = `transform ${transitionDuration}ms ${easing}`;
-    nextSurface.style.transition = `transform ${transitionDuration}ms ${easing}`;
-    currentSurface.style.transform = `translate3d(${currentOffset + exitOffset}px, 0, 0)`;
-    nextSurface.style.transform = 'translate3d(0, 0, 0)';
-    if (state.channelCarouselAutotest) {
-      state.channelCarouselAutotest.observedMotion = true;
-    }
-    recordChannelCarouselAutotest(stage);
-  });
-
-  nextSurface.addEventListener('transitionend', (event) => {
-    if (event.propertyName === 'transform') {
-      finalize();
-    }
-  }, { once: true });
 }
 
 async function moveChannelCarousel(offset) {
   const nextChannelKey = getRelativeChannelKey(offset);
   if (!nextChannelKey || nextChannelKey === state.activeChannelKey || state.channelCarouselAnimating) return;
 
-  const direction = offset > 0 ? 'next' : 'prev';
-  const surface = elements.channelCarousel?.querySelector('[data-channel-carousel-surface]');
-  const shouldAnimate = isMobileCarouselViewport() && !prefersReducedMotion() && surface;
+  const stage = getChannelCarouselStage();
+  const track = getChannelCarouselTrack();
+  const shouldAnimate = isMobileCarouselViewport() && !prefersReducedMotion() && stage && track;
 
   try {
-    if (shouldAnimate && surface) {
-      const transitionPromise = new Promise((resolve) => {
-        state.channelCarouselTransition = {
-          direction,
-          resolve,
-          timeoutId: null,
-        };
-      });
+    if (shouldAnimate) {
+      const width = getChannelCarouselWidth(stage);
+      const targetShift = offset > 0 ? -width : width;
       state.channelCarouselAnimating = true;
-
-      await switchChannel(nextChannelKey, { scrollToTop: true });
-      await transitionPromise;
-      return;
+      stage.classList.add('channel-carousel__stage--animating');
+      await animateChannelCarouselShift(track, targetShift);
     }
 
     await switchChannel(nextChannelKey, { scrollToTop: true });
   } finally {
+    getChannelCarouselStage()?.classList.remove('channel-carousel__stage--animating');
     finishChannelCarouselTransition();
   }
 }
@@ -979,8 +905,10 @@ function setupChannelCarouselInteractions() {
   });
 
   elements.channelCarousel.addEventListener('touchstart', (event) => {
-    const surface = event.target.closest('[data-channel-carousel-surface]');
-    if (!surface || event.touches.length !== 1) return;
+    const stage = getChannelCarouselStage();
+    const track = getChannelCarouselTrack();
+    const surface = event.target.closest('.channel-carousel__surface--current');
+    if (!surface || !stage || !track || event.touches.length !== 1 || state.channelCarouselAnimating) return;
 
     const touch = event.touches[0];
     state.channelCarouselTouch = {
@@ -989,7 +917,8 @@ function setupChannelCarouselInteractions() {
       deltaX: 0,
       deltaY: 0,
       dragging: false,
-      surface,
+      width: getChannelCarouselWidth(stage),
+      track,
     };
   }, { passive: true });
 
@@ -1010,12 +939,12 @@ function setupChannelCarouselInteractions() {
       touchState.dragging = true;
     }
 
-    const offsetX = clamp(deltaX, -72, 72);
-    const opacity = String(Math.max(0.74, 1 - Math.abs(offsetX) / 220));
-    touchState.surface.style.transition = 'none';
-    touchState.surface.style.transform = `translate3d(${offsetX}px, 0, 0)`;
-    touchState.surface.style.opacity = opacity;
-  }, { passive: true });
+    event.preventDefault();
+    const maxOffset = touchState.width * 0.92;
+    const offsetX = clamp(deltaX, -maxOffset, maxOffset);
+    touchState.track.style.removeProperty('transition');
+    setChannelCarouselShift(touchState.track, offsetX);
+  }, { passive: false });
 
   elements.channelCarousel.addEventListener('touchend', (event) => {
     const touchState = state.channelCarouselTouch;
@@ -1024,12 +953,10 @@ function setupChannelCarouselInteractions() {
 
     const deltaX = touchState.deltaX;
     const deltaY = touchState.deltaY;
+    const threshold = touchState.width * 0.18;
 
-    if (Math.abs(deltaX) < 42 || Math.abs(deltaX) <= Math.abs(deltaY)) {
-      touchState.surface.style.transition = 'transform 180ms ease, opacity 180ms ease';
-      touchState.surface.style.transform = 'translate3d(0, 0, 0)';
-      touchState.surface.style.opacity = '1';
-      window.setTimeout(() => cleanupChannelCarouselSurface(touchState.surface), 190);
+    if (!touchState.dragging || Math.abs(deltaX) < threshold || Math.abs(deltaX) <= Math.abs(deltaY)) {
+      void animateChannelCarouselShift(touchState.track, 0, { duration: 240 });
       return;
     }
 
@@ -1037,11 +964,8 @@ function setupChannelCarouselInteractions() {
   }, { passive: true });
 
   elements.channelCarousel.addEventListener('touchcancel', () => {
-    if (state.channelCarouselTouch?.surface) {
-      state.channelCarouselTouch.surface.style.transition = 'transform 180ms ease, opacity 180ms ease';
-      state.channelCarouselTouch.surface.style.transform = 'translate3d(0, 0, 0)';
-      state.channelCarouselTouch.surface.style.opacity = '1';
-      window.setTimeout(() => cleanupChannelCarouselSurface(state.channelCarouselTouch?.surface), 190);
+    if (state.channelCarouselTouch?.track) {
+      void animateChannelCarouselShift(state.channelCarouselTouch.track, 0, { duration: 220 });
     }
     state.channelCarouselTouch = null;
   }, { passive: true });
@@ -1144,8 +1068,33 @@ function renderMobileChannelCarousel() {
 
   const activeIndex = Math.max(0, getChannelIndex(state.activeChannelKey));
   const activeChannel = channels[activeIndex] || channels[0];
-  const { title, subtitle, rawLabel } = getChannelMenuLabels(activeChannel);
-  const hasMultiple = channels.length > 1;
+  const previousChannel = getRelativeChannel(-1) || activeChannel;
+  const nextChannel = getRelativeChannel(1) || activeChannel;
+
+  let carouselStage = elements.channelCarousel.querySelector('.channel-carousel__stage');
+  if (!carouselStage) {
+    elements.channelCarousel.innerHTML = '<div class="channel-carousel__stage"></div>';
+    carouselStage = elements.channelCarousel.querySelector('.channel-carousel__stage');
+  }
+
+  carouselStage.classList.remove('channel-carousel__stage--animating');
+  carouselStage.innerHTML = `
+    <div class="channel-carousel__track" data-channel-carousel-track>
+      ${buildMobileChannelCarouselSurface(previousChannel, (activeIndex - 1 + channels.length) % channels.length, channels.length)}
+      ${buildMobileChannelCarouselSurface(activeChannel, activeIndex, channels.length, { current: true })}
+      ${buildMobileChannelCarouselSurface(nextChannel, (activeIndex + 1) % channels.length, channels.length)}
+    </div>
+  `;
+
+  const track = carouselStage.querySelector('[data-channel-carousel-track]');
+  if (track) {
+    track.style.removeProperty('transition');
+    setChannelCarouselShift(track, 0);
+  }
+
+  finishChannelCarouselTransition();
+  scheduleChannelCarouselAutotest();
+  return;
 
   const markup = `
     <div

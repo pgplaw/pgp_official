@@ -122,18 +122,30 @@ label,
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  contain: layout paint;
 }
 
 .channel-carousel__stage {
   position: relative;
-  display: grid;
   min-height: 96px;
   overflow: hidden;
   isolation: isolate;
+  contain: layout paint;
 }
 
 .channel-carousel__stage--animating {
   pointer-events: none;
+}
+
+.channel-carousel__track {
+  --channel-carousel-shift: 0px;
+  display: grid;
+  width: 300%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  transform: translate3d(calc(-33.333333% + var(--channel-carousel-shift)), 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 @media (max-width: 1180px) and (min-width: 861px) {
@@ -265,7 +277,6 @@ label,
 }
 
 .channel-carousel__surface {
-  grid-area: 1 / 1;
   display: grid;
   grid-template-columns: 46px minmax(0, 1fr) 46px;
   align-items: center;
@@ -280,24 +291,9 @@ label,
     inset 0 1px 0 rgba(255, 255, 255, 0.14);
   color: #fff;
   touch-action: pan-y;
-  will-change: transform;
   position: relative;
   z-index: 1;
   backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
-}
-
-.channel-carousel__surface--outgoing {
-  z-index: 2;
-  pointer-events: none;
-}
-
-.channel-carousel__surface--incoming {
-  z-index: 1;
-}
-
-.channel-carousel__surface--settled {
-  z-index: 1;
 }
 
 .channel-carousel__content {
