@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T10:19:59.243719+00:00",
+  "generated_at": "2026-03-18T10:51:11.003787+00:00",
   "pagination": {
     "page": 2,
     "page_size": 16,
@@ -22,7 +22,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1042"
+      "tg_url": "https://t.me/InvestmentLaw/1042",
+      "forwarded_from": null
     },
     {
       "id": 1038,
@@ -39,7 +40,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1038"
+      "tg_url": "https://t.me/InvestmentLaw/1038",
+      "forwarded_from": null
     },
     {
       "id": 1037,
@@ -56,7 +58,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1037"
+      "tg_url": "https://t.me/InvestmentLaw/1037",
+      "forwarded_from": null
     },
     {
       "id": 1036,
@@ -68,7 +71,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1036"
+      "tg_url": "https://t.me/InvestmentLaw/1036",
+      "forwarded_from": null
     },
     {
       "id": 1035,
@@ -85,7 +89,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1035"
+      "tg_url": "https://t.me/InvestmentLaw/1035",
+      "forwarded_from": null
     },
     {
       "id": 1034,
@@ -102,7 +107,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1034"
+      "tg_url": "https://t.me/InvestmentLaw/1034",
+      "forwarded_from": null
     },
     {
       "id": 1033,
@@ -119,7 +125,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1033"
+      "tg_url": "https://t.me/InvestmentLaw/1033",
+      "forwarded_from": null
     },
     {
       "id": 1032,
@@ -136,7 +143,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1032"
+      "tg_url": "https://t.me/InvestmentLaw/1032",
+      "forwarded_from": null
     },
     {
       "id": 1027,
@@ -169,7 +177,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1027"
+      "tg_url": "https://t.me/InvestmentLaw/1027",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1684",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      }
     },
     {
       "id": 1026,
@@ -186,7 +200,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1026"
+      "tg_url": "https://t.me/InvestmentLaw/1026",
+      "forwarded_from": null
     },
     {
       "id": 1024,
@@ -203,7 +218,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1024"
+      "tg_url": "https://t.me/InvestmentLaw/1024",
+      "forwarded_from": {
+        "source_url": "https://t.me/PG_RealEstate/202",
+        "channel_url": "https://t.me/s/PG_RealEstate",
+        "channel_username": "PG_RealEstate",
+        "channel_title": "PG Real Estate | Недвижимость"
+      }
     },
     {
       "id": 1023,
@@ -215,7 +236,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1023"
+      "tg_url": "https://t.me/InvestmentLaw/1023",
+      "forwarded_from": null
     },
     {
       "id": 1022,
@@ -232,7 +254,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1022"
+      "tg_url": "https://t.me/InvestmentLaw/1022",
+      "forwarded_from": null
     },
     {
       "id": 1021,
@@ -244,7 +267,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1021"
+      "tg_url": "https://t.me/InvestmentLaw/1021",
+      "forwarded_from": null
     },
     {
       "id": 1020,
@@ -261,7 +285,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1020"
+      "tg_url": "https://t.me/InvestmentLaw/1020",
+      "forwarded_from": {
+        "source_url": "https://t.me/ERDCnews/7519",
+        "channel_url": "https://t.me/s/ERDCnews",
+        "channel_username": "ERDCnews",
+        "channel_title": "КРДВ"
+      }
     },
     {
       "id": 1019,
@@ -273,7 +303,13 @@
       "comments_url": null,
       "photos": [],
       "video_url": "https://cdn4.telesco.pe/file/78dea8eadf.mov?token=jNERMABTY9yPI-tTqOzN3QfplQckdRovEsJlsCgjzpdCZ0Y26Q394iqPJuUZylX0PdoSsXRmWTiDs1QQg3UGm9PoAKBg3SUTzTLCf7a032Mk3XKXeGgjtWQWv8CGrkfbh_-SfKNPNEmr34uzCJeqFdnPQkkCfgZffCPi0Ge_SlVVQr1M7LwYWrfwhstrShimumRIHpKCQLjh7jYsqchPXtyLDGtP0N8moJ4Yi4cywzt-QOVTA2I-SUyvQ5lJRJY5aZxGkvcYK_rF8dmnVi1yTnhTjWYoOk6KMaOrSvkS1E4iAJpJQhPZ0zlOPBvdvCcjZ5kG2d-Gv1de-s58jS9drjTHO9XBk1SaBvFDYEYsWTFoWd1Goy_7o2H5dL4HNCjlMC_8PDNPq-r_JeugviOzLLVo6kns9FLbzwfVs1fCjm0CWbEvbhgQwm8_4S3fbjrnPzmdjkWupjQlKQRfnrCwzW2Hs2ddWA7xVA-PKl9GZWr31tQcKP0vExzz3_ztTiM8cc_hwgN3N6Wtf_F2x-_I2ylViV4vDfVUc8X3azbDZqEiGxu8EVfFnvJH4zxJyCdR6O1p2mkjJ6gJOlSGOo6cjWylKpzmfA-uGCyZVaMFteDofWX-4qtLBZnsKRaT3HmPH0_R9k7Jt_VM-MUHxYTkaVTDp09GekM3jML9JuB_jQg",
-      "tg_url": "https://t.me/InvestmentLaw/1019"
+      "tg_url": "https://t.me/InvestmentLaw/1019",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1662",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      }
     }
   ]
 }

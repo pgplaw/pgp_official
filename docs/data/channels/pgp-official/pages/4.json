@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T10:18:16.942105+00:00",
+  "generated_at": "2026-03-18T10:50:24.011895+00:00",
   "pagination": {
     "page": 4,
     "page_size": 16,
@@ -22,7 +22,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1692"
+      "tg_url": "https://t.me/pgp_official/1692",
+      "forwarded_from": null
     },
     {
       "id": 1691,
@@ -39,7 +40,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1691"
+      "tg_url": "https://t.me/pgp_official/1691",
+      "forwarded_from": null
     },
     {
       "id": 1690,
@@ -56,7 +58,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1690"
+      "tg_url": "https://t.me/pgp_official/1690",
+      "forwarded_from": null
     },
     {
       "id": 1689,
@@ -73,7 +76,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1689"
+      "tg_url": "https://t.me/pgp_official/1689",
+      "forwarded_from": {
+        "source_url": "https://t.me/bankrotstvo_mustknow/379",
+        "channel_url": "https://t.me/s/bankrotstvo_mustknow",
+        "channel_username": "bankrotstvo_mustknow",
+        "channel_title": "Банкротство | Взгляд эксперта"
+      }
     },
     {
       "id": 1684,
@@ -106,7 +115,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1684"
+      "tg_url": "https://t.me/pgp_official/1684",
+      "forwarded_from": null
     },
     {
       "id": 1683,
@@ -123,7 +133,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1683"
+      "tg_url": "https://t.me/pgp_official/1683",
+      "forwarded_from": null
     },
     {
       "id": 1678,
@@ -156,7 +167,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1678"
+      "tg_url": "https://t.me/pgp_official/1678",
+      "forwarded_from": null
     },
     {
       "id": 1677,
@@ -173,7 +185,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1677"
+      "tg_url": "https://t.me/pgp_official/1677",
+      "forwarded_from": {
+        "source_url": "https://t.me/PgAntitrust/1326",
+        "channel_url": "https://t.me/s/PgAntitrust",
+        "channel_username": "PgAntitrust",
+        "channel_title": "PG Antitrust | Антимонопольное право"
+      }
     },
     {
       "id": 1674,
@@ -194,7 +212,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1674"
+      "tg_url": "https://t.me/pgp_official/1674",
+      "forwarded_from": null
     },
     {
       "id": 1669,
@@ -227,7 +246,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1669"
+      "tg_url": "https://t.me/pgp_official/1669",
+      "forwarded_from": null
     },
     {
       "id": 1668,
@@ -244,7 +264,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1668"
+      "tg_url": "https://t.me/pgp_official/1668",
+      "forwarded_from": null
     },
     {
       "id": 1667,
@@ -261,7 +282,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1667"
+      "tg_url": "https://t.me/pgp_official/1667",
+      "forwarded_from": {
+        "source_url": "https://t.me/PG_Tax/2396",
+        "channel_url": "https://t.me/s/PG_Tax",
+        "channel_username": "PG_Tax",
+        "channel_title": "PG Tax | Налоги"
+      }
     },
     {
       "id": 1666,
@@ -278,7 +305,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1666"
+      "tg_url": "https://t.me/pgp_official/1666",
+      "forwarded_from": null
     },
     {
       "id": 1665,
@@ -295,7 +323,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1665"
+      "tg_url": "https://t.me/pgp_official/1665",
+      "forwarded_from": null
     },
     {
       "id": 1664,
@@ -312,7 +341,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1664"
+      "tg_url": "https://t.me/pgp_official/1664",
+      "forwarded_from": null
     },
     {
       "id": 1663,
@@ -324,7 +354,13 @@
       "comments_url": null,
       "photos": [],
       "video_url": "https://cdn4.telesco.pe/file/f786189bc7.mp4?token=oKyWokx4QuS8TgiZ-3lEWiqfzXhQr3fb3sZN23twZ4i8HU16343WWcgFO0RsxZ4mpeAFEMiUqGVaFSi_WKtf41D9jOZVT7iyfPyr3_yX6_TmFduhrjZnpjxvvkMVXjqSiKn3q6ogVyUIX_Ts3Y1D1--9Q335htDh3xljGb98D-VusoWny3qscIng58iNtpAiT9fHdps9tS7OsuvmEG6wJSF7bd7vAh5CSJ9YYAqCn3fhb5oc4qWEEJDOXStMf6JgksqrAeGDM8WPw0sMX_Xz4bO5ykU1svUBQYY6awSPGBTbICb3n-B7M8nRKDkPg2S1D-oqzA1aQBsyhPSBAJ1UvQ",
-      "tg_url": "https://t.me/pgp_official/1663"
+      "tg_url": "https://t.me/pgp_official/1663",
+      "forwarded_from": {
+        "source_url": "https://t.me/PG_Tax/2381",
+        "channel_url": "https://t.me/s/PG_Tax",
+        "channel_username": "PG_Tax",
+        "channel_title": "PG Tax | Налоги"
+      }
     }
   ]
 }

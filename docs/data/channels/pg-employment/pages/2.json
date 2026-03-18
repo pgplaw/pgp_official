@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T10:20:56.737006+00:00",
+  "generated_at": "2026-03-18T10:51:34.557509+00:00",
   "pagination": {
     "page": 2,
     "page_size": 16,
@@ -17,7 +17,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1933"
+      "tg_url": "https://t.me/pgEmployment/1933",
+      "forwarded_from": null
     },
     {
       "id": 1932,
@@ -29,7 +30,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1932"
+      "tg_url": "https://t.me/pgEmployment/1932",
+      "forwarded_from": null
     },
     {
       "id": 1931,
@@ -41,7 +43,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1931"
+      "tg_url": "https://t.me/pgEmployment/1931",
+      "forwarded_from": null
     },
     {
       "id": 1930,
@@ -53,7 +56,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1930"
+      "tg_url": "https://t.me/pgEmployment/1930",
+      "forwarded_from": null
     },
     {
       "id": 1929,
@@ -70,7 +74,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1929"
+      "tg_url": "https://t.me/pgEmployment/1929",
+      "forwarded_from": null
     },
     {
       "id": 1928,
@@ -82,7 +87,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1928"
+      "tg_url": "https://t.me/pgEmployment/1928",
+      "forwarded_from": null
     },
     {
       "id": 1927,
@@ -94,7 +100,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1927"
+      "tg_url": "https://t.me/pgEmployment/1927",
+      "forwarded_from": null
     },
     {
       "id": 1926,
@@ -106,7 +113,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1926"
+      "tg_url": "https://t.me/pgEmployment/1926",
+      "forwarded_from": null
     },
     {
       "id": 1924,
@@ -118,7 +126,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1924"
+      "tg_url": "https://t.me/pgEmployment/1924",
+      "forwarded_from": null
     },
     {
       "id": 1923,
@@ -130,7 +139,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1923"
+      "tg_url": "https://t.me/pgEmployment/1923",
+      "forwarded_from": null
     },
     {
       "id": 1922,
@@ -142,7 +152,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1922"
+      "tg_url": "https://t.me/pgEmployment/1922",
+      "forwarded_from": null
     },
     {
       "id": 1921,
@@ -154,7 +165,13 @@
       "comments_url": null,
       "photos": [],
       "video_url": "https://cdn4.telesco.pe/file/78dea8eadf.mov?token=vSMfcloFUt7zW6hylyCfuCiU9W0zYHo2sVCIEq3BtkVgF9yFcu2bhTfaltaT4u-yRjiFyl0q2G1jqMasV0gu9pijfwzl1gSJiXp1noV6mmi-g923ffVMs_zjzD2gzgTV69Ip85PxJsLuh0J4CQvTEXfd89CVfM8VH9PW0uwoQo-dw1hLGCp2gecQaRh4XqGSfHznfqKTajdKhE7QPu6TPbM6C7bxp2ZLxMRycsUJaD_gtVQxNQbPQICpO9OQlzXBa5GZZ8hFVU9HKROhi9DRxRS194POUsyi6FChGqKT_-6PfbD3Uo6yAkBt3VqHHpvWXpKc0OnzfAZbxs_XUrlC3iqRkdev08z8qrbkKY2fLwLhbE1NVSrs56Yj8REpYKxPDQgYnEUMgGWrsBBshtVtLqV85Sm9rQxSAIP7QRMk6mhklrLcTrmHBXisdewyia6QXSQDJX3AUNGU6QkjdY8v-HOlZbdSU5q2RvzubQEzxFe0r0UOmE_T4w1A0E9WfhWg3mx77xmCeF9tm7duTwwJQ3vjzp6h-ClHgRIMb7MIebzvnlQqe4WdXMhW0YYQnZxYUJK5yd28z88-87khQHR2lV7Q0FmWz6OF5N06gYxyKKIXSZ8gMHWLIGdTguORCcIKuvpIctb0pBH9WkRivXtNjoSQAgWqW5b2U_6hC-87afI",
-      "tg_url": "https://t.me/pgEmployment/1921"
+      "tg_url": "https://t.me/pgEmployment/1921",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1662",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      }
     },
     {
       "id": 1919,
@@ -166,7 +183,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1919"
+      "tg_url": "https://t.me/pgEmployment/1919",
+      "forwarded_from": null
     },
     {
       "id": 1918,
@@ -178,7 +196,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1918"
+      "tg_url": "https://t.me/pgEmployment/1918",
+      "forwarded_from": null
     },
     {
       "id": 1917,
@@ -190,7 +209,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1917"
+      "tg_url": "https://t.me/pgEmployment/1917",
+      "forwarded_from": null
     },
     {
       "id": 1916,
@@ -202,7 +222,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgEmployment/1916"
+      "tg_url": "https://t.me/pgEmployment/1916",
+      "forwarded_from": null
     }
   ]
 }

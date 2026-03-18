@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T10:20:20.288963+00:00",
+  "generated_at": "2026-03-18T10:51:18.296323+00:00",
   "pagination": {
     "page": 3,
     "page_size": 16,
@@ -17,7 +17,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1267"
+      "tg_url": "https://t.me/pgecology/1267",
+      "forwarded_from": null
     },
     {
       "id": 1266,
@@ -34,7 +35,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1266"
+      "tg_url": "https://t.me/pgecology/1266",
+      "forwarded_from": null
     },
     {
       "id": 1265,
@@ -46,7 +48,13 @@
       "comments_url": null,
       "photos": [],
       "video_url": "https://cdn4.telesco.pe/file/78dea8eadf.mov?token=vSMfcloFUt7zW6hylyCfuCiU9W0zYHo2sVCIEq3BtkVgF9yFcu2bhTfaltaT4u-yRjiFyl0q2G1jqMasV0gu9pijfwzl1gSJiXp1noV6mmi-g923ffVMs_zjzD2gzgTV69Ip85PxJsLuh0J4CQvTEXfd89CVfM8VH9PW0uwoQo-dw1hLGCp2gecQaRh4XqGSfHznfqKTajdKhE7QPu6TPbM6C7bxp2ZLxMRycsUJaD_gtVQxNQbPQICpO9OQlzXBa5GZZ8hFVU9HKROhi9DRxRS194POUsyi6FChGqKT_-6PfbD3Uo6yAkBt3VqHHpvWXpKc0OnzfAZbxs_XUrlC3kD4sEU6fAqC6s2YL6D8cm1EUwuSk6TvLGZ8dRSdbkukWrAwm5wZJtDbTtOXaRBQr2CEHBxCNQjaIoVpREG-u8sn3TDvEcHcLlyoGWXWV_Tj2qeZiZvqEVdGafGxUbZXE_FLJAPTAR2ew6EOstKpmXFyi728FG3wAQm9Hf7nVYEwJOSs-ZsjGRQf3LpdkAnBJvEW2b_EBoHElopJ5GKPlfvrNCwBsN2XbAoD1A_Gx28jICYSIO2b7ivuUeD1r1MSK0ol6_bHbFC1mgWMcpwKjpai_VV5FXgwvO7npjJzIuVpL3aLk4o10Exim5BBWujy69GHOl0x5SXzC5GMiRwRNSs",
-      "tg_url": "https://t.me/pgecology/1265"
+      "tg_url": "https://t.me/pgecology/1265",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1662",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      }
     },
     {
       "id": 1264,
@@ -63,7 +71,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1264"
+      "tg_url": "https://t.me/pgecology/1264",
+      "forwarded_from": null
     },
     {
       "id": 1263,
@@ -75,7 +84,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1263"
+      "tg_url": "https://t.me/pgecology/1263",
+      "forwarded_from": null
     },
     {
       "id": 1262,
@@ -87,7 +97,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1262"
+      "tg_url": "https://t.me/pgecology/1262",
+      "forwarded_from": null
     },
     {
       "id": 1261,
@@ -104,7 +115,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1261"
+      "tg_url": "https://t.me/pgecology/1261",
+      "forwarded_from": null
     },
     {
       "id": 1260,
@@ -116,7 +128,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1260"
+      "tg_url": "https://t.me/pgecology/1260",
+      "forwarded_from": null
     }
   ]
 }

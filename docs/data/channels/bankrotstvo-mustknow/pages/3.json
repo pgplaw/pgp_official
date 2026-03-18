@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-18T10:20:50.688259+00:00",
+  "generated_at": "2026-03-18T10:51:29.497395+00:00",
   "pagination": {
     "page": 3,
     "page_size": 16,
-    "total_posts": 62,
+    "total_posts": 61,
     "total_pages": 4
   },
   "posts": [
@@ -22,7 +22,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/398"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/398",
+      "forwarded_from": null
     },
     {
       "id": 397,
@@ -39,7 +40,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/397"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/397",
+      "forwarded_from": null
     },
     {
       "id": 396,
@@ -56,7 +58,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/396"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/396",
+      "forwarded_from": null
     },
     {
       "id": 394,
@@ -68,7 +71,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/394"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/394",
+      "forwarded_from": null
     },
     {
       "id": 393,
@@ -85,7 +89,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/393"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/393",
+      "forwarded_from": null
     },
     {
       "id": 392,
@@ -102,7 +107,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/392"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/392",
+      "forwarded_from": null
     },
     {
       "id": 391,
@@ -119,7 +125,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/391"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/391",
+      "forwarded_from": null
     },
     {
       "id": 390,
@@ -136,7 +143,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/390"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/390",
+      "forwarded_from": null
     },
     {
       "id": 389,
@@ -153,7 +161,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/389"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/389",
+      "forwarded_from": null
     },
     {
       "id": 388,
@@ -170,7 +179,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/388"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/388",
+      "forwarded_from": null
     },
     {
       "id": 387,
@@ -187,7 +197,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/387"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/387",
+      "forwarded_from": null
     },
     {
       "id": 386,
@@ -204,7 +215,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/386"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/386",
+      "forwarded_from": {
+        "source_url": "https://t.me/probankrotstvoru/9022",
+        "channel_url": "https://t.me/s/probankrotstvoru",
+        "channel_username": "probankrotstvoru",
+        "channel_title": "PROбанкротство"
+      }
     },
     {
       "id": 385,
@@ -221,7 +238,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/385"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/385",
+      "forwarded_from": null
     },
     {
       "id": 383,
@@ -238,7 +256,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/383"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/383",
+      "forwarded_from": null
     },
     {
       "id": 382,
@@ -255,7 +274,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/382"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/382",
+      "forwarded_from": null
     },
     {
       "id": 381,
@@ -272,7 +292,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/bankrotstvo_mustknow/381"
+      "tg_url": "https://t.me/bankrotstvo_mustknow/381",
+      "forwarded_from": null
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T10:19:59.245560+00:00",
+  "generated_at": "2026-03-18T10:51:11.005499+00:00",
   "pagination": {
     "page": 3,
     "page_size": 16,
@@ -22,7 +22,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1018"
+      "tg_url": "https://t.me/InvestmentLaw/1018",
+      "forwarded_from": null
     },
     {
       "id": 1017,
@@ -39,7 +40,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1017"
+      "tg_url": "https://t.me/InvestmentLaw/1017",
+      "forwarded_from": null
     },
     {
       "id": 1016,
@@ -56,7 +58,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1016"
+      "tg_url": "https://t.me/InvestmentLaw/1016",
+      "forwarded_from": null
     },
     {
       "id": 1015,
@@ -73,7 +76,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/InvestmentLaw/1015"
+      "tg_url": "https://t.me/InvestmentLaw/1015",
+      "forwarded_from": {
+        "source_url": "https://t.me/ERDCnews/7447",
+        "channel_url": "https://t.me/s/ERDCnews",
+        "channel_username": "ERDCnews",
+        "channel_title": "КРДВ"
+      }
     }
   ]
 }

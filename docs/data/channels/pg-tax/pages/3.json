@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T10:19:21.054771+00:00",
+  "generated_at": "2026-03-18T10:50:57.795972+00:00",
   "pagination": {
     "page": 3,
     "page_size": 16,
@@ -22,7 +22,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2504"
+      "tg_url": "https://t.me/PG_Tax/2504",
+      "forwarded_from": null
     },
     {
       "id": 2502,
@@ -39,7 +40,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2502"
+      "tg_url": "https://t.me/PG_Tax/2502",
+      "forwarded_from": null
     },
     {
       "id": 2501,
@@ -56,7 +58,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2501"
+      "tg_url": "https://t.me/PG_Tax/2501",
+      "forwarded_from": null
     },
     {
       "id": 2498,
@@ -73,7 +76,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2498"
+      "tg_url": "https://t.me/PG_Tax/2498",
+      "forwarded_from": null
     },
     {
       "id": 2497,
@@ -90,7 +94,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2497"
+      "tg_url": "https://t.me/PG_Tax/2497",
+      "forwarded_from": null
     },
     {
       "id": 2496,
@@ -107,7 +112,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2496"
+      "tg_url": "https://t.me/PG_Tax/2496",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1741",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      }
     },
     {
       "id": 2495,
@@ -119,7 +130,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2495"
+      "tg_url": "https://t.me/PG_Tax/2495",
+      "forwarded_from": null
     },
     {
       "id": 2494,
@@ -136,7 +148,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2494"
+      "tg_url": "https://t.me/PG_Tax/2494",
+      "forwarded_from": null
     },
     {
       "id": 2491,
@@ -161,7 +174,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2491"
+      "tg_url": "https://t.me/PG_Tax/2491",
+      "forwarded_from": null
     },
     {
       "id": 2489,
@@ -178,7 +192,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2489"
+      "tg_url": "https://t.me/PG_Tax/2489",
+      "forwarded_from": null
     },
     {
       "id": 2488,
@@ -195,7 +210,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2488"
+      "tg_url": "https://t.me/PG_Tax/2488",
+      "forwarded_from": null
     },
     {
       "id": 2487,
@@ -212,7 +228,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2487"
+      "tg_url": "https://t.me/PG_Tax/2487",
+      "forwarded_from": null
     },
     {
       "id": 2486,
@@ -229,7 +246,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2486"
+      "tg_url": "https://t.me/PG_Tax/2486",
+      "forwarded_from": null
     },
     {
       "id": 2485,
@@ -246,7 +264,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2485"
+      "tg_url": "https://t.me/PG_Tax/2485",
+      "forwarded_from": null
     },
     {
       "id": 2484,
@@ -263,7 +282,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2484"
+      "tg_url": "https://t.me/PG_Tax/2484",
+      "forwarded_from": null
     },
     {
       "id": 2483,
@@ -280,7 +300,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2483"
+      "tg_url": "https://t.me/PG_Tax/2483",
+      "forwarded_from": null
     }
   ]
 }

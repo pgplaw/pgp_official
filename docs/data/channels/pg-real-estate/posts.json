@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T10:19:34.566370+00:00",
+  "generated_at": "2026-03-18T10:51:03.035076+00:00",
   "site": {
     "channel_username": "PG_RealEstate",
     "channel_title": "PG Real Estate | Недвижимость",
@@ -38,7 +38,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/225"
+      "tg_url": "https://t.me/PG_RealEstate/225",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1758",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      }
     },
     {
       "id": 224,
@@ -55,7 +61,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/224"
+      "tg_url": "https://t.me/PG_RealEstate/224",
+      "forwarded_from": null
     },
     {
       "id": 222,
@@ -72,7 +79,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/222"
+      "tg_url": "https://t.me/PG_RealEstate/222",
+      "forwarded_from": {
+        "source_url": "https://t.me/PG_Tax/2518",
+        "channel_url": "https://t.me/s/PG_Tax",
+        "channel_username": "PG_Tax",
+        "channel_title": "PG Tax | Налоги"
+      }
     },
     {
       "id": 221,
@@ -89,7 +102,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/221"
+      "tg_url": "https://t.me/PG_RealEstate/221",
+      "forwarded_from": null
     },
     {
       "id": 218,
@@ -106,7 +120,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/218"
+      "tg_url": "https://t.me/PG_RealEstate/218",
+      "forwarded_from": null
     },
     {
       "id": 216,
@@ -127,7 +142,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/216"
+      "tg_url": "https://t.me/PG_RealEstate/216",
+      "forwarded_from": null
     },
     {
       "id": 215,
@@ -144,7 +160,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/215"
+      "tg_url": "https://t.me/PG_RealEstate/215",
+      "forwarded_from": null
     },
     {
       "id": 214,
@@ -161,7 +178,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/214"
+      "tg_url": "https://t.me/PG_RealEstate/214",
+      "forwarded_from": null
     },
     {
       "id": 213,
@@ -178,7 +196,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/213"
+      "tg_url": "https://t.me/PG_RealEstate/213",
+      "forwarded_from": null
     },
     {
       "id": 212,
@@ -195,7 +214,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/212"
+      "tg_url": "https://t.me/PG_RealEstate/212",
+      "forwarded_from": null
     },
     {
       "id": 211,
@@ -212,7 +232,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/211"
+      "tg_url": "https://t.me/PG_RealEstate/211",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1705",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      }
     },
     {
       "id": 210,
@@ -229,7 +255,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/210"
+      "tg_url": "https://t.me/PG_RealEstate/210",
+      "forwarded_from": {
+        "source_url": "https://t.me/PG_Tax/2445",
+        "channel_url": "https://t.me/s/PG_Tax",
+        "channel_username": "PG_Tax",
+        "channel_title": "PG Tax | Налоги"
+      }
     },
     {
       "id": 209,
@@ -246,7 +278,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/209"
+      "tg_url": "https://t.me/PG_RealEstate/209",
+      "forwarded_from": null
     },
     {
       "id": 208,
@@ -263,7 +296,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/208"
+      "tg_url": "https://t.me/PG_RealEstate/208",
+      "forwarded_from": {
+        "source_url": "https://t.me/PG_Tax/2417",
+        "channel_url": "https://t.me/s/PG_Tax",
+        "channel_username": "PG_Tax",
+        "channel_title": "PG Tax | Налоги"
+      }
     },
     {
       "id": 207,
@@ -280,7 +319,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/207"
+      "tg_url": "https://t.me/PG_RealEstate/207",
+      "forwarded_from": null
     },
     {
       "id": 206,
@@ -297,7 +337,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/206"
+      "tg_url": "https://t.me/PG_RealEstate/206",
+      "forwarded_from": {
+        "source_url": "https://t.me/PG_Tax/2408",
+        "channel_url": "https://t.me/s/PG_Tax",
+        "channel_username": "PG_Tax",
+        "channel_title": "PG Tax | Налоги"
+      }
     }
   ]
 }

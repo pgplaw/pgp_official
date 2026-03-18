@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T10:19:21.056985+00:00",
+  "generated_at": "2026-03-18T10:50:57.798206+00:00",
   "pagination": {
     "page": 4,
     "page_size": 16,
@@ -22,7 +22,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2482"
+      "tg_url": "https://t.me/PG_Tax/2482",
+      "forwarded_from": null
     },
     {
       "id": 2481,
@@ -34,12 +35,13 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2481-1-c00786795a1c-v2.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2481-1-c00786795a1c-v2.jpg"
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2481-1-a4301d4ada71-v2.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2481-1-a4301d4ada71-v2.jpg"
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2481"
+      "tg_url": "https://t.me/PG_Tax/2481",
+      "forwarded_from": null
     },
     {
       "id": 2480,
@@ -56,7 +58,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2480"
+      "tg_url": "https://t.me/PG_Tax/2480",
+      "forwarded_from": null
     },
     {
       "id": 2479,
@@ -73,7 +76,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2479"
+      "tg_url": "https://t.me/PG_Tax/2479",
+      "forwarded_from": null
     },
     {
       "id": 2477,
@@ -85,7 +89,13 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2477"
+      "tg_url": "https://t.me/PG_Tax/2477",
+      "forwarded_from": {
+        "source_url": "https://t.me/InvestmentLaw/1043",
+        "channel_url": "https://t.me/s/InvestmentLaw",
+        "channel_username": "InvestmentLaw",
+        "channel_title": "СпецИнвестРежимы"
+      }
     },
     {
       "id": 2476,
@@ -102,7 +112,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2476"
+      "tg_url": "https://t.me/PG_Tax/2476",
+      "forwarded_from": null
     },
     {
       "id": 2475,
@@ -119,7 +130,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2475"
+      "tg_url": "https://t.me/PG_Tax/2475",
+      "forwarded_from": null
     },
     {
       "id": 2474,
@@ -136,7 +148,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2474"
+      "tg_url": "https://t.me/PG_Tax/2474",
+      "forwarded_from": null
     },
     {
       "id": 2473,
@@ -153,7 +166,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2473"
+      "tg_url": "https://t.me/PG_Tax/2473",
+      "forwarded_from": null
     },
     {
       "id": 2472,
@@ -170,7 +184,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2472"
+      "tg_url": "https://t.me/PG_Tax/2472",
+      "forwarded_from": null
     },
     {
       "id": 2471,
@@ -187,7 +202,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2471"
+      "tg_url": "https://t.me/PG_Tax/2471",
+      "forwarded_from": null
     },
     {
       "id": 2470,
@@ -204,7 +220,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2470"
+      "tg_url": "https://t.me/PG_Tax/2470",
+      "forwarded_from": null
     },
     {
       "id": 2469,
@@ -221,7 +238,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2469"
+      "tg_url": "https://t.me/PG_Tax/2469",
+      "forwarded_from": null
     },
     {
       "id": 2468,
@@ -238,7 +256,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2468"
+      "tg_url": "https://t.me/PG_Tax/2468",
+      "forwarded_from": null
     },
     {
       "id": 2467,
@@ -255,7 +274,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2467"
+      "tg_url": "https://t.me/PG_Tax/2467",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1717",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      }
     },
     {
       "id": 2466,
@@ -272,7 +297,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2466"
+      "tg_url": "https://t.me/PG_Tax/2466",
+      "forwarded_from": null
     }
   ]
 }

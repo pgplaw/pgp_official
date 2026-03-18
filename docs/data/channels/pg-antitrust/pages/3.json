@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T10:18:37.047468+00:00",
+  "generated_at": "2026-03-18T10:50:31.526186+00:00",
   "pagination": {
     "page": 3,
     "page_size": 16,
@@ -17,7 +17,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/PgAntitrust/1318"
+      "tg_url": "https://t.me/PgAntitrust/1318",
+      "forwarded_from": null
     }
   ]
 }

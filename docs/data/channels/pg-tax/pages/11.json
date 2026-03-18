@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T10:19:21.070698+00:00",
+  "generated_at": "2026-03-18T10:50:57.812373+00:00",
   "pagination": {
     "page": 11,
     "page_size": 16,
@@ -22,7 +22,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2359"
+      "tg_url": "https://t.me/PG_Tax/2359",
+      "forwarded_from": null
     },
     {
       "id": 2358,
@@ -39,7 +40,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2358"
+      "tg_url": "https://t.me/PG_Tax/2358",
+      "forwarded_from": null
     },
     {
       "id": 2357,
@@ -56,7 +58,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2357"
+      "tg_url": "https://t.me/PG_Tax/2357",
+      "forwarded_from": null
     },
     {
       "id": 2356,
@@ -73,7 +76,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2356"
+      "tg_url": "https://t.me/PG_Tax/2356",
+      "forwarded_from": null
     },
     {
       "id": 2355,
@@ -85,7 +89,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2355"
+      "tg_url": "https://t.me/PG_Tax/2355",
+      "forwarded_from": null
     },
     {
       "id": 2354,
@@ -97,7 +102,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": "https://cdn4.telesco.pe/file/d696b9c99f.mp4?token=teenfL-q1vlyFC-Gvc6YGlB-YP5TJ93a1ntDBYE-ILu5XnloUzjv1iwk5fUM-nAWsLF-dTWiavMTmmTplxTFq6GiWJwi6g3Yx6bvfDNX-1z9g4oBQQYj3ADGDxDiUQN0ujTZDpA0GUMAQ1I6QzKhu9scnQUjeFZqirnsZa64NlwWJ0WOsia_Z9Oo-dMKw4UM0zinEu837g9WTUbCXbWpgo__3DHJ0rjMixWp-yS8vfgQvJX6uzlWZpe9YGn5ZEeDDS6WlIEMD2TmSLEF90VjRrxuH7Hai68wuUdRnYv31CJBXuYdxTDop4VRXNjv6JX1OSPhkaH_EC9EKheJO-F7IA",
-      "tg_url": "https://t.me/PG_Tax/2354"
+      "tg_url": "https://t.me/PG_Tax/2354",
+      "forwarded_from": null
     },
     {
       "id": 2353,
@@ -114,7 +120,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2353"
+      "tg_url": "https://t.me/PG_Tax/2353",
+      "forwarded_from": null
     }
   ]
 }

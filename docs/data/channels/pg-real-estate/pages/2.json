@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T10:19:34.568531+00:00",
+  "generated_at": "2026-03-18T10:51:03.037237+00:00",
   "pagination": {
     "page": 2,
     "page_size": 16,
@@ -22,7 +22,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/205"
+      "tg_url": "https://t.me/PG_RealEstate/205",
+      "forwarded_from": null
     },
     {
       "id": 203,
@@ -34,7 +35,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/203"
+      "tg_url": "https://t.me/PG_RealEstate/203",
+      "forwarded_from": null
     },
     {
       "id": 202,
@@ -51,7 +53,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/202"
+      "tg_url": "https://t.me/PG_RealEstate/202",
+      "forwarded_from": null
     },
     {
       "id": 201,
@@ -63,7 +66,13 @@
       "comments_url": null,
       "photos": [],
       "video_url": "https://cdn4.telesco.pe/file/78dea8eadf.mov?token=jNERMABTY9yPI-tTqOzN3QfplQckdRovEsJlsCgjzpdCZ0Y26Q394iqPJuUZylX0PdoSsXRmWTiDs1QQg3UGm9PoAKBg3SUTzTLCf7a032Mk3XKXeGgjtWQWv8CGrkfbh_-SfKNPNEmr34uzCJeqFdnPQkkCfgZffCPi0Ge_SlVVQr1M7LwYWrfwhstrShimumRIHpKCQLjh7jYsqchPXtyLDGtP0N8moJ4Yi4cywzt-QOVTA2I-SUyvQ5lJRJY5aZxGkvcYK_rF8dmnVi1yTnhTjWYoOk6KMaOrSvkS1E4iAJpJQhPZ0zlOPBvdvCcjZ5kG2d-Gv1de-s58jS9drjnuAJ2Rzywd40LtnQ1UBZFAGlUA7RzPYcj0YqiWm9YUHsS3JvpZxjAzbK1Byi9ve4HgSUUKsmEkWuoZRt8pZiP4xSVsOQ-jNCmE5wuo8U6PHWFqCmbFKI_0FfTiffQFpgI8Doz29eCE7taeWcMP84EfPIIpnTEMPWSf3XYQU5smjovXsW7qHAqGtgciSkp1YWqLzQrhaf9xsr8jtx8Tzakn1IlLTcC1mFyN78QLbDlSv6jU5FHGMrvsm_vCkiqMyfWvW8RCz5dJxydkXSZxtXsLgwfAL506Nj79ElxeTsMSMPTdRMwTDzmNdvcMRpc4umlvAhoXsE4fGwJ-ZVz5q_s",
-      "tg_url": "https://t.me/PG_RealEstate/201"
+      "tg_url": "https://t.me/PG_RealEstate/201",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1662",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      }
     },
     {
       "id": 200,
@@ -80,7 +89,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/200"
+      "tg_url": "https://t.me/PG_RealEstate/200",
+      "forwarded_from": null
     },
     {
       "id": 199,
@@ -97,7 +107,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/199"
+      "tg_url": "https://t.me/PG_RealEstate/199",
+      "forwarded_from": {
+        "source_url": "https://t.me/PG_Tax/2361",
+        "channel_url": "https://t.me/s/PG_Tax",
+        "channel_username": "PG_Tax",
+        "channel_title": "PG Tax | Налоги"
+      }
     },
     {
       "id": 197,
@@ -114,7 +130,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/PG_RealEstate/197"
+      "tg_url": "https://t.me/PG_RealEstate/197",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1653",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      }
     }
   ]
 }

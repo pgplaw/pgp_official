@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T10:20:20.287554+00:00",
+  "generated_at": "2026-03-18T10:51:18.294861+00:00",
   "pagination": {
     "page": 2,
     "page_size": 16,
@@ -17,7 +17,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1285"
+      "tg_url": "https://t.me/pgecology/1285",
+      "forwarded_from": null
     },
     {
       "id": 1284,
@@ -34,7 +35,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1284"
+      "tg_url": "https://t.me/pgecology/1284",
+      "forwarded_from": null
     },
     {
       "id": 1283,
@@ -46,7 +48,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1283"
+      "tg_url": "https://t.me/pgecology/1283",
+      "forwarded_from": null
     },
     {
       "id": 1282,
@@ -63,7 +66,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1282"
+      "tg_url": "https://t.me/pgecology/1282",
+      "forwarded_from": null
     },
     {
       "id": 1281,
@@ -80,7 +84,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1281"
+      "tg_url": "https://t.me/pgecology/1281",
+      "forwarded_from": null
     },
     {
       "id": 1280,
@@ -97,7 +102,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1280"
+      "tg_url": "https://t.me/pgecology/1280",
+      "forwarded_from": null
     },
     {
       "id": 1278,
@@ -109,7 +115,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1278"
+      "tg_url": "https://t.me/pgecology/1278",
+      "forwarded_from": null
     },
     {
       "id": 1277,
@@ -126,7 +133,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1277"
+      "tg_url": "https://t.me/pgecology/1277",
+      "forwarded_from": null
     },
     {
       "id": 1276,
@@ -143,7 +151,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1276"
+      "tg_url": "https://t.me/pgecology/1276",
+      "forwarded_from": null
     },
     {
       "id": 1275,
@@ -160,7 +169,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1275"
+      "tg_url": "https://t.me/pgecology/1275",
+      "forwarded_from": null
     },
     {
       "id": 1274,
@@ -172,7 +182,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1274"
+      "tg_url": "https://t.me/pgecology/1274",
+      "forwarded_from": null
     },
     {
       "id": 1273,
@@ -189,7 +200,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1273"
+      "tg_url": "https://t.me/pgecology/1273",
+      "forwarded_from": null
     },
     {
       "id": 1271,
@@ -201,7 +213,8 @@
       "comments_url": null,
       "photos": [],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1271"
+      "tg_url": "https://t.me/pgecology/1271",
+      "forwarded_from": null
     },
     {
       "id": 1270,
@@ -218,7 +231,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1270"
+      "tg_url": "https://t.me/pgecology/1270",
+      "forwarded_from": null
     },
     {
       "id": 1269,
@@ -235,7 +249,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1269"
+      "tg_url": "https://t.me/pgecology/1269",
+      "forwarded_from": null
     },
     {
       "id": 1268,
@@ -252,7 +267,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgecology/1268"
+      "tg_url": "https://t.me/pgecology/1268",
+      "forwarded_from": null
     }
   ]
 }

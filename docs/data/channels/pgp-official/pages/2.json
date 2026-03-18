@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-18T10:18:16.938084+00:00",
+  "generated_at": "2026-03-18T10:50:24.007769+00:00",
   "pagination": {
     "page": 2,
     "page_size": 16,
@@ -22,7 +22,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1750"
+      "tg_url": "https://t.me/pgp_official/1750",
+      "forwarded_from": {
+        "source_url": "https://t.me/InvestmentLaw/1055",
+        "channel_url": "https://t.me/s/InvestmentLaw",
+        "channel_username": "InvestmentLaw",
+        "channel_title": "СпецИнвестРежимы"
+      }
     },
     {
       "id": 1745,
@@ -55,7 +61,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1745"
+      "tg_url": "https://t.me/pgp_official/1745",
+      "forwarded_from": null
     },
     {
       "id": 1744,
@@ -72,7 +79,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1744"
+      "tg_url": "https://t.me/pgp_official/1744",
+      "forwarded_from": null
     },
     {
       "id": 1742,
@@ -93,7 +101,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1742"
+      "tg_url": "https://t.me/pgp_official/1742",
+      "forwarded_from": null
     },
     {
       "id": 1741,
@@ -110,7 +119,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1741"
+      "tg_url": "https://t.me/pgp_official/1741",
+      "forwarded_from": null
     },
     {
       "id": 1736,
@@ -139,7 +149,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1736"
+      "tg_url": "https://t.me/pgp_official/1736",
+      "forwarded_from": null
     },
     {
       "id": 1735,
@@ -156,7 +167,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1735"
+      "tg_url": "https://t.me/pgp_official/1735",
+      "forwarded_from": null
     },
     {
       "id": 1734,
@@ -168,12 +180,13 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1734-1-7c2074501c6e-v2.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1734-1-7c2074501c6e-v2.jpg"
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1734-1-67c1e0e386b9-v2.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1734-1-67c1e0e386b9-v2.jpg"
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1734"
+      "tg_url": "https://t.me/pgp_official/1734",
+      "forwarded_from": null
     },
     {
       "id": 1733,
@@ -190,7 +203,13 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1733"
+      "tg_url": "https://t.me/pgp_official/1733",
+      "forwarded_from": {
+        "source_url": "https://t.me/bankrotstvo_mustknow/411",
+        "channel_url": "https://t.me/s/bankrotstvo_mustknow",
+        "channel_username": "bankrotstvo_mustknow",
+        "channel_title": "Банкротство | Взгляд эксперта"
+      }
     },
     {
       "id": 1727,
@@ -223,7 +242,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1727"
+      "tg_url": "https://t.me/pgp_official/1727",
+      "forwarded_from": null
     },
     {
       "id": 1726,
@@ -240,7 +260,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1726"
+      "tg_url": "https://t.me/pgp_official/1726",
+      "forwarded_from": null
     },
     {
       "id": 1725,
@@ -257,7 +278,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1725"
+      "tg_url": "https://t.me/pgp_official/1725",
+      "forwarded_from": null
     },
     {
       "id": 1724,
@@ -274,7 +296,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1724"
+      "tg_url": "https://t.me/pgp_official/1724",
+      "forwarded_from": null
     },
     {
       "id": 1723,
@@ -291,7 +314,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1723"
+      "tg_url": "https://t.me/pgp_official/1723",
+      "forwarded_from": null
     },
     {
       "id": 1721,
@@ -312,7 +336,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1721"
+      "tg_url": "https://t.me/pgp_official/1721",
+      "forwarded_from": null
     },
     {
       "id": 1720,
@@ -329,7 +354,8 @@
         }
       ],
       "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1720"
+      "tg_url": "https://t.me/pgp_official/1720",
+      "forwarded_from": null
     }
   ]
 }
