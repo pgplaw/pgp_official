@@ -530,7 +530,9 @@ a {
 }
 
 .post-card__media button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   padding: 0;
   border: 0;
@@ -553,7 +555,8 @@ a {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   background: rgba(0, 0, 0, 0.08);
 }
 
