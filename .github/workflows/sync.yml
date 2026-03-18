@@ -54,6 +54,27 @@ jobs:
           TELEGRAM_SESSION_STR: ${{ secrets.TELEGRAM_SESSION_STR }}
         run: node scripts/sync_channels.mjs
 
+      - name: Show sync diagnostics
+        if: always()
+        run: |
+          git status --short
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          base = Path("docs/data/channels")
+          for posts_path in sorted(base.glob("*/posts.json")):
+              try:
+                  payload = json.loads(posts_path.read_text("utf-8"))
+              except Exception as error:
+                  print(f"{posts_path}: failed to read ({error})")
+                  continue
+
+              generated_at = payload.get("generated_at")
+              total_posts = payload.get("pagination", {}).get("total_posts")
+              print(f"{posts_path}: generated_at={generated_at}, total_posts={total_posts}")
+          PY
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
