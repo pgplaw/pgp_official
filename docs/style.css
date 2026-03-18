@@ -56,8 +56,27 @@ a {
   color: inherit;
 }
 
+a,
+button,
+input,
+label,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .hidden {
   display: none !important;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  a:focus:not(:focus-visible),
+  button:focus:not(:focus-visible),
+  input:focus:not(:focus-visible),
+  label:focus:not(:focus-visible),
+  [role="button"]:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+  }
 }
 
 .site-shell {
