@@ -23,6 +23,7 @@ const state = {
   syncStatusPollId: null,
   deferredInstallPrompt: null,
   copyToastTimeoutId: null,
+  channelAccentCache: {},
 };
 
 const elements = {
@@ -148,6 +149,179 @@ function normalizePhoto(photo) {
     thumb_url: thumbUrl || fullUrl,
     full_url: fullUrl || thumbUrl,
   };
+}
+
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function componentToHex(value) {
+  return clamp(Math.round(value), 0, 255).toString(16).padStart(2, '0');
+}
+
+function rgbToHex(r, g, b) {
+  return `#${componentToHex(r)}${componentToHex(g)}${componentToHex(b)}`;
+}
+
+function hexToRgb(hex) {
+  const value = String(hex || '').trim().replace(/^#/, '');
+  if (!/^[\da-f]{6}$/i.test(value)) return null;
+  return {
+    r: Number.parseInt(value.slice(0, 2), 16),
+    g: Number.parseInt(value.slice(2, 4), 16),
+    b: Number.parseInt(value.slice(4, 6), 16),
+  };
+}
+
+function mixHexColors(baseHex, targetHex, ratio) {
+  const base = hexToRgb(baseHex);
+  const target = hexToRgb(targetHex);
+  if (!base || !target) return baseHex;
+  const weight = clamp(ratio, 0, 1);
+  return rgbToHex(
+    base.r + (target.r - base.r) * weight,
+    base.g + (target.g - base.g) * weight,
+    base.b + (target.b - base.b) * weight,
+  );
+}
+
+function hexToRgba(hex, alpha) {
+  const rgb = hexToRgb(hex);
+  if (!rgb) return `rgba(145, 39, 141, ${alpha})`;
+  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
+}
+
+function normalizeAccentHex(hex) {
+  const rgb = hexToRgb(hex);
+  if (!rgb) return '#91278d';
+
+  const max = Math.max(rgb.r, rgb.g, rgb.b);
+  const min = Math.min(rgb.r, rgb.g, rgb.b);
+  const brightness = (rgb.r + rgb.g + rgb.b) / 3;
+  const chroma = max - min;
+
+  let normalized = rgbToHex(rgb.r, rgb.g, rgb.b);
+
+  if (chroma < 24) {
+    normalized = mixHexColors(normalized, '#91278d', 0.42);
+  }
+
+  if (brightness > 214) {
+    normalized = mixHexColors(normalized, '#2b233f', 0.34);
+  } else if (brightness < 62) {
+    normalized = mixHexColors(normalized, '#ffffff', 0.2);
+  }
+
+  return normalized;
+}
+
+function buildChannelAccentStyle(channel) {
+  const accentHex = normalizeAccentHex(state.channelAccentCache[channel.key] || channel.accent_color || '#91278d');
+  const strongHex = mixHexColors(accentHex, '#1f1934', 0.24);
+  const borderColor = hexToRgba(accentHex, 0.34);
+  const glowColor = hexToRgba(accentHex, 0.28);
+  const ringColor = hexToRgba(accentHex, 0.16);
+
+  return [
+    `--channel-active:${accentHex}`,
+    `--channel-active-strong:${strongHex}`,
+    `--channel-active-border:${borderColor}`,
+    `--channel-active-glow:${glowColor}`,
+    `--channel-active-ring:${ringColor}`,
+  ].join(';');
+}
+
+async function extractAccentColorFromImage(src) {
+  if (!src) return null;
+
+  return new Promise((resolve) => {
+    const image = new Image();
+    image.decoding = 'async';
+    image.crossOrigin = 'anonymous';
+
+    image.onload = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = 24;
+        canvas.height = 24;
+        const context = canvas.getContext('2d', { willReadFrequently: true });
+        if (!context) {
+          resolve(null);
+          return;
+        }
+
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+        const data = context.getImageData(0, 0, canvas.width, canvas.height).data;
+
+        let weightedR = 0;
+        let weightedG = 0;
+        let weightedB = 0;
+        let weightedTotal = 0;
+        let fallbackR = 0;
+        let fallbackG = 0;
+        let fallbackB = 0;
+        let fallbackTotal = 0;
+
+        for (let index = 0; index < data.length; index += 4) {
+          const alpha = data[index + 3];
+          if (alpha < 160) continue;
+
+          const red = data[index];
+          const green = data[index + 1];
+          const blue = data[index + 2];
+
+          fallbackR += red;
+          fallbackG += green;
+          fallbackB += blue;
+          fallbackTotal += 1;
+
+          const max = Math.max(red, green, blue);
+          const min = Math.min(red, green, blue);
+          const chroma = max - min;
+          const brightness = (red + green + blue) / 3;
+
+          if (brightness < 22 || brightness > 245) continue;
+
+          const weight = Math.max(chroma, 18);
+          weightedR += red * weight;
+          weightedG += green * weight;
+          weightedB += blue * weight;
+          weightedTotal += weight;
+        }
+
+        if (weightedTotal > 0) {
+          resolve(rgbToHex(weightedR / weightedTotal, weightedG / weightedTotal, weightedB / weightedTotal));
+          return;
+        }
+
+        if (fallbackTotal > 0) {
+          resolve(rgbToHex(fallbackR / fallbackTotal, fallbackG / fallbackTotal, fallbackB / fallbackTotal));
+          return;
+        }
+
+        resolve(null);
+      } catch (_) {
+        resolve(null);
+      }
+    };
+
+    image.onerror = () => resolve(null);
+    image.src = src;
+  });
+}
+
+async function ensureChannelAccent(channel) {
+  const channelKey = channel?.key || state.activeChannelKey;
+  const avatarPath = channel?.avatar_path;
+  if (!channelKey || !avatarPath || state.channelAccentCache[channelKey]) return;
+
+  const accentHex = await extractAccentColorFromImage(avatarPath);
+  if (!accentHex) return;
+
+  state.channelAccentCache[channelKey] = accentHex;
+  if (channelKey === state.activeChannelKey) {
+    renderChannelMenu();
+  }
 }
 
 function getChannelKeyFromLocation() {
@@ -404,14 +578,15 @@ function renderChannelMenu() {
     const title = parts[1] || channel.menu_title || channel.channel_title || rawLabel;
     const subtitle = channel.menu_subtitle || parts[0] || `@${channel.channel_username || 'channel'}`;
     return `
-      <button
-        class="channel-tab${isActive ? ' is-active' : ''}"
-        type="button"
-        data-channel-key="${channel.key}"
-        aria-pressed="${isActive ? 'true' : 'false'}"
-        aria-label="${escapeHtml(rawLabel)}"
-        title="${escapeHtml(rawLabel)}"
-      >
+        <button
+          class="channel-tab${isActive ? ' is-active' : ''}"
+          type="button"
+          data-channel-key="${channel.key}"
+          ${isActive ? `style="${escapeHtml(buildChannelAccentStyle(channel))}"` : ''}
+          aria-pressed="${isActive ? 'true' : 'false'}"
+          aria-label="${escapeHtml(rawLabel)}"
+          title="${escapeHtml(rawLabel)}"
+        >
         <span class="channel-tab__meta">${isActive ? 'Открыт' : 'Канал'}</span>
         <span class="channel-tab__title">${formatTextWithSoftBreaks(title)}</span>
         <span class="channel-tab__subtitle">${formatTextWithSoftBreaks(subtitle)}</span>
@@ -867,6 +1042,11 @@ async function loadFeed(channelKey, force = false) {
     state.loadedPages = new Set(state.posts.length ? [1] : []);
 
     renderHeader(state.feed.site || getActiveChannelMeta() || getCatalogSite(), state.feed.generated_at);
+    void ensureChannelAccent({
+      ...getActiveChannelMeta(),
+      ...(state.feed.site || {}),
+      key: channelKey,
+    });
     elements.loadingState.classList.add('hidden');
 
     if (!state.posts.length) {

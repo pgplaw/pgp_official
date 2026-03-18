@@ -178,11 +178,11 @@ a {
 }
 
 .channel-tab.is-active {
-  border-color: rgba(255, 255, 255, 0.16);
-  background: linear-gradient(135deg, #91278d 0%, #6f196c 100%);
+  border-color: var(--channel-active-border, rgba(255, 255, 255, 0.16));
+  background: linear-gradient(135deg, var(--channel-active, #91278d) 0%, var(--channel-active-strong, #6f196c) 100%);
   color: white;
   box-shadow:
-    0 20px 38px rgba(145, 39, 141, 0.28),
+    0 20px 38px var(--channel-active-glow, rgba(145, 39, 141, 0.28)),
     inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
@@ -201,7 +201,7 @@ a {
   height: 9px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 4px var(--channel-active-ring, rgba(255, 255, 255, 0.12));
   animation: active-tab-pulse 1.9s ease-in-out infinite;
 }
 
