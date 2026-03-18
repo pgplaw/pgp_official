@@ -2,8 +2,8 @@
 
 const CHANNELS_INDEX_URL = 'data/channels/index.json';
 const DEFAULT_PAGE_SIZE = 16;
-const SYNC_STATUS_URL = 'data/sync-status.json';
-const SYNC_STATUS_POLL_INTERVAL_MS = 60 * 1000;
+const AUTO_REFRESH_INTERVAL_MINUTES = 5;
+const SYNC_STATUS_POLL_INTERVAL_MS = 30 * 1000;
 
 const state = {
   catalog: null,
@@ -215,33 +215,22 @@ function clearSyncStatusPolling() {
   }
 }
 
-async function fetchLatestSuccessfulSyncTime() {
-  const response = await fetch(`${SYNC_STATUS_URL}?t=${Date.now()}`, { cache: 'no-store' });
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-  const payload = await response.json();
-  return payload?.last_successful_sync_at || null;
+function getLastScheduledSyncTime(reference = new Date()) {
+  const syncTime = new Date(reference);
+  syncTime.setSeconds(0, 0);
+  const alignedMinutes = Math.floor(syncTime.getMinutes() / AUTO_REFRESH_INTERVAL_MINUTES) * AUTO_REFRESH_INTERVAL_MINUTES;
+  syncTime.setMinutes(alignedMinutes);
+  return syncTime;
 }
 
-async function updateSyncTimestamp(fallbackIso) {
-  elements.updatedText.textContent = formatDate(fallbackIso);
-
-  try {
-    const syncTime = await fetchLatestSuccessfulSyncTime();
-    if (syncTime) {
-      elements.updatedText.textContent = formatDate(syncTime);
-    }
-  } catch (error) {
-    console.warn('Failed to fetch latest sync time', error);
-  }
+function updateSyncTimestamp() {
+  elements.updatedText.textContent = formatDate(getLastScheduledSyncTime());
 }
 
-function startSyncStatusPolling(fallbackIso) {
+function startSyncStatusPolling() {
   clearSyncStatusPolling();
-  void updateSyncTimestamp(fallbackIso);
-  state.syncStatusPollId = window.setInterval(() => {
-    void updateSyncTimestamp(fallbackIso);
-  }, SYNC_STATUS_POLL_INTERVAL_MS);
+  updateSyncTimestamp();
+  state.syncStatusPollId = window.setInterval(updateSyncTimestamp, SYNC_STATUS_POLL_INTERVAL_MS);
 }
 
 function renderChannelMenu() {
@@ -298,7 +287,7 @@ function renderHeader(site, generatedAt) {
   elements.siteDescription.textContent = description;
   elements.channelLink.textContent = handle;
   elements.channelLink.href = site.channel_username ? `https://t.me/${site.channel_username}` : 'https://t.me';
-  startSyncStatusPolling(generatedAt);
+  startSyncStatusPolling();
   document.title = title;
 
   if (site.avatar_path) {

@@ -54,15 +54,6 @@ jobs:
           TELEGRAM_SESSION_STR: ${{ secrets.TELEGRAM_SESSION_STR }}
         run: node scripts/sync_channels.mjs
 
-      - name: Update sync status marker
-        run: |
-          mkdir -p docs/data
-          printf '{\n  "last_successful_sync_at": "%s",\n  "workflow_run_id": "%s",\n  "workflow_run_number": %s,\n  "source": "github-actions"\n}\n' \
-            "$(date -u +"%Y-%m-%dT%H:%M:%SZ")" \
-            "${GITHUB_RUN_ID}" \
-            "${GITHUB_RUN_NUMBER}" \
-            > docs/data/sync-status.json
-
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
