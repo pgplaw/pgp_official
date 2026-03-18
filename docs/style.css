@@ -550,6 +550,15 @@ a {
   background: var(--media-fill, rgba(0, 0, 0, 0.08));
 }
 
+@media (min-width: 861px) {
+  .post-card__media:not(.post-card__media--gallery) .media-trigger[data-low-res="true"] img {
+    width: min(100%, var(--media-max-width, 100%));
+    height: auto;
+    max-height: clamp(220px, 28vw, 360px);
+    margin: 0 auto;
+  }
+}
+
 .post-card__media--gallery img,
 .post-card__media--gallery video {
   display: block;

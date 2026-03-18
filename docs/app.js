@@ -445,9 +445,18 @@ function applyMediaFill(image) {
   if (!trigger || trigger.dataset.fillReady === 'true') return;
 
   const fillColor = getAverageEdgeColor(image);
+  const naturalWidth = image.naturalWidth || image.width || 0;
+  const naturalHeight = image.naturalHeight || image.height || 0;
   if (!fillColor) return;
 
   trigger.style.setProperty('--media-fill', fillColor);
+  if (naturalWidth > 0 && naturalHeight > 0) {
+    const isLowResWideBanner = naturalWidth <= 1100 && naturalWidth / naturalHeight >= 1.6;
+    if (isLowResWideBanner) {
+      trigger.dataset.lowRes = 'true';
+      trigger.style.setProperty('--media-max-width', `${Math.max(560, Math.round(naturalWidth * 0.9))}px`);
+    }
+  }
   trigger.dataset.fillReady = 'true';
 }
 
