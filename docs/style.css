@@ -367,18 +367,18 @@ a {
 
 .icon-button {
   appearance: none;
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
-  background: linear-gradient(135deg, #91278d 0%, #6f196c 100%);
+  background: linear-gradient(145deg, #9a2c95 0%, #74206f 100%);
   color: #fff;
   box-shadow:
-    0 14px 28px rgba(145, 39, 141, 0.24),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    0 12px 24px rgba(145, 39, 141, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
   cursor: pointer;
   transition:
     transform 0.18s ease,
@@ -389,28 +389,28 @@ a {
 
 .icon-button:hover {
   transform: translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.18);
   box-shadow:
-    0 18px 34px rgba(145, 39, 141, 0.3),
+    0 16px 30px rgba(145, 39, 141, 0.26),
     inset 0 1px 0 rgba(255, 255, 255, 0.14);
-  filter: saturate(1.05);
+  filter: saturate(1.03);
 }
 
 .icon-button svg,
 .theme-toggle svg {
-  width: 20px;
-  height: 20px;
+  width: 19px;
+  height: 19px;
   stroke: currentColor;
-  stroke-width: 1.85;
+  stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
 }
 
 .icon-button--refresh svg {
-  width: 21px;
-  height: 21px;
-  transform: translate(0.25px, 0.25px);
+  width: 20px;
+  height: 20px;
+  transform: translate(0.15px, 0.15px);
 }
 
 .theme-toggle {
@@ -428,14 +428,14 @@ a {
 
 .theme-toggle__track {
   position: relative;
-  width: 88px;
-  height: 50px;
+  width: 86px;
+  height: 48px;
   display: block;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--bg-strong) 96%, white 4%), color-mix(in srgb, var(--bg-strong) 88%, transparent 12%));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg-strong) 97%, white 3%), color-mix(in srgb, var(--bg-strong) 91%, transparent 9%));
   box-shadow:
-    0 14px 28px rgba(39, 44, 62, 0.1),
+    0 12px 24px rgba(39, 44, 62, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
   transition:
     border-color 0.18s ease,
@@ -446,7 +446,7 @@ a {
 .theme-toggle:hover .theme-toggle__track {
   border-color: rgba(145, 39, 141, 0.24);
   box-shadow:
-    0 16px 30px rgba(39, 44, 62, 0.12),
+    0 14px 26px rgba(39, 44, 62, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
@@ -460,33 +460,33 @@ a {
   width: 18px;
   height: 18px;
   transform: translateY(-50%);
-  color: color-mix(in srgb, var(--muted) 80%, var(--text) 20%);
-  opacity: 0.72;
+  color: color-mix(in srgb, var(--muted) 82%, var(--text) 18%);
+  opacity: 0.68;
   transition: color 0.18s ease, opacity 0.18s ease;
 }
 
 .theme-toggle__icon--sun {
-  left: 14px;
+  left: 13px;
 }
 
 .theme-toggle__icon--moon {
-  right: 14px;
+  right: 13px;
 }
 
 .theme-toggle__thumb {
   position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 40px;
-  height: 40px;
+  top: 4px;
+  left: 4px;
+  width: 38px;
+  height: 38px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: linear-gradient(135deg, #ffffff 0%, #ece9f2 100%);
+  background: linear-gradient(145deg, #ffffff 0%, #efeaf5 100%);
   color: #91278d;
   box-shadow:
-    0 10px 18px rgba(39, 44, 62, 0.16),
+    0 8px 16px rgba(39, 44, 62, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
   transform: translateX(0);
   transition:
@@ -501,15 +501,15 @@ a {
 }
 
 .theme-toggle__input:checked + .theme-toggle__track {
-  background: linear-gradient(180deg, color-mix(in srgb, var(--bg-strong) 96%, #2d3348 4%), color-mix(in srgb, var(--bg-strong) 92%, #111624 8%));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg-strong) 97%, #2c3245 3%), color-mix(in srgb, var(--bg-strong) 93%, #111624 7%));
   border-color: rgba(206, 174, 226, 0.24);
 }
 
 .theme-toggle__input:checked + .theme-toggle__track .theme-toggle__thumb {
-  transform: translateX(38px);
-  background: linear-gradient(135deg, #3f4761 0%, #1f2435 100%);
+  transform: translateX(40px);
+  background: linear-gradient(145deg, #434b66 0%, #22283a 100%);
   box-shadow:
-    0 10px 20px rgba(0, 0, 0, 0.26),
+    0 8px 18px rgba(0, 0, 0, 0.24),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
