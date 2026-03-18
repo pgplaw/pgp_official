@@ -26,6 +26,7 @@ const state = {
   channelAccentCache: {},
   channelCarouselTouch: null,
   channelCarouselAnimating: false,
+  channelCarouselPendingEntryDirection: null,
 };
 
 const elements = {
@@ -621,15 +622,10 @@ async function moveChannelCarousel(offset) {
       cleanupChannelCarouselSurface(surface);
       surface.classList.add(direction === 'next' ? 'is-exiting-next' : 'is-exiting-prev');
       await sleep(CHANNEL_CAROUSEL_ANIMATION_MS - 25);
+      state.channelCarouselPendingEntryDirection = direction;
     }
 
     await switchChannel(nextChannelKey, { scrollToTop: true });
-
-    if (shouldAnimate) {
-      requestAnimationFrame(() => {
-        animateChannelCarouselEntry(direction);
-      });
-    }
   } finally {
     state.channelCarouselAnimating = false;
   }
@@ -965,6 +961,14 @@ function renderMobileChannelCarousel() {
       </button>
     </div>
   `;
+
+  const pendingDirection = state.channelCarouselPendingEntryDirection;
+  if (pendingDirection && isMobileCarouselViewport() && !prefersReducedMotion()) {
+    state.channelCarouselPendingEntryDirection = null;
+    requestAnimationFrame(() => {
+      animateChannelCarouselEntry(pendingDirection);
+    });
+  }
 }
 
 function formatTextWithSoftBreaks(value) {
