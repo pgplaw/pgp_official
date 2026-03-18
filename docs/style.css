@@ -118,6 +118,13 @@ label,
 
 .channel-carousel {
   display: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.channel-carousel__stage {
+  position: relative;
+  min-height: 96px;
 }
 
 @media (max-width: 1180px) and (min-width: 861px) {
@@ -264,6 +271,15 @@ label,
   color: #fff;
   touch-action: pan-y;
   will-change: transform, opacity;
+  position: relative;
+  z-index: 1;
+}
+
+.channel-carousel__ghost {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .channel-carousel__content {
@@ -367,8 +383,8 @@ label,
     opacity: 1;
   }
   to {
-    transform: translate3d(-28px, 0, 0);
-    opacity: 0;
+    transform: translate3d(-40px, 0, 0);
+    opacity: 0.24;
   }
 }
 
@@ -378,15 +394,15 @@ label,
     opacity: 1;
   }
   to {
-    transform: translate3d(28px, 0, 0);
-    opacity: 0;
+    transform: translate3d(40px, 0, 0);
+    opacity: 0.24;
   }
 }
 
 @keyframes channel-carousel-in-next {
   from {
-    transform: translate3d(28px, 0, 0);
-    opacity: 0;
+    transform: translate3d(40px, 0, 0);
+    opacity: 0.28;
   }
   to {
     transform: translate3d(0, 0, 0);
@@ -396,8 +412,8 @@ label,
 
 @keyframes channel-carousel-in-prev {
   from {
-    transform: translate3d(-28px, 0, 0);
-    opacity: 0;
+    transform: translate3d(-40px, 0, 0);
+    opacity: 0.28;
   }
   to {
     transform: translate3d(0, 0, 0);
@@ -1521,11 +1537,15 @@ label,
   }
 
   .channel-carousel__surface {
+      min-height: 88px;
+      grid-template-columns: 40px minmax(0, 1fr) 40px;
+      gap: 8px;
+      padding: 10px 10px;
+      border-radius: 20px;
+    }
+
+  .channel-carousel__stage {
     min-height: 88px;
-    grid-template-columns: 40px minmax(0, 1fr) 40px;
-    gap: 8px;
-    padding: 10px 10px;
-    border-radius: 20px;
   }
 
   .channel-carousel__nav {
