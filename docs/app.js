@@ -23,10 +23,12 @@ const state = {
   deferredInstallPrompt: null,
   copyToastTimeoutId: null,
   channelAccentCache: {},
+  channelCarouselTouch: null,
 };
 
 const elements = {
   channelMenu: document.getElementById('channelMenu'),
+  channelCarousel: document.getElementById('channelCarousel'),
   siteTitle: document.getElementById('siteTitle'),
   siteDescription: document.getElementById('siteDescription'),
   channelAvatarWrap: document.getElementById('channelAvatarWrap'),
@@ -342,6 +344,30 @@ function scrollPageToTop() {
 
 function getChannelByKey(channelKey) {
   return getCatalogChannels().find((channel) => channel.key === channelKey) || null;
+}
+
+function getChannelIndex(channelKey) {
+  return getCatalogChannels().findIndex((channel) => channel.key === channelKey);
+}
+
+function getRelativeChannelKey(offset) {
+  const channels = getCatalogChannels();
+  if (!channels.length) return null;
+
+  const currentIndex = getChannelIndex(state.activeChannelKey);
+  const safeIndex = currentIndex >= 0 ? currentIndex : 0;
+  const nextIndex = (safeIndex + offset + channels.length) % channels.length;
+  return channels[nextIndex]?.key || null;
+}
+
+function getChannelMenuLabels(channel) {
+  const rawLabel = channel?.label || channel?.channel_title || channel?.channel_username || 'Channel';
+  const parts = rawLabel.split('|').map((part) => part.trim()).filter(Boolean);
+  return {
+    rawLabel,
+    title: parts[1] || channel?.menu_title || channel?.channel_title || rawLabel,
+    subtitle: channel?.menu_subtitle || parts[0] || `@${channel?.channel_username || 'channel'}`,
+  };
 }
 
 function resolveChannelKey(requestedKey) {
@@ -664,6 +690,57 @@ function setupChannelMenuWheelScroll() {
   }, { passive: false });
 }
 
+function setupChannelCarouselInteractions() {
+  if (!elements.channelCarousel || elements.channelCarousel.dataset.carouselBound === 'true') return;
+
+  elements.channelCarousel.dataset.carouselBound = 'true';
+
+  elements.channelCarousel.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-channel-shift]');
+    if (!button) return;
+
+    const shift = Number(button.dataset.channelShift || '0');
+    if (!shift) return;
+
+    const nextChannelKey = getRelativeChannelKey(shift);
+    if (!nextChannelKey || nextChannelKey === state.activeChannelKey) return;
+    void switchChannel(nextChannelKey, { scrollToTop: true });
+  });
+
+  elements.channelCarousel.addEventListener('touchstart', (event) => {
+    const surface = event.target.closest('[data-channel-carousel-surface]');
+    if (!surface || event.touches.length !== 1) return;
+
+    const touch = event.touches[0];
+    state.channelCarouselTouch = {
+      x: touch.clientX,
+      y: touch.clientY,
+    };
+  }, { passive: true });
+
+  elements.channelCarousel.addEventListener('touchend', (event) => {
+    const touchState = state.channelCarouselTouch;
+    state.channelCarouselTouch = null;
+    if (!touchState || !event.changedTouches.length) return;
+
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - touchState.x;
+    const deltaY = touch.clientY - touchState.y;
+
+    if (Math.abs(deltaX) < 42 || Math.abs(deltaX) <= Math.abs(deltaY)) {
+      return;
+    }
+
+    const nextChannelKey = getRelativeChannelKey(deltaX < 0 ? 1 : -1);
+    if (!nextChannelKey || nextChannelKey === state.activeChannelKey) return;
+    void switchChannel(nextChannelKey, { scrollToTop: true });
+  }, { passive: true });
+
+  elements.channelCarousel.addEventListener('touchcancel', () => {
+    state.channelCarouselTouch = null;
+  }, { passive: true });
+}
+
 function getInstallFallbackMessage() {
   if (isStandaloneMode()) {
     return 'Приложение уже установлено';
@@ -729,10 +806,7 @@ function renderChannelMenu() {
   elements.channelMenu.style.setProperty('--channel-count', String(channels.length || 1));
   elements.channelMenu.innerHTML = channels.map((channel) => {
     const isActive = channel.key === state.activeChannelKey;
-    const rawLabel = channel.label || channel.channel_title || channel.channel_username || 'Channel';
-    const parts = rawLabel.split('|').map((part) => part.trim()).filter(Boolean);
-    const title = parts[1] || channel.menu_title || channel.channel_title || rawLabel;
-    const subtitle = channel.menu_subtitle || parts[0] || `@${channel.channel_username || 'channel'}`;
+    const { rawLabel, title, subtitle } = getChannelMenuLabels(channel);
     return `
         <button
           class="channel-tab${isActive ? ' is-active' : ''}"
@@ -749,6 +823,55 @@ function renderChannelMenu() {
       </button>
     `;
   }).join('');
+
+  renderMobileChannelCarousel();
+}
+
+function renderMobileChannelCarousel() {
+  if (!elements.channelCarousel) return;
+
+  const channels = getCatalogChannels();
+  if (!channels.length) {
+    elements.channelCarousel.innerHTML = '';
+    return;
+  }
+
+  const activeIndex = Math.max(0, getChannelIndex(state.activeChannelKey));
+  const activeChannel = channels[activeIndex] || channels[0];
+  const { title, subtitle, rawLabel } = getChannelMenuLabels(activeChannel);
+  const hasMultiple = channels.length > 1;
+
+  elements.channelCarousel.innerHTML = `
+    <div class="channel-carousel__surface" style="${escapeHtml(buildChannelAccentStyle(activeChannel))}" data-channel-carousel-surface="true" aria-label="${escapeHtml(rawLabel)}">
+      <button
+        class="channel-carousel__nav channel-carousel__nav--prev"
+        type="button"
+        data-channel-shift="-1"
+        aria-label="Предыдущий канал"
+        ${hasMultiple ? '' : 'disabled'}
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m14.5 6.5-5.5 5.5 5.5 5.5" />
+        </svg>
+      </button>
+      <div class="channel-carousel__content">
+        <span class="channel-carousel__meta">Канал ${activeIndex + 1} из ${channels.length}</span>
+        <span class="channel-carousel__title">${formatTextWithSoftBreaks(title)}</span>
+        <span class="channel-carousel__subtitle">${formatTextWithSoftBreaks(subtitle)}</span>
+      </div>
+      <button
+        class="channel-carousel__nav channel-carousel__nav--next"
+        type="button"
+        data-channel-shift="1"
+        aria-label="Следующий канал"
+        ${hasMultiple ? '' : 'disabled'}
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m9.5 6.5 5.5 5.5-5.5 5.5" />
+        </svg>
+      </button>
+    </div>
+  `;
 }
 
 function formatTextWithSoftBreaks(value) {
@@ -1382,6 +1505,7 @@ if ('serviceWorker' in navigator) {
 }
 
 setupChannelMenuWheelScroll();
+setupChannelCarouselInteractions();
 attachCopyInteractions();
 loadCatalog();
 updateInstallButtonState();
