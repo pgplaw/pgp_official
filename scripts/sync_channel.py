@@ -34,12 +34,13 @@ PAGES_DIR = CHANNEL_DATA_DIR / "pages"
 POST_DETAILS_DIR = CHANNEL_DATA_DIR / "posts"
 POSTS_MEDIA_DIR = CHANNEL_DATA_DIR / "media" / "posts"
 POSTS_THUMBS_DIR = POSTS_MEDIA_DIR / "thumbs"
+POSTS_FEED_DIR = POSTS_MEDIA_DIR / "feed"
 CHANNEL_MEDIA_DIR = CHANNEL_DATA_DIR / "media"
 CHANNEL_AVATAR_PATH = CHANNEL_MEDIA_DIR / "channel-avatar.jpg"
 POST_PAGES_DIR = DOCS_DIR / "channels" / CHANNEL_KEY / "posts" if CHANNEL_KEY else DOCS_DIR / "posts"
 MANIFEST_PATH = DOCS_DIR / "manifest.webmanifest"
 FEED_PAGE_SIZE = 16
-IMAGE_VARIANT_VERSION = "v4"
+IMAGE_VARIANT_VERSION = "v5"
 
 BASE_HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; TelegramPagesMirror/1.0)",
@@ -255,22 +256,27 @@ def normalize_photo_entry(photo: Any) -> dict[str, str] | None:
         relative_url = photo.lstrip("./")
         return {
             "thumb_url": relative_url,
+            "feed_url": relative_url,
             "full_url": relative_url,
         }
     if isinstance(photo, dict):
         thumb_url = (photo.get("thumb_url") or photo.get("thumb") or photo.get("url") or "").lstrip("./")
         full_url = (photo.get("full_url") or photo.get("full") or photo.get("url") or thumb_url).lstrip("./")
+        feed_url = (photo.get("feed_url") or photo.get("feed") or full_url or thumb_url).lstrip("./")
         if not thumb_url and full_url:
             thumb_url = full_url
+        if not feed_url and full_url:
+            feed_url = full_url
         if thumb_url and full_url:
             return {
                 "thumb_url": thumb_url,
+                "feed_url": feed_url or full_url,
                 "full_url": full_url,
             }
     return None
 
 
-def optimize_image_variants(raw_bytes: bytes, full_path: Path, thumb_path: Path) -> bool:
+def optimize_image_variants(raw_bytes: bytes, full_path: Path, feed_path: Path, thumb_path: Path) -> bool:
     changes_detected = False
     try:
         from PIL import Image, ImageFilter, ImageOps
@@ -290,42 +296,75 @@ def optimize_image_variants(raw_bytes: bytes, full_path: Path, thumb_path: Path)
             elif image.mode == "L":
                 image = image.convert("RGB")
 
-            keep_original_jpeg = (
-                original_format in {"JPEG", "JPG"}
-                and max(original_size) <= 1400
-                and len(raw_bytes) <= 1_500_000
+            def write_bytes_if_changed(path: Path, content: bytes) -> None:
+                nonlocal changes_detected
+                path.parent.mkdir(parents=True, exist_ok=True)
+                if not path.exists() or path.read_bytes() != content:
+                    path.write_bytes(content)
+                    changes_detected = True
+
+            def save_variant(
+                *,
+                path: Path,
+                max_size: tuple[int, int],
+                quality: int,
+                sharpen_radius: float,
+                sharpen_percent: int,
+                preserve_max_dimension: int,
+                preserve_max_bytes: int,
+            ) -> None:
+                keep_original_jpeg = (
+                    original_format in {"JPEG", "JPG"}
+                    and max(original_size) <= preserve_max_dimension
+                    and len(raw_bytes) <= preserve_max_bytes
+                )
+                if keep_original_jpeg:
+                    write_bytes_if_changed(path, raw_bytes)
+                    return
+
+                variant = image.copy()
+                variant.thumbnail(max_size, resampling)
+                variant = variant.filter(
+                    ImageFilter.UnsharpMask(radius=sharpen_radius, percent=sharpen_percent, threshold=2)
+                )
+                buffer = io.BytesIO()
+                variant.save(buffer, format="JPEG", quality=quality, optimize=True, progressive=True)
+                write_bytes_if_changed(path, buffer.getvalue())
+
+            save_variant(
+                path=full_path,
+                max_size=(2600, 2600),
+                quality=93,
+                sharpen_radius=0.75,
+                sharpen_percent=108,
+                preserve_max_dimension=2600,
+                preserve_max_bytes=4_000_000,
             )
-
-            if keep_original_jpeg:
-                if not full_path.exists() or full_path.read_bytes() != raw_bytes:
-                    full_path.write_bytes(raw_bytes)
-                    changes_detected = True
-
-                if not thumb_path.exists() or thumb_path.read_bytes() != raw_bytes:
-                    thumb_path.write_bytes(raw_bytes)
-                    changes_detected = True
-            else:
-                full_image = image.copy()
-                full_image.thumbnail((2400, 2400), resampling)
-                full_image = full_image.filter(ImageFilter.UnsharpMask(radius=0.8, percent=115, threshold=2))
-                if not full_path.exists():
-                    full_image.save(full_path, format="JPEG", quality=92, optimize=True, progressive=True)
-                    changes_detected = True
-
-                thumb_image = image.copy()
-                thumb_image.thumbnail((1280, 1280), resampling)
-                thumb_image = thumb_image.filter(ImageFilter.UnsharpMask(radius=0.7, percent=135, threshold=2))
-                if not thumb_path.exists():
-                    thumb_image.save(thumb_path, format="JPEG", quality=88, optimize=True, progressive=True)
-                    changes_detected = True
+            save_variant(
+                path=feed_path,
+                max_size=(1800, 1800),
+                quality=91,
+                sharpen_radius=0.72,
+                sharpen_percent=118,
+                preserve_max_dimension=1800,
+                preserve_max_bytes=3_000_000,
+            )
+            save_variant(
+                path=thumb_path,
+                max_size=(1280, 1280),
+                quality=89,
+                sharpen_radius=0.7,
+                sharpen_percent=132,
+                preserve_max_dimension=1280,
+                preserve_max_bytes=1_500_000,
+            )
     except Exception as error:  # pragma: no cover - runtime/image libs path
         log.warning("Image optimization fallback used: %s", error)
-        if not full_path.exists():
-            full_path.write_bytes(raw_bytes)
-            changes_detected = True
-        if not thumb_path.exists():
-            thumb_path.write_bytes(raw_bytes)
-            changes_detected = True
+        for path in (full_path, feed_path, thumb_path):
+            if not path.exists():
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(raw_bytes)
+                changes_detected = True
 
     return changes_detected
 
@@ -430,6 +469,7 @@ def mirror_channel_avatar(config: SiteConfig, html_text: str) -> bool:
 def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, list[bytes]] | None = None) -> bool:
     POSTS_MEDIA_DIR.mkdir(parents=True, exist_ok=True)
     POSTS_THUMBS_DIR.mkdir(parents=True, exist_ok=True)
+    POSTS_FEED_DIR.mkdir(parents=True, exist_ok=True)
     active_relative_paths: set[str] = set()
     changes_detected = False
     photo_overrides = photo_overrides or {}
@@ -437,17 +477,18 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
     for post in posts:
         mirrored_photos: list[dict[str, str]] = []
         post_photo_overrides = photo_overrides.get(post["id"], [])
+        normalized_photos = [normalize_photo_entry(raw_photo) for raw_photo in post.get("photos") or []]
+        normalized_photos = [photo for photo in normalized_photos if photo]
+        is_single_photo_post = len(normalized_photos) == 1
 
-        for index, raw_photo in enumerate(post.get("photos") or []):
-            photo = normalize_photo_entry(raw_photo)
-            if not photo:
-                continue
-
+        for index, photo in enumerate(normalized_photos):
             full_source = photo["full_url"]
             override_bytes = post_photo_overrides[index] if index < len(post_photo_overrides) else None
             if not override_bytes and not re.match(r"^https?://", full_source):
                 active_relative_paths.add(full_source)
                 active_relative_paths.add(photo["thumb_url"])
+                if is_single_photo_post and photo.get("feed_url"):
+                    active_relative_paths.add(photo["feed_url"])
                 mirrored_photos.append(photo)
                 continue
 
@@ -455,12 +496,17 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
             digest = hashlib.sha256(digest_source).hexdigest()[:12]
             filename = f"{post['id']}-{index + 1}-{digest}-{IMAGE_VARIANT_VERSION}.jpg"
             full_path = POSTS_MEDIA_DIR / filename
+            feed_path = POSTS_FEED_DIR / filename
             thumb_path = POSTS_THUMBS_DIR / filename
 
             try:
-                if not full_path.exists() or not thumb_path.exists():
+                if (
+                    not full_path.exists()
+                    or not thumb_path.exists()
+                    or (is_single_photo_post and not feed_path.exists())
+                ):
                     raw_bytes = override_bytes or fetch_binary(full_source)
-                    if optimize_image_variants(raw_bytes, full_path, thumb_path):
+                    if optimize_image_variants(raw_bytes, full_path, feed_path, thumb_path):
                         log.info("Prepared image variants for post %s", post["id"])
                         changes_detected = True
             except Exception as error:  # pragma: no cover - network/runtime path
@@ -469,20 +515,23 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
                 continue
 
             full_relative_url = full_path.relative_to(DOCS_DIR).as_posix()
+            feed_relative_url = feed_path.relative_to(DOCS_DIR).as_posix()
             thumb_relative_url = thumb_path.relative_to(DOCS_DIR).as_posix()
-            mirrored_photos.append(
-                {
-                    "thumb_url": thumb_relative_url,
-                    "full_url": full_relative_url,
-                }
-            )
+            mirrored_entry = {
+                "thumb_url": thumb_relative_url,
+                "full_url": full_relative_url,
+            }
+            if is_single_photo_post:
+                mirrored_entry["feed_url"] = feed_relative_url
+                active_relative_paths.add(feed_relative_url)
+            mirrored_photos.append(mirrored_entry)
             active_relative_paths.add(full_relative_url)
             active_relative_paths.add(thumb_relative_url)
 
         if post.get("photos") != mirrored_photos:
             post["photos"] = mirrored_photos
 
-    for base_dir in (POSTS_MEDIA_DIR, POSTS_THUMBS_DIR):
+    for base_dir in (POSTS_MEDIA_DIR, POSTS_THUMBS_DIR, POSTS_FEED_DIR):
         for path in base_dir.glob("*"):
             if not path.is_file():
                 continue
@@ -1403,18 +1452,29 @@ def render_post_page_media(post: dict[str, Any]) -> str:
         return ""
 
     media_items: list[str] = []
+    is_gallery = len(photos) > 1
     for index, photo in enumerate(photos):
+        src = photo.get("feed_url") or photo["thumb_url"]
+        srcset_parts = []
+        if photo.get("thumb_url"):
+            srcset_parts.append(f'{root_prefix}{photo["thumb_url"]} 1280w')
+        if not is_gallery and photo.get("feed_url") and photo["feed_url"] not in {photo["thumb_url"], photo["full_url"]}:
+            srcset_parts.append(f'{root_prefix}{photo["feed_url"]} 1800w')
+        if photo.get("full_url") and photo["full_url"] != (photo.get("feed_url") or photo["thumb_url"]):
+            srcset_parts.append(f'{root_prefix}{photo["full_url"]} 2400w')
+        srcset = ", ".join(srcset_parts)
         media_items.append(
             (
                 '<a class="media-trigger" href="{root_prefix}{full_url}" target="_blank" rel="noopener">'
-                '<img src="{root_prefix}{thumb_url}" '
-                'srcset="{root_prefix}{thumb_url} 1280w, {root_prefix}{full_url} 2400w" '
+                '<img src="{root_prefix}{src}" '
+                '{srcset_attr}'
                 'sizes="(max-width: 860px) calc(100vw - 44px), 980px" '
                 'alt="Media {index}" loading="lazy" decoding="async"></a>'
             ).format(
                 root_prefix=root_prefix,
                 full_url=html_lib.escape(photo["full_url"]),
-                thumb_url=html_lib.escape(photo["thumb_url"]),
+                src=html_lib.escape(src),
+                srcset_attr=f'srcset="{html_lib.escape(srcset)}" ' if srcset else "",
                 index=index + 1,
             )
         )

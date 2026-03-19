@@ -218,15 +218,17 @@ function normalizePostHtml(html) {
 function normalizePhoto(photo) {
   if (!photo) return null;
   if (typeof photo === 'string') {
-    return { thumb_url: photo, full_url: photo };
+    return { thumb_url: photo, feed_url: photo, full_url: photo };
   }
 
   const thumbUrl = photo.thumb_url || photo.thumb || photo.url || photo.full_url || photo.full;
+  const feedUrl = photo.feed_url || photo.feed || photo.full_url || photo.full || photo.url || thumbUrl;
   const fullUrl = photo.full_url || photo.full || photo.url || photo.thumb_url || photo.thumb;
   if (!thumbUrl && !fullUrl) return null;
 
   return {
     thumb_url: thumbUrl || fullUrl,
+    feed_url: feedUrl || fullUrl || thumbUrl,
     full_url: fullUrl || thumbUrl,
   };
 }
@@ -1452,12 +1454,31 @@ function renderHeader(site, generatedAt) {
 }
 
 function buildResponsiveImageTag(item, index, isGallery) {
-  const fallbackSrc = item.thumb_url || item.full_url;
+  const fallbackSrc = isGallery
+    ? (item.thumb_url || item.full_url)
+    : (item.feed_url || item.full_url || item.thumb_url);
   if (!fallbackSrc) return '';
 
-  const srcSet = item.thumb_url && item.full_url && item.thumb_url !== item.full_url
-    ? `${item.thumb_url} 1280w, ${item.full_url} 2400w`
-    : '';
+  const candidates = isGallery
+    ? [
+      [item.thumb_url, 1280],
+      [item.full_url, 2400],
+    ]
+    : [
+      [item.thumb_url, 1280],
+      [item.feed_url, 1800],
+      [item.full_url, 2400],
+    ];
+  const seen = new Set();
+  const srcSet = candidates
+    .filter(([url]) => url)
+    .filter(([url]) => {
+      if (seen.has(url)) return false;
+      seen.add(url);
+      return true;
+    })
+    .map(([url, width]) => `${url} ${width}w`)
+    .join(', ');
   const sizes = isGallery
     ? '(max-width: 480px) calc(100vw - 44px), (max-width: 860px) calc(50vw - 28px), 520px'
     : '(max-width: 860px) calc(100vw - 44px), 980px';
@@ -1479,7 +1500,12 @@ function buildMedia(post) {
   (post.photos || []).forEach((photo) => {
     const entry = normalizePhoto(photo);
     if (entry) {
-      media.push({ type: 'image', thumb_url: entry.thumb_url, full_url: entry.full_url });
+      media.push({
+        type: 'image',
+        thumb_url: entry.thumb_url,
+        feed_url: entry.feed_url,
+        full_url: entry.full_url,
+      });
     }
   });
 
