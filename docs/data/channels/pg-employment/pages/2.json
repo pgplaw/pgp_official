@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-19T19:16:27.238210+00:00",
+  "generated_at": "2026-03-19T21:27:21.679854+00:00",
   "pagination": {
     "page": 2,
     "page_size": 16,
@@ -82,8 +82,9 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-employment/media/posts/thumbs/1929-1-f3f62010ec63-v4.jpg",
-          "full_url": "data/channels/pg-employment/media/posts/1929-1-f3f62010ec63-v4.jpg"
+          "thumb_url": "data/channels/pg-employment/media/posts/thumbs/1929-1-f3f62010ec63-v5.jpg",
+          "full_url": "data/channels/pg-employment/media/posts/1929-1-f3f62010ec63-v5.jpg",
+          "feed_url": "data/channels/pg-employment/media/posts/feed/1929-1-f3f62010ec63-v5.jpg"
         }
       ],
       "video_url": null,
