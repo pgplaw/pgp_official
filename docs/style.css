@@ -89,17 +89,18 @@ label,
 .content,
 .site-footer {
   transition:
-    opacity 220ms ease,
-    transform 220ms ease,
-    filter 220ms ease;
+    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform, filter;
 }
 
 .site-shell.is-channel-switching .hero,
 .site-shell.is-channel-switching .content,
 .site-shell.is-channel-switching .site-footer {
-  opacity: 0;
-  transform: translateY(8px);
-  filter: blur(3px);
+  opacity: 0.06;
+  transform: translateY(12px) scale(0.992);
+  filter: blur(8px);
   pointer-events: none;
 }
 
@@ -149,6 +150,19 @@ label,
   overflow: hidden;
   isolation: isolate;
   contain: layout paint;
+  border-radius: 24px;
+}
+
+.channel-carousel__stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 58%),
+    color-mix(in srgb, var(--bg-elevated) 96%, transparent 4%);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .channel-carousel__stage--animating {
@@ -156,14 +170,20 @@ label,
 }
 
 .channel-carousel__track {
-  --channel-carousel-shift: 0px;
   display: grid;
   width: 300%;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
-  transform: translate3d(calc(-33.333333% + var(--channel-carousel-shift)), 0, 0);
+  transform: translate3d(-100%, 0, 0);
   will-change: transform;
   backface-visibility: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.channel-carousel__slide {
+  min-width: 0;
+  padding-inline: 12px;
 }
 
 @media (max-width: 1180px) and (min-width: 861px) {
@@ -295,12 +315,9 @@ label,
 }
 
 .channel-carousel__surface {
-  display: grid;
-  grid-template-columns: 46px minmax(0, 1fr) 46px;
-  align-items: center;
-  gap: 10px;
+  display: block;
   min-height: 96px;
-  padding: 14px;
+  padding: 14px 60px;
   border: 1px solid var(--channel-active-border, rgba(255, 255, 255, 0.16));
   border-radius: 24px;
   background: linear-gradient(135deg, var(--channel-active, #91278d) 0%, var(--channel-active-strong, #6f196c) 100%);
@@ -312,6 +329,8 @@ label,
   position: relative;
   z-index: 1;
   backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
 }
 
 .channel-carousel__content {
@@ -319,6 +338,7 @@ label,
   gap: 4px;
   min-width: 0;
   text-align: center;
+  justify-items: center;
 }
 
 .channel-carousel__meta {
@@ -327,7 +347,7 @@ label,
   letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 0.82;
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.34);
+  text-shadow: none;
 }
 
 .channel-carousel__title,
@@ -336,7 +356,7 @@ label,
   overflow: hidden;
   text-overflow: ellipsis;
   overflow-wrap: anywhere;
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.34);
+  text-shadow: none;
 }
 
 .channel-carousel__title {
@@ -359,6 +379,8 @@ label,
 
 .channel-carousel__nav {
   appearance: none;
+  position: absolute;
+  top: 50%;
   width: 46px;
   height: 46px;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -370,7 +392,16 @@ label,
   justify-content: center;
   cursor: pointer;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform: translateY(-50%);
   transition: background 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+}
+
+.channel-carousel__nav--prev {
+  left: 14px;
+}
+
+.channel-carousel__nav--next {
+  right: 18px;
 }
 
 .channel-carousel__nav svg {
@@ -384,7 +415,7 @@ label,
 }
 
 .channel-carousel__nav:active {
-  transform: scale(0.97);
+  transform: translateY(-50%) scale(0.97);
   background: rgba(255, 255, 255, 0.16);
 }
 
@@ -1507,9 +1538,7 @@ label,
 
   .channel-carousel__surface {
       min-height: 88px;
-      grid-template-columns: 40px minmax(0, 1fr) 40px;
-      gap: 8px;
-      padding: 10px 10px;
+      padding: 10px 52px;
       border-radius: 20px;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
     }
@@ -1518,9 +1547,21 @@ label,
     min-height: 88px;
   }
 
+  .channel-carousel__slide {
+    padding-inline: 10px;
+  }
+
   .channel-carousel__nav {
     width: 40px;
     height: 40px;
+  }
+
+  .channel-carousel__nav--prev {
+    left: 10px;
+  }
+
+  .channel-carousel__nav--next {
+    right: 16px;
   }
 
   .channel-carousel__title {

@@ -6,6 +6,8 @@ const AUTO_REFRESH_INTERVAL_MINUTES = 5;
 const SYNC_STATUS_POLL_INTERVAL_MS = 30 * 1000;
 const LONG_PRESS_COPY_DELAY_MS = 650;
 const CHANNEL_CAROUSEL_TRANSITION_MS = 560;
+const CHANNEL_CONTENT_FADE_OUT_MS = 180;
+const CHANNEL_CONTENT_FADE_IN_DELAY_MS = 60;
 
 const state = {
   catalog: null,
@@ -355,6 +357,12 @@ function nextRenderFrame() {
   });
 }
 
+function wait(ms) {
+  return new Promise((resolve) => {
+    window.setTimeout(resolve, ms);
+  });
+}
+
 function setChannelContentSwitching(active) {
   elements.siteShell?.classList.toggle('is-channel-switching', Boolean(active));
 }
@@ -628,9 +636,13 @@ function getChannelCarouselWidth(stage = getChannelCarouselStage()) {
   );
 }
 
-function setChannelCarouselShift(track, shift) {
+function setChannelCarouselShift(track, shift, stageOrWidth = getChannelCarouselStage()) {
   if (!track) return;
-  track.style.setProperty('--channel-carousel-shift', `${Math.round(shift)}px`);
+  const width = typeof stageOrWidth === 'number'
+    ? stageOrWidth
+    : getChannelCarouselWidth(stageOrWidth);
+  const baseOffset = -width;
+  track.style.transform = `translate3d(${Math.round(baseOffset + shift)}px, 0, 0)`;
 }
 
 function getRelativeChannel(offset) {
@@ -680,6 +692,14 @@ function buildMobileChannelCarouselSurface(channel, index, total, { current = fa
         </svg>
       </button>
     </article>
+  `;
+}
+
+function buildMobileChannelCarouselSlide(channel, index, total, options = {}) {
+  return `
+    <div class="channel-carousel__slide" data-channel-carousel-slide="true">
+      ${buildMobileChannelCarouselSurface(channel, index, total, options)}
+    </div>
   `;
 }
 
@@ -952,10 +972,10 @@ function setupChannelCarouselInteractions() {
     }
 
     event.preventDefault();
-    const maxOffset = touchState.width * 0.92;
+    const maxOffset = touchState.width + 24;
     const offsetX = clamp(deltaX, -maxOffset, maxOffset);
     touchState.track.style.removeProperty('transition');
-    setChannelCarouselShift(touchState.track, offsetX);
+    setChannelCarouselShift(touchState.track, offsetX, touchState.width);
   }, { passive: false });
 
   elements.channelCarousel.addEventListener('touchend', (event) => {
@@ -1101,7 +1121,9 @@ function renderMobileChannelCarousel() {
   const track = carouselStage.querySelector('[data-channel-carousel-track]');
   if (track) {
     track.style.removeProperty('transition');
-    setChannelCarouselShift(track, 0);
+    requestAnimationFrame(() => {
+      setChannelCarouselShift(track, 0, carouselStage);
+    });
   }
 
   finishChannelCarouselTransition();
@@ -1251,9 +1273,9 @@ function renderMobileChannelCarousel() {
   carouselStage.classList.remove('channel-carousel__stage--animating');
   carouselStage.innerHTML = `
     <div class="channel-carousel__track" data-channel-carousel-track>
-      ${buildMobileChannelCarouselSurface(previousChannel, (activeIndex - 1 + channels.length) % channels.length, channels.length)}
-      ${buildMobileChannelCarouselSurface(activeChannel, activeIndex, channels.length, { current: true })}
-      ${buildMobileChannelCarouselSurface(nextChannel, (activeIndex + 1) % channels.length, channels.length)}
+      ${buildMobileChannelCarouselSlide(previousChannel, (activeIndex - 1 + channels.length) % channels.length, channels.length)}
+      ${buildMobileChannelCarouselSlide(activeChannel, activeIndex, channels.length, { current: true })}
+      ${buildMobileChannelCarouselSlide(nextChannel, (activeIndex + 1) % channels.length, channels.length)}
     </div>
   `;
 
@@ -1264,6 +1286,7 @@ function renderMobileChannelCarousel() {
   }
 
   finishChannelCarouselTransition();
+  scheduleChannelCarouselAutotest();
 }
 
 function formatTextWithSoftBreaks(value) {
@@ -1766,6 +1789,7 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
   if (isChannelChange) {
     setChannelContentSwitching(true);
     await nextRenderFrame();
+    await wait(CHANNEL_CONTENT_FADE_OUT_MS);
   }
 
   try {
@@ -1773,6 +1797,7 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
   } finally {
     if (isChannelChange) {
       await nextRenderFrame();
+      await wait(CHANNEL_CONTENT_FADE_IN_DELAY_MS);
       setChannelContentSwitching(false);
     }
   }
@@ -1818,7 +1843,7 @@ function handleLocationChange() {
 
   const nextChannelKey = resolveChannelKey(getChannelKeyFromLocation());
   if (nextChannelKey && nextChannelKey !== state.activeChannelKey) {
-    void loadFeed(nextChannelKey);
+    void switchChannel(nextChannelKey, { replace: true });
     return;
   }
 
