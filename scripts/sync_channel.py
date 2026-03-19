@@ -37,10 +37,12 @@ POSTS_THUMBS_DIR = POSTS_MEDIA_DIR / "thumbs"
 POSTS_FEED_DIR = POSTS_MEDIA_DIR / "feed"
 CHANNEL_MEDIA_DIR = CHANNEL_DATA_DIR / "media"
 CHANNEL_AVATAR_PATH = CHANNEL_MEDIA_DIR / "channel-avatar.jpg"
+SUPERRES_MODEL_DIR = ROOT / "ops" / "models"
+FSRCNN_X2_MODEL_PATH = SUPERRES_MODEL_DIR / "FSRCNN_x2.pb"
 POST_PAGES_DIR = DOCS_DIR / "channels" / CHANNEL_KEY / "posts" if CHANNEL_KEY else DOCS_DIR / "posts"
 MANIFEST_PATH = DOCS_DIR / "manifest.webmanifest"
 FEED_PAGE_SIZE = 16
-IMAGE_VARIANT_VERSION = "v6"
+IMAGE_VARIANT_VERSION = "v7"
 
 BASE_HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; TelegramPagesMirror/1.0)",
@@ -59,6 +61,7 @@ LOW_RES_SINGLE_UPSCALE_THRESHOLD = 1200
 LOW_RES_SINGLE_FEED_TARGET = 1800
 LOW_RES_SINGLE_FULL_TARGET = 2400
 LOW_RES_SINGLE_MAX_UPSCALE_FACTOR = 2.35
+FSRCNN_X2_MODEL_URL = "https://raw.githubusercontent.com/Saafke/FSRCNN_Tensorflow/master/models/FSRCNN_x2.pb"
 FAILED_EXTERNAL_PREVIEW_HOSTS: set[str] = set()
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -284,6 +287,43 @@ def normalize_photo_entry(photo: Any) -> dict[str, str] | None:
     return None
 
 
+def ensure_fsrcnn_x2_model() -> Path:
+    if FSRCNN_X2_MODEL_PATH.exists():
+        return FSRCNN_X2_MODEL_PATH
+
+    SUPERRES_MODEL_DIR.mkdir(parents=True, exist_ok=True)
+    model_bytes = fetch_binary(FSRCNN_X2_MODEL_URL, timeout=20)
+    FSRCNN_X2_MODEL_PATH.write_bytes(model_bytes)
+    log.info("Downloaded FSRCNN x2 model to %s", FSRCNN_X2_MODEL_PATH.relative_to(ROOT))
+    return FSRCNN_X2_MODEL_PATH
+
+
+def apply_single_image_super_resolution(image: Any, resampling: Any) -> Any | None:
+    try:
+        import cv2
+        import numpy as np
+    except Exception as error:  # pragma: no cover - runtime dependency path
+        log.warning("OpenCV super-resolution is unavailable: %s", error)
+        return None
+
+    try:
+        model_path = ensure_fsrcnn_x2_model()
+        rgb_array = np.array(image.convert("RGB"))
+        bgr_array = cv2.cvtColor(rgb_array, cv2.COLOR_RGB2BGR)
+        sr = cv2.dnn_superres.DnnSuperResImpl_create()
+        sr.readModel(str(model_path))
+        sr.setModel("fsrcnn", 2)
+        upscaled = sr.upsample(bgr_array)
+        upscaled_rgb = cv2.cvtColor(upscaled, cv2.COLOR_BGR2RGB)
+
+        from PIL import Image
+
+        return Image.fromarray(upscaled_rgb)
+    except Exception as error:  # pragma: no cover - runtime/model path
+        log.warning("FSRCNN super-resolution fallback used: %s", error)
+        return None
+
+
 def optimize_image_variants(
     raw_bytes: bytes,
     full_path: Path,
@@ -311,6 +351,10 @@ def optimize_image_variants(
             elif image.mode == "L":
                 image = image.convert("RGB")
 
+            superres_image = None
+            if allow_single_image_upscale and max(original_size) < LOW_RES_SINGLE_UPSCALE_THRESHOLD:
+                superres_image = apply_single_image_super_resolution(image, resampling)
+
             def write_bytes_if_changed(path: Path, content: bytes) -> None:
                 nonlocal changes_detected
                 path.parent.mkdir(parents=True, exist_ok=True)
@@ -334,6 +378,7 @@ def optimize_image_variants(
                     and upscale_longest_side
                     and max(original_size) < LOW_RES_SINGLE_UPSCALE_THRESHOLD
                 )
+                use_superres_source = bool(should_upscale and superres_image is not None)
                 keep_original_jpeg = (
                     not should_upscale
                     and
@@ -345,8 +390,8 @@ def optimize_image_variants(
                     write_bytes_if_changed(path, raw_bytes)
                     return
 
-                variant = image.copy()
-                if should_upscale:
+                variant = superres_image.copy() if use_superres_source else image.copy()
+                if should_upscale and not use_superres_source:
                     scale_factor = min(
                         upscale_longest_side / max(max(original_size), 1),
                         LOW_RES_SINGLE_MAX_UPSCALE_FACTOR,
