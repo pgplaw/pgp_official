@@ -48,11 +48,13 @@ BASE_HEADERS = {
 }
 FETCH_RETRY_DELAYS = (1.0, 2.5, 5.0)
 FAST_EXTERNAL_RETRY_DELAYS: tuple[float, ...] = ()
-EXTERNAL_PAGE_TIMEOUT_SECONDS = 8
-EXTERNAL_IMAGE_TIMEOUT_SECONDS = 10
+EXTERNAL_PAGE_TIMEOUT_SECONDS = 5
+EXTERNAL_IMAGE_TIMEOUT_SECONDS = 6
 MIN_EXTERNAL_OVERRIDE_WIDTH = 1000
 MIN_EXTERNAL_OVERRIDE_RATIO_GAIN = 1.15
 MAX_EXTERNAL_OVERRIDE_RATIO_DELTA = 0.12
+MAX_EXTERNAL_PREVIEW_OVERRIDE_POSTS = 10
+MAX_EXTERNAL_LINKS_TO_TRY = 2
 FAILED_EXTERNAL_PREVIEW_HOSTS: set[str] = set()
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -967,7 +969,7 @@ def fetch_external_preview_override(post: dict[str, Any], current_bytes: bytes |
     if not links:
         return None
 
-    for link_url in reversed(links):
+    for link_url in list(reversed(links))[:MAX_EXTERNAL_LINKS_TO_TRY]:
         hostname = (urlparse(link_url).hostname or "").lower()
         if hostname in FAILED_EXTERNAL_PREVIEW_HOSTS:
             continue
@@ -1264,6 +1266,7 @@ async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[s
     log.info("Refreshing high-resolution media for %s posts", len(selected_ids))
     results: dict[int, list[bytes]] = {}
     selected_posts = {post["id"]: post for post in posts if post["id"] in selected_ids}
+    external_override_attempts = 0
 
     credentials = get_telegram_session_credentials()
     if credentials:
@@ -1335,7 +1338,11 @@ async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[s
             results[post_id] = [telegram_post_override]
             current_bytes = telegram_post_override
 
+        if external_override_attempts >= MAX_EXTERNAL_PREVIEW_OVERRIDE_POSTS:
+            continue
+
         external_override = fetch_external_preview_override(post, current_bytes=current_bytes)
+        external_override_attempts += 1
         if external_override:
             results[post_id] = [external_override]
 
