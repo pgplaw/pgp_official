@@ -547,6 +547,7 @@ def build_text_fields(raw_html: str) -> tuple[str | None, str | None]:
     )
     for index, anchor in enumerate(anchors):
         html_markup = html_markup.replace(f"__ANCHOR_{index}__", anchor)
+    html_markup, removed_url_anchors = strip_redundant_url_anchors(html_markup)
     html_markup = html_markup.replace("\n", "<br>").strip() or None
 
     plain = re.sub(
@@ -557,8 +558,101 @@ def build_text_fields(raw_html: str) -> tuple[str | None, str | None]:
     )
     plain = re.sub(r"<[^>]+>", "", plain)
     plain = html_lib.unescape(plain).strip() or None
+    plain = strip_redundant_urls_from_plain_text(plain, removed_url_anchors)
 
     return plain, html_markup
+
+
+def normalize_anchor_href(href: str | None) -> str | None:
+    if not href:
+        return None
+
+    raw_value = html_lib.unescape(href).strip()
+    if not raw_value:
+        return None
+
+    parsed = urlparse(raw_value)
+    if parsed.scheme.lower() not in {"http", "https"} or not parsed.netloc:
+        return None
+
+    path = parsed.path.rstrip("/") or "/"
+    query = f"?{parsed.query}" if parsed.query else ""
+    return f"{parsed.scheme.lower()}://{parsed.netloc.lower()}{path}{query}"
+
+
+def is_url_like_label(label: str | None, href: str | None = None) -> bool:
+    visible_text = html_lib.unescape(label or "").strip()
+    if not visible_text:
+        return False
+
+    if re.match(r"^(?:https?://|www\.)\S+$", visible_text, re.IGNORECASE):
+        return True
+
+    normalized_label = normalize_anchor_href(visible_text)
+    normalized_href = normalize_anchor_href(href)
+    return bool(normalized_label and normalized_href and normalized_label == normalized_href)
+
+
+def strip_redundant_url_anchors(html_markup: str | None) -> tuple[str | None, list[str]]:
+    if not html_markup:
+        return html_markup, []
+
+    anchor_pattern = re.compile(r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>', re.IGNORECASE | re.DOTALL)
+    anchors: list[dict[str, Any]] = []
+
+    for match in anchor_pattern.finditer(html_markup):
+        href = html_lib.unescape(match.group(1)).strip()
+        label = html_lib.unescape(re.sub(r"<[^>]+>", "", match.group(2))).strip() or href
+        anchors.append(
+            {
+                "start": match.start(),
+                "end": match.end(),
+                "href": href,
+                "label": label,
+                "normalized_href": normalize_anchor_href(href),
+            }
+        )
+
+    named_hrefs = {
+        anchor["normalized_href"]
+        for anchor in anchors
+        if anchor["normalized_href"] and not is_url_like_label(anchor["label"], anchor["href"])
+    }
+    if not named_hrefs and not anchors:
+        return html_markup, []
+
+    cleaned_markup = html_markup
+    removed_urls: list[str] = []
+
+    for anchor in reversed(anchors):
+        if not is_url_like_label(anchor["label"], anchor["href"]):
+            continue
+
+        following_markup = cleaned_markup[anchor["end"]:]
+        has_attached_visible_text = bool(re.match(r"^[^\s<]", following_markup))
+        has_named_duplicate = bool(anchor["normalized_href"] and anchor["normalized_href"] in named_hrefs)
+        if not has_attached_visible_text and not has_named_duplicate:
+            continue
+
+        removed_urls.append(anchor["href"])
+        cleaned_markup = f"{cleaned_markup[:anchor['start']]}{cleaned_markup[anchor['end']:]}"
+
+    cleaned_markup = re.sub(r"(?:<br>){3,}", "<br><br>", cleaned_markup).strip() or None
+    return cleaned_markup, removed_urls
+
+
+def strip_redundant_urls_from_plain_text(plain_text: str | None, removed_urls: list[str]) -> str | None:
+    if not plain_text or not removed_urls:
+        return plain_text
+
+    cleaned_text = plain_text
+    for url in sorted({url for url in removed_urls if url}, key=len, reverse=True):
+        escaped_url = re.escape(url)
+        cleaned_text = re.sub(rf"{escaped_url}(?=[^\s])", "", cleaned_text)
+        cleaned_text = re.sub(rf"(^|\n)\s*{escaped_url}\s*(?=\n|$)", r"\1", cleaned_text)
+
+    cleaned_text = re.sub(r"\n{3,}", "\n\n", cleaned_text).strip() or None
+    return cleaned_text
 
 
 def extract_external_links(text_html: str | None) -> list[str]:

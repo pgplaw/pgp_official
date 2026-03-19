@@ -141,6 +141,69 @@ function linkifyText(text) {
   return result.replace(/\r?\n/g, '<br>');
 }
 
+function normalizeComparableUrl(value) {
+  try {
+    const url = new URL(String(value || '').trim(), window.location.href);
+    if (!/^https?:$/i.test(url.protocol)) return null;
+    const pathname = url.pathname.replace(/\/+$/, '') || '/';
+    return `${url.protocol}//${url.host.toLowerCase()}${pathname}${url.search}`;
+  } catch {
+    return null;
+  }
+}
+
+function isUrlLikeLabel(value, href = '') {
+  const label = String(value || '').trim();
+  if (!label) return false;
+  if (/^(?:https?:\/\/|www\.)\S+$/i.test(label)) return true;
+
+  const normalizedLabel = normalizeComparableUrl(label);
+  const normalizedHref = normalizeComparableUrl(href);
+  return Boolean(normalizedLabel && normalizedHref && normalizedLabel === normalizedHref);
+}
+
+function normalizePostHtml(html) {
+  if (!html || typeof document === 'undefined') return html || '';
+
+  const template = document.createElement('template');
+  template.innerHTML = html;
+  const anchors = [...template.content.querySelectorAll('a[href]')];
+  const namedHrefs = new Set();
+
+  anchors.forEach((anchor) => {
+    const rawHref = anchor.getAttribute('href') || anchor.href;
+    const href = normalizeComparableUrl(rawHref);
+    const label = anchor.textContent.trim();
+    if (href && label && !isUrlLikeLabel(label, rawHref)) {
+      namedHrefs.add(href);
+    }
+  });
+
+  anchors.forEach((anchor) => {
+    const rawHref = anchor.getAttribute('href') || anchor.href;
+    const href = normalizeComparableUrl(rawHref);
+    const label = anchor.textContent.trim();
+    if (!href || !isUrlLikeLabel(label, rawHref)) return;
+
+    const nextSibling = anchor.nextSibling;
+    const attachedText =
+      nextSibling &&
+      nextSibling.nodeType === Node.TEXT_NODE &&
+      /^[^\s]/.test(nextSibling.textContent || '');
+    const namedDuplicate = namedHrefs.has(href);
+    if (!attachedText && !namedDuplicate) return;
+
+    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
+      nextSibling.textContent = (nextSibling.textContent || '').replace(/^\s+/, '');
+    }
+    anchor.remove();
+  });
+
+  return template.innerHTML
+    .replace(/(?:<br\s*\/?>\s*){3,}/gi, '<br><br>')
+    .trim();
+}
+
 function normalizePhoto(photo) {
   if (!photo) return null;
   if (typeof photo === 'string') {
@@ -1530,7 +1593,7 @@ function renderPostCard(post) {
   const article = document.createElement('article');
   article.className = 'post-card';
 
-  const text = post.text_html || escapeHtml(post.text || '').replace(/\n/g, '<br>');
+  const text = normalizePostHtml(post.text_html) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
   const forwarded = resolveForwardedSource(post);
   const commentsLabel = post.comments_count ? `Комментарии (${compactNumber(post.comments_count)})` : 'Комментарии';
   const shouldShowComments =
