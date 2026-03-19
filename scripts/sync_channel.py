@@ -636,7 +636,11 @@ def strip_redundant_url_anchors(html_markup: str | None) -> tuple[str | None, li
             continue
 
         removed_urls.append(anchor["href"])
-        separator = "<br>" if has_attached_visible_text and re.search(r"<br>\s*$", prefix_markup, re.IGNORECASE) else ""
+        should_restore_paragraph_break = bool(
+            re.search(r"<br>\s*$", prefix_markup, re.IGNORECASE)
+            and starts_new_block_markup(following_markup)
+        )
+        separator = "<br>" if should_restore_paragraph_break else ""
         cleaned_markup = f"{prefix_markup}{separator}{following_markup}"
 
     cleaned_markup = re.sub(r"(?:<br>){3,}", "<br><br>", cleaned_markup).strip() or None
@@ -656,6 +660,14 @@ def strip_redundant_urls_from_plain_text(plain_text: str | None, removed_urls: l
 
     cleaned_text = re.sub(r"\n{3,}", "\n\n", cleaned_text).strip() or None
     return cleaned_text
+
+
+def starts_new_block_markup(markup: str | None) -> bool:
+    if not markup:
+        return False
+
+    visible_markup = re.sub(r"^(?:\s|&nbsp;|<[^>]+>)+", "", markup, flags=re.IGNORECASE)
+    return bool(re.match(r"^(?:▫️|🔘|📌|👉|#|[A-ZА-ЯЁ])", visible_markup))
 
 
 def extract_external_links(text_html: str | None) -> list[str]:

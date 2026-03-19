@@ -210,6 +210,7 @@ function normalizePostHtml(html) {
   });
 
   return template.innerHTML
+    .replace(/<\/a><br>(?=(?:\s|&nbsp;)*(?:▫️|🔘|📌|👉|#|[A-ZА-ЯЁ]))/g, '</a><br><br>')
     .replace(/(?:<br\s*\/?>\s*){3,}/gi, '<br><br>')
     .trim();
 }
