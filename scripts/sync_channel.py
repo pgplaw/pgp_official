@@ -40,7 +40,7 @@ CHANNEL_AVATAR_PATH = CHANNEL_MEDIA_DIR / "channel-avatar.jpg"
 POST_PAGES_DIR = DOCS_DIR / "channels" / CHANNEL_KEY / "posts" if CHANNEL_KEY else DOCS_DIR / "posts"
 MANIFEST_PATH = DOCS_DIR / "manifest.webmanifest"
 FEED_PAGE_SIZE = 16
-IMAGE_VARIANT_VERSION = "v5"
+IMAGE_VARIANT_VERSION = "v6"
 
 BASE_HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; TelegramPagesMirror/1.0)",
@@ -55,6 +55,10 @@ MIN_EXTERNAL_OVERRIDE_RATIO_GAIN = 1.15
 MAX_EXTERNAL_OVERRIDE_RATIO_DELTA = 0.12
 MAX_EXTERNAL_PREVIEW_OVERRIDE_POSTS = 10
 MAX_EXTERNAL_LINKS_TO_TRY = 2
+LOW_RES_SINGLE_UPSCALE_THRESHOLD = 1200
+LOW_RES_SINGLE_FEED_TARGET = 1800
+LOW_RES_SINGLE_FULL_TARGET = 2400
+LOW_RES_SINGLE_MAX_UPSCALE_FACTOR = 2.35
 FAILED_EXTERNAL_PREVIEW_HOSTS: set[str] = set()
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -280,7 +284,14 @@ def normalize_photo_entry(photo: Any) -> dict[str, str] | None:
     return None
 
 
-def optimize_image_variants(raw_bytes: bytes, full_path: Path, feed_path: Path, thumb_path: Path) -> bool:
+def optimize_image_variants(
+    raw_bytes: bytes,
+    full_path: Path,
+    feed_path: Path,
+    thumb_path: Path,
+    *,
+    allow_single_image_upscale: bool = False,
+) -> bool:
     changes_detected = False
     try:
         from PIL import Image, ImageFilter, ImageOps
@@ -316,8 +327,16 @@ def optimize_image_variants(raw_bytes: bytes, full_path: Path, feed_path: Path, 
                 sharpen_percent: int,
                 preserve_max_dimension: int,
                 preserve_max_bytes: int,
+                upscale_longest_side: int | None = None,
             ) -> None:
+                should_upscale = bool(
+                    allow_single_image_upscale
+                    and upscale_longest_side
+                    and max(original_size) < LOW_RES_SINGLE_UPSCALE_THRESHOLD
+                )
                 keep_original_jpeg = (
+                    not should_upscale
+                    and
                     original_format in {"JPEG", "JPG"}
                     and max(original_size) <= preserve_max_dimension
                     and len(raw_bytes) <= preserve_max_bytes
@@ -327,6 +346,18 @@ def optimize_image_variants(raw_bytes: bytes, full_path: Path, feed_path: Path, 
                     return
 
                 variant = image.copy()
+                if should_upscale:
+                    scale_factor = min(
+                        upscale_longest_side / max(max(original_size), 1),
+                        LOW_RES_SINGLE_MAX_UPSCALE_FACTOR,
+                    )
+                    if scale_factor > 1.01:
+                        target_size = (
+                            max(1, round(original_size[0] * scale_factor)),
+                            max(1, round(original_size[1] * scale_factor)),
+                        )
+                        variant = variant.resize(target_size, resample=resampling)
+
                 variant.thumbnail(max_size, resampling)
                 variant = variant.filter(
                     ImageFilter.UnsharpMask(radius=sharpen_radius, percent=sharpen_percent, threshold=2)
@@ -339,19 +370,21 @@ def optimize_image_variants(raw_bytes: bytes, full_path: Path, feed_path: Path, 
                 path=full_path,
                 max_size=(2600, 2600),
                 quality=93,
-                sharpen_radius=0.75,
-                sharpen_percent=108,
+                sharpen_radius=0.78,
+                sharpen_percent=122,
                 preserve_max_dimension=2600,
                 preserve_max_bytes=4_000_000,
+                upscale_longest_side=LOW_RES_SINGLE_FULL_TARGET,
             )
             save_variant(
                 path=feed_path,
                 max_size=(1800, 1800),
-                quality=91,
-                sharpen_radius=0.72,
-                sharpen_percent=118,
+                quality=92,
+                sharpen_radius=0.74,
+                sharpen_percent=136,
                 preserve_max_dimension=1800,
                 preserve_max_bytes=3_000_000,
+                upscale_longest_side=LOW_RES_SINGLE_FEED_TARGET,
             )
             save_variant(
                 path=thumb_path,
@@ -361,6 +394,7 @@ def optimize_image_variants(raw_bytes: bytes, full_path: Path, feed_path: Path, 
                 sharpen_percent=132,
                 preserve_max_dimension=1280,
                 preserve_max_bytes=1_500_000,
+                upscale_longest_side=None,
             )
     except Exception as error:  # pragma: no cover - runtime/image libs path
         log.warning("Image optimization fallback used: %s", error)
@@ -510,7 +544,13 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
                     or (is_single_photo_post and not feed_path.exists())
                 ):
                     raw_bytes = override_bytes or fetch_binary(full_source)
-                    if optimize_image_variants(raw_bytes, full_path, feed_path, thumb_path):
+                    if optimize_image_variants(
+                        raw_bytes,
+                        full_path,
+                        feed_path,
+                        thumb_path,
+                        allow_single_image_upscale=is_single_photo_post,
+                    ):
                         log.info("Prepared image variants for post %s", post["id"])
                         changes_detected = True
             except Exception as error:  # pragma: no cover - network/runtime path
