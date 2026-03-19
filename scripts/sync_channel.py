@@ -51,6 +51,8 @@ FAST_EXTERNAL_RETRY_DELAYS: tuple[float, ...] = ()
 EXTERNAL_PAGE_TIMEOUT_SECONDS = 8
 EXTERNAL_IMAGE_TIMEOUT_SECONDS = 10
 MIN_EXTERNAL_OVERRIDE_WIDTH = 1000
+MIN_EXTERNAL_OVERRIDE_RATIO_GAIN = 1.15
+MAX_EXTERNAL_OVERRIDE_RATIO_DELTA = 0.12
 FAILED_EXTERNAL_PREVIEW_HOSTS: set[str] = set()
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -783,6 +785,54 @@ def preview_is_already_large_enough(current_bytes: bytes | None) -> bool:
     return max(width, height) >= MIN_EXTERNAL_OVERRIDE_WIDTH
 
 
+def preview_needs_quality_help(current_bytes: bytes | None) -> bool:
+    if not current_bytes:
+        return True
+
+    size = get_image_dimensions(current_bytes)
+    if not size:
+        return True
+
+    width, height = size
+    longest_side = max(width, height)
+    shortest_side = max(min(width, height), 1)
+    aspect_ratio = longest_side / shortest_side
+
+    if longest_side < MIN_EXTERNAL_OVERRIDE_WIDTH:
+        return True
+
+    return aspect_ratio >= 1.9 and longest_side < 1400
+
+
+def is_safe_external_preview_match(current_bytes: bytes | None, candidate_bytes: bytes | None) -> bool:
+    if not candidate_bytes:
+        return False
+
+    candidate_size = get_image_dimensions(candidate_bytes)
+    if not candidate_size:
+        return False
+
+    if not current_bytes:
+        return True
+
+    current_size = get_image_dimensions(current_bytes)
+    if not current_size:
+        return True
+
+    current_width, current_height = current_size
+    candidate_width, candidate_height = candidate_size
+    current_ratio = current_width / max(current_height, 1)
+    candidate_ratio = candidate_width / max(candidate_height, 1)
+    ratio_delta = abs(math.log(max(candidate_ratio, 0.01) / max(current_ratio, 0.01)))
+
+    if ratio_delta > MAX_EXTERNAL_OVERRIDE_RATIO_DELTA:
+        return False
+
+    current_area = current_width * current_height
+    candidate_area = candidate_width * candidate_height
+    return candidate_area >= current_area * MIN_EXTERNAL_OVERRIDE_RATIO_GAIN
+
+
 def choose_better_preview_bytes(current_bytes: bytes | None, candidate_bytes: bytes | None) -> bytes | None:
     if not candidate_bytes:
         return None
@@ -910,7 +960,7 @@ def fetch_external_preview_override(post: dict[str, Any], current_bytes: bytes |
     if len(photos) != 1:
         return None
 
-    if preview_is_already_large_enough(current_bytes):
+    if not preview_needs_quality_help(current_bytes):
         return None
 
     links = extract_external_links(post.get("text_html"))
@@ -953,12 +1003,32 @@ def fetch_external_preview_override(post: dict[str, Any], current_bytes: bytes |
             log.warning("Failed to fetch external preview image for post %s: %s", post.get("id"), error)
             continue
 
+        if not is_safe_external_preview_match(current_bytes, candidate_bytes):
+            continue
+
         preferred_bytes = choose_better_preview_bytes(current_bytes, candidate_bytes)
         if preferred_bytes:
             log.info("Using external preview image for post %s from %s", post.get("id"), link_url)
             return preferred_bytes
 
     return None
+
+
+def get_current_preview_bytes(post: dict[str, Any], override_bytes: bytes | None = None) -> bytes | None:
+    if override_bytes:
+        return override_bytes
+
+    photos = [normalize_photo_entry(photo) for photo in post.get("photos") or []]
+    photos = [photo for photo in photos if photo]
+    if len(photos) != 1:
+        return None
+
+    source_url = photos[0]["full_url"]
+    try:
+        return fetch_binary(source_url)
+    except Exception as error:  # pragma: no cover - network/runtime path
+        log.warning("Failed to fetch current preview image for post %s: %s", post.get("id"), error)
+        return None
 
 
 def extract_forwarded_source(block: str) -> dict[str, str] | None:
@@ -1193,6 +1263,7 @@ async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[s
 
     log.info("Refreshing high-resolution media for %s posts", len(selected_ids))
     results: dict[int, list[bytes]] = {}
+    selected_posts = {post["id"]: post for post in posts if post["id"] in selected_ids}
 
     credentials = get_telegram_session_credentials()
     if credentials:
@@ -1248,11 +1319,25 @@ async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[s
     else:
         log.info("Telegram user session is not configured. Telegram media override skipped.")
 
-    # Keep the final preview source aligned with Telegram itself:
-    # - use Telegram API media when it is available;
-    # - otherwise keep the preview parsed from the Telegram web page.
-    # Do not replace previews with og:image from arbitrary external links,
-    # because that can diverge from what Telegram actually shows in-channel.
+    for post_id in selected_ids:
+        post = selected_posts.get(post_id)
+        if not post or len(post.get("photos") or []) != 1:
+            continue
+
+        current_override_bytes = None
+        if post_id in results and len(results[post_id]) == 1:
+            current_override_bytes = results[post_id][0]
+
+        current_bytes = get_current_preview_bytes(post, current_override_bytes)
+
+        telegram_post_override = fetch_telegram_post_page_override(post, current_bytes=current_bytes)
+        if telegram_post_override:
+            results[post_id] = [telegram_post_override]
+            current_bytes = telegram_post_override
+
+        external_override = fetch_external_preview_override(post, current_bytes=current_bytes)
+        if external_override:
+            results[post_id] = [external_override]
 
     return results
 
