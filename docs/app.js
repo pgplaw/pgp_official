@@ -186,6 +186,7 @@ function normalizePostHtml(html) {
     if (!href || !isUrlLikeLabel(label, rawHref)) return;
 
     const nextSibling = anchor.nextSibling;
+    const previousSibling = anchor.previousSibling;
     const attachedText =
       nextSibling &&
       nextSibling.nodeType === Node.TEXT_NODE &&
@@ -193,10 +194,19 @@ function normalizePostHtml(html) {
     const namedDuplicate = namedHrefs.has(href);
     if (!attachedText && !namedDuplicate) return;
 
+    const shouldRestoreBreak =
+      attachedText &&
+      previousSibling &&
+      previousSibling.nodeType === Node.ELEMENT_NODE &&
+      previousSibling.tagName === 'BR';
+
     if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
       nextSibling.textContent = (nextSibling.textContent || '').replace(/^\s+/, '');
     }
     anchor.remove();
+    if (shouldRestoreBreak && nextSibling?.parentNode) {
+      nextSibling.parentNode.insertBefore(document.createElement('br'), nextSibling);
+    }
   });
 
   return template.innerHTML

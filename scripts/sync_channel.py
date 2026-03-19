@@ -628,6 +628,7 @@ def strip_redundant_url_anchors(html_markup: str | None) -> tuple[str | None, li
         if not is_url_like_label(anchor["label"], anchor["href"]):
             continue
 
+        prefix_markup = cleaned_markup[:anchor["start"]]
         following_markup = cleaned_markup[anchor["end"]:]
         has_attached_visible_text = bool(re.match(r"^[^\s<]", following_markup))
         has_named_duplicate = bool(anchor["normalized_href"] and anchor["normalized_href"] in named_hrefs)
@@ -635,7 +636,8 @@ def strip_redundant_url_anchors(html_markup: str | None) -> tuple[str | None, li
             continue
 
         removed_urls.append(anchor["href"])
-        cleaned_markup = f"{cleaned_markup[:anchor['start']]}{cleaned_markup[anchor['end']:]}"
+        separator = "<br>" if has_attached_visible_text and re.search(r"<br>\s*$", prefix_markup, re.IGNORECASE) else ""
+        cleaned_markup = f"{prefix_markup}{separator}{following_markup}"
 
     cleaned_markup = re.sub(r"(?:<br>){3,}", "<br><br>", cleaned_markup).strip() or None
     return cleaned_markup, removed_urls
@@ -648,6 +650,7 @@ def strip_redundant_urls_from_plain_text(plain_text: str | None, removed_urls: l
     cleaned_text = plain_text
     for url in sorted({url for url in removed_urls if url}, key=len, reverse=True):
         escaped_url = re.escape(url)
+        cleaned_text = re.sub(rf"(?<=\n){escaped_url}(?=[^\s])", "\n", cleaned_text)
         cleaned_text = re.sub(rf"{escaped_url}(?=[^\s])", "", cleaned_text)
         cleaned_text = re.sub(rf"(^|\n)\s*{escaped_url}\s*(?=\n|$)", r"\1", cleaned_text)
 
