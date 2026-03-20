@@ -1099,14 +1099,21 @@ label,
   align-self: start;
   transform: none;
   border-color: color-mix(in srgb, var(--accent) 14%, transparent);
+  margin-top: 4px;
 }
 
-.post-card__copy:hover {
+.post-card__copy.icon-button:hover {
   background: color-mix(in srgb, var(--accent) 20%, var(--bg-strong) 80%);
-  transform: none;
-  box-shadow: none;
-  filter: none;
+  transform: none !important;
+  box-shadow: none !important;
+  filter: none !important;
   border-color: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.post-card__copy.icon-button:focus-visible {
+  outline: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  outline-offset: 2px;
+  box-shadow: none !important;
 }
 
 .post-card__copy svg {
