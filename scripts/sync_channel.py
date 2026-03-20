@@ -746,6 +746,8 @@ def build_text_fields(raw_html: str) -> tuple[str | None, str | None]:
     for index, anchor in enumerate(anchors):
         html_markup = html_markup.replace(f"__ANCHOR_{index}__", anchor)
     html_markup, removed_url_anchors = strip_redundant_url_anchors(html_markup)
+    html_markup = re.sub(r"(?<=[0-9A-Za-zА-Яа-яЁё«»„“\"'()])(?=<a\b)", " ", html_markup)
+    html_markup = re.sub(r"(?<=</a>)(?=[0-9A-Za-zА-Яа-яЁё«»„“\"'(])", " ", html_markup)
     html_markup = html_markup.replace("\n", "<br>").strip() or None
 
     plain = re.sub(
@@ -757,6 +759,9 @@ def build_text_fields(raw_html: str) -> tuple[str | None, str | None]:
     plain = re.sub(r"<[^>]+>", "", plain)
     plain = html_lib.unescape(plain).strip() or None
     plain = strip_redundant_urls_from_plain_text(plain, removed_url_anchors)
+    if plain:
+        plain = re.sub(r"(?<=[0-9A-Za-zА-Яа-яЁё«»„“\"'()])(?=https?://)", " ", plain)
+        plain = re.sub(r"(https?://\S+)(?=[A-Za-zА-Яа-яЁё«»„“\"'(])", r"\1 ", plain)
 
     return plain, html_markup
 
@@ -1599,6 +1604,76 @@ def fetch_reply_reference_from_page(reply_reference: dict[str, Any], config: Sit
     return None
 
 
+def should_enrich_reply_post_from_page(post: dict[str, Any]) -> bool:
+    if not post.get("reply_to"):
+        return False
+
+    text = collapse_whitespace(post.get("text"))
+    reply_title = collapse_whitespace((post.get("reply_to") or {}).get("title"))
+    if not text or not post.get("photos"):
+        return True
+
+    if not reply_title:
+        return False
+
+    compact_text = text.rstrip("…").strip()
+    compact_reply = reply_title.rstrip("…").strip()
+    if not compact_text or not compact_reply:
+        return False
+
+    return compact_text == compact_reply or compact_text.startswith(compact_reply)
+
+
+def enrich_reply_posts_from_pages(posts: list[dict[str, Any]], config: SiteConfig) -> bool:
+    reply_posts = [post for post in posts if should_enrich_reply_post_from_page(post)]
+    if not reply_posts:
+        return False
+
+    changed = False
+    log.info("Enriching %s reply posts from Telegram post pages", len(reply_posts))
+
+    for post in reply_posts:
+        post_id = int(post.get("id") or 0)
+        if post_id <= 0:
+            continue
+
+        enriched_post = None
+        for page_url in build_post_media_page_urls(post):
+            try:
+                page_html = fetch_page(page_url, timeout=10, retry_delays=FAST_EXTERNAL_RETRY_DELAYS, log_failures=False)
+            except Exception:
+                continue
+
+            for candidate in parse_posts(page_html, config):
+                if int(candidate.get("id") or 0) == post_id:
+                    enriched_post = candidate
+                    break
+
+            if enriched_post:
+                break
+
+        if not enriched_post:
+            continue
+
+        if enriched_post.get("text") and enriched_post.get("text") != post.get("text"):
+            post["text"] = enriched_post.get("text")
+            changed = True
+
+        if enriched_post.get("text_html") and enriched_post.get("text_html") != post.get("text_html"):
+            post["text_html"] = enriched_post.get("text_html")
+            changed = True
+
+        if enriched_post.get("photos") and enriched_post.get("photos") != post.get("photos"):
+            post["photos"] = enriched_post.get("photos")
+            changed = True
+
+        if enriched_post.get("video_url") and enriched_post.get("video_url") != post.get("video_url"):
+            post["video_url"] = enriched_post.get("video_url")
+            changed = True
+
+    return changed
+
+
 def get_downloadable_photo_targets(message: Any) -> list[Any]:
     targets: list[Any] = []
 
@@ -2251,6 +2326,7 @@ def main() -> int:
     if not posts and existing_payload.get("posts"):
         log.warning("No posts were collected for @%s. Existing mirror data was left untouched.", config.channel_username)
         return 0
+    enrich_reply_posts_from_pages(posts, config)
 
     reply_references = asyncio.run(fetch_reply_references_for_posts(config, posts))
     photo_overrides = asyncio.run(fetch_high_res_photos_for_posts(config, posts))

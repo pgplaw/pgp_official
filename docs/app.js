@@ -217,6 +217,14 @@ function normalizePostHtml(html) {
     .trim();
 }
 
+function normalizePostHtmlSpacing(html) {
+  return String(html || '')
+    .replace(/(?<=[0-9A-Za-zА-Яа-яЁё«»„“"'()])(?=<a\b)/g, ' ')
+    .replace(/(?<=<\/a>)(?=[0-9A-Za-zА-Яа-яЁё«»„“"'(])/g, ' ')
+    .replace(/(?<=[0-9A-Za-zА-Яа-яЁё«»„“"'()])(?=https?:\/\/)/g, ' ')
+    .replace(/(https?:\/\/\S+)(?=[A-Za-zА-Яа-яЁё«»„“"'(])/g, '$1 ');
+}
+
 function normalizePhoto(photo) {
   if (!photo) return null;
   if (typeof photo === 'string') {
@@ -1663,7 +1671,7 @@ function renderPostCard(post) {
   article.id = `post-${post.id}`;
   article.dataset.postId = String(post.id);
 
-  const text = normalizePostHtml(post.text_html) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
+  const text = normalizePostHtmlSpacing(normalizePostHtml(post.text_html)) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
   const forwarded = resolveForwardedSource(post);
   const replyTarget = resolveReplyTarget(post);
   const commentsLabel = post.comments_count ? `Комментарии (${compactNumber(post.comments_count)})` : 'Комментарии';
