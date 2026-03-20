@@ -1057,12 +1057,59 @@ label,
   padding: 22px 22px 16px;
 }
 
+.post-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.post-card__meta {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.post-card__meta--empty {
+  min-height: 0;
+}
+
 .post-card__reply,
 .post-card__forwarded {
   margin-bottom: 12px;
   color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.5;
+}
+
+.post-card__meta > :last-child {
+  margin-bottom: 0;
+}
+
+.post-card__copy {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  padding: 0;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--accent) 14%, var(--bg-strong) 86%);
+  color: var(--accent);
+  box-shadow: none;
+  flex: 0 0 auto;
+}
+
+.post-card__copy:hover {
+  background: color-mix(in srgb, var(--accent) 20%, var(--bg-strong) 80%);
+}
+
+.post-card__copy svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
 }
 
 .post-card__reply a,

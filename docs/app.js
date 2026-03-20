@@ -1649,6 +1649,22 @@ function formatReplyLinkLabel(value) {
   return `${clipped}…`;
 }
 
+function buildPostAnchorUrl(postId) {
+  const resolvedPostId = Number.parseInt(postId, 10);
+  if (!Number.isFinite(resolvedPostId) || resolvedPostId <= 0) return '';
+
+  const url = new URL(window.location.href);
+  url.hash = '';
+  url.search = '';
+
+  if (state.activeChannelKey) {
+    url.searchParams.set('channel', state.activeChannelKey);
+  }
+
+  url.hash = `post-${resolvedPostId}`;
+  return url.toString();
+}
+
 function resolveReplyTarget(post) {
   const reply = post.reply_to;
   if (!reply) return null;
@@ -1672,10 +1688,16 @@ function renderPostCard(post) {
   const text = normalizePostHtmlSpacing(normalizePostHtml(post.text_html)) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
   const forwarded = resolveForwardedSource(post);
   const replyTarget = resolveReplyTarget(post);
+  const postAnchorUrl = buildPostAnchorUrl(post.id);
   const commentsLabel = post.comments_count ? `Комментарии (${compactNumber(post.comments_count)})` : 'Комментарии';
   const shouldShowComments =
     Boolean(state.feed?.source?.comments_enabled) &&
     (post.comments_count > 0 || post.comments_url || post.comments_available);
+
+  const cardLeadMarkup = [
+    replyTarget ? `<div class="post-card__reply">РћРїСѓР±Р»РёРєРѕРІР°РЅРѕ РІ РѕС‚РІРµС‚ РЅР° <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : '',
+    forwarded ? `<div class="post-card__forwarded">РџРµСЂРµСЃР»Р°РЅРѕ РёР· РєР°РЅР°Р»Р° <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : '',
+  ].filter(Boolean).join('');
 
   article.innerHTML = `
     ${buildMedia(post)}
@@ -1695,6 +1717,41 @@ function renderPostCard(post) {
     </div>
   `;
 
+  const body = article.querySelector('.post-card__body');
+  if (body) {
+    const head = document.createElement('div');
+    head.className = 'post-card__head';
+
+    const meta = document.createElement('div');
+    meta.className = 'post-card__meta';
+
+    const leadNodes = Array.from(body.children).filter((node) =>
+      node instanceof HTMLElement &&
+      (node.classList.contains('post-card__reply') || node.classList.contains('post-card__forwarded'))
+    );
+    leadNodes.forEach((node) => meta.appendChild(node));
+
+    const copyButton = document.createElement('button');
+    copyButton.className = 'post-card__copy icon-button icon-button--post-copy';
+    copyButton.type = 'button';
+    copyButton.dataset.copyPostUrl = postAnchorUrl;
+    copyButton.setAttribute('aria-label', 'Скопировать ссылку на пост');
+    copyButton.title = 'Скопировать ссылку на пост';
+    copyButton.innerHTML = `
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="9" y="9" width="10" height="10" rx="2"></rect>
+        <path d="M7 15H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    `;
+
+    if (!leadNodes.length) {
+      meta.classList.add('post-card__meta--empty');
+    }
+
+    head.append(meta, copyButton);
+    body.prepend(head);
+  }
+
   const mediaRoot = article.querySelector('[data-media-id]');
   if (mediaRoot) {
     const items = state.mediaRegistry[mediaRoot.dataset.mediaId] || [];
@@ -1708,6 +1765,14 @@ function renderPostCard(post) {
   if (commentsButton) {
     commentsButton.addEventListener('click', () => {
       window.location.hash = `comments-${post.id}`;
+    });
+  }
+
+  const copyPostButton = article.querySelector('[data-copy-post-url]');
+  if (copyPostButton) {
+    copyPostButton.addEventListener('click', async () => {
+      const copied = await copyTextToClipboard(copyPostButton.dataset.copyPostUrl || '');
+      showCopyToast(copied ? 'Ссылка на пост скопирована' : 'Не удалось скопировать ссылку');
     });
   }
 
