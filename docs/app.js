@@ -24,6 +24,8 @@ const state = {
   totalPages: 1,
   totalPosts: 0,
   pageSize: DEFAULT_PAGE_SIZE,
+  pageLoadPromises: new Map(),
+  nextPagePrefetchHandle: null,
   viewerItems: [],
   viewerIndex: 0,
   mediaRegistry: {},
@@ -1786,7 +1788,45 @@ function updateFeedMeta() {
   return;
 }
 
+function cancelNextPagePrefetch() {
+  if (state.nextPagePrefetchHandle == null) return;
+
+  if (typeof window.cancelIdleCallback === 'function') {
+    window.cancelIdleCallback(state.nextPagePrefetchHandle);
+  } else {
+    window.clearTimeout(state.nextPagePrefetchHandle);
+  }
+
+  state.nextPagePrefetchHandle = null;
+}
+
+function scheduleNextPagePrefetch() {
+  cancelNextPagePrefetch();
+
+  if (state.rendered < state.posts.length || state.loadedPages.size >= state.totalPages) {
+    return;
+  }
+
+  const nextPageNumber = state.loadedPages.size + 1;
+  if (state.pageLoadPromises.has(nextPageNumber)) {
+    return;
+  }
+
+  const callback = () => {
+    state.nextPagePrefetchHandle = null;
+    void loadPage(nextPageNumber).catch(() => {});
+  };
+
+  if (typeof window.requestIdleCallback === 'function') {
+    state.nextPagePrefetchHandle = window.requestIdleCallback(callback, { timeout: 1200 });
+    return;
+  }
+
+  state.nextPagePrefetchHandle = window.setTimeout(callback, 220);
+}
+
 function resetFeed() {
+  cancelNextPagePrefetch();
   state.rendered = 0;
   elements.postFeed.innerHTML = '';
   void appendNextPage();
@@ -1803,12 +1843,29 @@ async function loadPage(pageNumber) {
     return;
   }
 
-  const response = await fetch(buildPageUrl(state.activeChannelKey, pageNumber), getJsonFetchOptions(false));
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  if (state.pageLoadPromises.has(pageNumber)) {
+    return state.pageLoadPromises.get(pageNumber);
+  }
 
-  const payload = await response.json();
-  state.posts.push(...(payload.posts || []));
-  state.loadedPages.add(pageNumber);
+  const pageLoadPromise = (async () => {
+    const requestChannelKey = state.activeChannelKey;
+    const response = await fetch(buildPageUrl(requestChannelKey, pageNumber), getJsonFetchOptions(false));
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const payload = await response.json();
+    if (state.activeChannelKey === requestChannelKey && !state.loadedPages.has(pageNumber)) {
+      state.posts.push(...(payload.posts || []));
+      state.loadedPages.add(pageNumber);
+    }
+  })();
+
+  state.pageLoadPromises.set(pageNumber, pageLoadPromise);
+
+  try {
+    await pageLoadPromise;
+  } finally {
+    state.pageLoadPromises.delete(pageNumber);
+  }
 }
 
 async function appendNextPage() {
@@ -1835,6 +1892,7 @@ async function appendNextPage() {
     elements.loadMoreButton.disabled = false;
     updateLoadMoreVisibility();
     updateFeedMeta();
+    scheduleNextPagePrefetch();
   })();
 
   try {
@@ -2263,6 +2321,8 @@ async function resolveFeedPayloadForSwitch(channelKey, { force = false, prefetch
 }
 
 function applyFeedPayload(channelKey, feedPayload) {
+  cancelNextPagePrefetch();
+  state.pageLoadPromises.clear();
   state.activeChannelKey = channelKey;
   state.mediaRegistry = {};
   state.feed = feedPayload;

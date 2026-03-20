@@ -1112,6 +1112,8 @@ label,
   overflow: hidden;
   border-radius: var(--radius-lg);
   scroll-margin-top: 110px;
+  content-visibility: auto;
+  contain-intrinsic-size: 640px;
 }
 
 .post-card__body {
@@ -1392,6 +1394,8 @@ label,
 .comment-card {
   padding: 18px 20px;
   border-radius: var(--radius-lg);
+  content-visibility: auto;
+  contain-intrinsic-size: 220px;
 }
 
 .comment-card__header {

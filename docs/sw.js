@@ -1,9 +1,69 @@
-const CACHE_NAME = 'telegram-pages-mirror-v16';
+const CACHE_NAME = 'telegram-pages-mirror-v17';
 const STATIC_ASSETS = [
+  './',
+  './app.js',
+  './style.css',
   './manifest.webmanifest',
+  './data/channels/index.json',
   './data/channels/pgp-official/media/channel-avatar.jpg',
-  './data/channels/index.json'
 ];
+
+function isSuccessfulResponse(response) {
+  return Boolean(response) && response.status === 200 && response.type !== 'opaque';
+}
+
+function getCacheKey(request) {
+  const url = new URL(request.url);
+  url.searchParams.delete('t');
+  return url.toString();
+}
+
+async function cacheResponse(request, response) {
+  if (!isSuccessfulResponse(response)) return response;
+
+  const cache = await caches.open(CACHE_NAME);
+  await cache.put(getCacheKey(request), response.clone());
+  return response;
+}
+
+async function matchCached(request) {
+  const cache = await caches.open(CACHE_NAME);
+  return cache.match(getCacheKey(request));
+}
+
+async function staleWhileRevalidate(request) {
+  const cached = await matchCached(request);
+  const networkFetch = fetch(request)
+    .then((response) => cacheResponse(request, response))
+    .catch(() => null);
+
+  if (cached) {
+    void networkFetch;
+    return cached;
+  }
+
+  return networkFetch.then((response) => response || Response.error());
+}
+
+async function networkFirst(request) {
+  try {
+    const response = await fetch(request);
+    return cacheResponse(request, response);
+  } catch {
+    const cached = await matchCached(request);
+    return cached || Response.error();
+  }
+}
+
+async function cacheFirst(request) {
+  const cached = await matchCached(request);
+  if (cached) {
+    return cached;
+  }
+
+  const response = await fetch(request);
+  return cacheResponse(request, response);
+}
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -13,47 +73,40 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
+    caches.keys()
+      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
       .then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (event) => {
-  const url = new URL(event.request.url);
+  const request = event.request;
+  const url = new URL(request.url);
   const isLocalAsset = url.origin === self.location.origin;
-  const isDynamicData = isLocalAsset && url.pathname.includes('/data/');
-  const isAppShellAsset =
-    isLocalAsset &&
-    /\.(?:html|css|js|webmanifest|svg|png|jpg|jpeg)$/i.test(url.pathname);
-
-  if (event.request.mode === 'navigate' || isDynamicData || isAppShellAsset) {
-    event.respondWith(
-      fetch(event.request)
-        .then((response) => {
-          if (!response || response.status !== 200) return response;
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-          return response;
-        })
-        .catch(() => caches.match(event.request))
-    );
-    return;
-  }
-
   if (!isLocalAsset) {
     return;
   }
 
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
+  const isDataRequest = url.pathname.includes('/data/');
+  const isMediaRequest = /\/data\/channels\/.+\/media\//i.test(url.pathname);
+  const isShellAsset =
+    request.mode === 'navigate' ||
+    /\.(?:html|css|js|webmanifest)$/i.test(url.pathname);
 
-      return fetch(event.request).then((response) => {
-        if (!response || response.status !== 200) return response;
-        const clone = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-        return response;
-      });
-    })
-  );
+  if (isDataRequest) {
+    event.respondWith(networkFirst(request));
+    return;
+  }
+
+  if (isShellAsset) {
+    event.respondWith(staleWhileRevalidate(request));
+    return;
+  }
+
+  if (isMediaRequest || /\.(?:svg|png|jpg|jpeg|gif|webp)$/i.test(url.pathname)) {
+    event.respondWith(cacheFirst(request));
+    return;
+  }
+
+  event.respondWith(staleWhileRevalidate(request));
 });
