@@ -304,7 +304,7 @@ label,
   display: block;
   overflow: hidden;
   width: 100%;
-  font-size: 0.88rem;
+  font-size: 0.96rem;
   font-weight: 800;
   line-height: 1.12;
   color: var(--text);
@@ -318,9 +318,9 @@ label,
   overflow: hidden;
   margin-top: auto;
   width: 100%;
-  font-size: 0.76rem;
-  font-weight: 600;
-  line-height: 1.2;
+  font-size: 0.7rem;
+  font-weight: 650;
+  line-height: 1.16;
   color: var(--muted);
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -422,7 +422,7 @@ label,
 
 .channel-carousel__title {
   display: -webkit-box;
-  font-size: 1.05rem;
+  font-size: 1.14rem;
   font-weight: 800;
   line-height: 1.08;
   white-space: normal;
@@ -431,10 +431,10 @@ label,
 }
 
 .channel-carousel__subtitle {
-  font-size: 0.78rem;
-  font-weight: 600;
-  line-height: 1.15;
-  opacity: 0.94;
+  font-size: 0.72rem;
+  font-weight: 650;
+  line-height: 1.12;
+  opacity: 0.9;
   white-space: normal;
 }
 
@@ -564,10 +564,12 @@ label,
 .hero__title-line {
   display: block;
   max-width: 100%;
+  font-size: 0.76em;
+  line-height: 0.98;
 }
 
 .hero__title-line--lead {
-  font-size: 0.86em;
+  font-size: 1em;
   line-height: 1;
 }
 
@@ -1585,11 +1587,11 @@ label,
   }
 
   .channel-tab__title {
-    font-size: 0.96rem;
+    font-size: 1.02rem;
   }
 
   .channel-tab__subtitle {
-    font-size: 0.84rem;
+    font-size: 0.74rem;
   }
 
   .hero {
@@ -1764,11 +1766,11 @@ label,
   }
 
   .channel-carousel__title {
-    font-size: 0.96rem;
+    font-size: 1.04rem;
   }
 
   .channel-carousel__subtitle {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
   }
 
   .channel-carousel__meta {
