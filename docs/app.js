@@ -1659,7 +1659,7 @@ function renderPostCard(post) {
   article.innerHTML = `
     ${buildMedia(post)}
     <div class="post-card__body">
-      ${replyTarget ? `<div class="post-card__reply">Пост опубликован в ответ на пост <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(replyTarget.label)}</a></div>` : ''}
+      ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на пост: <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>Открыть исходный пост</a><span class="post-card__reply-title">${escapeHtml(replyTarget.label)}</span></div>` : ''}
       ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
       ${text ? `<div class="post-card__text">${text}</div>` : ''}
     </div>
