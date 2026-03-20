@@ -761,6 +761,31 @@ def build_text_fields(raw_html: str) -> tuple[str | None, str | None]:
     return plain, html_markup
 
 
+def extract_div_inner_html_by_class(html_text: str, class_name: str) -> str:
+    open_tag_match = re.search(
+        rf'<div[^>]+class="[^"]*\b{re.escape(class_name)}\b[^"]*"[^>]*>',
+        html_text,
+        re.IGNORECASE,
+    )
+    if not open_tag_match:
+        return ""
+
+    start_index = open_tag_match.end()
+    depth = 1
+    token_pattern = re.compile(r"<div\b[^>]*>|</div>", re.IGNORECASE)
+
+    for token_match in token_pattern.finditer(html_text, start_index):
+        token = token_match.group(0).lower()
+        if token.startswith("</div"):
+            depth -= 1
+            if depth == 0:
+                return html_text[start_index:token_match.start()]
+        else:
+            depth += 1
+
+    return html_text[start_index:]
+
+
 def normalize_anchor_href(href: str | None) -> str | None:
     if not href:
         return None
@@ -1297,7 +1322,6 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
         views_match = re.search(r'tgme_widget_message_views[^>]*>([^<]+)<', block)
         comments_count_match = re.search(r'tgme_widget_message_replies_count[^>]*>([^<]*)<', block)
         comments_link_match = re.search(r'tgme_widget_message_replies[^>]*href="([^"]+)"', block)
-        text_match = re.search(r'tgme_widget_message_text[^>]*>(.*?)</div>', block, re.DOTALL)
         video_match = re.search(r'<video[^>]+src="([^"]+)"', block)
         if not video_match:
             video_match = re.search(r'<source[^>]+src="([^"]+)"', block)
@@ -1311,7 +1335,7 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
             if link_preview_match:
                 photos = [urljoin("https://t.me", html_lib.unescape(link_preview_match.group(1)))]
         video_url = urljoin("https://t.me", html_lib.unescape(video_match.group(1))) if video_match else None
-        raw_text = text_match.group(1) if text_match else ""
+        raw_text = extract_div_inner_html_by_class(block, "tgme_widget_message_text")
         text, text_html = build_text_fields(raw_text)
         forwarded_from = extract_forwarded_source(block)
         reply_to = extract_reply_reference(block, config)
