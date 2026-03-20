@@ -1797,6 +1797,188 @@ function renderPostCard(post) {
   return article;
 }
 
+function renderPostCard(post) {
+  const article = document.createElement('article');
+  article.className = 'post-card';
+  article.id = `post-${post.id}`;
+  article.dataset.postId = String(post.id);
+
+  const text = normalizePostHtmlSpacing(normalizePostHtml(post.text_html)) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
+  const forwarded = resolveForwardedSource(post);
+  const replyTarget = resolveReplyTarget(post);
+  const postAnchorUrl = buildPostAnchorUrl(post.id);
+  const commentsLabel = post.comments_count ? `Комментарии (${compactNumber(post.comments_count)})` : 'Комментарии';
+  const shouldShowComments =
+    Boolean(state.feed?.source?.comments_enabled) &&
+    (post.comments_count > 0 || post.comments_url || post.comments_available);
+
+  article.innerHTML = `
+    ${buildMedia(post)}
+    <div class="post-card__body">
+      <button
+        class="post-card__copy icon-button icon-button--post-copy"
+        type="button"
+        data-copy-post-url="${escapeHtml(postAnchorUrl)}"
+        aria-label="Скопировать ссылку на пост"
+        title="Скопировать ссылку на пост"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="9" y="9" width="10" height="10" rx="2"></rect>
+          <path d="M7 15H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1"></path>
+        </svg>
+      </button>
+      ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : ''}
+      ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
+      ${text ? `<div class="post-card__text">${text}</div>` : ''}
+    </div>
+    <div class="post-card__footer">
+      <div class="post-card__stats">
+        <span class="chip">${formatDate(post.date)}</span>
+      </div>
+      <div class="post-card__links">
+        ${shouldShowComments ? `<button class="button button--ghost comments-trigger" type="button" data-post-id="${post.id}">${commentsLabel}</button>` : ''}
+        <a class="post-card__link" href="${post.tg_url}" target="_blank" rel="noopener">Открыть в Telegram</a>
+      </div>
+    </div>
+  `;
+
+  const mediaRoot = article.querySelector('[data-media-id]');
+  if (mediaRoot) {
+    const items = state.mediaRegistry[mediaRoot.dataset.mediaId] || [];
+    bindMediaFill(mediaRoot);
+    mediaRoot.querySelectorAll('.media-trigger').forEach((button) => {
+      button.addEventListener('click', () => openViewer(items, Number(button.dataset.index)));
+    });
+  }
+
+  const commentsButton = article.querySelector('.comments-trigger');
+  if (commentsButton) {
+    commentsButton.addEventListener('click', () => {
+      window.location.hash = `comments-${post.id}`;
+    });
+  }
+
+  const copyPostButton = article.querySelector('[data-copy-post-url]');
+  if (copyPostButton) {
+    copyPostButton.addEventListener('click', async () => {
+      const copied = await copyTextToClipboard(copyPostButton.dataset.copyPostUrl || '');
+      showCopyToast(copied ? 'Ссылка на пост скопирована' : 'Не удалось скопировать ссылку');
+    });
+  }
+
+  article.querySelectorAll('[data-reply-post-id]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const targetPostId = Number.parseInt(link.dataset.replyPostId || '', 10);
+      if (!Number.isFinite(targetPostId)) return;
+
+      event.preventDefault();
+      const targetHash = `#post-${targetPostId}`;
+      if (window.location.hash !== targetHash) {
+        window.location.hash = targetHash;
+        return;
+      }
+
+      void focusPost(targetPostId, link.dataset.replyTgUrl || '');
+    });
+  });
+
+  bindTelegramDeepLinks(article);
+
+  return article;
+}
+
+function renderPostCard(post) {
+  const article = document.createElement('article');
+  article.className = 'post-card';
+  article.id = `post-${post.id}`;
+  article.dataset.postId = String(post.id);
+
+  const text = normalizePostHtmlSpacing(normalizePostHtml(post.text_html)) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
+  const forwarded = resolveForwardedSource(post);
+  const replyTarget = resolveReplyTarget(post);
+  const postAnchorUrl = buildPostAnchorUrl(post.id);
+  const commentsLabel = post.comments_count ? `Комментарии (${compactNumber(post.comments_count)})` : 'Комментарии';
+  const shouldShowComments =
+    Boolean(state.feed?.source?.comments_enabled) &&
+    (post.comments_count > 0 || post.comments_url || post.comments_available);
+
+  article.innerHTML = `
+    ${buildMedia(post)}
+    <div class="post-card__body">
+      <div class="post-card__content">
+        ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : ''}
+        ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
+        ${text ? `<div class="post-card__text">${text}</div>` : ''}
+      </div>
+      <button
+        class="post-card__copy icon-button icon-button--post-copy"
+        type="button"
+        data-copy-post-url="${escapeHtml(postAnchorUrl)}"
+        aria-label="Скопировать ссылку на пост"
+        title="Скопировать ссылку на пост"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="9" y="9" width="10" height="10" rx="2"></rect>
+          <path d="M7 15H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="post-card__footer">
+      <div class="post-card__stats">
+        <span class="chip">${formatDate(post.date)}</span>
+      </div>
+      <div class="post-card__links">
+        ${shouldShowComments ? `<button class="button button--ghost comments-trigger" type="button" data-post-id="${post.id}">${commentsLabel}</button>` : ''}
+        <a class="post-card__link" href="${post.tg_url}" target="_blank" rel="noopener">Открыть в Telegram</a>
+      </div>
+    </div>
+  `;
+
+  const mediaRoot = article.querySelector('[data-media-id]');
+  if (mediaRoot) {
+    const items = state.mediaRegistry[mediaRoot.dataset.mediaId] || [];
+    bindMediaFill(mediaRoot);
+    mediaRoot.querySelectorAll('.media-trigger').forEach((button) => {
+      button.addEventListener('click', () => openViewer(items, Number(button.dataset.index)));
+    });
+  }
+
+  const commentsButton = article.querySelector('.comments-trigger');
+  if (commentsButton) {
+    commentsButton.addEventListener('click', () => {
+      window.location.hash = `comments-${post.id}`;
+    });
+  }
+
+  const copyPostButton = article.querySelector('[data-copy-post-url]');
+  if (copyPostButton) {
+    copyPostButton.addEventListener('click', async () => {
+      const copied = await copyTextToClipboard(copyPostButton.dataset.copyPostUrl || '');
+      showCopyToast(copied ? 'Ссылка на пост скопирована' : 'Не удалось скопировать ссылку');
+    });
+  }
+
+  article.querySelectorAll('[data-reply-post-id]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const targetPostId = Number.parseInt(link.dataset.replyPostId || '', 10);
+      if (!Number.isFinite(targetPostId)) return;
+
+      event.preventDefault();
+      const targetHash = `#post-${targetPostId}`;
+      if (window.location.hash !== targetHash) {
+        window.location.hash = targetHash;
+        return;
+      }
+
+      void focusPost(targetPostId, link.dataset.replyTgUrl || '');
+    });
+  });
+
+  bindTelegramDeepLinks(article);
+
+  return article;
+}
+
 function updateFeedMeta() {
   return;
 }
