@@ -58,6 +58,7 @@ MIN_EXTERNAL_OVERRIDE_RATIO_GAIN = 1.15
 MAX_EXTERNAL_OVERRIDE_RATIO_DELTA = 0.12
 MAX_EXTERNAL_PREVIEW_OVERRIDE_POSTS = 10
 MAX_EXTERNAL_LINKS_TO_TRY = 2
+ENABLE_EXTERNAL_PREVIEW_OVERRIDE = os.environ.get("TG_ENABLE_EXTERNAL_PREVIEW_OVERRIDE", "").strip().lower() in {"1", "true", "yes", "on"}
 LOW_RES_SINGLE_UPSCALE_THRESHOLD = 1200
 LOW_RES_SINGLE_FEED_TARGET = 1800
 LOW_RES_SINGLE_FULL_TARGET = 2400
@@ -1102,6 +1103,9 @@ def fetch_telegram_post_page_override(post: dict[str, Any], current_bytes: bytes
 
 
 def fetch_external_preview_override(post: dict[str, Any], current_bytes: bytes | None = None) -> bytes | None:
+    if not ENABLE_EXTERNAL_PREVIEW_OVERRIDE:
+        return None
+
     photos = post.get("photos") or []
     if len(photos) != 1:
         return None
@@ -1563,12 +1567,16 @@ async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[s
     if not selected_ids:
         return {}
 
-    log.info("Refreshing high-resolution media for %s posts", len(selected_ids))
     results: dict[int, list[bytes]] = {}
     selected_posts = {post["id"]: post for post in posts if post["id"] in selected_ids}
     external_override_attempts = 0
 
     credentials = get_telegram_session_credentials()
+    if not credentials and not ENABLE_EXTERNAL_PREVIEW_OVERRIDE:
+        log.info("Telegram user session is not configured. High-resolution media refresh skipped.")
+        return {}
+
+    log.info("Refreshing high-resolution media for %s posts", len(selected_ids))
     if credentials:
         api_id, api_hash, session_string = credentials
 
@@ -1620,7 +1628,7 @@ async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[s
 
                 await asyncio.sleep(0.15)
     else:
-        log.info("Telegram user session is not configured. Telegram media override skipped.")
+        log.info("Telegram user session is not configured. Telegram media override skipped; external preview override is enabled explicitly.")
 
     for post_id in selected_ids:
         post = selected_posts.get(post_id)
@@ -1637,6 +1645,9 @@ async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[s
         if telegram_post_override:
             results[post_id] = [telegram_post_override]
             current_bytes = telegram_post_override
+
+        if not ENABLE_EXTERNAL_PREVIEW_OVERRIDE:
+            continue
 
         if external_override_attempts >= MAX_EXTERNAL_PREVIEW_OVERRIDE_POSTS:
             continue
