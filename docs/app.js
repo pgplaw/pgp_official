@@ -160,6 +160,50 @@ function linkifyText(text) {
   return result.replace(/\r?\n/g, '<br>');
 }
 
+function linkifyTelegramAwareText(text) {
+  const source = String(text || '');
+  const pattern = /(?<![@.\w])((?:https?:\/\/)?(?:www\.)?(?:[a-zР°-СЏС‘0-9-]+\.)+[a-zР°-СЏС‘]{2,}(?:\/[^\s<]*)?)|(?<![@.\w/])(@[A-Za-z][A-Za-z0-9_]{4,31})/giu;
+
+  let lastIndex = 0;
+  let result = '';
+
+  for (const match of source.matchAll(pattern)) {
+    const matchedText = match[0];
+    const startIndex = match.index ?? 0;
+    const matchedUrl = match[1];
+    const matchedHandle = match[2];
+
+    result += escapeHtml(source.slice(lastIndex, startIndex));
+
+    if (matchedUrl) {
+      let visibleText = matchedUrl;
+      let trailingPunctuation = '';
+
+      while (/[),.!?:;]$/.test(visibleText)) {
+        trailingPunctuation = visibleText.slice(-1) + trailingPunctuation;
+        visibleText = visibleText.slice(0, -1);
+      }
+
+      const href = /^(?:https?:)?\/\//i.test(visibleText)
+        ? visibleText
+        : `https://${visibleText}`;
+
+      result += `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(visibleText)}</a>`;
+      result += escapeHtml(trailingPunctuation);
+    } else if (matchedHandle) {
+      const username = matchedHandle.slice(1);
+      result += `<a href="https://t.me/${escapeHtml(username)}" target="_blank" rel="noopener noreferrer">${escapeHtml(matchedHandle)}</a>`;
+    } else {
+      result += escapeHtml(matchedText);
+    }
+
+    lastIndex = startIndex + matchedText.length;
+  }
+
+  result += escapeHtml(source.slice(lastIndex));
+  return result.replace(/\r?\n/g, '<br>');
+}
+
 function normalizeComparableUrl(value) {
   try {
     const url = new URL(String(value || '').trim(), window.location.href);
@@ -1492,7 +1536,7 @@ function renderHeader(site, generatedAt) {
   const fallbackAvatar = catalogSite.avatar_path || 'assets/channel-avatar.jpg';
 
   elements.siteTitle.innerHTML = renderHeroTitle(title);
-  elements.siteDescription.innerHTML = linkifyText(description);
+  elements.siteDescription.innerHTML = linkifyTelegramAwareText(description);
   elements.channelLink.textContent = handle;
   elements.channelLink.href = site.channel_username ? `https://t.me/${site.channel_username}` : 'https://t.me';
   startSyncStatusPolling();
@@ -2412,7 +2456,7 @@ function showFeedView() {
 }
 
 function sanitizeCommentText(text) {
-  return linkifyText(text || '');
+  return linkifyTelegramAwareText(text || '');
 }
 
 function renderComment(comment) {
