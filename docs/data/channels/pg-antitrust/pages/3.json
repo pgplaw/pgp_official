@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-20T14:35:39.079850+00:00",
+  "generated_at": "2026-03-20T17:39:31.279627+00:00",
   "pagination": {
     "page": 3,
     "page_size": 16,
@@ -20,7 +20,15 @@
           "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1319-1-ba671ea0473e-v8.jpg",
           "full_url": "data/channels/pg-antitrust/media/posts/1319-1-ba671ea0473e-v8.jpg",
           "source_url": "https://cdn4.telesco.pe/file/vKHMi9ojGV_bkKW-Tb73RoPtEeCX2dE-SGva2hb29-hcW_PmzjpRqAb7HfbrjSHngpLCjMyBhXyvMcHTvphJtWWVpkkE0MzT9Zg6WEgtnafa32LxsNtj9VIdNQGJKmv1lZ2aKt_z-2e7WXXnoFl7FMeHyJq6q0XwsfbYFGjF22IACS_Xn5DuW7KIMmcyL_UnVHQVIGHwPRYJ3cZSEKlbJnefKDiVlamcWknNZVHqQuSiBCUHi8CIbRqwHe1CJbxbPBNFZH3GtcZKpHFuruVfHr2U7JTri0-mQuLac7WQPIGVl4j1N7XZI1Xq8Bo0OyCo8_RAtuB4WwWYws_YK5hLsQ.jpg",
-          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1319-1-ba671ea0473e-v8.jpg"
+          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1319-1-ba671ea0473e-v8.jpg",
+          "thumb_width": 730,
+          "thumb_height": 800,
+          "feed_width": 1460,
+          "feed_height": 1600,
+          "full_width": 1460,
+          "full_height": 1600,
+          "source_width": 1460,
+          "source_height": 1600
         }
       ],
       "video_url": null,

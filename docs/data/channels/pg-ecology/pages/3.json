@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-20T09:25:49.999097+00:00",
+  "generated_at": "2026-03-20T17:40:27.612445+00:00",
   "pagination": {
     "page": 3,
     "page_size": 16,
@@ -20,7 +20,15 @@
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1268-1-17f26bf31f39-v8.jpg",
           "full_url": "data/channels/pg-ecology/media/posts/1268-1-17f26bf31f39-v8.jpg",
           "source_url": "https://cdn4.telesco.pe/file/qxBJIPQ5nuJ-yoTD4gUhfCPG89yDwQvDzhRLTyCz3JQWp-VmNgtA9HzLOktX9TdHVjKbJolQxVFBlrL4M6jlLu8hEaWjVTVaH4i-2ldtKxhDZxik4D3XQTo34eTknVM7O0fwiMRPP6q95N7K8Kij_YTCdtGyemFoyLbwN5irIjxIcjPquHspVeDMGUmnAQmlydclEFRgobL8vRZouTUhMAxXZ8OQR5qBExf4isGEhMInEaUK4ykx5DTqfwHVEZZQNKbvQs2mBPZpk-JsAlOEmzXAIOGiA7u50zEBtiiuSg7JSvcsTONu0np4M-XUmXJRrOpPnJz7D166OZqxdLwGbw.jpg",
-          "feed_url": "data/channels/pg-ecology/media/posts/feed/1268-1-17f26bf31f39-v8.jpg"
+          "feed_url": "data/channels/pg-ecology/media/posts/feed/1268-1-17f26bf31f39-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 800,
+          "feed_width": 1600,
+          "feed_height": 1600,
+          "full_width": 1600,
+          "full_height": 1600,
+          "source_width": 1600,
+          "source_height": 1600
         }
       ],
       "video_url": null,
@@ -55,7 +63,15 @@
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1266-1-5aef8e48298e-v8.jpg",
           "full_url": "data/channels/pg-ecology/media/posts/1266-1-5aef8e48298e-v8.jpg",
           "source_url": "https://cdn4.telesco.pe/file/H4zvXt3bIZM7J7WUJzGdQFy3oh1QUw4CJGGnqxIlZLQR2b3FaYiENq9vsDCkP4YeHT35DVz_9hVAuEwGbJg65BFQWckJpJwnF3x2GkRhm22gpekoCyFUWu4A-McP47K_HcYwaryfzz0gqcAVLbpkMc5CuzgaH1zB4nZOslllp92w6y25MEWvHwtzDOlShqeQ8_jC8sDA5mf775r8HWyDjKGowwzFXxDtzFvgr55dOze2kta1DgDdbiisDgquowHeN0J0VQHxDJejWWbBnZgh0a4DQ9vhFQ-rPHuTAo_y3RDDbgKf_36he3IVeVHGmJg6ASHKYuI7mlxen0WVtDEMNw.jpg",
-          "feed_url": "data/channels/pg-ecology/media/posts/feed/1266-1-5aef8e48298e-v8.jpg"
+          "feed_url": "data/channels/pg-ecology/media/posts/feed/1266-1-5aef8e48298e-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1600,
+          "feed_height": 640,
+          "full_width": 1600,
+          "full_height": 640,
+          "source_width": 1600,
+          "source_height": 640
         }
       ],
       "video_url": null,
@@ -95,7 +111,15 @@
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1264-1-097257fc7c11-v8.jpg",
           "full_url": "data/channels/pg-ecology/media/posts/1264-1-097257fc7c11-v8.jpg",
           "source_url": "https://cdn4.telesco.pe/file/Vrux-xr62KGPvgfND0Uaj_no9qD1GmbmiM4uarJMHprNn_7ZA5kygJUYC2Ss4qplD4v6x0_L4U62GtnkoqB7zQZiN0Hmu5Sz1Zz3uk-PSUc_7loi3J-Fok66o2XYQXWgIht2_QcpVTMHJf00tk4gbiYsFb6-eg4dirgQrWaBL7s0uF4gbgIOC7cyMbqFQBXKvWGzTTL2U-13Dn37xAjKMA9GzdrOFJDVDmm6_JJAxsZ-Eew1CTXvyH7GtdtDigCsc7jUV6XLb0VdkZcNVx-t4OgEPL8eco74JM8kpuFImZF4wPWarfvsZdfQmgCfwo9AEWr2MPWjwJ_8oH2k5xkqcw.jpg",
-          "feed_url": "data/channels/pg-ecology/media/posts/feed/1264-1-097257fc7c11-v8.jpg"
+          "feed_url": "data/channels/pg-ecology/media/posts/feed/1264-1-097257fc7c11-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1600,
+          "feed_height": 640,
+          "full_width": 1600,
+          "full_height": 640,
+          "source_width": 1600,
+          "source_height": 640
         }
       ],
       "video_url": null,
@@ -144,7 +168,15 @@
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1261-1-30ff2d51a467-v8.jpg",
           "full_url": "data/channels/pg-ecology/media/posts/1261-1-30ff2d51a467-v8.jpg",
           "source_url": "https://cdn4.telesco.pe/file/rlup_Qu1AIpa5YB6kUp6V3Ro0ATclQ0esYt97pe-RCbj14sdE2WyFMAMpyRzX1hVgs9zXG_VDNXq89Or65F-Zb3ry7JkZNdwNNpzPs18UlhY-2b85Y66LyPacyDZIiNAKuw18ZB77pEq4K3DVv3aSo1dD9-xcDN-xYIUFWB076WofiYT6Zi3YAZpYQgXlN_tMct2c3n911-5k5tWp5rXLOChDPy-98Uj_eHe9pG5kJEAXv62asxMNPPq8b2MHCNWPFLF4m_-9hUm1rgkLwiKTub4IwzW79KLFaK4N5ApCyypObgYfODU1fuIuPaVHN96dEKWPEpnYXiGp7dh7M7oEw.jpg",
-          "feed_url": "data/channels/pg-ecology/media/posts/feed/1261-1-30ff2d51a467-v8.jpg"
+          "feed_url": "data/channels/pg-ecology/media/posts/feed/1261-1-30ff2d51a467-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1600,
+          "feed_height": 640,
+          "full_width": 1600,
+          "full_height": 640,
+          "source_width": 1600,
+          "source_height": 640
         }
       ],
       "video_url": null,

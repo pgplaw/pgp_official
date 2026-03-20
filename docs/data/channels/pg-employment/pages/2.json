@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-20T14:58:50.044122+00:00",
+  "generated_at": "2026-03-20T17:42:57.650445+00:00",
   "pagination": {
     "page": 2,
     "page_size": 16,
@@ -90,7 +90,15 @@
           "thumb_url": "data/channels/pg-employment/media/posts/thumbs/1929-1-25be54b47272-v8.jpg",
           "full_url": "data/channels/pg-employment/media/posts/1929-1-25be54b47272-v8.jpg",
           "source_url": "https://cdn4.telesco.pe/file/gsmXvIoaEaVaJOUnWG3Fmgr2CqW-7sDGFC2MNVVOJN_R6omyJM_MMm2HF9pD_KTIYA0WWKuPWwio7Dak3LJLJSkRRNwNh_VcJGnatQOyDL5GUj_8iyOPGtlTYQxmfEfXcxROMsTCaGyynwoepuFOg788pl-z6B5XqDZlbpUeYDrys6G8TXzs3DdRWE9sjoUs5SyuTQ26LHG5ZzyqMWjCFMKZordo8W5w9bQktHlGZPyRvTQJ2F8HJeAfjbTVqoxsU-fWECENCygaDXnr9QUrkFk3FqLyFBVEZVy1IGbxgtz42OyCJ3Fdry4pfZMrazi6q-CmWdVvVOPl_naW63HEbg.jpg",
-          "feed_url": "data/channels/pg-employment/media/posts/feed/1929-1-25be54b47272-v8.jpg"
+          "feed_url": "data/channels/pg-employment/media/posts/feed/1929-1-25be54b47272-v8.jpg",
+          "thumb_width": 564,
+          "thumb_height": 477,
+          "feed_width": 1128,
+          "feed_height": 954,
+          "full_width": 1128,
+          "full_height": 954,
+          "source_width": 1128,
+          "source_height": 954
         }
       ],
       "video_url": null,
