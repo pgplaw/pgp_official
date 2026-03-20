@@ -70,6 +70,15 @@ const elements = {
   copyToast: document.getElementById('copyToast'),
 };
 
+const IMAGE_DEBUG_ENABLED = (() => {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('imageDebug') === '1' || window.localStorage.getItem('pep-image-debug') === '1';
+  } catch {
+    return false;
+  }
+})();
+
 function escapeHtml(value) {
   return String(value ?? '')
     .replace(/&/g, '&amp;')
@@ -229,6 +238,11 @@ function normalizePhoto(photo) {
     return { thumb_url: photo, feed_url: photo, full_url: photo };
   }
 
+  const parseDimension = (value) => {
+    const parsed = Number.parseInt(value, 10);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+  };
+
   const thumbUrl = photo.thumb_url || photo.thumb || photo.url || photo.full_url || photo.full;
   const feedUrl = photo.feed_url || photo.feed || photo.full_url || photo.full || photo.url || thumbUrl;
   const fullUrl = photo.full_url || photo.full || photo.url || photo.thumb_url || photo.thumb;
@@ -238,6 +252,14 @@ function normalizePhoto(photo) {
     thumb_url: thumbUrl || fullUrl,
     feed_url: feedUrl || fullUrl || thumbUrl,
     full_url: fullUrl || thumbUrl,
+    thumb_width: parseDimension(photo.thumb_width),
+    thumb_height: parseDimension(photo.thumb_height),
+    feed_width: parseDimension(photo.feed_width),
+    feed_height: parseDimension(photo.feed_height),
+    full_width: parseDimension(photo.full_width),
+    full_height: parseDimension(photo.full_height),
+    source_width: parseDimension(photo.source_width),
+    source_height: parseDimension(photo.source_height),
   };
 }
 
@@ -1469,17 +1491,17 @@ function buildResponsiveImageTag(item, index, isGallery) {
 
   const candidates = isGallery
     ? [
-      [item.thumb_url, 1280],
-      [item.full_url, 2400],
+      [item.thumb_url, item.thumb_width],
+      [item.full_url, item.full_width],
     ]
     : [
-      [item.thumb_url, 1280],
-      [item.feed_url, 1800],
-      [item.full_url, 2400],
+      [item.thumb_url, item.thumb_width],
+      [item.feed_url, item.feed_width],
+      [item.full_url, item.full_width],
     ];
   const seen = new Set();
   const srcSet = candidates
-    .filter(([url]) => url)
+    .filter(([url, width]) => url && width)
     .filter(([url]) => {
       if (seen.has(url)) return false;
       seen.add(url);
@@ -1487,6 +1509,15 @@ function buildResponsiveImageTag(item, index, isGallery) {
     })
     .map(([url, width]) => `${url} ${width}w`)
     .join(', ');
+  const intrinsicWidth = isGallery
+    ? (item.thumb_width || item.full_width || item.source_width || null)
+    : (item.feed_width || item.full_width || item.thumb_width || item.source_width || null);
+  const intrinsicHeight = isGallery
+    ? (item.thumb_height || item.full_height || item.source_height || null)
+    : (item.feed_height || item.full_height || item.thumb_height || item.source_height || null);
+  const renderMaxWidth = isGallery
+    ? null
+    : (item.full_width || item.feed_width || item.thumb_width || item.source_width || null);
   const sizes = isGallery
     ? '(max-width: 480px) calc(100vw - 44px), (max-width: 860px) calc(50vw - 28px), 520px'
     : '(max-width: 860px) calc(100vw - 44px), 980px';
@@ -1495,6 +1526,10 @@ function buildResponsiveImageTag(item, index, isGallery) {
     <img
       src="${fallbackSrc}"
       ${srcSet ? `srcset="${srcSet}" sizes="${sizes}"` : ''}
+      ${intrinsicWidth && intrinsicHeight ? `width="${intrinsicWidth}" height="${intrinsicHeight}"` : ''}
+      ${renderMaxWidth ? `style="--media-max-inline-size:${renderMaxWidth}px"` : ''}
+      ${renderMaxWidth ? `data-render-max-width="${renderMaxWidth}"` : ''}
+      data-media-index="${index}"
       alt="Media ${index + 1}"
       loading="lazy"
       decoding="async"
@@ -1551,6 +1586,10 @@ function getAverageEdgeColor(image) {
   canvas.height = 12;
 
   try {
+    context.imageSmoothingEnabled = true;
+    if ('imageSmoothingQuality' in context) {
+      context.imageSmoothingQuality = 'high';
+    }
     context.drawImage(image, 0, 0, canvas.width, canvas.height);
     const { data } = context.getImageData(0, 0, canvas.width, canvas.height);
     let red = 0;
@@ -1587,6 +1626,34 @@ function getAverageEdgeColor(image) {
   }
 }
 
+function applyIntrinsicMediaLimit(image) {
+  if (image.closest('.post-card__media--gallery')) return;
+
+  const declaredMaxWidth = Number.parseInt(image.dataset.renderMaxWidth || '', 10);
+  const naturalWidth = image.naturalWidth || 0;
+  const resolvedMaxWidth = naturalWidth || declaredMaxWidth;
+  if (!resolvedMaxWidth) return;
+
+  image.style.setProperty('--media-max-inline-size', `${resolvedMaxWidth}px`);
+}
+
+function logImageDiagnostics(image) {
+  if (!IMAGE_DEBUG_ENABLED) return;
+
+  const rect = image.getBoundingClientRect();
+  const postCard = image.closest('.post-card');
+  const postId = postCard?.dataset?.postId || 'unknown';
+  console.info('[image-debug]', {
+    postId,
+    selectedUrl: image.currentSrc || image.getAttribute('src'),
+    naturalWidth: image.naturalWidth || 0,
+    naturalHeight: image.naturalHeight || 0,
+    renderedWidth: Math.round(rect.width),
+    renderedHeight: Math.round(rect.height),
+    declaredRenderMaxWidth: Number.parseInt(image.dataset.renderMaxWidth || '', 10) || null,
+  });
+}
+
 function applyMediaFill(image) {
   const trigger = image.closest('.media-trigger');
   if (!trigger || trigger.dataset.fillReady === 'true') return;
@@ -1601,11 +1668,17 @@ function applyMediaFill(image) {
 function bindMediaFill(root) {
   root.querySelectorAll('.media-trigger img').forEach((image) => {
     if (image.complete) {
+      applyIntrinsicMediaLimit(image);
       applyMediaFill(image);
+      logImageDiagnostics(image);
       return;
     }
 
-    image.addEventListener('load', () => applyMediaFill(image), { once: true });
+    image.addEventListener('load', () => {
+      applyIntrinsicMediaLimit(image);
+      applyMediaFill(image);
+      logImageDiagnostics(image);
+    }, { once: true });
   });
 }
 

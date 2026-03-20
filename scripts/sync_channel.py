@@ -263,7 +263,15 @@ def subtract_months(reference: datetime, months: int) -> datetime:
     return reference.replace(year=year, month=month, day=day)
 
 
-def normalize_photo_entry(photo: Any) -> dict[str, str] | None:
+def parse_positive_int(value: Any) -> int | None:
+    try:
+        parsed = int(value)
+    except (TypeError, ValueError):
+        return None
+    return parsed if parsed > 0 else None
+
+
+def normalize_photo_entry(photo: Any) -> dict[str, Any] | None:
     if not photo:
         return None
     if isinstance(photo, str):
@@ -298,10 +306,58 @@ def normalize_photo_entry(photo: Any) -> dict[str, str] | None:
                 "feed_url": feed_url or full_url,
                 "full_url": full_url,
             }
+            for key in (
+                "thumb_width",
+                "thumb_height",
+                "feed_width",
+                "feed_height",
+                "full_width",
+                "full_height",
+                "source_width",
+                "source_height",
+            ):
+                parsed = parse_positive_int(photo.get(key))
+                if parsed:
+                    entry[key] = parsed
             if source_url and re.match(r"^https?://", source_url):
                 entry["source_url"] = source_url
             return entry
     return None
+
+
+def read_image_dimensions(path: Path) -> tuple[int | None, int | None]:
+    try:
+        from PIL import Image
+
+        with Image.open(path) as image:
+            image.load()
+            return image.width, image.height
+    except Exception:
+        return None, None
+
+
+def with_local_variant_dimensions(
+    photo: dict[str, Any],
+    *,
+    thumb_path: Path | None = None,
+    feed_path: Path | None = None,
+    full_path: Path | None = None,
+) -> dict[str, Any]:
+    enriched = dict(photo)
+    for prefix, path in (("thumb", thumb_path), ("feed", feed_path), ("full", full_path)):
+        if not path or not path.exists():
+            continue
+
+        width, height = read_image_dimensions(path)
+        if width and height:
+            enriched[f"{prefix}_width"] = width
+            enriched[f"{prefix}_height"] = height
+
+    if "source_width" not in enriched and enriched.get("full_width"):
+        enriched["source_width"] = enriched["full_width"]
+    if "source_height" not in enriched and enriched.get("full_height"):
+        enriched["source_height"] = enriched["full_height"]
+    return enriched
 
 
 def ensure_superres_model(model_path: Path, model_url: str, label: str) -> Path:
@@ -581,7 +637,7 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
     photo_overrides = photo_overrides or {}
 
     for post in posts:
-        mirrored_photos: list[dict[str, str]] = []
+        mirrored_photos: list[dict[str, Any]] = []
         post_photo_overrides = photo_overrides.get(post["id"], [])
         normalized_photos = [normalize_photo_entry(raw_photo) for raw_photo in post.get("photos") or []]
         normalized_photos = [photo for photo in normalized_photos if photo]
@@ -607,11 +663,17 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
                 )
 
                 if current_variant_present and current_files_present:
+                    current_entry = with_local_variant_dimensions(
+                        photo,
+                        thumb_path=local_thumb_path,
+                        feed_path=local_feed_path if is_single_photo_post else None,
+                        full_path=local_full_path,
+                    )
                     active_relative_paths.add(full_source)
                     active_relative_paths.add(photo["thumb_url"])
                     if is_single_photo_post and photo.get("feed_url"):
                         active_relative_paths.add(photo["feed_url"])
-                    mirrored_photos.append(photo)
+                    mirrored_photos.append(current_entry)
                     continue
 
                 if local_full_path.exists():
@@ -623,7 +685,14 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
                         active_relative_paths.add(photo["thumb_url"])
                         if is_single_photo_post and photo.get("feed_url"):
                             active_relative_paths.add(photo["feed_url"])
-                        mirrored_photos.append(photo)
+                        mirrored_photos.append(
+                            with_local_variant_dimensions(
+                                photo,
+                                thumb_path=local_thumb_path,
+                                feed_path=local_feed_path if is_single_photo_post else None,
+                                full_path=local_full_path,
+                            )
+                        )
                         continue
                 else:
                     active_relative_paths.add(full_source)
@@ -673,7 +742,14 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
             if is_single_photo_post:
                 mirrored_entry["feed_url"] = feed_relative_url
                 active_relative_paths.add(feed_relative_url)
-            mirrored_photos.append(mirrored_entry)
+            mirrored_photos.append(
+                with_local_variant_dimensions(
+                    mirrored_entry,
+                    thumb_path=thumb_path,
+                    feed_path=feed_path if is_single_photo_post else None,
+                    full_path=full_path,
+                )
+            )
             active_relative_paths.add(full_relative_url)
             active_relative_paths.add(thumb_relative_url)
 
@@ -2089,28 +2165,66 @@ def render_post_page_media(post: dict[str, Any]) -> str:
 
     media_items: list[str] = []
     is_gallery = len(photos) > 1
+    sizes_attr = (
+        "(max-width: 480px) calc(100vw - 44px), (max-width: 860px) calc(50vw - 28px), 520px"
+        if is_gallery
+        else "(max-width: 860px) calc(100vw - 44px), 980px"
+    )
     for index, photo in enumerate(photos):
         src = photo.get("feed_url") or photo["thumb_url"]
+        candidate_pairs = (
+            [
+                (photo.get("thumb_url"), photo.get("thumb_width")),
+                (photo.get("full_url"), photo.get("full_width")),
+            ]
+            if is_gallery
+            else [
+                (photo.get("thumb_url"), photo.get("thumb_width")),
+                (photo.get("feed_url"), photo.get("feed_width")),
+                (photo.get("full_url"), photo.get("full_width")),
+            ]
+        )
+        seen_urls: set[str] = set()
         srcset_parts = []
-        if photo.get("thumb_url"):
-            srcset_parts.append(f'{root_prefix}{photo["thumb_url"]} 1280w')
-        if not is_gallery and photo.get("feed_url") and photo["feed_url"] not in {photo["thumb_url"], photo["full_url"]}:
-            srcset_parts.append(f'{root_prefix}{photo["feed_url"]} 1800w')
-        if photo.get("full_url") and photo["full_url"] != (photo.get("feed_url") or photo["thumb_url"]):
-            srcset_parts.append(f'{root_prefix}{photo["full_url"]} 2400w')
+        for candidate_url, candidate_width in candidate_pairs:
+            if not candidate_url or not candidate_width or candidate_url in seen_urls:
+                continue
+            seen_urls.add(candidate_url)
+            srcset_parts.append(f'{root_prefix}{candidate_url} {candidate_width}w')
         srcset = ", ".join(srcset_parts)
+        intrinsic_width = (
+            photo.get("thumb_width") or photo.get("full_width") or photo.get("source_width")
+            if is_gallery
+            else photo.get("feed_width") or photo.get("full_width") or photo.get("thumb_width") or photo.get("source_width")
+        )
+        intrinsic_height = (
+            photo.get("thumb_height") or photo.get("full_height") or photo.get("source_height")
+            if is_gallery
+            else photo.get("feed_height") or photo.get("full_height") or photo.get("thumb_height") or photo.get("source_height")
+        )
+        render_max_width = None if is_gallery else (
+            photo.get("full_width") or photo.get("feed_width") or photo.get("thumb_width") or photo.get("source_width")
+        )
         media_items.append(
             (
                 '<a class="media-trigger" href="{root_prefix}{full_url}" target="_blank" rel="noopener">'
                 '<img src="{root_prefix}{src}" '
                 '{srcset_attr}'
-                'sizes="(max-width: 860px) calc(100vw - 44px), 980px" '
+                '{dimensions_attr}'
+                '{style_attr}'
+                'sizes="{sizes_attr}" '
                 'alt="Media {index}" loading="lazy" decoding="async"></a>'
             ).format(
                 root_prefix=root_prefix,
                 full_url=html_lib.escape(photo["full_url"]),
                 src=html_lib.escape(src),
                 srcset_attr=f'srcset="{html_lib.escape(srcset)}" ' if srcset else "",
+                dimensions_attr=(
+                    f'width="{intrinsic_width}" height="{intrinsic_height}" '
+                    if intrinsic_width and intrinsic_height else ""
+                ),
+                style_attr=f'style="--media-max-inline-size:{render_max_width}px" ' if render_max_width else "",
+                sizes_attr=html_lib.escape(sizes_attr),
                 index=index + 1,
             )
         )

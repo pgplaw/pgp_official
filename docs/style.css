@@ -1233,7 +1233,9 @@ label,
 .post-card__media:not(.post-card__media--gallery) img,
 .post-card__media:not(.post-card__media--gallery) video {
   display: block;
-  width: 100%;
+  width: min(100%, var(--media-max-inline-size, 100%));
+  max-width: 100%;
+  margin-inline: auto;
   height: clamp(280px, 34vw, 460px);
   object-fit: contain;
   object-position: center;
@@ -1852,6 +1854,9 @@ label,
 
   .post-card__media:not(.post-card__media--gallery) img,
   .post-card__media:not(.post-card__media--gallery) video {
+    width: min(100%, var(--media-max-inline-size, 100%));
+    max-width: 100%;
+    margin-inline: auto;
     height: auto;
     max-height: none;
     object-fit: cover;
