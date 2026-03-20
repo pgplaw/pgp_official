@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-20T08:07:50.311385+00:00",
+  "generated_at": "2026-03-20T08:27:40.655262+00:00",
   "pagination": {
     "page": 8,
     "page_size": 16,
@@ -18,7 +18,13 @@
       "photos": [],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2420",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": {
+        "post_id": 2419,
+        "title": "PG Tax | Налоги 🛡 «Пепеляев Групп» защитила физических лиц в спорах о зачёте налога, уплаченного в Казахстане…",
+        "tg_url": "https://t.me/PG_Tax/2419",
+        "channel_username": "PG_Tax"
+      }
     },
     {
       "id": 2419,
@@ -38,7 +44,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2419",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2418,
@@ -58,7 +65,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2418",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2417,
@@ -78,7 +86,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2417",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2416,
@@ -98,7 +107,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2416",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2415,
@@ -123,7 +133,8 @@
         "channel_url": "https://t.me/s/pgp_official",
         "channel_username": "pgp_official",
         "channel_title": "Pepeliaev Group | Пепеляев Групп"
-      }
+      },
+      "reply_to": null
     },
     {
       "id": 2414,
@@ -143,7 +154,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2414",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2413,
@@ -163,7 +175,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2413",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2412,
@@ -183,7 +196,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2412",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2411,
@@ -203,7 +217,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2411",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2410,
@@ -223,7 +238,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2410",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2409,
@@ -236,7 +252,13 @@
       "photos": [],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2409",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": {
+        "post_id": 1054,
+        "title": "infotax.me Должник моего должника - мой должник ФНС России территориальным налоговым органам сообщено о…",
+        "tg_url": "https://t.me/infotaxme/1054",
+        "channel_username": "infotaxme"
+      }
     },
     {
       "id": 2408,
@@ -256,7 +278,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2408",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2407,
@@ -276,7 +299,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2407",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2406,
@@ -296,7 +320,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2406",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2405,
@@ -316,7 +341,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2405",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     }
   ]
 }

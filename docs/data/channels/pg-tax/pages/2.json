@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-20T08:07:50.289789+00:00",
+  "generated_at": "2026-03-20T08:27:40.641580+00:00",
   "pagination": {
     "page": 2,
     "page_size": 16,
@@ -25,7 +25,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2526",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2525,
@@ -45,7 +46,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2525",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2524,
@@ -65,7 +67,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2524",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2523,
@@ -85,7 +88,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2523",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2522,
@@ -98,7 +102,13 @@
       "photos": [],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2522",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": {
+        "post_id": 2516,
+        "title": "PG Tax | Налоги ⚡️ ФАС фактически объявила рекламу в Telegram незаконной. Налоговые последствия могут…",
+        "tg_url": "https://t.me/PG_Tax/2516",
+        "channel_username": "PG_Tax"
+      }
     },
     {
       "id": 2521,
@@ -118,7 +128,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2521",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2520,
@@ -138,7 +149,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2520",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2518,
@@ -158,7 +170,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2518",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2517,
@@ -171,7 +184,13 @@
       "photos": [],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2517",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": {
+        "post_id": 1359,
+        "title": "PG Antitrust | Антимонопольное право ⚡️ФАС считает нарушением размещение рекламы в Telegram Вчера Президент…",
+        "tg_url": "https://t.me/PgAntitrust/1359",
+        "channel_username": "PgAntitrust"
+      }
     },
     {
       "id": 2516,
@@ -191,7 +210,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2516",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2515,
@@ -211,7 +231,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2515",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2514,
@@ -224,7 +245,8 @@
       "photos": [],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2514",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2513,
@@ -237,7 +259,8 @@
       "photos": [],
       "video_url": "https://cdn4.telesco.pe/file/52aac8a07b.mp4?token=vW8Zgn0sRe8_Xw0XKNFVVrZLQsKZAmMCKu7JdtOUow2fFA1EuF4sGL8T2aehbiKgjaUIAfJg6ewDoDCokFvoWuw1xaqBS_RbnalZw6N47EjsLN0UzmDq23m2zml7wd4EYQEbFWzt9jk-cT8JGsI_UsDLL-fuBqJoC-7KpO6KYWmtBPnhZJnvsBa46wGuJB3MpXk7MTpVbTau4_ouKPMQtHScbcfFLcrcTD6zsBWZTN2QIMecoydrnE9vo8agxPXttLC6Jb-q9OhloTc4PYO_DfcHFfakQjrDmVrsNl7i784zRY6pFfSTESleLy3INr4gspChPh6R9LdP1fY9FoDJBg",
       "tg_url": "https://t.me/PG_Tax/2513",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2512,
@@ -257,7 +280,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2512",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 2511,
@@ -270,7 +294,13 @@
       "photos": [],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2511",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": {
+        "post_id": 1055,
+        "title": "СпецИнвестРежимы 18 марта 2026 «Пепеляев Групп» совместно с Уполномоченным по защите прав предпринимателей в…",
+        "tg_url": "https://t.me/InvestmentLaw/1055",
+        "channel_username": "InvestmentLaw"
+      }
     },
     {
       "id": 2510,
@@ -290,7 +320,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2510",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     }
   ]
 }

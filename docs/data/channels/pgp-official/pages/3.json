@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-20T07:58:08.524280+00:00",
+  "generated_at": "2026-03-20T08:21:26.339891+00:00",
   "pagination": {
     "page": 3,
     "page_size": 16,
@@ -25,7 +25,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1720",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 1719,
@@ -45,7 +46,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1719",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 1718,
@@ -65,7 +67,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1718",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 1717,
@@ -85,7 +88,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1717",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 1716,
@@ -105,7 +109,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1716",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 1706,
@@ -174,7 +179,8 @@
         "channel_url": "https://t.me/s/PgAntitrust",
         "channel_username": "PgAntitrust",
         "channel_title": "PG Antitrust | Антимонопольное право"
-      }
+      },
+      "reply_to": null
     },
     {
       "id": 1705,
@@ -194,7 +200,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1705",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 1704,
@@ -214,7 +221,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1704",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 1702,
@@ -238,7 +246,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1702",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 1701,
@@ -258,7 +267,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1701",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 1700,
@@ -278,7 +288,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1700",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 1699,
@@ -298,7 +309,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1699",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 1697,
@@ -318,7 +330,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1697",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 1696,
@@ -343,7 +356,8 @@
         "channel_url": "https://t.me/s/PG_Tax",
         "channel_username": "PG_Tax",
         "channel_title": "PG Tax | Налоги"
-      }
+      },
+      "reply_to": null
     },
     {
       "id": 1695,
@@ -363,7 +377,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1695",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     },
     {
       "id": 1694,
@@ -383,7 +398,8 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1694",
-      "forwarded_from": null
+      "forwarded_from": null,
+      "reply_to": null
     }
   ]
 }
