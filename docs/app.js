@@ -10,6 +10,8 @@ const CHANNEL_CONTENT_FADE_OUT_MS = 180;
 const CHANNEL_CONTENT_FADE_IN_DELAY_MS = 60;
 const CHANNEL_MOBILE_CONTENT_FADE_OUT_MS = 70;
 const CHANNEL_MOBILE_CONTENT_FADE_IN_DELAY_MS = 0;
+const CHANNEL_DESKTOP_CONTENT_FADE_OUT_MS = 110;
+const CHANNEL_DESKTOP_CONTENT_FADE_IN_DELAY_MS = 0;
 const VIEWER_TRANSITION_MS = 360;
 
 const state = {
@@ -493,11 +495,18 @@ function setChannelContentSwitching(active, { fast = false } = {}) {
   }
 }
 
-function getChannelSwitchTimings({ fast = false } = {}) {
+function getChannelSwitchTimings({ fast = false, desktopFast = false } = {}) {
   if (fast) {
     return {
       fadeOut: CHANNEL_MOBILE_CONTENT_FADE_OUT_MS,
       fadeInDelay: CHANNEL_MOBILE_CONTENT_FADE_IN_DELAY_MS,
+    };
+  }
+
+  if (desktopFast) {
+    return {
+      fadeOut: CHANNEL_DESKTOP_CONTENT_FADE_OUT_MS,
+      fadeInDelay: CHANNEL_DESKTOP_CONTENT_FADE_IN_DELAY_MS,
     };
   }
 
@@ -2710,7 +2719,16 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
   const isChannelChange = Boolean(state.activeChannelKey) && resolvedChannelKey !== state.activeChannelKey;
   const shouldClearHash = /^#(?:comments|post)-/.test(window.location.hash);
   const shouldUpdateUrl = getChannelKeyFromLocation() !== resolvedChannelKey || shouldClearHash;
-  const switchTimings = getChannelSwitchTimings({ fast: fastTransition });
+  const desktopFastTransition = !fastTransition && !isMobileCarouselViewport();
+  const switchTimings = getChannelSwitchTimings({
+    fast: fastTransition,
+    desktopFast: desktopFastTransition,
+  });
+  const feedPayloadTask = isChannelChange
+    ? Promise.resolve(prefetchedFeedPromise || fetchFeedPayload(resolvedChannelKey, force))
+        .then((payload) => ({ payload }))
+        .catch((error) => ({ error }))
+    : null;
 
   if (scrollToTop) {
     scrollPageToTop();
@@ -2727,12 +2745,20 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
     return;
   }
 
-  setChannelContentSwitching(true, { fast: fastTransition });
+  setChannelContentSwitching(true, { fast: fastTransition || desktopFastTransition });
   await nextRenderFrame();
   await wait(switchTimings.fadeOut);
 
   try {
-    const feedPayload = await resolveFeedPayloadForSwitch(resolvedChannelKey, { force, prefetchedFeedPromise });
+    const feedPayloadResult = feedPayloadTask
+      ? await feedPayloadTask
+      : { payload: await resolveFeedPayloadForSwitch(resolvedChannelKey, { force, prefetchedFeedPromise }) };
+
+    if (feedPayloadResult.error) {
+      throw feedPayloadResult.error;
+    }
+
+    const feedPayload = feedPayloadResult.payload;
     applyFeedPayload(resolvedChannelKey, feedPayload);
 
     if (shouldUpdateUrl) {
