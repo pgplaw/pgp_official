@@ -1,12 +1,47 @@
 {
-  "generated_at": "2026-03-20T11:27:14.575761+00:00",
+  "generated_at": "2026-03-20T14:50:39.234859+00:00",
   "pagination": {
     "page": 3,
     "page_size": 16,
-    "total_posts": 167,
+    "total_posts": 169,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2513,
+      "date": "2026-03-05T14:21:30+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1180,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": "https://cdn4.telesco.pe/file/52aac8a07b.mp4?token=vW8Zgn0sRe8_Xw0XKNFVVrZLQsKZAmMCKu7JdtOUow2fFA1EuF4sGL8T2aehbiKgjaUIAfJg6ewDoDCokFvoWuw1xaqBS_RbnalZw6N47EjsLN0UzmDq23m2zml7wd4EYQEbFWzt9jk-cT8JGsI_UsDLL-fuBqJoC-7KpO6KYWmtBPnhZJnvsBa46wGuJB3MpXk7MTpVbTau4_ouKPMQtHScbcfFLcrcTD6zsBWZTN2QIMecoydrnE9vo8agxPXttLC6Jb-q9OhloTc4PYO_DfcHFfakQjrDmVrsNl7i784zRY6pFfSTESleLy3INr4gspChPh6R9LdP1fY9FoDJBg",
+      "tg_url": "https://t.me/PG_Tax/2513",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
+      "id": 2512,
+      "date": "2026-03-05T14:21:04+00:00",
+      "text": "Сегодня в фокусе рубрики #СЕРГЕЙ_ПЕПЕЛЯЕВ_ON_AIR \n- законопроект Минцифры о поддержке Почты России за счёт обязательных отчислений операторов доставки.\n\nНапоминаем, что комментарии к этой рубрике открыты для любых Ваших вопросов Сергею Геннадьевичу ✍️",
+      "text_html": "Сегодня в фокусе рубрики #СЕРГЕЙ_ПЕПЕЛЯЕВ_ON_AIR <br>- законопроект Минцифры о поддержке Почты России за счёт обязательных отчислений операторов доставки.<br><br>Напоминаем, что комментарии к этой рубрике открыты для любых Ваших вопросов Сергею Геннадьевичу ✍️",
+      "views": 1220,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2512-1-71864fa88bfc-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2512-1-71864fa88bfc-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Hx0X1OPF7jngCcWsfqJAjlaF7U2lOEDn48K8Z923U7C-cIU4bVL7zER55zyp8JA0OdCDnPB8v0HxevkiJuuVolkojG1-UTyw2Xg0e3HgMHC0LworfID0jWpXsRNeP_NZVojWOXHwF945D-9RQHu1kWAhbm-ZpAE1LVVofcYAAECpbry7KyHK1Cs6KaoDhbj9igcTwjlUmRac2jFWodwwxipUVRp18cyGuncjt5mfd0wvcLZaoXXBHPmfwcsRSjfEqsn-R0Cp58a1OBw7wWMgM1lUR1qoRgPMT9-tNLqgv1F5IaFtZScfdCjBkZ3Nb-L2x_zfvOgPWp7Eup6DtfKR-A.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2512-1-71864fa88bfc-v8.jpg"
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/PG_Tax/2512",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2511,
       "date": "2026-03-05T10:06:08+00:00",
@@ -239,10 +274,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2496-1-ba54575ea294-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2496-1-ba54575ea294-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/ilw80YTI_mIR0x1tD3mz5FZ90R7AQ-DM5ludzl_-p5bHQmwcQWNQDyzuVMtxEs2Vkkol--kOYZSHkxnFg9Xi0tnK95aMBcyIuTZQs38E_GrVDt9LUqWoeiWNiusHSuUQ68scGEcAcwSmBVfUFEadaY3jg4SXnt1eaiRRNeyX-56Eb15aTAoWVJeLiwwB_SvCl8Etze6ezuEsNYO3X1aOYEBzJ_lAQER6rB3EpaI38iCZ95NiZIUALEXMMlx67k1J_7gE3Bs1otNmOwAdWQ2SPG972mmJ9m31p_i3QUY1bIfrPsKnNOnaUO-X8FSn717RuLnmetoMgAm955kLfPLw7A.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2496-1-ba54575ea294-v8.jpg"
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2496-1-0873618ca740-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2496-1-0873618ca740-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/cdd3So8JzlHD3jMefv1Eh5zS889bQLj5-K47WMe5LUMdbTojiHX1McYv-lj606KXLZdGA7W_HLFH5B6wsvpJ7ap5tCHBKT62ZWdTmKMo9oIg2ulHQx1QPO18YfpcHRpi62WE37RyWwZ5dFt__Cl6QGFlY9g-IW2HNP5D-yigk9iGKlX36N6nHpp_niY208JQftDcM6Ol-q84WgAcl7z19q4FFLVP0DxetJl1Y6AohKBShJi45msbZqBZ3GoQQ3ariQF0c0c37QCQ_VkNy6OZZaqK5pzODhGeNWSUGzzbWNE29i5MXaYIaMLkPxVF6J0NgnVLlsrs5_2NVkkkMGWjZw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2496-1-0873618ca740-v8.jpg"
         }
       ],
       "video_url": null,
@@ -292,57 +327,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2494",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2491,
-      "date": "2026-02-26T13:27:50+00:00",
-      "text": "🏆 Делимся результатами индивидуального рейтинга Право-300 за 2025 год по налогам и валютному регулированию!\n\nРекомендованы: \n\n1️⃣1️⃣ юристов в налоговых номинациях\n4️⃣ юриста в категории «Валютное регулирование»\n\n4️⃣4️⃣ эксперта «Пепеляев Групп» отмечены в общей сложности. \n\nС полными результатами можно ознакомиться на сайте.\n\n🎉 Благодарим Право ру за проделанную работу и поздравляем коллег с профессиональными успехами!",
-      "text_html": "🏆 Делимся результатами индивидуального рейтинга Право-300 за 2025 год по налогам и валютному регулированию!<br><br>Рекомендованы: <br><br>1️⃣1️⃣ юристов в налоговых номинациях<br>4️⃣ юриста в категории «Валютное регулирование»<br><br>4️⃣4️⃣ эксперта «Пепеляев Групп» отмечены в общей сложности. <br><br>С полными результатами можно ознакомиться <a href=\"https://www.pgplaw.ru/news/press-releases/individualniy-reyting-pravo300-2025/\" target=\"_blank\" rel=\"noopener noreferrer\">на сайте</a>.<br><br>🎉 Благодарим Право ру за проделанную работу и поздравляем коллег с профессиональными успехами!",
-      "views": 1410,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-1-f4db576ce5c2-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2491-1-f4db576ce5c2-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/UmPpf45k0pzf4bWi0-T87l8fEVFzln31qSQlBz-Qpkhzi8IF5nhKI81m0kOsvmocHj1Kx86LJ33P-MJ7KA1ggvpQyNHPOaE6voiQFfOaZc72ndLERq-ddXWUvwz1MimGFfsaSO0JfGZ7ymKKJlySIS06qC5PdB93dhbv3dBLZ7q81y2ZC5h6PPq9IMiyOqcexYc_eRUP2qHNSmWPgeedzKjebFIaU5eTYswZ63Gf87yXAusdRNf91HqINlHXexXmZ-rwQGtRbnabCADUXjPZrjHQ6ZCq3qW83jsGREbwKRKXmJu1jcHVd4DqPkx73OyZRbG0hHdQC521_8_Cxw-Diw.jpg"
-        },
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-2-68b93e8ec9ed-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2491-2-68b93e8ec9ed-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/kFGvV3qLLKdjy0aTF7O28dZqEdPpPvfN8G9iX4NbgwRThyQJ1gl7UAjaiunbKT7HrvjthfNSjoUkvseNKkTNrapHc8G4v5PqGvYTeL8mqEI8ex_BCjiHHywFcX7nKzQJU8KHHyRDwSYUZnjaQNQsWqztY7BJ3G9zrd1InJaWWFylmSSJ-GMfffZvPG6X8_lsW056Za0N_El7gpmuFyQdCs2OG1ZUupmaGZFXZnY3v4VuK9A9YXd7aRBoRQyWxMm3Rw3fstu-JjfAHhYLkjTjB2zncUEErcHL2I2JlXDiPk6Q4J9aGp4Osb1re3Ra80SO83i2F2wUgJRcT-Jnld3fmA.jpg"
-        },
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-3-a2dc5d9601bd-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2491-3-a2dc5d9601bd-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/jri6B_ojGDSw3FL-a7lYhByIVPAW19wOFkxWV_EysEAjng8HCFUo-87wxvFfY0c4kbMPu-sQnX5kKRFh5irMMxlGG7h6DUiST-yTM6u64SAcluEIgj6nbQKCsR84TkbUEM06LuSqiHix3OvpGUigny5A7mFgKQKNl7sDZ9DfumtY7fbJu9d126cnFdeIh2kLQ-2N73XqltO8jx2fD39Klb-XSiSz35g5W-anLbob-9f-9ZGvt3daF6zz0ldjTEdS1LV7r4-LfUlYk6Su3BFjnjvzeLnbwBpuWZ6LeO03Ab70Qz85bgKHjjqKptInOzyYIycxy0TYcimYSH5NJuaVCA.jpg"
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2491",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2489,
-      "date": "2026-02-26T10:21:02+00:00",
-      "text": "💡 Постановление КС РФ по мене как развитие подхода по делу ООО \"Успех и Н\"\n\nКонституционный суд РФ Постановлением от 15.01.2026 № 1-П сформировал правовую позицию о порядке налогообложения НДФЛ сделок мены.\n\n⚖️ Правовая позиция КС РФ\n\nСуд оценивал конституционность п. 2 ст. 214.10 НК РФ применительно к сделке мены недвижимого имущества между физическими лицами и признал его не соответствующим Конституции в той мере, в какой он во взаимосвязи с п. 2 ст. 567 ГК РФ допускает произвольное разрешение вопроса об определении подлежащего обложению НДФЛ дохода действующего добросовестно налогоплательщика в случае совершения им мены объектов недвижимого имущества в целях, не связанных с ведением предпринимательской деятельности.\n\nПри совершении налогоплательщиком мены объектов недвижимого имущества в целях, не связанных с ведением предпринимательской деятельности, НДФЛ взимается – в случае\nопровержения эквивалентности совершенной мены, а именно установления отсутствия разумных, в том числе внеэкономических, мотивов для ее совершения при существенном превышении кадастровой стоимости полученного в результате мены недвижимого имущества над кадастровой стоимостью отчужденного недвижимого имущества (при этом, если кадастровая стоимость объекта недвижимого имущества не определена или не подлежит применению в соответствии с законодательством о государственной кадастровой оценке, применяется рыночная стоимость, определяемая налоговым органом на основании отчета об оценке), в том числе с учетом всех выплаченных по такому договору денежных средств, – с соответствующей разницы.\n \n\n🏢 Управляющий партнер \"Пепеляев Групп\" Сергей Пепеляев обращает внимание на то, что Постановление развивает и закрепляет более раннюю позицию КС РФ - выраженную по делу ООО \"Успех и Н\".\n\nВ Постановлении №2-П от 21.01.2025 Конституционный суд сформулировал подход, согласно которому передача (отчуждение) обществом, применяющим УСН, имущества в счет выплаты действительной стоимости доли вышедшему из него участнику предполагает необходимость обложения налогом экономической выгоды такого налогоплательщика в виде действительной (рыночной) стоимости доли, определяемой в установленном порядке на момент после перехода ее к налогоплательщику. \n\n❓Соответствует ли подход КС понятию дохода как экономической выгоды и прироста благосостояния, и что такое «фискальная эквилибристика» - читайте в статье С.Г. Пепеляева \"Конституционный суд пересчитал мену\" 👉\n\n#комментарий_эксперта\n\n➖➖\n 🤓 Подробности о Постановлении КС РФ № 1-П от 15.01.2026 о налогообложении мены - в ближайшие дни в нашем канале.",
-      "text_html": "💡 Постановление КС РФ по мене как развитие подхода по делу ООО \"Успех и Н\"<br><br>Конституционный суд РФ <a href=\"https://www.ksrf.ru/doc/KSRFDecision881467.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Постановлением от 15.01.2026 № 1-П</a> сформировал правовую позицию о порядке налогообложения НДФЛ сделок мены.<br><br>⚖️ Правовая позиция КС РФ<br><br>Суд оценивал конституционность п. 2 ст. 214.10 НК РФ применительно к сделке мены недвижимого имущества между физическими лицами и признал его не соответствующим Конституции в той мере, в какой он во взаимосвязи с п. 2 ст. 567 ГК РФ допускает произвольное разрешение вопроса об определении подлежащего обложению НДФЛ дохода действующего добросовестно налогоплательщика в случае совершения им мены объектов недвижимого имущества в целях, не связанных с ведением предпринимательской деятельности.<br><br>При совершении налогоплательщиком мены объектов недвижимого имущества в целях, не связанных с ведением предпринимательской деятельности, НДФЛ взимается – в случае<br>опровержения эквивалентности совершенной мены, а именно установления отсутствия разумных, в том числе внеэкономических, мотивов для ее совершения при существенном превышении кадастровой стоимости полученного в результате мены недвижимого имущества над кадастровой стоимостью отчужденного недвижимого имущества (при этом, если кадастровая стоимость объекта недвижимого имущества не определена или не подлежит применению в соответствии с законодательством о государственной кадастровой оценке, применяется рыночная стоимость, определяемая налоговым органом на основании отчета об оценке), в том числе с учетом всех выплаченных по такому договору денежных средств, – с соответствующей разницы.<br> <br><br>🏢 Управляющий партнер \"Пепеляев Групп\" <a href=\"https://www.pgplaw.ru/to-get-the-team/sergey-pepeliaev/\" target=\"_blank\" rel=\"noopener noreferrer\">Сергей Пепеляев</a> обращает внимание на то, что Постановление развивает и закрепляет более раннюю позицию КС РФ - выраженную по делу ООО \"Успех и Н\".<br><br>В <a href=\"https://www.ksrf.ru/doc/KSRFDecision808821.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Постановлении №2-П от 21.01.2025</a> Конституционный суд сформулировал подход, согласно которому передача (отчуждение) обществом, применяющим УСН, имущества в счет выплаты действительной стоимости доли вышедшему из него участнику предполагает необходимость обложения налогом экономической выгоды такого налогоплательщика в виде действительной (рыночной) стоимости доли, определяемой в установленном порядке на момент после перехода ее к налогоплательщику. <br><br>❓Соответствует ли подход КС понятию дохода как экономической выгоды и прироста благосостояния, и что такое «фискальная эквилибристика» - читайте в статье С.Г. Пепеляева <a href=\"https://www.kommersant.ru/doc/8443300\" target=\"_blank\" rel=\"noopener noreferrer\">&quot;Конституционный суд пересчитал мену&quot;</a> 👉<br><br>#комментарий_эксперта<br><br>➖➖<br> 🤓 Подробности о Постановлении КС РФ № 1-П от 15.01.2026 о налогообложении мены - в ближайшие дни в нашем канале.",
-      "views": 1170,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2489-1-c6aa0de1b6ed-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2489-1-c6aa0de1b6ed-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/azx3X06ZM3u1o4ROxebEvq5MRR6G7yhCpDSSosHEhpR3IKIj7ttrzvIHvGTmTgMLQN-E3CNXkXSsH-mUBSVMuBw95pUaYGwv0SPKunXgJ0Wek8FpZgRKDl2uZkcXCkKE27qhQu1R1SFPhZWeu-1JMg60pZHCGRYkDyOM_GS5lXfAbkrsrpMxsniCM7AfSahaC20w1q92tgX9hh3W3MTh1ftFhqVGPV4uFlwoJ4zBZG_lybIRK85gV0b7vuKIhbrS3RVGFCLvW0DSd-L3t0be6oMeWmiiKAwLMNARni55uXkOeBdaMhIPG7Va3I8vlMDx64_j9NL0VXKnv1bkkV8vVw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2489-1-c6aa0de1b6ed-v8.jpg"
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2489",
       "forwarded_from": null,
       "reply_to": null
     }

@@ -1,12 +1,47 @@
 {
-  "generated_at": "2026-03-20T11:51:13.425505+00:00",
+  "generated_at": "2026-03-20T14:50:39.241446+00:00",
   "pagination": {
     "page": 6,
     "page_size": 16,
-    "total_posts": 167,
+    "total_posts": 169,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2457,
+      "date": "2026-02-10T13:35:37+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1300,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": "https://cdn4.telesco.pe/file/9c54e3d766.mp4?token=Bj0dFQFOJGV4tTpjDiF_o6iqBWkLiteIeDl7soxecf85Bg3uUxRF6jsr_tD_E8ennjtc7L0ISG_2KAVfiUbAv2cQGszCmAhVQP2KYoLWhcmXJumgxXayaud-_jlh9qkdueKv1EcLMmrW5G_4BG8mx_uyMFEKC_wNF-NK2VVMv7XNbk_2erjvZ4A_WkPswCB1LLujWe8WOGBLFhu9IYe3k11j25OdvA0Akk_bWL_K3n4Wi6jgJrZCrO5iF75BduoRP07mNqtTa1ajqJCS9gN9SNafuuf3on3TPtO3lhdPmbDK3wt-oAxPYSJTz51I2MIKyIARwk6NoY2okNUKaz5EwQ",
+      "tg_url": "https://t.me/PG_Tax/2457",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
+      "id": 2456,
+      "date": "2026-02-10T13:35:02+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1430,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2456-1-09ac3e21d871-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2456-1-09ac3e21d871-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/GxKi87XOTc_aLbm7BRIfjkRN5k6DoMqjbIquuemBX9L1oy8SqmQrbGBAlHeHWhdACAPMrGa9YsUxD1kgDXzE1f8mMnNyBFvlezUbsRSZxIgsZAP1QjWXG6DmlwNO7gexW8Xhgx8U6W2836HWZeJLpp6vf5K0VpudL3Z7VsKNXKMECfxZvMYin0HYbt4O91N8PwKbaUAfdFh_EbmQICkANw8B3JGALBncsppUPL8fDBKuZoRcS-fXipM1osYuPCCdQyDm9nJ49Xva_KnTjAXxcHBZeNLnR0zu9JkpSw5Y_yVLz1DYSAPShF8RXqWWws3IpZ2WIRWaKxewNZra5HAk_w.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2456-1-09ac3e21d871-v8.jpg"
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/PG_Tax/2456",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2455,
       "date": "2026-02-10T10:06:45+00:00",
@@ -17,10 +52,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2455-1-c844ab3cb6a3-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2455-1-c844ab3cb6a3-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/kWJI991qUQ-hPFVwWWC5jBbQHZJ6ytOdv0cmr6U6x4f8RrMmERWZZui5mkh3Fjsa6-21uzBQykxI78mIaBZ5ukGgC-nJlIuoO1guwbEjWZMnD5YtV2Tak51kPjUK9L7iJhdFrrdoe-frTS8-n8wBLpTB7Aaz33o8gLuIJWYgrtwTj2zctIwyP4J815TXpYMMEWvx23qFWaDHrxeNesz6RsfKpwWD1B5ZJ7sn-qW2o7JrhX5NzLawUj2F7bzM3-oDpsaRQk0wqv6pu8EiKlD_Ro3s47lxj_wTKPIndei3fshbU8J3janZCMEGYDIuuonepm8lVZJxKqgiAOvH05IAmw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2455-1-c844ab3cb6a3-v8.jpg"
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2455-1-5d711f62e68f-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2455-1-5d711f62e68f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/C_wztT6fMGbs-yOu3uGuk7GGPoqafUfX9IvI-214nnvtMFSr_JPWiwQ4k18sfaps69zX83Vl8ebcSRmchTFEUL5aI7jpjamshNm3Fxn0QkBrlCBGfruaNCTZak8tR3ROQN3H5l8LHCieeqYT2HixUtsq9U8KXshL-bbXNmlnkB_xY2e_AQ2Y99fDudzmipLtxQriG8f8Fa9Td0C8bSyscPwpHr-ACrwCex_UHbSwFMlAOcl-2mIV_oWH-MTJ2Z3Mih3egzIZrXBOQizSGryspcopi_7TZfwH0ImQuhN037s-TLPjzfKwiSc8EHowzx6GIHY5KvA0I8mdyr4mCTmU4w.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2455-1-5d711f62e68f-v8.jpg"
         }
       ],
       "video_url": null,
@@ -38,10 +73,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2454-1-fd49a1080739-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2454-1-fd49a1080739-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/P_5d6tOghrnUmpFCDCDcNiEBT9152yKGZvJI4bX8GZb2oNhDD459wG16lyfXIJNmLNBIKdOy7IKQmJOsvcsQVpjUYS1LSQM5MK9SwlJGDbUBRK4Iw2C7AVYNmFyUZ4-5yqKCsb3H9p5-tOBOel7jfmtmaNcmQAUDLcraGEQDiFdtrGcYP82Q4rMcOk_PxJaRqVg5WmkystmQXAYRHPnPSDrbqwSb9K5u9VLh994ZxKZPGCsqBfnBEhxCHOxtEGx6pd_B2-SweH9IzEkJu5DVvwOmW6DLs-OA_HFCitqLOjlSWhxobvtHQdbY7GhNaIm7UAXlxFgx9wAUC7zwOJr6uQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2454-1-fd49a1080739-v8.jpg"
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2454-1-e1217540afad-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2454-1-e1217540afad-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/gaXLRsFaJjiUgJggpzPe4Dz9R8jofZJJwGyyzMfvhkaCTMCWwwC1HqnDzKhNdIfqo9GnhjDO660ef4pUqtup_KdLenI79TQtMXW1HyBLy9vLvdzDfWaPPWytNs8fin8OaSklROluhAKpiMbtZct1v9aDuz8b1dzCRYpkYnbcMgNwUdQ-gXoxTKc4J65hJ65Sk1y-R_MUb45lDq7doG5y1WNfTLKEPK6bv7XG6Lv3kX-93iqcshvIEbqoaKZMibGB_EUY1BwfycO3f7RggW66-3DTrvhXfFfoo_K1UrFqVBi3PUfN3o86KRaercYLSmJRdZ7OnYfYNkTXaFakdG5JcQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2454-1-e1217540afad-v8.jpg"
         }
       ],
       "video_url": null,
@@ -58,7 +93,7 @@
       "comments_count": 0,
       "comments_url": null,
       "photos": [],
-      "video_url": "https://cdn4.telesco.pe/file/90a830aa1a.mp4?token=WZnbgopw4CpqikpbrMoF5ko4_PmjN-Y2iMadlVUuwfz60dHptEDOL6JcYsUXmMPl-sZRLXzzuByDNghPM_jECaEE4YtCucQPWngZ-i9d2nuZcN-t4nkU-oUfRTeWR50-jlGtbTBag9Kx30-iMU_bwTGOgE90jBoFZHZl2QnxzDRRfClliDPStKBFyPSp5Wuh9taqw91H9IdBE1nNyo5SbXuW90g0EinI_PJ3amYSay6Te7JlxFO8m3BM_vi1WFPOUPWqVb39TBjU0CEPcKNFbCNC8dLMf0oCjYUGmzhYt_N2nn2_voBabraVJ83uJ95yGKesCIidnAbHEDpB3g-BIA",
+      "video_url": "https://cdn4.telesco.pe/file/90a830aa1a.mp4?token=AfpAU5NN_0uIFeJH284ZNSNqkW_9CGX9atVNScmBV1q5Akt9sGEgQ4jYakmGV2fNOoIwZUHfqkevCSX-deYeP4HO-qUn6sL2kfi16H8dMZRXfOirrkk5ybWhnLCF-xav8qo_77DZNuny_s97CD--gcrq3RTUw_IIqdyjHBeUuWOQ0N23ZOWaQJcoR8ncPiiqrDRXW2p0MxbrnwmkPsv5EdxTqI8dMoXh9KiwXrUtelHzLHRw4ste2vdF_lcvTXKo7wyD8oK4ZkOR95i-GEAuXEHDeT9QOdpuqYLcfdFuJSMyua5j3PBu2_NRRGgs9LLcAg1_avEJlHNFy_CgVukuWw",
       "tg_url": "https://t.me/PG_Tax/2453",
       "forwarded_from": null,
       "reply_to": null
@@ -73,10 +108,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2452-1-7e7508d6dbbb-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2452-1-7e7508d6dbbb-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/cPMRIqM7qVtupww9sSCpeX6v5Vm9ZyBde3JZnCPCQ1iGsX-CN7odAPnngtlJNecPcPsGGA2lQ6o2Yt9PUE7YXdOnd4ozyvPmkqOsbhdOBaCwm5GpZ06gRfssWQCE3ZAJ37Xb9eYDLKFnPvcVLnV3xJCiAkl4t_ddrhzRqk4PhGwghLXFD-SvurlPpd1FX2b_dcEPWRk_vppqmH3Bg4KLDAEhc0aQqT8m-hsn083LJ5h-wWAzVvFYrY5tmzn8AUD0BP19ao3o4mfVL2QJIgeVduH8JR9i9v1RJw3j6GsAR3CZyysWB1C-4MgNPZ-mAfw03U75oABbIskR2LE_KwPHqA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2452-1-7e7508d6dbbb-v8.jpg"
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2452-1-d0acb1114300-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2452-1-d0acb1114300-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/gPBtdrB8p8btBBcI3blhsWU6PkJXlO3MVfSKoh0O8nHZKS9jzbRyFLikLI4lhKYuqgEYcwS5qL0vhtN1qEZe9zNj20V_TyvqA9x5DsDnHocy3B0OLz0YeW69qHl5CBgt1T3O13MHBZroMH8_RVprWT0MVoC2fb7aZpTE26VFAYd-lECcyN5XiFPSVV2lUDiaXhTA6c0YDsSywbN6caI_j5OJVCnszhCa8gjLwzo35IPHj2TjUjNBQQC9r4cT2zt-uP4emJu88IMnLMBUfm7Di8Zkk5y2sKlkXm_ojz_TrA7X9Hhh84blgymakoH5ZPc9J5dDqUJ5CDtNIIiPan4x3A.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2452-1-d0acb1114300-v8.jpg"
         }
       ],
       "video_url": null,
@@ -94,10 +129,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2451-1-7ee860646d16-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2451-1-7ee860646d16-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/cfBZ_Pi9NEv-PAcLcfF_BRItuW_3brL5AQVn0CDtPb2vDRHRcBkJJ8623DEFiKaDWw6ZVgh2Citkcp4Jg2Xux6jNR1_8vCncckTu9IqoPnnB8r9_y1Xza7vOm67kznq-VFxgzKKKUSAymX6dqok15pq9iFAEJvOnQTxdBQhgOEWP7ctmP9V1X4SgZVY9pvSgCgt2IWNsXmOwba1DmdyYwDDC3AF_ZhrkuWqhMnRW2khy1iWwmpDD8FhYxWEMiKcswZnjkQqD0qJKlQQol4skbYJ9GslRlK1TgKt7Pwg1FSSnaiRC6oc6fJOE0geWPzikM5C0D9B8Rv5T_8x9tF3tgw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2451-1-7ee860646d16-v8.jpg"
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2451-1-ff99685f6a26-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2451-1-ff99685f6a26-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/P-_taa-4w-lWEGpVhZ2bI61_2hocHhyjke693Qt_jwVnEZoOFF-gCZlYAjDGpimlXyMc0Xry7NRDl-uoI5OoSlTaEZmJ7sRbbKwa472RSVdx8_caCV6gk5BCgd80wrfSNnIK_kqBrqmHjhHDSlizT5z9mxMkRgFUIJarmp3UeNsbihcmE-iKFaL0KZVu0Xen1Q095awdVWRRtDSMWKo2uXbDcKCNq3cgDhjwQmbJS4VedN0OgMsJ23hHJJIs77sOJkUmfoYcNRhr88O-B-Ak7qNX7jf3Q1maiQqw8aKkJ53zgSC7ESg5BINqhkqUDbTvsUJ8eySsjctDdsBahoIEzQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2451-1-ff99685f6a26-v8.jpg"
         }
       ],
       "video_url": null,
@@ -115,10 +150,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2450-1-53ef65e62838-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2450-1-53ef65e62838-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/FTm59AmCgDaNjXuoMnym6dQfJlNhXX-yE-iTjGxzgGjnlHmu1JjkUF046C5Nng1-pmuKMC5rWSAchjeffFVeKNGdZLofmSYFM0l-EVCq9SoLXybeL7JHRaHI0ZhSn8-2oFgIfoeHkRhMEsiI3ubG2yVMF9N1xAmuQ-O8K4EUnhOJsqRqDkQQPopmHaXahbV6pjRqOJrK711tAzOOzxqrb5MNZ82VqqNlrsB97uEskBdO9k593kIP1FyF5Evf500ZGnXsqlc9dk0-EWuWJuhvWtHLpGvwukhqSLAV3OwfvuuI4FdnXcEpQDmRjbOcKQpKSY6mkdMxipEqOsACc1W_4w.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2450-1-53ef65e62838-v8.jpg"
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2450-1-c6013c0a2d02-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2450-1-c6013c0a2d02-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/DwAiZ74dPhwNqlz7B_L0zY9io_WV_D2fRT78ehQBtd71SJtwzG8ZhCYFWeAfCfpkdkaxaDXnWtClgfGNjStj3Cy3aCYJci3o2xEAK8DTa6uBHnkhpyIX-LzHTzXKct7NvsVYyta73s0SYtku3XLBbv10-LM8CTRenYTxRtUzILdZrXH0JwLBBIrwqxsa2mhqBbiTcEgIWhQpvtq2wqx8pVpqqIhOBNK08WCkV8-57dFxNYHiYnuaHog_3uRJOZpuUq3RRsnL5LVnQQp3v2U6uFXT1luLHRv8AmCLiuq7OtpcBifaNMpHwRzWuPX5BQV1AIOty5XXRqQcmpMVHGxWjg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2450-1-c6013c0a2d02-v8.jpg"
         }
       ],
       "video_url": null,
@@ -135,7 +170,7 @@
       "comments_count": 0,
       "comments_url": null,
       "photos": [],
-      "video_url": "https://cdn4.telesco.pe/file/a9db42e7e0.mp4?token=S0yUwD_hieR5L4slL-XGUyqHjQeL9j7gimDCrjKvMfCsbH-_ghjR1azV-HjzNnaimTQuDrRqWZRtQUy0R4R5_vINgRxmoB0_q1RRsRBHV6m0-NWDlmGdE6YqE-7lfadd3l-DDYI5JLIfNEphhwzcKkFuDqTxQN_VzSMfYH_NsnufNkCj-jLUf95RbV_mFUNSPcNVznUIOhfwgt9eQCUK0kQ9Mb7idHER5CO5v-pInYQ2qb1toPMGjBHfC4AU7jth0inISaVOztjEqN941BiBgVta_GnSchSOTyYxMldk8rp8pBBmUi35E9JjWowbtWD6V7P0mWX2QUil8XHHuxWPFw",
+      "video_url": "https://cdn4.telesco.pe/file/a9db42e7e0.mp4?token=vnwkXLxzo4rk67lR4T8TlSoih4GZ9YNhPqy5U0S9xGZbSCcMLPvdpMGtgaGdiDASVPZUbcz5Nd9Zocfspq_fti9RdFBdEHj1oiONj1HcFXMHnqZPw-OxKFA5oa_0rangVbIcpb4FU-YB16eYCLLB6lJ18_uF90Jwn67XdYs_joRjloYsDQS5RKYbJNiuY5PtHGQek9_Nnv2qV7ic8vLq8CZ9VwgHf6oL6edRtMhphkwCuAyL20eS3sm65NhYCrNfztLZu50vxp33DcTC0PD34Rqv_0pFJkzMcPkA3Bxv-zjqLoMMvNdT5IEzQ619nPojgBlZXzlr5VUlisjydLgtEg",
       "tg_url": "https://t.me/PG_Tax/2449",
       "forwarded_from": null,
       "reply_to": null
@@ -150,10 +185,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2448-1-b6bfaae75ecb-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2448-1-b6bfaae75ecb-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/t79sSgNn4ZsVts-QAFU9x6liiKWAvL-GnrzhnhVgqu09844Y-JlYKfTRDAPeh25IdMASsb4tYAdhsKTCH4A26_mk-p2tv88sySHpKNwBOI70cjgGQnup2FhAZ7Zb72UDp9DcF7vGCyGbWzHSb7oinaWnHXruVZtjgbKeSXZqCQZPEBSw7D0u6ov1zgqbo7MvK2Ra062dAQELiaUahw3BIQbUpc-9FhkNgcMHBykzYaPRoERvhupHdetANFtNRYxeS7Jxf4Lzm8vL50JfYkGDQZMcUKKPGQliWJYlFOCRabnZK8YvI3BkTSZmpyhiP271vfFf9lOxiPb575jmrS9E4Q.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2448-1-b6bfaae75ecb-v8.jpg"
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2448-1-eea2d4eb56f3-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2448-1-eea2d4eb56f3-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Jxe9wXO-JRrpq81sXyKoQULQir9PY-tl7kjXnleuFj9CFCRE-ij-IJASe7OJCfXpe446NBUGoiRhNnOoXPpRtNNYGUcyBaUyWl528na9rqjeeF_g2831xyBBS4mU0Cdo_E85o64gIq3xLahnoFHgg1TnirrND7tR2ZIzRcdDnvROb3LfQ9A05cN0VSCNS098PAwlMdgk60edUiHJowv-bJUZYxZrQYG8V1Jf1XL800niXuhD7KOaNYSDiTGZ-CkTX-ffs5MgCwHtUcl6GI4F47svX-vaVyPBbGBNZZI4Gx3HStFAWRnwc6ZO4OCW0pJvRAEmvn61C0ScDDqGgM3spQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2448-1-eea2d4eb56f3-v8.jpg"
         }
       ],
       "video_url": null,
@@ -171,10 +206,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2447-1-181538c2e52d-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2447-1-181538c2e52d-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/jFaolF2QyPfbvIFsR6m2FPymPcfcstsTRZWc8KJTop67bF8i3y8xFfw6fOvaZrV6BZ0MLr3AKWrPsrI-0vXW-SaupyL1bKSrK4-F0oz_NGD7xtGBDt7ypWM6I1wNNb5ho_o6hpvQY5SohIXc_9YMFME9dYu8twAf0wU_pOI8zPoONb-QB4D209AXJ4g_N6f_bpvX182w_SwVAYPVWyzaUeL8Cidkxt37aXexu9dezEH4PhFajotmo0KR5fTz_Ijs4_yajds3kg-aNTsuuvr-loYjF1_ZMX5YbLIHf6mqEgaTmqOYApbZnhmXsOGNOYRTAjgsr1yxVocRABzbMHWuYA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2447-1-181538c2e52d-v8.jpg"
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2447-1-a66872f8cc88-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2447-1-a66872f8cc88-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/FH9efWtTDfZe8lVgAbi7GQuN_xfYq6FGPaqKjF-MZu7oY1Gn-OdXLn9u2sD_bwH2sJlNYPuWdaAEmsLyXZeLiomNlwtDaeQ4Dbx8dQlM7YQSyY3NvvJABmyn4K9UWVTGO0hAQaiq0cXVCOYFB5P1jbrroCbvZHu3Ns2heM8DVy9YpdRulyZoo4OG_OGIdLBgjTC4zKI6mDyETS1Aa8OtMgeaHFGx9LjQN4UyTvFMFQQjoU_M8kZaCHPMYGhxpxrdJeIyfVgbe7UNy9-a50Zxi6MRxMY4fTL4ECOcP_IXb59GB9Mx0HQO9hFfl45HboD5HjVDQstlZmVQBoxY5BeuRg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2447-1-a66872f8cc88-v8.jpg"
         }
       ],
       "video_url": null,
@@ -192,10 +227,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2446-1-ba97f8a112c0-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2446-1-ba97f8a112c0-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/RyD5Phv_ItHUP5rKgR50-JZ2wGq-nAHxhMtjOHukAdfeu6idzMekBgQUppKaVzI1pXwKHZhxkNffHnGH-m9i46bXw4WDgfbUrA5qX0NhUtDwCYFWtRaDGfrJ3sD2aSppG-685HwIIO-MZi_gwnsHocb4VzhWkQfWTNOnpHdehibH2lhmFCVFgtpQp-VEVS6bgFtP7guFJDA2FM_M9Yh9yyXpEda55nmqn2gKX9_Bb16NncE7UdG3KOJT1OMtUbc1jAtID_sMizc6dB_nPTqggFXpTTSmRPxk69oAWS9Kh35HtJvO2btYVAxgBUDg0D_VlbjSXww0MhezirBeXx8Wew.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2446-1-ba97f8a112c0-v8.jpg"
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2446-1-832cc35fc3dc-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2446-1-832cc35fc3dc-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/VbvBzZ3aWBYko5kUEfXlN3ITIRxnXmXcism2BI86smg3cEp8o5Po2-rmfFS54AuKtjjNe6tQFzQzb47iyVHanAJTA9n6ft1MwJzgwuWAFH4h7JNMhfvINh0x5aAloj8obeLhXA14_tcEqucDCPofW7cJJZYzql79Ip2diKpAsHpLfwxPnfZgdA1h448t8duQP18ru9HwsPENoS7L9oiZmt2FzjJ_09F9ddjidsPx0_F1rwTn95sZgWclWoJMZ0PDHKX4HJB1iOYmeyEbmj_CsiOWtGL3VxkXYmADfZJ_7hKAyvDKQEa1GpvDP-97w5lNf8Xc4Rm0HZ-M1e84QfAwjw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2446-1-832cc35fc3dc-v8.jpg"
         }
       ],
       "video_url": null,
@@ -213,10 +248,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2445-1-caf87f1a1dcf-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2445-1-caf87f1a1dcf-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/SupNdqVBLAp0NwZuL0dNQBTbRbhPR6xyNosvsSpMDgJ3KjIxs1C6u7NSrdCr2vySSlIcYsfQ4cPIfORBHjyliqVknKjNxd0fkYelE5VyYJjsdhqutMvEPe6C88fNnQl5oBlFfwKxFe7tJsgUSo19pIWtWTbkYI519btugAbCLCdz5UsQQeB40vBZ9pKNd_6yxktMAu1shvSBi6xLN7X-2kqtDWdtc9P97RPp5qNyuAnPu-ssbfQmlSj6YoOllKa1W-oHE7uPDGIgUg1JDAXdP8sBSzoG8oBPGGFUNmukym4ZCGm3HAe7EjbO1V7fl5n_EbE6R9Dn08QuQvAocoimPQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2445-1-caf87f1a1dcf-v8.jpg"
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2445-1-ee63cf9d12c7-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2445-1-ee63cf9d12c7-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/ui2pAZr2pu_npZWR79hgVivbnsQ6756hUyjnXulUbk7efZ8F0TXwjNjLqsKAL09fboE2Zn4rlFDeaBEgO_O5IL42jB17kHgIULJxpa9RhTDstJ-hNHSBw3nW-0_rQ1GiJ2I1SqHPGPgNpSUdUg8xH1nKzSVSKiXBP85w3t8dUkD4bjId-SLOUA_c8c18lIyrXvDk9IYBYotVmWFICyZGGOCtemYzKKuIbmO-v2pq7l7wncnRWD0jw1sEMted-d8WoURcACGLhftLh-VwJOeFHWyA2NaxK78RIxx6qUX7Pi4NFeOopyb6TwDoevV6z8GufccNXqBGSJgVMaQhNbPArg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2445-1-ee63cf9d12c7-v8.jpg"
         }
       ],
       "video_url": null,
@@ -234,10 +269,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2444-1-85b51d975bee-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2444-1-85b51d975bee-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/hiGWRhw1y6VMmj9aPpCUjHxqF32pBId3oFdMdFnU4ZF185agb5wFuGiJRey9CBnieqJDS25KFuYIU6_65HsQiZ0lFP15CG57AftYonP2G1m313-gwUyJ567z2wAT8ioBNSnWzqIvFpQLhcVe5u5uEh_lNYnZsqpjO8z8AvJ9fhMkt4KnewOqJ0C81Hqoj1DxlTHYZRTawkz9AgiCLjpswdquZFyNWe7EWHoR7HSMayd5I4d5Swpv6gw-3AWLikWoKhlUJC9b0qHupeQC-gHPP4fM8HxRoO167PVrOBMgHLGLjlcLe7G_rXfiOUbwEiuyengGwyYw40--8rrZtUy9vw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2444-1-85b51d975bee-v8.jpg"
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2444-1-96da95a8f065-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2444-1-96da95a8f065-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/JnqRbv-Bx55kjqaF_qMlej6hj6MphqgSKGvn5fWI4ZmCOBA1RZYbv_64WjA0y1nHe3nxPkZLr322W1fA30xGJTySI-3kKtXt5WmuXDqEo7cucPtaFjBuEXWWq4ywabnfF-eET_QDhT0wk7yraOLlqLk_XDVb_pNRxObfWVZrSentJMpm1kZS34MBmhNNEkfhYdAEms4EDiOhToCvAbM14JYQsm9fpJnDrDbN1b8b2LGXcTA_NOZd_9fiyLNGF9fiu0C_zkHjSgC9PoffMvrbraHfBt6mE2ZARWP1ZXHtx-S_z24R6NtWl6zmVyZfXvQD-BUX_BuakFPKcBX_zZmt6g.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2444-1-96da95a8f065-v8.jpg"
         }
       ],
       "video_url": null,
@@ -254,7 +289,7 @@
       "comments_count": 0,
       "comments_url": null,
       "photos": [],
-      "video_url": "https://cdn4.telesco.pe/file/63e6f20f02.mp4?token=j6DuaurXYmFV_Wq-PYICDDxcC3qGePpMtGKltj6--ZGA1MjPkzNdnuIALjW8SiHYBkH60tLa5MWK-XmaEKCP0manPcfwPbcOzJlKsQAI8vx-Y0euRVo2cSnfYGNpj46Osp2sm7iQW0_K8LVJY6Bta9ROWcnHFZda-Z4h3qhwGj2A-fl4_NFDBQ_jn8UcmRABAHQSwE4dWQhATGNNLbpo3lHc_Y2jCpaZdxaMP4QWF04QXCUXOT8eYQyjJqWXqbi_v8ufkytHvTOW1u5KebVWl7HlGY_aEFodpMSt8tGi8TFFUhAXa24HoDIHhlzw_LT6csWZ0DoKB_s3ukS9X6sqxA",
+      "video_url": "https://cdn4.telesco.pe/file/63e6f20f02.mp4?token=PKc93OGyInsrh5-W2UVEsXn5QTxFzdtTDvgWj4GoHx8egLXYHjgIsHBkiEkzeN6Pp1qT2Ib1E_ELjNqadGjhlJoT1TE4fM2htF77oKKb57uPdZJ2NC15xgTi7b_iioN5egcuyZrCRgQHiG1stQE_-NvbEFOICsniDCrqcR51bnOL7nX3rKBSvrgK7g7nU9-AsLYbf6oh8yRGGkruYk3VRQABEAecTnW8gfx3eSNeAg7ZdBhPOTnd48AeaQz10Arw-iUxqlExbjApDobaae-z3uOZSVRPhoiYSoKi6f274xGi4B-qN8rJLM9cBmOgNpu5MaXcYbadW9yCXtiCcgN91A",
       "tg_url": "https://t.me/PG_Tax/2443",
       "forwarded_from": null,
       "reply_to": null
@@ -269,56 +304,14 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2442-1-cbf5157651a7-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2442-1-cbf5157651a7-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/pZH5CMEisdVnKukoGo8KnQGnYENMkVVyBnR8BTgEMx3NHTkzKiBZaPDDNgWxAb_u0oKbPp3kGMGNSMf1B99g8YZlxJFRnc9xNCHA6oN8h7deiRS6KtvFt9QMaXUZ0cgnPj1Zhct0Q-sfHtK13FcTjWZ2e2onCtXGrubfWkmYFGP9SClxE3jU1h2oDTCw1d75rQw3i2Nm8TzEec0UUnemE3-OZOm_rx3aAUU9g-YuaTKQRB3457PQOJPRSSyHmXyvWo4mWWoWHkG4GWWfWhTBuO8ceIqFSoVmwCxjQs1jZzxkzvR_97v6_FTXedw2DShAjJ7yZAQpbvyjKpAx1oLD8A.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2442-1-cbf5157651a7-v8.jpg"
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2442-1-078689cf1793-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2442-1-078689cf1793-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/CirHYCA2A4JtWexKUdFaDiLBraiDAUgYbQtgjYox2-t7vocBRXIiQ4MJ_ogBDFTeUTrM4bQExEqr4sxyPYGFXFLYe4kc8G2_49QZeQNW3syW0zUeHCxeZMpm4is9rPupz3JNhwjX9TanDRhtKz-JYHgPvNwKBwyFkFyWV8GOgdB6WnCDWag7S762IflbUHsVfTjUkL60IodPxxeqqmibZUGDTda6-txdyHU5yCmqZqqZNrrxxewWZ9b13kBjezk7mZuKK5WA0bqafK69cLAPoen1ZI8E8tJqxO9oCdLeKDCKMUcXZH1wmt7U4rsQwh2T2x6PU9GX61_2SxC8VCK9ZQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2442-1-078689cf1793-v8.jpg"
         }
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2442",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2441,
-      "date": "2026-02-04T10:03:39+00:00",
-      "text": "Старший партнер «Пепеляев Групп» Сергей Савсерис продолжает публикацию рейтинга правовых позиций Конституционного суда.\n\n📈 Место № 9 \n\nОпределение КС РФ от 04.07.2017 № 1440-О по жалобе С.П. Бунеева\n\nЕще одно дело, получившее место № 9, посвящено темам дробления бизнеса и пределов налоговой оптимизации.\n\n💬 Цитируемость\n\n439 упоминаний за весь период (33-е место);\n349 упоминаний за последние 4 года (7-е место).\n\n🔍 О чём было дело\n\nНалоговый орган признал структуру группы взаимозависимых лиц искусственным дроблением бизнеса с использованием УСН и ЕНВД для снижения НДС и налога на прибыль и доначислил налоги, пени и штраф по п. 1 ст. 122 НК РФ.\n\nЖалоба в КС была направлена против норм НК РФ об объекте и базе по НДС и налогу на прибыль (ст. 146, 153, 154, 247–249, 274 НК РФ).\n\n⚖️ Ключевые правовые позиции\n\n     ✔️выбор льгот и специальных режимов допустим;\n     ✔️взаимозависимость контрагентов не опровергает презумпцию добросовестности и, сама по себе, не дает оснований к признанию налоговой выгоды необоснованной;\n     ❌но формальное структурирование без деловой цели и экономического смысла может быть переквалифицировано;\n     ✔️оспариваемые нормы НК РФ сами по себе конституционны;\n     ✔️налоговые последствия определяются через реконструкцию — так, как если бы злоупотребления не было.\n\n☝️ Особое мнение судьи К.В. Арановского\n\nСудья Арановский занял существенно более ограничительный по отношению к фискальному подходу взгляд. \n\nВ особом мнении подчёркнуто, что:\n     ✔️дробление бизнеса не запрещено законом и не образует само по себе правонарушения;\n     ✔️применение спецрежимов и формальное соблюдение НК — признак правомерного поведения;\n     ✔️«необоснованная налоговая выгода» и «недобросовестность» не являются самостоятельными основаниями ответственности;\n     ✔️отказ в принятии жалобы не означает согласия КС с тем толкованием норм, которое было применено судами по делу.\n\n❗️ Практическое значение\n\nОпределение стало опорной точкой для практики по борьбе с дроблением бизнеса и прочими налоговыми схемами:\n     🔴использование спецрежимов не создаёт иммунитета от переквалификации;\n     🔴решающим становится реальное экономическое содержание структуры и деловая цель.\n\n#рейтинг_позиций_КС\n\n➖➖\n📧 Если Вы столкнулись с претензиями об участии в налоговой схеме или у Вас есть вопросы о применении специальных налоговых режимов, напишите Сергею Савсерису: s.savseris@pgplaw.ru",
-      "text_html": "Старший партнер «Пепеляев Групп» <a href=\"https://www.pgplaw.ru/to-get-the-team/sergey-savseris/\" target=\"_blank\" rel=\"noopener noreferrer\">Сергей Савсерис</a> продолжает публикацию рейтинга правовых позиций Конституционного суда.<br><br>📈 Место № 9 <br><br>Определение КС РФ от 04.07.2017 № 1440-О по жалобе С.П. Бунеева<br><br>Еще одно дело, получившее место № 9, посвящено темам дробления бизнеса и пределов налоговой оптимизации.<br><br>💬 Цитируемость<br><br>439 упоминаний за весь период (33-е место);<br>349 упоминаний за последние 4 года (7-е место).<br><br>🔍 О чём было дело<br><br>Налоговый орган признал структуру группы взаимозависимых лиц искусственным дроблением бизнеса с использованием УСН и ЕНВД для снижения НДС и налога на прибыль и доначислил налоги, пени и штраф по п. 1 ст. 122 НК РФ.<br><br>Жалоба в КС была направлена против норм НК РФ об объекте и базе по НДС и налогу на прибыль (ст. 146, 153, 154, 247–249, 274 НК РФ).<br><br>⚖️ Ключевые правовые позиции<br><br>     ✔️выбор льгот и специальных режимов допустим;<br>     ✔️взаимозависимость контрагентов не опровергает презумпцию добросовестности и, сама по себе, не дает оснований к признанию налоговой выгоды необоснованной;<br>     ❌но формальное структурирование без деловой цели и экономического смысла может быть переквалифицировано;<br>     ✔️оспариваемые нормы НК РФ сами по себе конституционны;<br>     ✔️налоговые последствия определяются через реконструкцию — так, как если бы злоупотребления не было.<br><br>☝️ Особое мнение судьи К.В. Арановского<br><br>Судья Арановский занял существенно более ограничительный по отношению к фискальному подходу взгляд. <br><br>В особом мнении подчёркнуто, что:<br>     ✔️дробление бизнеса не запрещено законом и не образует само по себе правонарушения;<br>     ✔️применение спецрежимов и формальное соблюдение НК — признак правомерного поведения;<br>     ✔️«необоснованная налоговая выгода» и «недобросовестность» не являются самостоятельными основаниями ответственности;<br>     ✔️отказ в принятии жалобы не означает согласия КС с тем толкованием норм, которое было применено судами по делу.<br><br>❗️ Практическое значение<br><br>Определение стало опорной точкой для практики по борьбе с дроблением бизнеса и прочими налоговыми схемами:<br>     🔴использование спецрежимов не создаёт иммунитета от переквалификации;<br>     🔴решающим становится реальное экономическое содержание структуры и деловая цель.<br><br>#рейтинг_позиций_КС<br><br>➖➖<br>📧 Если Вы столкнулись с претензиями об участии в налоговой схеме или у Вас есть вопросы о применении специальных налоговых режимов, напишите Сергею Савсерису: s.savseris@pgplaw.ru",
-      "views": 1550,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2441-1-742943586d00-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2441-1-742943586d00-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/n1K7N3GrDwTK-PviUgZB8WORCS-tZCV7w9WSQx5fBMp6ISpjGFhN0XTKYg3Zxih2CyTlxywLVaABCmI4g09j0wZouxwNN6mpNlo5O-16W7gKYsAUboeUNKS3zljepTrSewOCpvYkJ4ZprBGIzaeXc_-8xG4J93x9C1Vh39VVv1j4cDTHx5hN-o3aSTXZnI36t5jIXqP-UBStam8dGZJ4w4gDPSVwNVJMOADiB6hjQNCqkiBpYx4OF-90A4-j9fzLuE2Y9f6JNqDki9MhIQnIhubUVEp3BAw5a3gwN1_e47wOxwWf2zl2xTth11oUI0CrKOSTF2hbyJ7zTCXokRfNXw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2441-1-742943586d00-v8.jpg"
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2441",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2440,
-      "date": "2026-02-04T07:15:02+00:00",
-      "text": "✍️ Нормотворчество\n \nМинфин России рассмотрит возможность корректировки НДД от добычи углеводородного сырья. \n«Сейчас компании вышли с инициативой, учитывая усложнение добычи, рост издержек, больше в структуре добычи у нас доля трудноизвлекаемых запасов», – объяснил свое поручение вице-премьер Александр Новак.\n \n⚙️ Практика\n \nК началу февраля Реестр недобросовестных работодателей разросся до 656 лиц, большинство — это ИП, но есть и организации.\n🛑 Критерием для включения работодателя в реестр выступает нарушение трудового законодательства, связанное с нелегальной занятостью.\n \n⚖️ Судебные дела\n \nКонституционный Суд РФ разрешил гражданам регистрироваться по месту пребывания в нежилых помещениях, включая апартаменты гостиничного типа (Постановление от 03.02.2026 № 4-П). \n🛑 При этом Суд подчеркнул, что его выводы не распространяются на регистрацию по месту жительства и не отменяют более высокие ставки налога на имущество и коммунальные платежи для владельцев нежилых помещений.\n \n#главные_налоговые_новости",
-      "text_html": "✍️ Нормотворчество<br> <br>Минфин России <a href=\"https://www.vedomosti.ru/economics/news/2026/02/03/1173653-novak-poruchil\" target=\"_blank\" rel=\"noopener noreferrer\">рассмотрит</a> возможность корректировки НДД от добычи углеводородного сырья. <br>«Сейчас компании вышли с инициативой, учитывая усложнение добычи, рост издержек, больше в структуре добычи у нас доля трудноизвлекаемых запасов», – объяснил свое поручение вице-премьер Александр Новак.<br> <br>⚙️ Практика<br> <br>К началу февраля Реестр недобросовестных работодателей <a href=\"https://iz.ru/2036547/olga-anaseva/serym-sero-svyshe-650-kompanij-popali-v-reestr-nedobrosovestnyh-rabotodatelej\" target=\"_blank\" rel=\"noopener noreferrer\">разросся</a> до 656 лиц, большинство — это ИП, но есть и организации.<br>🛑 Критерием для включения работодателя в реестр выступает нарушение трудового законодательства, связанное с нелегальной занятостью.<br> <br>⚖️ Судебные дела<br> <br>Конституционный Суд РФ <a href=\"https://iz.ru/2036382/2026-02-03/konstitutcionnyi-sud-rossii-razreshil-registratciiu-v-apartamentakh\" target=\"_blank\" rel=\"noopener noreferrer\">разрешил</a> гражданам регистрироваться по месту пребывания в нежилых помещениях, включая апартаменты гостиничного типа (Постановление от 03.02.2026 № <a href=\"https://www.ksrf.ru/doc/KSRFDecision885638.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">4-П</a>). <br>🛑 При этом Суд подчеркнул, что его выводы не распространяются на регистрацию по месту жительства и не отменяют более высокие ставки налога на имущество и коммунальные платежи для владельцев нежилых помещений.<br> <br>#главные_налоговые_новости",
-      "views": 1480,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2440-1-afb8502e9930-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2440-1-afb8502e9930-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/TNttMHxjlLlVZIVtOxtRJC4JNSz2OeSHAA-Ep_LHOOrtKRfYGknwNOInh7ys6U6lYaAMIOYCgiMfwxRrwwioSS4sNVwPbAkR1H036ZWkDsR05IF7LCHsdYP2yEFc_nBzQJlMBKw-1Jos2WvPDzQ5Lm6ymw7jcu7rI7SMm6WVy-_Yi3xLQnxVs3lVs4nMcQ_IKCN4bQr6J2GGmN7gDVCzjSkYU1udkkm2MN2AozYIioLmSBLzcy6AJG6ED_VplrwcUJ7GNg47d3TYAXiPC98h8OwPSuCjwPIGzZ1wKeRaJYb3I-9O2-qwle1YiOzy-sPQsZYcjjNzAyLDNw7BGbD3Cg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2440-1-afb8502e9930-v8.jpg"
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2440",
       "forwarded_from": null,
       "reply_to": null
     }
