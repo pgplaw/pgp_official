@@ -220,9 +220,7 @@ function normalizePostHtml(html) {
 function normalizePostHtmlSpacing(html) {
   return String(html || '')
     .replace(/(?<=[0-9A-Za-zА-Яа-яЁё«»„“"'()])(?=<a\b)/g, ' ')
-    .replace(/(?<=<\/a>)(?=[0-9A-Za-zА-Яа-яЁё«»„“"'(])/g, ' ')
-    .replace(/(?<=[0-9A-Za-zА-Яа-яЁё«»„“"'()])(?=https?:\/\/)/g, ' ')
-    .replace(/(https?:\/\/\S+)(?=[A-Za-zА-Яа-яЁё«»„“"'(])/g, '$1 ');
+    .replace(/(?<=<\/a>)(?=[0-9A-Za-zА-Яа-яЁё«»„“"'(])/g, ' ');
 }
 
 function normalizePhoto(photo) {
