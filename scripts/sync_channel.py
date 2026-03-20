@@ -266,26 +266,40 @@ def normalize_photo_entry(photo: Any) -> dict[str, str] | None:
     if not photo:
         return None
     if isinstance(photo, str):
-        relative_url = photo.lstrip("./")
-        return {
-            "thumb_url": relative_url,
-            "feed_url": relative_url,
-            "full_url": relative_url,
+        normalized_url = photo.lstrip("./")
+        entry = {
+            "thumb_url": normalized_url,
+            "feed_url": normalized_url,
+            "full_url": normalized_url,
         }
+        if re.match(r"^https?://", normalized_url):
+            entry["source_url"] = normalized_url
+        return entry
     if isinstance(photo, dict):
         thumb_url = (photo.get("thumb_url") or photo.get("thumb") or photo.get("url") or "").lstrip("./")
         full_url = (photo.get("full_url") or photo.get("full") or photo.get("url") or thumb_url).lstrip("./")
         feed_url = (photo.get("feed_url") or photo.get("feed") or full_url or thumb_url).lstrip("./")
+        source_url = (
+            photo.get("source_url")
+            or photo.get("original_url")
+            or photo.get("remote_url")
+            or (full_url if re.match(r"^https?://", full_url) else "")
+            or (thumb_url if re.match(r"^https?://", thumb_url) else "")
+        )
+        source_url = source_url.strip() if isinstance(source_url, str) else ""
         if not thumb_url and full_url:
             thumb_url = full_url
         if not feed_url and full_url:
             feed_url = full_url
         if thumb_url and full_url:
-            return {
+            entry = {
                 "thumb_url": thumb_url,
                 "feed_url": feed_url or full_url,
                 "full_url": full_url,
             }
+            if source_url and re.match(r"^https?://", source_url):
+                entry["source_url"] = source_url
+            return entry
     return None
 
 
@@ -574,8 +588,9 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
 
         for index, photo in enumerate(normalized_photos):
             full_source = photo["full_url"]
+            source_fetch_url = photo.get("source_url") or full_source
             override_bytes = post_photo_overrides[index] if index < len(post_photo_overrides) else None
-            if not override_bytes and not re.match(r"^https?://", full_source):
+            if not override_bytes and not re.match(r"^https?://", source_fetch_url):
                 local_full_path = DOCS_DIR / full_source.lstrip("./")
                 local_thumb_path = DOCS_DIR / photo["thumb_url"].lstrip("./")
                 local_feed_path = DOCS_DIR / photo.get("feed_url", "").lstrip("./") if photo.get("feed_url") else None
@@ -617,7 +632,7 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
                     mirrored_photos.append(photo)
                     continue
 
-            digest_source = override_bytes if override_bytes else full_source.encode("utf-8")
+            digest_source = override_bytes if override_bytes else source_fetch_url.encode("utf-8")
             digest = hashlib.sha256(digest_source).hexdigest()[:12]
             filename = f"{post['id']}-{index + 1}-{digest}-{IMAGE_VARIANT_VERSION}.jpg"
             full_path = POSTS_MEDIA_DIR / filename
@@ -630,7 +645,7 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
                     or not thumb_path.exists()
                     or (is_single_photo_post and not feed_path.exists())
                 ):
-                    raw_bytes = override_bytes or fetch_binary(full_source)
+                    raw_bytes = override_bytes or fetch_binary(source_fetch_url)
                     if optimize_image_variants(
                         raw_bytes,
                         full_path,
@@ -652,6 +667,8 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
                 "thumb_url": thumb_relative_url,
                 "full_url": full_relative_url,
             }
+            if re.match(r"^https?://", source_fetch_url):
+                mirrored_entry["source_url"] = source_fetch_url
             if is_single_photo_post:
                 mirrored_entry["feed_url"] = feed_relative_url
                 active_relative_paths.add(feed_relative_url)
