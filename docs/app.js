@@ -8,6 +8,7 @@ const LONG_PRESS_COPY_DELAY_MS = 650;
 const CHANNEL_CAROUSEL_TRANSITION_MS = 560;
 const CHANNEL_CONTENT_FADE_OUT_MS = 180;
 const CHANNEL_CONTENT_FADE_IN_DELAY_MS = 60;
+const VIEWER_TRANSITION_MS = 360;
 
 const state = {
   catalog: null,
@@ -32,6 +33,9 @@ const state = {
   channelCarouselAnimating: false,
   channelCarouselTransition: null,
   channelCarouselAutotest: null,
+  viewerPointer: null,
+  viewerAnimating: false,
+  viewerTransitionTimerId: null,
 };
 
 const elements = {
@@ -2117,28 +2121,246 @@ async function appendNextPage() {
 function openViewer(items, index) {
   state.viewerItems = items;
   state.viewerIndex = index;
-  renderViewer();
   elements.viewer.classList.remove('hidden');
   elements.viewer.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('viewer-open');
+  renderViewer();
 }
 
 function closeViewer() {
   elements.viewer.classList.add('hidden');
   elements.viewer.setAttribute('aria-hidden', 'true');
   elements.viewerContent.innerHTML = '';
+  document.body.classList.remove('viewer-open');
+  if (state.viewerTransitionTimerId) {
+    window.clearTimeout(state.viewerTransitionTimerId);
+    state.viewerTransitionTimerId = null;
+  }
+  state.viewerPointer = null;
+  state.viewerAnimating = false;
+}
+
+function getViewerViewport() {
+  return elements.viewerContent.querySelector('.viewer__viewport');
+}
+
+function getViewerTrack() {
+  return elements.viewerContent.querySelector('.viewer__track');
+}
+
+function buildViewerSlide(item, index) {
+  const content = item.type === 'video'
+    ? `<video src="${item.url}" controls preload="metadata" playsinline></video>`
+    : `<img src="${item.full_url || item.feed_url || item.thumb_url}" alt="Media preview ${index + 1}" loading="eager" decoding="async" draggable="false">`;
+
+  return `<div class="viewer__slide" data-viewer-index="${index}">${content}</div>`;
+}
+
+function updateViewerNavigation() {
+  const hasMultiple = state.viewerItems.length > 1;
+  elements.viewerPrev.classList.toggle('hidden', !hasMultiple);
+  elements.viewerNext.classList.toggle('hidden', !hasMultiple);
+  elements.viewerPrev.disabled = !hasMultiple || state.viewerIndex <= 0;
+  elements.viewerNext.disabled = !hasMultiple || state.viewerIndex >= state.viewerItems.length - 1;
+}
+
+function syncViewerActiveSlide(viewport) {
+  viewport?.querySelectorAll('video').forEach((video) => {
+    const slide = video.closest('.viewer__slide');
+    const slideIndex = Number(slide?.dataset.viewerIndex || -1);
+    if (slideIndex === state.viewerIndex) {
+      video.play().catch(() => {});
+      return;
+    }
+
+    video.pause();
+  });
+}
+
+function getViewerViewportWidth(viewport = getViewerViewport()) {
+  return Math.max(viewport?.clientWidth || 0, elements.viewerContent.clientWidth || 0, 1);
+}
+
+function setViewerTrackPosition(track, index = state.viewerIndex, dragOffset = 0) {
+  if (!track) return;
+  const width = getViewerViewportWidth();
+  const shift = -(width * index) + dragOffset;
+  track.style.transform = `translate3d(${Math.round(shift)}px, 0, 0)`;
+}
+
+function finishViewerTransition(track = getViewerTrack()) {
+  if (state.viewerTransitionTimerId) {
+    window.clearTimeout(state.viewerTransitionTimerId);
+    state.viewerTransitionTimerId = null;
+  }
+
+  if (track) {
+    track.style.removeProperty('transition');
+  }
+
+  state.viewerAnimating = false;
+  state.viewerPointer = null;
+}
+
+function animateViewerToIndex(targetIndex, { immediate = false } = {}) {
+  const viewport = getViewerViewport();
+  const track = getViewerTrack();
+  if (!viewport || !track) return Promise.resolve();
+
+  state.viewerIndex = clamp(targetIndex, 0, Math.max(state.viewerItems.length - 1, 0));
+  updateViewerNavigation();
+
+  if (immediate || prefersReducedMotion()) {
+    finishViewerTransition(track);
+    setViewerTrackPosition(track);
+    syncViewerActiveSlide(viewport);
+    return Promise.resolve();
+  }
+
+  state.viewerAnimating = true;
+
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      finishViewerTransition(track);
+      setViewerTrackPosition(track);
+      syncViewerActiveSlide(viewport);
+      resolve();
+    };
+
+    state.viewerTransitionTimerId = window.setTimeout(finish, VIEWER_TRANSITION_MS + 120);
+    track.style.transition = `transform ${VIEWER_TRANSITION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`;
+    requestAnimationFrame(() => {
+      setViewerTrackPosition(track);
+    });
+
+    track.addEventListener('transitionend', (event) => {
+      if (event.propertyName === 'transform') {
+        finish();
+      }
+    }, { once: true });
+  });
+}
+
+function finalizeViewerPointerInteraction(cancelled = false) {
+  const pointerState = state.viewerPointer;
+  const viewport = getViewerViewport();
+  const track = getViewerTrack();
+  if (!pointerState || !viewport || !track) {
+    state.viewerPointer = null;
+    return;
+  }
+
+  if (!pointerState.dragging || cancelled) {
+    state.viewerPointer = null;
+    void animateViewerToIndex(state.viewerIndex);
+    return;
+  }
+
+  const width = pointerState.width || getViewerViewportWidth(viewport);
+  const threshold = width * 0.18;
+  let nextIndex = state.viewerIndex;
+
+  if (Math.abs(pointerState.deltaX) >= threshold && Math.abs(pointerState.deltaX) > Math.abs(pointerState.deltaY)) {
+    nextIndex = clamp(
+      state.viewerIndex + (pointerState.deltaX < 0 ? 1 : -1),
+      0,
+      Math.max(state.viewerItems.length - 1, 0),
+    );
+  }
+
+  state.viewerPointer = null;
+  void animateViewerToIndex(nextIndex);
+}
+
+function bindViewerViewport(viewport) {
+  if (!viewport || viewport.dataset.bound === 'true') return;
+  viewport.dataset.bound = 'true';
+
+  viewport.addEventListener('pointerdown', (event) => {
+    if (state.viewerItems.length < 2 || state.viewerAnimating) return;
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+
+    state.viewerPointer = {
+      id: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      deltaX: 0,
+      deltaY: 0,
+      dragging: false,
+      width: getViewerViewportWidth(viewport),
+    };
+
+    const track = getViewerTrack();
+    if (track) {
+      track.style.removeProperty('transition');
+    }
+
+    if (viewport.setPointerCapture) {
+      viewport.setPointerCapture(event.pointerId);
+    }
+  });
+
+  viewport.addEventListener('pointermove', (event) => {
+    const pointerState = state.viewerPointer;
+    const track = getViewerTrack();
+    if (!pointerState || pointerState.id !== event.pointerId || !track) return;
+
+    const deltaX = event.clientX - pointerState.x;
+    const deltaY = event.clientY - pointerState.y;
+    pointerState.deltaX = deltaX;
+    pointerState.deltaY = deltaY;
+
+    if (!pointerState.dragging) {
+      if (Math.abs(deltaX) < 10 || Math.abs(deltaX) <= Math.abs(deltaY)) {
+        return;
+      }
+      pointerState.dragging = true;
+    }
+
+    event.preventDefault();
+    const isAtFirst = state.viewerIndex === 0;
+    const isAtLast = state.viewerIndex === state.viewerItems.length - 1;
+    const resistance = (isAtFirst && deltaX > 0) || (isAtLast && deltaX < 0) ? 0.32 : 1;
+    setViewerTrackPosition(track, state.viewerIndex, deltaX * resistance);
+  });
+
+  const handlePointerEnd = (event, cancelled = false) => {
+    const pointerState = state.viewerPointer;
+    if (!pointerState || pointerState.id !== event.pointerId) return;
+
+    if (viewport.releasePointerCapture && viewport.hasPointerCapture?.(event.pointerId)) {
+      viewport.releasePointerCapture(event.pointerId);
+    }
+
+    finalizeViewerPointerInteraction(cancelled);
+  };
+
+  viewport.addEventListener('pointerup', (event) => handlePointerEnd(event));
+  viewport.addEventListener('pointercancel', (event) => handlePointerEnd(event, true));
+  viewport.addEventListener('lostpointercapture', (event) => handlePointerEnd(event, true));
 }
 
 function renderViewer() {
   const item = state.viewerItems[state.viewerIndex];
   if (!item) return;
 
-  elements.viewerContent.innerHTML = item.type === 'video'
-    ? `<video src="${item.url}" controls autoplay></video>`
-    : `<img src="${item.full_url || item.thumb_url}" alt="Media preview">`;
+  elements.viewerContent.innerHTML = `
+    <div class="viewer__viewport" aria-label="Просмотр медиа">
+      <div class="viewer__track">
+        ${state.viewerItems.map((entry, index) => buildViewerSlide(entry, index)).join('')}
+      </div>
+    </div>
+  `;
 
-  const hasMultiple = state.viewerItems.length > 1;
-  elements.viewerPrev.classList.toggle('hidden', !hasMultiple);
-  elements.viewerNext.classList.toggle('hidden', !hasMultiple);
+  const viewport = getViewerViewport();
+  bindViewerViewport(viewport);
+  updateViewerNavigation();
+  requestAnimationFrame(() => {
+    void animateViewerToIndex(state.viewerIndex, { immediate: true });
+  });
 }
 
 function showFeedView() {
@@ -2568,12 +2790,12 @@ elements.viewer.addEventListener('click', (event) => {
   if (event.target === elements.viewer) closeViewer();
 });
 elements.viewerPrev.addEventListener('click', () => {
-  state.viewerIndex = (state.viewerIndex - 1 + state.viewerItems.length) % state.viewerItems.length;
-  renderViewer();
+  if (state.viewerAnimating || state.viewerIndex <= 0) return;
+  void animateViewerToIndex(state.viewerIndex - 1);
 });
 elements.viewerNext.addEventListener('click', () => {
-  state.viewerIndex = (state.viewerIndex + 1) % state.viewerItems.length;
-  renderViewer();
+  if (state.viewerAnimating || state.viewerIndex >= state.viewerItems.length - 1) return;
+  void animateViewerToIndex(state.viewerIndex + 1);
 });
 
 elements.channelAvatar.addEventListener('error', () => {
@@ -2606,11 +2828,15 @@ window.addEventListener('appinstalled', () => {
   updateInstallButtonState();
   showCopyToast('Приложение установлено');
 });
+window.addEventListener('resize', () => {
+  if (elements.viewer.classList.contains('hidden')) return;
+  void animateViewerToIndex(state.viewerIndex, { immediate: true });
+});
 window.addEventListener('keydown', (event) => {
   if (elements.viewer.classList.contains('hidden')) return;
   if (event.key === 'Escape') closeViewer();
-  if (event.key === 'ArrowLeft' && state.viewerItems.length > 1) elements.viewerPrev.click();
-  if (event.key === 'ArrowRight' && state.viewerItems.length > 1) elements.viewerNext.click();
+  if (event.key === 'ArrowLeft' && state.viewerItems.length > 1 && state.viewerIndex > 0) elements.viewerPrev.click();
+  if (event.key === 'ArrowRight' && state.viewerItems.length > 1 && state.viewerIndex < state.viewerItems.length - 1) elements.viewerNext.click();
 });
 
 if ('serviceWorker' in navigator) {
