@@ -1059,7 +1059,7 @@ label,
 
 .post-card__head {
   display: flex;
-  align-items: flex-start;
+  align-items: start;
   justify-content: space-between;
   gap: 14px;
   margin-bottom: 12px;
@@ -1096,10 +1096,17 @@ label,
   color: var(--accent);
   box-shadow: none;
   flex: 0 0 auto;
+  align-self: start;
+  transform: none;
+  border-color: color-mix(in srgb, var(--accent) 14%, transparent);
 }
 
 .post-card__copy:hover {
   background: color-mix(in srgb, var(--accent) 20%, var(--bg-strong) 80%);
+  transform: none;
+  box-shadow: none;
+  filter: none;
+  border-color: color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
 .post-card__copy svg {
