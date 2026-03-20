@@ -576,12 +576,46 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
             full_source = photo["full_url"]
             override_bytes = post_photo_overrides[index] if index < len(post_photo_overrides) else None
             if not override_bytes and not re.match(r"^https?://", full_source):
-                active_relative_paths.add(full_source)
-                active_relative_paths.add(photo["thumb_url"])
-                if is_single_photo_post and photo.get("feed_url"):
-                    active_relative_paths.add(photo["feed_url"])
-                mirrored_photos.append(photo)
-                continue
+                local_full_path = DOCS_DIR / full_source.lstrip("./")
+                local_thumb_path = DOCS_DIR / photo["thumb_url"].lstrip("./")
+                local_feed_path = DOCS_DIR / photo.get("feed_url", "").lstrip("./") if photo.get("feed_url") else None
+                current_variant_present = (
+                    IMAGE_VARIANT_VERSION in Path(full_source).name
+                    and IMAGE_VARIANT_VERSION in Path(photo["thumb_url"]).name
+                    and (not is_single_photo_post or (photo.get("feed_url") and IMAGE_VARIANT_VERSION in Path(photo["feed_url"]).name))
+                )
+                current_files_present = (
+                    local_full_path.exists()
+                    and local_thumb_path.exists()
+                    and (not is_single_photo_post or (local_feed_path and local_feed_path.exists()))
+                )
+
+                if current_variant_present and current_files_present:
+                    active_relative_paths.add(full_source)
+                    active_relative_paths.add(photo["thumb_url"])
+                    if is_single_photo_post and photo.get("feed_url"):
+                        active_relative_paths.add(photo["feed_url"])
+                    mirrored_photos.append(photo)
+                    continue
+
+                if local_full_path.exists():
+                    try:
+                        override_bytes = local_full_path.read_bytes()
+                    except Exception as error:  # pragma: no cover - runtime/filesystem path
+                        log.warning("Failed to read existing mirrored image for post %s: %s", post["id"], error)
+                        active_relative_paths.add(full_source)
+                        active_relative_paths.add(photo["thumb_url"])
+                        if is_single_photo_post and photo.get("feed_url"):
+                            active_relative_paths.add(photo["feed_url"])
+                        mirrored_photos.append(photo)
+                        continue
+                else:
+                    active_relative_paths.add(full_source)
+                    active_relative_paths.add(photo["thumb_url"])
+                    if is_single_photo_post and photo.get("feed_url"):
+                        active_relative_paths.add(photo["feed_url"])
+                    mirrored_photos.append(photo)
+                    continue
 
             digest_source = override_bytes if override_bytes else full_source.encode("utf-8")
             digest = hashlib.sha256(digest_source).hexdigest()[:12]
