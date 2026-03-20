@@ -25,6 +25,8 @@ const state = {
   syncStatusPollId: null,
   deferredInstallPrompt: null,
   copyToastTimeoutId: null,
+  postHighlightTimeoutId: null,
+  appendNextPagePromise: null,
   channelAccentCache: {},
   channelCarouselTouch: null,
   channelCarouselAnimating: false,
@@ -1626,12 +1628,29 @@ function resolveForwardedSource(post) {
   };
 }
 
+function resolveReplyTarget(post) {
+  const reply = post.reply_to;
+  if (!reply) return null;
+
+  const postId = Number.parseInt(reply.post_id, 10);
+  if (!Number.isFinite(postId) || postId <= 0) return null;
+
+  return {
+    postId,
+    label: String(reply.title || `пост #${postId}`).trim(),
+    tgUrl: String(reply.tg_url || '').trim(),
+  };
+}
+
 function renderPostCard(post) {
   const article = document.createElement('article');
   article.className = 'post-card';
+  article.id = `post-${post.id}`;
+  article.dataset.postId = String(post.id);
 
   const text = normalizePostHtml(post.text_html) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
   const forwarded = resolveForwardedSource(post);
+  const replyTarget = resolveReplyTarget(post);
   const commentsLabel = post.comments_count ? `Комментарии (${compactNumber(post.comments_count)})` : 'Комментарии';
   const shouldShowComments =
     Boolean(state.feed?.source?.comments_enabled) &&
@@ -1640,6 +1659,7 @@ function renderPostCard(post) {
   article.innerHTML = `
     ${buildMedia(post)}
     <div class="post-card__body">
+      ${replyTarget ? `<div class="post-card__reply">Пост опубликован в ответ на пост <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(replyTarget.label)}</a></div>` : ''}
       ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
       ${text ? `<div class="post-card__text">${text}</div>` : ''}
     </div>
@@ -1669,6 +1689,22 @@ function renderPostCard(post) {
       window.location.hash = `comments-${post.id}`;
     });
   }
+
+  article.querySelectorAll('[data-reply-post-id]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const targetPostId = Number.parseInt(link.dataset.replyPostId || '', 10);
+      if (!Number.isFinite(targetPostId)) return;
+
+      event.preventDefault();
+      const targetHash = `#post-${targetPostId}`;
+      if (window.location.hash !== targetHash) {
+        window.location.hash = targetHash;
+        return;
+      }
+
+      void focusPost(targetPostId, link.dataset.replyTgUrl || '');
+    });
+  });
 
   bindTelegramDeepLinks(article);
 
@@ -1705,24 +1741,36 @@ async function loadPage(pageNumber) {
 }
 
 async function appendNextPage() {
-  try {
-    if (state.rendered >= state.posts.length && state.loadedPages.size < state.totalPages) {
-      elements.loadMoreButton.disabled = true;
-      await loadPage(state.loadedPages.size + 1);
-    }
-  } catch (error) {
-    elements.loadMoreButton.disabled = false;
-    return;
+  if (state.appendNextPagePromise) {
+    return state.appendNextPagePromise;
   }
 
-  const nextPosts = state.posts.slice(state.rendered, state.rendered + state.pageSize);
-  const fragment = document.createDocumentFragment();
-  nextPosts.forEach((post) => fragment.appendChild(renderPostCard(post)));
-  elements.postFeed.appendChild(fragment);
-  state.rendered += nextPosts.length;
-  elements.loadMoreButton.disabled = false;
-  updateLoadMoreVisibility();
-  updateFeedMeta();
+  state.appendNextPagePromise = (async () => {
+    try {
+      if (state.rendered >= state.posts.length && state.loadedPages.size < state.totalPages) {
+        elements.loadMoreButton.disabled = true;
+        await loadPage(state.loadedPages.size + 1);
+      }
+    } catch (error) {
+      elements.loadMoreButton.disabled = false;
+      return;
+    }
+
+    const nextPosts = state.posts.slice(state.rendered, state.rendered + state.pageSize);
+    const fragment = document.createDocumentFragment();
+    nextPosts.forEach((post) => fragment.appendChild(renderPostCard(post)));
+    elements.postFeed.appendChild(fragment);
+    state.rendered += nextPosts.length;
+    elements.loadMoreButton.disabled = false;
+    updateLoadMoreVisibility();
+    updateFeedMeta();
+  })();
+
+  try {
+    await state.appendNextPagePromise;
+  } finally {
+    state.appendNextPagePromise = null;
+  }
 }
 
 function openViewer(items, index) {
@@ -1819,10 +1867,82 @@ async function showComments(postId) {
   }
 }
 
-function handleRoute() {
-  const match = window.location.hash.match(/^#comments-(\d+)$/);
-  if (match) {
-    void showComments(match[1]);
+function getPostHashMatch(hash = window.location.hash) {
+  return String(hash || '').match(/^#post-(\d+)$/);
+}
+
+function getPostElement(postId) {
+  return document.getElementById(`post-${postId}`);
+}
+
+function getPostScrollOffset() {
+  const stickyNavHeight = elements.channelMenu?.closest('.channel-nav')?.getBoundingClientRect().height || 0;
+  return stickyNavHeight + 18;
+}
+
+function highlightPost(element) {
+  if (!element) return;
+
+  if (state.postHighlightTimeoutId) {
+    window.clearTimeout(state.postHighlightTimeoutId);
+  }
+
+  document.querySelectorAll('.post-card--targeted').forEach((node) => node.classList.remove('post-card--targeted'));
+  element.classList.add('post-card--targeted');
+  state.postHighlightTimeoutId = window.setTimeout(() => {
+    element.classList.remove('post-card--targeted');
+  }, 2200);
+}
+
+async function ensurePostVisible(postId) {
+  const normalizedPostId = String(postId);
+  let targetIndex = state.posts.findIndex((post) => String(post.id) === normalizedPostId);
+
+  while (targetIndex === -1 && state.loadedPages.size < state.totalPages) {
+    await loadPage(state.loadedPages.size + 1);
+    targetIndex = state.posts.findIndex((post) => String(post.id) === normalizedPostId);
+  }
+
+  if (targetIndex === -1) {
+    return null;
+  }
+
+  while (state.rendered <= targetIndex) {
+    await appendNextPage();
+  }
+
+  return getPostElement(postId);
+}
+
+async function focusPost(postId, fallbackUrl = '') {
+  showFeedView();
+  const target = await ensurePostVisible(postId);
+  if (!target) {
+    if (fallbackUrl) {
+      window.open(fallbackUrl, '_blank', 'noopener');
+    }
+    return;
+  }
+
+  highlightPost(target);
+  await nextRenderFrame();
+  const targetTop = target.getBoundingClientRect().top + window.scrollY - getPostScrollOffset();
+  window.scrollTo({
+    top: Math.max(0, targetTop),
+    behavior: 'smooth',
+  });
+}
+
+async function handleRoute() {
+  const commentsMatch = window.location.hash.match(/^#comments-(\d+)$/);
+  if (commentsMatch) {
+    await showComments(commentsMatch[1]);
+    return;
+  }
+
+  const postMatch = getPostHashMatch();
+  if (postMatch) {
+    await focusPost(postMatch[1]);
     return;
   }
 
@@ -1869,13 +1989,13 @@ function applyFeedPayload(channelKey, feedPayload) {
     elements.emptyState.classList.remove('hidden');
     updateFeedMeta();
     updateLoadMoreVisibility();
-    handleRoute();
+    void handleRoute();
     scheduleChannelCarouselAutotest();
     return;
   }
 
   resetFeed();
-  handleRoute();
+  void handleRoute();
   scheduleChannelCarouselAutotest();
 }
 
@@ -1914,13 +2034,13 @@ async function loadFeed(channelKey, force = false) {
       elements.emptyState.classList.remove('hidden');
       updateFeedMeta();
       updateLoadMoreVisibility();
-      handleRoute();
+      void handleRoute();
       scheduleChannelCarouselAutotest();
       return;
     }
 
     resetFeed();
-    handleRoute();
+    void handleRoute();
     scheduleChannelCarouselAutotest();
   } catch (error) {
     elements.loadingState.classList.add('hidden');
@@ -1934,7 +2054,7 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
   if (!resolvedChannelKey) return;
   const isChannelChange = Boolean(state.activeChannelKey) && resolvedChannelKey !== state.activeChannelKey;
 
-  const shouldClearHash = window.location.hash.startsWith('#comments-');
+  const shouldClearHash = /^#(?:comments|post)-/.test(window.location.hash);
   const shouldUpdateUrl = getChannelKeyFromLocation() !== resolvedChannelKey || shouldClearHash;
   if (shouldUpdateUrl) {
     updateChannelUrl(resolvedChannelKey, { replace, clearHash: shouldClearHash });
@@ -1983,7 +2103,7 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
   if (!resolvedChannelKey) return;
 
   const isChannelChange = Boolean(state.activeChannelKey) && resolvedChannelKey !== state.activeChannelKey;
-  const shouldClearHash = window.location.hash.startsWith('#comments-');
+  const shouldClearHash = /^#(?:comments|post)-/.test(window.location.hash);
   const shouldUpdateUrl = getChannelKeyFromLocation() !== resolvedChannelKey || shouldClearHash;
 
   if (scrollToTop) {
@@ -2066,7 +2186,7 @@ function handleLocationChange() {
     return;
   }
 
-  handleRoute();
+  void handleRoute();
 }
 
 initTheme();
@@ -2131,7 +2251,9 @@ if (elements.installAppButton) {
   });
 }
 
-window.addEventListener('hashchange', handleRoute);
+window.addEventListener('hashchange', () => {
+  void handleRoute();
+});
 window.addEventListener('popstate', handleLocationChange);
 window.addEventListener('beforeinstallprompt', (event) => {
   event.preventDefault();

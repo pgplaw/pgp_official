@@ -1050,12 +1050,14 @@ label,
 .post-card {
   overflow: hidden;
   border-radius: var(--radius-lg);
+  scroll-margin-top: 110px;
 }
 
 .post-card__body {
   padding: 22px 22px 16px;
 }
 
+.post-card__reply,
 .post-card__forwarded {
   margin-bottom: 12px;
   color: var(--muted);
@@ -1063,14 +1065,22 @@ label,
   line-height: 1.5;
 }
 
+.post-card__reply a,
 .post-card__forwarded a {
   color: var(--accent);
   font-weight: 700;
   text-decoration: none;
 }
 
+.post-card__reply a:hover,
 .post-card__forwarded a:hover {
   color: var(--accent-strong);
+}
+
+.post-card--targeted {
+  box-shadow:
+    0 0 0 1px rgba(145, 39, 141, 0.22),
+    0 20px 44px rgba(145, 39, 141, 0.12);
 }
 
 .post-card__text {

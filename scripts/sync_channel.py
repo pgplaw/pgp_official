@@ -1232,6 +1232,53 @@ def extract_forwarded_source(block: str) -> dict[str, str] | None:
     return result
 
 
+def extract_reply_reference(block: str, config: SiteConfig) -> dict[str, Any] | None:
+    reply_match = re.search(
+        r'<a[^>]+class="[^"]*tgme_widget_message_reply[^"]*"[^>]+href="([^"]+)"[^>]*>(.*?)</a>',
+        block,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if not reply_match:
+        return None
+
+    reply_url = urljoin("https://t.me", html_lib.unescape(reply_match.group(1)).strip())
+    target_match = re.search(r"https?://t\.me/(?:s/)?([^/?#]+)/(\d+)", reply_url, re.IGNORECASE)
+    if not target_match:
+        return None
+
+    channel_username = target_match.group(1)
+    post_id = int(target_match.group(2))
+    reply_markup = reply_match.group(2)
+    title = None
+
+    for pattern in (
+        r'tgme_widget_message_reply_text[^>]*>(.*?)</div>',
+        r'tgme_widget_message_reply_text[^>]*>(.*?)</span>',
+        r'tgme_widget_message_reply_title[^>]*>(.*?)</div>',
+        r'tgme_widget_message_reply_title[^>]*>(.*?)</span>',
+    ):
+        title_match = re.search(pattern, reply_markup, re.IGNORECASE | re.DOTALL)
+        if not title_match:
+            continue
+
+        candidate = shorten_text(strip_tags(html_lib.unescape(title_match.group(1))), 110)
+        if candidate:
+            title = candidate
+            break
+
+    if not title:
+        fallback_title = shorten_text(strip_tags(html_lib.unescape(reply_markup)), 110)
+        if fallback_title:
+            title = fallback_title
+
+    return {
+        "post_id": post_id,
+        "title": title or f"пост #{post_id}",
+        "tg_url": f"https://t.me/{channel_username}/{post_id}",
+        "channel_username": channel_username or config.channel_username,
+    }
+
+
 def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
     blocks = re.split(r'(?=<div class="tgme_widget_message_wrap)', html_text)
     posts: list[dict[str, Any]] = []
@@ -1263,6 +1310,7 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
         raw_text = text_match.group(1) if text_match else ""
         text, text_html = build_text_fields(raw_text)
         forwarded_from = extract_forwarded_source(block)
+        reply_to = extract_reply_reference(block, config)
 
         if not text and not photos and not video_url:
             continue
@@ -1284,6 +1332,7 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
                 "video_url": video_url,
                 "tg_url": f"https://t.me/{config.channel_username}/{post_id}",
                 "forwarded_from": forwarded_from,
+                "reply_to": reply_to,
             }
         )
 
@@ -1389,6 +1438,44 @@ def select_posts_for_high_res_media(posts: list[dict[str, Any]]) -> list[int]:
     return selected
 
 
+def chunked(sequence: list[int], size: int) -> list[list[int]]:
+    return [sequence[index:index + size] for index in range(0, len(sequence), size)]
+
+
+def extract_reply_target_post_id(message: Any) -> int | None:
+    reply_header = getattr(message, "reply_to", None)
+    if not reply_header:
+        return None
+
+    for attribute in ("reply_to_msg_id", "reply_to_top_id"):
+        candidate = getattr(reply_header, attribute, None)
+        if isinstance(candidate, int) and candidate > 0:
+            return candidate
+
+    return None
+
+
+def build_reply_reference_title(
+    target_post: dict[str, Any] | None = None,
+    target_message: Any | None = None,
+    fallback_post_id: int | None = None,
+) -> str:
+    if target_post:
+        candidate = shorten_text(strip_tags(target_post.get("text_html") or target_post.get("text") or ""), 110)
+        if candidate:
+            return candidate
+
+    if target_message:
+        candidate = shorten_text(strip_tags(getattr(target_message, "message", None) or ""), 110)
+        if candidate:
+            return candidate
+
+    if fallback_post_id is not None:
+        return f"пост #{fallback_post_id}"
+
+    return "исходный пост"
+
+
 def get_downloadable_photo_targets(message: Any) -> list[Any]:
     targets: list[Any] = []
 
@@ -1400,6 +1487,75 @@ def get_downloadable_photo_targets(message: Any) -> list[Any]:
         targets.append(webpage.photo)
 
     return targets
+
+
+async def fetch_reply_references_for_posts(config: SiteConfig, posts: list[dict[str, Any]]) -> dict[int, dict[str, Any]]:
+    credentials = get_telegram_session_credentials()
+    if not credentials:
+        log.info("Telegram user session is not configured. Reply reference sync skipped.")
+        return {}
+
+    post_ids = [int(post["id"]) for post in posts if post.get("id")]
+    if not post_ids:
+        return {}
+
+    api_id, api_hash, session_string = credentials
+
+    from telethon import TelegramClient
+    from telethon.sessions import StringSession
+
+    async with TelegramClient(StringSession(session_string), int(api_id), api_hash) as client:
+        if not await client.is_user_authorized():
+            raise RuntimeError("TELEGRAM_SESSION_STR is not authorized.")
+
+        channel = await client.get_entity(config.channel_username)
+        post_messages: dict[int, Any] = {}
+
+        for batch in chunked(post_ids, 100):
+            for message in await client.get_messages(channel, ids=batch):
+                if message and getattr(message, "id", None):
+                    post_messages[int(message.id)] = message
+            await asyncio.sleep(0.1)
+
+        reply_targets: dict[int, int] = {}
+        target_ids: set[int] = set()
+
+        for post_id, message in post_messages.items():
+            target_post_id = extract_reply_target_post_id(message)
+            if not target_post_id:
+                continue
+
+            reply_targets[post_id] = target_post_id
+            target_ids.add(target_post_id)
+
+        if not reply_targets:
+            return {}
+
+        posts_by_id = {int(post["id"]): post for post in posts if post.get("id")}
+        target_messages: dict[int, Any] = {}
+        missing_target_ids = [target_id for target_id in target_ids if target_id not in posts_by_id]
+
+        for batch in chunked(missing_target_ids, 100):
+            for message in await client.get_messages(channel, ids=batch):
+                if message and getattr(message, "id", None):
+                    target_messages[int(message.id)] = message
+            await asyncio.sleep(0.1)
+
+        result: dict[int, dict[str, Any]] = {}
+        for post_id, target_post_id in reply_targets.items():
+            title = build_reply_reference_title(
+                posts_by_id.get(target_post_id),
+                target_messages.get(target_post_id),
+                fallback_post_id=target_post_id,
+            )
+            result[post_id] = {
+                "post_id": target_post_id,
+                "title": title,
+                "tg_url": f"https://t.me/{config.channel_username}/{target_post_id}",
+                "channel_username": config.channel_username,
+            }
+
+        return result
 
 
 async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[str, Any]]) -> dict[int, list[bytes]]:
@@ -1927,8 +2083,14 @@ def main() -> int:
         log.warning("No posts were collected for @%s. Existing mirror data was left untouched.", config.channel_username)
         return 0
 
+    reply_references = asyncio.run(fetch_reply_references_for_posts(config, posts))
     photo_overrides = asyncio.run(fetch_high_res_photos_for_posts(config, posts))
     comments_enabled, comment_results = asyncio.run(fetch_comments_for_posts(config, posts))
+
+    for post in posts:
+        reply_to = reply_references.get(post["id"]) or post.get("reply_to")
+        if reply_to:
+            post["reply_to"] = reply_to
 
     for post in posts:
         if post["id"] in comment_results:
