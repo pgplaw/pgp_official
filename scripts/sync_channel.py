@@ -761,29 +761,54 @@ def build_text_fields(raw_html: str) -> tuple[str | None, str | None]:
     return plain, html_markup
 
 
-def extract_div_inner_html_by_class(html_text: str, class_name: str) -> str:
-    open_tag_match = re.search(
+def extract_div_inner_html_by_class(html_text: str, class_name: str, *, prefer_last: bool = False) -> str:
+    open_tag_pattern = re.compile(
         rf'<div[^>]+class="[^"]*\b{re.escape(class_name)}\b[^"]*"[^>]*>',
+        re.IGNORECASE,
+    )
+    open_tag_matches = list(open_tag_pattern.finditer(html_text))
+    if not open_tag_matches:
+        return ""
+
+    if prefer_last:
+        open_tag_matches = list(reversed(open_tag_matches))
+
+    token_pattern = re.compile(r"<div\b[^>]*>|</div>", re.IGNORECASE)
+
+    for open_tag_match in open_tag_matches:
+        start_index = open_tag_match.end()
+        depth = 1
+
+        for token_match in token_pattern.finditer(html_text, start_index):
+            token = token_match.group(0).lower()
+            if token.startswith("</div"):
+                depth -= 1
+                if depth == 0:
+                    return html_text[start_index:token_match.start()]
+            else:
+                depth += 1
+
+        if start_index < len(html_text):
+            return html_text[start_index:]
+
+    return ""
+
+
+def strip_anchor_block_by_class(html_text: str, class_name: str) -> str:
+    open_tag_match = re.search(
+        rf'<a[^>]+class="[^"]*\b{re.escape(class_name)}\b[^"]*"[^>]*>',
         html_text,
         re.IGNORECASE,
     )
     if not open_tag_match:
-        return ""
+        return html_text
 
-    start_index = open_tag_match.end()
-    depth = 1
-    token_pattern = re.compile(r"<div\b[^>]*>|</div>", re.IGNORECASE)
+    close_tag_match = re.search(r"</a>", html_text[open_tag_match.end():], re.IGNORECASE)
+    if not close_tag_match:
+        return html_text
 
-    for token_match in token_pattern.finditer(html_text, start_index):
-        token = token_match.group(0).lower()
-        if token.startswith("</div"):
-            depth -= 1
-            if depth == 0:
-                return html_text[start_index:token_match.start()]
-        else:
-            depth += 1
-
-    return html_text[start_index:]
+    end_index = open_tag_match.end() + close_tag_match.end()
+    return f"{html_text[:open_tag_match.start()]}{html_text[end_index:]}"
 
 
 def normalize_anchor_href(href: str | None) -> str | None:
@@ -1335,10 +1360,15 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
             if link_preview_match:
                 photos = [urljoin("https://t.me", html_lib.unescape(link_preview_match.group(1)))]
         video_url = urljoin("https://t.me", html_lib.unescape(video_match.group(1))) if video_match else None
-        raw_text = extract_div_inner_html_by_class(block, "tgme_widget_message_text")
+        reply_to = extract_reply_reference(block, config)
+        text_source_block = strip_anchor_block_by_class(block, "tgme_widget_message_reply") if reply_to else block
+        raw_text = extract_div_inner_html_by_class(
+            text_source_block,
+            "tgme_widget_message_text",
+            prefer_last=bool(reply_to),
+        )
         text, text_html = build_text_fields(raw_text)
         forwarded_from = extract_forwarded_source(block)
-        reply_to = extract_reply_reference(block, config)
 
         if not text and not photos and not video_url:
             continue
