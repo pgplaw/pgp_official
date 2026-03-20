@@ -155,6 +155,16 @@ label,
   pointer-events: none;
 }
 
+.site-shell.is-channel-switching-fast .hero,
+.site-shell.is-channel-switching-fast .contact-bar,
+.site-shell.is-channel-switching-fast .content,
+.site-shell.is-channel-switching-fast .site-footer {
+  transition-duration: 140ms, 160ms, 140ms;
+  opacity: 0.14;
+  transform: translateY(8px) scale(0.996);
+  filter: blur(4px);
+}
+
 .channel-nav {
   position: sticky;
   top: 12px;

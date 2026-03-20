@@ -5,9 +5,11 @@ const DEFAULT_PAGE_SIZE = 16;
 const AUTO_REFRESH_INTERVAL_MINUTES = 5;
 const SYNC_STATUS_POLL_INTERVAL_MS = 30 * 1000;
 const LONG_PRESS_COPY_DELAY_MS = 650;
-const CHANNEL_CAROUSEL_TRANSITION_MS = 560;
+const CHANNEL_CAROUSEL_TRANSITION_MS = 380;
 const CHANNEL_CONTENT_FADE_OUT_MS = 180;
 const CHANNEL_CONTENT_FADE_IN_DELAY_MS = 60;
+const CHANNEL_MOBILE_CONTENT_FADE_OUT_MS = 70;
+const CHANNEL_MOBILE_CONTENT_FADE_IN_DELAY_MS = 0;
 const VIEWER_TRANSITION_MS = 360;
 
 const state = {
@@ -480,8 +482,29 @@ function wait(ms) {
   });
 }
 
-function setChannelContentSwitching(active) {
-  elements.siteShell?.classList.toggle('is-channel-switching', Boolean(active));
+function setChannelContentSwitching(active, { fast = false } = {}) {
+  if (!elements.siteShell) return;
+
+  const isActive = Boolean(active);
+  elements.siteShell.classList.toggle('is-channel-switching', isActive);
+  elements.siteShell.classList.toggle('is-channel-switching-fast', isActive && Boolean(fast));
+  if (!isActive) {
+    elements.siteShell.classList.remove('is-channel-switching-fast');
+  }
+}
+
+function getChannelSwitchTimings({ fast = false } = {}) {
+  if (fast) {
+    return {
+      fadeOut: CHANNEL_MOBILE_CONTENT_FADE_OUT_MS,
+      fadeInDelay: CHANNEL_MOBILE_CONTENT_FADE_IN_DELAY_MS,
+    };
+  }
+
+  return {
+    fadeOut: CHANNEL_CONTENT_FADE_OUT_MS,
+    fadeInDelay: CHANNEL_CONTENT_FADE_IN_DELAY_MS,
+  };
 }
 
 function getChannelByKey(channelKey) {
@@ -906,6 +929,13 @@ async function moveChannelCarousel(offset) {
   const stage = getChannelCarouselStage();
   const track = getChannelCarouselTrack();
   const shouldAnimate = isMobileCarouselViewport() && !prefersReducedMotion() && stage && track;
+  const fastTransition = isMobileCarouselViewport();
+  const prefetchedFeedPromise = fetchFeedPayload(nextChannelKey).catch((error) => {
+    if (state.channelCarouselAutotest) {
+      state.channelCarouselAutotest.prefetchError = error.message;
+    }
+    throw error;
+  });
 
   try {
     if (shouldAnimate) {
@@ -916,7 +946,11 @@ async function moveChannelCarousel(offset) {
       await animateChannelCarouselShift(track, targetShift);
     }
 
-    await switchChannel(nextChannelKey, { scrollToTop: true });
+    await switchChannel(nextChannelKey, {
+      scrollToTop: true,
+      prefetchedFeedPromise,
+      fastTransition,
+    });
   } finally {
     getChannelCarouselStage()?.classList.remove('channel-carousel__stage--animating');
     finishChannelCarouselTransition();
@@ -1105,7 +1139,7 @@ function setupChannelCarouselInteractions() {
     const threshold = touchState.width * 0.18;
 
     if (!touchState.dragging || Math.abs(deltaX) < threshold || Math.abs(deltaX) <= Math.abs(deltaY)) {
-      void animateChannelCarouselShift(touchState.track, 0, { duration: 240 });
+      void animateChannelCarouselShift(touchState.track, 0, { duration: 170 });
       return;
     }
 
@@ -1114,7 +1148,7 @@ function setupChannelCarouselInteractions() {
 
   elements.channelCarousel.addEventListener('touchcancel', () => {
     if (state.channelCarouselTouch?.track) {
-      void animateChannelCarouselShift(state.channelCarouselTouch.track, 0, { duration: 220 });
+      void animateChannelCarouselShift(state.channelCarouselTouch.track, 0, { duration: 160 });
     }
     state.channelCarouselTouch = null;
   }, { passive: true });
@@ -2528,6 +2562,14 @@ async function fetchFeedPayload(channelKey, force = false) {
   return response.json();
 }
 
+async function resolveFeedPayloadForSwitch(channelKey, { force = false, prefetchedFeedPromise = null } = {}) {
+  if (prefetchedFeedPromise) {
+    return prefetchedFeedPromise;
+  }
+
+  return fetchFeedPayload(channelKey, force);
+}
+
 function applyFeedPayload(channelKey, feedPayload) {
   state.activeChannelKey = channelKey;
   state.mediaRegistry = {};
@@ -2661,13 +2703,14 @@ async function loadFeed(channelKey, force = false) {
   }
 }
 
-async function switchChannel(channelKey, { replace = false, force = false, scrollToTop = false } = {}) {
+async function switchChannel(channelKey, { replace = false, force = false, scrollToTop = false, prefetchedFeedPromise = null, fastTransition = false } = {}) {
   const resolvedChannelKey = resolveChannelKey(channelKey);
   if (!resolvedChannelKey) return;
 
   const isChannelChange = Boolean(state.activeChannelKey) && resolvedChannelKey !== state.activeChannelKey;
   const shouldClearHash = /^#(?:comments|post)-/.test(window.location.hash);
   const shouldUpdateUrl = getChannelKeyFromLocation() !== resolvedChannelKey || shouldClearHash;
+  const switchTimings = getChannelSwitchTimings({ fast: fastTransition });
 
   if (scrollToTop) {
     scrollPageToTop();
@@ -2684,12 +2727,12 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
     return;
   }
 
-  setChannelContentSwitching(true);
+  setChannelContentSwitching(true, { fast: fastTransition });
   await nextRenderFrame();
-  await wait(CHANNEL_CONTENT_FADE_OUT_MS);
+  await wait(switchTimings.fadeOut);
 
   try {
-    const feedPayload = await fetchFeedPayload(resolvedChannelKey, force);
+    const feedPayload = await resolveFeedPayloadForSwitch(resolvedChannelKey, { force, prefetchedFeedPromise });
     applyFeedPayload(resolvedChannelKey, feedPayload);
 
     if (shouldUpdateUrl) {
@@ -2700,7 +2743,9 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
     showCopyToast(`Не удалось открыть канал: ${error.message}`);
   } finally {
     await nextRenderFrame();
-    await wait(CHANNEL_CONTENT_FADE_IN_DELAY_MS);
+    if (switchTimings.fadeInDelay > 0) {
+      await wait(switchTimings.fadeInDelay);
+    }
     setChannelContentSwitching(false);
   }
 
