@@ -38,11 +38,12 @@ POSTS_FEED_DIR = POSTS_MEDIA_DIR / "feed"
 CHANNEL_MEDIA_DIR = CHANNEL_DATA_DIR / "media"
 CHANNEL_AVATAR_PATH = CHANNEL_MEDIA_DIR / "channel-avatar.jpg"
 SUPERRES_MODEL_DIR = ROOT / "ops" / "models"
+EDSR_X2_MODEL_PATH = SUPERRES_MODEL_DIR / "EDSR_x2.pb"
 FSRCNN_X2_MODEL_PATH = SUPERRES_MODEL_DIR / "FSRCNN_x2.pb"
 POST_PAGES_DIR = DOCS_DIR / "channels" / CHANNEL_KEY / "posts" if CHANNEL_KEY else DOCS_DIR / "posts"
 MANIFEST_PATH = DOCS_DIR / "manifest.webmanifest"
 FEED_PAGE_SIZE = 16
-IMAGE_VARIANT_VERSION = "v7"
+IMAGE_VARIANT_VERSION = "v8"
 
 BASE_HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; TelegramPagesMirror/1.0)",
@@ -61,6 +62,7 @@ LOW_RES_SINGLE_UPSCALE_THRESHOLD = 1200
 LOW_RES_SINGLE_FEED_TARGET = 1800
 LOW_RES_SINGLE_FULL_TARGET = 2400
 LOW_RES_SINGLE_MAX_UPSCALE_FACTOR = 2.35
+EDSR_X2_MODEL_URL = "https://github.com/opencv/opencv_contrib/raw/4.x/modules/dnn_superres/samples/EDSR_x2.pb"
 FSRCNN_X2_MODEL_URL = "https://raw.githubusercontent.com/Saafke/FSRCNN_Tensorflow/master/models/FSRCNN_x2.pb"
 FAILED_EXTERNAL_PREVIEW_HOSTS: set[str] = set()
 
@@ -287,15 +289,15 @@ def normalize_photo_entry(photo: Any) -> dict[str, str] | None:
     return None
 
 
-def ensure_fsrcnn_x2_model() -> Path:
-    if FSRCNN_X2_MODEL_PATH.exists():
-        return FSRCNN_X2_MODEL_PATH
+def ensure_superres_model(model_path: Path, model_url: str, label: str) -> Path:
+    if model_path.exists():
+        return model_path
 
     SUPERRES_MODEL_DIR.mkdir(parents=True, exist_ok=True)
-    model_bytes = fetch_binary(FSRCNN_X2_MODEL_URL, timeout=20)
-    FSRCNN_X2_MODEL_PATH.write_bytes(model_bytes)
-    log.info("Downloaded FSRCNN x2 model to %s", FSRCNN_X2_MODEL_PATH.relative_to(ROOT))
-    return FSRCNN_X2_MODEL_PATH
+    model_bytes = fetch_binary(model_url, timeout=20)
+    model_path.write_bytes(model_bytes)
+    log.info("Downloaded %s model to %s", label, model_path.relative_to(ROOT))
+    return model_path
 
 
 def apply_single_image_super_resolution(image: Any, resampling: Any) -> Any | None:
@@ -306,22 +308,28 @@ def apply_single_image_super_resolution(image: Any, resampling: Any) -> Any | No
         log.warning("OpenCV super-resolution is unavailable: %s", error)
         return None
 
-    try:
-        model_path = ensure_fsrcnn_x2_model()
-        rgb_array = np.array(image.convert("RGB"))
-        bgr_array = cv2.cvtColor(rgb_array, cv2.COLOR_RGB2BGR)
-        sr = cv2.dnn_superres.DnnSuperResImpl_create()
-        sr.readModel(str(model_path))
-        sr.setModel("fsrcnn", 2)
-        upscaled = sr.upsample(bgr_array)
-        upscaled_rgb = cv2.cvtColor(upscaled, cv2.COLOR_BGR2RGB)
+    rgb_array = np.array(image.convert("RGB"))
+    bgr_array = cv2.cvtColor(rgb_array, cv2.COLOR_RGB2BGR)
 
-        from PIL import Image
+    for label, algorithm, scale, model_path, model_url in (
+        ("EDSR x2", "edsr", 2, EDSR_X2_MODEL_PATH, EDSR_X2_MODEL_URL),
+        ("FSRCNN x2", "fsrcnn", 2, FSRCNN_X2_MODEL_PATH, FSRCNN_X2_MODEL_URL),
+    ):
+        try:
+            resolved_model_path = ensure_superres_model(model_path, model_url, label)
+            sr = cv2.dnn_superres.DnnSuperResImpl_create()
+            sr.readModel(str(resolved_model_path))
+            sr.setModel(algorithm, scale)
+            upscaled = sr.upsample(bgr_array)
+            upscaled_rgb = cv2.cvtColor(upscaled, cv2.COLOR_BGR2RGB)
 
-        return Image.fromarray(upscaled_rgb)
-    except Exception as error:  # pragma: no cover - runtime/model path
-        log.warning("FSRCNN super-resolution fallback used: %s", error)
-        return None
+            from PIL import Image
+
+            return Image.fromarray(upscaled_rgb)
+        except Exception as error:  # pragma: no cover - runtime/model path
+            log.warning("%s super-resolution fallback used: %s", label, error)
+
+    return None
 
 
 def optimize_image_variants(
