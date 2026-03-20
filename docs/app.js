@@ -619,8 +619,16 @@ function buildPageUrl(channelKey, pageNumber) {
   return `${buildChannelRoot(channelKey)}/pages/${pageNumber}.json`;
 }
 
-function buildCommentsUrl(channelKey, postId) {
-  return `${buildChannelRoot(channelKey)}/comments/${postId}.json?t=${Date.now()}`;
+function buildCommentsUrl(channelKey, postId, force = false) {
+  return `${buildChannelRoot(channelKey)}/comments/${postId}.json${force ? `?t=${Date.now()}` : ''}`;
+}
+
+function buildCatalogUrl(force = false) {
+  return `${CHANNELS_INDEX_URL}${force ? `?t=${Date.now()}` : ''}`;
+}
+
+function getJsonFetchOptions(force = false) {
+  return { cache: force ? 'reload' : 'default' };
 }
 
 function getActiveChannelMeta() {
@@ -841,51 +849,6 @@ function setChannelCarouselShift(track, shift, stageOrWidth = getChannelCarousel
 function getRelativeChannel(offset) {
   const key = getRelativeChannelKey(offset);
   return key ? getChannelByKey(key) : null;
-}
-
-function buildMobileChannelCarouselSurface(channel, index, total, { current = false } = {}) {
-  const safeChannel = channel || getActiveChannelMeta() || {};
-  const { title, subtitle, rawLabel } = getChannelMenuLabels(safeChannel);
-  const hasMultiple = total > 1;
-
-  return `
-    <article
-      class="channel-carousel__surface${current ? ' channel-carousel__surface--current' : ''}"
-      style="${escapeHtml(buildChannelAccentStyle(safeChannel))}"
-      data-channel-carousel-surface="true"
-      data-channel-key="${escapeHtml(safeChannel.key || '')}"
-      aria-label="${escapeHtml(rawLabel)}"
-      ${current ? 'aria-current="true"' : 'aria-hidden="true"'}
-    >
-      <button
-        class="channel-carousel__nav channel-carousel__nav--prev"
-        type="button"
-        data-channel-shift="-1"
-        aria-label="РџСЂРµРґС‹РґСѓС‰РёР№ РєР°РЅР°Р»"
-        ${hasMultiple ? '' : 'disabled'}
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="m14.5 6.5-5.5 5.5 5.5 5.5" />
-        </svg>
-      </button>
-      <div class="channel-carousel__content">
-        <span class="channel-carousel__meta">РљР°РЅР°Р» ${index + 1} РёР· ${total}</span>
-        <span class="channel-carousel__title">${formatTextWithSoftBreaks(title)}</span>
-        <span class="channel-carousel__subtitle">${formatTextWithSoftBreaks(subtitle)}</span>
-      </div>
-      <button
-        class="channel-carousel__nav channel-carousel__nav--next"
-        type="button"
-        data-channel-shift="1"
-        aria-label="РЎР»РµРґСѓСЋС‰РёР№ РєР°РЅР°Р»"
-        ${hasMultiple ? '' : 'disabled'}
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="m9.5 6.5 5.5 5.5-5.5 5.5" />
-        </svg>
-      </button>
-    </article>
-  `;
 }
 
 function buildMobileChannelCarouselSlide(channel, index, total, options = {}) {
@@ -1291,122 +1254,6 @@ function renderChannelMenu() {
   }).join('');
 
   renderMobileChannelCarousel();
-}
-
-function renderMobileChannelCarousel() {
-  if (!elements.channelCarousel) return;
-
-  const channels = getCatalogChannels();
-  if (!channels.length) {
-    elements.channelCarousel.innerHTML = '';
-    return;
-  }
-
-  const activeIndex = Math.max(0, getChannelIndex(state.activeChannelKey));
-  const activeChannel = channels[activeIndex] || channels[0];
-  const previousChannel = getRelativeChannel(-1) || activeChannel;
-  const nextChannel = getRelativeChannel(1) || activeChannel;
-
-  let carouselStage = elements.channelCarousel.querySelector('.channel-carousel__stage');
-  if (!carouselStage) {
-    elements.channelCarousel.innerHTML = '<div class="channel-carousel__stage"></div>';
-    carouselStage = elements.channelCarousel.querySelector('.channel-carousel__stage');
-  }
-
-  carouselStage.classList.remove('channel-carousel__stage--animating');
-  carouselStage.innerHTML = `
-    <div class="channel-carousel__track" data-channel-carousel-track>
-      ${buildMobileChannelCarouselSurface(previousChannel, (activeIndex - 1 + channels.length) % channels.length, channels.length)}
-      ${buildMobileChannelCarouselSurface(activeChannel, activeIndex, channels.length, { current: true })}
-      ${buildMobileChannelCarouselSurface(nextChannel, (activeIndex + 1) % channels.length, channels.length)}
-    </div>
-  `;
-
-  const track = carouselStage.querySelector('[data-channel-carousel-track]');
-  if (track) {
-    track.style.removeProperty('transition');
-    requestAnimationFrame(() => {
-      setChannelCarouselShift(track, 0, carouselStage);
-    });
-  }
-
-  finishChannelCarouselTransition();
-  scheduleChannelCarouselAutotest();
-  return;
-
-  const markup = `
-    <div
-      class="channel-carousel__surface channel-carousel__surface--settled"
-      style="${escapeHtml(buildChannelAccentStyle(activeChannel))}"
-      data-channel-carousel-surface="true"
-      data-channel-key="${escapeHtml(activeChannel.key)}"
-      aria-label="${escapeHtml(rawLabel)}"
-    >
-      <button
-        class="channel-carousel__nav channel-carousel__nav--prev"
-        type="button"
-        data-channel-shift="-1"
-        aria-label="Предыдущий канал"
-        ${hasMultiple ? '' : 'disabled'}
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="m14.5 6.5-5.5 5.5 5.5 5.5" />
-        </svg>
-      </button>
-      <div class="channel-carousel__content">
-        <span class="channel-carousel__meta">Канал ${activeIndex + 1} из ${channels.length}</span>
-        <span class="channel-carousel__title">${formatTextWithSoftBreaks(title)}</span>
-        <span class="channel-carousel__subtitle">${formatTextWithSoftBreaks(subtitle)}</span>
-      </div>
-      <button
-        class="channel-carousel__nav channel-carousel__nav--next"
-        type="button"
-        data-channel-shift="1"
-        aria-label="Следующий канал"
-        ${hasMultiple ? '' : 'disabled'}
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="m9.5 6.5 5.5 5.5-5.5 5.5" />
-        </svg>
-      </button>
-    </div>
-  `;
-
-  let stage = elements.channelCarousel.querySelector('.channel-carousel__stage');
-  if (!stage) {
-    elements.channelCarousel.innerHTML = '<div class="channel-carousel__stage"></div>';
-    stage = elements.channelCarousel.querySelector('.channel-carousel__stage');
-  }
-
-  const previousSurface = stage.querySelector('[data-channel-carousel-surface]');
-  const template = document.createElement('template');
-  template.innerHTML = markup.trim();
-  const nextSurface = template.content.firstElementChild;
-  const shouldAnimate =
-    Boolean(state.channelCarouselTransition) &&
-    Boolean(previousSurface) &&
-    previousSurface.dataset.channelKey !== activeChannel.key &&
-    isMobileCarouselViewport() &&
-    !prefersReducedMotion();
-
-  if (!shouldAnimate) {
-    stage.classList.remove('channel-carousel__stage--animating');
-    stage.innerHTML = '';
-    stage.appendChild(nextSurface);
-    finishChannelCarouselTransition();
-    scheduleChannelCarouselAutotest();
-    return;
-  }
-
-  stage.appendChild(nextSurface);
-  requestAnimationFrame(() => {
-    animateChannelCarouselTransition(
-      stage,
-      previousSurface,
-      nextSurface,
-      state.channelCarouselTransition?.direction || 'next',
-    );
-  });
 }
 
 function buildMobileChannelCarouselSurface(channel, index, total, { current = false } = {}) {
@@ -1858,214 +1705,6 @@ function renderPostCard(post) {
     Boolean(state.feed?.source?.comments_enabled) &&
     (post.comments_count > 0 || post.comments_url || post.comments_available);
 
-  const cardLeadMarkup = [
-    replyTarget ? `<div class="post-card__reply">РћРїСѓР±Р»РёРєРѕРІР°РЅРѕ РІ РѕС‚РІРµС‚ РЅР° <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : '',
-    forwarded ? `<div class="post-card__forwarded">РџРµСЂРµСЃР»Р°РЅРѕ РёР· РєР°РЅР°Р»Р° <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : '',
-  ].filter(Boolean).join('');
-
-  article.innerHTML = `
-    ${buildMedia(post)}
-    <div class="post-card__body">
-      ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : ''}
-      ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
-      ${text ? `<div class="post-card__text">${text}</div>` : ''}
-    </div>
-    <div class="post-card__footer">
-      <div class="post-card__stats">
-        <span class="chip">${formatDate(post.date)}</span>
-      </div>
-      <div class="post-card__links">
-        ${shouldShowComments ? `<button class="button button--ghost comments-trigger" type="button" data-post-id="${post.id}">${commentsLabel}</button>` : ''}
-        <a class="post-card__link" href="${post.tg_url}" target="_blank" rel="noopener">Открыть в Telegram</a>
-      </div>
-    </div>
-  `;
-
-  const body = article.querySelector('.post-card__body');
-  if (body) {
-    const head = document.createElement('div');
-    head.className = 'post-card__head';
-
-    const meta = document.createElement('div');
-    meta.className = 'post-card__meta';
-
-    const leadNodes = Array.from(body.children).filter((node) =>
-      node instanceof HTMLElement &&
-      (node.classList.contains('post-card__reply') || node.classList.contains('post-card__forwarded'))
-    );
-    leadNodes.forEach((node) => meta.appendChild(node));
-
-    const copyButton = document.createElement('button');
-    copyButton.className = 'post-card__copy icon-button icon-button--post-copy';
-    copyButton.type = 'button';
-    copyButton.dataset.copyPostUrl = postAnchorUrl;
-    copyButton.setAttribute('aria-label', 'Скопировать ссылку на пост');
-    copyButton.title = 'Скопировать ссылку на пост';
-    copyButton.innerHTML = `
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="9" y="9" width="10" height="10" rx="2"></rect>
-        <path d="M7 15H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    `;
-
-    if (!leadNodes.length) {
-      meta.classList.add('post-card__meta--empty');
-    }
-
-    head.append(meta, copyButton);
-    body.prepend(head);
-  }
-
-  const mediaRoot = article.querySelector('[data-media-id]');
-  if (mediaRoot) {
-    const items = state.mediaRegistry[mediaRoot.dataset.mediaId] || [];
-    bindMediaFill(mediaRoot);
-    mediaRoot.querySelectorAll('.media-trigger').forEach((button) => {
-      button.addEventListener('click', () => openViewer(items, Number(button.dataset.index)));
-    });
-  }
-
-  const commentsButton = article.querySelector('.comments-trigger');
-  if (commentsButton) {
-    commentsButton.addEventListener('click', () => {
-      window.location.hash = `comments-${post.id}`;
-    });
-  }
-
-  const copyPostButton = article.querySelector('[data-copy-post-url]');
-  if (copyPostButton) {
-    copyPostButton.addEventListener('click', async () => {
-      const copied = await copyTextToClipboard(copyPostButton.dataset.copyPostUrl || '');
-      showCopyToast(copied ? 'Ссылка на пост скопирована' : 'Не удалось скопировать ссылку');
-    });
-  }
-
-  article.querySelectorAll('[data-reply-post-id]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      const targetPostId = Number.parseInt(link.dataset.replyPostId || '', 10);
-      if (!Number.isFinite(targetPostId)) return;
-
-      event.preventDefault();
-      const targetHash = `#post-${targetPostId}`;
-      if (window.location.hash !== targetHash) {
-        window.location.hash = targetHash;
-        return;
-      }
-
-      void focusPost(targetPostId, link.dataset.replyTgUrl || '');
-    });
-  });
-
-  bindTelegramDeepLinks(article);
-
-  return article;
-}
-
-function renderPostCard(post) {
-  const article = document.createElement('article');
-  article.className = 'post-card';
-  article.id = `post-${post.id}`;
-  article.dataset.postId = String(post.id);
-
-  const text = normalizePostHtmlSpacing(normalizePostHtml(post.text_html)) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
-  const forwarded = resolveForwardedSource(post);
-  const replyTarget = resolveReplyTarget(post);
-  const postAnchorUrl = buildPostAnchorUrl(post.id);
-  const commentsLabel = post.comments_count ? `Комментарии (${compactNumber(post.comments_count)})` : 'Комментарии';
-  const shouldShowComments =
-    Boolean(state.feed?.source?.comments_enabled) &&
-    (post.comments_count > 0 || post.comments_url || post.comments_available);
-
-  article.innerHTML = `
-    ${buildMedia(post)}
-    <div class="post-card__body">
-      <button
-        class="post-card__copy icon-button icon-button--post-copy"
-        type="button"
-        data-copy-post-url="${escapeHtml(postAnchorUrl)}"
-        aria-label="Скопировать ссылку на пост"
-        title="Скопировать ссылку на пост"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="9" y="9" width="10" height="10" rx="2"></rect>
-          <path d="M7 15H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1"></path>
-        </svg>
-      </button>
-      ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : ''}
-      ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
-      ${text ? `<div class="post-card__text">${text}</div>` : ''}
-    </div>
-    <div class="post-card__footer">
-      <div class="post-card__stats">
-        <span class="chip">${formatDate(post.date)}</span>
-      </div>
-      <div class="post-card__links">
-        ${shouldShowComments ? `<button class="button button--ghost comments-trigger" type="button" data-post-id="${post.id}">${commentsLabel}</button>` : ''}
-        <a class="post-card__link" href="${post.tg_url}" target="_blank" rel="noopener">Открыть в Telegram</a>
-      </div>
-    </div>
-  `;
-
-  const mediaRoot = article.querySelector('[data-media-id]');
-  if (mediaRoot) {
-    const items = state.mediaRegistry[mediaRoot.dataset.mediaId] || [];
-    bindMediaFill(mediaRoot);
-    mediaRoot.querySelectorAll('.media-trigger').forEach((button) => {
-      button.addEventListener('click', () => openViewer(items, Number(button.dataset.index)));
-    });
-  }
-
-  const commentsButton = article.querySelector('.comments-trigger');
-  if (commentsButton) {
-    commentsButton.addEventListener('click', () => {
-      window.location.hash = `comments-${post.id}`;
-    });
-  }
-
-  const copyPostButton = article.querySelector('[data-copy-post-url]');
-  if (copyPostButton) {
-    copyPostButton.addEventListener('click', async () => {
-      const copied = await copyTextToClipboard(copyPostButton.dataset.copyPostUrl || '');
-      showCopyToast(copied ? 'Ссылка на пост скопирована' : 'Не удалось скопировать ссылку');
-    });
-  }
-
-  article.querySelectorAll('[data-reply-post-id]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      const targetPostId = Number.parseInt(link.dataset.replyPostId || '', 10);
-      if (!Number.isFinite(targetPostId)) return;
-
-      event.preventDefault();
-      const targetHash = `#post-${targetPostId}`;
-      if (window.location.hash !== targetHash) {
-        window.location.hash = targetHash;
-        return;
-      }
-
-      void focusPost(targetPostId, link.dataset.replyTgUrl || '');
-    });
-  });
-
-  bindTelegramDeepLinks(article);
-
-  return article;
-}
-
-function renderPostCard(post) {
-  const article = document.createElement('article');
-  article.className = 'post-card';
-  article.id = `post-${post.id}`;
-  article.dataset.postId = String(post.id);
-
-  const text = normalizePostHtmlSpacing(normalizePostHtml(post.text_html)) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
-  const forwarded = resolveForwardedSource(post);
-  const replyTarget = resolveReplyTarget(post);
-  const postAnchorUrl = buildPostAnchorUrl(post.id);
-  const commentsLabel = post.comments_count ? `Комментарии (${compactNumber(post.comments_count)})` : 'Комментарии';
-  const shouldShowComments =
-    Boolean(state.feed?.source?.comments_enabled) &&
-    (post.comments_count > 0 || post.comments_url || post.comments_available);
-
   article.innerHTML = `
     ${buildMedia(post)}
     <div class="post-card__body">
@@ -2164,7 +1803,7 @@ async function loadPage(pageNumber) {
     return;
   }
 
-  const response = await fetch(buildPageUrl(state.activeChannelKey, pageNumber), { cache: 'no-store' });
+  const response = await fetch(buildPageUrl(state.activeChannelKey, pageNumber), getJsonFetchOptions(false));
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
   const payload = await response.json();
@@ -2484,7 +2123,7 @@ async function showComments(postId) {
   elements.commentsView.classList.remove('hidden');
 
   try {
-    const response = await fetch(buildCommentsUrl(state.activeChannelKey, postId), { cache: 'no-store' });
+    const response = await fetch(buildCommentsUrl(state.activeChannelKey, postId), getJsonFetchOptions(false));
     if (response.status === 404) {
       elements.commentsLoading.classList.add('hidden');
       elements.commentsEmpty.classList.remove('hidden');
@@ -2610,7 +2249,7 @@ function showFeedLoadingState(clearPosts = true) {
 }
 
 async function fetchFeedPayload(channelKey, force = false) {
-  const response = await fetch(buildFeedUrl(channelKey, force), { cache: 'no-store' });
+  const response = await fetch(buildFeedUrl(channelKey, force), getJsonFetchOptions(force));
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   return response.json();
 }
@@ -2655,92 +2294,6 @@ function applyFeedPayload(channelKey, feedPayload) {
   resetFeed();
   void handleRoute();
   scheduleChannelCarouselAutotest();
-}
-
-async function loadFeed(channelKey, force = false) {
-  state.activeChannelKey = channelKey;
-  state.mediaRegistry = {};
-  renderChannelMenu();
-
-  elements.loadingState.classList.remove('hidden');
-  elements.emptyState.classList.add('hidden');
-  elements.errorState.classList.add('hidden');
-  elements.postFeed.innerHTML = '';
-  showFeedView();
-
-  try {
-    const response = await fetch(buildFeedUrl(channelKey, force), { cache: 'no-store' });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-    state.feed = await response.json();
-    const pagination = state.feed.pagination || {};
-    state.posts = state.feed.posts || [];
-    state.totalPosts = Number(pagination.total_posts) || state.posts.length;
-    state.totalPages = Number(pagination.total_pages) || 1;
-    state.pageSize = Number(pagination.page_size) || DEFAULT_PAGE_SIZE;
-    state.loadedPages = new Set(state.posts.length ? [1] : []);
-
-    renderHeader(state.feed.site || getActiveChannelMeta() || getCatalogSite(), state.feed.generated_at);
-    void ensureChannelAccent({
-      ...getActiveChannelMeta(),
-      ...(state.feed.site || {}),
-      key: channelKey,
-    });
-    elements.loadingState.classList.add('hidden');
-
-    if (!state.posts.length) {
-      elements.emptyState.classList.remove('hidden');
-      updateFeedMeta();
-      updateLoadMoreVisibility();
-      void handleRoute();
-      scheduleChannelCarouselAutotest();
-      return;
-    }
-
-    resetFeed();
-    void handleRoute();
-    scheduleChannelCarouselAutotest();
-  } catch (error) {
-    elements.loadingState.classList.add('hidden');
-    elements.errorState.classList.remove('hidden');
-    elements.errorMessage.textContent = `Ошибка: ${error.message}`;
-  }
-}
-
-async function switchChannel(channelKey, { replace = false, force = false, scrollToTop = false } = {}) {
-  const resolvedChannelKey = resolveChannelKey(channelKey);
-  if (!resolvedChannelKey) return;
-  const isChannelChange = Boolean(state.activeChannelKey) && resolvedChannelKey !== state.activeChannelKey;
-
-  const shouldClearHash = /^#(?:comments|post)-/.test(window.location.hash);
-  const shouldUpdateUrl = getChannelKeyFromLocation() !== resolvedChannelKey || shouldClearHash;
-  if (shouldUpdateUrl) {
-    updateChannelUrl(resolvedChannelKey, { replace, clearHash: shouldClearHash });
-  }
-
-  if (scrollToTop) {
-    scrollPageToTop();
-  }
-
-  if (isChannelChange) {
-    setChannelContentSwitching(true);
-    await nextRenderFrame();
-    await wait(CHANNEL_CONTENT_FADE_OUT_MS);
-  }
-
-  try {
-    await loadFeed(resolvedChannelKey, force);
-  } finally {
-    if (isChannelChange) {
-      await nextRenderFrame();
-      await wait(CHANNEL_CONTENT_FADE_IN_DELAY_MS);
-      setChannelContentSwitching(false);
-    }
-  }
-
-  if (scrollToTop) {
-    scrollPageToTop();
-  }
 }
 
 async function loadFeed(channelKey, force = false) {
@@ -2830,7 +2383,7 @@ async function loadCatalog() {
   elements.errorState.classList.add('hidden');
 
   try {
-    const response = await fetch(`${CHANNELS_INDEX_URL}?t=${Date.now()}`, { cache: 'no-store' });
+    const response = await fetch(buildCatalogUrl(false), getJsonFetchOptions(false));
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     state.catalog = await response.json();

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'telegram-pages-mirror-v15';
+const CACHE_NAME = 'telegram-pages-mirror-v16';
 const STATIC_ASSETS = [
   './manifest.webmanifest',
   './data/channels/pgp-official/media/channel-avatar.jpg',

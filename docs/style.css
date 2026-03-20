@@ -1557,6 +1557,31 @@ label,
 }
 
 @media (max-width: 860px) {
+  .hero,
+  .contact-bar,
+  .content,
+  .site-footer {
+    will-change: auto;
+  }
+
+  .site-shell.is-channel-switching .hero,
+  .site-shell.is-channel-switching .contact-bar,
+  .site-shell.is-channel-switching .content,
+  .site-shell.is-channel-switching .site-footer {
+    opacity: 0.08;
+    transform: translateY(8px) scale(0.996);
+    filter: none;
+  }
+
+  .site-shell.is-channel-switching-fast .hero,
+  .site-shell.is-channel-switching-fast .contact-bar,
+  .site-shell.is-channel-switching-fast .content,
+  .site-shell.is-channel-switching-fast .site-footer {
+    opacity: 0.18;
+    transform: translateY(4px) scale(0.998);
+    filter: none;
+  }
+
   .site-shell {
     width: min(100% - 20px, 1120px);
     padding-top: 12px;
@@ -1568,6 +1593,7 @@ label,
     margin-bottom: 14px;
     padding: 16px 16px 18px;
     box-shadow: none;
+    backdrop-filter: none;
   }
 
   .channel-tabs {
@@ -1599,6 +1625,8 @@ label,
     gap: 16px;
     padding: 18px;
     border-radius: 24px;
+    backdrop-filter: none;
+    box-shadow: 0 12px 30px rgba(39, 44, 62, 0.1);
   }
 
   .hero__avatar {
@@ -1659,6 +1687,8 @@ label,
   .site-footer {
     margin-top: 20px;
     padding: 11px 16px;
+    backdrop-filter: none;
+    box-shadow: 0 12px 28px rgba(39, 44, 62, 0.08);
   }
 
   .feed-meta {
