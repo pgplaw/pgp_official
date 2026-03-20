@@ -1987,6 +1987,14 @@ body.viewer-open {
   overflow: hidden;
 }
 
+@media (min-width: 861px) {
+  body.viewer-open .channel-nav {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
 /* Final post copy-button layout override */
 .post-card__body {
   display: grid;
