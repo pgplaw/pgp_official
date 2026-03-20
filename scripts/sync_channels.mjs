@@ -7,6 +7,7 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(scriptDir, '..');
 const configPath = path.join(rootDir, 'config', 'channels.json');
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+const channelTimeoutMs = Number(process.env.TG_SYNC_CHANNEL_TIMEOUT_MS || 150000);
 
 const failures = [];
 let successCount = 0;
@@ -34,12 +35,20 @@ for (const channel of config.channels) {
     cwd: rootDir,
     env,
     stdio: 'inherit',
+    timeout: channelTimeoutMs,
+    killSignal: 'SIGKILL',
   });
 
   if (result.error || result.status !== 0) {
     failures.push(channel.key);
     if (result.error) {
-      console.error(`Channel ${channel.key} failed to start: ${result.error.message}`);
+      if (result.error.code === 'ETIMEDOUT') {
+        console.error(`Channel ${channel.key} timed out after ${channelTimeoutMs} ms.`);
+      } else {
+        console.error(`Channel ${channel.key} failed to start: ${result.error.message}`);
+      }
+    } else if (result.signal) {
+      console.error(`Channel ${channel.key} was terminated with signal ${result.signal}.`);
     }
     continue;
   }
