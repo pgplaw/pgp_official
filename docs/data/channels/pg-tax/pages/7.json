@@ -1,12 +1,33 @@
 {
-  "generated_at": "2026-03-20T08:27:40.652874+00:00",
+  "generated_at": "2026-03-20T08:44:46.360636+00:00",
   "pagination": {
     "page": 7,
     "page_size": 16,
-    "total_posts": 165,
+    "total_posts": 166,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2438,
+      "date": "2026-02-03T14:00:04+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1530,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2438-1-d9931b0b35d5-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2438-1-d9931b0b35d5-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/RNgQitqvfMyEgqu37x9ax7VlzyGI9mwcvyBmY3tJxCXhc99edVlea0VBRuKaXm7nYm5ZOmzz589QBTSTPTZQ0AR-yOIQJxQmLaGDivWrzeM_a5jTAmlp7CYcPWfLGM9VpGRq9oGN7R5nHeqiEJgmGlWvGp6gWJTnsu9olHf4dorERzXUVvFliJUdnE4fy1ncZCF9na1-CGCiK0-OQKfKTvgRCsWml5YcR3hNgiMKOW9TCmvKv2DEM1ZkHFp7LhBkH0qb5O5vJoNQt0ZVu1AtT7NXJDzqHoxfo029LW4FlSeVTjnkr5gCILRFSKNbXa5v05hXYO2aHy2uROmGy37OdA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2438-1-d9931b0b35d5-v8.jpg"
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/PG_Tax/2438",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2437,
       "date": "2026-02-03T10:00:01+00:00",
@@ -298,27 +319,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2423",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2421,
-      "date": "2026-01-27T14:02:46+00:00",
-      "text": "⛳️ 12 февраля приглашаем на ежегодную налоговую конференцию, где налоги предстанут как особая форма искусства — сложная и многослойная.\n\n🧩 Вместе с экспертами «Пепеляев Групп» мы посмотрим на ключевые налоговые сюжеты сквозь призму искусства и увидим, как из отдельных штрихов складывается цельный образ налоговой реальности.\n\n👉 Подробнее о гранях налогового искусства и регистрация по ссылке.\n\n#мероприятия",
-      "text_html": "⛳️ 12 февраля приглашаем на ежегодную налоговую конференцию, где налоги предстанут как особая форма искусства — сложная и многослойная.<br><br>🧩 Вместе с экспертами «Пепеляев Групп» мы посмотрим на ключевые налоговые сюжеты сквозь призму искусства и увидим, как из отдельных штрихов складывается цельный образ налоговой реальности.<br><br>👉 Подробнее о гранях налогового искусства и регистрация по <a href=\"https://www.pgplaw.ru/events/upcoming-events/nalogi-kak-iskusstvo/\" target=\"_blank\" rel=\"noopener noreferrer\">ссылке</a>.<br><br>#мероприятия",
-      "views": 1670,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2421-1-4905a62428a0-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2421-1-4905a62428a0-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/adqV65YIptFoZW-k_qc0Znglr6WXgjgjOkXsXfZkX-0DpWALbC3ENofKquRfo8mg8PHzqxkoJF_rhuf-xxcOwAdiZyPo87aQoMOoqXJdjgOvTeMzWdnmmmSSp7Ggbe2bjWDx6Hm3kPinzTfErTDpvA_5oTcDSifNJD7beRYpvrKatxBPm3TKho0kgGFb4xNRMqI6ZKHGC8IE1gKN-K5tAnnAGXPVchtsA1C7--zxtziIc4IGAU2xRUuuqFZc8DWt3y8QVyqOraE-uKNhOn24KPTLiExNZ2iII1bg45TbcG52txlNEl-uxinMn9LZ9fHJ4nkUTCfM2tTWjauyU8L_sw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2421-1-4905a62428a0-v8.jpg"
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2421",
       "forwarded_from": null,
       "reply_to": null
     }
