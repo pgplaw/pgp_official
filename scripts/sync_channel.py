@@ -1465,12 +1465,12 @@ def build_reply_reference_title(
     fallback_post_id: int | None = None,
 ) -> str:
     if target_post:
-        candidate = shorten_text(strip_tags(target_post.get("text_html") or target_post.get("text") or ""), 110)
+        candidate = collapse_whitespace(strip_tags(target_post.get("text_html") or target_post.get("text") or ""))
         if candidate:
             return candidate
 
     if target_message:
-        candidate = shorten_text(strip_tags(getattr(target_message, "message", None) or ""), 110)
+        candidate = collapse_whitespace(strip_tags(getattr(target_message, "message", None) or ""))
         if candidate:
             return candidate
 
@@ -1478,6 +1478,58 @@ def build_reply_reference_title(
         return f"пост #{fallback_post_id}"
 
     return "исходный пост"
+
+
+def build_reply_target_page_urls(reply_reference: dict[str, Any], config: SiteConfig) -> list[str]:
+    tg_url = (reply_reference.get("tg_url") or "").strip()
+    channel_username = (reply_reference.get("channel_username") or config.channel_username or "").strip()
+    post_id = reply_reference.get("post_id")
+    if not tg_url and channel_username and post_id:
+        tg_url = f"https://t.me/{channel_username}/{post_id}"
+    if not tg_url.startswith("https://t.me/"):
+        return []
+
+    variants = [
+        tg_url,
+        f"{tg_url}?single",
+        tg_url.replace("https://t.me/", "https://t.me/s/", 1),
+        f"{tg_url.replace('https://t.me/', 'https://t.me/s/', 1)}?single",
+    ]
+
+    urls: list[str] = []
+    seen: set[str] = set()
+    for url in variants:
+        if url in seen:
+            continue
+        seen.add(url)
+        urls.append(url)
+    return urls
+
+
+def fetch_reply_reference_from_page(reply_reference: dict[str, Any], config: SiteConfig) -> dict[str, Any] | None:
+    post_id = int(reply_reference.get("post_id") or 0)
+    if post_id <= 0:
+        return None
+
+    for page_url in build_reply_target_page_urls(reply_reference, config):
+        try:
+            page_html = fetch_page(page_url, timeout=10, retry_delays=FAST_EXTERNAL_RETRY_DELAYS, log_failures=False)
+        except Exception:
+            continue
+
+        for post in parse_posts(page_html, config):
+            if int(post.get("id") or 0) != post_id:
+                continue
+
+            title = build_reply_reference_title(post, fallback_post_id=post_id)
+            return {
+                "post_id": post_id,
+                "title": title,
+                "tg_url": reply_reference.get("tg_url") or post.get("tg_url") or f"https://t.me/{config.channel_username}/{post_id}",
+                "channel_username": reply_reference.get("channel_username") or config.channel_username,
+            }
+
+    return None
 
 
 def get_downloadable_photo_targets(message: Any) -> list[Any]:
@@ -1494,14 +1546,55 @@ def get_downloadable_photo_targets(message: Any) -> list[Any]:
 
 
 async def fetch_reply_references_for_posts(config: SiteConfig, posts: list[dict[str, Any]]) -> dict[int, dict[str, Any]]:
+    posts_by_id = {int(post["id"]): post for post in posts if post.get("id")}
+    existing_reply_refs = {
+        int(post["id"]): post.get("reply_to")
+        for post in posts
+        if post.get("id") and post.get("reply_to")
+    }
+    result: dict[int, dict[str, Any]] = {}
+
+    for post_id, reply_reference in existing_reply_refs.items():
+        target_post_id = int(reply_reference.get("post_id") or 0)
+        if target_post_id <= 0:
+            continue
+
+        target_post = posts_by_id.get(target_post_id)
+        if not target_post:
+            continue
+
+        result[post_id] = {
+            "post_id": target_post_id,
+            "title": build_reply_reference_title(target_post, fallback_post_id=target_post_id),
+            "tg_url": reply_reference.get("tg_url") or target_post.get("tg_url") or f"https://t.me/{config.channel_username}/{target_post_id}",
+            "channel_username": reply_reference.get("channel_username") or config.channel_username,
+        }
+
+    missing_page_targets = [
+        (post_id, reply_reference)
+        for post_id, reply_reference in existing_reply_refs.items()
+        if post_id not in result
+    ]
+    if missing_page_targets:
+        log.info("Resolving %s reply references from Telegram web pages", len(missing_page_targets))
+        for post_id, reply_reference in missing_page_targets:
+            enriched_reference = fetch_reply_reference_from_page(reply_reference, config)
+            if enriched_reference:
+                result[post_id] = enriched_reference
+
     credentials = get_telegram_session_credentials()
     if not credentials:
-        log.info("Telegram user session is not configured. Reply reference sync skipped.")
-        return {}
+        if existing_reply_refs:
+            unresolved_count = len(existing_reply_refs) - len(result)
+            if unresolved_count > 0:
+                log.info("Telegram user session is not configured. %s reply references kept as Telegram snippets.", unresolved_count)
+        else:
+            log.info("Telegram user session is not configured. Reply reference sync skipped.")
+        return result
 
     post_ids = [int(post["id"]) for post in posts if post.get("id")]
     if not post_ids:
-        return {}
+        return result
 
     api_id, api_hash, session_string = credentials
 
@@ -1533,9 +1626,8 @@ async def fetch_reply_references_for_posts(config: SiteConfig, posts: list[dict[
             target_ids.add(target_post_id)
 
         if not reply_targets:
-            return {}
+            return result
 
-        posts_by_id = {int(post["id"]): post for post in posts if post.get("id")}
         target_messages: dict[int, Any] = {}
         missing_target_ids = [target_id for target_id in target_ids if target_id not in posts_by_id]
 
@@ -1545,7 +1637,6 @@ async def fetch_reply_references_for_posts(config: SiteConfig, posts: list[dict[
                     target_messages[int(message.id)] = message
             await asyncio.sleep(0.1)
 
-        result: dict[int, dict[str, Any]] = {}
         for post_id, target_post_id in reply_targets.items():
             title = build_reply_reference_title(
                 posts_by_id.get(target_post_id),

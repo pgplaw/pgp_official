@@ -1072,12 +1072,6 @@ label,
   text-decoration: none;
 }
 
-.post-card__reply-title {
-  display: inline;
-  margin-left: 8px;
-  color: color-mix(in srgb, var(--muted) 70%, var(--text) 30%);
-}
-
 .post-card__reply a:hover,
 .post-card__forwarded a:hover {
   color: var(--accent-strong);
