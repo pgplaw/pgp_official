@@ -1488,13 +1488,26 @@ def build_reply_reference_title(
     target_message: Any | None = None,
     fallback_post_id: int | None = None,
 ) -> str:
+    def extract_compact_label(value: str | None) -> str | None:
+        source = (value or "").replace("\r", "\n")
+        if not source.strip():
+            return None
+
+        paragraphs = [
+            collapse_whitespace(part)
+            for part in re.split(r"\n\s*\n+", source)
+            if collapse_whitespace(part)
+        ]
+        candidate = paragraphs[0] if paragraphs else collapse_whitespace(source)
+        return shorten_text(candidate, 120) if candidate else None
+
     if target_post:
-        candidate = collapse_whitespace(strip_tags(target_post.get("text_html") or target_post.get("text") or ""))
+        candidate = extract_compact_label(target_post.get("text") or strip_tags(target_post.get("text_html") or ""))
         if candidate:
             return candidate
 
     if target_message:
-        candidate = collapse_whitespace(strip_tags(getattr(target_message, "message", None) or ""))
+        candidate = extract_compact_label(getattr(target_message, "message", None) or "")
         if candidate:
             return candidate
 

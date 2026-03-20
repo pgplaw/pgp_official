@@ -1628,6 +1628,21 @@ function resolveForwardedSource(post) {
   };
 }
 
+function formatReplyLinkLabel(value) {
+  const source = String(value || '').replace(/\r/g, '\n').trim();
+  if (!source) return '';
+
+  const paragraphs = source
+    .split(/\n\s*\n+/)
+    .map((part) => part.replace(/\s+/g, ' ').trim())
+    .filter(Boolean);
+  const candidate = (paragraphs[0] || source).replace(/\s+/g, ' ').trim();
+  if (candidate.length <= 120) return candidate;
+
+  const clipped = candidate.slice(0, 120).replace(/\s+\S*$/, '').trim() || candidate.slice(0, 120).trim();
+  return `${clipped}…`;
+}
+
 function resolveReplyTarget(post) {
   const reply = post.reply_to;
   if (!reply) return null;
@@ -1659,7 +1674,7 @@ function renderPostCard(post) {
   article.innerHTML = `
     ${buildMedia(post)}
     <div class="post-card__body">
-      ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(replyTarget.label)}</a></div>` : ''}
+      ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : ''}
       ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
       ${text ? `<div class="post-card__text">${text}</div>` : ''}
     </div>
