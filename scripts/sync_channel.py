@@ -44,6 +44,8 @@ POST_PAGES_DIR = DOCS_DIR / "channels" / CHANNEL_KEY / "posts" if CHANNEL_KEY el
 MANIFEST_PATH = DOCS_DIR / "manifest.webmanifest"
 FEED_PAGE_SIZE = 16
 IMAGE_VARIANT_VERSION = "v8"
+STALE_MEDIA_RETENTION_DAYS = 14
+STALE_MEDIA_RETENTION_SECONDS = STALE_MEDIA_RETENTION_DAYS * 24 * 60 * 60
 
 BASE_HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; TelegramPagesMirror/1.0)",
@@ -334,6 +336,14 @@ def read_image_dimensions(path: Path) -> tuple[int | None, int | None]:
             return image.width, image.height
     except Exception:
         return None, None
+
+
+def is_valid_local_image(path: Path | None) -> bool:
+    if not path or not path.exists() or not path.is_file():
+        return False
+
+    width, height = read_image_dimensions(path)
+    return bool(width and height)
 
 
 def with_local_variant_dimensions(
@@ -657,9 +667,9 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
                     and (not is_single_photo_post or (photo.get("feed_url") and IMAGE_VARIANT_VERSION in Path(photo["feed_url"]).name))
                 )
                 current_files_present = (
-                    local_full_path.exists()
-                    and local_thumb_path.exists()
-                    and (not is_single_photo_post or (local_feed_path and local_feed_path.exists()))
+                    is_valid_local_image(local_full_path)
+                    and is_valid_local_image(local_thumb_path)
+                    and (not is_single_photo_post or is_valid_local_image(local_feed_path))
                 )
 
                 if current_variant_present and current_files_present:
@@ -676,7 +686,7 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
                     mirrored_photos.append(current_entry)
                     continue
 
-                if local_full_path.exists():
+                if local_full_path.exists() and is_valid_local_image(local_full_path):
                     try:
                         override_bytes = local_full_path.read_bytes()
                     except Exception as error:  # pragma: no cover - runtime/filesystem path
@@ -695,6 +705,14 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
                         )
                         continue
                 else:
+                    for candidate_path in (local_full_path, local_thumb_path, local_feed_path):
+                        if candidate_path and candidate_path.exists() and not is_valid_local_image(candidate_path):
+                            try:
+                                candidate_path.unlink()
+                                changes_detected = True
+                                log.warning("Deleted invalid mirrored image %s", candidate_path.relative_to(ROOT))
+                            except Exception as error:  # pragma: no cover - runtime/filesystem path
+                                log.warning("Failed to delete invalid mirrored image %s: %s", candidate_path.relative_to(ROOT), error)
                     active_relative_paths.add(full_source)
                     active_relative_paths.add(photo["thumb_url"])
                     if is_single_photo_post and photo.get("feed_url"):
@@ -725,6 +743,8 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
                     ):
                         log.info("Prepared image variants for post %s", post["id"])
                         changes_detected = True
+                if not is_valid_local_image(full_path) or not is_valid_local_image(thumb_path) or (is_single_photo_post and not is_valid_local_image(feed_path)):
+                    raise ValueError("Generated image variants are invalid")
             except Exception as error:  # pragma: no cover - network/runtime path
                 log.warning("Failed to mirror image for post %s: %s", post["id"], error)
                 mirrored_photos.append(photo)
@@ -763,6 +783,10 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
 
             relative_url = path.relative_to(DOCS_DIR).as_posix()
             if relative_url in active_relative_paths:
+                continue
+
+            age_seconds = max(0, time.time() - path.stat().st_mtime)
+            if age_seconds < STALE_MEDIA_RETENTION_SECONDS:
                 continue
 
             path.unlink()

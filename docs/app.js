@@ -306,6 +306,7 @@ function normalizePhoto(photo) {
     thumb_url: thumbUrl || fullUrl,
     feed_url: feedUrl || fullUrl || thumbUrl,
     full_url: fullUrl || thumbUrl,
+    source_url: typeof photo.source_url === 'string' ? photo.source_url : '',
     thumb_width: parseDimension(photo.thumb_width),
     thumb_height: parseDimension(photo.thumb_height),
     feed_width: parseDimension(photo.feed_width),
@@ -1485,9 +1486,7 @@ function buildMedia(post) {
     if (entry) {
       media.push({
         type: 'image',
-        thumb_url: entry.thumb_url,
-        feed_url: entry.feed_url,
-        full_url: entry.full_url,
+        ...entry,
       });
     }
   });
@@ -1511,6 +1510,119 @@ function buildMedia(post) {
   }).join('');
 
   return `<div class="${galleryClass}" data-media-id="${mediaId}">${items}</div>`;
+}
+
+function normalizeMediaUrl(url) {
+  if (!url) return '';
+
+  try {
+    return new URL(String(url), window.location.href).href;
+  } catch {
+    return String(url);
+  }
+}
+
+function getOrderedImageCandidates(item, { isGallery = false, preferFull = false } = {}) {
+  const ordered = preferFull
+    ? [item.full_url, item.feed_url, item.thumb_url, item.source_url]
+    : (isGallery
+        ? [item.thumb_url, item.full_url, item.source_url]
+        : [item.feed_url, item.full_url, item.thumb_url, item.source_url]);
+
+  const seen = new Set();
+  return ordered.filter((candidate) => {
+    const normalized = normalizeMediaUrl(candidate);
+    if (!normalized || seen.has(normalized)) return false;
+    seen.add(normalized);
+    return true;
+  });
+}
+
+function markMediaUnavailable(target, { isGallery = false } = {}) {
+  if (!target) return;
+
+  if (target.classList.contains('viewer__slide')) {
+    target.innerHTML = '<div class="viewer__fallback">Изображение временно недоступно</div>';
+    return;
+  }
+
+  const trigger = target.closest('.media-trigger') || target;
+  const mediaRoot = trigger.closest('.post-card__media');
+  const image = trigger.querySelector('img');
+
+  trigger.classList.add('media-trigger--unavailable');
+  trigger.disabled = true;
+
+  if (image) {
+    image.alt = '';
+    image.classList.add('hidden');
+    image.setAttribute('aria-hidden', 'true');
+  }
+
+  if (isGallery) {
+    trigger.classList.add('hidden');
+    const visibleTriggers = mediaRoot
+      ? [...mediaRoot.querySelectorAll('.media-trigger:not(.hidden)')]
+      : [];
+    if (mediaRoot && !visibleTriggers.length) {
+      mediaRoot.classList.add('hidden');
+    }
+    return;
+  }
+
+  if (!trigger.querySelector('.media-trigger__fallback')) {
+    trigger.insertAdjacentHTML('beforeend', '<span class="media-trigger__fallback">Изображение временно недоступно</span>');
+  }
+}
+
+function bindImageFallback(image, item, { isGallery = false, preferFull = false } = {}) {
+  if (!image || !item || image.dataset.mediaFallbackBound === 'true') return;
+
+  const candidates = getOrderedImageCandidates(item, { isGallery, preferFull });
+  if (!candidates.length) {
+    markMediaUnavailable(image.closest('.viewer__slide') || image.closest('.media-trigger'), { isGallery });
+    return;
+  }
+
+  image.dataset.mediaFallbackBound = 'true';
+  image.dataset.activeCandidateUrl = image.getAttribute('src') || candidates[0];
+
+  const handleResolvedLoad = () => {
+    if (!image.naturalWidth || !image.naturalHeight) {
+      handleError();
+      return;
+    }
+    applyIntrinsicMediaLimit(image);
+    applyMediaFill(image);
+    logImageDiagnostics(image);
+  };
+
+  const handleError = () => {
+    const activeCandidate = normalizeMediaUrl(image.dataset.activeCandidateUrl || image.getAttribute('src'));
+    const activeIndex = candidates.findIndex((candidate) => normalizeMediaUrl(candidate) === activeCandidate);
+    const nextCandidate = candidates.slice(activeIndex + 1).find((candidate) => normalizeMediaUrl(candidate) !== activeCandidate);
+
+    if (nextCandidate) {
+      image.dataset.activeCandidateUrl = nextCandidate;
+      image.removeAttribute('srcset');
+      image.removeAttribute('sizes');
+      image.src = nextCandidate;
+      return;
+    }
+
+    markMediaUnavailable(image.closest('.viewer__slide') || image.closest('.media-trigger'), { isGallery });
+  };
+
+  image.addEventListener('load', handleResolvedLoad);
+  image.addEventListener('error', handleError);
+
+  if (image.complete) {
+    if (image.naturalWidth > 0 && image.naturalHeight > 0) {
+      handleResolvedLoad();
+    } else {
+      handleError();
+    }
+  }
 }
 
 function getAverageEdgeColor(image) {
@@ -1606,19 +1718,31 @@ function applyMediaFill(image) {
 }
 
 function bindMediaFill(root) {
+  const items = state.mediaRegistry[root.dataset.mediaId] || [];
+  const isGallery = root.classList.contains('post-card__media--gallery');
+
   root.querySelectorAll('.media-trigger img').forEach((image) => {
-    if (image.complete) {
-      applyIntrinsicMediaLimit(image);
-      applyMediaFill(image);
-      logImageDiagnostics(image);
+    const trigger = image.closest('.media-trigger');
+    const index = Number.parseInt(trigger?.dataset.index || image.dataset.mediaIndex || '', 10);
+    const item = Number.isFinite(index) ? items[index] : null;
+
+    if (!item) {
+      if (image.complete) {
+        applyIntrinsicMediaLimit(image);
+        applyMediaFill(image);
+        logImageDiagnostics(image);
+        return;
+      }
+
+      image.addEventListener('load', () => {
+        applyIntrinsicMediaLimit(image);
+        applyMediaFill(image);
+        logImageDiagnostics(image);
+      }, { once: true });
       return;
     }
 
-    image.addEventListener('load', () => {
-      applyIntrinsicMediaLimit(image);
-      applyMediaFill(image);
-      logImageDiagnostics(image);
-    }, { once: true });
+    bindImageFallback(image, item, { isGallery, preferFull: false });
   });
 }
 
@@ -2059,6 +2183,17 @@ function finalizeViewerPointerInteraction(cancelled = false) {
   void animateViewerToIndex(nextIndex);
 }
 
+function bindViewerImageFallbacks() {
+  elements.viewerContent.querySelectorAll('.viewer__slide img').forEach((image) => {
+    const slide = image.closest('.viewer__slide');
+    const index = Number.parseInt(slide?.dataset.viewerIndex || '', 10);
+    const item = Number.isFinite(index) ? state.viewerItems[index] : null;
+    if (!item) return;
+
+    bindImageFallback(image, item, { isGallery: false, preferFull: true });
+  });
+}
+
 function bindViewerViewport(viewport) {
   if (!viewport || viewport.dataset.bound === 'true') return;
   viewport.dataset.bound = 'true';
@@ -2140,6 +2275,7 @@ function renderViewer() {
   `;
 
   const viewport = getViewerViewport();
+  bindViewerImageFallbacks();
   bindViewerViewport(viewport);
   updateViewerNavigation();
   requestAnimationFrame(() => {
