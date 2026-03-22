@@ -7,3 +7,7 @@ __pycache__/
 .env
 .pytest_cache/
 .chrome-mobile/
+node_modules/
+playwright-report/
+test-results/
+.playwright/

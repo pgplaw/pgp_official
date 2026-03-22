@@ -1,0 +1,58 @@
+name: UI Regression
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/**"
+      - "scripts/**"
+      - "package.json"
+      - "package-lock.json"
+      - "playwright.config.js"
+      - "tests/**"
+      - ".github/workflows/ui-regression.yml"
+  pull_request:
+    paths:
+      - "docs/**"
+      - "scripts/**"
+      - "package.json"
+      - "package-lock.json"
+      - "playwright.config.js"
+      - "tests/**"
+      - ".github/workflows/ui-regression.yml"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run smoke regression suite
+        run: npm run test:smoke
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            playwright-report
+            test-results
+          if-no-files-found: ignore

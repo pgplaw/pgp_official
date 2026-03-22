@@ -1473,7 +1473,7 @@ label,
   display: grid;
   place-items: center;
   background: rgba(3, 7, 18, 0.88);
-  z-index: 20;
+  z-index: 120;
 }
 
 .viewer__content {
@@ -2062,12 +2062,10 @@ body.viewer-open {
   overflow: hidden;
 }
 
-@media (min-width: 861px) {
-  body.viewer-open .channel-nav {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
+body.viewer-open .channel-nav {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 /* Final post copy-button layout override */

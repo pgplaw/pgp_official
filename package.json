@@ -1,0 +1,15 @@
+{
+  "name": "pgplaw-telegram-pages-mirror",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Smoke and regression checks for the GitHub Pages Telegram mirror.",
+  "scripts": {
+    "test:smoke": "playwright test",
+    "test:smoke:headed": "playwright test --headed",
+    "test:smoke:desktop": "playwright test tests/e2e/desktop.smoke.spec.js",
+    "test:smoke:mobile": "playwright test tests/e2e/mobile.smoke.spec.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.53.2"
+  }
+}
