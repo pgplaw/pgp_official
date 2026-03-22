@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-03-22T05:14:22.905087+00:00",
+  "generated_at": "2026-03-22T07:31:32.329382+00:00",
   "pagination": {
     "page": 5,
     "page_size": 16,
-    "total_posts": 74,
+    "total_posts": 73,
     "total_pages": 5
   },
   "posts": [
@@ -240,43 +240,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/pgp_official/1656",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1654,
-      "date": "2025-12-22T07:02:25+00:00",
-      "text": "🔍 Начинаем рабочую неделю с рубрикой #PGГрамотность\n\nЁ-мое или е-мое?\n\n☝️ Читайте в карточке правописания!",
-      "text_html": "🔍 Начинаем рабочую неделю с рубрикой #PGГрамотность<br><br>Ё-мое или е-мое?<br><br>☝️ Читайте в карточке правописания!",
-      "views": 1220,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1654-1-357633ae2fa8-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1654-1-357633ae2fa8-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/B1rs9fqXt8N1sfa-rfvHHQDcdJPXjJeyM1aEGudPSXEl-rNKodwoVGenxguxZQb020-0cwunSejPSNEa1sHHWhc_VYQJVIP4VnJm1gy9yyhU-JiaLEaS6-l-ey2SO2mo-tRUCDewnJnQ-psAYQyMK2mV6T8g0UuWRJnTg06E2nOrHRanHbdDoZTWJIBKnZSGEHn9m6QAy1nJ59mwA-0vBCTzOkWLI917yv5tzOLr3_kJYlxcqVKN2avGFn1pQHB59bZzsHfL7LGxM-0xkjvnU_IZPgqL1YgPe03zmydNl1X4_s9PS0uyq2ymJ2tUmJs-MFhLVqK1_is4ZVVH-WOTlQ.jpg",
-          "thumb_width": 800,
-          "thumb_height": 800,
-          "full_width": 800,
-          "full_height": 800,
-          "source_width": 800,
-          "source_height": 800
-        },
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1654-2-c5312c10da14-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1654-2-c5312c10da14-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/rglahvKU50vViPl0J6i98guCrWiDvO6i-43i5t02Crjri7bIw0QL4VcfjvN8wwTtu_b6hMdG_a27yEBVdFeqpkd50Yj1H7Ix0Jy5g7ZDuaRCU20CLBGPuSxGbqvPD4rksUv-I7LuakAt_KGbmcs7ls1Cyp6xD1d7M2W2MNodoSjR7sMXv-GAVrw5k-Tz6u5147HatZYgTZ3Zp_2E8QAzi1hCY7zDq-4k67cKPDjaTdgWWITXZiOtMFLVP5d8AjjH_cdesCGLIsk0vON739seumP10W0jlqmdaveBVwsqr0SmwAKf4iUPD70Ocbd0vT34Pw5nLo9u_bPip59fMcBbSg.jpg",
-          "thumb_width": 800,
-          "thumb_height": 800,
-          "full_width": 800,
-          "full_height": 800,
-          "source_width": 800,
-          "source_height": 800
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/pgp_official/1654",
       "forwarded_from": null,
       "reply_to": null
     }
