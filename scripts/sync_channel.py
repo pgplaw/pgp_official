@@ -44,8 +44,10 @@ POST_PAGES_DIR = DOCS_DIR / "channels" / CHANNEL_KEY / "posts" if CHANNEL_KEY el
 MANIFEST_PATH = DOCS_DIR / "manifest.webmanifest"
 FEED_PAGE_SIZE = 16
 IMAGE_VARIANT_VERSION = "v8"
-STALE_MEDIA_RETENTION_DAYS = 14
+STALE_MEDIA_RETENTION_DAYS = 7
 STALE_MEDIA_RETENTION_SECONDS = STALE_MEDIA_RETENTION_DAYS * 24 * 60 * 60
+LEGACY_VARIANT_RETENTION_DAYS = 2
+LEGACY_VARIANT_RETENTION_SECONDS = LEGACY_VARIANT_RETENTION_DAYS * 24 * 60 * 60
 
 BASE_HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; TelegramPagesMirror/1.0)",
@@ -638,6 +640,22 @@ def mirror_channel_avatar(config: SiteConfig, html_text: str) -> bool:
     return changed
 
 
+def extract_media_variant_tag(path: Path) -> str | None:
+    match = re.search(r"-(v\d+)\.[^.]+$", path.name)
+    return match.group(1) if match else None
+
+
+def should_delete_inactive_media(path: Path, age_seconds: float) -> bool:
+    if age_seconds >= STALE_MEDIA_RETENTION_SECONDS:
+        return True
+
+    variant_tag = extract_media_variant_tag(path)
+    if variant_tag and variant_tag != IMAGE_VARIANT_VERSION and age_seconds >= LEGACY_VARIANT_RETENTION_SECONDS:
+        return True
+
+    return False
+
+
 def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, list[bytes]] | None = None) -> bool:
     POSTS_MEDIA_DIR.mkdir(parents=True, exist_ok=True)
     POSTS_THUMBS_DIR.mkdir(parents=True, exist_ok=True)
@@ -776,6 +794,8 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
         if post.get("photos") != mirrored_photos:
             post["photos"] = mirrored_photos
 
+    deleted_files = 0
+    deleted_bytes = 0
     for base_dir in (POSTS_MEDIA_DIR, POSTS_THUMBS_DIR, POSTS_FEED_DIR):
         for path in base_dir.glob("*"):
             if not path.is_file():
@@ -785,13 +805,24 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
             if relative_url in active_relative_paths:
                 continue
 
-            age_seconds = max(0, time.time() - path.stat().st_mtime)
-            if age_seconds < STALE_MEDIA_RETENTION_SECONDS:
+            stat = path.stat()
+            age_seconds = max(0, time.time() - stat.st_mtime)
+            if not should_delete_inactive_media(path, age_seconds):
                 continue
 
             path.unlink()
             log.info("Deleted stale mirrored image %s", path.relative_to(ROOT))
             changes_detected = True
+            deleted_files += 1
+            deleted_bytes += stat.st_size
+
+    if deleted_files:
+        log.info(
+            "Media maintenance deleted %s files (%.1f MB) for %s",
+            deleted_files,
+            deleted_bytes / (1024 * 1024),
+            CHANNEL_KEY or "channel",
+        )
 
     return changes_detected
 
