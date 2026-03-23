@@ -79,9 +79,10 @@ LOW_RES_SINGLE_UPSCALE_THRESHOLD = 1200
 LOW_RES_SINGLE_FEED_TARGET = 1800
 LOW_RES_SINGLE_FULL_TARGET = 2400
 LOW_RES_SINGLE_MAX_UPSCALE_FACTOR = 2.35
-EDSR_X2_MODEL_URL = "https://github.com/opencv/opencv_contrib/raw/4.x/modules/dnn_superres/samples/EDSR_x2.pb"
+EDSR_X2_MODEL_URL = "https://raw.githubusercontent.com/opencv/opencv_contrib/4.x/modules/dnn_superres/samples/EDSR_x2.pb"
 FSRCNN_X2_MODEL_URL = "https://raw.githubusercontent.com/Saafke/FSRCNN_Tensorflow/master/models/FSRCNN_x2.pb"
 FAILED_EXTERNAL_PREVIEW_HOSTS: set[str] = set()
+FAILED_SUPERRES_MODELS: dict[str, str] = {}
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("telegram-pages-mirror")
@@ -388,11 +389,18 @@ def ensure_superres_model(model_path: Path, model_url: str, label: str) -> Path:
     if model_path.exists():
         return model_path
 
+    if label in FAILED_SUPERRES_MODELS:
+        raise RuntimeError(FAILED_SUPERRES_MODELS[label])
+
     SUPERRES_MODEL_DIR.mkdir(parents=True, exist_ok=True)
-    model_bytes = fetch_binary(model_url, timeout=20)
-    model_path.write_bytes(model_bytes)
-    log.info("Downloaded %s model to %s", label, model_path.relative_to(ROOT))
-    return model_path
+    try:
+        model_bytes = fetch_binary(model_url, timeout=20)
+        model_path.write_bytes(model_bytes)
+        log.info("Downloaded %s model to %s", label, model_path.relative_to(ROOT))
+        return model_path
+    except Exception as error:
+        FAILED_SUPERRES_MODELS[label] = f"{label} model unavailable: {error}"
+        raise RuntimeError(FAILED_SUPERRES_MODELS[label]) from error
 
 
 def apply_single_image_super_resolution(image: Any, resampling: Any) -> Any | None:
