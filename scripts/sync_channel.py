@@ -1219,6 +1219,8 @@ def build_post_media_page_urls(post: dict[str, Any]) -> list[str]:
         return []
 
     variants = [
+        f"{tg_url}?embed=1&mode=tme",
+        f"{tg_url}?embed=1",
         tg_url,
         f"{tg_url}?single",
         tg_url.replace("https://t.me/", "https://t.me/s/", 1),
@@ -1639,28 +1641,32 @@ def probe_newer_posts_from_direct_pages(
     consecutive_misses = 0
 
     for candidate_id in range(start_post_id + 1, start_post_id + max_probes + 1):
-        candidate_url = f"https://t.me/{config.channel_username}/{candidate_id}?single"
-        try:
-            page_html = fetch_page(
-                candidate_url,
-                timeout=10,
-                retry_delays=FAST_EXTERNAL_RETRY_DELAYS,
-                log_failures=False,
-            )
-        except Exception:
-            consecutive_misses += 1
-            if consecutive_misses >= DIRECT_POST_PROBE_MAX_CONSECUTIVE_MISSES:
-                break
-            continue
+        candidate_post = None
+        for candidate_url in (
+            f"https://t.me/{config.channel_username}/{candidate_id}?embed=1&mode=tme",
+            f"https://t.me/{config.channel_username}/{candidate_id}?embed=1",
+        ):
+            try:
+                page_html = fetch_page(
+                    candidate_url,
+                    timeout=10,
+                    retry_delays=FAST_EXTERNAL_RETRY_DELAYS,
+                    log_failures=False,
+                )
+            except Exception:
+                continue
 
-        candidate_post = next(
-            (
-                post
-                for post in parse_posts(page_html, config)
-                if int(post.get("id") or 0) == candidate_id
-            ),
-            None,
-        )
+            candidate_post = next(
+                (
+                    post
+                    for post in parse_posts(page_html, config)
+                    if int(post.get("id") or 0) == candidate_id
+                ),
+                None,
+            )
+            if candidate_post:
+                break
+
         if not candidate_post:
             consecutive_misses += 1
             if consecutive_misses >= DIRECT_POST_PROBE_MAX_CONSECUTIVE_MISSES:
