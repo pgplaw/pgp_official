@@ -1,0 +1,92 @@
+{
+  "generated_at": "2026-03-23T17:31:20.614Z",
+  "success_count": 6,
+  "failure_count": 2,
+  "failure_channels": [
+    "pg-tax",
+    "bankrotstvo-mustknow"
+  ],
+  "channel_timeout_ms": 150000,
+  "channels": [
+    {
+      "key": "pgp-official",
+      "channel_username": "pgp_official",
+      "channel_title": "Pepeliaev Group | Пепеляев Групп",
+      "status": "success",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 22224,
+      "error": null
+    },
+    {
+      "key": "pg-antitrust",
+      "channel_username": "PgAntitrust",
+      "channel_title": "PG Antitrust | Антимонопольное право",
+      "status": "success",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 11392,
+      "error": null
+    },
+    {
+      "key": "pg-tax",
+      "channel_username": "PG_Tax",
+      "channel_title": "PG Tax | Налоги",
+      "status": "failed",
+      "exit_code": null,
+      "signal": "SIGKILL",
+      "duration_ms": 150054,
+      "error": "spawnSync python ETIMEDOUT"
+    },
+    {
+      "key": "pg-real-estate",
+      "channel_username": "PG_RealEstate",
+      "channel_title": "PG Real Estate | Недвижимость",
+      "status": "success",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 11269,
+      "error": null
+    },
+    {
+      "key": "investment-law",
+      "channel_username": "InvestmentLaw",
+      "channel_title": "СпецИнвестРежимы",
+      "status": "success",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 14228,
+      "error": null
+    },
+    {
+      "key": "pg-ecology",
+      "channel_username": "pgecology",
+      "channel_title": "PG Ecology | Экология",
+      "status": "success",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 13650,
+      "error": null
+    },
+    {
+      "key": "bankrotstvo-mustknow",
+      "channel_username": "bankrotstvo_mustknow",
+      "channel_title": "Банкротство | Взгляд эксперта",
+      "status": "failed",
+      "exit_code": null,
+      "signal": "SIGKILL",
+      "duration_ms": 150109,
+      "error": "spawnSync python ETIMEDOUT"
+    },
+    {
+      "key": "pg-employment",
+      "channel_username": "pgEmployment",
+      "channel_title": "PG Employment | Трудовое право",
+      "status": "success",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 10856,
+      "error": null
+    }
+  ]
+}
