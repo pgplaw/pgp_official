@@ -1145,6 +1145,8 @@ async function moveChannelCarousel(offset) {
   } finally {
     getChannelCarouselStage()?.classList.remove('channel-carousel__stage--animating');
     finishChannelCarouselTransition();
+    queueScrollTopButtonVisibilitySync();
+    window.setTimeout(queueScrollTopButtonVisibilitySync, 48);
   }
 }
 
@@ -1331,6 +1333,7 @@ function setupChannelCarouselInteractions() {
 
     if (!touchState.dragging || Math.abs(deltaX) < threshold || Math.abs(deltaX) <= Math.abs(deltaY)) {
       void animateChannelCarouselShift(touchState.track, 0, { duration: 170 });
+      queueScrollTopButtonVisibilitySync();
       return;
     }
 
@@ -1342,6 +1345,7 @@ function setupChannelCarouselInteractions() {
       void animateChannelCarouselShift(state.channelCarouselTouch.track, 0, { duration: 160 });
     }
     state.channelCarouselTouch = null;
+    queueScrollTopButtonVisibilitySync();
   }, { passive: true });
 }
 
