@@ -13,6 +13,7 @@ const CHANNEL_MOBILE_CONTENT_FADE_IN_DELAY_MS = 0;
 const CHANNEL_DESKTOP_CONTENT_FADE_OUT_MS = 110;
 const CHANNEL_DESKTOP_CONTENT_FADE_IN_DELAY_MS = 0;
 const VIEWER_TRANSITION_MS = 360;
+const FEED_CACHE_MAX_ENTRIES = 6;
 
 const state = {
   catalog: null,
@@ -26,6 +27,9 @@ const state = {
   pageSize: DEFAULT_PAGE_SIZE,
   pageLoadPromises: new Map(),
   nextPagePrefetchHandle: null,
+  channelFeedCache: new Map(),
+  channelFeedPrefetchPromises: new Map(),
+  channelFeedPrefetchHandle: null,
   viewerItems: [],
   viewerIndex: 0,
   mediaRegistry: {},
@@ -614,24 +618,146 @@ function buildChannelRoot(channelKey) {
   return `data/channels/${channelKey}`;
 }
 
-function buildFeedUrl(channelKey, force = false) {
-  return `${buildChannelRoot(channelKey)}/posts.json${force ? `?t=${Date.now()}` : ''}`;
+function buildFeedUrl(channelKey, { manual = false } = {}) {
+  return `${buildChannelRoot(channelKey)}/posts.json${manual ? `?t=${Date.now()}` : ''}`;
 }
 
-function buildPageUrl(channelKey, pageNumber) {
-  return `${buildChannelRoot(channelKey)}/pages/${pageNumber}.json`;
+function buildPageUrl(channelKey, pageNumber, { manual = false } = {}) {
+  return `${buildChannelRoot(channelKey)}/pages/${pageNumber}.json${manual ? `?t=${Date.now()}` : ''}`;
 }
 
-function buildCommentsUrl(channelKey, postId, force = false) {
-  return `${buildChannelRoot(channelKey)}/comments/${postId}.json${force ? `?t=${Date.now()}` : ''}`;
+function buildCommentsUrl(channelKey, postId, { manual = false } = {}) {
+  return `${buildChannelRoot(channelKey)}/comments/${postId}.json${manual ? `?t=${Date.now()}` : ''}`;
 }
 
-function buildCatalogUrl(force = false) {
-  return `${CHANNELS_INDEX_URL}${force ? `?t=${Date.now()}` : ''}`;
+function buildCatalogUrl({ manual = false } = {}) {
+  return `${CHANNELS_INDEX_URL}${manual ? `?t=${Date.now()}` : ''}`;
 }
 
-function getJsonFetchOptions(force = false) {
-  return { cache: force ? 'reload' : 'default' };
+function getJsonFetchOptions({ manual = false, prefetch = false } = {}) {
+  if (manual) {
+    return {
+      cache: 'no-store',
+      headers: {
+        'cache-control': 'no-cache',
+        pragma: 'no-cache',
+      },
+    };
+  }
+
+  if (prefetch) {
+    return { cache: 'force-cache' };
+  }
+
+  return { cache: 'default' };
+}
+
+function cloneJsonValue(value) {
+  if (typeof structuredClone === 'function') {
+    return structuredClone(value);
+  }
+  return JSON.parse(JSON.stringify(value));
+}
+
+function rememberFeedPayload(channelKey, payload) {
+  if (!channelKey || !payload) return;
+  if (state.channelFeedCache.has(channelKey)) {
+    state.channelFeedCache.delete(channelKey);
+  }
+  state.channelFeedCache.set(channelKey, cloneJsonValue(payload));
+  while (state.channelFeedCache.size > FEED_CACHE_MAX_ENTRIES) {
+    const firstKey = state.channelFeedCache.keys().next().value;
+    if (!firstKey) break;
+    state.channelFeedCache.delete(firstKey);
+  }
+}
+
+function readCachedFeedPayload(channelKey) {
+  const payload = state.channelFeedCache.get(channelKey);
+  return payload ? cloneJsonValue(payload) : null;
+}
+
+function invalidateFeedPayloadCache(channelKey = null) {
+  if (channelKey) {
+    state.channelFeedCache.delete(channelKey);
+    state.channelFeedPrefetchPromises.delete(channelKey);
+    return;
+  }
+
+  state.channelFeedCache.clear();
+  state.channelFeedPrefetchPromises.clear();
+}
+
+function getNeighborChannelKeys(channelKey) {
+  const channels = getCatalogChannels();
+  const index = channels.findIndex((channel) => channel.key === channelKey);
+  if (index === -1 || channels.length < 2) return [];
+
+  const neighbors = [];
+  const previous = channels[index - 1]?.key;
+  const next = channels[index + 1]?.key;
+  if (previous) neighbors.push(previous);
+  if (next) neighbors.push(next);
+  return neighbors;
+}
+
+function cancelChannelFeedPrefetch() {
+  if (state.channelFeedPrefetchHandle == null) return;
+
+  if (typeof window.cancelIdleCallback === 'function') {
+    window.cancelIdleCallback(state.channelFeedPrefetchHandle);
+  } else {
+    window.clearTimeout(state.channelFeedPrefetchHandle);
+  }
+
+  state.channelFeedPrefetchHandle = null;
+}
+
+async function prefetchChannelFeed(channelKey) {
+  if (!channelKey || channelKey === state.activeChannelKey) return null;
+
+  const cached = readCachedFeedPayload(channelKey);
+  if (cached) {
+    return cached;
+  }
+
+  if (state.channelFeedPrefetchPromises.has(channelKey)) {
+    return state.channelFeedPrefetchPromises.get(channelKey);
+  }
+
+  const promise = (async () => {
+    try {
+      const response = await fetch(buildFeedUrl(channelKey), getJsonFetchOptions({ prefetch: true }));
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const payload = await response.json();
+      rememberFeedPayload(channelKey, payload);
+      return cloneJsonValue(payload);
+    } finally {
+      state.channelFeedPrefetchPromises.delete(channelKey);
+    }
+  })();
+
+  state.channelFeedPrefetchPromises.set(channelKey, promise);
+  return promise;
+}
+
+function scheduleNeighborChannelPrefetch() {
+  cancelChannelFeedPrefetch();
+  if (!state.catalog || !state.activeChannelKey) return;
+
+  const callback = () => {
+    state.channelFeedPrefetchHandle = null;
+    getNeighborChannelKeys(state.activeChannelKey).forEach((channelKey) => {
+      void prefetchChannelFeed(channelKey).catch(() => {});
+    });
+  };
+
+  if (typeof window.requestIdleCallback === 'function') {
+    state.channelFeedPrefetchHandle = window.requestIdleCallback(callback, { timeout: 1400 });
+    return;
+  }
+
+  state.channelFeedPrefetchHandle = window.setTimeout(callback, 260);
 }
 
 function getActiveChannelMeta() {
@@ -1973,7 +2099,7 @@ async function loadPage(pageNumber) {
 
   const pageLoadPromise = (async () => {
     const requestChannelKey = state.activeChannelKey;
-    const response = await fetch(buildPageUrl(requestChannelKey, pageNumber), getJsonFetchOptions(false));
+    const response = await fetch(buildPageUrl(requestChannelKey, pageNumber), getJsonFetchOptions({ prefetch: true }));
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const payload = await response.json();
@@ -2317,7 +2443,7 @@ async function showComments(postId) {
   elements.commentsView.classList.remove('hidden');
 
   try {
-    const response = await fetch(buildCommentsUrl(state.activeChannelKey, postId), getJsonFetchOptions(false));
+    const response = await fetch(buildCommentsUrl(state.activeChannelKey, postId), getJsonFetchOptions());
     if (response.status === 404) {
       elements.commentsLoading.classList.add('hidden');
       elements.commentsEmpty.classList.remove('hidden');
@@ -2443,14 +2569,34 @@ function showFeedLoadingState(clearPosts = true) {
 }
 
 async function fetchFeedPayload(channelKey, force = false) {
-  const response = await fetch(buildFeedUrl(channelKey, force), getJsonFetchOptions(force));
+  if (!force) {
+    const cachedPayload = readCachedFeedPayload(channelKey);
+    if (cachedPayload) {
+      return cachedPayload;
+    }
+  } else {
+    invalidateFeedPayloadCache(channelKey);
+  }
+
+  const response = await fetch(
+    buildFeedUrl(channelKey, { manual: force }),
+    getJsonFetchOptions({ manual: force })
+  );
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  return response.json();
+  const payload = await response.json();
+  if (!force) {
+    rememberFeedPayload(channelKey, payload);
+  }
+  return cloneJsonValue(payload);
 }
 
 async function resolveFeedPayloadForSwitch(channelKey, { force = false, prefetchedFeedPromise = null } = {}) {
   if (prefetchedFeedPromise) {
     return prefetchedFeedPromise;
+  }
+
+  if (!force && state.channelFeedPrefetchPromises.has(channelKey)) {
+    return state.channelFeedPrefetchPromises.get(channelKey);
   }
 
   return fetchFeedPayload(channelKey, force);
@@ -2476,6 +2622,7 @@ function applyFeedPayload(channelKey, feedPayload) {
     ...(state.feed.site || {}),
     key: channelKey,
   });
+  rememberFeedPayload(channelKey, feedPayload);
   elements.loadingState.classList.add('hidden');
 
   if (!state.posts.length) {
@@ -2488,6 +2635,7 @@ function applyFeedPayload(channelKey, feedPayload) {
   }
 
   resetFeed();
+  scheduleNeighborChannelPrefetch();
   void handleRoute();
   scheduleChannelCarouselAutotest();
 }
@@ -2579,7 +2727,7 @@ async function loadCatalog() {
   elements.errorState.classList.add('hidden');
 
   try {
-    const response = await fetch(buildCatalogUrl(false), getJsonFetchOptions(false));
+    const response = await fetch(buildCatalogUrl(), getJsonFetchOptions());
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     state.catalog = await response.json();
@@ -2636,6 +2784,7 @@ elements.channelMenu.addEventListener('click', (event) => {
 
 elements.refreshButton.addEventListener('click', () => {
   if (state.activeChannelKey) {
+    invalidateFeedPayloadCache(state.activeChannelKey);
     void loadFeed(state.activeChannelKey, true);
   }
 });

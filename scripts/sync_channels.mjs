@@ -9,10 +9,80 @@ const configPath = path.join(rootDir, 'config', 'channels.json');
 const syncReportPath = path.join(rootDir, 'docs', 'data', 'sync-report.json');
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const channelTimeoutMs = Number(process.env.TG_SYNC_CHANNEL_TIMEOUT_MS || 150000);
+const channelsDataDir = path.join(rootDir, 'docs', 'data', 'channels');
+const channelPagesDir = path.join(rootDir, 'docs', 'channels');
 
 const failures = [];
 const channelResults = [];
 let successCount = 0;
+
+function collectTreeStats(baseDir, accumulator) {
+  if (!fs.existsSync(baseDir)) {
+    return;
+  }
+
+  for (const entry of fs.readdirSync(baseDir, { withFileTypes: true })) {
+    const entryPath = path.join(baseDir, entry.name);
+    if (entry.isDirectory()) {
+      collectTreeStats(entryPath, accumulator);
+      continue;
+    }
+
+    if (!entry.isFile()) {
+      continue;
+    }
+
+    const stats = fs.statSync(entryPath);
+    const relativePath = entryPath.replaceAll('\\', '/');
+    const extension = path.extname(entry.name).toLowerCase();
+
+    accumulator.total_bytes += stats.size;
+    accumulator.file_count += 1;
+
+    if (relativePath.includes('/media/')) {
+      accumulator.media_bytes += stats.size;
+      accumulator.media_files += 1;
+    }
+    if (extension === '.json') {
+      accumulator.json_files += 1;
+      if (relativePath.includes('/pages/')) {
+        accumulator.page_json_files += 1;
+      }
+      if (relativePath.includes('/comments/')) {
+        accumulator.comment_json_files += 1;
+      }
+    }
+  }
+}
+
+function collectChannelArchiveStats(channelKey) {
+  const summary = {
+    total_bytes: 0,
+    file_count: 0,
+    media_bytes: 0,
+    media_files: 0,
+    json_files: 0,
+    page_json_files: 0,
+    comment_json_files: 0,
+  };
+
+  collectTreeStats(path.join(channelsDataDir, channelKey), summary);
+  collectTreeStats(path.join(channelPagesDir, channelKey), summary);
+
+  return summary;
+}
+
+function buildArchiveDelta(before, after) {
+  return {
+    total_bytes: after.total_bytes - before.total_bytes,
+    file_count: after.file_count - before.file_count,
+    media_bytes: after.media_bytes - before.media_bytes,
+    media_files: after.media_files - before.media_files,
+    json_files: after.json_files - before.json_files,
+    page_json_files: after.page_json_files - before.page_json_files,
+    comment_json_files: after.comment_json_files - before.comment_json_files,
+  };
+}
 
 for (const channel of config.channels) {
   const env = {
@@ -33,6 +103,7 @@ for (const channel of config.channels) {
   };
 
   console.log(`\n=== Syncing ${channel.channel_title} (@${channel.channel_username}) ===`);
+  const archiveBefore = collectChannelArchiveStats(channel.key);
   const startedAt = Date.now();
   const result = spawnSync('python', ['scripts/sync_channel.py'], {
     cwd: rootDir,
@@ -42,6 +113,16 @@ for (const channel of config.channels) {
     killSignal: 'SIGKILL',
   });
   const durationMs = Date.now() - startedAt;
+  const archiveAfter = collectChannelArchiveStats(channel.key);
+  const archiveDelta = buildArchiveDelta(archiveBefore, archiveAfter);
+
+  console.log(
+    `Archive stats for ${channel.key}: total ${(archiveAfter.total_bytes / (1024 * 1024)).toFixed(1)} MB ` +
+    `(${archiveDelta.total_bytes >= 0 ? '+' : ''}${(archiveDelta.total_bytes / (1024 * 1024)).toFixed(1)} MB), ` +
+    `media ${(archiveAfter.media_bytes / (1024 * 1024)).toFixed(1)} MB ` +
+    `(${archiveDelta.media_bytes >= 0 ? '+' : ''}${(archiveDelta.media_bytes / (1024 * 1024)).toFixed(1)} MB), ` +
+    `pages ${archiveAfter.page_json_files}`
+  );
 
   if (result.error || result.status !== 0) {
     failures.push(channel.key);
@@ -54,6 +135,9 @@ for (const channel of config.channels) {
       signal: result.signal || null,
       duration_ms: durationMs,
       error: result.error ? result.error.message : null,
+      archive_before: archiveBefore,
+      archive_after: archiveAfter,
+      archive_delta: archiveDelta,
     });
     if (result.error) {
       if (result.error.code === 'ETIMEDOUT') {
@@ -77,6 +161,9 @@ for (const channel of config.channels) {
     signal: null,
     duration_ms: durationMs,
     error: null,
+    archive_before: archiveBefore,
+    archive_after: archiveAfter,
+    archive_delta: archiveDelta,
   });
 }
 
@@ -87,6 +174,25 @@ const report = {
   failure_channels: failures,
   channel_timeout_ms: channelTimeoutMs,
   channels: channelResults,
+  archive_totals: channelResults.reduce((accumulator, result) => {
+    const archive = result.archive_after || {};
+    accumulator.total_bytes += archive.total_bytes || 0;
+    accumulator.media_bytes += archive.media_bytes || 0;
+    accumulator.file_count += archive.file_count || 0;
+    accumulator.media_files += archive.media_files || 0;
+    accumulator.json_files += archive.json_files || 0;
+    accumulator.page_json_files += archive.page_json_files || 0;
+    accumulator.comment_json_files += archive.comment_json_files || 0;
+    return accumulator;
+  }, {
+    total_bytes: 0,
+    media_bytes: 0,
+    file_count: 0,
+    media_files: 0,
+    json_files: 0,
+    page_json_files: 0,
+    comment_json_files: 0,
+  }),
 };
 
 fs.mkdirSync(path.dirname(syncReportPath), { recursive: true });
