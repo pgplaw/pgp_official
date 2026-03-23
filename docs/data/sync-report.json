@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-23T18:27:44.400Z",
+  "generated_at": "2026-03-23T19:11:19.025Z",
   "success_count": 8,
   "failure_count": 0,
   "failure_channels": [],
@@ -12,8 +12,35 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 22183,
-      "error": null
+      "duration_ms": 17778,
+      "error": null,
+      "archive_before": {
+        "total_bytes": 135950334,
+        "file_count": 1329,
+        "media_bytes": 135521184,
+        "media_files": 1324,
+        "json_files": 5,
+        "page_json_files": 4,
+        "comment_json_files": 0
+      },
+      "archive_after": {
+        "total_bytes": 135950334,
+        "file_count": 1329,
+        "media_bytes": 135521184,
+        "media_files": 1324,
+        "json_files": 5,
+        "page_json_files": 4,
+        "comment_json_files": 0
+      },
+      "archive_delta": {
+        "total_bytes": 0,
+        "file_count": 0,
+        "media_bytes": 0,
+        "media_files": 0,
+        "json_files": 0,
+        "page_json_files": 0,
+        "comment_json_files": 0
+      }
     },
     {
       "key": "pg-antitrust",
@@ -22,8 +49,35 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 12793,
-      "error": null
+      "duration_ms": 7868,
+      "error": null,
+      "archive_before": {
+        "total_bytes": 38681219,
+        "file_count": 432,
+        "media_bytes": 38478316,
+        "media_files": 429,
+        "json_files": 3,
+        "page_json_files": 2,
+        "comment_json_files": 0
+      },
+      "archive_after": {
+        "total_bytes": 38670868,
+        "file_count": 431,
+        "media_bytes": 38478316,
+        "media_files": 429,
+        "json_files": 2,
+        "page_json_files": 1,
+        "comment_json_files": 0
+      },
+      "archive_delta": {
+        "total_bytes": -10351,
+        "file_count": -1,
+        "media_bytes": 0,
+        "media_files": 0,
+        "json_files": -1,
+        "page_json_files": -1,
+        "comment_json_files": 0
+      }
     },
     {
       "key": "pg-tax",
@@ -32,8 +86,35 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 46111,
-      "error": null
+      "duration_ms": 34207,
+      "error": null,
+      "archive_before": {
+        "total_bytes": 178926732,
+        "file_count": 1785,
+        "media_bytes": 177685938,
+        "media_files": 1774,
+        "json_files": 11,
+        "page_json_files": 10,
+        "comment_json_files": 0
+      },
+      "archive_after": {
+        "total_bytes": 178926732,
+        "file_count": 1785,
+        "media_bytes": 177685938,
+        "media_files": 1774,
+        "json_files": 11,
+        "page_json_files": 10,
+        "comment_json_files": 0
+      },
+      "archive_delta": {
+        "total_bytes": 0,
+        "file_count": 0,
+        "media_bytes": 0,
+        "media_files": 0,
+        "json_files": 0,
+        "page_json_files": 0,
+        "comment_json_files": 0
+      }
     },
     {
       "key": "pg-real-estate",
@@ -42,8 +123,35 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 12729,
-      "error": null
+      "duration_ms": 7565,
+      "error": null,
+      "archive_before": {
+        "total_bytes": 22297695,
+        "file_count": 316,
+        "media_bytes": 22070366,
+        "media_files": 314,
+        "json_files": 2,
+        "page_json_files": 1,
+        "comment_json_files": 0
+      },
+      "archive_after": {
+        "total_bytes": 22287509,
+        "file_count": 316,
+        "media_bytes": 22070366,
+        "media_files": 314,
+        "json_files": 2,
+        "page_json_files": 1,
+        "comment_json_files": 0
+      },
+      "archive_delta": {
+        "total_bytes": -10186,
+        "file_count": 0,
+        "media_bytes": 0,
+        "media_files": 0,
+        "json_files": 0,
+        "page_json_files": 0,
+        "comment_json_files": 0
+      }
     },
     {
       "key": "investment-law",
@@ -52,8 +160,35 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 14129,
-      "error": null
+      "duration_ms": 10199,
+      "error": null,
+      "archive_before": {
+        "total_bytes": 53257329,
+        "file_count": 469,
+        "media_bytes": 52907280,
+        "media_files": 466,
+        "json_files": 3,
+        "page_json_files": 2,
+        "comment_json_files": 0
+      },
+      "archive_after": {
+        "total_bytes": 53257329,
+        "file_count": 469,
+        "media_bytes": 52907280,
+        "media_files": 466,
+        "json_files": 3,
+        "page_json_files": 2,
+        "comment_json_files": 0
+      },
+      "archive_delta": {
+        "total_bytes": 0,
+        "file_count": 0,
+        "media_bytes": 0,
+        "media_files": 0,
+        "json_files": 0,
+        "page_json_files": 0,
+        "comment_json_files": 0
+      }
     },
     {
       "key": "pg-ecology",
@@ -62,8 +197,35 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 14842,
-      "error": null
+      "duration_ms": 12008,
+      "error": null,
+      "archive_before": {
+        "total_bytes": 26662772,
+        "file_count": 358,
+        "media_bytes": 26417787,
+        "media_files": 355,
+        "json_files": 3,
+        "page_json_files": 2,
+        "comment_json_files": 0
+      },
+      "archive_after": {
+        "total_bytes": 27532259,
+        "file_count": 367,
+        "media_bytes": 27297418,
+        "media_files": 364,
+        "json_files": 3,
+        "page_json_files": 2,
+        "comment_json_files": 0
+      },
+      "archive_delta": {
+        "total_bytes": 869487,
+        "file_count": 9,
+        "media_bytes": 879631,
+        "media_files": 9,
+        "json_files": 0,
+        "page_json_files": 0,
+        "comment_json_files": 0
+      }
     },
     {
       "key": "bankrotstvo-mustknow",
@@ -72,8 +234,35 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 17417,
-      "error": null
+      "duration_ms": 14222,
+      "error": null,
+      "archive_before": {
+        "total_bytes": 82887326,
+        "file_count": 855,
+        "media_bytes": 82335120,
+        "media_files": 850,
+        "json_files": 5,
+        "page_json_files": 4,
+        "comment_json_files": 0
+      },
+      "archive_after": {
+        "total_bytes": 83623648,
+        "file_count": 861,
+        "media_bytes": 83071442,
+        "media_files": 856,
+        "json_files": 5,
+        "page_json_files": 4,
+        "comment_json_files": 0
+      },
+      "archive_delta": {
+        "total_bytes": 736322,
+        "file_count": 6,
+        "media_bytes": 736322,
+        "media_files": 6,
+        "json_files": 0,
+        "page_json_files": 0,
+        "comment_json_files": 0
+      }
     },
     {
       "key": "pg-employment",
@@ -82,8 +271,44 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 12056,
-      "error": null
+      "duration_ms": 7101,
+      "error": null,
+      "archive_before": {
+        "total_bytes": 6897355,
+        "file_count": 79,
+        "media_bytes": 6649572,
+        "media_files": 76,
+        "json_files": 3,
+        "page_json_files": 2,
+        "comment_json_files": 0
+      },
+      "archive_after": {
+        "total_bytes": 6887167,
+        "file_count": 79,
+        "media_bytes": 6649572,
+        "media_files": 76,
+        "json_files": 3,
+        "page_json_files": 2,
+        "comment_json_files": 0
+      },
+      "archive_delta": {
+        "total_bytes": -10188,
+        "file_count": 0,
+        "media_bytes": 0,
+        "media_files": 0,
+        "json_files": 0,
+        "page_json_files": 0,
+        "comment_json_files": 0
+      }
     }
-  ]
+  ],
+  "archive_totals": {
+    "total_bytes": 547135846,
+    "media_bytes": 543681516,
+    "file_count": 5637,
+    "media_files": 5603,
+    "json_files": 34,
+    "page_json_files": 26,
+    "comment_json_files": 0
+  }
 }
