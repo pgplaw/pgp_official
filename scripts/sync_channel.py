@@ -17,6 +17,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
+from urllib.error import HTTPError
 from urllib.parse import urljoin, urlparse
 from urllib.request import Request, urlopen
 
@@ -63,6 +64,8 @@ FETCH_RETRY_DELAYS = (1.0, 2.5, 5.0)
 FAST_EXTERNAL_RETRY_DELAYS: tuple[float, ...] = ()
 EXTERNAL_PAGE_TIMEOUT_SECONDS = 5
 EXTERNAL_IMAGE_TIMEOUT_SECONDS = 6
+DIRECT_POST_PROBE_FETCH_RETRY_DELAYS = (1.0, 2.0)
+DIRECT_POST_PROBE_TIMEOUT_SECONDS = 12
 DIRECT_POST_PROBE_STALE_MAX_IDS = 20
 DIRECT_POST_PROBE_FOLLOWUP_MAX_IDS = 4
 DIRECT_POST_PROBE_MAX_CONSECUTIVE_MISSES = 6
@@ -1239,7 +1242,7 @@ def build_post_media_page_urls(post: dict[str, Any]) -> list[str]:
 
 
 def extract_telegram_post_block(page_html: str, post_id: int) -> str | None:
-    blocks = re.split(r'(?=<div class="tgme_widget_message_wrap)', page_html)
+    blocks = split_telegram_post_blocks(page_html)
 
     for block in blocks:
         id_match = re.search(r'tgme_widget_message_date[^>]*href="[^"]+/(\d+)"', block)
@@ -1433,6 +1436,12 @@ def extract_forwarded_source(block: str) -> dict[str, str] | None:
     return result
 
 
+def split_telegram_post_blocks(html_text: str) -> list[str]:
+    if 'class="tgme_widget_message_wrap' in html_text:
+        return re.split(r'(?=<div class="tgme_widget_message_wrap)', html_text)
+    return re.split(r'(?=<div class="tgme_widget_message\b)', html_text)
+
+
 def extract_reply_reference(block: str, config: SiteConfig) -> dict[str, Any] | None:
     reply_match = re.search(
         r'<a[^>]+class="[^"]*tgme_widget_message_reply[^"]*"[^>]+href="([^"]+)"[^>]*>(.*?)</a>',
@@ -1481,7 +1490,7 @@ def extract_reply_reference(block: str, config: SiteConfig) -> dict[str, Any] | 
 
 
 def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
-    blocks = re.split(r'(?=<div class="tgme_widget_message_wrap)', html_text)
+    blocks = split_telegram_post_blocks(html_text)
     posts: list[dict[str, Any]] = []
 
     for block in blocks:
@@ -1628,6 +1637,7 @@ def probe_newer_posts_from_direct_pages(
         return posts
 
     start_post_id = max(existing_top_post_id, current_top_post_id)
+    stale_root_detected = bool(existing_top_post_id and current_top_post_id <= existing_top_post_id)
     max_probes = (
         DIRECT_POST_PROBE_STALE_MAX_IDS
         if existing_top_post_id and current_top_post_id <= existing_top_post_id
@@ -1636,30 +1646,53 @@ def probe_newer_posts_from_direct_pages(
     if max_probes <= 0:
         return posts
 
+    if stale_root_detected:
+        log.warning(
+            "Latest collected post for @%s did not advance beyond %s. Probing direct Telegram post pages.",
+            config.channel_username,
+            existing_top_post_id,
+        )
+
     discovered: list[dict[str, Any]] = []
     seen_ids = {int(post.get("id") or 0) for post in posts}
     consecutive_misses = 0
+    direct_probe_stale_candidates: list[str] = []
+    direct_probe_hard_errors = 0
+    direct_probe_fetch_successes = 0
 
     for candidate_id in range(start_post_id + 1, start_post_id + max_probes + 1):
         candidate_post = None
-        for candidate_url in (
+        observed_ids: set[int] = set()
+        candidate_urls = (
             f"https://t.me/{config.channel_username}/{candidate_id}?embed=1&mode=tme",
             f"https://t.me/{config.channel_username}/{candidate_id}?embed=1",
-        ):
+        )
+        not_found_count = 0
+        for candidate_url in candidate_urls:
             try:
                 page_html = fetch_page(
                     candidate_url,
-                    timeout=10,
-                    retry_delays=FAST_EXTERNAL_RETRY_DELAYS,
-                    log_failures=False,
+                    timeout=DIRECT_POST_PROBE_TIMEOUT_SECONDS,
+                    retry_delays=DIRECT_POST_PROBE_FETCH_RETRY_DELAYS,
+                    log_failures=stale_root_detected,
                 )
+                direct_probe_fetch_successes += 1
+            except HTTPError as error:
+                if error.code == 404:
+                    not_found_count += 1
+                    continue
+                direct_probe_hard_errors += 1
+                continue
             except Exception:
+                direct_probe_hard_errors += 1
                 continue
 
+            parsed_posts = parse_posts(page_html, config)
+            observed_ids.update(int(post.get("id") or 0) for post in parsed_posts if int(post.get("id") or 0))
             candidate_post = next(
                 (
                     post
-                    for post in parse_posts(page_html, config)
+                    for post in parsed_posts
                     if int(post.get("id") or 0) == candidate_id
                 ),
                 None,
@@ -1668,6 +1701,11 @@ def probe_newer_posts_from_direct_pages(
                 break
 
         if not candidate_post:
+            if candidate_id == start_post_id + 1 and not_found_count == len(candidate_urls):
+                log.info("No newer direct Telegram posts detected after %s for @%s.", start_post_id, config.channel_username)
+                break
+            if observed_ids and max(observed_ids, default=0) < candidate_id:
+                direct_probe_stale_candidates.append(f"{candidate_id}:{','.join(str(item) for item in sorted(observed_ids)[-4:])}")
             consecutive_misses += 1
             if consecutive_misses >= DIRECT_POST_PROBE_MAX_CONSECUTIVE_MISSES:
                 break
@@ -1689,6 +1727,12 @@ def probe_newer_posts_from_direct_pages(
         consecutive_misses = 0
 
     if not discovered:
+        if stale_root_detected and (direct_probe_stale_candidates or (direct_probe_hard_errors and direct_probe_fetch_successes == 0)):
+            stale_tail = ", ".join(direct_probe_stale_candidates[:4]) or "n/a"
+            raise RuntimeError(
+                f"Direct probe for @{config.channel_username} did not recover newer posts "
+                f"(stale candidates: {stale_tail}; hard_errors={direct_probe_hard_errors})"
+            )
         return posts
 
     log.info(
@@ -2580,12 +2624,12 @@ def main() -> int:
         initial_page_html = fetch_page(config.channel_web_url)
     except Exception as error:  # pragma: no cover - network/runtime path
         if existing_payload.get("posts"):
-            log.warning(
-                "Failed to fetch initial page for @%s. Keeping existing mirror data: %s",
+            log.error(
+                "Failed to fetch initial page for @%s. Keeping existing mirror data and marking sync as failed: %s",
                 config.channel_username,
                 error,
             )
-            return 0
+            return 1
         raise
 
     avatar_changed = mirror_channel_avatar(config, initial_page_html)
@@ -2594,8 +2638,11 @@ def main() -> int:
         config.site_description = parsed_channel_description
     posts = collect_posts(config, initial_page_html=initial_page_html)
     if not posts and existing_payload.get("posts"):
-        log.warning("No posts were collected for @%s. Existing mirror data was left untouched.", config.channel_username)
-        return 0
+        log.error(
+            "No posts were collected for @%s. Existing mirror data was left untouched and sync marked as failed.",
+            config.channel_username,
+        )
+        return 1
     posts = probe_newer_posts_from_direct_pages(
         config,
         posts,
