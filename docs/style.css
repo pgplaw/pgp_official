@@ -853,6 +853,19 @@ label,
   white-space: nowrap;
 }
 
+@media (max-width: 1499px) and (min-width: 861px) {
+  .scroll-top-button {
+    width: 56px;
+    min-width: 56px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .scroll-top-button__label {
+    display: none;
+  }
+}
+
 .hero__row {
   display: grid;
   gap: 8px;
