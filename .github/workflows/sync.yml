@@ -55,6 +55,7 @@ jobs:
           TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
           TELEGRAM_API_HASH: ${{ secrets.TELEGRAM_API_HASH }}
           TELEGRAM_SESSION_STR: ${{ secrets.TELEGRAM_SESSION_STR }}
+          TG_ENABLE_SUPERRES: "0"
         run: |
           set +e
           node scripts/sync_channels.mjs 2>&1 | tee sync.log

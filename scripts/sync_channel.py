@@ -75,6 +75,7 @@ MAX_EXTERNAL_OVERRIDE_RATIO_DELTA = 0.12
 MAX_EXTERNAL_PREVIEW_OVERRIDE_POSTS = 10
 MAX_EXTERNAL_LINKS_TO_TRY = 2
 ENABLE_EXTERNAL_PREVIEW_OVERRIDE = os.environ.get("TG_ENABLE_EXTERNAL_PREVIEW_OVERRIDE", "").strip().lower() in {"1", "true", "yes", "on"}
+ENABLE_SUPERRES = os.environ.get("TG_ENABLE_SUPERRES", "").strip().lower() in {"1", "true", "yes", "on"}
 LOW_RES_SINGLE_UPSCALE_THRESHOLD = 1200
 LOW_RES_SINGLE_FEED_TARGET = 1800
 LOW_RES_SINGLE_FULL_TARGET = 2400
@@ -463,7 +464,7 @@ def optimize_image_variants(
                 image = image.convert("RGB")
 
             superres_image = None
-            if allow_single_image_upscale and max(original_size) < LOW_RES_SINGLE_UPSCALE_THRESHOLD:
+            if ENABLE_SUPERRES and allow_single_image_upscale and max(original_size) < LOW_RES_SINGLE_UPSCALE_THRESHOLD:
                 superres_image = apply_single_image_super_resolution(image, resampling)
 
             def write_bytes_if_changed(path: Path, content: bytes) -> None:
