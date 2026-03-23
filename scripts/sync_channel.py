@@ -2325,9 +2325,9 @@ def render_post_page_html(config: SiteConfig, post: dict[str, Any], comments_ena
   <link rel="icon" href="{root_prefix}assets/icon-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="{root_prefix}assets/apple-touch-icon.png">
   <link rel="manifest" href="{root_prefix}manifest.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" href="{root_prefix}assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{root_prefix}assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{root_prefix}assets/fonts/fonts.css">
   <link rel="stylesheet" href="{root_prefix}style.css">
   <script>
     (function() {{
