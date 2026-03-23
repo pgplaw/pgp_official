@@ -139,9 +139,9 @@ label,
 .content,
 .site-footer {
   transition:
-    opacity 360ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 360ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 280ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
 }
 
@@ -149,9 +149,9 @@ label,
 .site-shell.is-channel-switching .contact-bar,
 .site-shell.is-channel-switching .content,
 .site-shell.is-channel-switching .site-footer {
-  opacity: 0.06;
-  transform: translateY(12px) scale(0.992);
-  filter: blur(8px);
+  opacity: 0.1;
+  transform: translateY(10px) scale(0.994);
+  filter: blur(4px) saturate(0.94);
   pointer-events: none;
 }
 
@@ -159,10 +159,24 @@ label,
 .site-shell.is-channel-switching-fast .contact-bar,
 .site-shell.is-channel-switching-fast .content,
 .site-shell.is-channel-switching-fast .site-footer {
-  transition-duration: 140ms, 160ms, 140ms;
-  opacity: 0.14;
-  transform: translateY(8px) scale(0.996);
-  filter: blur(4px);
+  transition-duration: 180ms, 240ms, 180ms;
+  opacity: 0.16;
+  transform: translateY(7px) scale(0.996);
+  filter: blur(2px) saturate(0.96);
+}
+
+.site-shell.is-channel-switching-desktop .hero,
+.site-shell.is-channel-switching-desktop .contact-bar,
+.site-shell.is-channel-switching-desktop .site-footer {
+  opacity: 0.18;
+  transform: translateY(6px) scale(0.997);
+  filter: blur(3px) saturate(0.95);
+}
+
+.site-shell.is-channel-switching-desktop .content {
+  opacity: 0.08;
+  transform: translateY(14px) scale(0.995);
+  filter: blur(4px) saturate(0.93);
 }
 
 .channel-nav {
@@ -179,10 +193,54 @@ label,
   backdrop-filter: blur(24px);
   box-shadow: var(--shadow);
   overflow: clip;
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .channel-nav::before {
   content: none;
+}
+
+.channel-nav::after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 10px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent) 42%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 96%, white 4%) 50%,
+    color-mix(in srgb, var(--accent) 42%, transparent) 100%
+  );
+  background-size: 220% 100%;
+  opacity: 0;
+  transform: scaleX(0.16);
+  transform-origin: center;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-shell.is-channel-switching .channel-nav::after {
+  opacity: 0.95;
+  transform: scaleX(1);
+  animation: channel-nav-progress 1s linear infinite;
+}
+
+.site-shell.is-channel-switching-desktop .channel-nav {
+  transform: translateY(2px);
+  border-color: color-mix(in srgb, var(--accent) 20%, var(--border) 80%);
+  box-shadow: 0 20px 42px rgba(39, 44, 62, 0.16);
+}
+
+.site-shell.is-channel-switching-mobile .channel-nav {
+  transform: translateY(1px);
+  border-color: color-mix(in srgb, var(--accent) 24%, var(--border) 76%);
 }
 
 .channel-tabs {
@@ -392,6 +450,11 @@ label,
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricPrecision;
+  transition:
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 220ms ease,
+    box-shadow 240ms ease,
+    filter 220ms ease;
 }
 
 .channel-carousel__content {
@@ -485,6 +548,15 @@ label,
   cursor: default;
 }
 
+@keyframes channel-nav-progress {
+  0% {
+    background-position: 160% 0;
+  }
+  100% {
+    background-position: -60% 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .channel-carousel__surface {
     transition: none !important;
@@ -492,6 +564,10 @@ label,
 
   .scroll-top-button {
     transition: opacity 0.01ms linear, transform 0.01ms linear;
+  }
+
+  .channel-nav::after {
+    animation: none !important;
   }
 }
 
@@ -1707,8 +1783,8 @@ label,
   .site-shell.is-channel-switching .contact-bar,
   .site-shell.is-channel-switching .content,
   .site-shell.is-channel-switching .site-footer {
-    opacity: 0.08;
-    transform: translateY(8px) scale(0.996);
+    opacity: 0.14;
+    transform: translateY(7px) scale(0.996);
     filter: none;
   }
 
@@ -1716,8 +1792,22 @@ label,
   .site-shell.is-channel-switching-fast .contact-bar,
   .site-shell.is-channel-switching-fast .content,
   .site-shell.is-channel-switching-fast .site-footer {
-    opacity: 0.18;
+    opacity: 0.22;
+    transform: translateY(3px) scale(0.998);
+    filter: none;
+  }
+
+  .site-shell.is-channel-switching-mobile .hero,
+  .site-shell.is-channel-switching-mobile .contact-bar,
+  .site-shell.is-channel-switching-mobile .site-footer {
+    opacity: 0.22;
     transform: translateY(4px) scale(0.998);
+    filter: none;
+  }
+
+  .site-shell.is-channel-switching-mobile .content {
+    opacity: 0.1;
+    transform: translateY(10px) scale(0.997);
     filter: none;
   }
 
@@ -1733,6 +1823,12 @@ label,
     padding: 16px 16px 18px;
     box-shadow: none;
     backdrop-filter: none;
+  }
+
+  .site-shell.is-channel-switching-mobile .channel-carousel__surface--current {
+    transform: scale(0.988);
+    opacity: 0.96;
+    filter: saturate(0.97) brightness(0.98);
   }
 
   .channel-tabs {

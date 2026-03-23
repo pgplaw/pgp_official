@@ -5,13 +5,13 @@ const DEFAULT_PAGE_SIZE = 16;
 const AUTO_REFRESH_INTERVAL_MINUTES = 5;
 const SYNC_STATUS_POLL_INTERVAL_MS = 30 * 1000;
 const LONG_PRESS_COPY_DELAY_MS = 650;
-const CHANNEL_CAROUSEL_TRANSITION_MS = 380;
-const CHANNEL_CONTENT_FADE_OUT_MS = 180;
-const CHANNEL_CONTENT_FADE_IN_DELAY_MS = 60;
-const CHANNEL_MOBILE_CONTENT_FADE_OUT_MS = 70;
-const CHANNEL_MOBILE_CONTENT_FADE_IN_DELAY_MS = 0;
-const CHANNEL_DESKTOP_CONTENT_FADE_OUT_MS = 110;
-const CHANNEL_DESKTOP_CONTENT_FADE_IN_DELAY_MS = 0;
+const CHANNEL_CAROUSEL_TRANSITION_MS = 430;
+const CHANNEL_CONTENT_FADE_OUT_MS = 220;
+const CHANNEL_CONTENT_FADE_IN_DELAY_MS = 36;
+const CHANNEL_MOBILE_CONTENT_FADE_OUT_MS = 120;
+const CHANNEL_MOBILE_CONTENT_FADE_IN_DELAY_MS = 12;
+const CHANNEL_DESKTOP_CONTENT_FADE_OUT_MS = 150;
+const CHANNEL_DESKTOP_CONTENT_FADE_IN_DELAY_MS = 18;
 const VIEWER_TRANSITION_MS = 360;
 const FEED_CACHE_MAX_ENTRIES = 6;
 const SCROLL_TOP_VISIBILITY_THRESHOLD_MIN = 360;
@@ -581,14 +581,18 @@ function wait(ms) {
   });
 }
 
-function setChannelContentSwitching(active, { fast = false } = {}) {
+function setChannelContentSwitching(active, { fast = false, mode = null } = {}) {
   if (!elements.siteShell) return;
 
   const isActive = Boolean(active);
   elements.siteShell.classList.toggle('is-channel-switching', isActive);
   elements.siteShell.classList.toggle('is-channel-switching-fast', isActive && Boolean(fast));
+  elements.siteShell.classList.toggle('is-channel-switching-mobile', isActive && mode === 'mobile');
+  elements.siteShell.classList.toggle('is-channel-switching-desktop', isActive && mode === 'desktop');
   if (!isActive) {
     elements.siteShell.classList.remove('is-channel-switching-fast');
+    elements.siteShell.classList.remove('is-channel-switching-mobile');
+    elements.siteShell.classList.remove('is-channel-switching-desktop');
   }
 }
 
@@ -1081,7 +1085,7 @@ function animateChannelCarouselShift(track, targetShift, { duration = getChannel
   }
 
   return new Promise((resolve) => {
-    const easing = 'cubic-bezier(0.2, 0.9, 0.24, 1)';
+    const easing = 'cubic-bezier(0.16, 1, 0.3, 1)';
     const transitionState = { timeoutId: null };
     let settled = false;
     const finish = () => {
@@ -2721,6 +2725,7 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
   const shouldClearHash = /^#(?:comments|post)-/.test(window.location.hash);
   const shouldUpdateUrl = getChannelKeyFromLocation() !== resolvedChannelKey || shouldClearHash;
   const desktopFastTransition = !fastTransition && !isMobileCarouselViewport();
+  const switchMode = fastTransition ? 'mobile' : 'desktop';
   const switchTimings = getChannelSwitchTimings({
     fast: fastTransition,
     desktopFast: desktopFastTransition,
@@ -2746,7 +2751,7 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
     return;
   }
 
-  setChannelContentSwitching(true, { fast: fastTransition || desktopFastTransition });
+  setChannelContentSwitching(true, { fast: fastTransition || desktopFastTransition, mode: switchMode });
   await nextRenderFrame();
   await wait(switchTimings.fadeOut);
 
