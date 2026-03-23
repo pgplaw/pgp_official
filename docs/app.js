@@ -14,6 +14,8 @@ const CHANNEL_DESKTOP_CONTENT_FADE_OUT_MS = 110;
 const CHANNEL_DESKTOP_CONTENT_FADE_IN_DELAY_MS = 0;
 const VIEWER_TRANSITION_MS = 360;
 const FEED_CACHE_MAX_ENTRIES = 6;
+const SCROLL_TOP_VISIBILITY_THRESHOLD_MIN = 360;
+const SCROLL_TOP_VISIBILITY_THRESHOLD_MAX = 720;
 
 const state = {
   catalog: null,
@@ -30,6 +32,7 @@ const state = {
   channelFeedCache: new Map(),
   channelFeedPrefetchPromises: new Map(),
   channelFeedPrefetchHandle: null,
+  activeFeedManual: false,
   viewerItems: [],
   viewerIndex: 0,
   mediaRegistry: {},
@@ -46,6 +49,8 @@ const state = {
   viewerPointer: null,
   viewerAnimating: false,
   viewerTransitionTimerId: null,
+  scrollTopButtonVisible: false,
+  scrollTopButtonSyncFrameId: null,
 };
 
 const elements = {
@@ -82,6 +87,7 @@ const elements = {
   viewerContent: document.getElementById('viewerContent'),
   installAppButton: document.getElementById('installAppButton'),
   copyToast: document.getElementById('copyToast'),
+  scrollTopButton: document.getElementById('scrollTopButton'),
 };
 
 const IMAGE_DEBUG_ENABLED = (() => {
@@ -519,6 +525,46 @@ function scrollPageToTop() {
   window.scrollTo({ top: 0, behavior: 'auto' });
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
+  queueScrollTopButtonVisibilitySync();
+}
+
+function smoothScrollPageToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+  });
+}
+
+function getScrollTopVisibilityThreshold() {
+  return clamp(
+    Math.round(window.innerHeight * 0.72),
+    SCROLL_TOP_VISIBILITY_THRESHOLD_MIN,
+    SCROLL_TOP_VISIBILITY_THRESHOLD_MAX,
+  );
+}
+
+function setScrollTopButtonVisibility(visible) {
+  const button = elements.scrollTopButton;
+  if (!button || state.scrollTopButtonVisible === visible) return;
+
+  state.scrollTopButtonVisible = visible;
+  button.classList.toggle('is-visible', visible);
+  button.setAttribute('aria-hidden', visible ? 'false' : 'true');
+}
+
+function syncScrollTopButtonVisibility() {
+  state.scrollTopButtonSyncFrameId = null;
+  if (!elements.scrollTopButton) return;
+
+  const pageScrollable = document.documentElement.scrollHeight - window.innerHeight > 240;
+  const scrolled = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  const shouldShow = pageScrollable && scrolled >= getScrollTopVisibilityThreshold();
+  setScrollTopButtonVisibility(shouldShow);
+}
+
+function queueScrollTopButtonVisibilitySync() {
+  if (state.scrollTopButtonSyncFrameId) return;
+  state.scrollTopButtonSyncFrameId = window.requestAnimationFrame(syncScrollTopButtonVisibility);
 }
 
 function nextRenderFrame() {
@@ -2099,7 +2145,11 @@ async function loadPage(pageNumber) {
 
   const pageLoadPromise = (async () => {
     const requestChannelKey = state.activeChannelKey;
-    const response = await fetch(buildPageUrl(requestChannelKey, pageNumber), getJsonFetchOptions({ prefetch: true }));
+    const manual = state.activeChannelKey === requestChannelKey && state.activeFeedManual;
+    const response = await fetch(
+      buildPageUrl(requestChannelKey, pageNumber, { manual }),
+      getJsonFetchOptions(manual ? { manual: true } : { prefetch: true }),
+    );
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const payload = await response.json();
@@ -2143,6 +2193,7 @@ async function appendNextPage() {
     updateLoadMoreVisibility();
     updateFeedMeta();
     scheduleNextPagePrefetch();
+    queueScrollTopButtonVisibilitySync();
   })();
 
   try {
@@ -2443,7 +2494,10 @@ async function showComments(postId) {
   elements.commentsView.classList.remove('hidden');
 
   try {
-    const response = await fetch(buildCommentsUrl(state.activeChannelKey, postId), getJsonFetchOptions());
+    const response = await fetch(
+      buildCommentsUrl(state.activeChannelKey, postId, { manual: state.activeFeedManual }),
+      getJsonFetchOptions(state.activeFeedManual ? { manual: true } : {}),
+    );
     if (response.status === 404) {
       elements.commentsLoading.classList.add('hidden');
       elements.commentsEmpty.classList.remove('hidden');
@@ -2602,10 +2656,11 @@ async function resolveFeedPayloadForSwitch(channelKey, { force = false, prefetch
   return fetchFeedPayload(channelKey, force);
 }
 
-function applyFeedPayload(channelKey, feedPayload) {
+function applyFeedPayload(channelKey, feedPayload, { manual = false } = {}) {
   cancelNextPagePrefetch();
   state.pageLoadPromises.clear();
   state.activeChannelKey = channelKey;
+  state.activeFeedManual = manual;
   state.mediaRegistry = {};
   state.feed = feedPayload;
   const pagination = state.feed.pagination || {};
@@ -2624,6 +2679,7 @@ function applyFeedPayload(channelKey, feedPayload) {
   });
   rememberFeedPayload(channelKey, feedPayload);
   elements.loadingState.classList.add('hidden');
+  queueScrollTopButtonVisibilitySync();
 
   if (!state.posts.length) {
     elements.emptyState.classList.remove('hidden');
@@ -2645,7 +2701,7 @@ async function loadFeed(channelKey, force = false) {
 
   try {
     const feedPayload = await fetchFeedPayload(channelKey, force);
-    applyFeedPayload(channelKey, feedPayload);
+    applyFeedPayload(channelKey, feedPayload, { manual: force });
   } catch (error) {
     elements.loadingState.classList.add('hidden');
     elements.errorState.classList.remove('hidden');
@@ -2700,7 +2756,7 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
     }
 
     const feedPayload = feedPayloadResult.payload;
-    applyFeedPayload(resolvedChannelKey, feedPayload);
+    applyFeedPayload(resolvedChannelKey, feedPayload, { manual: force });
 
     if (shouldUpdateUrl) {
       updateChannelUrl(resolvedChannelKey, { replace, clearHash: shouldClearHash });
@@ -2789,6 +2845,12 @@ elements.refreshButton.addEventListener('click', () => {
   }
 });
 
+if (elements.scrollTopButton) {
+  elements.scrollTopButton.addEventListener('click', () => {
+    smoothScrollPageToTop();
+  });
+}
+
 elements.loadMoreButton.addEventListener('click', appendNextPage);
 elements.backButton.addEventListener('click', () => {
   if (window.location.hash.startsWith('#comments-')) {
@@ -2845,6 +2907,8 @@ window.addEventListener('resize', () => {
   if (elements.viewer.classList.contains('hidden')) return;
   void animateViewerToIndex(state.viewerIndex, { immediate: true });
 });
+window.addEventListener('resize', queueScrollTopButtonVisibilitySync);
+window.addEventListener('scroll', queueScrollTopButtonVisibilitySync, { passive: true });
 window.addEventListener('keydown', (event) => {
   if (elements.viewer.classList.contains('hidden')) return;
   if (event.key === 'Escape') closeViewer();
@@ -2863,3 +2927,4 @@ setupChannelCarouselInteractions();
 attachCopyInteractions();
 loadCatalog();
 updateInstallButtonState();
+queueScrollTopButtonVisibilitySync();

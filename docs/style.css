@@ -489,6 +489,10 @@ label,
   .channel-carousel__surface {
     transition: none !important;
   }
+
+  .scroll-top-button {
+    transition: opacity 0.01ms linear, transform 0.01ms linear;
+  }
 }
 
 .hero {
@@ -758,6 +762,86 @@ label,
 .copy-toast.is-visible {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+.scroll-top-button {
+  position: fixed;
+  right: max(24px, calc(env(safe-area-inset-right, 0px) + 16px));
+  bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 18px));
+  z-index: 78;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 56px;
+  height: 56px;
+  padding: 0 18px 0 12px;
+  border: 1px solid color-mix(in srgb, var(--border) 72%, rgba(145, 39, 141, 0.18));
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 58%),
+    color-mix(in srgb, var(--bg-elevated) 94%, var(--accent) 6%);
+  color: var(--text);
+  box-shadow:
+    0 18px 34px rgba(39, 44, 62, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(18px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(0, 16px, 0) scale(0.94);
+  transition:
+    opacity 0.2s ease,
+    transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.scroll-top-button.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.scroll-top-button:hover,
+.scroll-top-button:focus-visible {
+  border-color: rgba(145, 39, 141, 0.26);
+  box-shadow:
+    0 20px 38px rgba(39, 44, 62, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.46);
+}
+
+.scroll-top-button__icon {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: linear-gradient(145deg, rgba(154, 44, 149, 0.96), rgba(116, 32, 111, 0.96));
+  color: #fff;
+  box-shadow:
+    0 10px 20px rgba(145, 39, 141, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  flex-shrink: 0;
+}
+
+.scroll-top-button__icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.scroll-top-button__label {
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .hero__row {
@@ -1917,6 +2001,25 @@ label,
     font-size: 0.88rem;
   }
 
+  .scroll-top-button {
+    right: max(16px, calc(env(safe-area-inset-right, 0px) + 10px));
+    bottom: max(16px, calc(env(safe-area-inset-bottom, 0px) + 12px));
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .scroll-top-button__icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .scroll-top-button__label {
+    display: none;
+  }
+
   .status-banner,
   .feed-meta,
   .comments-toolbar,
@@ -2066,6 +2169,13 @@ body.viewer-open .channel-nav {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+body.viewer-open .scroll-top-button {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate3d(0, 14px, 0) scale(0.94);
 }
 
 /* Final post copy-button layout override */

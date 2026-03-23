@@ -59,4 +59,16 @@ test.describe('Desktop smoke', () => {
     await waitForFeedReady(page);
     await expect(page.locator(`#post-${postId}`)).toHaveClass(/post-card--targeted/);
   });
+
+  test('reveals scroll-to-top control after long scroll and returns to top', async ({ page }) => {
+    await page.goto('/?channel=pg-tax');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => window.scrollTo({ top: 1400, behavior: 'auto' }));
+    await expect(page.locator('#scrollTopButton')).toHaveClass(/is-visible/);
+
+    await page.locator('#scrollTopButton').click();
+    await page.waitForFunction(() => window.scrollY < 24);
+    await expect(page.locator('#scrollTopButton')).not.toHaveClass(/is-visible/);
+  });
 });
