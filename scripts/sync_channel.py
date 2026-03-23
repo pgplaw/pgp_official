@@ -50,13 +50,22 @@ LEGACY_VARIANT_RETENTION_DAYS = 2
 LEGACY_VARIANT_RETENTION_SECONDS = LEGACY_VARIANT_RETENTION_DAYS * 24 * 60 * 60
 
 BASE_HEADERS = {
-    "User-Agent": "Mozilla/5.0 (compatible; TelegramPagesMirror/1.0)",
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/134.0.0.0 Safari/537.36"
+    ),
     "Accept-Language": "ru-RU,ru;q=0.9,en;q=0.8",
+    "Cache-Control": "no-cache",
+    "Pragma": "no-cache",
 }
 FETCH_RETRY_DELAYS = (1.0, 2.5, 5.0)
 FAST_EXTERNAL_RETRY_DELAYS: tuple[float, ...] = ()
 EXTERNAL_PAGE_TIMEOUT_SECONDS = 5
 EXTERNAL_IMAGE_TIMEOUT_SECONDS = 6
+DIRECT_POST_PROBE_STALE_MAX_IDS = 20
+DIRECT_POST_PROBE_FOLLOWUP_MAX_IDS = 4
+DIRECT_POST_PROBE_MAX_CONSECUTIVE_MISSES = 6
 MIN_EXTERNAL_OVERRIDE_WIDTH = 1000
 MIN_EXTERNAL_OVERRIDE_RATIO_GAIN = 1.15
 MAX_EXTERNAL_OVERRIDE_RATIO_DELTA = 0.12
@@ -1600,6 +1609,92 @@ def collect_posts(config: SiteConfig, initial_page_html: str | None = None) -> l
     return posts[: config.messages_limit]
 
 
+def get_highest_post_id(posts: list[dict[str, Any]] | None) -> int:
+    ids = [int(post.get("id") or 0) for post in (posts or [])]
+    return max(ids, default=0)
+
+
+def probe_newer_posts_from_direct_pages(
+    config: SiteConfig,
+    posts: list[dict[str, Any]],
+    *,
+    existing_top_post_id: int = 0,
+    cutoff: datetime,
+) -> list[dict[str, Any]]:
+    current_top_post_id = get_highest_post_id(posts)
+    if existing_top_post_id <= 0 and current_top_post_id <= 0:
+        return posts
+
+    start_post_id = max(existing_top_post_id, current_top_post_id)
+    max_probes = (
+        DIRECT_POST_PROBE_STALE_MAX_IDS
+        if existing_top_post_id and current_top_post_id <= existing_top_post_id
+        else DIRECT_POST_PROBE_FOLLOWUP_MAX_IDS
+    )
+    if max_probes <= 0:
+        return posts
+
+    discovered: list[dict[str, Any]] = []
+    seen_ids = {int(post.get("id") or 0) for post in posts}
+    consecutive_misses = 0
+
+    for candidate_id in range(start_post_id + 1, start_post_id + max_probes + 1):
+        candidate_url = f"https://t.me/{config.channel_username}/{candidate_id}?single"
+        try:
+            page_html = fetch_page(
+                candidate_url,
+                timeout=10,
+                retry_delays=FAST_EXTERNAL_RETRY_DELAYS,
+                log_failures=False,
+            )
+        except Exception:
+            consecutive_misses += 1
+            if consecutive_misses >= DIRECT_POST_PROBE_MAX_CONSECUTIVE_MISSES:
+                break
+            continue
+
+        candidate_post = next(
+            (
+                post
+                for post in parse_posts(page_html, config)
+                if int(post.get("id") or 0) == candidate_id
+            ),
+            None,
+        )
+        if not candidate_post:
+            consecutive_misses += 1
+            if consecutive_misses >= DIRECT_POST_PROBE_MAX_CONSECUTIVE_MISSES:
+                break
+            continue
+
+        candidate_date = parse_iso_datetime(candidate_post.get("date"))
+        if candidate_date and candidate_date < cutoff:
+            consecutive_misses += 1
+            if consecutive_misses >= DIRECT_POST_PROBE_MAX_CONSECUTIVE_MISSES:
+                break
+            continue
+
+        if candidate_id in seen_ids:
+            consecutive_misses = 0
+            continue
+
+        discovered.append(candidate_post)
+        seen_ids.add(candidate_id)
+        consecutive_misses = 0
+
+    if not discovered:
+        return posts
+
+    log.info(
+        "Discovered %s newer posts via direct Telegram post probes: %s",
+        len(discovered),
+        ", ".join(str(int(post.get("id") or 0)) for post in discovered),
+    )
+    combined_posts = posts + discovered
+    combined_posts.sort(key=lambda post: post.get("date") or "", reverse=True)
+    return combined_posts[: config.messages_limit]
+
+
 def select_posts_for_comment_refresh(posts: list[dict[str, Any]], config: SiteConfig) -> list[int]:
     cutoff = datetime.now(timezone.utc) - timedelta(days=config.comments_max_age_days)
     selected: list[int] = []
@@ -2495,6 +2590,12 @@ def main() -> int:
     if not posts and existing_payload.get("posts"):
         log.warning("No posts were collected for @%s. Existing mirror data was left untouched.", config.channel_username)
         return 0
+    posts = probe_newer_posts_from_direct_pages(
+        config,
+        posts,
+        existing_top_post_id=get_highest_post_id(existing_payload.get("posts") or []),
+        cutoff=subtract_months(datetime.now(timezone.utc), config.recent_posts_months),
+    )
     enrich_reply_posts_from_pages(posts, config)
 
     reply_references = asyncio.run(fetch_reply_references_for_posts(config, posts))
