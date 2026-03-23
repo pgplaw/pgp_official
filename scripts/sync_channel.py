@@ -36,6 +36,7 @@ POST_DETAILS_DIR = CHANNEL_DATA_DIR / "posts"
 POSTS_MEDIA_DIR = CHANNEL_DATA_DIR / "media" / "posts"
 POSTS_THUMBS_DIR = POSTS_MEDIA_DIR / "thumbs"
 POSTS_FEED_DIR = POSTS_MEDIA_DIR / "feed"
+POSTS_VIDEOS_DIR = POSTS_MEDIA_DIR / "videos"
 CHANNEL_MEDIA_DIR = CHANNEL_DATA_DIR / "media"
 CHANNEL_AVATAR_PATH = CHANNEL_MEDIA_DIR / "channel-avatar.jpg"
 SUPERRES_MODEL_DIR = ROOT / "ops" / "models"
@@ -45,6 +46,7 @@ POST_PAGES_DIR = DOCS_DIR / "channels" / CHANNEL_KEY / "posts" if CHANNEL_KEY el
 MANIFEST_PATH = DOCS_DIR / "manifest.webmanifest"
 FEED_PAGE_SIZE = 16
 IMAGE_VARIANT_VERSION = "v8"
+VIDEO_VARIANT_VERSION = "v1"
 STALE_MEDIA_RETENTION_DAYS = 3
 STALE_MEDIA_RETENTION_SECONDS = STALE_MEDIA_RETENTION_DAYS * 24 * 60 * 60
 LEGACY_VARIANT_RETENTION_DAYS = 1
@@ -666,14 +668,67 @@ def extract_media_variant_tag(path: Path) -> str | None:
     return match.group(1) if match else None
 
 
-def should_delete_inactive_media(path: Path, age_seconds: float) -> bool:
+def should_delete_inactive_media(path: Path, age_seconds: float, current_variant_tags: set[str] | None = None) -> bool:
+    active_variants = current_variant_tags or {IMAGE_VARIANT_VERSION}
     if age_seconds >= STALE_MEDIA_RETENTION_SECONDS:
         return True
 
     variant_tag = extract_media_variant_tag(path)
-    if variant_tag and variant_tag != IMAGE_VARIANT_VERSION and age_seconds >= LEGACY_VARIANT_RETENTION_SECONDS:
+    if variant_tag and variant_tag not in active_variants and age_seconds >= LEGACY_VARIANT_RETENTION_SECONDS:
         return True
 
+    return False
+
+
+def detect_video_media_hint(block: str) -> bool:
+    return bool(
+        re.search(
+            r"(tgme_widget_message_video|video_player|video_note|round_message|message_video)",
+            block,
+            re.IGNORECASE,
+        )
+    )
+
+
+def extract_video_dimensions_from_html(block: str) -> tuple[int | None, int | None]:
+    video_tag_match = re.search(r"<video\b[^>]*>", block, re.IGNORECASE)
+    if not video_tag_match:
+        return None, None
+
+    video_tag = video_tag_match.group(0)
+    width_match = re.search(r'\bwidth="(\d+)"', video_tag, re.IGNORECASE)
+    height_match = re.search(r'\bheight="(\d+)"', video_tag, re.IGNORECASE)
+    if width_match and height_match:
+        return int(width_match.group(1)), int(height_match.group(1))
+
+    style_match = re.search(r'\bstyle="([^"]+)"', video_tag, re.IGNORECASE)
+    if not style_match:
+        return None, None
+
+    style = style_match.group(1)
+    width_style = re.search(r"width:\s*(\d+)px", style, re.IGNORECASE)
+    height_style = re.search(r"height:\s*(\d+)px", style, re.IGNORECASE)
+    if width_style and height_style:
+        return int(width_style.group(1)), int(height_style.group(1))
+
+    return None, None
+
+
+def is_square_like_dimensions(width: int | None, height: int | None, tolerance: float = 0.12) -> bool:
+    if not width or not height:
+        return False
+    larger = max(width, height)
+    smaller = min(width, height)
+    if not larger or not smaller:
+        return False
+    return abs(1 - (smaller / larger)) <= tolerance
+
+
+def detect_round_video_hint(block: str, width: int | None = None, height: int | None = None) -> bool:
+    if re.search(r"(video_note|round_message|roundvideo|message_video_note)", block, re.IGNORECASE):
+        return True
+    if is_square_like_dimensions(width, height):
+        return max(width or 0, height or 0) <= 640
     return False
 
 
@@ -828,7 +883,7 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
 
             stat = path.stat()
             age_seconds = max(0, time.time() - stat.st_mtime)
-            if not should_delete_inactive_media(path, age_seconds):
+            if not should_delete_inactive_media(path, age_seconds, {IMAGE_VARIANT_VERSION}):
                 continue
 
             path.unlink()
@@ -840,6 +895,79 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
     if deleted_files:
         log.info(
             "Media maintenance deleted %s files (%.1f MB) for %s",
+            deleted_files,
+            deleted_bytes / (1024 * 1024),
+            CHANNEL_KEY or "channel",
+        )
+
+    return changes_detected
+
+
+def mirror_round_videos(posts: list[dict[str, Any]], video_metadata: dict[int, dict[str, Any]] | None = None) -> bool:
+    POSTS_VIDEOS_DIR.mkdir(parents=True, exist_ok=True)
+    active_relative_paths: set[str] = set()
+    changes_detected = False
+    video_metadata = video_metadata or {}
+
+    for post in posts:
+        metadata = video_metadata.get(post["id"])
+        if metadata is not None:
+            if metadata.get("video_note"):
+                post["video_note"] = True
+            else:
+                post.pop("video_note", None)
+
+            if metadata.get("video_width") and metadata.get("video_height"):
+                post["video_width"] = metadata["video_width"]
+                post["video_height"] = metadata["video_height"]
+            else:
+                post.pop("video_width", None)
+                post.pop("video_height", None)
+
+        raw_bytes = (metadata or {}).get("video_bytes")
+        extension = (metadata or {}).get("video_extension") or "mp4"
+        if not raw_bytes:
+            if post.get("video_note") and not post.get("video_url"):
+                log.warning("Round video post %s has no mirrored video bytes or fallback URL", post["id"])
+            continue
+
+        digest = hashlib.sha256(raw_bytes).hexdigest()[:12]
+        filename = f"{post['id']}-video-note-{digest}-{VIDEO_VARIANT_VERSION}.{extension}"
+        video_path = POSTS_VIDEOS_DIR / filename
+        if not video_path.exists() or video_path.read_bytes() != raw_bytes:
+            video_path.write_bytes(raw_bytes)
+            log.info("Mirrored round video for post %s", post["id"])
+            changes_detected = True
+
+        relative_url = video_path.relative_to(DOCS_DIR).as_posix()
+        active_relative_paths.add(relative_url)
+        if post.get("video_url") != relative_url:
+            post["video_url"] = relative_url
+
+    deleted_files = 0
+    deleted_bytes = 0
+    for path in POSTS_VIDEOS_DIR.glob("*"):
+        if not path.is_file():
+            continue
+
+        relative_url = path.relative_to(DOCS_DIR).as_posix()
+        if relative_url in active_relative_paths:
+            continue
+
+        stat = path.stat()
+        age_seconds = max(0, time.time() - stat.st_mtime)
+        if not should_delete_inactive_media(path, age_seconds, {VIDEO_VARIANT_VERSION}):
+            continue
+
+        path.unlink()
+        changes_detected = True
+        deleted_files += 1
+        deleted_bytes += stat.st_size
+        log.info("Deleted stale mirrored video %s", path.relative_to(ROOT))
+
+    if deleted_files:
+        log.info(
+            "Round video maintenance deleted %s files (%.1f MB) for %s",
             deleted_files,
             deleted_bytes / (1024 * 1024),
             CHANNEL_KEY or "channel",
@@ -1525,6 +1653,9 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
             if link_preview_match:
                 photos = [urljoin("https://t.me", html_lib.unescape(link_preview_match.group(1)))]
         video_url = urljoin("https://t.me", html_lib.unescape(video_match.group(1))) if video_match else None
+        video_width, video_height = extract_video_dimensions_from_html(block)
+        video_media_hint = bool(video_url) or detect_video_media_hint(block)
+        video_note = detect_round_video_hint(block, video_width, video_height) if video_media_hint else False
         reply_to = extract_reply_reference(block, config)
         text_source_block = strip_anchor_block_by_class(block, "tgme_widget_message_reply") if reply_to else block
         raw_text = extract_div_inner_html_by_class(
@@ -1535,29 +1666,34 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
         text, text_html = build_text_fields(raw_text)
         forwarded_from = extract_forwarded_source(block)
 
-        if not text and not photos and not video_url:
+        if not text and not photos and not video_url and not video_media_hint:
             continue
 
         comments_url = None
         if comments_link_match:
             comments_url = urljoin("https://t.me", html_lib.unescape(comments_link_match.group(1)))
 
-        posts.append(
-            {
-                "id": post_id,
-                "date": date_match.group(1) if date_match else None,
-                "text": text,
-                "text_html": text_html,
-                "views": parse_count(views_match.group(1) if views_match else None),
-                "comments_count": parse_count(comments_count_match.group(1) if comments_count_match else None),
-                "comments_url": comments_url,
-                "photos": photos,
-                "video_url": video_url,
-                "tg_url": f"https://t.me/{config.channel_username}/{post_id}",
-                "forwarded_from": forwarded_from,
-                "reply_to": reply_to,
-            }
-        )
+        entry = {
+            "id": post_id,
+            "date": date_match.group(1) if date_match else None,
+            "text": text,
+            "text_html": text_html,
+            "views": parse_count(views_match.group(1) if views_match else None),
+            "comments_count": parse_count(comments_count_match.group(1) if comments_count_match else None),
+            "comments_url": comments_url,
+            "photos": photos,
+            "video_url": video_url,
+            "tg_url": f"https://t.me/{config.channel_username}/{post_id}",
+            "forwarded_from": forwarded_from,
+            "reply_to": reply_to,
+        }
+        if video_note:
+            entry["video_note"] = True
+        if video_width and video_height:
+            entry["video_width"] = video_width
+            entry["video_height"] = video_height
+
+        posts.append(entry)
 
     return posts
 
@@ -1956,6 +2092,19 @@ def enrich_reply_posts_from_pages(posts: list[dict[str, Any]], config: SiteConfi
             post["video_url"] = enriched_post.get("video_url")
             changed = True
 
+        if enriched_post.get("video_note") and not post.get("video_note"):
+            post["video_note"] = True
+            changed = True
+
+        if enriched_post.get("video_width") and enriched_post.get("video_height"):
+            if (
+                enriched_post.get("video_width") != post.get("video_width")
+                or enriched_post.get("video_height") != post.get("video_height")
+            ):
+                post["video_width"] = enriched_post.get("video_width")
+                post["video_height"] = enriched_post.get("video_height")
+                changed = True
+
     return changed
 
 
@@ -1970,6 +2119,95 @@ def get_downloadable_photo_targets(message: Any) -> list[Any]:
         targets.append(webpage.photo)
 
     return targets
+
+
+def is_round_video_message(message: Any) -> bool:
+    try:
+        if bool(getattr(message, "video_note", None)):
+            return True
+    except Exception:
+        pass
+
+    document = getattr(getattr(message, "media", None), "document", None)
+    for attribute in getattr(document, "attributes", []) or []:
+        if getattr(attribute, "round_message", False):
+            return True
+    return False
+
+
+def get_message_video_dimensions(message: Any) -> tuple[int | None, int | None]:
+    document = getattr(getattr(message, "media", None), "document", None)
+    for attribute in getattr(document, "attributes", []) or []:
+        width = getattr(attribute, "w", None)
+        height = getattr(attribute, "h", None)
+        if isinstance(width, int) and width > 0 and isinstance(height, int) and height > 0:
+            return width, height
+    return None, None
+
+
+def get_message_video_extension(message: Any) -> str:
+    document = getattr(getattr(message, "media", None), "document", None)
+    mime_type = (getattr(document, "mime_type", None) or "").lower()
+    return {
+        "video/mp4": "mp4",
+        "video/webm": "webm",
+        "video/quicktime": "mov",
+    }.get(mime_type, "mp4")
+
+
+async def fetch_video_metadata_for_posts(config: SiteConfig, posts: list[dict[str, Any]]) -> dict[int, dict[str, Any]]:
+    credentials = get_telegram_session_credentials()
+    if not credentials:
+        log.info("Telegram user session is not configured. Round video sync skipped.")
+        return {}
+
+    post_ids = [int(post["id"]) for post in posts if post.get("id")]
+    if not post_ids:
+        return {}
+
+    api_id, api_hash, session_string = credentials
+    results: dict[int, dict[str, Any]] = {}
+
+    from telethon import TelegramClient
+    from telethon.sessions import StringSession
+
+    async with TelegramClient(StringSession(session_string), int(api_id), api_hash) as client:
+        if not await client.is_user_authorized():
+            raise RuntimeError("TELEGRAM_SESSION_STR is not authorized.")
+
+        channel = await client.get_entity(config.channel_username)
+
+        for batch in chunked(post_ids, 100):
+            for message in await client.get_messages(channel, ids=batch):
+                if not message or not getattr(message, "id", None):
+                    continue
+
+                video_width, video_height = get_message_video_dimensions(message)
+                is_round_video = is_round_video_message(message)
+                if not is_round_video and not video_width and not video_height:
+                    continue
+
+                payload: dict[str, Any] = {}
+                if video_width and video_height:
+                    payload["video_width"] = video_width
+                    payload["video_height"] = video_height
+
+                if is_round_video:
+                    payload["video_note"] = True
+                    try:
+                        raw_bytes = await client.download_media(message, file=bytes)
+                        if raw_bytes:
+                            payload["video_bytes"] = raw_bytes
+                            payload["video_extension"] = get_message_video_extension(message)
+                    except Exception as error:  # pragma: no cover - network/runtime path
+                        log.warning("Round video download failed on post %s: %s", int(message.id), error)
+
+                if payload:
+                    results[int(message.id)] = payload
+
+            await asyncio.sleep(0.1)
+
+    return results
 
 
 async def fetch_reply_references_for_posts(config: SiteConfig, posts: list[dict[str, Any]]) -> dict[int, dict[str, Any]]:
@@ -2439,11 +2677,20 @@ def render_post_page_media(post: dict[str, Any]) -> str:
         )
 
     if post.get("video_url"):
+        video_src = post["video_url"]
+        if not re.match(r"^https?://", video_src):
+            video_src = f"{root_prefix}{video_src.lstrip('./')}"
+        video_class = "post-card__round-video" if post.get("video_note") and not photos else ""
         media_items.append(
-            f'<video src="{html_lib.escape(post["video_url"])}" preload="metadata" controls playsinline></video>'
+            f'<video class="{video_class}" src="{html_lib.escape(video_src)}" preload="metadata" controls playsinline></video>'
         )
 
-    gallery_class = "post-card__media post-card__media--gallery" if len(media_items) > 1 else "post-card__media"
+    if len(media_items) > 1:
+        gallery_class = "post-card__media post-card__media--gallery"
+    elif post.get("video_note") and not photos and post.get("video_url"):
+        gallery_class = "post-card__media post-card__media--round-video"
+    else:
+        gallery_class = "post-card__media"
     return f'<div class="{gallery_class}">{"".join(media_items)}</div>'
 
 
@@ -2662,6 +2909,7 @@ def main() -> int:
 
     reply_references = asyncio.run(fetch_reply_references_for_posts(config, posts))
     photo_overrides = asyncio.run(fetch_high_res_photos_for_posts(config, posts))
+    video_metadata = asyncio.run(fetch_video_metadata_for_posts(config, posts))
     comments_enabled, comment_results = asyncio.run(fetch_comments_for_posts(config, posts))
 
     for post in posts:
@@ -2674,11 +2922,15 @@ def main() -> int:
             post["comments_count"] = len(comment_results[post["id"]])
 
     changes_detected = avatar_changed
-    active_ids = {post["id"] for post in posts}
     changes_detected = mirror_post_photos(posts, photo_overrides=photo_overrides) or changes_detected
+    changes_detected = mirror_round_videos(posts, video_metadata=video_metadata) or changes_detected
+    posts = [post for post in posts if post.get("text") or (post.get("photos") or []) or post.get("video_url")]
+    active_ids = {post["id"] for post in posts}
     changes_detected = cleanup_removed_comment_files(active_ids) or changes_detected
 
     for post_id, comments in comment_results.items():
+        if post_id not in active_ids:
+            continue
         payload = {
             "generated_at": None,
             "post_id": post_id,

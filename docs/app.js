@@ -1672,7 +1672,12 @@ function buildMedia(post) {
   });
 
   if (post.video_url) {
-    media.push({ type: 'video', url: post.video_url });
+    media.push({
+      type: post.video_note ? 'round-video' : 'video',
+      url: post.video_url,
+      width: post.video_width || null,
+      height: post.video_height || null,
+    });
   }
 
   if (!media.length) return '';
@@ -1681,15 +1686,34 @@ function buildMedia(post) {
   const mediaId = `${state.activeChannelKey}-media-${post.id}`;
   state.mediaRegistry[mediaId] = media;
   const isGallery = media.length > 1;
+  const isSingleRoundVideo = media.length === 1 && media[0]?.type === 'round-video';
 
   const items = media.map((item, index) => {
-    const content = item.type === 'video'
-      ? `<video src="${item.url}" preload="metadata" muted playsinline controls></video>`
-      : buildResponsiveImageTag(item, index, isGallery);
-    return `<button class="media-trigger" type="button" data-index="${index}">${content}</button>`;
+    const content = item.type === 'image'
+      ? buildResponsiveImageTag(item, index, isGallery)
+      : (item.type === 'round-video' && isSingleRoundVideo
+          ? `
+            <span class="media-video-note" aria-hidden="true">
+              <video
+                src="${item.url}"
+                preload="metadata"
+                muted
+                playsinline
+                loop
+                data-round-video="true"
+              ></video>
+              <span class="media-video-note__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M9 7.5v9l7-4.5z"></path>
+                </svg>
+              </span>
+            </span>
+          `
+          : `<video src="${item.url}" preload="metadata" muted playsinline controls${item.type === 'round-video' ? ' data-round-video="true"' : ''}></video>`);
+    return `<button class="media-trigger${item.type === 'round-video' && isSingleRoundVideo ? ' media-trigger--round-video' : ''}" type="button" data-index="${index}" aria-label="${item.type === 'round-video' ? 'Открыть видеосообщение' : 'Открыть медиа'}">${content}</button>`;
   }).join('');
 
-  return `<div class="${galleryClass}" data-media-id="${mediaId}">${items}</div>`;
+  return `<div class="${galleryClass}${isSingleRoundVideo ? ' post-card__media--round-video' : ''}" data-media-id="${mediaId}">${items}</div>`;
 }
 
 function normalizeMediaUrl(url) {
@@ -2242,8 +2266,8 @@ function getViewerTrack() {
 }
 
 function buildViewerSlide(item, index) {
-  const content = item.type === 'video'
-    ? `<video src="${item.url}" controls preload="metadata" playsinline></video>`
+  const content = item.type === 'video' || item.type === 'round-video'
+    ? `<video src="${item.url}" controls preload="metadata" playsinline${item.type === 'round-video' ? ' data-round-video="true"' : ''}></video>`
     : `<img src="${item.full_url || item.feed_url || item.thumb_url}" alt="Media preview ${index + 1}" loading="eager" decoding="async" draggable="false">`;
 
   return `<div class="viewer__slide" data-viewer-index="${index}">${content}</div>`;
