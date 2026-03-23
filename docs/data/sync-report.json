@@ -1,10 +1,9 @@
 {
-  "generated_at": "2026-03-23T17:31:20.614Z",
-  "success_count": 6,
-  "failure_count": 2,
+  "generated_at": "2026-03-23T17:44:56.163Z",
+  "success_count": 7,
+  "failure_count": 1,
   "failure_channels": [
-    "pg-tax",
-    "bankrotstvo-mustknow"
+    "pg-tax"
   ],
   "channel_timeout_ms": 150000,
   "channels": [
@@ -15,7 +14,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 22224,
+      "duration_ms": 22621,
       "error": null
     },
     {
@@ -25,7 +24,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 11392,
+      "duration_ms": 16966,
       "error": null
     },
     {
@@ -35,7 +34,7 @@
       "status": "failed",
       "exit_code": null,
       "signal": "SIGKILL",
-      "duration_ms": 150054,
+      "duration_ms": 150078,
       "error": "spawnSync python ETIMEDOUT"
     },
     {
@@ -45,7 +44,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 11269,
+      "duration_ms": 17057,
       "error": null
     },
     {
@@ -55,7 +54,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 14228,
+      "duration_ms": 14240,
       "error": null
     },
     {
@@ -65,18 +64,18 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 13650,
+      "duration_ms": 17280,
       "error": null
     },
     {
       "key": "bankrotstvo-mustknow",
       "channel_username": "bankrotstvo_mustknow",
       "channel_title": "Банкротство | Взгляд эксперта",
-      "status": "failed",
-      "exit_code": null,
-      "signal": "SIGKILL",
-      "duration_ms": 150109,
-      "error": "spawnSync python ETIMEDOUT"
+      "status": "success",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 25390,
+      "error": null
     },
     {
       "key": "pg-employment",
@@ -85,7 +84,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 10856,
+      "duration_ms": 15513,
       "error": null
     }
   ]
