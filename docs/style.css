@@ -1800,16 +1800,14 @@ label,
 }
 
 .post-card--round-video-only .post-card__body {
-  position: static;
   padding-top: 12px;
-  padding-right: 22px;
 }
 
 .post-card--round-video-only .post-card__copy {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-  z-index: 2;
+  position: static;
+  top: auto;
+  right: auto;
+  z-index: auto;
 }
 
 .post-card--round-video-only .post-card__title {
@@ -2329,12 +2327,11 @@ label,
 
   .post-card--round-video-only .post-card__body {
     padding-top: 10px;
-    padding-right: 16px;
   }
 
   .post-card--round-video-only .post-card__copy {
-    top: 16px;
-    right: 16px;
+    top: auto;
+    right: auto;
   }
 
   .post-card__media--gallery {

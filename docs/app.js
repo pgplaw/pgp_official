@@ -2101,6 +2101,30 @@ function renderPostCard(post) {
     });
   }
 
+  if (isRoundVideoOnly) {
+    const body = article.querySelector('.post-card__body');
+    const content = article.querySelector('.post-card__content');
+    const title = article.querySelector('.post-card__title');
+    const reply = article.querySelector('.post-card__reply');
+    const forwardedLine = article.querySelector('.post-card__forwarded');
+    const copyButton = article.querySelector('[data-copy-post-url]');
+
+    if (body && content && copyButton && (title || reply || forwardedLine)) {
+      const head = document.createElement('div');
+      head.className = 'post-card__head';
+
+      const meta = document.createElement('div');
+      meta.className = 'post-card__meta';
+
+      [title, reply, forwardedLine].forEach((node) => {
+        if (node) meta.appendChild(node);
+      });
+
+      head.append(meta, copyButton);
+      body.insertBefore(head, content);
+    }
+  }
+
   article.querySelectorAll('[data-reply-post-id]').forEach((link) => {
     link.addEventListener('click', (event) => {
       const targetPostId = Number.parseInt(link.dataset.replyPostId || '', 10);
