@@ -142,4 +142,19 @@ test.describe('Desktop smoke', () => {
     await page.locator('#viewerClose').click();
     await expect(page.locator('#viewer')).toBeHidden();
   });
+  test('opens actual bankrotstvo round-video viewer on desktop without fallback', async ({ page }) => {
+    await page.goto('/?channel=bankrotstvo-mustknow');
+    await waitForFeedReady(page);
+
+    const card = page.locator('.post-card--round-video-only').first();
+    await expect(card).toBeVisible();
+    await card.locator('.media-trigger').click();
+    await expect(page.locator('#viewer')).toBeVisible();
+    await page.waitForFunction(() => {
+      const video = document.querySelector('#viewer video');
+      return Boolean(video && video.readyState >= 1);
+    });
+    await expect(page.locator('#viewer .viewer__fallback')).toHaveCount(0);
+    await expect(page.locator('#viewer video')).toBeVisible();
+  });
 });

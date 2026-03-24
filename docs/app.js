@@ -2484,11 +2484,6 @@ function syncViewerActiveSlide(viewport) {
     const slide = video.closest('.viewer__slide');
     const slideIndex = Number(slide?.dataset.viewerIndex || -1);
     if (slideIndex === state.viewerIndex) {
-      try {
-        if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
-          video.load();
-        }
-      } catch {}
       video.play().catch(() => {});
       return;
     }
@@ -2529,17 +2524,11 @@ function bindViewerVideoFallbacks() {
       video.addEventListener(eventName, settle, { once: true });
     });
     video.addEventListener('error', fail, { once: true });
-    video.addEventListener('abort', fail, { once: true });
-    video.addEventListener('emptied', fail, { once: true });
     video.addEventListener('stalled', () => {
-      if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+      if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE || video.readyState < HTMLMediaElement.HAVE_METADATA) {
         fail();
       }
     });
-
-    try {
-      video.load();
-    } catch {}
   });
 }
 

@@ -122,12 +122,11 @@ test.describe('Mobile smoke', () => {
     await card.locator('.media-trigger').click();
     await expect(page.locator('#viewer')).toBeVisible();
     await page.waitForFunction(() => {
-      const fallback = document.querySelector('#viewer .viewer__fallback');
-      if (fallback) return true;
       const video = document.querySelector('#viewer video');
       return Boolean(video && video.readyState >= 1);
     });
-    await expect(page.locator('#viewer video, #viewer .viewer__fallback')).toBeVisible();
+    await expect(page.locator('#viewer .viewer__fallback')).toHaveCount(0);
+    await expect(page.locator('#viewer video')).toBeVisible();
   });
 
   test('renders round-video poster preview on mobile and falls back cleanly in viewer', async ({ page }) => {
