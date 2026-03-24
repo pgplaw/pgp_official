@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-24T08:04:36.212070+00:00",
+  "generated_at": "2026-03-24T13:47:38.423607+00:00",
   "pagination": {
     "page": 3,
     "page_size": 16,
@@ -17,18 +17,18 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1321-1-362cbaf32fce-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1321-1-362cbaf32fce-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/LmzkTrC50bFPqrODAfjz-Vz7asvWytQ4u4G9nE2DzqMIQ_cHfP2Dq50SbykJ8KbxScxWLbbn-6Ci9qSTd45uchvPLa2I4JKjRw7wWuqwz_TGcNTdp3TWKBhWdzqoi9ecWEoDT1QFkNRcfqqTHEm5z-ytwBrDtWQDHlXhsfWcQmxY1tNZxX2OIsCr1rXAenmRc4PJ9pRrYClG8s1vt_2kFMhh_O18TMLNlnBZsa1utw3nJXP76soh59Dqe6BhQIiw-vmbRqfxJnlfPltxGlWVYleDuI9gcok5TGLCHYi2OXPAmfIAdhIx-Ig7bMzxCTLo4v1Tz8eQpAgV8x3noPSioQ.jpg",
-          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1321-1-362cbaf32fce-v8.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1321-1-61ec36ef9dbb-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1321-1-61ec36ef9dbb-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/jpp6LbURovrVzJqGnsbXQaqi-NAa0-pJiAxjf8f0owoIiZg668XZ4LmGr6G9VUV_m7b66tUuMuJ70zcE61OyqyHgKDSV2_4jFgHiYRBKjMXcKRpzjziuNCeRSFFudSzwuHCxUHzKZVgfWsFktzD6O-tyJ9etdGoduYG9QfDrkTS2XWss0Vgmnt7z-lmi3xjM2lwJgQaDCYaUccbuTlC68lgQXT3EUEOcPzuNPr-pjLWxOM86M3n6hgGaGgKWKxBrqp4dh3jwwXXaXbyX-8SQG8CDivVLfDLlJZkjvnygEE6bGeGOHe2Wn8OnMJJLyjNS46sLZd2tHAI6C6sj9xb2dQ.jpg",
+          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1321-1-61ec36ef9dbb-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
-          "feed_width": 1600,
-          "feed_height": 640,
-          "full_width": 1600,
-          "full_height": 640,
-          "source_width": 1600,
-          "source_height": 640
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752
         }
       ],
       "video_url": null,
