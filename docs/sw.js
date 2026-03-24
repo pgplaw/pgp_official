@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v21';
+const CACHE_VERSION = 'v22';
 const SHELL_CACHE_NAME = `telegram-pages-mirror-shell-${CACHE_VERSION}`;
 const DATA_CACHE_NAME = `telegram-pages-mirror-data-${CACHE_VERSION}`;
 const MEDIA_CACHE_NAME = `telegram-pages-mirror-media-${CACHE_VERSION}`;
@@ -213,6 +213,18 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   const isLocalAsset = url.origin === self.location.origin;
   if (!isLocalAsset) {
+    return;
+  }
+
+  const rangeHeader = request.headers.get('range');
+  const isVideoRequest =
+    request.destination === 'video' ||
+    /\.(?:mp4|webm|mov|m4v)$/i.test(url.pathname);
+
+  // Let the browser handle video streaming directly. Mobile browsers often
+  // rely on Range requests for media playback, and routing those through the
+  // generic runtime cache can cause stalled loaders.
+  if (rangeHeader || isVideoRequest) {
     return;
   }
 
