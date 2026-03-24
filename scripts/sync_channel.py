@@ -10,6 +10,8 @@ import logging
 import math
 import os
 import re
+import shutil
+import subprocess
 import sys
 import tempfile
 import time
@@ -454,6 +456,123 @@ def infer_video_extension_from_url(video_url: str | None, default: str = "mp4") 
         return suffix
 
     return default
+
+
+def iterate_mp4_top_level_boxes(raw_bytes: bytes) -> list[tuple[str, int, int]]:
+    boxes: list[tuple[str, int, int]] = []
+    offset = 0
+    total_size = len(raw_bytes)
+
+    while offset + 8 <= total_size:
+        size = int.from_bytes(raw_bytes[offset : offset + 4], "big")
+        box_type = raw_bytes[offset + 4 : offset + 8].decode("ascii", errors="ignore")
+        header_size = 8
+
+        if size == 1:
+            if offset + 16 > total_size:
+                break
+            size = int.from_bytes(raw_bytes[offset + 8 : offset + 16], "big")
+            header_size = 16
+
+        if size < header_size or offset + size > total_size:
+            break
+
+        boxes.append((box_type, offset, size))
+        offset += size
+
+        if offset >= total_size:
+            break
+
+    return boxes
+
+
+def has_faststart_layout(raw_bytes: bytes, extension: str | None = "mp4") -> bool:
+    normalized_extension = (extension or "mp4").strip().lower()
+    if normalized_extension not in {"mp4", "mov", "m4v"}:
+        return True
+
+    boxes = iterate_mp4_top_level_boxes(raw_bytes)
+    moov_offset = None
+    mdat_offset = None
+    for box_type, offset, _ in boxes:
+        if box_type == "moov" and moov_offset is None:
+            moov_offset = offset
+        if box_type == "mdat" and mdat_offset is None:
+            mdat_offset = offset
+
+    if moov_offset is None or mdat_offset is None:
+        return True
+
+    return moov_offset < mdat_offset
+
+
+def optimize_video_for_streaming(raw_bytes: bytes, extension: str = "mp4") -> bytes:
+    normalized_extension = (extension or "mp4").strip().lower()
+    if has_faststart_layout(raw_bytes, normalized_extension):
+        return raw_bytes
+
+    ffmpeg_path = shutil.which("ffmpeg")
+    if not ffmpeg_path:
+        log.warning("FFmpeg is unavailable, cannot remux %s video to faststart layout", normalized_extension)
+        return raw_bytes
+
+    input_path: Path | None = None
+    output_path: Path | None = None
+
+    try:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=f".{normalized_extension or 'mp4'}") as input_handle:
+            input_handle.write(raw_bytes)
+            input_path = Path(input_handle.name)
+
+        with tempfile.NamedTemporaryFile(delete=False, suffix=f".{normalized_extension or 'mp4'}") as output_handle:
+            output_path = Path(output_handle.name)
+
+        completed = subprocess.run(
+            [
+                ffmpeg_path,
+                "-v",
+                "error",
+                "-y",
+                "-i",
+                str(input_path),
+                "-c",
+                "copy",
+                "-movflags",
+                "+faststart",
+                str(output_path),
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            timeout=120,
+            check=False,
+        )
+        if completed.returncode != 0:
+            stderr = completed.stderr.decode("utf-8", errors="ignore").strip()
+            log.warning("FFmpeg faststart remux failed for %s video: %s", normalized_extension, stderr or completed.returncode)
+            return raw_bytes
+
+        optimized_bytes = output_path.read_bytes()
+        if not optimized_bytes:
+            return raw_bytes
+
+        if not has_faststart_layout(optimized_bytes, normalized_extension):
+            log.warning("FFmpeg remux did not produce faststart %s video", normalized_extension)
+            return raw_bytes
+
+        if optimized_bytes != raw_bytes:
+            log.info("Optimized %s video for progressive playback (faststart)", normalized_extension)
+
+        return optimized_bytes
+    except Exception as error:  # pragma: no cover - runtime/video path
+        log.warning("Video faststart optimization failed for %s video: %s", normalized_extension, error)
+        return raw_bytes
+    finally:
+        for path in (input_path, output_path):
+            if path:
+                try:
+                    path.unlink(missing_ok=True)
+                except Exception:
+                    pass
 
 
 def extract_video_poster_bytes(raw_bytes: bytes, extension: str = "mp4") -> bytes | None:
@@ -1121,6 +1240,12 @@ def mirror_round_videos(
                 log.warning("Round video post %s has no mirrored video bytes or fallback URL", post["id"])
             continue
 
+        if raw_bytes:
+            optimized_bytes = optimize_video_for_streaming(raw_bytes, extension)
+            if optimized_bytes != raw_bytes:
+                raw_bytes = optimized_bytes
+                changes_detected = True
+
         digest = hashlib.sha256(raw_bytes).hexdigest()[:12]
         filename = f"{post['id']}-video-note-{digest}-{VIDEO_VARIANT_VERSION}.{extension}"
         video_path = POSTS_VIDEOS_DIR / filename
@@ -1229,6 +1354,14 @@ def validate_round_video_posts(posts: list[dict[str, Any]]) -> list[str]:
         if not is_valid_local_video(video_path):
             errors.append(f"post {post.get('id')}: round video is not mirrored locally ({video_url})")
             continue
+        if video_path and video_path.suffix.lower() in {".mp4", ".mov", ".m4v"}:
+            try:
+                if not has_faststart_layout(video_path.read_bytes(), video_path.suffix.lstrip(".")):
+                    errors.append(f"post {post.get('id')}: round video is not faststart optimized ({video_url})")
+                    continue
+            except Exception as error:
+                errors.append(f"post {post.get('id')}: failed to inspect round video container ({error})")
+                continue
 
         poster = normalize_video_poster_entry(post.get("video_poster"))
         poster_urls = [
