@@ -1809,6 +1809,7 @@ label,
   justify-content: space-between;
   gap: 14px;
   margin-bottom: 12px;
+  padding: 22px 22px 0;
 }
 
 .post-card--round-video-only .post-card__meta {
@@ -2344,6 +2345,10 @@ label,
 
   .post-card--round-video-only .post-card__body {
     padding-top: 10px;
+  }
+
+  .post-card--round-video-only .post-card__head {
+    padding: 16px 16px 0;
   }
 
   .post-card--round-video-only .post-card__copy {

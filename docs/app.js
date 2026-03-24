@@ -2121,7 +2121,11 @@ function renderPostCard(post) {
       });
 
       head.append(meta, copyButton);
-      body.insertBefore(head, content);
+      if (mediaRoot) {
+        article.insertBefore(head, mediaRoot);
+      } else {
+        body.insertBefore(head, content);
+      }
     }
   }
 

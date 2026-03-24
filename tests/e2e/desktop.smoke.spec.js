@@ -96,11 +96,14 @@ test.describe('Desktop smoke', () => {
 
     const title = page.locator('#round-video-layout-host-desktop .post-card__title');
     const copy = page.locator('#round-video-layout-host-desktop .post-card__copy');
+    const media = page.locator('#round-video-layout-host-desktop .post-card__media');
     await expect(title).toHaveText('Видео-пост');
-    const [titleBox, copyBox] = await Promise.all([title.boundingBox(), copy.boundingBox()]);
+    const [titleBox, copyBox, mediaBox] = await Promise.all([title.boundingBox(), copy.boundingBox(), media.boundingBox()]);
     expect(titleBox).toBeTruthy();
     expect(copyBox).toBeTruthy();
+    expect(mediaBox).toBeTruthy();
     expect(Math.abs(titleBox.y - copyBox.y)).toBeLessThanOrEqual(10);
     expect(copyBox.x).toBeGreaterThan(titleBox.x);
+    expect(titleBox.y).toBeLessThan(mediaBox.y);
   });
 });
