@@ -1612,8 +1612,14 @@ label,
   align-items: center;
   gap: 8px;
   border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent-strong);
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, rgba(255, 255, 255, 0.22));
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent 64%),
+    color-mix(in srgb, var(--accent) 20%, var(--bg-elevated) 80%);
+  color: color-mix(in srgb, var(--accent) 78%, white 22%);
+  box-shadow:
+    0 10px 24px color-mix(in srgb, var(--accent) 12%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
   padding: 7px 12px;
   font-size: 0.86rem;
   font-weight: 700;
