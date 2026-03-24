@@ -45,5 +45,13 @@ module.exports = defineConfig({
       },
       testMatch: /mobile\.smoke\.spec\.js/,
     },
+    {
+      name: 'android-chromium',
+      use: {
+        ...devices['Pixel 7'],
+        browserName: 'chromium',
+      },
+      testMatch: /mobile\.smoke\.spec\.js/,
+    },
   ],
 });
