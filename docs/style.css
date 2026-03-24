@@ -2002,6 +2002,14 @@ label,
     display: block;
   }
 
+  .channel-carousel__stage {
+    width: 100%;
+  }
+
+  .channel-carousel__slide {
+    padding-inline: 0;
+  }
+
   .channel-tab {
     flex-basis: 148px;
     min-width: 148px;
@@ -2160,7 +2168,7 @@ label,
 
   .channel-nav {
     top: 6px;
-    padding: 12px;
+    padding: 12px 10px;
     border-radius: 22px;
     box-shadow: none;
   }
@@ -2177,7 +2185,7 @@ label,
   }
 
   .channel-carousel__slide {
-    padding-inline: 10px;
+    padding-inline: 0;
   }
 
   .channel-carousel__nav {
