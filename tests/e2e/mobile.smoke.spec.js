@@ -45,8 +45,11 @@ test.describe('Mobile smoke', () => {
     await waitForFeedReady(page);
     await expect(page.locator('#siteTitle')).not.toHaveText(initialTitle);
 
-    await page.evaluate(() => window.scrollTo({ top: 1600, behavior: 'auto' }));
-    await page.waitForTimeout(120);
+    await page.evaluate(() => {
+      window.scrollTo({ top: 1600, behavior: 'auto' });
+      window.dispatchEvent(new Event('scroll'));
+    });
+    await page.waitForFunction(() => document.getElementById('scrollTopButton')?.classList.contains('is-visible'));
     await expect(page.locator('#scrollTopButton')).toHaveClass(/is-visible/);
   });
 
@@ -83,5 +86,39 @@ test.describe('Mobile smoke', () => {
     expect(Math.abs(titleBox.y - copyBox.y)).toBeLessThanOrEqual(10);
     expect(copyBox.x).toBeGreaterThan(titleBox.x);
     expect(titleBox.y).toBeLessThan(mediaBox.y);
+  });
+
+  test('renders round-video poster preview on mobile and falls back cleanly in viewer', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'round-video-fallback-host-mobile';
+      document.body.appendChild(host);
+      const posterUrl = `${window.location.origin}/assets/channel-avatar.jpg`;
+      const card = window.renderPostCard({
+        id: 999994,
+        date: new Date().toISOString(),
+        text: '',
+        text_html: '',
+        photos: [],
+        video_note: true,
+        video_url: '/missing-round-video-mobile.mp4',
+        video_poster: {
+          thumb_url: posterUrl,
+          feed_url: posterUrl,
+          full_url: posterUrl,
+        },
+        tg_url: 'https://t.me/example/999994',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    });
+
+    await page.locator('#round-video-fallback-host-mobile').scrollIntoViewIfNeeded();
+    await expect(page.locator('#round-video-fallback-host-mobile .media-video-note img')).toBeVisible();
+    await page.locator('#round-video-fallback-host-mobile .media-trigger').click();
+    await expect(page.locator('#viewer .viewer__fallback')).toContainText(/временно недоступно/i);
   });
 });

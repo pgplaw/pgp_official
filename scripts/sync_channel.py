@@ -11,6 +11,7 @@ import math
 import os
 import re
 import sys
+import tempfile
 import time
 from copy import deepcopy
 from dataclasses import dataclass
@@ -197,11 +198,17 @@ def fetch_url(
     timeout: int = 30,
     retry_delays: tuple[float, ...] = FETCH_RETRY_DELAYS,
     log_failures: bool = True,
+    accept: str | None = None,
+    extra_headers: dict[str, str] | None = None,
 ) -> str | bytes:
-    headers = BASE_HEADERS if not binary else {
-        **BASE_HEADERS,
-        "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
-    }
+    headers = dict(BASE_HEADERS)
+    if binary:
+        headers["Accept"] = accept or "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+    elif accept:
+        headers["Accept"] = accept
+
+    if extra_headers:
+        headers.update({key: value for key, value in extra_headers.items() if value})
 
     last_error: Exception | None = None
     for attempt, delay in enumerate((0.0, *retry_delays), start=1):
@@ -240,8 +247,20 @@ def fetch_binary(
     timeout: int = 30,
     retry_delays: tuple[float, ...] = FETCH_RETRY_DELAYS,
     log_failures: bool = True,
+    accept: str | None = None,
+    extra_headers: dict[str, str] | None = None,
 ) -> bytes:
-    return bytes(fetch_url(url, binary=True, timeout=timeout, retry_delays=retry_delays, log_failures=log_failures))
+    return bytes(
+        fetch_url(
+            url,
+            binary=True,
+            timeout=timeout,
+            retry_delays=retry_delays,
+            log_failures=log_failures,
+            accept=accept,
+            extra_headers=extra_headers,
+        )
+    )
 
 
 def build_telegram_avatar_url(channel_username: str) -> str:
@@ -369,6 +388,38 @@ def is_valid_local_image(path: Path | None) -> bool:
     return bool(width and height)
 
 
+def is_local_asset_url(url: str | None) -> bool:
+    if not isinstance(url, str):
+        return False
+
+    normalized = url.strip()
+    if not normalized:
+        return False
+
+    return not re.match(r"^(?:[a-z]+:)?//", normalized, re.IGNORECASE) and not normalized.startswith("data:")
+
+
+def resolve_local_asset_path(url: str | None) -> Path | None:
+    if not is_local_asset_url(url):
+        return None
+
+    normalized = str(url).strip().lstrip("./").replace("/", os.sep)
+    if not normalized:
+        return None
+
+    return DOCS_DIR / normalized
+
+
+def is_valid_local_video(path: Path | None) -> bool:
+    if not path or not path.exists() or not path.is_file():
+        return False
+
+    try:
+        return path.stat().st_size > 0
+    except OSError:
+        return False
+
+
 def with_local_variant_dimensions(
     photo: dict[str, Any],
     *,
@@ -391,6 +442,54 @@ def with_local_variant_dimensions(
     if "source_height" not in enriched and enriched.get("full_height"):
         enriched["source_height"] = enriched["full_height"]
     return enriched
+
+
+def infer_video_extension_from_url(video_url: str | None, default: str = "mp4") -> str:
+    if not isinstance(video_url, str):
+        return default
+
+    parsed = urlparse(video_url)
+    suffix = Path(parsed.path or "").suffix.lower().lstrip(".")
+    if suffix in {"mp4", "webm", "mov", "m4v"}:
+        return suffix
+
+    return default
+
+
+def extract_video_poster_bytes(raw_bytes: bytes, extension: str = "mp4") -> bytes | None:
+    temp_path: Path | None = None
+    try:
+        import cv2
+        from PIL import Image
+
+        with tempfile.NamedTemporaryFile(delete=False, suffix=f".{extension or 'mp4'}") as handle:
+            handle.write(raw_bytes)
+            temp_path = Path(handle.name)
+
+        capture = cv2.VideoCapture(str(temp_path))
+        if not capture.isOpened():
+            capture.release()
+            return None
+
+        success, frame = capture.read()
+        capture.release()
+        if not success or frame is None:
+            return None
+
+        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        image = Image.fromarray(rgb_frame)
+        buffer = io.BytesIO()
+        image.save(buffer, format="JPEG", quality=90, optimize=True, progressive=True)
+        return buffer.getvalue()
+    except Exception as error:  # pragma: no cover - runtime/video libs path
+        log.warning("Round video poster extraction fallback used: %s", error)
+        return None
+    finally:
+        if temp_path:
+            try:
+                temp_path.unlink(missing_ok=True)
+            except Exception:
+                pass
 
 
 def ensure_superres_model(model_path: Path, model_url: str, label: str) -> Path:
@@ -908,15 +1007,67 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
     return changes_detected
 
 
-def mirror_round_videos(posts: list[dict[str, Any]], video_metadata: dict[int, dict[str, Any]] | None = None) -> bool:
+def reuse_existing_round_video_assets(
+    post: dict[str, Any],
+    existing_post: dict[str, Any] | None,
+    active_relative_paths: set[str],
+) -> bool:
+    if not existing_post:
+        return False
+
+    reused = False
+
+    existing_video_url = existing_post.get("video_url")
+    existing_video_path = resolve_local_asset_path(existing_video_url)
+    if is_valid_local_video(existing_video_path):
+        if post.get("video_url") != existing_video_url:
+            post["video_url"] = existing_video_url
+            reused = True
+        active_relative_paths.add(str(existing_video_url))
+
+    existing_poster = normalize_video_poster_entry(existing_post.get("video_poster"))
+    if existing_poster:
+        poster_urls = [
+            existing_poster.get("thumb_url"),
+            existing_poster.get("feed_url"),
+            existing_poster.get("full_url"),
+        ]
+        if any(is_valid_local_image(resolve_local_asset_path(url)) for url in poster_urls):
+            if post.get("video_poster") != existing_poster:
+                post["video_poster"] = existing_poster
+                reused = True
+            for url in poster_urls:
+                if is_local_asset_url(url):
+                    active_relative_paths.add(str(url))
+
+    if existing_post.get("video_width") and existing_post.get("video_height"):
+        if not post.get("video_width") or not post.get("video_height"):
+            post["video_width"] = existing_post.get("video_width")
+            post["video_height"] = existing_post.get("video_height")
+            reused = True
+
+    return reused
+
+
+def mirror_round_videos(
+    posts: list[dict[str, Any]],
+    video_metadata: dict[int, dict[str, Any]] | None = None,
+    existing_posts: list[dict[str, Any]] | None = None,
+) -> bool:
     POSTS_VIDEOS_DIR.mkdir(parents=True, exist_ok=True)
     POSTS_VIDEO_POSTERS_DIR.mkdir(parents=True, exist_ok=True)
     active_relative_paths: set[str] = set()
     changes_detected = False
     video_metadata = video_metadata or {}
+    existing_posts_by_id = {
+        int(entry.get("id")): entry
+        for entry in (existing_posts or [])
+        if entry.get("id")
+    }
 
     for post in posts:
         metadata = video_metadata.get(post["id"])
+        existing_post = existing_posts_by_id.get(int(post["id"]))
         if metadata is not None:
             if metadata.get("video_note"):
                 post["video_note"] = True
@@ -931,8 +1082,41 @@ def mirror_round_videos(posts: list[dict[str, Any]], video_metadata: dict[int, d
                 post.pop("video_height", None)
 
         raw_bytes = (metadata or {}).get("video_bytes")
-        extension = (metadata or {}).get("video_extension") or "mp4"
-        if not raw_bytes:
+        extension = (metadata or {}).get("video_extension") or infer_video_extension_from_url(post.get("video_url"))
+        local_video_url = post.get("video_url") if is_local_asset_url(post.get("video_url")) else None
+        local_video_path = resolve_local_asset_path(local_video_url)
+        if local_video_url and is_valid_local_video(local_video_path):
+            active_relative_paths.add(str(local_video_url))
+        else:
+            local_video_url = None
+            local_video_path = None
+
+        if not raw_bytes and not local_video_url:
+            reused_existing_assets = reuse_existing_round_video_assets(post, existing_post, active_relative_paths)
+            changes_detected = reused_existing_assets or changes_detected
+            local_video_url = post.get("video_url") if is_local_asset_url(post.get("video_url")) else None
+            local_video_path = resolve_local_asset_path(local_video_url)
+
+        if not raw_bytes and post.get("video_note") and not local_video_url and re.match(r"^https?://", str(post.get("video_url") or ""), re.IGNORECASE):
+            try:
+                raw_bytes = fetch_binary(
+                    str(post["video_url"]),
+                    timeout=40,
+                    retry_delays=DIRECT_POST_PROBE_FETCH_RETRY_DELAYS,
+                    accept="video/*,*/*;q=0.8",
+                    extra_headers={"Referer": str(post.get("tg_url") or "")},
+                )
+                log.info("Mirrored round video source fetched for post %s", post["id"])
+            except Exception as error:  # pragma: no cover - network/runtime path
+                log.warning("Round video source fetch failed on post %s: %s", post["id"], error)
+
+        if not raw_bytes and local_video_path and is_valid_local_video(local_video_path):
+            try:
+                raw_bytes = local_video_path.read_bytes()
+            except Exception:
+                raw_bytes = None
+
+        if not raw_bytes and not local_video_url:
             if post.get("video_note") and not post.get("video_url"):
                 log.warning("Round video post %s has no mirrored video bytes or fallback URL", post["id"])
             continue
@@ -951,6 +1135,28 @@ def mirror_round_videos(posts: list[dict[str, Any]], video_metadata: dict[int, d
             post["video_url"] = relative_url
 
         poster_bytes = (metadata or {}).get("poster_bytes")
+        if not poster_bytes:
+            existing_poster = normalize_video_poster_entry(post.get("video_poster")) or normalize_video_poster_entry(
+                existing_post.get("video_poster") if existing_post else None
+            )
+            if existing_poster:
+                poster_urls = [
+                    existing_poster.get("thumb_url"),
+                    existing_poster.get("feed_url"),
+                    existing_poster.get("full_url"),
+                ]
+                for url in poster_urls:
+                    poster_path = resolve_local_asset_path(url)
+                    if is_valid_local_image(poster_path):
+                        try:
+                            poster_bytes = poster_path.read_bytes()
+                            break
+                        except Exception:
+                            continue
+
+        if not poster_bytes and raw_bytes:
+            poster_bytes = extract_video_poster_bytes(raw_bytes, extension)
+
         if poster_bytes:
             poster_digest = hashlib.sha256(poster_bytes).hexdigest()[:12]
             poster_filename = f"{post['id']}-video-note-poster-{poster_digest}-{VIDEO_VARIANT_VERSION}.jpg"
@@ -1009,6 +1215,31 @@ def mirror_round_videos(posts: list[dict[str, Any]], video_metadata: dict[int, d
         )
 
     return changes_detected
+
+
+def validate_round_video_posts(posts: list[dict[str, Any]]) -> list[str]:
+    errors: list[str] = []
+
+    for post in posts:
+        if not post.get("video_note"):
+            continue
+
+        video_url = post.get("video_url")
+        video_path = resolve_local_asset_path(video_url)
+        if not is_valid_local_video(video_path):
+            errors.append(f"post {post.get('id')}: round video is not mirrored locally ({video_url})")
+            continue
+
+        poster = normalize_video_poster_entry(post.get("video_poster"))
+        poster_urls = [
+            poster.get("thumb_url") if poster else None,
+            poster.get("feed_url") if poster else None,
+            poster.get("full_url") if poster else None,
+        ]
+        if not any(is_valid_local_image(resolve_local_asset_path(url)) for url in poster_urls):
+            errors.append(f"post {post.get('id')}: round video poster is missing")
+
+    return errors
 
 
 def parse_count(raw: str | None) -> int:
@@ -2978,7 +3209,16 @@ def main() -> int:
 
     changes_detected = avatar_changed
     changes_detected = mirror_post_photos(posts, photo_overrides=photo_overrides) or changes_detected
-    changes_detected = mirror_round_videos(posts, video_metadata=video_metadata) or changes_detected
+    changes_detected = mirror_round_videos(
+        posts,
+        video_metadata=video_metadata,
+        existing_posts=existing_payload.get("posts") or [],
+    ) or changes_detected
+    round_video_errors = validate_round_video_posts(posts)
+    if round_video_errors:
+        for error in round_video_errors:
+            log.error("Round video validation failed: %s", error)
+        return 1
     posts = [post for post in posts if post.get("text") or (post.get("photos") or []) or post.get("video_url")]
     active_ids = {post["id"] for post in posts}
     changes_detected = cleanup_removed_comment_files(active_ids) or changes_detected

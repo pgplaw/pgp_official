@@ -1697,14 +1697,7 @@ function buildMedia(post) {
             <span class="media-video-note" aria-hidden="true">
               ${item.poster
                 ? buildResponsiveImageTag(item.poster, index, false)
-                : `<video
-                    src="${item.url}"
-                    preload="metadata"
-                    muted
-                    playsinline
-                    loop
-                    data-round-video="true"
-                  ></video>`}
+                : '<span class="media-video-note__placeholder">Видео</span>'}
               <span class="media-video-note__play" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
                   <path d="M9 7.5v9l7-4.5z"></path>
@@ -1932,8 +1925,9 @@ function bindMediaFill(root) {
     const trigger = image.closest('.media-trigger');
     const index = Number.parseInt(trigger?.dataset.index || image.dataset.mediaIndex || '', 10);
     const item = Number.isFinite(index) ? items[index] : null;
+    const resolvedItem = item?.type === 'round-video' && item.poster ? item.poster : item;
 
-    if (!item) {
+    if (!resolvedItem) {
       if (image.complete) {
         applyIntrinsicMediaLimit(image);
         applyMediaFill(image);
@@ -1949,7 +1943,7 @@ function bindMediaFill(root) {
       return;
     }
 
-    bindImageFallback(image, item, { isGallery, preferFull: false });
+    bindImageFallback(image, resolvedItem, { isGallery, preferFull: false });
   });
 }
 
@@ -2332,6 +2326,19 @@ function syncViewerActiveSlide(viewport) {
   });
 }
 
+function bindViewerVideoFallbacks() {
+  elements.viewerContent.querySelectorAll('.viewer__slide video').forEach((video) => {
+    if (video.dataset.viewerFallbackBound === 'true') return;
+    video.dataset.viewerFallbackBound = 'true';
+
+    video.addEventListener('error', () => {
+      const slide = video.closest('.viewer__slide');
+      if (!slide) return;
+      markMediaUnavailable(slide);
+    });
+  });
+}
+
 function getViewerViewportWidth(viewport = getViewerViewport()) {
   return Math.max(viewport?.clientWidth || 0, elements.viewerContent.clientWidth || 0, 1);
 }
@@ -2523,6 +2530,7 @@ function renderViewer() {
 
   const viewport = getViewerViewport();
   bindViewerImageFallbacks();
+  bindViewerVideoFallbacks();
   bindViewerViewport(viewport);
   updateViewerNavigation();
   requestAnimationFrame(() => {

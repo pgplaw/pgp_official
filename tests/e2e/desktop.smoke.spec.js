@@ -106,4 +106,40 @@ test.describe('Desktop smoke', () => {
     expect(copyBox.x).toBeGreaterThan(titleBox.x);
     expect(titleBox.y).toBeLessThan(mediaBox.y);
   });
+
+  test('shows round-video poster preview and viewer fallback instead of endless loading', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'round-video-fallback-host-desktop';
+      document.body.appendChild(host);
+      const posterUrl = `${window.location.origin}/assets/channel-avatar.jpg`;
+      const card = window.renderPostCard({
+        id: 999993,
+        date: new Date().toISOString(),
+        text: '',
+        text_html: '',
+        photos: [],
+        video_note: true,
+        video_url: '/missing-round-video.mp4',
+        video_poster: {
+          thumb_url: posterUrl,
+          feed_url: posterUrl,
+          full_url: posterUrl,
+        },
+        tg_url: 'https://t.me/example/999993',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    });
+
+    await expect(page.locator('#round-video-fallback-host-desktop .media-video-note img')).toBeVisible();
+    await page.locator('#round-video-fallback-host-desktop .media-trigger').click();
+    await expect(page.locator('#viewer')).toBeVisible();
+    await expect(page.locator('#viewer .viewer__fallback')).toContainText(/временно недоступно/i);
+    await page.locator('#viewerClose').click();
+    await expect(page.locator('#viewer')).toBeHidden();
+  });
 });
