@@ -995,10 +995,14 @@ label,
   justify-content: center;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
-  background: linear-gradient(145deg, #9a2c95 0%, #74206f 100%);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--accent) 92%, white 8%) 0%,
+    color-mix(in srgb, var(--accent) 72%, #1f1934 28%) 100%
+  );
   color: #fff;
   box-shadow:
-    0 12px 24px rgba(145, 39, 141, 0.2),
+    0 12px 24px color-mix(in srgb, var(--accent) 24%, transparent),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
   cursor: pointer;
   transition:
@@ -1010,11 +1014,16 @@ label,
 
 .icon-button:hover {
   transform: translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.18);
+  border-color: color-mix(in srgb, var(--accent) 24%, rgba(255, 255, 255, 0.18));
   box-shadow:
-    0 16px 30px rgba(145, 39, 141, 0.26),
+    0 16px 30px color-mix(in srgb, var(--accent) 30%, transparent),
     inset 0 1px 0 rgba(255, 255, 255, 0.14);
   filter: saturate(1.03);
+}
+
+.icon-button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  outline-offset: 2px;
 }
 
 .icon-button svg,
