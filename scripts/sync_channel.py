@@ -2425,6 +2425,199 @@ def get_message_video_extension(message: Any) -> str:
     }.get(mime_type, "mp4")
 
 
+def build_api_photo_placeholders(post_id: int, count: int) -> list[dict[str, str]]:
+    placeholders: list[dict[str, str]] = []
+    for index in range(count):
+        marker = f"api-photo-placeholder/{post_id}-{index + 1}.jpg"
+        placeholders.append({
+            "thumb_url": marker,
+            "feed_url": marker,
+            "full_url": marker,
+        })
+    return placeholders
+
+
+def get_message_comments_count(message: Any) -> int:
+    replies = getattr(message, "replies", None)
+    return int(getattr(replies, "replies", 0) or 0)
+
+
+def build_post_from_api_message(
+    message: Any,
+    config: SiteConfig,
+    *,
+    photo_count: int = 0,
+    video_note: bool = False,
+    video_width: int | None = None,
+    video_height: int | None = None,
+) -> dict[str, Any] | None:
+    post_id = int(getattr(message, "id", 0) or 0)
+    if post_id <= 0:
+        return None
+
+    text = getattr(message, "message", None) or None
+    comments_count = get_message_comments_count(message)
+    message_date = getattr(message, "date", None)
+    if isinstance(message_date, datetime):
+        date_value = message_date.astimezone(timezone.utc).isoformat()
+    else:
+        date_value = None
+
+    entry: dict[str, Any] = {
+        "id": post_id,
+        "date": date_value,
+        "text": text,
+        "text_html": None,
+        "views": int(getattr(message, "views", 0) or 0),
+        "comments_count": comments_count,
+        "comments_url": f"https://t.me/{config.channel_username}/{post_id}?comment=1" if comments_count > 0 else None,
+        "photos": build_api_photo_placeholders(post_id, photo_count) if photo_count > 0 else [],
+        "video_url": None,
+        "tg_url": f"https://t.me/{config.channel_username}/{post_id}",
+        "forwarded_from": None,
+        "reply_to": None,
+    }
+
+    if video_note:
+        entry["video_note"] = True
+    if video_width and video_height:
+        entry["video_width"] = video_width
+        entry["video_height"] = video_height
+
+    if not entry["text"] and not entry["photos"] and not entry.get("video_note"):
+        return None
+
+    return entry
+
+
+async def recover_newer_posts_from_api(
+    config: SiteConfig,
+    posts: list[dict[str, Any]],
+    *,
+    cutoff: datetime,
+) -> tuple[list[dict[str, Any]], dict[int, list[bytes]], int | None]:
+    credentials = get_telegram_session_credentials()
+    if not credentials:
+        return posts, {}, None
+
+    current_top_post_id = get_highest_post_id(posts)
+    if current_top_post_id <= 0:
+        return posts, {}, None
+
+    api_id, api_hash, session_string = credentials
+    known_ids = {int(post.get("id") or 0) for post in posts}
+    recovered_posts: list[dict[str, Any]] = []
+    photo_overrides: dict[int, list[bytes]] = {}
+    latest_api_post_id: int | None = None
+
+    from telethon import TelegramClient
+    from telethon.sessions import StringSession
+
+    async with TelegramClient(StringSession(session_string), int(api_id), api_hash) as client:
+        if not await client.is_user_authorized():
+            raise RuntimeError("TELEGRAM_SESSION_STR is not authorized.")
+
+        channel = await client.get_entity(config.channel_username)
+        recent_messages: list[Any] = []
+        max_scan = max(config.messages_limit * 2, 80)
+
+        async for message in client.iter_messages(channel, limit=max_scan):
+            if not message or not getattr(message, "id", None):
+                continue
+
+            message_date = getattr(message, "date", None)
+            if isinstance(message_date, datetime) and message_date.astimezone(timezone.utc) < cutoff:
+                break
+
+            recent_messages.append(message)
+
+        if not recent_messages:
+            return posts, {}, None
+
+        latest_api_post_id = max(int(getattr(message, "id", 0) or 0) for message in recent_messages)
+        if latest_api_post_id <= current_top_post_id:
+            return posts, {}, latest_api_post_id
+
+        grouped_candidates: dict[int, list[Any]] = {}
+        standalone_candidates: list[Any] = []
+        for message in recent_messages:
+            message_id = int(getattr(message, "id", 0) or 0)
+            if message_id <= current_top_post_id or message_id in known_ids:
+                continue
+
+            grouped_id = getattr(message, "grouped_id", None)
+            if grouped_id:
+                grouped_candidates.setdefault(int(grouped_id), []).append(message)
+            else:
+                standalone_candidates.append(message)
+
+        for message in standalone_candidates:
+            photo_targets = get_downloadable_photo_targets(message)
+            downloaded_photos: list[bytes] = []
+            if photo_targets:
+                for target in photo_targets:
+                    raw_bytes = await client.download_media(target, file=bytes)
+                    if raw_bytes:
+                        downloaded_photos.append(raw_bytes)
+
+            is_round_video = is_round_video_message(message)
+            video_width, video_height = get_message_video_dimensions(message)
+            recovered_post = build_post_from_api_message(
+                message,
+                config,
+                photo_count=len(downloaded_photos),
+                video_note=is_round_video,
+                video_width=video_width,
+                video_height=video_height,
+            )
+            if not recovered_post:
+                continue
+
+            if downloaded_photos:
+                photo_overrides[int(recovered_post["id"])] = downloaded_photos
+            recovered_posts.append(recovered_post)
+            await asyncio.sleep(0.05)
+
+        for grouped_messages in grouped_candidates.values():
+            ordered_group = sorted(grouped_messages, key=lambda message: int(getattr(message, "id", 0) or 0))
+            anchor_message = next(
+                (message for message in ordered_group if (getattr(message, "message", None) or "").strip()),
+                ordered_group[0],
+            )
+
+            downloaded_photos: list[bytes] = []
+            for message in ordered_group:
+                for target in get_downloadable_photo_targets(message):
+                    raw_bytes = await client.download_media(target, file=bytes)
+                    if raw_bytes:
+                        downloaded_photos.append(raw_bytes)
+
+            recovered_post = build_post_from_api_message(
+                anchor_message,
+                config,
+                photo_count=len(downloaded_photos),
+            )
+            if not recovered_post:
+                continue
+
+            if downloaded_photos:
+                photo_overrides[int(recovered_post["id"])] = downloaded_photos
+            recovered_posts.append(recovered_post)
+            await asyncio.sleep(0.05)
+
+    if not recovered_posts:
+        return posts, photo_overrides, latest_api_post_id
+
+    log.info(
+        "Recovered %s newer posts from Telegram API: %s",
+        len(recovered_posts),
+        ", ".join(str(int(post.get("id") or 0)) for post in sorted(recovered_posts, key=lambda item: int(item.get("id") or 0))),
+    )
+    combined_posts = posts + recovered_posts
+    combined_posts.sort(key=lambda post: post.get("date") or "", reverse=True)
+    return combined_posts[: config.messages_limit], photo_overrides, latest_api_post_id
+
+
 async def fetch_video_metadata_for_posts(config: SiteConfig, posts: list[dict[str, Any]]) -> dict[int, dict[str, Any]]:
     credentials = get_telegram_session_credentials()
     if not credentials:
@@ -3191,10 +3384,24 @@ def main() -> int:
         existing_top_post_id=get_highest_post_id(existing_payload.get("posts") or []),
         cutoff=subtract_months(datetime.now(timezone.utc), config.recent_posts_months),
     )
+    api_recovery_photo_overrides: dict[int, list[bytes]] = {}
+    latest_api_post_id: int | None = None
+    posts, api_recovery_photo_overrides, latest_api_post_id = asyncio.run(
+        recover_newer_posts_from_api(
+            config,
+            posts,
+            cutoff=subtract_months(datetime.now(timezone.utc), config.recent_posts_months),
+        )
+    )
     enrich_reply_posts_from_pages(posts, config)
 
     reply_references = asyncio.run(fetch_reply_references_for_posts(config, posts))
     photo_overrides = asyncio.run(fetch_high_res_photos_for_posts(config, posts))
+    if api_recovery_photo_overrides:
+        photo_overrides = {
+            **photo_overrides,
+            **api_recovery_photo_overrides,
+        }
     video_metadata = asyncio.run(fetch_video_metadata_for_posts(config, posts))
     comments_enabled, comment_results = asyncio.run(fetch_comments_for_posts(config, posts))
 
@@ -3206,6 +3413,12 @@ def main() -> int:
     for post in posts:
         if post["id"] in comment_results:
             post["comments_count"] = len(comment_results[post["id"]])
+
+    if latest_api_post_id and get_highest_post_id(posts) < latest_api_post_id:
+        raise RuntimeError(
+            f"Telegram API exposed newer post {latest_api_post_id} for @{config.channel_username}, "
+            f"but sync only collected up to {get_highest_post_id(posts)}"
+        )
 
     changes_detected = avatar_changed
     changes_detected = mirror_post_photos(posts, photo_overrides=photo_overrides) or changes_detected
