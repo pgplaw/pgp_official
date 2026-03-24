@@ -1677,6 +1677,7 @@ function buildMedia(post) {
       url: post.video_url,
       width: post.video_width || null,
       height: post.video_height || null,
+      poster: post.video_poster ? normalizePhoto(post.video_poster) : null,
     });
   }
 
@@ -1694,14 +1695,16 @@ function buildMedia(post) {
       : (item.type === 'round-video' && isSingleRoundVideo
           ? `
             <span class="media-video-note" aria-hidden="true">
-              <video
-                src="${item.url}"
-                preload="metadata"
-                muted
-                playsinline
-                loop
-                data-round-video="true"
-              ></video>
+              ${item.poster
+                ? buildResponsiveImageTag(item.poster, index, false)
+                : `<video
+                    src="${item.url}"
+                    preload="metadata"
+                    muted
+                    playsinline
+                    loop
+                    data-round-video="true"
+                  ></video>`}
               <span class="media-video-note__play" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
                   <path d="M9 7.5v9l7-4.5z"></path>
@@ -2039,7 +2042,7 @@ function renderPostCard(post) {
   const shouldShowComments =
     Boolean(state.feed?.source?.comments_enabled) &&
     (post.comments_count > 0 || post.comments_url || post.comments_available);
-  const showVideoPostTitle = isRoundVideoOnly && !replyTarget && !forwarded && !text;
+  const showVideoPostTitle = isRoundVideoOnly;
 
   article.innerHTML = `
     ${buildMedia(post)}
@@ -2274,7 +2277,7 @@ function getViewerTrack() {
 
 function buildViewerSlide(item, index) {
   const content = item.type === 'video' || item.type === 'round-video'
-    ? `<video src="${item.url}" controls preload="metadata" playsinline${item.type === 'round-video' ? ' data-round-video="true"' : ''}></video>`
+    ? `<video src="${item.url}" controls preload="metadata" playsinline${item.type === 'round-video' ? ' data-round-video="true"' : ''}${item.poster?.full_url || item.poster?.feed_url || item.poster?.thumb_url ? ` poster="${item.poster.full_url || item.poster.feed_url || item.poster.thumb_url}"` : ''}></video>`
     : `<img src="${item.full_url || item.feed_url || item.thumb_url}" alt="Media preview ${index + 1}" loading="eager" decoding="async" draggable="false">`;
 
   return `<div class="viewer__slide" data-viewer-index="${index}">${content}</div>`;

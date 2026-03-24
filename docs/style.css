@@ -1523,6 +1523,7 @@ label,
 }
 
 .media-video-note video,
+.media-video-note img,
 .post-card__round-video {
   display: block;
   width: 100%;
@@ -1531,8 +1532,12 @@ label,
   background: color-mix(in srgb, var(--bg) 84%, black 16%);
 }
 
-.media-video-note video {
+.media-video-note video,
+.media-video-note img {
   border-radius: 50%;
+  max-width: none;
+  margin: 0;
+  max-height: none;
 }
 
 .media-video-note__play {
@@ -1805,6 +1810,11 @@ label,
   top: 22px;
   right: 22px;
   z-index: 2;
+}
+
+.post-card--round-video-only .post-card__title {
+  margin-bottom: 14px;
+  font-size: 1.08rem;
 }
 
 .viewer__fallback {

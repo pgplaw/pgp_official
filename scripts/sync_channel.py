@@ -37,6 +37,7 @@ POSTS_MEDIA_DIR = CHANNEL_DATA_DIR / "media" / "posts"
 POSTS_THUMBS_DIR = POSTS_MEDIA_DIR / "thumbs"
 POSTS_FEED_DIR = POSTS_MEDIA_DIR / "feed"
 POSTS_VIDEOS_DIR = POSTS_MEDIA_DIR / "videos"
+POSTS_VIDEO_POSTERS_DIR = POSTS_MEDIA_DIR / "video-posters"
 CHANNEL_MEDIA_DIR = CHANNEL_DATA_DIR / "media"
 CHANNEL_AVATAR_PATH = CHANNEL_MEDIA_DIR / "channel-avatar.jpg"
 SUPERRES_MODEL_DIR = ROOT / "ops" / "models"
@@ -343,6 +344,10 @@ def normalize_photo_entry(photo: Any) -> dict[str, Any] | None:
                 entry["source_url"] = source_url
             return entry
     return None
+
+
+def normalize_video_poster_entry(poster: Any) -> dict[str, Any] | None:
+    return normalize_photo_entry(poster)
 
 
 def read_image_dimensions(path: Path) -> tuple[int | None, int | None]:
@@ -905,6 +910,7 @@ def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, l
 
 def mirror_round_videos(posts: list[dict[str, Any]], video_metadata: dict[int, dict[str, Any]] | None = None) -> bool:
     POSTS_VIDEOS_DIR.mkdir(parents=True, exist_ok=True)
+    POSTS_VIDEO_POSTERS_DIR.mkdir(parents=True, exist_ok=True)
     active_relative_paths: set[str] = set()
     changes_detected = False
     video_metadata = video_metadata or {}
@@ -944,26 +950,55 @@ def mirror_round_videos(posts: list[dict[str, Any]], video_metadata: dict[int, d
         if post.get("video_url") != relative_url:
             post["video_url"] = relative_url
 
+        poster_bytes = (metadata or {}).get("poster_bytes")
+        if poster_bytes:
+            poster_digest = hashlib.sha256(poster_bytes).hexdigest()[:12]
+            poster_filename = f"{post['id']}-video-note-poster-{poster_digest}-{VIDEO_VARIANT_VERSION}.jpg"
+            poster_path = POSTS_VIDEO_POSTERS_DIR / poster_filename
+            if optimize_single_image(poster_bytes, poster_path, (1024, 1024), quality=88):
+                changes_detected = True
+            relative_poster_url = poster_path.relative_to(DOCS_DIR).as_posix()
+            active_relative_paths.add(relative_poster_url)
+            poster_entry = with_local_variant_dimensions(
+                {
+                    "thumb_url": relative_poster_url,
+                    "feed_url": relative_poster_url,
+                    "full_url": relative_poster_url,
+                },
+                thumb_path=poster_path,
+                feed_path=poster_path,
+                full_path=poster_path,
+            )
+            if post.get("video_poster") != poster_entry:
+                post["video_poster"] = poster_entry
+        elif post.get("video_poster"):
+            poster_entry = normalize_video_poster_entry(post.get("video_poster"))
+            if poster_entry:
+                for key in ("thumb_url", "feed_url", "full_url"):
+                    if poster_entry.get(key):
+                        active_relative_paths.add(poster_entry[key])
+
     deleted_files = 0
     deleted_bytes = 0
-    for path in POSTS_VIDEOS_DIR.glob("*"):
-        if not path.is_file():
-            continue
+    for base_dir in (POSTS_VIDEOS_DIR, POSTS_VIDEO_POSTERS_DIR):
+        for path in base_dir.glob("*"):
+            if not path.is_file():
+                continue
 
-        relative_url = path.relative_to(DOCS_DIR).as_posix()
-        if relative_url in active_relative_paths:
-            continue
+            relative_url = path.relative_to(DOCS_DIR).as_posix()
+            if relative_url in active_relative_paths:
+                continue
 
-        stat = path.stat()
-        age_seconds = max(0, time.time() - stat.st_mtime)
-        if not should_delete_inactive_media(path, age_seconds, {VIDEO_VARIANT_VERSION}):
-            continue
+            stat = path.stat()
+            age_seconds = max(0, time.time() - stat.st_mtime)
+            if not should_delete_inactive_media(path, age_seconds, {VIDEO_VARIANT_VERSION}):
+                continue
 
-        path.unlink()
-        changes_detected = True
-        deleted_files += 1
-        deleted_bytes += stat.st_size
-        log.info("Deleted stale mirrored video %s", path.relative_to(ROOT))
+            path.unlink()
+            changes_detected = True
+            deleted_files += 1
+            deleted_bytes += stat.st_size
+            log.info("Deleted stale mirrored video asset %s", path.relative_to(ROOT))
 
     if deleted_files:
         log.info(
@@ -2092,6 +2127,10 @@ def enrich_reply_posts_from_pages(posts: list[dict[str, Any]], config: SiteConfi
             post["video_url"] = enriched_post.get("video_url")
             changed = True
 
+        if enriched_post.get("video_poster") and enriched_post.get("video_poster") != post.get("video_poster"):
+            post["video_poster"] = enriched_post.get("video_poster")
+            changed = True
+
         if enriched_post.get("video_note") and not post.get("video_note"):
             post["video_note"] = True
             changed = True
@@ -2201,6 +2240,17 @@ async def fetch_video_metadata_for_posts(config: SiteConfig, posts: list[dict[st
                             payload["video_extension"] = get_message_video_extension(message)
                     except Exception as error:  # pragma: no cover - network/runtime path
                         log.warning("Round video download failed on post %s: %s", int(message.id), error)
+                    try:
+                        poster_bytes = await client.download_media(message, file=bytes, thumb=-1)
+                        if poster_bytes:
+                            payload["poster_bytes"] = poster_bytes
+                    except Exception:
+                        try:
+                            poster_bytes = await client.download_media(message, file=bytes, thumb=0)
+                            if poster_bytes:
+                                payload["poster_bytes"] = poster_bytes
+                        except Exception as error:  # pragma: no cover - network/runtime path
+                            log.warning("Round video poster download failed on post %s: %s", int(message.id), error)
 
                 if payload:
                     results[int(message.id)] = payload
@@ -2676,13 +2726,18 @@ def render_post_page_media(post: dict[str, Any]) -> str:
             )
         )
 
+    video_poster = normalize_video_poster_entry(post.get("video_poster"))
     if post.get("video_url"):
         video_src = post["video_url"]
         if not re.match(r"^https?://", video_src):
             video_src = f"{root_prefix}{video_src.lstrip('./')}"
         video_class = "post-card__round-video" if post.get("video_note") and not photos else ""
+        poster_attr = ""
+        if video_poster and video_poster.get("full_url"):
+            poster_src = f"{root_prefix}{video_poster['full_url'].lstrip('./')}"
+            poster_attr = f' poster="{html_lib.escape(poster_src)}"'
         media_items.append(
-            f'<video class="{video_class}" src="{html_lib.escape(video_src)}" preload="metadata" controls playsinline></video>'
+            f'<video class="{video_class}" src="{html_lib.escape(video_src)}"{poster_attr} preload="metadata" controls playsinline></video>'
         )
 
     if len(media_items) > 1:
