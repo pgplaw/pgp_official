@@ -1,63 +1,34 @@
 {
-  "generated_at": "2026-03-24T05:18:44.669149+00:00",
+  "generated_at": "2026-03-24T08:04:36.210485+00:00",
   "pagination": {
     "page": 2,
     "page_size": 16,
-    "total_posts": 34,
+    "total_posts": 33,
     "total_pages": 3
   },
   "posts": [
-    {
-      "id": 1351,
-      "date": "2026-02-17T13:57:02+00:00",
-      "text": "❓Почему ФАС России вправе заключать мировые соглашения, несмотря на статус органа власти?\n\nНа первый взгляд это выглядит необычно: государственный орган выявляет нарушение и одновременно может договориться с нарушителем. Однако в этом и состоит современный подход антимонопольного регулирования. Законодательство, а именно – статья 190 АПК РФ, прямо допускает примирение сторон в публичных спорах, даже если одна из них является органом исполнительной власти.\n\nСмысл здесь практический: задача ФАС — не санкция сама по себе, а восстановление конкуренции. Мировое соглашение позволяет быстрее устранить нарушение, зафиксировать обязательства бизнеса, снизить процессуальные издержки для всех сторон и добиться реальных изменений на рынке без длительных судебных споров.\n\nПо сути, это инструмент регулирующего диалога: государство сохраняет контроль через судебное утверждение соглашения, а рынок получает более быстрые и предсказуемые решения. \n\nИменно поэтому возможность «мириться» с регулятором — скорее признак зрелости антимонопольного правоприменения, чем исключение из правил.",
-      "text_html": "❓Почему ФАС России вправе заключать мировые соглашения, несмотря на статус органа власти?<br><br>На первый взгляд это выглядит необычно: государственный орган выявляет нарушение и одновременно может договориться с нарушителем. Однако в этом и состоит современный подход антимонопольного регулирования. Законодательство, а именно – статья 190 АПК РФ, прямо допускает примирение сторон в публичных спорах, даже если одна из них является органом исполнительной власти.<br><br>Смысл здесь практический: задача ФАС — не санкция сама по себе, а восстановление конкуренции. Мировое соглашение позволяет быстрее устранить нарушение, зафиксировать обязательства бизнеса, снизить процессуальные издержки для всех сторон и добиться реальных изменений на рынке без длительных судебных споров.<br><br>По сути, это инструмент регулирующего диалога: государство сохраняет контроль через судебное утверждение соглашения, а рынок получает более быстрые и предсказуемые решения. <br><br>Именно поэтому возможность «мириться» с регулятором — скорее признак зрелости антимонопольного правоприменения, чем исключение из правил.",
-      "views": 722,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1351-1-30eded54044b-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1351-1-30eded54044b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/XnRJDAuCa0PdCsbJiJt9auQtVuPMFptwV7C0FPu90TwB9W190jdB2pDMX80_svbP_h-RgvIQ-xunVVnGA1N9alPP5ll8zNtpOvfmC58UFRpGRBN63lREhRq6FfOdB63QnqGX4m90Qm4M_GlF9H4ngyEEKvQe6iBRErOnlHw-LehjU9xFiyzuytEyS40F0wAybbB4x9TIkE_YfV4xz5SyavbynB6L-7GnnScAiYqEInFO8B1Awlrlr7-F5aCuTtdTM5NIs8eTF1mRBdnm93OR2HQhIy1xDU5wk06CyzylQ-kIXTHlxCa0Yo4DH-TB2e0D7eRoC3WWvTPnJW5rNJALXg.jpg",
-          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1351-1-30eded54044b-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1600,
-          "feed_height": 640,
-          "full_width": 1600,
-          "full_height": 640,
-          "source_width": 1600,
-          "source_height": 640
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PgAntitrust/1351",
-      "forwarded_from": null,
-      "reply_to": null
-    },
     {
       "id": 1350,
       "date": "2026-02-13T14:06:36+00:00",
       "text": "✉️ На этой неделе ФАС направила в Государственную Думу письмо с просьбой снять с рассмотрения законопроект, который ранее уже был принят в первом чтении. \n\nОснованием стали сохранившиеся разногласия по законопроекту с ГПУ Президента РФ и комиссией при Президенте по ТЭК и экологической безопасности.\n\nКлючевой новеллой снятого законопроекта была возможность не только корректировать предписания, но и ужесточать их требования уже после завершения дела. Сейчас закон прямо запрещает ухудшать положение компании при пересмотре предписания, однако законопроект делал для этого исключение. \n\nИными словами, уже после принятого решения и выданного предписания ФАС могла бы пересмотреть предписание и ухудшить его для компании.\n\nОтказ от таких новелл стоит приветствовать. При этом проблема неактуальных предписаний решена на уровне ВС РФ без каких-либо изъятий из «неухудшения». Компания вправе исполнить предписание в соответствии с изменившимися обстоятельствами, и это не является нарушением.\n\n#антитраст",
       "text_html": "✉️ На этой неделе ФАС направила в Государственную Думу письмо с просьбой снять с рассмотрения законопроект, который ранее уже был принят в первом чтении. <br><br>Основанием стали сохранившиеся разногласия по законопроекту с ГПУ Президента РФ и комиссией при Президенте по ТЭК и экологической безопасности.<br><br>Ключевой новеллой снятого законопроекта была возможность не только корректировать предписания, но и ужесточать их требования уже после завершения дела. Сейчас закон прямо запрещает ухудшать положение компании при пересмотре предписания, однако законопроект делал для этого исключение. <br><br>Иными словами, уже после принятого решения и выданного предписания ФАС могла бы пересмотреть предписание и ухудшить его для компании.<br><br>Отказ от таких новелл стоит приветствовать. При этом проблема неактуальных предписаний решена на уровне ВС РФ без каких-либо изъятий из «неухудшения». Компания вправе исполнить предписание в соответствии с изменившимися обстоятельствами, и это не является нарушением.<br><br>#антитраст",
-      "views": 823,
+      "views": 824,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1350-1-14da578eec73-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1350-1-14da578eec73-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/EA_ZvVaMmGeqxNmQjuGLBDMC2C0_GbJLqn5lOFo0knhjITemNmWPdp7usnHFC6tipegX_s1hdxaz6t9D0FiV3iqlhFzHLdR8m1RZ_x35acShVAnUFx7uSmO-kNwsQMlrN_u5eij6KYjH2vaprfVLFsiLcQn3NRNmtPipPOAY48NvjeeoiDgnclV3shc7mw8L3nSTDPzKcEqdVk7YpQC-ouTOjiu2KhDT2Yn-s3in-Crq54YjWqHIY28OeaKyU3ScBqajMwrH1EMmQehMrRgwfjS7uH3Xjp68_0jcUmMa4BlTUY70EA4CUT6QDhFdijXONboudYTxcQHNmBzN8Pr2uw.jpg",
-          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1350-1-14da578eec73-v8.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1350-1-6a3208aafbd0-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1350-1-6a3208aafbd0-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/NLjIiuLIqqZgeWWui_R0HEO_78blsc0BQ8FcPmKnrEnL4Ld-kmwbNO9wXxTP6ZcFJf2uEI_FgEdMCRDJUbuAfdK2nSh8LfZvyMTNqEE9ycrY2a7p9AI6ShPbM3hrtlRgpFZiUVNqV9UpJSy-m7n3gZwvIua6fpVpuI7AYx2wDJatn43JAPQ8eb2KM6sY2nd3l5TsvyOLpEBQe88-38z61BBZiBoABt_Vn9SUPbr9HUeUvfll6TnmMzK2hOpkL6wNVrktQ99NrqC4m3WOo2RR1U7lDr1jFr8X_cs4NWXcqXv2WEF17I81b_J1JHMDZb8cF7eImmVZv6p7EAEUTvjYNg.jpg",
+          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1350-1-6a3208aafbd0-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
-          "feed_width": 1600,
-          "feed_height": 640,
-          "full_width": 1600,
-          "full_height": 640,
-          "source_width": 1600,
-          "source_height": 640
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752
         }
       ],
       "video_url": null,
@@ -75,18 +46,18 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1349-1-d8e7d14cb7d4-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1349-1-d8e7d14cb7d4-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/MylsI41-jG_8r-GBnd-VtRx37GMwE4umW69hO1EKtdUPGeOE_YEvsIKn_JaaH8GEN8u3EIyiU49I_KAFa2xKPv9OyCIVj0oT7y29QTgZmTDUdOF2OfXN6WP8fmlruFm67OvUXCoNVwglkpT16TUnnOanqe5Xlv9mcc6dVW5qdByT67jz4A7lLE8AhDKgkTQW9AfpVzx4zZlU35cOBQJrzJjj2DG9WlPG2tAFguOsaz9lSkeLRsg2XTTS5xlgrDuC0dVdaTpc5nPzTQFekOEtfPtH6inzCgrozf8eZxRs5XO5L2sXNV14J_qffIHALP42VlLqm5KJOeNOMYmDEYC_Vw.jpg",
-          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1349-1-d8e7d14cb7d4-v8.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1349-1-3abd07d55484-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1349-1-3abd07d55484-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/gB68jYjqlnQjlbUhtofVpj4FM1mcwKySsLqma7h6MU8jtJlnIjUWdvEspmBnlaPJ6NUECNLIkxOT0gSzxWTM8_59QhjDEMZUd9tdi8lh9ms0_QK22DKUDow8QkKUtZV2qxRo5TeCWNlfJr4OQmQpD9K4idpKnoNLv9YVSPbvN0nInuV_au8yZEmuLAm5RnRitjbz9OCBOf245nUq3DEpn-5xik7SqLe9SLix_znWmkbin7I_0aS3v3mmO4OsXjmMoTP_2x6gp_1TKAfrhZlkZyw7w2jvzhyC-S-M_A1H7xowIODxeNSd7Sf5Y9aINMWH3Hqrgr2PynJjDzTig_8FjA.jpg",
+          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1349-1-3abd07d55484-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
-          "feed_width": 1600,
-          "feed_height": 640,
-          "full_width": 1600,
-          "full_height": 640,
-          "source_width": 1600,
-          "source_height": 640
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752
         }
       ],
       "video_url": null,
@@ -104,9 +75,9 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-1-01552fab2b05-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-1-01552fab2b05-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/ACw4ZNoTW00gXPOLvFk0gSWDWPcA5Y-JcqHUIyrfQMoJj40qe8-a-JnDTQ_OoeWFb38ZumbDsqG0i5v7Sju7UoB3gonmG4hx3ChBcb2VS7foHuvn0Xzd3rubENnhc9HaBESZoVGNaIWamAM3khpMM4u-hfNzekZwrIb0nbpFCLWCsEhc5z2JJZ5RtxMDpIAyLme-l5vkkthEtUnV72dtSyJkZJFHhQkNMzvQyKDaVjBI6IHiepLnsBDbiLfEkMTP-HE6LC7qfWc3OJ1EsOjvskMBlFR8uySnKqMqGGwgZ3JrO2wfqsc0Fo8XN9RLDT6e2euJh5SbnuTaiRpHso5WxA.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-1-c120ac4050b8-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-1-c120ac4050b8-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/SZ6IlL6egoBaHsNSY327sYWvyFH69uFnoqjDrpEQCgvFmqvdlwm0G2AQerHSdTq3wm2fO6jjNy5JUPVgcOhfrGsALDguSGexZ95s_-wTMfDCM5vaNfTB6IHw6V9M0UFzjI2RWXCl1zyLLv2-jk3mEKzNDYkbQiAk9diXsIC24AWpWiVa490zXbYwN7W3BEam9zj3wqdJByi8y78DLW3XHmm5SZopuHgO546l4_0j9lDEmDDzAHjZXnvrlVMMLTPfw5KggXjmVPTC3y24xrBh7geC30EJZWy07kv5MqIs53egoow4PAGnO4TLklfMrBckPgfw0waLuAxeiBhahonH1g.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -115,9 +86,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-2-507677fd1d3b-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-2-507677fd1d3b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/V7hwMm8cHsxL4wFlQF4nvbFtotFjv7XpFj7NpBCgjTLxCOybRksxhIt5RtOD-QwbNV83j0ZSu_CYF7REexczugN4gAAdyXvCKWW4OdECMqJQdTPwkfMkZfUx-AdZKj9dTq8Zas6BBjXbLZdBLzIjAKbfveZVE49IfuWmSfjQPqDKC97j54g2mc132yJMo3SZK7bQDA0GZNDVQG6v5qaKACOJQth7puB8GBZ7og6DhO0vNMLMGGFzNy3b039nSup9dFSuW7bDF0gSg1hTPpNp91fK_fn_sZ-lxXFXJ0y11VtwjFqVSF4XvTkQc-Plf-BBvqyUOLGaJmdxBFxNzVDLGQ.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-2-24bb580529b7-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-2-24bb580529b7-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/VexTxYbFXiUOOiGG6gfTU3uiM89sN3lHQhx1gAkzYK0_sD-GH20ni78JtUB69v0XQBuS1mefAI_X6GSh_dO3cWI4l8UYUzBRGb7R8ZJEV8M9iV0y3CtUz3RjX6VvMgkNLooJNZWtOyaXDOn5CVg8jLVhbAI4uakgtwFsBJyqR8W4sdLMY4uZ332sobegRzZfOOe6Tk6QbKrMJ3P7oFo9eZlhs0d2twKmg4P5M9Bsq4NGbAlBzUCL2JMFI3dWdFtSJPY_CsS5o1Olihf0dctEVJbo3XIAC9ooziBl-BvqqzMQTDf-nQAztBNA-q3Ok6YsF_h1lX512kIPTAkXrtrkcg.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -126,9 +97,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-3-b097cf8365b7-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-3-b097cf8365b7-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/gPCqyvtntZudtIVX8mayEzKI8Vh53_Qahp2on4kMvfZdmnaRCwSG9njODRKJ67ot2fuL-_YbMsIk9vxve7rbirn5I_YSzAKZL4F5KFWhVYFh2crYyGtdc3QzvLfnzNAEQ8GEpT0fVrmq9xqrbp-kUMdnNwaJ7GY1uThEpX2-Zvgv7HzYgKbXcyrpsjmZwWMTHvOKyJIk3Mid4vMUhIjouMC879JFRnMLohLFykjpnoC05nEmuRfsIAyc70feNW9ynwz3_VFJegSU2NY_n63QqdVSs9mkTHEK_nrNBkZoeJ9JR2qbqC2RApJ9pal0XesWnDVDunwSa3Df3t-CHV9Djg.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-3-265deb74091e-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-3-265deb74091e-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/s56QUCPJGqfXDOvG8nX-8nMLtHkZQP5MT1tzziMF2W9X75BEe-CEsxT_5ovLqZA9cbIMP8otd4863dXLDT--Z3WafQ-kDAEGU2X-CdlGbArdO1exnTCx21gcKR2hdZrq3MlukKX3Yc2Kf8f8WyN69hW6sjGBJo3lvXLKvjo1mzHilE2UyDq-aKDN3pabaxXoL8rKa2knwWbsjqWhcktClwWODPB3qXBlJNLIjSyEy4RHaD_bjM0QCfkO9ZxwpERq451iHkNce1SEq3xJ9yMNd6wZdgytVHs1NUTlVd0rERQ4Lc5aUoH0jDiSWgtCyWf2c_L6bSJsxHEJwFH9zCqpfQ.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -137,9 +108,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-4-0ef91ff53735-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-4-0ef91ff53735-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Vf9uhh8X0IJW4Gc9fsACOGogo4rIFWzEtn9djW8xP5NyL9093T3eg1tGdCfpmSP3gulW85VKuLL1mGiYszb7j8ap870vv87NzCCtOF69BcKtAjAHsvHZmAk1bHUT8sLA9fKwIutoVJDf9Cq4SZyM94EE1RmIyuEXs2uaez4Q3N5ESIzBBdvucCr4ge83d4Dad8uy2WsSECzCs66V7JmcTq0ZS_4I7H8P_4e8PvLy6S_pqy10Buh3bbldODax6hWA3NndNGsvhMXmG9rPjpBwST3k9Wl7yByXaOMpxGeXWbunYl-G1USVxuyf64MpRFuqUVWcTWWqzTbKuLcR4kj-QQ.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-4-b9145821ff27-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-4-b9145821ff27-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Y4YgOP3QZenKxVpfG6OrUaJoEoHP1viya2RXf5W5t40TrgNel11mM8d_mzUBheJP_znRfV_D3Qi2Fx6uWZDk0fmCjdwtP1ZnVrp23_ZZZyw4kV3G-R_usXmh7IjWxPVkawveOBXkcCRaNk86SkH3zypMBeWb0ZU_JmtXxE3DFiUPAs3EXHazFD7EfZ6oVY196M84_e3hu-XvxHZ4_9tLh3xXnNsBIFNMD39saJ-m-hlEEyMysAgTv6n90I2LzBfPdLdZlGp3bHQobERqswF71VJJk9LtpzKjQjv052kmfmXfSf6XwLk8aa0CyxeiPCNL_F7RNzbiAtutRxEwub4U_A.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -159,9 +130,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-6-5cddb66fb9f8-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-6-5cddb66fb9f8-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/p3HCt5IVJHy8jSLjGW2yBnpthNzJCV7wfzjnkNEZqQGHuw4cho_bsW22eV8votFKvhLCj_Q_NIU-GJV2woDVFGbbxlIRNEvU7Sw3CaxRcGH5DL2BPHISaaZv7doY3aH5YINm1ShaNlKQj2WH6tqaWVj-AZn-GLWYLpUZurQoYbnqbrcsNy5UZdjeBB25Fp95EgBz2WBQxzE2lwgm8PLEsz8YgZ2FjUF1ietRCUVWKDUEhY2cX2W4ZbeWoDsqj2p8cB2B17umok6O9oIYiEGvc2EpLiuiiQlYKxAlNs5r89W9QpheVF9oPjtk2yJ95ttkGdcbYsZlXIpqYKuMWl3STQ.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-6-4e3323f5a93d-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-6-4e3323f5a93d-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/bVXqr8qaN-oiPv-Ru5HAapTNIy6uV7o3_P0e85xSqR25hYj1xQTJFDTK3_kSzkcQx4qOj62N1NyHRRmITtw28zzO0pLQm7iS1Nxvm2EFeEiD6mR3_Scdc76UZUYHXtYbrdIE6okSjfE4EEiyP-jaX02JdB_1JambjMAM57Pq4cxmlcyj2D-hIFhve8KKiyJ6dTGFwm77cXRjZsjjZe5qcZ3YS6Z3QOZhtCDooD3pU5o59r9VL5QFQIZF0qRHlDKDu78WGCbSqpoj6tsUX3UKF8724ypk8_Zj9d80HH35fe71-NYXas_EUkDXm1qXTSLatVqajv8XKQDMyM9Orn8inQ.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -170,9 +141,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-7-dac1d46fa628-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-7-dac1d46fa628-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/WPpHOOxLu7pJFxzlpM_KUQl7ClncLJ1JhbfkZ0Jva5o2oNPZBqNPQvgAmj0oJs1oUckNE0LGkphmieztDgjDsOaX_zSYxa5IFaVCh1KuFyu57fC8O8Y61fV7RZP8wnNatWfwW5Uo4kGMThU9TX91UGc8LHZn4MuguIDxYQfl5MIlwKAcpQ9WWjPDBObyTzwESYHu5VNzoNG9_2q2MuQA-eLUqtDkNsONPhLzZg9s_Ys8Sm9UbMxbnKjVfFsuIKD93vciK45nD2COjfGjPMAnXVIiJIoEgxvxZggq42k6aZH_MaeKCGFmUPxmAJhv-EnYnzxyUDs_UX11i4DkVx8iUg.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-7-e8a919573fc1-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-7-e8a919573fc1-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/KUJ3wzhR88_PO8_g72vGbmOOVMZ9qCaLzy5gsVunZUjRC7eAHu8DxVEvLr6EC6XA_7l2xkjA0pgKGcojXeGy0uc28WdqKI51EFuGDRDzeFeVozofGeombWwAOm51mpklGfZDFK-9qGh13MPNeELTBMjqnk26XPZ9W00JwnuIFwNGgFyPfVfYMZIHFzgyQ-w9rP4hAjHpYftRcQtIE6joFYoKN-PCvd35wNqMR0u7qwvQ4QyDWwWHE4bEt8QeBUPifJ9zFl2FK-vUxZ7_fb6HV0j4xLEUi_lbZHTd_yCoB3UMQo5v_ijZ3uoRLYKQPNvBC8he0jlWmXhRsbJ3w702wQ.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -192,9 +163,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-9-b603d28d0364-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-9-b603d28d0364-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/DpV2BRDKhrjK5gJgK0x3R8lV3UsgukYIp6uowoaqvDwpG1tIJr2qo-GV66uC-XT9I1ISZ1VVK4q1bmE4qttaTkMsSu9Isz7ttOihMQiet0pS-b670XmAUzrikiud9jYN96pgCchcOjMAZ-AiftjKvdG78vsKZxHkdXFwjtwlZzUVxQR4yOl4bIeUjKO1MfRcKaNfDhFhCcf9gstu5T11o28h08Ljqnh3LVsVC-yiIWZUCmv5M2U7Tc0ahjhxCgUB2MVQnHJm7kmMxt67ZiE24uDsYoP1D-oe-Ix67rASi9255f8MWslXh2zYj_KO-5MK0pAQf_p-1RfIt6cDNbh9sg.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-9-4ef8aff95ece-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-9-4ef8aff95ece-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/DkGf2H0jNSytVQgRFjoWDCxjQrxwXvqIlaCgNEsM-sFHixb9DyGqaFE9Jy_q7hpx7bBd1gOpztnPeEZ_teCJK-N8lQPtl_Bdc3wpb0qd75W1BmxrR-v228bQ5fRUHUKNwrUBHET2cuLbWOUyv3ePAgZbAjjucjFHNdnvvd_MQTDCQpJWFOuBUZJm9mJOYezrkuztjDAtU9hGpit2V9Y9yKXvOqQCxcUh5ImxiX5QbeEMjyyYcH7LSAhuouVD0y4SwckoKeylk7_xGfFhPGUcve-ckV3ST6ixWt0mNEXWpfdlsCw4mVBbV2KEssyl8agRhCfZNjQL4_O_r6Vi_YvqLA.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -203,9 +174,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-10-2abf2a773c19-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-10-2abf2a773c19-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/OtTP2Adap76pDJ-99KYPkFbz_BZ0hKOfsi2tWhTI9-lKa6T29WJ68wINMRJjFtcuiW0mWbc3Ds7AvY2A2mqrZGQcwRIbQLaJhXDgInC6znlKXjUjTcWQ0dqaFe2CHGvBorj5vPJgJuNqqgPYw8SqoOeFoprIZ7fAEX-8TdzK-T7Xf-rPqQJTKt4_GdVwW0XU861cjzkmTM3DhWIP1zcKASlkqBRPZNBP3Mj_oxDMfssY7eXJu45mHJrJnLbmQ__cp0VhRH2FxXziY5kOCdscNDghy59FNrBcY08IMPebv2JC7S8wBm0I2V7UB-bR3-OXFsRug5oc1JSSR5Nas54lNA.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-10-3d8e7a360ffc-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-10-3d8e7a360ffc-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Phe_jxwk6i7LIsdBaXMrJ58jv2M_uUDbSRQfZkMNs-_irdO1jNoFhrgzzmhGsdv-kU7rBOuNpK2a_7G1mUsHkfDN7_gSgz-MuK-vaQDPHYLh0KcdUP4MUC5QPzlMrxi6SqEyaifoXROwijP77177Ie3_q-bzV3IDgiDx4w1ur-6o79PfdRQZIRZj0ZwcAUmMabdxihQT8FuPhbOrAwItxGd6qUsrE_L88LNfqD_7zMD2XA3_qmLUj233oeIWtjCiUgXrzMrTTVfvGfjwKyiMFu8wUTpKmja82Eap2LXpRdkCLiwnqSFpeNOwaYlMkX6UKaB2pOGZJ_8cT_1M9RYg2g.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -224,7 +195,7 @@
       "date": "2026-02-03T08:00:02+00:00",
       "text": "Продолжаем...\n\n⚖️Верховный Суд решит, может ли затягивание переговоров, влекущих негативные последствия для заявителя, являться злоупотреблением доминирующим положением и должны ли ФАС и суд исключить наступление негативных последствий\n\nОпределение ВС РФ от 20.01.2026 по делу № А40-239166/2024\n\n💬Как мы вчера рассказали, кассационная жалоба третьего лица (гарантирующего поставщика электроэнергии) настойчиво была передана на рассмотрение в Судебную коллегию. Теперь давайте попытаемся разобраться ради чего.\n\n🟡Фабула дела\n\nЭнергосбытовая компания обратилась к гарантирующему поставщику (третье лицо, чью жалобу передали в Судебную коллегию) с предложением внести изменения в договор купли-продажи электроэнергии и расширить точки поставки электроэнергии на новые объекты с 01.05.2024.\n\nГарантирующий поставщик месяц рассматривал заявку энергосбытовой компании и в ответном письме указал, что срок начала исполнения обязательств по новым объектам наступает не с 01.05.2024, а с момента подписания изменений к договору обеими сторонами. В течение еще двух месяцев стороны обменивались протоколами разногласий, но ни одна из сторон не приняла позицию другой.\n\nЭнергосбытовая компания обратилась в ФАС для защиты интересов от необоснованных отказов со стороны гарантирующего поставщика. ФАС отказала в выдаче предупреждения, указав, что между сторонами уже заключен договор купли-продажи. Энергосбытовая компания обжаловала в суде отказ ФАС.\n\n🟡 Экономическая сторона\n\nМожет показаться, что мы имеем дело с юристикой, когда один юрист не может договориться с другим и причем тут ФАС. На самом деле оттягивание срока начала исполнения обязательств влечет экономические последствия.\n\nЕсли между сторонами не урегулирован спор по договору, это не прекращает поставки электроэнергии. Однако стоимость может рассчитываться как за бездоговорное потребление.\n\nГарантирующие поставщики и энергосбытовые компании являются конкурентами на рынке розничной поставки электрической энергии. И если ценообразование гарантирующего поставщика урегулировано, то энергосбытовая компания свободна в ценообразовании, благодаря чему может обеспечить экономию для потребителей электроэнергии. Поэтому некоторые потребители уходят от гарантирующих поставщиков к энергосбытовым компаниям, а гарантирующие поставщики пытаются их задержать.\n\n🟡Позиция судов трех инстанций\n\nФАС обязана выдать предупреждение гарантирующему поставщику, поскольку его действия являются навязыванием невыгодных условий о дате начала исполнения обязательств и влекут негативные последствия в виде бездоговорного потребления.\n\n🟡 Основания для передачи в Судебную коллегию\n\n1. Предложение гарантирующего поставщика устанавливать срок действия договора в соответствии с законодательством не может являться злоупотреблением доминирующим положением.\n\n2. Применение к спорному предложению ретроспективной оговорки (срок действия с 01.05.2024) не может быть вменено в обязанность гарантирующему поставщику.",
       "text_html": "Продолжаем...<br><br>⚖️Верховный Суд решит, может ли затягивание переговоров, влекущих негативные последствия для заявителя, являться злоупотреблением доминирующим положением и должны ли ФАС и суд исключить наступление негативных последствий<br><br><a href=\"https://kad.arbitr.ru/Document/Pdf/ec443865-3527-4ac2-8da8-7b0d02892fdc/7168c7cd-71e3-4e86-b22a-baa28ba9d3cb/A40-239166-2024_20260120_Opredelenie.pdf?isAddStamp=True\" target=\"_blank\" rel=\"noopener noreferrer\">Определение ВС РФ от 20.01.2026 по делу № А40-239166/2024</a><br><br>💬Как мы вчера <a href=\"https://t.me/PgAntitrust/1337\" target=\"_blank\" rel=\"noopener noreferrer\">рассказали</a>, кассационная жалоба третьего лица (гарантирующего поставщика электроэнергии) настойчиво была передана на рассмотрение в Судебную коллегию. Теперь давайте попытаемся разобраться ради чего.<br><br>🟡Фабула дела<br><br>Энергосбытовая компания обратилась к гарантирующему поставщику (третье лицо, чью жалобу передали в Судебную коллегию) с предложением внести изменения в договор купли-продажи электроэнергии и расширить точки поставки электроэнергии на новые объекты с 01.05.2024.<br><br>Гарантирующий поставщик месяц рассматривал заявку энергосбытовой компании и в ответном письме указал, что срок начала исполнения обязательств по новым объектам наступает не с 01.05.2024, а с момента подписания изменений к договору обеими сторонами. В течение еще двух месяцев стороны обменивались протоколами разногласий, но ни одна из сторон не приняла позицию другой.<br><br>Энергосбытовая компания обратилась в ФАС для защиты интересов от необоснованных отказов со стороны гарантирующего поставщика. ФАС отказала в выдаче предупреждения, указав, что между сторонами уже заключен договор купли-продажи. Энергосбытовая компания обжаловала в суде отказ ФАС.<br><br>🟡 Экономическая сторона<br><br>Может показаться, что мы имеем дело с юристикой, когда один юрист не может договориться с другим и причем тут ФАС. На самом деле оттягивание срока начала исполнения обязательств влечет экономические последствия.<br><br>Если между сторонами не урегулирован спор по договору, это не прекращает поставки электроэнергии. Однако стоимость может рассчитываться как за бездоговорное потребление.<br><br>Гарантирующие поставщики и энергосбытовые компании являются конкурентами на рынке розничной поставки электрической энергии. И если ценообразование гарантирующего поставщика урегулировано, то энергосбытовая компания свободна в ценообразовании, благодаря чему может обеспечить экономию для потребителей электроэнергии. Поэтому некоторые потребители уходят от гарантирующих поставщиков к энергосбытовым компаниям, а гарантирующие поставщики пытаются их задержать.<br><br>🟡Позиция судов трех инстанций<br><br>ФАС обязана выдать предупреждение гарантирующему поставщику, поскольку его действия являются навязыванием невыгодных условий о дате начала исполнения обязательств и влекут негативные последствия в виде бездоговорного потребления.<br><br>🟡 Основания для передачи в Судебную коллегию<br><br>1. Предложение гарантирующего поставщика устанавливать срок действия договора в соответствии с законодательством не может являться злоупотреблением доминирующим положением.<br><br>2. Применение к спорному предложению ретроспективной оговорки (срок действия с 01.05.2024) не может быть вменено в обязанность гарантирующему поставщику.",
-      "views": 657,
+      "views": 660,
       "comments_count": 0,
       "comments_url": null,
       "photos": [],
@@ -530,6 +501,35 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PgAntitrust/1323",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
+      "id": 1322,
+      "date": "2025-12-30T07:44:15+00:00",
+      "text": "🖥 Главные темы недели:\n\n🟡Ряд спецполномочий Правительства продлили;\n🟡Имущественные торги – по единым правилам;\n🟡Контрсанкционные меры в сфере закупок продлили;\n🟡В ФАС обсудили вопросы регулирования электронной коммерции.\n \nБольше информации — в традиционном обзоре.",
+      "text_html": "🖥 Главные темы недели:<br><br>🟡Ряд спецполномочий Правительства продлили;<br>🟡Имущественные торги – по единым правилам;<br>🟡Контрсанкционные меры в сфере закупок продлили;<br>🟡В ФАС обсудили вопросы регулирования электронной коммерции.<br> <br>Больше информации — в традиционном <a href=\"https://www.pgplaw.ru/analytics-and-brochures/antitrust-reviews/competition-and-law-digest-25-12-29/\" target=\"_blank\" rel=\"noopener noreferrer\">обзоре.</a>",
+      "views": 536,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1322-1-62b5da14adae-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1322-1-62b5da14adae-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/SC4N4dUQelRzCbSPUo4xW3w5deRsC4p45z4nV-GVUi1NZadYwgBhP3t0cGFMuftmro_s9Px6kZUGPJL-mKgjT-SRn6zaH_N_vRaT4RRCaaX5bwL8zJI2lFDTTVsOCYfLYsdD8gTAYqG5UNonMJRNZ2z0E7z-rEkc_yN7BoiTaw0gG7TZlLPCRg4sTxoKKZhIGQUEIq6-lzIPOvqUGXKV1AWXcuUT-D2pZUHsc7ebVXQSDW4UIU9AN2uiH2ryPc9VUp_mqbyHLt56Zw7l1AKsb1HM1sU5vA865FtWa4IuYe7DIRO7isrWX4eepSsf7f6iRDHyJ-fjDjfxBDIbs6LK9g.jpg",
+          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1322-1-62b5da14adae-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1600,
+          "feed_height": 640,
+          "full_width": 1600,
+          "full_height": 640,
+          "source_width": 1600,
+          "source_height": 640
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/PgAntitrust/1322",
       "forwarded_from": null,
       "reply_to": null
     }
