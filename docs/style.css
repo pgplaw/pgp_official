@@ -1828,6 +1828,10 @@ label,
   padding-top: 12px;
 }
 
+.post-card--round-video-only .post-card__content:empty {
+  display: none;
+}
+
 .post-card--round-video-only .post-card__head {
   display: flex;
   align-items: start;
@@ -2370,6 +2374,10 @@ label,
 
   .post-card--round-video-only .post-card__body {
     padding-top: 10px;
+  }
+
+  .post-card--round-video-only .post-card__content:empty {
+    display: none;
   }
 
   .post-card--round-video-only .post-card__head {

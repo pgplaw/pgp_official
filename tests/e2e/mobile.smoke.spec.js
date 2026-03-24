@@ -88,6 +88,48 @@ test.describe('Mobile smoke', () => {
     expect(titleBox.y).toBeLessThan(mediaBox.y);
   });
 
+  test('renders actual bankrotstvo round-video post with header above media on mobile', async ({ page }) => {
+    await page.goto('/?channel=bankrotstvo-mustknow');
+    await waitForFeedReady(page);
+
+    const card = page.locator('.post-card--round-video-only').first();
+    await expect(card).toBeVisible();
+    await expect(card.locator('.post-card__title')).toHaveText('Видео-пост');
+    await expect(card.locator('.post-card__copy')).toBeVisible();
+    await expect(card.locator('.post-card__media video')).toHaveCount(0);
+    await expect(card.locator('.media-video-note img, .media-video-note__placeholder')).toBeVisible();
+
+    const [titleBox, copyBox, mediaBox] = await Promise.all([
+      card.locator('.post-card__title').boundingBox(),
+      card.locator('.post-card__copy').boundingBox(),
+      card.locator('.post-card__media').boundingBox(),
+    ]);
+
+    expect(titleBox).toBeTruthy();
+    expect(copyBox).toBeTruthy();
+    expect(mediaBox).toBeTruthy();
+    expect(Math.abs(titleBox.y - copyBox.y)).toBeLessThanOrEqual(10);
+    expect(copyBox.x).toBeGreaterThan(titleBox.x);
+    expect(titleBox.y).toBeLessThan(mediaBox.y);
+  });
+
+  test('opens actual bankrotstvo round-video viewer without endless pending state on mobile', async ({ page }) => {
+    await page.goto('/?channel=bankrotstvo-mustknow');
+    await waitForFeedReady(page);
+
+    const card = page.locator('.post-card--round-video-only').first();
+    await expect(card).toBeVisible();
+    await card.locator('.media-trigger').click();
+    await expect(page.locator('#viewer')).toBeVisible();
+    await page.waitForFunction(() => {
+      const fallback = document.querySelector('#viewer .viewer__fallback');
+      if (fallback) return true;
+      const video = document.querySelector('#viewer video');
+      return Boolean(video && video.readyState >= 1);
+    });
+    await expect(page.locator('#viewer video, #viewer .viewer__fallback')).toBeVisible();
+  });
+
   test('renders round-video poster preview on mobile and falls back cleanly in viewer', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);

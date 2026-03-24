@@ -328,6 +328,52 @@ function normalizePhoto(photo) {
   };
 }
 
+function isTruthyMediaFlag(value) {
+  if (typeof value === 'boolean') return value;
+  if (typeof value === 'number') return value > 0;
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase();
+    return normalized === 'true' || normalized === '1' || normalized === 'yes';
+  }
+  return false;
+}
+
+function hasVisiblePostBody(post) {
+  const html = String(post?.text_html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const text = String(post?.text || '').replace(/\s+/g, ' ').trim();
+  return Boolean(html || text);
+}
+
+function isRoundVideoPost(post) {
+  if (!post?.video_url) return false;
+
+  const photoCount = Array.isArray(post.photos) ? post.photos.filter(Boolean).length : 0;
+  if (photoCount > 0) return false;
+
+  const explicitHint = isTruthyMediaFlag(post.video_note) || Boolean(post.video_poster);
+  const urlHint = /video-note/i.test(String(post.video_url || ''));
+  const noCompetingContent = !post.reply_to && !post.forwarded_from && !hasVisiblePostBody(post);
+
+  return explicitHint || urlHint || noCompetingContent;
+}
+
+function buildCopyPostButtonMarkup(postAnchorUrl) {
+  return `
+    <button
+      class="post-card__copy icon-button icon-button--post-copy"
+      type="button"
+      data-copy-post-url="${escapeHtml(postAnchorUrl)}"
+      aria-label="Скопировать ссылку на пост"
+      title="Скопировать ссылку на пост"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="9" y="9" width="10" height="10" rx="2"></rect>
+        <path d="M7 15H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </button>
+  `;
+}
+
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
@@ -1658,8 +1704,24 @@ function buildResponsiveImageTag(item, index, isGallery) {
   `;
 }
 
+function buildRoundVideoPreviewMarkup(item, index) {
+  return `
+    <span class="media-video-note" aria-hidden="true">
+      ${item.poster
+        ? buildResponsiveImageTag(item.poster, index, false)
+        : '<span class="media-video-note__placeholder">Видео</span>'}
+      <span class="media-video-note__play" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 7.5v9l7-4.5z"></path>
+        </svg>
+      </span>
+    </span>
+  `;
+}
+
 function buildMedia(post) {
   const media = [];
+  const roundVideoPost = isRoundVideoPost(post);
 
   (post.photos || []).forEach((photo) => {
     const entry = normalizePhoto(photo);
@@ -1673,7 +1735,7 @@ function buildMedia(post) {
 
   if (post.video_url) {
     media.push({
-      type: post.video_note ? 'round-video' : 'video',
+      type: roundVideoPost ? 'round-video' : 'video',
       url: post.video_url,
       width: post.video_width || null,
       height: post.video_height || null,
@@ -1693,19 +1755,8 @@ function buildMedia(post) {
     const content = item.type === 'image'
       ? buildResponsiveImageTag(item, index, isGallery)
       : (item.type === 'round-video' && isSingleRoundVideo
-          ? `
-            <span class="media-video-note" aria-hidden="true">
-              ${item.poster
-                ? buildResponsiveImageTag(item.poster, index, false)
-                : '<span class="media-video-note__placeholder">Видео</span>'}
-              <span class="media-video-note__play" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M9 7.5v9l7-4.5z"></path>
-                </svg>
-              </span>
-            </span>
-          `
-          : `<video src="${item.url}" preload="metadata" muted playsinline controls${item.type === 'round-video' ? ' data-round-video="true"' : ''}></video>`);
+          ? buildRoundVideoPreviewMarkup(item, index)
+          : `<video src="${item.url}" preload="${item.type === 'round-video' ? 'auto' : 'metadata'}" muted playsinline webkit-playsinline controls${item.type === 'round-video' ? ' data-round-video="true"' : ''}${item.poster?.full_url || item.poster?.feed_url || item.poster?.thumb_url ? ` poster="${item.poster.full_url || item.poster.feed_url || item.poster.thumb_url}"` : ''}></video>`);
     return `<button class="media-trigger${item.type === 'round-video' && isSingleRoundVideo ? ' media-trigger--round-video' : ''}" type="button" data-index="${index}" aria-label="${item.type === 'round-video' ? 'Открыть видеосообщение' : 'Открыть медиа'}">${content}</button>`;
   }).join('');
 
@@ -1947,6 +1998,142 @@ function bindMediaFill(root) {
   });
 }
 
+function buildGeneratedPoster(url, size = 640) {
+  return {
+    thumb_url: url,
+    feed_url: url,
+    full_url: url,
+    thumb_width: size,
+    thumb_height: size,
+    feed_width: size,
+    feed_height: size,
+    full_width: size,
+    full_height: size,
+    source_width: size,
+    source_height: size,
+  };
+}
+
+function generatePosterFromVideo(url) {
+  return new Promise((resolve) => {
+    if (!url) {
+      resolve(null);
+      return;
+    }
+
+    const video = document.createElement('video');
+    video.preload = 'auto';
+    video.muted = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.crossOrigin = 'anonymous';
+
+    let settled = false;
+    const cleanup = () => {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+    };
+    const finish = (poster) => {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(timeoutId);
+      cleanup();
+      resolve(poster);
+    };
+
+    const capture = () => {
+      try {
+        const width = video.videoWidth || 0;
+        const height = video.videoHeight || 0;
+        if (!width || !height) {
+          finish(null);
+          return;
+        }
+
+        const side = Math.min(width, height);
+        const offsetX = Math.max(0, Math.round((width - side) / 2));
+        const offsetY = Math.max(0, Math.round((height - side) / 2));
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        if (!context) {
+          finish(null);
+          return;
+        }
+
+        canvas.width = 640;
+        canvas.height = 640;
+        context.imageSmoothingEnabled = true;
+        if ('imageSmoothingQuality' in context) {
+          context.imageSmoothingQuality = 'high';
+        }
+        context.drawImage(video, offsetX, offsetY, side, side, 0, 0, canvas.width, canvas.height);
+        finish(buildGeneratedPoster(canvas.toDataURL('image/jpeg', 0.84), canvas.width));
+      } catch {
+        finish(null);
+      }
+    };
+
+    const timeoutId = window.setTimeout(() => finish(null), 6000);
+    video.addEventListener('loadeddata', capture, { once: true });
+    video.addEventListener('error', () => finish(null), { once: true });
+    video.src = url;
+    try {
+      video.load();
+    } catch {
+      finish(null);
+    }
+  });
+}
+
+function upgradeRoundVideoTrigger(trigger, item) {
+  if (!trigger || !item || trigger.dataset.roundVideoUpgraded === 'true') return;
+  trigger.dataset.roundVideoUpgraded = 'true';
+
+  const index = Number.parseInt(trigger.dataset.index || '0', 10) || 0;
+  const renderPreview = (posterOverride = item.poster || null) => {
+    const previewItem = posterOverride ? { ...item, poster: posterOverride } : item;
+    trigger.innerHTML = buildRoundVideoPreviewMarkup(previewItem, index);
+    const image = trigger.querySelector('img');
+    if (image) {
+      bindImageFallback(image, previewItem.poster, { isGallery: false, preferFull: false });
+      if (image.complete) {
+        applyIntrinsicMediaLimit(image);
+        applyMediaFill(image);
+        logImageDiagnostics(image);
+      }
+    }
+  };
+
+  if (item.poster) {
+    renderPreview(item.poster);
+    return;
+  }
+
+  renderPreview(null);
+  generatePosterFromVideo(item.url).then((generatedPoster) => {
+    if (!generatedPoster) return;
+    item.poster = generatedPoster;
+    renderPreview(generatedPoster);
+  });
+}
+
+function normalizeRoundVideoOnlyCard(article, post, mediaRoot) {
+  if (!article || !mediaRoot || !isRoundVideoPost(post) || Array.isArray(post.photos) && post.photos.filter(Boolean).length > 0) {
+    return;
+  }
+
+  article.classList.add('post-card--round-video-only');
+
+  const trigger = mediaRoot.querySelector('.media-trigger');
+  const mediaItems = state.mediaRegistry[mediaRoot.dataset.mediaId] || [];
+  const item = mediaItems[0] || null;
+  if (trigger && item && item.type === 'round-video') {
+    upgradeRoundVideoTrigger(trigger, item);
+  }
+}
+
 function resolveForwardedSource(post) {
   const forwarded = post.forwarded_from;
   if (!forwarded) return null;
@@ -2025,7 +2212,7 @@ function renderPostCard(post) {
 
   const text = normalizePostHtmlSpacing(normalizePostHtml(post.text_html)) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
   const photoCount = Array.isArray(post.photos) ? post.photos.filter(Boolean).length : 0;
-  const isRoundVideoOnly = Boolean(post.video_note && post.video_url && photoCount === 0);
+  const isRoundVideoOnly = Boolean(isRoundVideoPost(post) && post.video_url && photoCount === 0);
   if (isRoundVideoOnly) {
     article.classList.add('post-card--round-video-only');
   }
@@ -2037,28 +2224,34 @@ function renderPostCard(post) {
     Boolean(state.feed?.source?.comments_enabled) &&
     (post.comments_count > 0 || post.comments_url || post.comments_available);
   const showVideoPostTitle = isRoundVideoOnly;
+  const copyPostButtonMarkup = buildCopyPostButtonMarkup(postAnchorUrl);
+  const metaMarkup = `
+    ${showVideoPostTitle ? '<div class="post-card__title">Видео-пост</div>' : ''}
+    ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : ''}
+    ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
+    ${text ? `<div class="post-card__text">${text}</div>` : ''}
+  `;
+  const roundVideoHeadMarkup = isRoundVideoOnly
+    ? `
+      <div class="post-card__head">
+        <div class="post-card__meta${showVideoPostTitle || replyTarget || forwarded ? '' : ' post-card__meta--empty'}">
+          ${showVideoPostTitle ? '<div class="post-card__title">Видео-пост</div>' : ''}
+          ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : ''}
+          ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
+        </div>
+        ${copyPostButtonMarkup}
+      </div>
+    `
+    : '';
 
   article.innerHTML = `
+    ${roundVideoHeadMarkup}
     ${buildMedia(post)}
     <div class="post-card__body">
       <div class="post-card__content">
-        ${showVideoPostTitle ? '<div class="post-card__title">Видео-пост</div>' : ''}
-        ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : ''}
-        ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
-        ${text ? `<div class="post-card__text">${text}</div>` : ''}
+        ${isRoundVideoOnly ? (text ? `<div class="post-card__text">${text}</div>` : '') : metaMarkup}
       </div>
-      <button
-        class="post-card__copy icon-button icon-button--post-copy"
-        type="button"
-        data-copy-post-url="${escapeHtml(postAnchorUrl)}"
-        aria-label="Скопировать ссылку на пост"
-        title="Скопировать ссылку на пост"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="9" y="9" width="10" height="10" rx="2"></rect>
-          <path d="M7 15H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1"></path>
-        </svg>
-      </button>
+      ${isRoundVideoOnly ? '' : copyPostButtonMarkup}
     </div>
     <div class="post-card__footer">
       <div class="post-card__stats">
@@ -2075,6 +2268,7 @@ function renderPostCard(post) {
   if (mediaRoot) {
     const items = state.mediaRegistry[mediaRoot.dataset.mediaId] || [];
     bindMediaFill(mediaRoot);
+    normalizeRoundVideoOnlyCard(article, post, mediaRoot);
     mediaRoot.querySelectorAll('.media-trigger').forEach((button) => {
       button.addEventListener('click', () => openViewer(items, Number(button.dataset.index)));
     });
@@ -2093,34 +2287,6 @@ function renderPostCard(post) {
       const copied = await copyTextToClipboard(copyPostButton.dataset.copyPostUrl || '');
       showCopyToast(copied ? 'Ссылка на пост скопирована' : 'Не удалось скопировать ссылку');
     });
-  }
-
-  if (isRoundVideoOnly) {
-    const body = article.querySelector('.post-card__body');
-    const content = article.querySelector('.post-card__content');
-    const title = article.querySelector('.post-card__title');
-    const reply = article.querySelector('.post-card__reply');
-    const forwardedLine = article.querySelector('.post-card__forwarded');
-    const copyButton = article.querySelector('[data-copy-post-url]');
-
-    if (body && content && copyButton && (title || reply || forwardedLine)) {
-      const head = document.createElement('div');
-      head.className = 'post-card__head';
-
-      const meta = document.createElement('div');
-      meta.className = 'post-card__meta';
-
-      [title, reply, forwardedLine].forEach((node) => {
-        if (node) meta.appendChild(node);
-      });
-
-      head.append(meta, copyButton);
-      if (mediaRoot) {
-        article.insertBefore(head, mediaRoot);
-      } else {
-        body.insertBefore(head, content);
-      }
-    }
   }
 
   article.querySelectorAll('[data-reply-post-id]').forEach((link) => {
@@ -2299,7 +2465,7 @@ function getViewerTrack() {
 
 function buildViewerSlide(item, index) {
   const content = item.type === 'video' || item.type === 'round-video'
-    ? `<video src="${item.url}" controls preload="metadata" playsinline${item.type === 'round-video' ? ' data-round-video="true"' : ''}${item.poster?.full_url || item.poster?.feed_url || item.poster?.thumb_url ? ` poster="${item.poster.full_url || item.poster.feed_url || item.poster.thumb_url}"` : ''}></video>`
+    ? `<video src="${item.url}" controls preload="auto" playsinline webkit-playsinline${item.type === 'round-video' ? ' data-round-video="true"' : ''}${item.poster?.full_url || item.poster?.feed_url || item.poster?.thumb_url ? ` poster="${item.poster.full_url || item.poster.feed_url || item.poster.thumb_url}"` : ''}></video>`
     : `<img src="${item.full_url || item.feed_url || item.thumb_url}" alt="Media preview ${index + 1}" loading="eager" decoding="async" draggable="false">`;
 
   return `<div class="viewer__slide" data-viewer-index="${index}">${content}</div>`;
@@ -2318,6 +2484,11 @@ function syncViewerActiveSlide(viewport) {
     const slide = video.closest('.viewer__slide');
     const slideIndex = Number(slide?.dataset.viewerIndex || -1);
     if (slideIndex === state.viewerIndex) {
+      try {
+        if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+          video.load();
+        }
+      } catch {}
       video.play().catch(() => {});
       return;
     }
@@ -2331,11 +2502,44 @@ function bindViewerVideoFallbacks() {
     if (video.dataset.viewerFallbackBound === 'true') return;
     video.dataset.viewerFallbackBound = 'true';
 
-    video.addEventListener('error', () => {
+    let settled = false;
+    const settle = () => {
+      if (settled) return;
+      settled = true;
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+    const fail = () => {
+      if (settled) return;
+      settle();
       const slide = video.closest('.viewer__slide');
       if (!slide) return;
       markMediaUnavailable(slide);
+    };
+    const timeoutId = window.setTimeout(() => {
+      if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+        fail();
+      } else {
+        settle();
+      }
+    }, 9000);
+
+    ['loadedmetadata', 'loadeddata', 'canplay', 'playing'].forEach((eventName) => {
+      video.addEventListener(eventName, settle, { once: true });
     });
+    video.addEventListener('error', fail, { once: true });
+    video.addEventListener('abort', fail, { once: true });
+    video.addEventListener('emptied', fail, { once: true });
+    video.addEventListener('stalled', () => {
+      if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+        fail();
+      }
+    });
+
+    try {
+      video.load();
+    } catch {}
   });
 }
 
