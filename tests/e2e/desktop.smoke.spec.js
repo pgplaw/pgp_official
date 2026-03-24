@@ -71,4 +71,36 @@ test.describe('Desktop smoke', () => {
     await page.waitForFunction(() => window.scrollY < 24);
     await expect(page.locator('#scrollTopButton')).not.toHaveClass(/is-visible/);
   });
+
+  test('keeps round-video title and copy action in one top row', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'round-video-layout-host-desktop';
+      document.body.appendChild(host);
+      const card = window.renderPostCard({
+        id: 999991,
+        date: new Date().toISOString(),
+        text: '',
+        text_html: '',
+        photos: [],
+        video_note: true,
+        video_url: 'data:video/mp4;base64,AAAA',
+        tg_url: 'https://t.me/example/999991',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    });
+
+    const title = page.locator('#round-video-layout-host-desktop .post-card__title');
+    const copy = page.locator('#round-video-layout-host-desktop .post-card__copy');
+    await expect(title).toHaveText('Видео-пост');
+    const [titleBox, copyBox] = await Promise.all([title.boundingBox(), copy.boundingBox()]);
+    expect(titleBox).toBeTruthy();
+    expect(copyBox).toBeTruthy();
+    expect(Math.abs(titleBox.y - copyBox.y)).toBeLessThanOrEqual(10);
+    expect(copyBox.x).toBeGreaterThan(titleBox.x);
+  });
 });

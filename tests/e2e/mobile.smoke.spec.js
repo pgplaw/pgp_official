@@ -49,4 +49,36 @@ test.describe('Mobile smoke', () => {
     await page.waitForTimeout(120);
     await expect(page.locator('#scrollTopButton')).toHaveClass(/is-visible/);
   });
+
+  test('keeps round-video title and copy action aligned on mobile', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'round-video-layout-host-mobile';
+      document.body.appendChild(host);
+      const card = window.renderPostCard({
+        id: 999992,
+        date: new Date().toISOString(),
+        text: '',
+        text_html: '',
+        photos: [],
+        video_note: true,
+        video_url: 'data:video/mp4;base64,AAAA',
+        tg_url: 'https://t.me/example/999992',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    });
+
+    const title = page.locator('#round-video-layout-host-mobile .post-card__title');
+    const copy = page.locator('#round-video-layout-host-mobile .post-card__copy');
+    await expect(title).toHaveText('Видео-пост');
+    const [titleBox, copyBox] = await Promise.all([title.boundingBox(), copy.boundingBox()]);
+    expect(titleBox).toBeTruthy();
+    expect(copyBox).toBeTruthy();
+    expect(Math.abs(titleBox.y - copyBox.y)).toBeLessThanOrEqual(10);
+    expect(copyBox.x).toBeGreaterThan(titleBox.x);
+  });
 });

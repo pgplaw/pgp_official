@@ -1803,11 +1803,28 @@ label,
   padding-top: 12px;
 }
 
+.post-card--round-video-only .post-card__head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.post-card--round-video-only .post-card__meta {
+  display: block;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
 .post-card--round-video-only .post-card__copy {
   position: static;
   top: auto;
   right: auto;
   z-index: auto;
+  margin-top: 0;
+  justify-self: auto;
+  align-self: start;
 }
 
 .post-card--round-video-only .post-card__title {
