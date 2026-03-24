@@ -20,6 +20,39 @@ test.describe('Mobile smoke', () => {
     expect(page.url()).not.toContain('channel=pgp-official');
   });
 
+  test('toggles mobile channel list and switches channel from it', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const toggle = page.locator('#channelCarousel .channel-carousel__surface--current [data-channel-carousel-toggle]');
+    const panel = page.locator('#channelCarousel [data-channel-carousel-panel]');
+    await expect(toggle).toBeVisible();
+
+    await toggle.click();
+    await expect(page.locator('#channelCarousel')).toHaveClass(/is-list-open/);
+    await expect(panel).toBeVisible();
+
+    const panelBox = await panel.boundingBox();
+    const viewport = page.viewportSize();
+    expect(panelBox).toBeTruthy();
+    expect(viewport).toBeTruthy();
+    expect(panelBox.y + panelBox.height).toBeLessThanOrEqual(viewport.height + 2);
+
+    await toggle.click();
+    await expect(page.locator('#channelCarousel')).not.toHaveClass(/is-list-open/);
+
+    await toggle.click();
+    const initialTitle = (await page.locator('#siteTitle').innerText()).trim();
+    const target = page.locator('#channelCarousel [data-channel-carousel-select][data-channel-key="pg-antitrust"]');
+    await expect(target).toBeVisible();
+    await target.click();
+    await waitForFeedReady(page);
+
+    await expect(page.locator('#channelCarousel')).not.toHaveClass(/is-list-open/);
+    await expect(page.locator('#siteTitle')).not.toHaveText(initialTitle);
+    expect(page.url()).toContain('channel=pg-antitrust');
+  });
+
   test('opens gallery viewer and navigates to next slide', async ({ page }) => {
     await page.goto('/?channel=investment-law');
     await waitForFeedReady(page);

@@ -46,6 +46,8 @@ const state = {
   channelCarouselAnimating: false,
   channelCarouselTransition: null,
   channelCarouselAutotest: null,
+  channelCarouselListOpen: false,
+  channelCarouselClickSuppressUntil: 0,
   viewerPointer: null,
   viewerAnimating: false,
   viewerTransitionTimerId: null,
@@ -1054,6 +1056,45 @@ function getChannelCarouselTrack() {
   return elements.channelCarousel?.querySelector('[data-channel-carousel-track]') || null;
 }
 
+function getChannelCarouselListPanel() {
+  return elements.channelCarousel?.querySelector('[data-channel-carousel-panel]') || null;
+}
+
+function suppressChannelCarouselClick(duration = 420) {
+  state.channelCarouselClickSuppressUntil = Date.now() + duration;
+}
+
+function isChannelCarouselClickSuppressed() {
+  return state.channelCarouselClickSuppressUntil > Date.now();
+}
+
+function syncChannelCarouselListState() {
+  if (!elements.channelCarousel) return;
+
+  const isOpen = state.channelCarouselListOpen && isMobileCarouselViewport();
+  elements.channelCarousel.classList.toggle('is-list-open', isOpen);
+
+  const panel = getChannelCarouselListPanel();
+  if (panel) {
+    panel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  }
+
+  elements.channelCarousel.querySelectorAll('[data-channel-carousel-toggle]').forEach((toggle) => {
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+}
+
+function setChannelCarouselListOpen(open) {
+  const nextOpen = Boolean(open);
+  if (state.channelCarouselListOpen === nextOpen) {
+    syncChannelCarouselListState();
+    return;
+  }
+
+  state.channelCarouselListOpen = nextOpen;
+  syncChannelCarouselListState();
+}
+
 function getChannelCarouselWidth(stage = getChannelCarouselStage()) {
   return Math.max(
     stage?.getBoundingClientRect?.().width || 0,
@@ -1167,6 +1208,7 @@ async function moveChannelCarousel(offset) {
   const nextChannelKey = getRelativeChannelKey(offset);
   if (!nextChannelKey || nextChannelKey === state.activeChannelKey || state.channelCarouselAnimating) return;
 
+  setChannelCarouselListOpen(false);
   const stage = getChannelCarouselStage();
   const track = getChannelCarouselTrack();
   const shouldAnimate = isMobileCarouselViewport() && !prefersReducedMotion() && stage && track;
@@ -1322,19 +1364,37 @@ function setupChannelCarouselInteractions() {
   elements.channelCarousel.dataset.carouselBound = 'true';
 
   elements.channelCarousel.addEventListener('click', (event) => {
-    const button = event.target.closest('[data-channel-shift]');
-    if (!button) return;
+    if (isChannelCarouselClickSuppressed()) return;
 
-    const shift = Number(button.dataset.channelShift || '0');
-    if (!shift) return;
-    void moveChannelCarousel(shift);
+    const button = event.target.closest('[data-channel-shift]');
+    if (button) {
+      const shift = Number(button.dataset.channelShift || '0');
+      if (!shift) return;
+      setChannelCarouselListOpen(false);
+      void moveChannelCarousel(shift);
+      return;
+    }
+
+    const pickerItem = event.target.closest('[data-channel-carousel-select]');
+    if (pickerItem) {
+      const nextChannelKey = pickerItem.dataset.channelKey;
+      setChannelCarouselListOpen(false);
+      if (!nextChannelKey || nextChannelKey === state.activeChannelKey) return;
+      void switchChannel(nextChannelKey, { scrollToTop: true, fastTransition: true });
+      return;
+    }
+
+    const toggle = event.target.closest('[data-channel-carousel-toggle]');
+    if (!toggle || state.channelCarouselAnimating) return;
+    if (!toggle.closest('.channel-carousel__surface--current')) return;
+    setChannelCarouselListOpen(!state.channelCarouselListOpen);
   });
 
   elements.channelCarousel.addEventListener('touchstart', (event) => {
     const stage = getChannelCarouselStage();
     const track = getChannelCarouselTrack();
     const surface = event.target.closest('.channel-carousel__surface--current');
-    if (!surface || !stage || !track || event.touches.length !== 1 || state.channelCarouselAnimating) return;
+    if (!surface || !stage || !track || event.touches.length !== 1 || state.channelCarouselAnimating || state.channelCarouselListOpen) return;
 
     const touch = event.touches[0];
     state.channelCarouselTouch = {
@@ -1380,6 +1440,11 @@ function setupChannelCarouselInteractions() {
     const deltaX = touchState.deltaX;
     const deltaY = touchState.deltaY;
     const threshold = touchState.width * 0.18;
+    const moved = Math.abs(deltaX) > 8 || Math.abs(deltaY) > 8;
+
+    if (moved) {
+      suppressChannelCarouselClick();
+    }
 
     if (!touchState.dragging || Math.abs(deltaX) < threshold || Math.abs(deltaX) <= Math.abs(deltaY)) {
       void animateChannelCarouselShift(touchState.track, 0, { duration: 170 });
@@ -1395,6 +1460,7 @@ function setupChannelCarouselInteractions() {
       void animateChannelCarouselShift(state.channelCarouselTouch.track, 0, { duration: 160 });
     }
     state.channelCarouselTouch = null;
+    suppressChannelCarouselClick();
     queueScrollTopButtonVisibilitySync();
   }, { passive: true });
 }
@@ -1510,11 +1576,23 @@ function buildMobileChannelCarouselSurface(channel, index, total, { current = fa
           <path d="m14.5 6.5-5.5 5.5 5.5 5.5" />
         </svg>
       </button>
-      <div class="channel-carousel__content">
-        <span class="channel-carousel__meta">Канал ${index + 1} из ${total}</span>
+      <button
+        class="channel-carousel__content channel-carousel__toggle"
+        type="button"
+        data-channel-carousel-toggle="true"
+        aria-controls="channelCarouselList"
+        aria-expanded="${state.channelCarouselListOpen ? 'true' : 'false'}"
+        aria-label="${escapeHtml(`${rawLabel}. ${state.channelCarouselListOpen ? 'Свернуть список каналов' : 'Показать все каналы'}`)}"
+      >
+        <span class="channel-carousel__meta">${escapeHtml(`Канал ${index + 1} из ${total}`)}</span>
         <span class="channel-carousel__title">${formatTextWithSoftBreaks(title)}</span>
         <span class="channel-carousel__subtitle">${formatTextWithSoftBreaks(subtitle)}</span>
-      </div>
+        <span class="channel-carousel__disclosure" aria-hidden="true">
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="m5 7 5 5 5-5" />
+          </svg>
+        </span>
+      </button>
       <button
         class="channel-carousel__nav channel-carousel__nav--next"
         type="button"
@@ -1530,11 +1608,33 @@ function buildMobileChannelCarouselSurface(channel, index, total, { current = fa
   `;
 }
 
+function buildMobileChannelCarouselPickerItem(channel, index) {
+  const { title, subtitle, rawLabel } = getChannelMenuLabels(channel);
+  const isActive = channel?.key === state.activeChannelKey;
+
+  return `
+    <button
+      class="channel-carousel__picker-item${isActive ? ' is-active' : ''}"
+      type="button"
+      data-channel-carousel-select="true"
+      data-channel-key="${escapeHtml(channel?.key || '')}"
+      style="${escapeHtml(buildChannelAccentStyle(channel))}"
+      aria-label="${escapeHtml(rawLabel)}"
+      aria-pressed="${isActive ? 'true' : 'false'}"
+    >
+      <span class="channel-carousel__picker-meta">${isActive ? 'Открыт' : `Канал ${index + 1}`}</span>
+      <span class="channel-carousel__picker-title">${formatTextWithSoftBreaks(title)}</span>
+      <span class="channel-carousel__picker-subtitle">${formatTextWithSoftBreaks(subtitle)}</span>
+    </button>
+  `;
+}
+
 function renderMobileChannelCarousel() {
   if (!elements.channelCarousel) return;
 
   const channels = getCatalogChannels();
   if (!channels.length) {
+    state.channelCarouselListOpen = false;
     elements.channelCarousel.innerHTML = '';
     return;
   }
@@ -1545,9 +1645,14 @@ function renderMobileChannelCarousel() {
   const nextChannel = getRelativeChannel(1) || activeChannel;
 
   let carouselStage = elements.channelCarousel.querySelector('.channel-carousel__stage');
-  if (!carouselStage) {
-    elements.channelCarousel.innerHTML = '<div class="channel-carousel__stage"></div>';
+  let carouselList = elements.channelCarousel.querySelector('[data-channel-carousel-panel]');
+  if (!carouselStage || !carouselList) {
+    elements.channelCarousel.innerHTML = `
+      <div class="channel-carousel__stage"></div>
+      <div id="channelCarouselList" class="channel-carousel__dropdown" data-channel-carousel-panel aria-hidden="true"></div>
+    `;
     carouselStage = elements.channelCarousel.querySelector('.channel-carousel__stage');
+    carouselList = elements.channelCarousel.querySelector('[data-channel-carousel-panel]');
   }
 
   carouselStage.classList.remove('channel-carousel__stage--animating');
@@ -1565,7 +1670,16 @@ function renderMobileChannelCarousel() {
     setChannelCarouselShift(track, 0);
   }
 
+  if (carouselList) {
+    carouselList.innerHTML = `
+      <div class="channel-carousel__picker" role="listbox" aria-label="Все каналы">
+        ${channels.map((channel, index) => buildMobileChannelCarouselPickerItem(channel, index)).join('')}
+      </div>
+    `;
+  }
+
   finishChannelCarouselTransition();
+  syncChannelCarouselListState();
   scheduleChannelCarouselAutotest();
 }
 
@@ -2999,6 +3113,10 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
         .catch((error) => ({ error }))
     : null;
 
+  if (isChannelChange && state.channelCarouselListOpen) {
+    setChannelCarouselListOpen(false);
+  }
+
   if (scrollToTop) {
     scrollPageToTop();
   }
@@ -3176,6 +3294,10 @@ window.addEventListener('appinstalled', () => {
   showCopyToast('Приложение установлено');
 });
 window.addEventListener('resize', () => {
+  if (!isMobileCarouselViewport() && state.channelCarouselListOpen) {
+    state.channelCarouselListOpen = false;
+    syncChannelCarouselListState();
+  }
   if (elements.viewer.classList.contains('hidden')) return;
   void animateViewerToIndex(state.viewerIndex, { immediate: true });
 });
