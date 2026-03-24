@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-24T08:04:18.854810+00:00",
+  "generated_at": "2026-03-24T08:20:35.453295+00:00",
   "pagination": {
     "page": 5,
     "page_size": 16,
@@ -74,7 +74,7 @@
       "comments_count": 0,
       "comments_url": null,
       "photos": [],
-      "video_url": "https://cdn4.telesco.pe/file/f786189bc7.mp4?token=QraoT7G1xNRM2Ol47y3W8cX51W519QfWSX_cbegW6gWuTWZUi3X4Nb-oZ5_0rBHM1fksRr7beCFP4qoscBNU2cCU37dijYA-cziDSngRgpXxz43hlxe9ZmS6uB4FpTE1khpxdeno4AycnBJhDhPXQXLIZEv9-adcHcJPcIp0ed-uyFnk-CFGuiOGd_KbYjYGzUGB5_3I6lvqPiuxoXS80CIztVhXsVavh_BvSTHsRYF5AphRXDnpxfXWWF4wqMcGwCjP-5h90uLEChMT1nT79Qc4YLu8TTt49HNxPM4VmnThGv2L3EJ23DQyEw3k-TIhMcRDXCgwtqhWJVkwOINzHw",
+      "video_url": "data/channels/pgp-official/media/posts/videos/1663-video-note-88018ccfdff3-v1.mp4",
       "tg_url": "https://t.me/pgp_official/1663",
       "forwarded_from": {
         "source_url": "https://t.me/PG_Tax/2381",
@@ -83,7 +83,20 @@
         "channel_title": "PG Tax | Налоги"
       },
       "reply_to": null,
-      "video_note": true
+      "video_note": true,
+      "video_poster": {
+        "thumb_url": "data/channels/pgp-official/media/posts/video-posters/1663-video-note-poster-165cb1f8bc2d-v1.jpg",
+        "feed_url": "data/channels/pgp-official/media/posts/video-posters/1663-video-note-poster-165cb1f8bc2d-v1.jpg",
+        "full_url": "data/channels/pgp-official/media/posts/video-posters/1663-video-note-poster-165cb1f8bc2d-v1.jpg",
+        "thumb_width": 640,
+        "thumb_height": 640,
+        "feed_width": 640,
+        "feed_height": 640,
+        "full_width": 640,
+        "full_height": 640,
+        "source_width": 640,
+        "source_height": 640
+      }
     },
     {
       "id": 1662,

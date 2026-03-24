@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-24T08:05:20.004847+00:00",
+  "generated_at": "2026-03-24T08:21:56.055143+00:00",
   "pagination": {
     "page": 11,
     "page_size": 16,
@@ -16,11 +16,24 @@
       "comments_count": 0,
       "comments_url": null,
       "photos": [],
-      "video_url": "https://cdn4.telesco.pe/file/5b95f9c303.mp4?token=FPFg9hmeKKzIzO4-akyX29cGB41tbu1BxESREbFnfUwdd2ULAR3_6_SGNLRi4pqNaRdjqd5KnAaHSAgi-3waf9_xgnhE2IzVEIiJ7M-ZQfcnlLKxkGZewCZmiAi1LqSYVa4ylnejXIEJc3PdVrjYzh_dX2bmxlMlB0BxKzrmBqnZ4Rk1k5eqFcbOQwCfD1Cz7PnravR2qOF50j3NPflBtvqNLyVhXkCWr-0CeuxSxz3mdELTRQlmxm2TcISueekw6wmCO1G-E413GxnkzDLdqjXm7FYid9zNq8Q7jrwtHOr9erML1SKJ4rW-rkNdFHvqwLuYoaVFp3yPOpRwV8Pf2A",
+      "video_url": "data/channels/pg-tax/media/posts/videos/2375-video-note-49c50de57197-v1.mp4",
       "tg_url": "https://t.me/PG_Tax/2375",
       "forwarded_from": null,
       "reply_to": null,
-      "video_note": true
+      "video_note": true,
+      "video_poster": {
+        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2375-video-note-poster-7e1fe10ea7a0-v1.jpg",
+        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2375-video-note-poster-7e1fe10ea7a0-v1.jpg",
+        "full_url": "data/channels/pg-tax/media/posts/video-posters/2375-video-note-poster-7e1fe10ea7a0-v1.jpg",
+        "thumb_width": 640,
+        "thumb_height": 640,
+        "feed_width": 640,
+        "feed_height": 640,
+        "full_width": 640,
+        "full_height": 640,
+        "source_width": 640,
+        "source_height": 640
+      }
     },
     {
       "id": 2374,

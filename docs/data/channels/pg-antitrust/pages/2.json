@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-24T08:04:36.210485+00:00",
+  "generated_at": "2026-03-24T08:20:50.468406+00:00",
   "pagination": {
     "page": 2,
     "page_size": 16,
@@ -358,11 +358,24 @@
       "comments_count": 0,
       "comments_url": null,
       "photos": [],
-      "video_url": "https://cdn4.telesco.pe/file/63c4eb44f3.mp4?token=J8MqbzPibMwAomwbLwB57ZcwEyx17aUCEnAY8SyxzYDyeMFFmby0Bie1RaS_oWZOLFamMB-3VKmjYCiHfkAoadQgw9vkg529-qyRQIZlIejNlxil2KRWo0hdilTi5BkSEUNNcLCuD2ssf6AvgKtZiK0NOEt3xRUfWuJoG6YCEEu0n1Kb4G1X1Cz50DtACeOPGuCJEHSZ_hRRFdqlCX7HdSL29t7dCZVwyXNapy2B2Kiwe2xovAuZB4E5JObMKK-og0-gs0WKDQ8gYOYgQRWdpxaiJ3DKqecy4owD7S4uzGx1vhaEuyDxsfHaNjdl9cdM91csgBFPVMRM1GGb4EtGOw",
+      "video_url": "data/channels/pg-antitrust/media/posts/videos/1329-video-note-b54da8c072d1-v1.mp4",
       "tg_url": "https://t.me/PgAntitrust/1329",
       "forwarded_from": null,
       "reply_to": null,
-      "video_note": true
+      "video_note": true,
+      "video_poster": {
+        "thumb_url": "data/channels/pg-antitrust/media/posts/video-posters/1329-video-note-poster-7570bbb1faf8-v1.jpg",
+        "feed_url": "data/channels/pg-antitrust/media/posts/video-posters/1329-video-note-poster-7570bbb1faf8-v1.jpg",
+        "full_url": "data/channels/pg-antitrust/media/posts/video-posters/1329-video-note-poster-7570bbb1faf8-v1.jpg",
+        "thumb_width": 640,
+        "thumb_height": 640,
+        "feed_width": 640,
+        "feed_height": 640,
+        "full_width": 640,
+        "full_height": 640,
+        "source_width": 640,
+        "source_height": 640
+      }
     },
     {
       "id": 1328,
