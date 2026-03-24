@@ -2027,6 +2027,11 @@ function renderPostCard(post) {
   article.dataset.postId = String(post.id);
 
   const text = normalizePostHtmlSpacing(normalizePostHtml(post.text_html)) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
+  const photoCount = Array.isArray(post.photos) ? post.photos.filter(Boolean).length : 0;
+  const isRoundVideoOnly = Boolean(post.video_note && post.video_url && photoCount === 0);
+  if (isRoundVideoOnly) {
+    article.classList.add('post-card--round-video-only');
+  }
   const forwarded = resolveForwardedSource(post);
   const replyTarget = resolveReplyTarget(post);
   const postAnchorUrl = buildPostAnchorUrl(post.id);
@@ -2034,11 +2039,13 @@ function renderPostCard(post) {
   const shouldShowComments =
     Boolean(state.feed?.source?.comments_enabled) &&
     (post.comments_count > 0 || post.comments_url || post.comments_available);
+  const showVideoPostTitle = isRoundVideoOnly && !replyTarget && !forwarded && !text;
 
   article.innerHTML = `
     ${buildMedia(post)}
     <div class="post-card__body">
       <div class="post-card__content">
+        ${showVideoPostTitle ? '<div class="post-card__title">Видео-пост</div>' : ''}
         ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : ''}
         ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
         ${text ? `<div class="post-card__text">${text}</div>` : ''}
