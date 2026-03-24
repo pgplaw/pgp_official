@@ -2138,12 +2138,15 @@ function generatePosterFromVideo(url) {
     const video = document.createElement('video');
     video.preload = 'auto';
     video.muted = true;
+    video.defaultMuted = true;
     video.playsInline = true;
+    video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
     video.crossOrigin = 'anonymous';
 
     let settled = false;
+    let seekRequested = false;
     const cleanup = () => {
       video.pause();
       video.removeAttribute('src');
@@ -2189,8 +2192,31 @@ function generatePosterFromVideo(url) {
       }
     };
 
+    const nudgeToFirstFrame = () => {
+      if (seekRequested || settled) return;
+      seekRequested = true;
+      try {
+        const duration = Number.isFinite(video.duration) ? video.duration : 0;
+        const nextTime = duration > 0 ? Math.min(0.08, Math.max(0.01, duration * 0.02)) : 0.04;
+        if (video.currentTime !== nextTime) {
+          video.currentTime = nextTime;
+        }
+      } catch {
+        // Safari can throw while metadata is still stabilizing.
+      }
+    };
+
     const timeoutId = window.setTimeout(() => finish(null), 6000);
+    video.addEventListener('loadedmetadata', () => {
+      if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+        capture();
+        return;
+      }
+      nudgeToFirstFrame();
+    }, { once: true });
     video.addEventListener('loadeddata', capture, { once: true });
+    video.addEventListener('canplay', capture, { once: true });
+    video.addEventListener('seeked', capture, { once: true });
     video.addEventListener('error', () => finish(null), { once: true });
     video.src = url;
     try {

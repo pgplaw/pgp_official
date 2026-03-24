@@ -480,6 +480,7 @@ label,
   color: inherit;
   font: inherit;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .channel-carousel__toggle:focus-visible {
@@ -520,6 +521,8 @@ label,
   margin-top: 0;
   padding: 0 2px;
   overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
@@ -551,6 +554,8 @@ label,
     color-mix(in srgb, var(--bg-elevated) 96%, transparent 4%);
   box-shadow: 0 18px 32px rgba(39, 44, 62, 0.12);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   scrollbar-width: none;
 }
 
@@ -576,6 +581,7 @@ label,
   text-align: left;
   font: inherit;
   cursor: pointer;
+  touch-action: manipulation;
   transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
 }
 
@@ -670,6 +676,7 @@ label,
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  touch-action: manipulation;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
   transform: translateY(-50%);
   transition: background 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
@@ -1518,6 +1525,7 @@ label,
   transform: none;
   border-color: color-mix(in srgb, var(--accent) 14%, transparent);
   margin-top: 4px;
+  touch-action: manipulation;
 }
 
 .post-card__copy.icon-button:hover {
@@ -1604,6 +1612,7 @@ label,
   border: 0;
   background: var(--media-fill, rgba(0, 0, 0, 0.08));
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .post-card__media--round-video .media-trigger {
@@ -1927,15 +1936,22 @@ label,
   inset: 0;
   display: grid;
   place-items: center;
+  padding:
+    max(12px, calc(env(safe-area-inset-top, 0px) + 8px))
+    max(12px, calc(env(safe-area-inset-right, 0px) + 8px))
+    max(12px, calc(env(safe-area-inset-bottom, 0px) + 8px))
+    max(12px, calc(env(safe-area-inset-left, 0px) + 8px));
   background: rgba(3, 7, 18, 0.88);
   z-index: 120;
+  overscroll-behavior: contain;
 }
 
 .viewer__content {
   width: min(92vw, 1200px);
-  max-height: 88vh;
+  max-height: min(88dvh, 88vh);
   overflow: hidden;
   position: relative;
+  overscroll-behavior: contain;
 }
 
 .viewer__viewport {
@@ -1943,6 +1959,7 @@ label,
   overflow: hidden;
   touch-action: pan-y pinch-zoom;
   user-select: none;
+  overscroll-behavior: contain;
 }
 
 .viewer__track {
@@ -1966,7 +1983,7 @@ label,
 .viewer__slide video {
   display: block;
   max-width: 100%;
-  max-height: 88vh;
+  max-height: min(88dvh, 88vh);
   margin: 0 auto;
   border-radius: var(--radius-lg);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
@@ -1974,7 +1991,7 @@ label,
 
 .viewer__slide video[data-round-video="true"] {
   aspect-ratio: 1 / 1;
-  width: min(72vh, 520px);
+  width: min(72dvh, 72vh, 520px);
   max-width: min(88vw, 520px);
   object-fit: cover;
   border-radius: 28px;
@@ -2020,7 +2037,7 @@ label,
 
 .viewer__fallback {
   max-width: min(520px, 100%);
-  min-height: min(48vh, 420px);
+  min-height: min(48dvh, 48vh, 420px);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -2038,6 +2055,7 @@ label,
   border-radius: 999px;
   font-size: 2rem;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .viewer__close {
