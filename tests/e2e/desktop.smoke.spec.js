@@ -32,6 +32,31 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('#siteTitle')).not.toHaveText(initialTitle);
   });
 
+  test('keeps narrow desktop channel menu scrollable and clickable', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const menu = page.locator('#channelMenu');
+    const hasOverflow = await menu.evaluate((node) => node.scrollWidth > node.clientWidth + 2);
+    if (!hasOverflow) {
+      return;
+    }
+
+    await menu.hover();
+    const scrollLeftBefore = await menu.evaluate((node) => node.scrollLeft);
+    await page.mouse.wheel(0, 900);
+    await expect.poll(async () => menu.evaluate((node) => node.scrollLeft)).toBeGreaterThan(scrollLeftBefore);
+
+    const initialTitle = (await page.locator('#siteTitle').innerText()).trim();
+    const targetButton = page.locator('#channelMenu .channel-tab[data-channel-key="pg-employment"]');
+    await targetButton.scrollIntoViewIfNeeded();
+    await targetButton.click();
+    await waitForFeedReady(page);
+
+    await expect(page).toHaveURL(/channel=pg-employment/);
+    await expect(page.locator('#siteTitle')).not.toHaveText(initialTitle);
+  });
+
   test('opens and closes viewer for post media', async ({ page }) => {
     await page.goto('/?channel=investment-law');
     await waitForFeedReady(page);

@@ -38,6 +38,14 @@ module.exports = defineConfig({
       testMatch: /desktop\.smoke\.spec\.js/,
     },
     {
+      name: 'desktop-narrow-chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1120, height: 1200 },
+      },
+      testMatch: /desktop\.smoke\.spec\.js/,
+    },
+    {
       name: 'mobile-chromium',
       use: {
         ...devices['iPhone 13'],
