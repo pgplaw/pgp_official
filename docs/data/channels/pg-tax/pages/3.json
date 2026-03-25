@@ -1,12 +1,31 @@
 {
-  "generated_at": "2026-03-25T08:05:38.702935+00:00",
+  "generated_at": "2026-03-25T10:38:22.361049+00:00",
   "pagination": {
     "page": 3,
     "page_size": 16,
-    "total_posts": 169,
+    "total_posts": 168,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2522,
+      "date": "2026-03-10T13:41:22+00:00",
+      "text": "⚡️ ФАС России подтвердила позицию о незаконности рекламы в Telegram\n\nВ пятницу мы писали о рисках отказа в учёте расходов по налогу на прибыль в связи с распространившейся в СМИ информацией о том, что ФАС России считает размещение рекламы в Telegram нарушающим требования российского законодательства о рекламе. \n\nСегодня регулятор опубликовал на своём сайте разъяснения с подтверждением этой позиции:\n\nВ связи с принятием Роскомнадзором мер по ограничению доступа к... мессенджерам Телеграм и Вотсап ФАС России усматривает в размещении рекламы на данных ресурсах признаки нарушения части 10.7 статьи 5 Федерального закона «О рекламе».\n \nСлужба отмечает, что в случае принятия Роскомнадзором мер по ограничению доступа к информационным ресурсам в соответствии с законодательством, реклама на таких ресурсах запрещается. Ответственность за такое нарушение несут как рекламодатель, так и рекламораспространитель.\n\n🛑 Среди прочих ресурсов, реклама на которых запрещена, наряду с Телеграм, ФАС России назвала Ютуб и Вотсап.  \n\n#изменения_законодательства",
+      "text_html": "⚡️ ФАС России подтвердила позицию о незаконности рекламы в Telegram<br><br>В пятницу мы писали о рисках отказа в учёте расходов по налогу на прибыль в связи с распространившейся в СМИ информацией о том, что ФАС России считает размещение рекламы в Telegram нарушающим требования российского законодательства о рекламе. <br><br>Сегодня регулятор <a href=\"https://fas.gov.ru/news/34556\" target=\"_blank\" rel=\"noopener noreferrer\">опубликовал</a> на своём сайте разъяснения с подтверждением этой позиции:<br><br>В связи с принятием Роскомнадзором мер по ограничению доступа к... мессенджерам Телеграм и Вотсап ФАС России усматривает в размещении рекламы на данных ресурсах признаки нарушения части 10.7 статьи 5 Федерального закона «О рекламе».<br> <br>Служба отмечает, что в случае принятия Роскомнадзором мер по ограничению доступа к информационным ресурсам в соответствии с законодательством, реклама на таких ресурсах запрещается. Ответственность за такое нарушение несут как рекламодатель, так и рекламораспространитель.<br><br>🛑 Среди прочих ресурсов, реклама на которых запрещена, наряду с Телеграм, ФАС России назвала Ютуб и Вотсап.  <br><br>#изменения_законодательства",
+      "views": 1250,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": null,
+      "tg_url": "https://t.me/PG_Tax/2522",
+      "forwarded_from": null,
+      "reply_to": {
+        "post_id": 2516,
+        "title": "⚡️ ФАС фактически объявила рекламу в Telegram незаконной. Налоговые последствия могут оказаться куда болезненнее…",
+        "tg_url": "https://t.me/PG_Tax/2516",
+        "channel_username": "PG_Tax"
+      }
+    },
     {
       "id": 2521,
       "date": "2026-03-10T10:05:38+00:00",
@@ -70,15 +89,15 @@
       "date": "2026-03-06T13:03:53+00:00",
       "text": "💰 Экономия или прибыль?\n\nПартнер «Пепеляев Групп» Сергей Сосновский просит подписчиков высказаться по принципиальному вопросу.\n\n🔍 Контекст\n\nПервый пост рубрики #налоги_застройщиков касался дела о порядке определения в конкретной ситуации экономии застройщика, облагаемой налогом на прибыль.\nВторой – поправок по той же проблеме. \n\nСейчас компаниям-застройщикам из разных регионов начали приходить от налоговых органов одинаковые таблицы с просьбой ответить на 10 вопросов о применяемых правилах признания финансового результата – от того, по каким объектам он определяется, до судьбы отдельных видов расходов. \n\nК деталям этих запросов мы планируем вернуться позже, а пока просим уважаемых подписчиков высказать мнение по общему вопросу. \n\n💰 Определение налоговой базы по налогу на прибыль в жилищном строительстве\n\nЖилищное строительство – пожалуй, единственная отрасль экономики, в которой применяется совершенно особый подход к определению налоговой базы по налогу на прибыль. \n\nПрочие коммерсанты платят с прибыли как разницы между доходами (к которым, если опустить частности, относятся вся поступления от покупателей) и расходами, понесенными для получения доходов. \n\n☝️ Для застройщиков, работающих в рамках закона 214-ФЗ, установлен специфический порядок определения налоговой базы:\n\n     🔴то, что вносят покупатели (участники долевого строительства), изначально вообще необлагаемый доход в виде целевого финансирования (подп. 14 п. 1 ст. 251 НК РФ);\n\n     🔴затраты на строительство тоже не уменьшают налоговую базу, а считаются использованием этого целевого финансирования по назначению;\n\n     🔴и лишь если в итоге у застройщика останутся какие-то средства, они сформируют его положительный финансовый результат и попадут под налогообложение как внереализационный доход в виде целевого финансирования, использованного не по целевому назначению (подп. 14 ст. 250 НК РФ).\n\n❓ Насколько обоснован подход законодателя и как быть дальше?\n\nПросим высказать мнение по кнопкам голосования ниже 👉\n\n➖➖\n📧 Напоминаем, что по любым вопросам налогообложения строительной деятельности можно обратиться к Сергею Сосновскому: s.sosnovsky@pgplaw.ru",
       "text_html": "💰 Экономия или прибыль?<br><br>Партнер «Пепеляев Групп» <a href=\"https://www.pgplaw.ru/to-get-the-team/sergey-sosnovskiy/\" target=\"_blank\" rel=\"noopener noreferrer\">Сергей Сосновский</a> просит подписчиков высказаться по принципиальному вопросу.<br><br>🔍 Контекст<br><br>Первый <a href=\"https://t.me/PG_Tax/2321\" target=\"_blank\" rel=\"noopener noreferrer\">пост</a> рубрики #налоги_застройщиков касался дела о порядке определения в конкретной ситуации экономии застройщика, облагаемой налогом на прибыль.<br><a href=\"https://t.me/PG_Tax/2361\" target=\"_blank\" rel=\"noopener noreferrer\">Второй</a> – поправок по той же проблеме. <br><br>Сейчас компаниям-застройщикам из разных регионов начали приходить от налоговых органов одинаковые таблицы с просьбой ответить на 10 вопросов о применяемых правилах признания финансового результата – от того, по каким объектам он определяется, до судьбы отдельных видов расходов. <br><br>К деталям этих запросов мы планируем вернуться позже, а пока просим уважаемых подписчиков высказать мнение по общему вопросу. <br><br>💰 Определение налоговой базы по налогу на прибыль в жилищном строительстве<br><br>Жилищное строительство – пожалуй, единственная отрасль экономики, в которой применяется совершенно особый подход к определению налоговой базы по налогу на прибыль. <br><br>Прочие коммерсанты платят с прибыли как разницы между доходами (к которым, если опустить частности, относятся вся поступления от покупателей) и расходами, понесенными для получения доходов. <br><br>☝️ Для застройщиков, работающих в рамках закона 214-ФЗ, установлен специфический порядок определения налоговой базы:<br><br>     🔴то, что вносят покупатели (участники долевого строительства), изначально вообще необлагаемый доход в виде целевого финансирования (подп. 14 п. 1 ст. 251 НК РФ);<br><br>     🔴затраты на строительство тоже не уменьшают налоговую базу, а считаются использованием этого целевого финансирования по назначению;<br><br>     🔴и лишь если в итоге у застройщика останутся какие-то средства, они сформируют его положительный финансовый результат и попадут под налогообложение как внереализационный доход в виде целевого финансирования, использованного не по целевому назначению (подп. 14 ст. 250 НК РФ).<br><br>❓ Насколько обоснован подход законодателя и как быть дальше?<br><br>Просим высказать мнение по кнопкам голосования ниже 👉<br><br>➖➖<br>📧 Напоминаем, что по любым вопросам налогообложения строительной деятельности можно обратиться к Сергею Сосновскому: s.sosnovsky@pgplaw.ru",
-      "views": 2330,
+      "views": 2340,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2518-1-dba5d5ebfd26-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2518-1-dba5d5ebfd26-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/iOJhMwGExH9ww7hf3wC_1tmdJkTMFDn37rq604mugS6-5tqlMuzMWFJi6Awrz_tx_EVrLc5FSnUGcEayYAnEFKXY2vjx3Vrz-tzecVepMqRNocCnjyoWcOEx783BDn5X097o25-xk8249C60TEj3FO123R2XmEJItA7ZX7wGlHkXbgd5iR692-VSZcHRP88uk8lDYGdcgnZODQ61kISN6KJmcwPj8NqiidTowA4ZNrHAIki10sEdJwGR7TLRDBnU6hFHt3rxkuHHviEsMS8HXJ_NSysRUX7VO_EycKavHn5H7BCrER6nVBS6lI-B9YXeE1_vuIpvWBN6okwHvxV6lA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2518-1-dba5d5ebfd26-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2518-1-da59fd89f06a-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2518-1-da59fd89f06a-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/HK4xkvhBHwhfO_op-CdT-qABFUgzMPl8WaTZ4YsaROPvhZ-d6vCOnRVjVrc2HvVwBU7DTOA4Twlq88mnwIAGtSRvi_RwwKJ47kjCRXNDeSVt5TDGXoniONXxIOFcIgJbQxWlnUlgZfEZhux1DibcBKAN_lkmatLkgGjXu4W7bVGfXJwUkP-5JfDZBb8QtFa6OF_eORiiFXv_bnK09ykNictlUiW7A_K0B4FqOwydyXdn9W_4R5LSbW_RWjWYzx_RgmxTR3ahVbARGfDjxwrEHAEeUfen7IsHdTtU9WQhQIn19yHfiVjflccDEnvX-6JTyN1nVOWKHlW27DxuhkV57Q.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2518-1-da59fd89f06a-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -123,10 +142,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2516-1-6b900d68d51f-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2516-1-6b900d68d51f-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/UOTP3jK_zMkSKRltuQk1yselSTs0tNsOpUeGyGRpT8f0K05XI_qRufuEhkX-ry84kbk7WGNUBfc73WdEQ-CzsvO4dJVVsuq_7zhNutkWnTcVchM0Yh1d-ZGuh05vDr0JSd3XYh5i0wbo15KTXtVS-HA3awQ_M1Xd5Bhf0CcFFz9izPX8fkADr9zquRm2XCAVJv2kUkAWDXOA69oi4oktZpUymUp_52Yx0tTcakJsjbLVgylOa4Ju3i6ofArQhB9M_iSWvzbHt44bKTqm8889rmpXbcgIklxDLcXWXIgGy2mf6FBHXhSkP0MV4rw4PfrjysHsBop57kEvFpQq3qdtOA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2516-1-6b900d68d51f-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2516-1-a2db9174ea6c-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2516-1-a2db9174ea6c-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/hZ1ajqbBIgnRvGkFZZeqc2JnGDMagHONDIaRuMPyRWdFV_Z-NouEcS74uuUChWw3zJgNfJzxDI-3qIdM-0g98i2OyprOW6J4IGd9wYTIcj__SnJk93NgUPYNbB8UOeITBvFAWHesqbhtTzNRUkNw5mVM-eyajJ_L1VnB1uL7xmGwsX-9B2PlWzS8cMC_-MQQC8LqXthbfRxlPuWkUGxC47qvcZNa0b5IK88kEmyTZrR_uF34Zaf0dtl4rMwDJ6xA_9h4d_raG6uN3lgXPZcrrXlAUvKNNcEiUljJK7K55wPCncL5ImCNP8c34yA5vywcZmIOSMVA3ZiYHDkGeToBTg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2516-1-a2db9174ea6c-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -300,10 +319,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2509-1-432953e7696a-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2509-1-432953e7696a-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/vWuesz9_wq77Maff9Qw1qe5U4UIT-YG2OlD9j7a-B17-XINkMHGwUpjckVZgESeHl1pZ3aZxxOEIziFU-gGWMl1E31hn5ahUrHcQ410rIAvbKbX6X_zMxt-s0rUa7p9AV-sADFsDEW9Ir2u1OyWcXTCXsZQLDAe5cve3fVgVDL7HOQbYHhB6H5iDonqmc60nn64X2_PARZvquhjvqWO-XflckBBH-5SdpTKe4MgVEXwyJiuk4zBXVbqhnE_z086P9ukK06rElcnWgtXwz31J-904MVwpOYad8e7VsZRB8KR7uEi17YWs4zT3NjNKAk3N5sOilocbtWPo9o-KufDuZQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2509-1-432953e7696a-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2509-1-56a84ef38bda-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2509-1-56a84ef38bda-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Jo3HLZ0oow6lfMkq1pUv-Qbk81u2rbbSSkmZnGhV8EL5OvOG_PaRYc-AmEGsVGu3giqn-DnD1PYNSuChp55amuNLKHXIDrcBu_cJlo7OmePO9JCabD5BQ46ppexbRrjbV5PJtqcteLeu4bE0bTUXMFGm_7VYSM2N9b_VeFYd3JFFT8Dfic9XgU7aSiBE2IVlGKIYr6kThClKqxgngzREAD322dybHdVJU19e6teOfirh_WKkq8oAzGLBH4RzHNbuURdhHQPPVPxTh46RrM7-ok3cgR-fozGRVT-yq98M3pc2zEedOj5hqrUKkFc8axTIpqjezwrg67D0Y38hMKikRg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2509-1-56a84ef38bda-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -358,10 +377,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2507-1-94f6ca2e3009-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2507-1-94f6ca2e3009-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/vxmQKQQBthGhVrPwSPwuKlDDMX7IvduVlXsCrkCHcXfFItVYUO1Weqkqo7qNoDGiU1sd6dAUkGZl7iJDDgsrOZVJjNQGjqe4F09iU71t2DUXS4gfr7zef409ER4pyYfEqiFw5DN9Lod1hChF7yek741Fwrx_jClxOUixpW_QdWnSJAOXX_aOoBOGeOfU3G3PPRK_OqQRyxzHGW8kSOdgZ9En6MR0jYX1_Cuu1gdCpgNu1KXCfUSD9OyG0TVRh5id3gh2tEQ5UuwCj6ETc6dJ9MgnOEBr1kZ056e8UzZYS9non1zxOtnF3m2Ih6-FYIeQHnmIjdvLjoAb49O-piEIeA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2507-1-94f6ca2e3009-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2507-1-eaca0ad3cc0f-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2507-1-eaca0ad3cc0f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Y6hANm27TMItgHUlyKBY7hYi7m6NvThh8V1dKRl_pXtY-NAr0ihtCmLOalbROdata0aMYoR_0Ta-UjbMW3KOctyYVZakOE3aIVVDNFItllyFqslOjyBVl9Jr7-PabRAeF7wR4iEDxDmLAiKQJlp_J4geJ1ov0yrls9rWB3C4GtUtWQUpgXHT43Xcj-GNoV3u-NAtP5VR7TI6lQ83XOYIa1AJxVyXUY4H1Ss2WS4UUj_h19drj69IeW5n0Fu_uquseZLrDuLNd84BOdvBOatz2lOGRA5xrcH4B_-RoWhN1B4eZHCWNqqnIgNeB4VOvAoHhiwAcPUKWZzWJCfrtOHiIA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2507-1-eaca0ad3cc0f-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -404,35 +423,6 @@
         "source_width": 640,
         "source_height": 640
       }
-    },
-    {
-      "id": 2504,
-      "date": "2026-03-03T10:06:46+00:00",
-      "text": null,
-      "text_html": null,
-      "views": 1130,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2504-1-12ffd6d9078b-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2504-1-12ffd6d9078b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/GYUDWBX4TxVBC8CXkSVHeQ-TVxpUCXr45KsyJDjEd3DlXwBrTa_XJ7SxWwQBTwTqeWkBOJEKgMFmVs7B66TNrj4GTXLMc2158iDzna5YKDQpWMBDatGcOgICMePgCiBSW8z-ztUp5fV6m3dSav5kYiGhlUTeOAjLJCq5GIvGSFNMhgaG1wCl92YcbkYo3PMZrbWKFRA7rTTH_QUtVgoli3Gb3DIrDJau4y-PFvDXSPDr0Ti_36szUUI_QJjVCo9l7z7j54HsyY9MKOhb5VsN-SaLlgCHALQyVBaKJPCxU6zYTxVHkTaTXuTQ_pw4SnEz237VXDSLG7nGm-OZjsMH5g.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2504-1-12ffd6d9078b-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2504",
-      "forwarded_from": null,
-      "reply_to": null
     }
   ]
 }

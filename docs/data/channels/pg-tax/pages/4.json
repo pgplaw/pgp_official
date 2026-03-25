@@ -1,12 +1,41 @@
 {
-  "generated_at": "2026-03-25T08:05:38.705381+00:00",
+  "generated_at": "2026-03-25T10:38:22.363631+00:00",
   "pagination": {
     "page": 4,
     "page_size": 16,
-    "total_posts": 169,
+    "total_posts": 168,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2504,
+      "date": "2026-03-03T10:06:46+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1130,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2504-1-12ffd6d9078b-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2504-1-12ffd6d9078b-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/GYUDWBX4TxVBC8CXkSVHeQ-TVxpUCXr45KsyJDjEd3DlXwBrTa_XJ7SxWwQBTwTqeWkBOJEKgMFmVs7B66TNrj4GTXLMc2158iDzna5YKDQpWMBDatGcOgICMePgCiBSW8z-ztUp5fV6m3dSav5kYiGhlUTeOAjLJCq5GIvGSFNMhgaG1wCl92YcbkYo3PMZrbWKFRA7rTTH_QUtVgoli3Gb3DIrDJau4y-PFvDXSPDr0Ti_36szUUI_QJjVCo9l7z7j54HsyY9MKOhb5VsN-SaLlgCHALQyVBaKJPCxU6zYTxVHkTaTXuTQ_pw4SnEz237VXDSLG7nGm-OZjsMH5g.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2504-1-12ffd6d9078b-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/PG_Tax/2504",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2502,
       "date": "2026-03-03T07:45:10+00:00",
@@ -46,10 +75,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2501-1-269037b363f9-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2501-1-269037b363f9-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/BZ0noy42c6nMaIwmqVBxxzQ2kS41hKDYJakQIaQUbTix3v6pUYpKGmNWoug9bw43Oe7qgObOiMSFSZa1A6cO9wQKuqu6lZC7komvfXS-zaiK3clyQMzTt5_Z7nDvZS48AE7rmFKHHtbH6f8u6c8g332Xn3YMmLSJ83gqPrfjHtb0u_-s6RbGAtS48pnmJdSI917ppqRGCc5NfuogF1xPxqctsM1DsYSSIfCjOwYku4ednkr0chXjCjpLRmtsp-8aDJEBpdYgBwXrZo51Ybl3v6HSV4zZV3ok3PUJDSc0Z6UKJgY_DML75hVWfaG8LREihm6qSNgfnio_QgsNgAtKwA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2501-1-269037b363f9-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2501-1-c2899fd8d50f-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2501-1-c2899fd8d50f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/LjxqN_ZvTLktX9ihHLA61OqQYqJAsLAeLGTE-FDLXMj-fjJZ4KT9sRf3WMvq9BsIx1oi-EUG_gY6TxqtGlPNiVCWupdEVx1R7PmResSHgCTalwMf4Cv_xZkSez4gnUR-yALU3jYZy4ervUvhy4zl1NzQQvW4D8MW132nj-WaQlMjkdbIIkRlrybBDtI3HkUCWiqng3wJT3wZmvpBHvK8ptv8UAOzCXvsU-9iBw3j6u3y8EeLOl-G9GWB_F-VFbmt7XArzBiT-ipv0BuSb03TISoTQDYSqjVvHe9h3msyiIpZWFK9YvIOwwd7pfoAMyB8uvQIqsd2e_yPMAhaxhgfDA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2501-1-c2899fd8d50f-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 478,
           "feed_width": 1800,
@@ -70,7 +99,7 @@
       "date": "2026-03-02T10:03:37+00:00",
       "text": "⚡️ Постановление КС РФ о НДФЛ при мене имущества\n\nКонституционный суд РФ Постановлением от 15.01.2026 № 1-П предписал устранить неясности уплаты НДФЛ при мене имущества. \n\n🔍 Обстоятельства спора \n\nДва физических лица обменялись земельными участками сельскохозяйственного назначения, кадастровая стоимость которых отличалась в несколько раз.\n\nПриравняв мену к продаже, налоговый орган посчитал, что налогоплательщик получил доход, причем не в размере стоимости полученного участка, а на основе кадастровой стоимости отчужденного участка (что намного больше).\n\n⚖️ Позиция КС РФ\n\nКС РФ сослался на неясность применимых норм: в иных ситуациях законодатель прямо упоминает мену наряду с куплей-продажей, но в этой ситуации не упомянул.\n\nКС РФ также сформулировал ряд позиций:\n     🔴мену нельзя приравнять к продаже полностью, нужно учитывать своеобразие ее содержания;\n     🔴необходимо различать равноценность и равнозначность имущества - вещь может отвечать потребностям лица, не сводимым к имущественной ценности; \n     🔴разница в стоимости имущества не означает априори получение и сокрытие дохода;\n     🔴доход может возникать у лица, которое получило вещь дороже отчужденной, но не дешевле.\n\n☝️ Нельзя возлагать вмененное налоговое бремя на сторону, уступившую в ценности при мене, не оценив причин ее действий, поскольку иное означало бы налогообложение имущественных потерь вместо доходов.\n\n💡 Выводы\n\nДаже получив при мене вещь дороже отчужденной, можно доказать, что в силу не связанных с имущественной ценностью причин другая сторона уступила в ценности, не стремясь обогатить сторону, получившую выгоду. Тогда предметы мены будут неравноценными, но останутся равнозначными, и выгода не будет налогооблагаемым доходом.\n\n☝️ Вместе с тем до решения законодателя к мене неоднородных предметов следует отнестись осторожно. Текст Постановления КС РФ позволяет считать, что в отсутствие стоимостной разницы дохода ни у кого нет, а однородность предметов мены не важна. Однако возможен более строгий подход налоговых органов, а далее и законодателя.\n\n#комментарий_эксперта \n#алерты_статьи\n\n➖➖\nКомментарий Советника \"Пепеляев Групп\" Петра Попова и рекомендации в связи с позицией КС РФ читайте в алерте 👉",
       "text_html": "⚡️ Постановление КС РФ о НДФЛ при мене имущества<br><br>Конституционный суд РФ <a href=\"https://www.ksrf.ru/doc/KSRFDecision881467.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Постановлением от 15.01.2026 № 1-П</a> предписал устранить неясности уплаты НДФЛ при мене имущества. <br><br>🔍 Обстоятельства спора <br><br>Два физических лица обменялись земельными участками сельскохозяйственного назначения, кадастровая стоимость которых отличалась в несколько раз.<br><br>Приравняв мену к продаже, налоговый орган посчитал, что налогоплательщик получил доход, причем не в размере стоимости полученного участка, а на основе кадастровой стоимости отчужденного участка (что намного больше).<br><br>⚖️ Позиция КС РФ<br><br>КС РФ сослался на неясность применимых норм: в иных ситуациях законодатель прямо упоминает мену наряду с куплей-продажей, но в этой ситуации не упомянул.<br><br>КС РФ также сформулировал ряд позиций:<br>     🔴мену нельзя приравнять к продаже полностью, нужно учитывать своеобразие ее содержания;<br>     🔴необходимо различать равноценность и равнозначность имущества - вещь может отвечать потребностям лица, не сводимым к имущественной ценности; <br>     🔴разница в стоимости имущества не означает априори получение и сокрытие дохода;<br>     🔴доход может возникать у лица, которое получило вещь дороже отчужденной, но не дешевле.<br><br>☝️ Нельзя возлагать вмененное налоговое бремя на сторону, уступившую в ценности при мене, не оценив причин ее действий, поскольку иное означало бы налогообложение имущественных потерь вместо доходов.<br><br>💡 Выводы<br><br>Даже получив при мене вещь дороже отчужденной, можно доказать, что в силу не связанных с имущественной ценностью причин другая сторона уступила в ценности, не стремясь обогатить сторону, получившую выгоду. Тогда предметы мены будут неравноценными, но останутся равнозначными, и выгода не будет налогооблагаемым доходом.<br><br>☝️ Вместе с тем до решения законодателя к мене неоднородных предметов следует отнестись осторожно. Текст Постановления КС РФ позволяет считать, что в отсутствие стоимостной разницы дохода ни у кого нет, а однородность предметов мены не важна. Однако возможен более строгий подход налоговых органов, а далее и законодателя.<br><br>#комментарий_эксперта <br>#алерты_статьи<br><br>➖➖<br>Комментарий Советника \"Пепеляев Групп\" <a href=\"https://www.pgplaw.ru/to-get-the-team/petr-popov/\" target=\"_blank\" rel=\"noopener noreferrer\">Петра Попова</a> и рекомендации в связи с позицией КС РФ читайте в <a href=\"https://www.pgplaw.ru/analytics-and-brochures/alerts/imushchestvennye-poteri-nelzya-oblagat-nalogom-kak-vmenennyy-dokhod/\" target=\"_blank\" rel=\"noopener noreferrer\">алерте</a> 👉",
-      "views": 1150,
+      "views": 1160,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -210,14 +239,14 @@
       "date": "2026-02-26T13:27:50+00:00",
       "text": "🏆 Делимся результатами индивидуального рейтинга Право-300 за 2025 год по налогам и валютному регулированию!\n\nРекомендованы: \n\n1️⃣1️⃣ юристов в налоговых номинациях\n4️⃣ юриста в категории «Валютное регулирование»\n\n4️⃣4️⃣ эксперта «Пепеляев Групп» отмечены в общей сложности. \n\nС полными результатами можно ознакомиться на сайте.\n\n🎉 Благодарим Право ру за проделанную работу и поздравляем коллег с профессиональными успехами!",
       "text_html": "🏆 Делимся результатами индивидуального рейтинга Право-300 за 2025 год по налогам и валютному регулированию!<br><br>Рекомендованы: <br><br>1️⃣1️⃣ юристов в налоговых номинациях<br>4️⃣ юриста в категории «Валютное регулирование»<br><br>4️⃣4️⃣ эксперта «Пепеляев Групп» отмечены в общей сложности. <br><br>С полными результатами можно ознакомиться <a href=\"https://www.pgplaw.ru/news/press-releases/individualniy-reyting-pravo300-2025/\" target=\"_blank\" rel=\"noopener noreferrer\">на сайте</a>.<br><br>🎉 Благодарим Право ру за проделанную работу и поздравляем коллег с профессиональными успехами!",
-      "views": 1420,
+      "views": 1430,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-1-657337ddc44b-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2491-1-657337ddc44b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/rEwTcYyMcyKlR0xDg0N3gyFOcBtQbN8Nj2Hcso25nOkjMacJprUV9Zi4VN468jcyDLUdbqpQLXk-uasJzMowlPgC-6EryVK4NDPqZKhki3V1OGmnrbJfn-so2tdWC6RhDdhtNIWcQx-uwwi4TD8OZahSXLfVrmw4pkkX858J3Kr6H9Puue8ZG3syUrKlNJVWDxYC_WzttWareJKE6in4soN5p2uyKbLLLtgkzrWHI3LnNvHi4LUiWQ0jzKYLHbzrkNgUG4H9UO-9tLwTceWRy9dFN58LIbHB5DpS9fRhCzOoLZ08VVKbRg-DU7RjrIgDcH4536zZI7KqaHRoNEnnQg.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-1-033ad8982f33-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2491-1-033ad8982f33-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Jc77dZ94oaZZThaS3eYtAuGZ5tpktxcq_lENz0BuXsJSX-Rat3LhS4vSIc_tqbvqa4ZO9IrUaDyjYGVRBQrcV7rr-KSze-P3GJ1CtJwS-7Q4aYGf3CsqFBDpjm9qHSlSw4r954yRBvH7MLVVy0R-6MY-j9SssWqfndCLumM9FWT6ABjjBVvt6JVScqdrAEimuY7IgNVAmyi8S6U5YBhUNdI11BOTL9wRQW5AckIlXQn-E9GoBKDsGw9p0FYkjJY_w8NW6-ex7PcijZyVhpNTvM4klWItTQjURdIURPeS6B3LIIIzcyzBTilqL3-FUIEnughkSGv7KI856Hb1MDgZeQ.jpg",
           "thumb_width": 800,
           "thumb_height": 523,
           "full_width": 800,
@@ -226,9 +255,9 @@
           "source_height": 523
         },
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-2-c01986297d9b-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2491-2-c01986297d9b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Qfgekl4HoMaz22q2EaarwgZfwbtjdEw236EtNaualLizvNV35IgKNKWjCGVXDS2Xcuw2qdus1atRsWlqKCE724fUJg4rOXm0WGaR0Xc12cF3IoHWK2qFZSxSvgOEEX2XbXbljY8wIAOzJJxway8H0o0YWk7dTwWO8af0KHtcKRVgm6Ga3D4oehmbYFoR7R6U__9jkwFn47GZ0jsrpZ3Yj51HYbUcKi47k7APu9-vmU5Jaj-JhDmsoOrhEUmNqoIh-kc-T4r_jrn3oocbiB3rnV4d9jjIvoK2iV9deGj_ofzur2_U55j9bdr8cKKbABKOLRvZqaNG1rYFlAA3J5J9Rg.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-2-fc4d6c90b655-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2491-2-fc4d6c90b655-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/SSURWPqWsdcgEubLhGTZZenTJZiqe7gLcEzJGdDInw-pNLIY4bYuZCCANlID-xFt9Oi3pgELo6UVNF2u9b8ZSHnS9UhcnQ6dBwvIwA57xFd-1KHWCTvFu9trZCHiiS_41oFlGLRs5qkagtSOdZvMKGgM8kxGJuB7nua5Gx41AB-CpxoKV4RxTp93CNe5znraqOnpzZB3Z1Atr2JnZEpVZVoq2FHCPkZ-xErxkrho0c1qXP5X-n1RitFuU9OUIJijV5HqECs-sS2q0wEoTCyz5u2JKT-S4pk_EZtu6QsVdsLgjoYsVL1IYMhkIIqjEiCZJ3DInkkt3kdGdDGagjd6UQ.jpg",
           "thumb_width": 800,
           "thumb_height": 523,
           "full_width": 800,
@@ -237,9 +266,9 @@
           "source_height": 523
         },
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-3-299495bc691c-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2491-3-299495bc691c-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/LtM6nu6fArVhmFnY4MMx0vNwDvD5lPXE8iMkM5bX6T59-NKDKeprLGSNBiATE8r6xeQOstiwKRep7ZEqwUhHqhon69k67h1ryulA6WD4DTz5RBL9170vOy0Auf9q0R9UB7ajICfREX2SgNnZjld3l7DuDJEG_xrr5PenoHShVBs8aFC-wl1EBxduhVi5qeSe1RiGavDXRFu_c7xkOudLHuGWnT-_f9iXPf-6H6DxSC-AbxLpZXfOzlBCBtRgxcaw51JD1hSt22UAemiClp4WzdqqiUsGGU2ImsvDsh4O70jusnu8WPlJZCWW3JwU5wjQkLZk6AILbgSLTan_77Vbsg.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-3-8fa121fa5c00-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2491-3-8fa121fa5c00-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Jpt1L30wkPcG8Lj1u1KsyRZkuOYiQfC0y44oMYy02OuDXwbBf8vErJaBZo7utqhkEsC13xQjjpVFm4l8R9NRvqmoiDbS88aE0Ll7DR5f60rSXMztwiMXplqxA-XALTYI2SIEikBt6_OlM-KKoHeekalmXHKlimfmwUH3Ke4L0jKAanaM0FtaqLOEiF_IflAdA5rqkZ6oIVEJUWxtxsBxCS2L8ujr7NdmcKoma49szW30BjMnhSOajTvQPZTDUq6L2fFKDGg0-7Ak-b2f_lGYeSfNJxv5r04mngE8nHgfrUeOPVotyM9B3pKe5V7zC1MsLKyuUlExK_qqrdE6w_g65g.jpg",
           "thumb_width": 800,
           "thumb_height": 523,
           "full_width": 800,
@@ -321,10 +350,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2487-1-07b727e0e041-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2487-1-07b727e0e041-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Il3O7oOTy7I7kh6x31mluETm68REuzKinfJKRViQ4fpg7jUqTIViiE1BjCBuLJf8v1QABL-hi--hd_BEOYgWXVXQO-B2dhJVB_4XXTu2ndMS-a_ZqtOOy1D1aa10pM6eY7rdBhl2cpLcgFF7k4ljZQ2oqlsRiewyZzlXsybmpVn2LDpBJuuZ_e45stcLRTKYwN-KjCwoLH92_1TGF_fZFws5p0PZojHnA1tc93d7gvfFQUG1BqTwnvF068t8dDeD-6bycbkk54JnCyA1ayVndke0uvd0zMKVxXnzkB_SPP8ix7_FKr2BSJtr8xSU2hzNKHBj7TZxm8haIL_v7yu85A.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2487-1-07b727e0e041-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2487-1-5bc4796cc5aa-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2487-1-5bc4796cc5aa-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/ltjRSH8ZFadrVUA-fUkEjxjJhkV2T7hQDEPGZ8hdlN5Y_yw80H3i83CVJmjxhqNZtWXEf-eHCHgh2oQNFWVbZNwwCh99WKhqxenGaVp_rrXaS8ArOSeYV-N_lVdrB1R3B13iaXHvKXs7p1X7asZ8RgmHvpGvs4jd9dTztZ1IknZEdOJkCrWcs3qFn43dVWaKISiC-FKd58z52mjAaME162arvpHfYkt0FCqJcLKyJHIjoJskOWnfLKEw1DpnDRp3PKAhcND6dIRL3CBoGxKnOg6X9kQ8zIt4XM_vSuieX5-iAVRqyhAWasSEU91jJufmJW-sjAH7OjJB3loEB_8PsA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2487-1-5bc4796cc5aa-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -379,10 +408,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2485-1-2bdd7dc5c7c4-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2485-1-2bdd7dc5c7c4-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Mw_3Riu_gObkZ8xHWScDMg7rIOVK1yvcJtIF-7hJZdII-2Hj9PygCE-LIcqKoZPh2PVN4mgbB5rkfWLPPGbmPtTpqTLJgJ0N6j-Kx-3F1V7PHrsEaCUJRegD0x3J99oDdIxxFVwPKqlbk4YMLyX205abdEf0_RVhVhaiIocR8ZSJtAPjf0sH_ZSnAjinovrwoQDCsyTmG9OrTrny1fox1ADpry3XA1QX9qiUNO7pfaKFv574ahNXkkcGzIdzt_Xxa7t9_4xT6ZQreeHO-OmpmFgTJPqdQqhdlPM-HHiuQDeoJy52ykXjD6-c9DZZn3Nkg-9OsWY3If1YKtI2lYSSXw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2485-1-2bdd7dc5c7c4-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2485-1-964dce70d474-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2485-1-964dce70d474-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/AfZgJm8kbNn7xnyQOVHtCJLEEqvW-_nrC990jaZ8_bHbzlr4pk2qUWrbDKGAtS8Qx8tziFu04fPx8rUIifJcPOLfA5Ct48HltvyhThAgD5mTMR26lzUACAhCt47HiTVXUjXrNaUpOcmSANIMTEeOAtVYHr2DP4WES3-v5pOuakk48PxP_I_FBYhuWI7w7R7AjicleopeNg8YHc8ywroClJ3QD0vPqTPAHpu9h9s8K7M3Z1Ls4LTJcZYL4ggGxVKTxG-ABqgiWnBzNQ9WAFGTUgbkBVsvivrici2oWUE6WT--fn71BG5ehdCaCZaXOzioecCDssO9Sz0Cenj-ahJd1Q.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2485-1-964dce70d474-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -408,10 +437,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2484-1-f1daa5fafaae-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2484-1-f1daa5fafaae-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/KVSz_V2fyHh22233aCvnZ-qaodVc9GHQapxVBU9bGzmfa1RcF_wHz3w1JZobCsqXto-Z_xrzUrZ76RdrVaqNFo3yTH_4nSATCFo4h6KBGEY79w13hWHceksT7teV1tEvUBL9CGlzmdisuSn6vjtrou3CxT7H8EkQjDt5PIViWtEPPFXQORBpjSBgMKuDAklatrcLRWu2Kx8gp2vunq_rEt6xB3AGzJT1HXViBoy2gYLq8tg1bzJggC-BGcOPM8Bmsqg6GM2WFVU5lVq9Yp2OOZSiZOehE5S9KBJxQX3sI5UOG7mBlp49_-uhBV6hDUaH_-5ZwloeQHAm3JCC3Zullw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2484-1-f1daa5fafaae-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2484-1-d233a75ad46f-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2484-1-d233a75ad46f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/U579yuIAIp0RxJM17rVf8quKyaROKYUnUG_31p0k9UtrMIxuIFzjYgidKINUOeBEmjk7ArjHsnxi0eCBb6bkhJ6fT2EsWAWs6lwqgeslXmjb-vQ871xXmQ6nw-sXzfi9nPxeO2mIglJZK1kOgaloyMUfyIOF_m3ItIs7t8Sle-gZc-Lr8RCGt3Bqdn_G93LhMzq2yjlb4Sn6W7dAabyxD-N9edL45E-SR3FWOpyMs8WfaIPmVpTZ237CGzGmV8Twogxazv9hLduDrGwSeD1lYZrK3reyHuGCarV7SejxwJHUZ3zKI7L4P9hGtuzkxj6dBlsFoVaD-5WLijHV5_Xf5g.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2484-1-d233a75ad46f-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -453,35 +482,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2483",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2482,
-      "date": "2026-02-21T10:31:42+00:00",
-      "text": "\"...Отдавайте кесарево кесарю\"\n\nОткрытая лекция Партнера Санкт-Петербургской налоговой практики \"Пепеляев Групп\" Сергея Сосновского об основах налогового права.\n\n⏰ сегодня в 16 часов\n\n➡️Подключиться к трансляции",
-      "text_html": "\"...Отдавайте кесарево кесарю\"<br><br>Открытая лекция Партнера Санкт-Петербургской налоговой практики \"Пепеляев Групп\" <a href=\"https://www.pgplaw.ru/to-get-the-team/sergey-sosnovskiy/\" target=\"_blank\" rel=\"noopener noreferrer\">Сергея Сосновского</a> об основах налогового права.<br><br>⏰ сегодня в 16 часов<br><br>➡️<a href=\"https://m.vkvideo.ru/video-68636053_456239593\" target=\"_blank\" rel=\"noopener noreferrer\">Подключиться к трансляции</a>",
-      "views": 1730,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2482-1-5dde010539b2-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2482-1-5dde010539b2-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/lJwJpLuJPq7ueJyNQhYjHvQTeaCcsN30Qujnj8xFGuxxBATYlbCAqEj6IOGoVOBlCz_kZ15nj2fgAOuRT9qcc6LhH7Iru3gbPbqT6XugAvvg5rx_Z12HPG-uF4KVWWU64H_8XPP17s4EoiP_cGWRtgtB8DOrZTo1Y7wZ3awI1XitQmYD0apSPNETJ0ubxNLRY9n8mryNY6uWY8klpwMPfkY1vLd9CoB23YN8VbZXV3DaK9VWvEZ_9Z62y6Dij9ng6kU5CDQDmMBQfQG37oWHdErMqeAh_H9DakCaHnFF82p2MGC4gSPbY6wCIq3_7zEQPNEwLWnAR6L0w_0q8N1eFg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2482-1-5dde010539b2-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2482",
       "forwarded_from": null,
       "reply_to": null
     }

@@ -1,12 +1,40 @@
 {
-  "generated_at": "2026-03-25T08:05:38.722212+00:00",
+  "generated_at": "2026-03-25T10:38:22.380436+00:00",
   "pagination": {
     "page": 11,
     "page_size": 16,
-    "total_posts": 169,
+    "total_posts": 168,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2381,
+      "date": "2025-12-31T15:06:42+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 3760,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": "data/channels/pg-tax/media/posts/videos/2381-video-note-ccaaacf00eab-v1.mp4",
+      "tg_url": "https://t.me/PG_Tax/2381",
+      "forwarded_from": null,
+      "reply_to": null,
+      "video_note": true,
+      "video_poster": {
+        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2381-video-note-poster-165cb1f8bc2d-v1.jpg",
+        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2381-video-note-poster-165cb1f8bc2d-v1.jpg",
+        "full_url": "data/channels/pg-tax/media/posts/video-posters/2381-video-note-poster-165cb1f8bc2d-v1.jpg",
+        "thumb_width": 640,
+        "thumb_height": 640,
+        "feed_width": 640,
+        "feed_height": 640,
+        "full_width": 640,
+        "full_height": 640,
+        "source_width": 640,
+        "source_height": 640
+      }
+    },
     {
       "id": 2380,
       "date": "2025-12-30T11:03:55+00:00",
@@ -80,10 +108,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2378-1-220e279e1466-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2378-1-220e279e1466-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/mHpaMghB2GtjLafaBLCkoD5jaRVlCZCuVEy10ibpG_POpxnAqsYQ9QczLjhy7aJcFXKbqnVloSkp9mamJVlyKdXuIzlafL_NvtxQUvM90z9AIg8UibytZgkbmT032EyZf1CLWObfAHAF0QmeW6Fnqqx_ipOT-dIcZKhDMgnvh0CBGof3uvSTDs7cRLNfSlwAoRssbUhu8SGePiiX0nl-lLP0VUD9cyDwOyLMMxU1syPEBbcL16qVDSPlmEDmIa5VRcS_D-HULNib5In0tqdCA7CeUkeIZbmXiPSsGuUVM5DU3UKdNxDWtw4LpF0PId8T2GBanDovvjTKvAOT3EbsTw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2378-1-220e279e1466-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2378-1-1b0239cabf1c-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2378-1-1b0239cabf1c-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/eX_8LLZ7P7GDNpvuI8ZjSS45Z7rfA0CtqPA2xtVAviEJxrZnqf33BkQxZLbYoVRhxCq-QXdTLltHc_r5oY5g1fdJlO-DR43wJdZcwwTJGCNQ_R0fnA9zstUqQUNRn0O5zzKeT0QskY1TWlGA66tf8u9CTul3ARr1mChdGWeGxH5DHrmfMYErhjgWkXGdOSCzX-oN7Aahb14mxZtHBojhoQHUD8rEMVxFBw5w3LzLmbWrxTXvNmFqHwO7rERSxCA2a_Ae1ZKw4zSV5HB4oTDji2EWFMZ-jtPbM4xLWZuSrZfknZ5cnBuan0b4ryrVxENQKXh8FaVRb5KwsQvydmkkuA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2378-1-1b0239cabf1c-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 527,
           "feed_width": 1800,
@@ -166,10 +194,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2374-1-b744f5993ea9-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2374-1-b744f5993ea9-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/APgLLcN_a6EWiVn2RQPc1M-GOFESqlPVv1Fc1dYyuEjRhfl953jUHQoi83VMs-RUfL67VfD7D3jsDjrjCKADnbt_2lZq4ShSVB7Ig3-guc8wE07eeSS1ggTTlEpGlsUt-cRgW233wCk1qK6n0zXqFRcqjykc29nTuofXgUkVAzL4v6nVVm05vtMcOmGLkHPhdvrOIX0J1Jzffh8VNZoQtFKWCGT3PV8uLl-Z7HwaBbgK3J3LS1Jx60wMnmZvyJpsQln9cKErtv054pKwyo1UvN86cYAhYEAJ5y3VGI5tlvs1z2stxRDcI7IBzLsFKZKFDcAiAOR1rBa9o8ZnQUcnPw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2374-1-b744f5993ea9-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2374-1-4a662ecdf91a-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2374-1-4a662ecdf91a-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/JViKnNt9YTIrhziYMiYN0hZnHGEK9zVCdHNA1fdbHwhyHHWBcX-DBkVzvff6qY8ney1gyeCgqMhFT1JoQ6WASBFWi1ZxSzW_wqHDinXXdCdhi7dHuAF8pL-vmx6S6gTrKfFwfg4dqf_4JV5I39eer8ELVVNUg8RY3Zbg7rZh0mk-bYLj8ySyOJSQbGL-NLoGcy794ryIV-EnC_9iFMl60UneMnbU7S9vI75fVJ8F8yCHyXSaZXheFrwNaGA3-ItGrJjvMwelAHJpSGOIVfI7AfW7qB_KG8-yvMv2PkAPRMYBQWQSAtRSXKzAISv2w5Cz6v5_iTk00HBSPbTrcGbKCw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2374-1-4a662ecdf91a-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -211,64 +239,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2371",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2369,
-      "date": "2025-12-25T10:01:52+00:00",
-      "text": "💰 Взыскание налогов с зависимого лица: «двойная ответственность» или самостоятельный институт?\n\nВедущий юрист Рустам Галияхметов и юрист Никита Кононов Санкт-Петербургской налоговой практики «Пепеляев Групп» комментируют ноябрьское Постановление Арбитражного суда СЗО по делу ООО «Форестер».\n\n🔍 В фокусе внимания\n\nПодп. 1 п. 3 ст. 45 НК - довольно специфический и «экзотический» инструмент в арсенале налоговых органов, и поэтому нечасто встречается на практике. Тем интереснее дела, в которых он применяется.\n\n📑 Фабула дела \n\nНалоговый орган  обратился в суд с требованием о взыскании налоговой задолженности с ООО «Форестер» как с зависимого лица налогоплательщика - ООО «Бриг». \n▫️ ООО «Бриг», не исполнившее обязанность по уплате налогов, к моменту иска было признано банкротом с привлечением к субсидиарной ответственности его контролирующих лиц.\n\n⚖️ Позиция судов\n\n     🔘Суд первой инстанции признал «Форестер» и «Бриг» зависимыми, но удовлетворил требования лишь частично: взыскал только штраф, отказав во взыскании основной суммы налогов и пеней. \n\nℹ️ Суд исходил из того, что контролирующие лица уже отвечают по долгам должника, и взыскание всей суммы с зависимого лица может привести к двойному взысканию.\n\n     🔘Суд апелляционной инстанции изменил решение суда первой инстанции: с «Форестера» взыскана практически вся сумма налоговой задолженности.\n\nℹ️ Апелляция указала, что субсидиарная ответственность контролирующих лиц и взыскание задолженности с зависимого лица по ст. 45 НК РФ — это разные по правовой природе институты, которые могут применяться параллельно. \nСам по себе факт привлечения контролирующих лиц к субсидиарной ответственности не исключает возможности взыскания налоговой задолженности с зависимого лица.\n\n🛑 Апелляция отметила, что риск двойного взыскания должен устраняться на стадии исполнения судебных актов путем учета взыскиваемых задолженностей в погашение налоговых обязательств основного должника, а не на стадии разрешения спора. \n\n     🔘Суд кассационной инстанции оставил в силе постановление апелляции.\n\nТаким образом, суды подтвердили, что:\n\n     🔴привлечение контролирующих лиц к субсидиарной ответственности не блокирует применение подп. 1 п. 3 ст. 45 НК РФ;\n\n     🔴опасения «двойного взыскания» не являются основанием для отказа во взыскании налогов с зависимого лица;\n\n     🔴баланс интересов обеспечивается через механизмы исполнения судебных актов, а не через отказ в защите публичных требований.\n\n☝️ Для бизнеса это может означать, что при наличии признаков зависимости и вывода активов риск взыскания налогов сохраняется даже при параллельном банкротстве и субсидиарной ответственности контролирующих лиц.\n\n#питер_на_связи\n\n📧 Если в ходе проверки или спора налоговый орган пытается взыскать задолженность с зависимого лица, важно заранее оценить риски и выстроить стратегию защиты. За консультацией можно обратиться к Рустаму Галияхметову: r.galiyahmetov@pgplaw.ru",
-      "text_html": "💰 Взыскание налогов с зависимого лица: «двойная ответственность» или самостоятельный институт?<br><br>Ведущий юрист <a href=\"https://www.stqr.ru/64193-164-353\" target=\"_blank\" rel=\"noopener noreferrer\">Рустам Галияхметов</a> и юрист Никита Кононов Санкт-Петербургской налоговой практики «Пепеляев Групп» комментируют ноябрьское Постановление Арбитражного суда СЗО <a href=\"https://kad.arbitr.ru/Document/Pdf/1b7e904e-265c-48dd-bc36-90f0f6abe685/84596ac0-f86f-4ccc-bb2c-b2e428a2f86c/A52-1739-2024_20251113_Postanovlenie_kassacionnoj_instancii.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">по делу ООО «Форестер»</a>.<br><br>🔍 В фокусе внимания<br><br>Подп. 1 п. 3 ст. 45 НК - довольно специфический и «экзотический» инструмент в арсенале налоговых органов, и поэтому нечасто встречается на практике. Тем интереснее дела, в которых он применяется.<br><br>📑 Фабула дела <br><br>Налоговый орган  обратился в суд с требованием о взыскании налоговой задолженности с ООО «Форестер» как с зависимого лица налогоплательщика - ООО «Бриг». <br>▫️ ООО «Бриг», не исполнившее обязанность по уплате налогов, к моменту иска было признано банкротом с привлечением к субсидиарной ответственности его контролирующих лиц.<br><br>⚖️ Позиция судов<br><br>     🔘Суд первой инстанции признал «Форестер» и «Бриг» зависимыми, но удовлетворил требования лишь частично: взыскал только штраф, отказав во взыскании основной суммы налогов и пеней. <br><br>ℹ️ Суд исходил из того, что контролирующие лица уже отвечают по долгам должника, и взыскание всей суммы с зависимого лица может привести к двойному взысканию.<br><br>     🔘Суд апелляционной инстанции изменил решение суда первой инстанции: с «Форестера» взыскана практически вся сумма налоговой задолженности.<br><br>ℹ️ Апелляция указала, что субсидиарная ответственность контролирующих лиц и взыскание задолженности с зависимого лица по ст. 45 НК РФ — это разные по правовой природе институты, которые могут применяться параллельно. <br>Сам по себе факт привлечения контролирующих лиц к субсидиарной ответственности не исключает возможности взыскания налоговой задолженности с зависимого лица.<br><br>🛑 Апелляция отметила, что риск двойного взыскания должен устраняться на стадии исполнения судебных актов путем учета взыскиваемых задолженностей в погашение налоговых обязательств основного должника, а не на стадии разрешения спора. <br><br>     🔘Суд кассационной инстанции оставил в силе постановление апелляции.<br><br>Таким образом, суды подтвердили, что:<br><br>     🔴привлечение контролирующих лиц к субсидиарной ответственности не блокирует применение подп. 1 п. 3 ст. 45 НК РФ;<br><br>     🔴опасения «двойного взыскания» не являются основанием для отказа во взыскании налогов с зависимого лица;<br><br>     🔴баланс интересов обеспечивается через механизмы исполнения судебных актов, а не через отказ в защите публичных требований.<br><br>☝️ Для бизнеса это может означать, что при наличии признаков зависимости и вывода активов риск взыскания налогов сохраняется даже при параллельном банкротстве и субсидиарной ответственности контролирующих лиц.<br><br>#питер_на_связи<br><br>📧 Если в ходе проверки или спора налоговый орган пытается взыскать задолженность с зависимого лица, важно заранее оценить риски и выстроить стратегию защиты. За консультацией можно обратиться к Рустаму Галияхметову: r.galiyahmetov@pgplaw.ru",
-      "views": 1520,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2369-1-affe5aa3d845-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2369-1-affe5aa3d845-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/OHE-PqwYW93DmoxJQyqQi3zbSF47EaUMeprfMAgIodW8rN7dXJEPYRTpeGpIa5FM-TK2Psw2YY1NtM7YbWPVkRbiQciXtZWft7N83ViO-4gOSgB41HzZs-pMIjEkfygt0UnotaKfZxsW20JpV5TwKDEaV3BsccedvKo-vYmNoeJgPcQ9XeOBkOutZ9qgX6b3oFNDnA55zeQ7c5TfXGa29WQtcw0tBGzPKnWJ0OPzAFdrZwCGCN4NCMBgqz0WPTal42ELaMtVh6du7EpKxNg_mKrN9EvAfWjqFJwgJKza6qnD2BCgsZ8U5J1rH0gxb6KgJfirku6Rqg23k_I-nr6wbQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2369-1-affe5aa3d845-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2369",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2368,
-      "date": "2025-12-25T08:06:31+00:00",
-      "text": "✍️ Нормотворчество\n \nПроизводители радиоэлектронной продукции предложили Минпромторгу России ввести кешбэк на отечественную электронную продукцию, продаваемую в ритейле. Предложение связано с введением с 1 сентября 2026 года технологического сбора при импорте или производстве техники.\n \n⚙️ Практика\n \n🔴За 9 месяцев 2025 г. организации IT-отрасли уплатили в бюджет 1,59 трлн руб. налогов и сборов, что на 29% больше, чем за первые три квартала 2024 г. \n📈 Налоговые платежи отрасли в 2025 г. росли почти вдвое быстрее, чем по экономике в целом.\n \n🔴ФНС России письмом от 24.12.2025 № ЕА-4-15/11588@ довела до налоговых органов рекомендованную форму уведомления о проведении камеральных налоговых проверок (КНП) уполномоченным налоговым органом (применяется до ее утверждения в установленном порядке). \nТакое уведомление теперь требуется направлять налогоплательщику, КНП в отношении которого будет проводиться «чужим» налоговым органом. Срок для уведомления - не позднее 5 рабочих дней с момента, когда уполномоченный налоговый орган получил информацию (поручение) о ее проведении.\n 🛑 Налогоплательщик вправе представлять документы (информацию, сведения, пояснения) как в «свой» налоговый орган, так и в уполномоченный.\n\n#главные_налоговые_новости",
-      "text_html": "✍️ Нормотворчество<br> <br>Производители радиоэлектронной продукции <a href=\"https://www.vedomosti.ru/technology/articles/2025/12/25/1166221-proizvoditeli-elektroniki-podschitali-razmer-zhelaemogo-keshbeka\" target=\"_blank\" rel=\"noopener noreferrer\">предложили</a> Минпромторгу России ввести кешбэк на отечественную электронную продукцию, продаваемую в ритейле. Предложение связано с введением с 1 сентября 2026 года технологического сбора при импорте или производстве техники.<br> <br>⚙️ Практика<br> <br>🔴За 9 месяцев 2025 г. организации IT-отрасли <a href=\"https://www.vedomosti.ru/technology/articles/2025/12/25/1166222-nalogovie-otchisleniya-it-otrasli\" target=\"_blank\" rel=\"noopener noreferrer\">уплатили</a> в бюджет 1,59 трлн руб. налогов и сборов, что на 29% больше, чем за первые три квартала 2024 г. <br>📈 Налоговые платежи отрасли в 2025 г. росли почти вдвое быстрее, чем по экономике в целом.<br> <br>🔴ФНС России письмом от 24.12.2025 № ЕА-4-15/11588@ довела до налоговых органов рекомендованную форму уведомления о проведении камеральных налоговых проверок (КНП) уполномоченным налоговым органом (применяется до ее утверждения в установленном порядке). <br>Такое уведомление теперь требуется направлять налогоплательщику, КНП в отношении которого будет проводиться «чужим» налоговым органом. Срок для уведомления - не позднее 5 рабочих дней с момента, когда уполномоченный налоговый орган получил информацию (поручение) о ее проведении.<br> 🛑 Налогоплательщик вправе представлять документы (информацию, сведения, пояснения) как в «свой» налоговый орган, так и в уполномоченный.<br><br>#главные_налоговые_новости",
-      "views": 1450,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2368-1-5579fe91590c-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2368-1-5579fe91590c-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/v67jfZyz3bWdOxX1C3NDJaOBQQUTqNf9e01ygoLsDV16wrsvkNic6Di8KqPTaPi1Mfx796oLLgKOsuUvuO8IX3qxtt2cmvKl76gdFJSbS9sGCTbQsJPUGhtPTZsnmQap25rUoGLHqSd4lMJgzT_qygGbIY0lIYl6ZJdLG7rKTYKNcD8sepYIgzMsiZmjMUUs-Q5ciaVQWqhBww8wMFYaOMPllDB6yPppAOC9YVF5_NldLGg9zzkNUSvLRd5xA5Q_DcjwT6ai59VJhBzaxZzb9X70Zcel8ZqixDaq9fSS3NLNrrxtDnEpW-ofk9iJKeyuhBbGb6GuDWEl_3D106O8uw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2368-1-5579fe91590c-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2368",
       "forwarded_from": null,
       "reply_to": null
     }
