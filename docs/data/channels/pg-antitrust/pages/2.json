@@ -1,26 +1,55 @@
 {
-  "generated_at": "2026-03-24T21:59:05.097200+00:00",
+  "generated_at": "2026-03-25T08:04:28.220472+00:00",
   "pagination": {
     "page": 2,
     "page_size": 16,
-    "total_posts": 33,
+    "total_posts": 34,
     "total_pages": 3
   },
   "posts": [
+    {
+      "id": 1351,
+      "date": "2026-02-17T13:57:02+00:00",
+      "text": "❓Почему ФАС России вправе заключать мировые соглашения, несмотря на статус органа власти?\n\nНа первый взгляд это выглядит необычно: государственный орган выявляет нарушение и одновременно может договориться с нарушителем. Однако в этом и состоит современный подход антимонопольного регулирования. Законодательство, а именно – статья 190 АПК РФ, прямо допускает примирение сторон в публичных спорах, даже если одна из них является органом исполнительной власти.\n\nСмысл здесь практический: задача ФАС — не санкция сама по себе, а восстановление конкуренции. Мировое соглашение позволяет быстрее устранить нарушение, зафиксировать обязательства бизнеса, снизить процессуальные издержки для всех сторон и добиться реальных изменений на рынке без длительных судебных споров.\n\nПо сути, это инструмент регулирующего диалога: государство сохраняет контроль через судебное утверждение соглашения, а рынок получает более быстрые и предсказуемые решения. \n\nИменно поэтому возможность «мириться» с регулятором — скорее признак зрелости антимонопольного правоприменения, чем исключение из правил.",
+      "text_html": "❓Почему ФАС России вправе заключать мировые соглашения, несмотря на статус органа власти?<br><br>На первый взгляд это выглядит необычно: государственный орган выявляет нарушение и одновременно может договориться с нарушителем. Однако в этом и состоит современный подход антимонопольного регулирования. Законодательство, а именно – статья 190 АПК РФ, прямо допускает примирение сторон в публичных спорах, даже если одна из них является органом исполнительной власти.<br><br>Смысл здесь практический: задача ФАС — не санкция сама по себе, а восстановление конкуренции. Мировое соглашение позволяет быстрее устранить нарушение, зафиксировать обязательства бизнеса, снизить процессуальные издержки для всех сторон и добиться реальных изменений на рынке без длительных судебных споров.<br><br>По сути, это инструмент регулирующего диалога: государство сохраняет контроль через судебное утверждение соглашения, а рынок получает более быстрые и предсказуемые решения. <br><br>Именно поэтому возможность «мириться» с регулятором — скорее признак зрелости антимонопольного правоприменения, чем исключение из правил.",
+      "views": 726,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1351-1-a0da66a9a3fc-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1351-1-a0da66a9a3fc-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/cKruFu1W15S8dnFCJlfIz5dlSv7yu1FCcSBqVgcrn8sTwySEDHgAZV_x8hknl0lQTg6HuffHreaC3CuIkRILfNpXp5yziUTk0nJwJZhDgvJcaSg4XuxSt-Fc2rLK2kTSJGfaNmSrGXuWBTQCJSX4KZahzk1bIctQ_NOhOIEny6seNyIXEsKHxGDGS3hU5oH3Dj7cLi_YIltfUhiOYMJ4XIPeosVHNPYFgy3s6tNysYDAeei-O15RHCaeb-VIcXk9qdnkZ09YmbUqhrvZcxX96tLxwfbVVOgmrslT0vj959CLiemsrx-k5j2_bNLh1wYrdSo1-qMFkw70fLinIXA3Zw.jpg",
+          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1351-1-a0da66a9a3fc-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/PgAntitrust/1351",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 1350,
       "date": "2026-02-13T14:06:36+00:00",
       "text": "✉️ На этой неделе ФАС направила в Государственную Думу письмо с просьбой снять с рассмотрения законопроект, который ранее уже был принят в первом чтении. \n\nОснованием стали сохранившиеся разногласия по законопроекту с ГПУ Президента РФ и комиссией при Президенте по ТЭК и экологической безопасности.\n\nКлючевой новеллой снятого законопроекта была возможность не только корректировать предписания, но и ужесточать их требования уже после завершения дела. Сейчас закон прямо запрещает ухудшать положение компании при пересмотре предписания, однако законопроект делал для этого исключение. \n\nИными словами, уже после принятого решения и выданного предписания ФАС могла бы пересмотреть предписание и ухудшить его для компании.\n\nОтказ от таких новелл стоит приветствовать. При этом проблема неактуальных предписаний решена на уровне ВС РФ без каких-либо изъятий из «неухудшения». Компания вправе исполнить предписание в соответствии с изменившимися обстоятельствами, и это не является нарушением.\n\n#антитраст",
       "text_html": "✉️ На этой неделе ФАС направила в Государственную Думу письмо с просьбой снять с рассмотрения законопроект, который ранее уже был принят в первом чтении. <br><br>Основанием стали сохранившиеся разногласия по законопроекту с ГПУ Президента РФ и комиссией при Президенте по ТЭК и экологической безопасности.<br><br>Ключевой новеллой снятого законопроекта была возможность не только корректировать предписания, но и ужесточать их требования уже после завершения дела. Сейчас закон прямо запрещает ухудшать положение компании при пересмотре предписания, однако законопроект делал для этого исключение. <br><br>Иными словами, уже после принятого решения и выданного предписания ФАС могла бы пересмотреть предписание и ухудшить его для компании.<br><br>Отказ от таких новелл стоит приветствовать. При этом проблема неактуальных предписаний решена на уровне ВС РФ без каких-либо изъятий из «неухудшения». Компания вправе исполнить предписание в соответствии с изменившимися обстоятельствами, и это не является нарушением.<br><br>#антитраст",
-      "views": 825,
+      "views": 828,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1350-1-6a3208aafbd0-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1350-1-6a3208aafbd0-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/NLjIiuLIqqZgeWWui_R0HEO_78blsc0BQ8FcPmKnrEnL4Ld-kmwbNO9wXxTP6ZcFJf2uEI_FgEdMCRDJUbuAfdK2nSh8LfZvyMTNqEE9ycrY2a7p9AI6ShPbM3hrtlRgpFZiUVNqV9UpJSy-m7n3gZwvIua6fpVpuI7AYx2wDJatn43JAPQ8eb2KM6sY2nd3l5TsvyOLpEBQe88-38z61BBZiBoABt_Vn9SUPbr9HUeUvfll6TnmMzK2hOpkL6wNVrktQ99NrqC4m3WOo2RR1U7lDr1jFr8X_cs4NWXcqXv2WEF17I81b_J1JHMDZb8cF7eImmVZv6p7EAEUTvjYNg.jpg",
-          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1350-1-6a3208aafbd0-v8.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1350-1-4298df5a320b-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1350-1-4298df5a320b-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/UYFUmR1YCTF4py723ycxvfdEd6mlaLVJs7ay0mQDblGl_3ZKFIPfWfdirk6siSxvsqSEdMsoaBjkg9F8RC2RRvvF81_Fy_CuyQGYPP5k9jcu44ACWsiH0R01vhUcH75p0Ki5G2CVrA6qf61cbEpCpoFrxNwYGkmhDiIr81ttta_oz4APODW76oDNv5NSxGrxW-px5YawlKNH7P6rAFPIsSt2MbrvKUkZDC14B8Fe4xOlMLJPBdh46_y9XQlFLptQe_GrIhjYIQNNM6FPNVeinnfbJq6rN5cyBoG5UVSjaHpLhEyr8FeI448DXhvbbLUiWSo9js9ROS_0ooC4NjwO7A.jpg",
+          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1350-1-4298df5a320b-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -41,15 +70,15 @@
       "date": "2026-02-09T09:54:30+00:00",
       "text": "🧌Патентный троллинг как форма злоупотребления исключительными правами\n\nПатентный троллинг — реальная угроза для бизнеса. \n\nОн выражается в том, что лицо приобретает исключительные права на патент, товарные знаки или другие объекты интеллектуальной собственности только для того, чтобы предъявлять затем иски компаниям-нарушителям. \n\n🛡 Но с этим явлением можно успешно бороться, используя гражданско-правовые механизмы. Целесообразным также будет дополнительно ввести внесудебные меры, предполагающие репутационные издержки при злоупотреблении исключительными правами.\n\n ➡️ Разбираемся с патентными троллями в статье Антона Пчелкина, старшего юриста практики интеллектуальной собственности и товарных знаков «Пепеляев Групп».",
       "text_html": "🧌<a href=\"https://cljournal.ru/vybor/282/\" target=\"_blank\" rel=\"noopener noreferrer\">Патентный троллинг как форма злоупотребления исключительными правами</a><br><br>Патентный троллинг — реальная угроза для бизнеса. <br><br>Он выражается в том, что лицо приобретает исключительные права на патент, товарные знаки или другие объекты интеллектуальной собственности только для того, чтобы предъявлять затем иски компаниям-нарушителям. <br><br>🛡 Но с этим явлением можно успешно бороться, используя гражданско-правовые механизмы. Целесообразным также будет дополнительно ввести внесудебные меры, предполагающие репутационные издержки при злоупотреблении исключительными правами.<br><br> ➡️ Разбираемся с патентными троллями в <a href=\"https://cljournal.ru/vybor/282/\" target=\"_blank\" rel=\"noopener noreferrer\">статье</a> Антона Пчелкина, старшего юриста практики интеллектуальной собственности и товарных знаков «Пепеляев Групп».",
-      "views": 799,
+      "views": 802,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1349-1-3abd07d55484-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1349-1-3abd07d55484-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/gB68jYjqlnQjlbUhtofVpj4FM1mcwKySsLqma7h6MU8jtJlnIjUWdvEspmBnlaPJ6NUECNLIkxOT0gSzxWTM8_59QhjDEMZUd9tdi8lh9ms0_QK22DKUDow8QkKUtZV2qxRo5TeCWNlfJr4OQmQpD9K4idpKnoNLv9YVSPbvN0nInuV_au8yZEmuLAm5RnRitjbz9OCBOf245nUq3DEpn-5xik7SqLe9SLix_znWmkbin7I_0aS3v3mmO4OsXjmMoTP_2x6gp_1TKAfrhZlkZyw7w2jvzhyC-S-M_A1H7xowIODxeNSd7Sf5Y9aINMWH3Hqrgr2PynJjDzTig_8FjA.jpg",
-          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1349-1-3abd07d55484-v8.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1349-1-cf1a67f8e64e-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1349-1-cf1a67f8e64e-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/oEbe58992PJJixEwjzzb1dEWlymPtCw5EgGhCXI8wiSg-9rD8HstMpzrckJ9c4LAMklXQhAwpQmUb3RrCsDQ4cZBE3D2nMtWOsGEf4b45mWNzMCAFDPGEyKeswytj_5f6ur2i7bjDe-qLpCTYfJji-WaNni4AIh5kEhmmtE8l9GnauVMpV3eEL1a2MHgRlLMwboj5t3JkT0Sz9HIX3sP8oAiMbTN5k3F5D8L_iwKlBZPC1sd9tnDpc-2HGIbir6YQ-wbqv6Rwh6ql76o_WeS2IOFv9rwtirOPogScQcmQeofD5EcQfA3Y-Ptad-gxIdZkfnsWXpI4EIZuiyIug_FCg.jpg",
+          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1349-1-cf1a67f8e64e-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -75,9 +104,9 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-1-c120ac4050b8-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-1-c120ac4050b8-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/SZ6IlL6egoBaHsNSY327sYWvyFH69uFnoqjDrpEQCgvFmqvdlwm0G2AQerHSdTq3wm2fO6jjNy5JUPVgcOhfrGsALDguSGexZ95s_-wTMfDCM5vaNfTB6IHw6V9M0UFzjI2RWXCl1zyLLv2-jk3mEKzNDYkbQiAk9diXsIC24AWpWiVa490zXbYwN7W3BEam9zj3wqdJByi8y78DLW3XHmm5SZopuHgO546l4_0j9lDEmDDzAHjZXnvrlVMMLTPfw5KggXjmVPTC3y24xrBh7geC30EJZWy07kv5MqIs53egoow4PAGnO4TLklfMrBckPgfw0waLuAxeiBhahonH1g.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-1-e327cf88bfdf-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-1-e327cf88bfdf-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/ANdHDaECuVgztSfGuviF9IM8YE1y57tWMvjiAsGl5W0CwJpOloJRMB20BYwrJvEUqTekgvKzuDXtYLmy9CDn_aZj1QshBoRtbMzfZM8nE2PGo8FqNTcKELnMiD_1MjPPE3rg6inTQb91znL_isPRRjFyXI-oFaVA7QJUFvpFQasCL4jrWEhNE_IxzYjk4bY6IYxaYS3d4AIgPCNtfwZWdEGzVSD72L1kgq5KFTJxBfXA0VprvRtk0lLULycqirM9xvQlb-WR7ttPkJRVNkTT8c9wqwwQJ2TVaUAr5ojDE2tRgBhMCWnvtUq8kjvQhByEYP8Ms_spxhDN7IXsRCm-5A.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -86,9 +115,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-2-24bb580529b7-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-2-24bb580529b7-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/VexTxYbFXiUOOiGG6gfTU3uiM89sN3lHQhx1gAkzYK0_sD-GH20ni78JtUB69v0XQBuS1mefAI_X6GSh_dO3cWI4l8UYUzBRGb7R8ZJEV8M9iV0y3CtUz3RjX6VvMgkNLooJNZWtOyaXDOn5CVg8jLVhbAI4uakgtwFsBJyqR8W4sdLMY4uZ332sobegRzZfOOe6Tk6QbKrMJ3P7oFo9eZlhs0d2twKmg4P5M9Bsq4NGbAlBzUCL2JMFI3dWdFtSJPY_CsS5o1Olihf0dctEVJbo3XIAC9ooziBl-BvqqzMQTDf-nQAztBNA-q3Ok6YsF_h1lX512kIPTAkXrtrkcg.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-2-de4db92ddabf-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-2-de4db92ddabf-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/rPW_pDwS1RYNmf0aJx-ZQkIKGe8lh3Em1aMVZRrBd4jKn79y3J5d0kjrxF5p7SyI_qprXF5BRhlR0G1e7_PS2A5BwO0oyWRO7watDWY-eQa99Y0i6l0FCCP7xN9UYO7SbQLyneukCw11PM6HonQg328v40N8-Xs1e0qgxXgU5Mkiv7iiJaqehUEYiT1gknnNopAaoGYQ2hc674d0SDiSkBSopcwd-45DyaptA-NGx7yo7zvh03nW6SjgSmj3WldMnHAcV-6JlBTK4HiZUJ6RkJbOO9AGHXUdfS8-XRjkUZu7Y4ADadCULy2xDF7ik4NPVRHUWYPdIYHJf0t9FfCaPQ.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -97,9 +126,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-3-265deb74091e-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-3-265deb74091e-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/s56QUCPJGqfXDOvG8nX-8nMLtHkZQP5MT1tzziMF2W9X75BEe-CEsxT_5ovLqZA9cbIMP8otd4863dXLDT--Z3WafQ-kDAEGU2X-CdlGbArdO1exnTCx21gcKR2hdZrq3MlukKX3Yc2Kf8f8WyN69hW6sjGBJo3lvXLKvjo1mzHilE2UyDq-aKDN3pabaxXoL8rKa2knwWbsjqWhcktClwWODPB3qXBlJNLIjSyEy4RHaD_bjM0QCfkO9ZxwpERq451iHkNce1SEq3xJ9yMNd6wZdgytVHs1NUTlVd0rERQ4Lc5aUoH0jDiSWgtCyWf2c_L6bSJsxHEJwFH9zCqpfQ.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-3-54f91583f978-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-3-54f91583f978-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/vA4YEFdPUhoOU6PcY4bS368q4PHhLdvNipweP2qBRW48pB4rImxdUey1Xmyg9II88gaD-qHgFUFPz8yz83tJj3hFoXZ9YYx_sPBriJaMqsazSnaXk29RLzWM4oWSWpwGyuEoDJTQorn9uDHDYzvL9jR037iYB95ydVImpZojGX8Uz-Aaxq4lYV4phfC1pjh-GOWkOLOvjIjbOW4e8w-B7aRFKK2dkMwPYaWVMaqgEkaJ-kJrATANHl9mBKkj22ZE8qZE7pFR8KaEUQql-Dl1QOUE6TAyqWejTsaB0eeWDHIN6fnS3Wb2Ukk63YSJgl9_jE8wCH1L9RZc1_hQfYqfLA.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -108,9 +137,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-4-b9145821ff27-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-4-b9145821ff27-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Y4YgOP3QZenKxVpfG6OrUaJoEoHP1viya2RXf5W5t40TrgNel11mM8d_mzUBheJP_znRfV_D3Qi2Fx6uWZDk0fmCjdwtP1ZnVrp23_ZZZyw4kV3G-R_usXmh7IjWxPVkawveOBXkcCRaNk86SkH3zypMBeWb0ZU_JmtXxE3DFiUPAs3EXHazFD7EfZ6oVY196M84_e3hu-XvxHZ4_9tLh3xXnNsBIFNMD39saJ-m-hlEEyMysAgTv6n90I2LzBfPdLdZlGp3bHQobERqswF71VJJk9LtpzKjQjv052kmfmXfSf6XwLk8aa0CyxeiPCNL_F7RNzbiAtutRxEwub4U_A.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-4-13a722f78ba5-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-4-13a722f78ba5-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/PFMNfS9y29F3aYuIDi3uRJjZaHVI0UcTnF0lW2DzrzgcQs5xhZR3KsbWZj2raxjTp7P5nBf9TnNo74CTn06TdgflFltULukakcBMT8ovhA2kDTEjkxuhRyrF-PQiKxUop7Oeam3NFvXY-9Mi5a6jHn8ps625qfH2Vq1LIbTIEExqqIt4nU1pmAh15CsRA_WyNQyAAt99vX2iYjH7aEXPAqfC169EfYuVIBBbNjjRdwgb1FEq6jdqeVMtIDiPtZcmU0KN4K-9cUxXyPe1fSNkhAILYuzszco4EvzNes7ulJRPswsnGAL2FV7Ea3Yzt50CHcw8vJWQD5mbiJmiT2Cy0g.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -130,9 +159,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-6-4e3323f5a93d-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-6-4e3323f5a93d-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/bVXqr8qaN-oiPv-Ru5HAapTNIy6uV7o3_P0e85xSqR25hYj1xQTJFDTK3_kSzkcQx4qOj62N1NyHRRmITtw28zzO0pLQm7iS1Nxvm2EFeEiD6mR3_Scdc76UZUYHXtYbrdIE6okSjfE4EEiyP-jaX02JdB_1JambjMAM57Pq4cxmlcyj2D-hIFhve8KKiyJ6dTGFwm77cXRjZsjjZe5qcZ3YS6Z3QOZhtCDooD3pU5o59r9VL5QFQIZF0qRHlDKDu78WGCbSqpoj6tsUX3UKF8724ypk8_Zj9d80HH35fe71-NYXas_EUkDXm1qXTSLatVqajv8XKQDMyM9Orn8inQ.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-6-523ddbada33a-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-6-523ddbada33a-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/bY4sVoqXEbGwDSb9DgAyxwHtfgbfrvrCePkC7WtRkMmwswIkCjEAabytCdveeuyZN1yUbt-GCBgoiOFtqGUiOcpe6Os35fAJJzOkqbxmgC4jU-mXy_ev-X8ez8IMTvgcbK84Pw5d-D2-oBKG-zMlAT1ZZa0gSK01_Dv3txyBem2X6UP65B0HXwzrUUB4vZWh6CEiOKKXIR4y7eCOUkhQ2gGaeFgWKa-O0hcZhJ2sabuJKsV_a5h2A3jhaFBhN3q0V2o87JsvgKvkFoVzGTS1DgdL_0nLCbyv7B06iufOmV6N1saRnkQPgU75tXetXts22IDAztdmC_vAExL-eR-BCg.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -141,9 +170,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-7-e8a919573fc1-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-7-e8a919573fc1-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/KUJ3wzhR88_PO8_g72vGbmOOVMZ9qCaLzy5gsVunZUjRC7eAHu8DxVEvLr6EC6XA_7l2xkjA0pgKGcojXeGy0uc28WdqKI51EFuGDRDzeFeVozofGeombWwAOm51mpklGfZDFK-9qGh13MPNeELTBMjqnk26XPZ9W00JwnuIFwNGgFyPfVfYMZIHFzgyQ-w9rP4hAjHpYftRcQtIE6joFYoKN-PCvd35wNqMR0u7qwvQ4QyDWwWHE4bEt8QeBUPifJ9zFl2FK-vUxZ7_fb6HV0j4xLEUi_lbZHTd_yCoB3UMQo5v_ijZ3uoRLYKQPNvBC8he0jlWmXhRsbJ3w702wQ.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-7-f8f40d76556c-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-7-f8f40d76556c-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/dS0e3C6qea8UZok6FJJmkPj33iX9egV8FB5nBB3bkiFveCtqwIQ5NhCQ6ztE7RYdOGMsWlNlFTtlUnPO6PEFQRbIDkk6_1TSXDXg8acbreLVL5gNZnr9wEHzWbxnLR0F94W0J3IL7fNlJOh_Jc1XZaIqCwrj_geOMo1lh5YJ8CfTsOWjqvRY2FJQvTsXhe7kHPayh0AsEZTDbaK4BZxBuOJFRH2XOxtxT2yNtAtA0bjk7jJdarOfDoBQGJZxKmpnsovtZ537Ef9FxEIziUE-uBPCIUnnJxAaF6LBed3ATUTg8w4My9aDif9CogYOrktokFHzWaga8RN9XvH41VZHKw.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -163,9 +192,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-9-4ef8aff95ece-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-9-4ef8aff95ece-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/DkGf2H0jNSytVQgRFjoWDCxjQrxwXvqIlaCgNEsM-sFHixb9DyGqaFE9Jy_q7hpx7bBd1gOpztnPeEZ_teCJK-N8lQPtl_Bdc3wpb0qd75W1BmxrR-v228bQ5fRUHUKNwrUBHET2cuLbWOUyv3ePAgZbAjjucjFHNdnvvd_MQTDCQpJWFOuBUZJm9mJOYezrkuztjDAtU9hGpit2V9Y9yKXvOqQCxcUh5ImxiX5QbeEMjyyYcH7LSAhuouVD0y4SwckoKeylk7_xGfFhPGUcve-ckV3ST6ixWt0mNEXWpfdlsCw4mVBbV2KEssyl8agRhCfZNjQL4_O_r6Vi_YvqLA.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-9-30c9db0177da-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-9-30c9db0177da-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/KmDCYkeQ-gXe0lTY45UE-qTYPnT5qxIcE-RqGkYba33RzkHAtDCEXzoyMRssVVqzLdDwvjpeVxGzDCq1is2nYCApvTmWALogKdvsPGmElgPOlHmofhrm3KOO2hnCJsTEOH-voeQcXjTv6ftJb8_SbqIK6xE9bF_8odvHjaoKfmajNpOIQgYqEYX39qdq5wFSgm-HkVjN9MzFXOVsFStl8XnyBJ_ehOvjVunGuzESz1dGhBYqIdeQtbyuSESvkJ7ORIVoWF14io4ExA_OQpFTAh_V5bXyYIOBWo09cQj7GjWTeXfiWOYiPr_Nl-iC8qB71GAPTMzMUyzx_qdLEvdIfg.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -174,9 +203,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-10-3d8e7a360ffc-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1339-10-3d8e7a360ffc-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Phe_jxwk6i7LIsdBaXMrJ58jv2M_uUDbSRQfZkMNs-_irdO1jNoFhrgzzmhGsdv-kU7rBOuNpK2a_7G1mUsHkfDN7_gSgz-MuK-vaQDPHYLh0KcdUP4MUC5QPzlMrxi6SqEyaifoXROwijP77177Ie3_q-bzV3IDgiDx4w1ur-6o79PfdRQZIRZj0ZwcAUmMabdxihQT8FuPhbOrAwItxGd6qUsrE_L88LNfqD_7zMD2XA3_qmLUj233oeIWtjCiUgXrzMrTTVfvGfjwKyiMFu8wUTpKmja82Eap2LXpRdkCLiwnqSFpeNOwaYlMkX6UKaB2pOGZJ_8cT_1M9RYg2g.jpg",
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1339-10-b3149cd9b83f-v8.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1339-10-b3149cd9b83f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/anL5y2bTHqmDO1jD2AxMYAXRgvkbUyloyaJnEPnWBCfYMpL18Z7bYrzkvkCqWtkTifIi_rlrAO4om7xCCZltlRaeAH_t_kRPTemuWeyboD0fkAarQ06ZkZBbAsbqPb3cROX2Omwke54gyPHNoHk3sDPJbF4dafudJXZvM32Xm3X9RyJNnT5TjbxVQnsh0kY5FnxCci8B74EWXbTR9YPND_J_9wSgj9Eido_9GY99HUEheu_2TQMPdOCrq0wLtZlf0jaduCeNJlXkFONsK7NrJUIsnXMnnn8im4MQhd-quj2xbHviCMCbjjbIPcdRmMePeyN9RebHuJ5fLl3mgGR50w.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -411,7 +440,7 @@
       "date": "2026-01-16T10:56:06+00:00",
       "text": "🗓 Начался деловой сезон-2026 – впереди новые бизнес-задачи и планы.\n\nА значит, важно оставаться в курсе изменений законодательства и практики, чтобы учитывать все риски.\n\nМы продолжаем регулярно отслеживать весь массив обновлений и отбирать для вас ключевые законодательные инициативы, разъяснения регуляторов и кейсы, которые влияют на работу бизнеса.\n\n📣 Сегодня рассказываем о том, какие важные законы в сфере антимонопольного регулирования и закупок подписаны накануне Нового года.\n\nСледите за нашими публикациями – PG Antitrust для тех, кто ценит время и кому важно оперативно узнавать новости.\n\n💬 А если нужно пояснить детали по изменениям и помочь адаптироваться к ним, эксперты антимонопольной практики всегда на связи.\n\n#антитраст #госзаказ",
       "text_html": "🗓 Начался деловой сезон-2026 – впереди новые бизнес-задачи и планы.<br><br>А значит, важно оставаться в курсе изменений законодательства и практики, чтобы учитывать все риски.<br><br>Мы продолжаем регулярно отслеживать весь массив обновлений и отбирать для вас ключевые законодательные инициативы, разъяснения регуляторов и кейсы, которые влияют на работу бизнеса.<br><br>📣 Сегодня <a href=\"https://cljournal.ru/news/27650/\" target=\"_blank\" rel=\"noopener noreferrer\">рассказываем</a> о том, какие важные законы в сфере антимонопольного регулирования и закупок подписаны накануне Нового года.<br><br>Следите за нашими публикациями – <a href=\"https://t.me/PgAntitrust\" target=\"_blank\" rel=\"noopener noreferrer\">PG Antitrust</a> для тех, кто ценит время и кому важно оперативно узнавать новости.<br><br>💬 А если нужно пояснить детали по изменениям и помочь адаптироваться к ним, <a href=\"https://www.pgplaw.ru/practice-and-industry/practices/antitrust-regulation/\" target=\"_blank\" rel=\"noopener noreferrer\">эксперты антимонопольной практики</a> всегда на связи.<br><br>#антитраст #госзаказ",
-      "views": 1640,
+      "views": 1650,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -514,35 +543,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PgAntitrust/1323",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1322,
-      "date": "2025-12-30T07:44:15+00:00",
-      "text": "🖥 Главные темы недели:\n\n🟡Ряд спецполномочий Правительства продлили;\n🟡Имущественные торги – по единым правилам;\n🟡Контрсанкционные меры в сфере закупок продлили;\n🟡В ФАС обсудили вопросы регулирования электронной коммерции.\n \nБольше информации — в традиционном обзоре.",
-      "text_html": "🖥 Главные темы недели:<br><br>🟡Ряд спецполномочий Правительства продлили;<br>🟡Имущественные торги – по единым правилам;<br>🟡Контрсанкционные меры в сфере закупок продлили;<br>🟡В ФАС обсудили вопросы регулирования электронной коммерции.<br> <br>Больше информации — в традиционном <a href=\"https://www.pgplaw.ru/analytics-and-brochures/antitrust-reviews/competition-and-law-digest-25-12-29/\" target=\"_blank\" rel=\"noopener noreferrer\">обзоре.</a>",
-      "views": 536,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1322-1-e8cfc5b7ebb7-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1322-1-e8cfc5b7ebb7-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/lFKYK4VNTDTU35cLxmaHRQqN41e4LqdJhCPWx7JC-scczb4qWEF30u7qXpvZENYKDpknvEjCw42ZiSpY9gIpMreCblbhemvL7Z9g5M6luyW4HY-SwrZOv6u-gCnu16xcHP4uiLo99eXffOjzWBdYuP2j8bUutGY3XpM3tpyqxaVF5wNXg31qTaNGHMECC8NDAi5bXJIfoqFxZIuXAQXQOx3PzXtaeAetWLhz2mkR3wUtiZLkViuvumCdJT0NtOU-V-aNRDW5S8JD6t7rFNXctdYPvhl8PMhIH1oEpNBchNttRbkbahEr75Grtu5GfZDMHQzRVUdQPNwossZFRgNuFg.jpg",
-          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1322-1-e8cfc5b7ebb7-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PgAntitrust/1322",
       "forwarded_from": null,
       "reply_to": null
     }
