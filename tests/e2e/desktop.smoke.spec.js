@@ -34,6 +34,27 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('#siteTitle')).not.toHaveText(initialTitle);
   });
 
+  test('builds versioned feed urls as relative channel data paths', async ({ page }) => {
+    await page.goto('/?channel=investment-law');
+    await waitForFeedReady(page);
+
+    const urls = await page.evaluate(() => ({
+      feed: typeof window.buildFeedUrl === 'function'
+        ? window.buildFeedUrl('investment-law')
+        : null,
+      page: typeof window.buildPageUrl === 'function'
+        ? window.buildPageUrl('investment-law', 2, { buildId: 'abc123' })
+        : null,
+      comments: typeof window.buildCommentsUrl === 'function'
+        ? window.buildCommentsUrl('investment-law', 1001, { buildId: 'abc123' })
+        : null,
+    }));
+
+    expect(urls.feed).toBe('data/channels/investment-law/posts.json');
+    expect(urls.page).toBe('data/channels/investment-law/pages/2.json?v=abc123');
+    expect(urls.comments).toBe('data/channels/investment-law/comments/1001.json?v=abc123');
+  });
+
   test('keeps narrow desktop channel menu scrollable and clickable', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);

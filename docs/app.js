@@ -719,14 +719,15 @@ function buildChannelRoot(channelKey) {
 }
 
 function appendJsonVersionParams(path, { buildId = '', manual = false } = {}) {
-  const url = new URL(path, window.location.href);
+  const searchParams = new URLSearchParams();
   if (buildId) {
-    url.searchParams.set('v', buildId);
+    searchParams.set('v', buildId);
   }
   if (manual) {
-    url.searchParams.set('t', String(Date.now()));
+    searchParams.set('t', String(Date.now()));
   }
-  return `${url.pathname.replace(/^\//, '')}${url.search}`;
+  const query = searchParams.toString();
+  return query ? `${path}?${query}` : path;
 }
 
 function buildFeedUrl(channelKey, { manual = false } = {}) {
