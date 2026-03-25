@@ -1,12 +1,41 @@
 {
-  "generated_at": "2026-03-25T12:09:53.629380+00:00",
+  "generated_at": "2026-03-25T16:24:50.032117+00:00",
   "pagination": {
     "page": 8,
     "page_size": 16,
-    "total_posts": 168,
+    "total_posts": 169,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2434,
+      "date": "2026-02-02T13:31:50+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1520,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2434-1-ffc15119bd28-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2434-1-ffc15119bd28-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/TRCgrmjQOJCbeO19-v2F_hFprmF4LuQOTHw4vZPF4Cq7b2qqoaciSr161RlhGzAkMS20_kSlKSJqkxGEk86k8YS-2OD6OYqiQk46ZzG-n3JDXe0Ot9QiWFv3qqAqL_xUs9ne-ZO3wgUEY9rNN-sSy9-GX2EVASmYkUcI3lk5kPhsKfUehKsjmCvryDp7KRrSQapzTGDm5Q4RvnyKqh_h-AEOe5cglRE3W_9-CmZEIXw6YhVMbVDrbobrVUpAEVwTV-kCSaVajjetNoOSHGw9u5uLGsobwlxVTvCOwMFF_oKE7eQKuaWhMmO12Dd3fLwTBVoa7dfcq3NrtVFYKWaolA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2434-1-ffc15119bd28-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 420,
+          "feed_width": 1800,
+          "feed_height": 945,
+          "full_width": 1880,
+          "full_height": 987,
+          "source_width": 1880,
+          "source_height": 987
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/PG_Tax/2434",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2433,
       "date": "2026-02-02T10:00:37+00:00",
@@ -17,10 +46,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2433-1-452857313627-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2433-1-452857313627-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/or2JejjUUK1wvbWs8PIj4x_IviOBoBVdjK4vHm8tNUyU71inv0fS_bDRkViYqS1hyU5c-MS0xxO5F2WdW5-jZCo6LjYDRt8QFW98xSRf1vPU3NK8N4a9qlxDDbg_qQ8DjBH3DfmZACgeesRmi60lY_KIMEqj1J51yFq_pARUaSKF9bwb7e9u6JhL7-r09G3vwl_iVcBvSd85Lf-rWMv7nBvKiPLrI46sFj42fgKBUoObH6wnthW4MciWFcDrwDtr54Od-b9hX66HUzCY0zL1mGN68dPxbwglm8keQ75S6NqeCVhavsyb4F7CcMj6-H9Dahj1Q0QedqmXoCuKBh9BSQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2433-1-452857313627-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2433-1-eb3a9b7fd635-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2433-1-eb3a9b7fd635-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/LjMADHIB-DrDpUR_Ku-mKLOyDayN_jNmO1wpUWTLg9z6eCV2fK9c7cPRc6L2QZ0yeu3WXGfCDw-Fj46x0OfDwb6TxLUnxIca7SB0uNj9AYUn-0ecs8-x2gp6-XVEcJQT-pXWdv5QFtulsUCyhg00-QpGmauvmKjzgv6pfwdcPYbO-lfVq0_PTEdYLEaVStgUH7QpkCkMdXYO6RrY-MpI371btfBKfqUCgDB8__9cXDQJsuN3X-MZFAYNwjzkbvrMjtAWtC0PlyVIw4tkbWDhWQBiaY6uaWSP-EYjs37mGy8YViSgl63FtFISRn7CfngI7naiiATytzRULhN5DyZuTQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2433-1-eb3a9b7fd635-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -46,10 +75,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2432-1-71e258f40fea-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2432-1-71e258f40fea-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/NI9ZiK3KD3kx2nOcVZGhLMZjjsb4IHPoSUVNsgKPXt9ovkvHhi9yEec3Wki1ODCxy11MnwNy87Z5p-s8VJSQpFsYlbvKTiRMOY_VVU8AiONWB0i2fT6EN7vMb0DnFmRx8wb0slAiD43I1FIi6wbE2zGfR4uPlh5d3vvCeq2DtsIe1S2p91PQP2usm2Rw4oJ5U3YDWETMfj-cp_txnpu2sP7S0ly69Oz_ITlQ35_-XOMMORvs-1lXBb2-Gix7vBO6zMI1loR0gxtcuGwriqetvubCr6VID_PUsEsB5vws_4shXrjbxQrbuKaqG19UMGRhKFSNmv7CeOQZSA6DfoMrRQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2432-1-71e258f40fea-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2432-1-2e8e35d3958a-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2432-1-2e8e35d3958a-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/fhkHRSdRHLnTpzCd7sSQC2jJRf4b_LjzwDkXdpgrn7dwHseHSBcpbayfJUYEqKFtX0-hC1NlSEhdGOfCq92tBWHM6Hg1g1-y-J9hH2t5z1odJ1-ogj-g96g3eu4Se-9Xcvl_oGp93nVR63okOfQ1BHeayY5iYfqUZXlh0eGKLo0eGeOc3dmt5Jd7JwBsXiBFXOu9rFThqmYTxuD7eGVbdUbO6t_dUGTUVAkirbXmMGaxLDrOnTyKRYfnSZ5yS8DgtWaqvccTAQsoRO0FQG8ppQCZkv530W0puhYkK3NodjQOfNPdIcMUNR200U0JWqhjxx_5J6CkeYGbOPVMI2yACg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2432-1-2e8e35d3958a-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -117,10 +146,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2429-1-aaceeb5433bc-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2429-1-aaceeb5433bc-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Qx6NXtejo7i_UDQloJlSpKieTOxqfvJQufJbYfMGEWthrxNEjSbGdishL9o1zwgCCViN47MO_Wf6kpoPVDAbjI7-G4imwqSLrLSPegGRNbpjfXnvz3YbTOg9sH-jaoF_1W3DPKD9qF38vBdPaaj3kTMbSo9CjEJOkmICdAES5Lup8AMBXFCgQXyhejJY93xQ995xieTdIXWAejrFnO5edYpadygFc61SS2FGHZqXWvcGpzPAZNsVsuKKtVcAfK6YTRlvvkzDDZQyJMSd4W4cJE43_dZS5artyxjP2pHrN0ZlMToVzFzOeIGF6TKwpBCPuvIFNgrQdYMFz4lKGWOQOg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2429-1-aaceeb5433bc-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2429-1-4ff1554257ef-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2429-1-4ff1554257ef-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/bUe2hgwAeWSdIMRI3_0cx1hGKVP0xwyIqPWvPiX_TGqVASZEF_eLxv7stMn0Dlm4lyt68lunxn1OQ6X4JCAcJ6fO68g4d56IrRkh_OdCi7ZDEVc2MvTr4Zus-SdyeBlCoaWfgEMn5A10hViEFbODg_xUsTNZUsFxqc4NLzv9g5UIeREHPJF5hDHqIze_Zk146qqugRu53mxbAjxud6isr2-4JmbbWQgrapvzRHgKc2DKkSnht5rMRbqOVzns9WKXqhnA8DZ_2nUNQiiqifL-B62Yhz5FJAf_qj0-5ZyJX7qjVi8vwtkjT_Ih-mX0yjdBZk4QysgGdxYJE_WB-9Kddg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2429-1-4ff1554257ef-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -146,10 +175,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2428-1-f83d612fd091-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2428-1-f83d612fd091-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/FVo7BFpe5bG8vI1XZVpawUp27t3z_u5jnacSZn42saPNYRft9DoT5IDzWCVtaPSqaMNjMXsWnyEVJvRE9lGe0ymtDCkS_Aa0lE0UrU7TvC-s-CEGbEYIy57eGClDEB1W85LZzwsMfQDaQavJEKWPms8LHFoX6yIW4YbZ_7j8__4guWKWmpDcMyQ--fm4Yh0pn34DBhG__KLnpfe5ZQ12LyRZQUfO7AmM4C9HJbzhwy_AtZgaRui8zNi_MLY-YyhlZZZCsg0BATV6_YdFPTs3hGX4oxqX5sZ5jyr_ES8xeQ8H17Io0gzbPThu4gdQaAE135p7p8ZbOMyUUhWljOYmHw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2428-1-f83d612fd091-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2428-1-3a25fc18ea38-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2428-1-3a25fc18ea38-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/iDU5ztfasNTjyowyKsfWeGB7NypB6qD5yRy_xRVemv6WFGKWPZVnjprxl-n-jjLedlI0Vu6k9eY3EY1CuyrtcBsgV26BxgvitkJiVa--pQgUpFYi6dBAZGhiKjr-PIE7Gc0g-WhKSd4J3pPAmFNKvqNUcDm7dSCL9FGPsG3WJFJFFxwJ7WL3eSggmEG8eLNEmN0SkqDyed22X1EZgpX8qF27XZvkwlYdmE44IQGwXl7DNv3WYQF23lS7sVveBzswtmfUfaVHkz-6YawOLHx2H6KlpH-LEXItAJXViDf2MVl_eEol7cSBhQ3_G8h5MVBuasS4b3jM5wLFPj_jfQoHbQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2428-1-3a25fc18ea38-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -175,10 +204,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2427-1-fdc1ce827fcb-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2427-1-fdc1ce827fcb-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/UHXV6hWbOwnG0IVLDqVNGaE85nua71SGgBXro5MtZ4A04JDO9mX3vDPjmsjTFJv7lL6Ilo4i17QKW1YEuWeLZjSULAT2wCCXiMbEYH0PlGarBN2gMmn-GtnrB9N4JDvUahQsUo7X1531UvmkPO65naPkD6-GVya4PN4yBJ1zHFVNk45XCVp24H4z4SjyeW4NqTcPiuDsYaT42aNCDGCzFpDRzpPso8WUJJqtIL4B3lAKktB4pHQS2XeesK5M6C3qvlie4MA1I0MebnckiIx37Vfu6sm30YijPd_raQYQmcWWBH2wvmqKk-AZv-xXhIHCUTpjS9Gk_giyYaHoCmCvTw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2427-1-fdc1ce827fcb-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2427-1-4aa25320c19f-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2427-1-4aa25320c19f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/XUH1Q9d-iLmcuv1tlKhy2lmnDB8geYf02AlkIH-9V8lFG_LNrjrhWP_KkdUOWUphuOjoVkD4M-56DCz7CwKTyTvReT0_r99JTmkhz3AbEQWqlIeDdYnEaGRrYWxDQLxTQdppVVRPnGgWO9Y3tXm9hu0m1VCE15xznwqDh76DwUT_s2rrKvU-Ju4JqjKxpwvcuTftLBNIOTFBdqRJ3p-VJWvurkIaM5El9OEImi7QlK5uo6cL4HcGX24BunUI0xkLDiRm5YqGV6HCRWbErdFrVY4Cx-vaeuWFkA19ljMickkIlEzyGYbqN938fZDb0UEX7kBQ1xML40pWnhGdBnodzA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2427-1-4aa25320c19f-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -204,10 +233,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2426-1-e06c18814b47-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2426-1-e06c18814b47-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/IgOSfk7uwk2O4Uw2GdnCY6iHGPyJZWfRXSVdft_nXg1jgZFJ_MG81XwAhRkDXJbYUQv2dUAKmwTgiYuT9j4iewbaKpizgEQgRV7HuEPTvWtUYqv0QCrlBJC-nknjhkX5v8r2KKdSf1M4EW1yVa_miDAR3R5ao4RhBdt7duS41i183K3LKjaHM-yMwrJM-Nfpd-01IHqhiDxy9U9JpgXuUzNEFvJP4OKN04IaP4ic3bNp2fnnYP3u4YxAIXtGvSiAX9rM8T9e0ptere69QTxSGwrjhIXaiLNKFeO6Z1TF3_84V4cCGTXetvXTOKXNN_CK-pczodzMAUvgrGMmHD6wuQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2426-1-e06c18814b47-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2426-1-6880fe8afcc9-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2426-1-6880fe8afcc9-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/R785bZfM7Nmjkru4_3XB3JuKvh_BSc9807Fck4YCd9znlFPIqF5DQwgQuBhkb8OlCub4ObgLym7yne_sWGvo7NQ6F2ZCfcAQQK3CNys7DD4b7svovdWFe6R2esH-JBIT27rnUHD_yo2TRTYxO8iErZImwMgP0p-abWN1TzPxuy17kDnGiRlFtbdJTBiTK2VxRQUZMFhyqNamxuaRu4Akbzp7c5TjQ61IGV_oFJ_bqeKnHj2JrGjS0pb6M8bp1hgcuA5lo73ufLT76Zijl22hiGVRm2hj0xtXJ-VmMAdrBUYIeh_A3SdIOkGI1b0bZFNA6VYaiY-TuK074qQxnDTWYA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2426-1-6880fe8afcc9-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -233,10 +262,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2425-1-a879873abfc2-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2425-1-a879873abfc2-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Rg5wBwliti8AfJd9txlnl1jehG93po1_yc-VUDmm5_HARvJarEpz1Q6pSPkwLSfRc-trTgkXP_k6-mbU9uyyRK3l9gVV9JZPXGANVWPBHkTWwFzpzSNh1d_sPYuyDeypDWwcExNNKZMQ61OBxQJ4HJkgJb2ZhFyJtqOeY6JxlIK3mGVXuvZbO_4t3OHf-IhVLB0e3aTxfXjbn5MfAbmNhAMwfo28JmuJu1thQhBunBlwU2TxTk28Y-8yM73EjTZAjXsVAR5Gue73QRxbrKvinozn7xMa3EwE0O8zOwQxm-V4_GT-tCyY7xNz-uMOJyvIemswD-iVmG0gqe4Kkk9CFA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2425-1-a879873abfc2-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2425-1-db484d77a8c5-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2425-1-db484d77a8c5-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/ebfPOmQ_oHvS4Xhi5sUfx3dogd7P3wLwQWSAzgdEnJcNu2I6V0vV2Kfk12Pv45NWk1bN-H9HQkMsjuiVZ7V1PGLVaBgtAjDdm2WLfgXU4DUGPevYpaTa4WFXiYwLohrA_B5n501F3wsaQ9bDGO1g7Kxzdx_zfe6kQtuEcgd1yWQQpVTdszXXJENNDTHVSnvInmueGIB23ut8I-jQGXC-M0q-moRI6vy_SDdppfPDlI5pylwExTm3KSOqQ750WZT9HCyws5EAZrHmBxQ8htOe09dt-PMrPD2xZP2mkjsnETTNcXTFeSCC9Z3zfMrqw-qD-KlxP1WPiyEBErexghMjug.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2425-1-db484d77a8c5-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -262,10 +291,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2424-1-6e8aacf90cf6-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2424-1-6e8aacf90cf6-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/WBCfxn6UbjKCBDR7lmWZc6OfPP66KpVT3lpwqpC7IyELHhVz__P8sbhPCjwZRBr-718DqhGDPUyrQqoQEC7aAjeELCIrB64r7GEHce3oTeR83Yde_JZcCW2BwN2jRdaIBqv_dBRSXb_vg7rZj7wTEUE0TCabXOmPQNmnvC-ttsQ_gbyFLUmuzCKsWH3OoosbTiaZg79vRTpeowyZYN12HXMPhZ-gVW3UcQWV-3fhioSOpn42JQZWF2OZiEP9zdwtkR76uXshPN2H9Sy-1hVoBrSlXfxkMpdRodBP_7oTk8p1jUOqS_1MR3TYGAhoPSptiZOCukUcOT_HCO0GZmicBw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2424-1-6e8aacf90cf6-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2424-1-50c79fabe8a1-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2424-1-50c79fabe8a1-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/B69-Kz8v2L9W1XHEOzGgaE0IF2FNOYgyfKL9EockoawHtZmudjZzHlq49kovEugW_rJsoC7AJ9zxOAmPAeLqFzYCbCyTIeV0ubYP0gFWnHTKunpeTJZLRI1nzIWO455vVrYIcbvPfi2p9klGc8YxG1A2pGS5JMJGIXLG02E9dBAskPptUMyM1hUAS9PvnjkkrbLPuXY9ceUqba7h-jOjiUJqnh12UPvA7VZ8FhW5FVa1qbm8GTkk-LoH7OZTQthjpDEgVgyVyY4l--5dD3xVT1KrMdoXxsBrdXUZf_knCT7W-HJavkCznKDzWOO54C56safKRCF0E3rbDcVTzGbsHQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2424-1-50c79fabe8a1-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -291,10 +320,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2423-1-4663d191013b-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2423-1-4663d191013b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/aSW8qKUCEl1SBLnpt1M-oqTwdhAEX4Cx-7_HNAC4XCVE9liBpLMQTb5Em3zE5kJSFr2oCtw_fMkcE__Pv6LIjDpk1dyFBS59R8DyB6y1OzOhcdxegGPx6TXqmcImeMp5lyxdmDplM--rK2h2sPydiUIQNJbyj7eVkymT1ncPnTAFBAhiSr2iETa6dCV7wZjWeEQQLo-cOkSeJboNuUe_cDJyvZr2b9lsXLAQnEFNNlHID1rxOCNWxUJVyFYI_UJ6LNOKOQMxsqfzZBlPcp4k_ARg99T_RWL3OvNhfkIa_Vb6t1p3fXTOvugDXUN3FAKK9V4keuhald6sO7tEWXKA_Q.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2423-1-4663d191013b-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2423-1-67280069ff9e-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2423-1-67280069ff9e-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/jzgLJsEMPo-_Mu-CWMCcodo6rf60i2MbMUR4S4AodwVj5fhB-f1clPsaoyrxYa2uQZgRgVaAEfhSzqTvFHkm_PA3hc-Pag2OasKZmYWnz0nxBhEhUfmVuZ4_8aFANs-wUJEA5K_rtgiImZFwRJJhcg8qYpsVjTJN-j4YoxNYquAWt2NrIedyLDpA7q1qzDWOa2AxRPrSDP-AZwwoQL8grbu7s0H3bn39JVjWFzA0vRLqggUXzYKf21aggrsrX9nqbVZqUHoXhzfoH2BAAFWom3PRJl6rhmpDaxzJX7LoIhiLmqM6W04qCzHa6cOV1Yd92JxZw01SZlTqYhCM0r_N5A.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2423-1-67280069ff9e-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -320,10 +349,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2421-1-e42433ff0d44-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2421-1-e42433ff0d44-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/sGDxKOjdea3_UvmYyTDlnu4PGZsIlMehmZxYhKsH5KmrYHJ8x0OCrXy9ITdt5S6TNfW-5DYixrQ1RpHFTZGTkLkXk6jGdUlOPyp-DKctrGH38ocCVdzdXReZ64ooiBm6-hSMz3yb6CwwWQjo0irCef8QExZYZDt0O9HUW1wMfC00JF0SOGpJEOKt0P8MAxhtrIp8PqEWuwupMPZpbMPKsyBi1irg9T5TM2tyLUWnbjA6WrO2guambFRZchLs_gD8T2s9pOcsVojvS-Yq1mmkfIcuuqGh-Cuko1-spkPycx8vG5PQrwnJ730rgkSNarNwt3srwweBRQEqhM-Z1Aoa7Q.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2421-1-e42433ff0d44-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2421-1-a2ec93b9bd61-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2421-1-a2ec93b9bd61-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/pKnoDp640jLrCDZZeDCA85b7A2TVfeyGPyN1tYKVzzZgu2zx08_SEw63av2NgvJyEqkVuGChkdTLEi_0aagvDH7n2cHdvpo24vulJWenO2IIoa56H_WMc78du6WWaiBu8VyPCewRja4WTbMJnba4NsKiz8mdSgyoz7gbybpYMVA3Lsds3xwRBeVmmVSMmGDrUhd_GwVoNTb3uThp117C_l38PZiooK1F2oxl2L0YwQANmN76fyqUN_vv6zeufxPxu7SzlaXiDrGENFsskThprbzxh3yper881EZ-CZPlUXe0ehy0dohazbd3VU-1XOwIpomZKLk0mdytQ7vhSjzn_A.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2421-1-a2ec93b9bd61-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -368,10 +397,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2419-1-ebdef0e86790-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2419-1-ebdef0e86790-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/gxqXCiqnZWXmiyGWRRd9c0DqL_2ydfrTQtD_G9x7sY6TraWlvhBcmmW_eF6yzgH79BHpgQE6ABZYDmIafpE6I6-1VRve3-Ra_EtCvKZTulFW5-SgO3yX1z7qiXRJwD2PyW609_5i1t9BCyuFb2qp-s8pJuxOwsQ0XGbvpa4bCKdCx_vLvUR1ZRfXDZeI1w3ySWF0nDLDNUkWrN0I5kcKRq2_fm2c19P-siPQ5us3fqadU1ahJhP0yPs98zg0V20x5LZ9QBmwkzODfNt9uQMt7cOdAutW_Uc4c2dp42C9AWMDA8ZkV2I0c7vEuNse9_gYX9TMooyJqFdLi81QUmH43g.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2419-1-ebdef0e86790-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2419-1-78ab7930779a-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2419-1-78ab7930779a-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/mh2TiWksXV8v0GAp5YZu48izNCy1W6sAXkfZE-9MAep9wQr_WKYdNS465SG-HulkL5vmfjJ5WUZhI8jMa-TqPxmR3BgR-CQBnd6d49orDEsI3-5kzwqAk-SH4NKvyxhy-NmSrD48Hpj5b2SdGdHRQMxCI_LahBnErEmSkcJ7JEPT8BNoFhIGzR2-Jqcqp174C1NV3ono2e65UDN17flN8um5yyCZjYZgGRG56PHDKHgvQHHKR6phqmj2MCJqim8IzvBk1ASSsv3iKOP46tU6-nSmMLmDDFFANms1Yd3qXAvSPyNhqxRLJanKHYVAAfjwxKebIdvaC79KeKeX4Bt86w.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2419-1-78ab7930779a-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -397,10 +426,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2418-1-d83bea82b0f2-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2418-1-d83bea82b0f2-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/OGMFD-m1iS_7d_CKMq2ojcVE1VBdlCROiBbDAo36eViBJ0jqhZoiIU39LJ-7GXMrZmo1eYOWYG0eFCAEUGDSbJxq1QUm0MrL5XQSLoSdNWraIlvhNhaX6iN0XCCm7nf8AUQ1-8DoggdNv5mN620rYkMvdBfwLgrLpb-1Yam5PKRz9w_vix551G1wVLwUpwrRK136yMpDgTWtLwarqy7JuNvzAR2kfCRKla0L0KXA-nOMTMCAdlc4HZnY7ADBVrk2osKuvs2vyFvq5exky6Jfsl74Hc20J_k4k9ZuwdTkrHunX955nPFin9ay7gOAZ4WLS0hhuzzj_Y_VPI3X6QaOFg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2418-1-d83bea82b0f2-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2418-1-b344074f3e55-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2418-1-b344074f3e55-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Jwn3wqFir_9bvsF8Tr9msAKzedYw0aJl4FLNet1Wh_QMSwN_rc_rjP46vBzKz_6naVm-DMcG8lQhvoJWWYfy775Y-S4E90p3r105-2nFhynRBR03Bk9YmLQ34atlJyLcj0NnsmvZkCpGpJn_Y755rFkykaLoQFDggAXhZCLM-rXAnJ0EXsS7-_uX1c6kPZ5VpXrLvHO3Hvrsg8Fo5rnmBkHlg1cvDzdi7rH1l_omKvUwCga6LkrHnLWLozZ2YAiRy-9Ce_rJTfGNp-xVDe78v0SexLdZa-hIKtxQ0cdV0SpAMaTbvnsoO7CeVpIaHG_9zySY7yv3VzhoLd1Z0Dg5lg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2418-1-b344074f3e55-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -413,35 +442,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2418",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2417,
-      "date": "2026-01-26T11:02:17+00:00",
-      "text": "💰 Налоговая выгода признана необоснованной из-за продажи имущества взаимозависимым лицам по заниженным ценам\n\nДекабрьское Постановление АС СЗО по делу ЗАО «Экзот» комментирует ведущий юрист Рустам Галияхметов Санкт-Петербургской налоговой практики «Пепеляев Групп».\n\n🔍 В фокусе внимания \n\nСуды применили позицию п. 3 Обзора ВС РФ от 16.02.2017 практики рассмотрения судами дел, связанных с применением отдельных положений раздела V.1 и статьи 269 НК РФ:\nНалоговый орган может оспорить цену сделки при проведении обычных налоговых проверок, если выявлено  многократное отклонение цены сделки от рыночного уровня в совокупности с иными обстоятельствами (взаимозависимость, круговая схема платежей, отсутствие экономической целесообразности).\n\nНа практике всегда встает вопрос – а что же является «многократностью» отклонения цены – занижение на 50%, в два раза или в десять? Тем и интересны дела, в которых применяется эта позиция ВС РФ.\n\n📑 Фабула дела\n\nНалоговый орган в ходе выездной проверки установил, что в 2019 году Общество реализовало:\n     🔴объекты недвижимости (земельный участок и здания) своему акционеру-физическому лицу за 798 700 руб. при рыночной оценке имущества более 13 млн руб. (занижение в 16 раз);\n     🔴23 транспортных средства своему основному покупателю - ООО — за 5,03 млн руб., тогда как их рыночная стоимость с учетом инфляции оценивалась в более чем 21 млн руб. (занижение в 4 раза).\n\nИнспекция пришла к выводу, что сделки совершены между взаимозависимыми лицами с целью занижения налоговой базы по УСН, что привело к необоснованной налоговой выгоде, и доначислила налог по УСН на разницу между рыночной стоимостью имущества и договорной.\n\n⚖️ Позиция судов\n\nСуды согласились с инспекцией и основаниями для доначислений:\n\n     ✔️Взаимозависимость продавца и покупателей \nФизическое лицо на момент сделок был акционером Общества (80% акций), а ООО связано с физическим лицом родственными и хозяйственными связями\n\n     ✔️Существенное отклонение цены\nЦена реализации многократно (в 16 и в 4 раза) отклонялась от рыночной\n\n     ✔️Отсутствие разумной деловой цели \nБанковская выписка свидетельствует о перечислении на счет покупателя за 1 - 3 дня до приобретения транспортных средств от Общества и других компаний, подконтрольных физическому лицу-акционеру, беспроцентных займов). \nВ свою очередь Общество поступившие от покупателей средства от продажи транспортных средств и объектов недвижимости направило на погашение беспроцентного займа и оплату по договору аренды тому же покупателю-акционеру, который в дальнейшем обналичил основную часть полученных денежных средств через банкомат.\n\nВсе это свидетельствовало об искусственном денежном обороте, а не о реальной предпринимательской деятельности.\n\n☝️ Ключевой правовой вывод для бизнеса\n\nДаже при формальной законности сделки и отсутствии основания считать ее контролируемой налоговый орган вправе оспорить цену, если совокупность обстоятельств указывает на искусственность и направленность исключительно на получение налоговой выгоды, учитывая многократное отклонение цены от рыночного уровня. \n\n#питер_на_связи\n\n📧 Если в ходе налоговой проверки или судебного разбирательства инспекция настаивает на доначислении налогов из-за сделок со взаимозависимыми лицами, необходимо комплексно оценить возможные риски и заранее подготовить убедительную позицию. За консультацией можно обратиться к Рустаму Галияхметову: r.galiyahmetov@pgplaw.ru",
-      "text_html": "💰 Налоговая выгода признана необоснованной из-за продажи имущества взаимозависимым лицам по заниженным ценам<br><br>Декабрьское Постановление АС СЗО <a href=\"https://kad.arbitr.ru/Card/45b5a3f0-bcb8-48dd-9e11-88bc4c31a7fc\" target=\"_blank\" rel=\"noopener noreferrer\">по делу ЗАО «Экзот»</a> комментирует ведущий юрист <a href=\"https://www.stqr.ru/64193-164-353\" target=\"_blank\" rel=\"noopener noreferrer\">Рустам Галияхметов</a> Санкт-Петербургской налоговой практики «Пепеляев Групп».<br><br>🔍 В фокусе внимания <br><br>Суды применили позицию п. 3 <a href=\"https://www.vsrf.ru/Show_pdf.php?Id=11274\" target=\"_blank\" rel=\"noopener noreferrer\">Обзора ВС РФ от 16.02.2017</a> практики рассмотрения судами дел, связанных с применением отдельных положений раздела V.1 и статьи 269 НК РФ:<br>Налоговый орган может оспорить цену сделки при проведении обычных налоговых проверок, если выявлено  многократное отклонение цены сделки от рыночного уровня в совокупности с иными обстоятельствами (взаимозависимость, круговая схема платежей, отсутствие экономической целесообразности).<br><br>На практике всегда встает вопрос – а что же является «многократностью» отклонения цены – занижение на 50%, в два раза или в десять? Тем и интересны дела, в которых применяется эта позиция ВС РФ.<br><br>📑 Фабула дела<br><br>Налоговый орган в ходе выездной проверки установил, что в 2019 году Общество реализовало:<br>     🔴объекты недвижимости (земельный участок и здания) своему акционеру-физическому лицу за 798 700 руб. при рыночной оценке имущества более 13 млн руб. (занижение в 16 раз);<br>     🔴23 транспортных средства своему основному покупателю - ООО — за 5,03 млн руб., тогда как их рыночная стоимость с учетом инфляции оценивалась в более чем 21 млн руб. (занижение в 4 раза).<br><br>Инспекция пришла к выводу, что сделки совершены между взаимозависимыми лицами с целью занижения налоговой базы по УСН, что привело к необоснованной налоговой выгоде, и доначислила налог по УСН на разницу между рыночной стоимостью имущества и договорной.<br><br>⚖️ Позиция судов<br><br>Суды согласились с инспекцией и основаниями для доначислений:<br><br>     ✔️Взаимозависимость продавца и покупателей <br>Физическое лицо на момент сделок был акционером Общества (80% акций), а ООО связано с физическим лицом родственными и хозяйственными связями<br><br>     ✔️Существенное отклонение цены<br>Цена реализации многократно (в 16 и в 4 раза) отклонялась от рыночной<br><br>     ✔️Отсутствие разумной деловой цели <br>Банковская выписка свидетельствует о перечислении на счет покупателя за 1 - 3 дня до приобретения транспортных средств от Общества и других компаний, подконтрольных физическому лицу-акционеру, беспроцентных займов). <br>В свою очередь Общество поступившие от покупателей средства от продажи транспортных средств и объектов недвижимости направило на погашение беспроцентного займа и оплату по договору аренды тому же покупателю-акционеру, который в дальнейшем обналичил основную часть полученных денежных средств через банкомат.<br><br>Все это свидетельствовало об искусственном денежном обороте, а не о реальной предпринимательской деятельности.<br><br>☝️ Ключевой правовой вывод для бизнеса<br><br>Даже при формальной законности сделки и отсутствии основания считать ее контролируемой налоговый орган вправе оспорить цену, если совокупность обстоятельств указывает на искусственность и направленность исключительно на получение налоговой выгоды, учитывая многократное отклонение цены от рыночного уровня. <br><br>#питер_на_связи<br><br>📧 Если в ходе налоговой проверки или судебного разбирательства инспекция настаивает на доначислении налогов из-за сделок со взаимозависимыми лицами, необходимо комплексно оценить возможные риски и заранее подготовить убедительную позицию. За консультацией можно обратиться к Рустаму Галияхметову: r.galiyahmetov@pgplaw.ru",
-      "views": 3280,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2417-1-893fa75cd9f0-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2417-1-893fa75cd9f0-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/vUhja4sJbeclfbdnNmamfD8uRFhr8TfbS2MbD_4pMb8GnAjBmHlJpASBTHgyWupvHl2xv5s0RX4qqz6YnKly80Wbd3sL9rB9PZXeVa8dYhHgX3P2YnzAYnXXMtDdgencNpltGm20Vy51vBpvtq7Bsjj9Kn--82QnV6J3STHA-qAfbd5EIMbUx8-3ixBNoA_ExEgn-_MN48wHqgcO8y0vDc7Y_CIbtanCf_4YKAYD8rAYl8FWk8Bj5XrgIZjY3j0UMyOovNwsmzJ-dORlhvaHJJf_N9k-i12Yy433iePXRfHcUPRgC0_72fYpANCHOi7aerRSB7PGdQUkzv46dghoDg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2417-1-893fa75cd9f0-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2417",
       "forwarded_from": null,
       "reply_to": null
     }
