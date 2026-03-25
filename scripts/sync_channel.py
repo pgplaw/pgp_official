@@ -3153,10 +3153,32 @@ def build_source_payload(config: SiteConfig, comments_enabled: bool) -> dict[str
     }
 
 
-def build_feed_index_payload(config: SiteConfig, posts: list[dict[str, Any]], comments_enabled: bool) -> dict[str, Any]:
+def build_channel_build_id(posts: list[dict[str, Any]], comments_enabled: bool) -> str:
+    digest = hashlib.sha1()
+    digest.update(f"comments:{int(comments_enabled)}|count:{len(posts)}".encode("utf-8"))
+    for post in posts:
+        digest.update(
+            (
+                f"{post.get('id')}|{post.get('date') or ''}|"
+                f"{post.get('comments_count') or 0}|"
+                f"{len(post.get('photos') or [])}|"
+                f"{post.get('video_url') or ''}|"
+                f"{int(bool(post.get('video_note')))};"
+            ).encode("utf-8")
+        )
+    return digest.hexdigest()[:12]
+
+
+def build_feed_index_payload(
+    config: SiteConfig,
+    posts: list[dict[str, Any]],
+    comments_enabled: bool,
+    build_id: str,
+) -> dict[str, Any]:
     total_pages = max(1, math.ceil(len(posts) / FEED_PAGE_SIZE))
     return {
         "generated_at": None,
+        "build_id": build_id,
         "site": build_site_payload(config),
         "source": build_source_payload(config, comments_enabled),
         "pagination": {
@@ -3169,12 +3191,13 @@ def build_feed_index_payload(config: SiteConfig, posts: list[dict[str, Any]], co
     }
 
 
-def build_feed_page_payload(page: int, posts: list[dict[str, Any]], total_posts: int) -> dict[str, Any]:
+def build_feed_page_payload(page: int, posts: list[dict[str, Any]], total_posts: int, build_id: str) -> dict[str, Any]:
     total_pages = max(1, math.ceil(total_posts / FEED_PAGE_SIZE))
     start = (page - 1) * FEED_PAGE_SIZE
     end = start + FEED_PAGE_SIZE
     return {
         "generated_at": None,
+        "build_id": build_id,
         "pagination": {
             "page": page,
             "page_size": FEED_PAGE_SIZE,
@@ -3185,9 +3208,10 @@ def build_feed_page_payload(page: int, posts: list[dict[str, Any]], total_posts:
     }
 
 
-def build_post_payload(config: SiteConfig, post: dict[str, Any], comments_enabled: bool) -> dict[str, Any]:
+def build_post_payload(config: SiteConfig, post: dict[str, Any], comments_enabled: bool, build_id: str) -> dict[str, Any]:
     return {
         "generated_at": None,
+        "build_id": build_id,
         "site": build_site_payload(config),
         "source": build_source_payload(config, comments_enabled),
         "post": post,
@@ -3446,15 +3470,15 @@ def cleanup_removed_comment_files(active_post_ids: set[int]) -> bool:
     return changed
 
 
-def write_feed_files(config: SiteConfig, posts: list[dict[str, Any]], comments_enabled: bool) -> bool:
+def write_feed_files(config: SiteConfig, posts: list[dict[str, Any]], comments_enabled: bool, build_id: str) -> bool:
     changed = False
     total_pages = max(1, math.ceil(len(posts) / FEED_PAGE_SIZE))
-    if write_json_if_changed(POSTS_PATH, build_feed_index_payload(config, posts, comments_enabled)):
+    if write_json_if_changed(POSTS_PATH, build_feed_index_payload(config, posts, comments_enabled, build_id)):
         changed = True
 
     PAGES_DIR.mkdir(parents=True, exist_ok=True)
     for page in range(2, total_pages + 1):
-        payload = build_feed_page_payload(page, posts, len(posts))
+        payload = build_feed_page_payload(page, posts, len(posts), build_id)
         if write_json_if_changed(PAGES_DIR / f"{page}.json", payload):
             changed = True
 
@@ -3462,13 +3486,13 @@ def write_feed_files(config: SiteConfig, posts: list[dict[str, Any]], comments_e
     return changed
 
 
-def write_post_detail_files(config: SiteConfig, posts: list[dict[str, Any]], comments_enabled: bool) -> bool:
+def write_post_detail_files(config: SiteConfig, posts: list[dict[str, Any]], comments_enabled: bool, build_id: str) -> bool:
     changed = False
     POST_DETAILS_DIR.mkdir(parents=True, exist_ok=True)
     POST_PAGES_DIR.mkdir(parents=True, exist_ok=True)
 
     for post in posts:
-        payload = build_post_payload(config, post, comments_enabled)
+        payload = build_post_payload(config, post, comments_enabled, build_id)
         if write_json_if_changed(POST_DETAILS_DIR / f"{post['id']}.json", payload):
             changed = True
 
@@ -3566,6 +3590,7 @@ def main() -> int:
             log.error("Round video validation failed: %s", error)
         return 1
     posts = [post for post in posts if post.get("text") or (post.get("photos") or []) or post.get("video_url")]
+    build_id = build_channel_build_id(posts, comments_enabled)
     active_ids = {post["id"] for post in posts}
     changes_detected = cleanup_removed_comment_files(active_ids) or changes_detected
 
@@ -3574,13 +3599,14 @@ def main() -> int:
             continue
         payload = {
             "generated_at": None,
+            "build_id": build_id,
             "post_id": post_id,
             "comments": comments,
         }
         if write_json_if_changed(COMMENTS_DIR / f"{post_id}.json", payload):
             changes_detected = True
 
-    changes_detected = write_feed_files(config, posts, comments_enabled) or changes_detected
+    changes_detected = write_feed_files(config, posts, comments_enabled, build_id) or changes_detected
     changes_detected = cleanup_removed_post_detail_files(set()) or changes_detected
 
     log.info("Done. Material changes detected: %s", "yes" if changes_detected else "no")

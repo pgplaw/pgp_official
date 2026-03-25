@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const { test, expect } = require('@playwright/test');
 const {
   waitForFeedReady,
@@ -129,6 +131,72 @@ test.describe('Desktop smoke', () => {
 
     expect(duplicateInfo.duplicates).toEqual([]);
     expect(duplicateInfo.total).toBe(duplicateInfo.unique);
+  });
+
+  test('ignores stale cached page payloads from an older feed build', async ({ page }) => {
+    const postsPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'investment-law', 'posts.json');
+    const page2Path = path.join(process.cwd(), 'docs', 'data', 'channels', 'investment-law', 'pages', '2.json');
+    const postsPayload = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
+    const page2Payload = JSON.parse(fs.readFileSync(page2Path, 'utf8'));
+    const stalePagePayload = {
+      ...page2Payload,
+      build_id: 'stale-build',
+      posts: postsPayload.posts.slice(0, Math.min(3, postsPayload.posts.length)),
+    };
+    const freshPagePayload = {
+      ...page2Payload,
+      build_id: 'fresh-build',
+    };
+    const freshFeedPayload = {
+      ...postsPayload,
+      build_id: 'fresh-build',
+    };
+
+    await page.route('**/data/channels/investment-law/posts.json', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(freshFeedPayload),
+      });
+    });
+
+    await page.route('**/data/channels/investment-law/pages/2.json**', async (route) => {
+      const url = route.request().url();
+      const payload = url.includes('t=') ? freshPagePayload : stalePagePayload;
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(payload),
+      });
+    });
+
+    await page.goto('/?channel=investment-law');
+    await waitForFeedReady(page);
+
+    const initialIds = await page.locator('.post-card[data-post-id]').evaluateAll((nodes) =>
+      nodes.map((node) => String(node.dataset.postId || '')).filter(Boolean)
+    );
+
+    await clickLoadMoreIfVisible(page);
+    await page.waitForTimeout(250);
+
+    const duplicateInfo = await page.evaluate(() => {
+      const ids = Array.from(document.querySelectorAll('.post-card[data-post-id]'))
+        .map((node) => String(node.dataset.postId || ''))
+        .filter(Boolean);
+      const counts = ids.reduce((map, id) => {
+        map[id] = (map[id] || 0) + 1;
+        return map;
+      }, {});
+
+      return {
+        ids,
+        duplicates: Object.entries(counts).filter(([, count]) => count > 1),
+      };
+    });
+
+    expect(duplicateInfo.duplicates).toEqual([]);
+    expect(new Set(duplicateInfo.ids).size).toBeGreaterThan(initialIds.length);
   });
 
   test('reveals scroll-to-top control after long scroll and returns to top', async ({ page }) => {

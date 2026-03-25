@@ -27,6 +27,7 @@ const state = {
   totalPages: 1,
   totalPosts: 0,
   pageSize: DEFAULT_PAGE_SIZE,
+  activeFeedBuildId: '',
   feedRenderVersion: 0,
   pageLoadPromises: new Map(),
   nextPagePrefetchHandle: null,
@@ -717,16 +718,27 @@ function buildChannelRoot(channelKey) {
   return `data/channels/${channelKey}`;
 }
 
+function appendJsonVersionParams(path, { buildId = '', manual = false } = {}) {
+  const url = new URL(path, window.location.href);
+  if (buildId) {
+    url.searchParams.set('v', buildId);
+  }
+  if (manual) {
+    url.searchParams.set('t', String(Date.now()));
+  }
+  return `${url.pathname.replace(/^\//, '')}${url.search}`;
+}
+
 function buildFeedUrl(channelKey, { manual = false } = {}) {
-  return `${buildChannelRoot(channelKey)}/posts.json${manual ? `?t=${Date.now()}` : ''}`;
+  return appendJsonVersionParams(`${buildChannelRoot(channelKey)}/posts.json`, { manual });
 }
 
-function buildPageUrl(channelKey, pageNumber, { manual = false } = {}) {
-  return `${buildChannelRoot(channelKey)}/pages/${pageNumber}.json${manual ? `?t=${Date.now()}` : ''}`;
+function buildPageUrl(channelKey, pageNumber, { manual = false, buildId = '' } = {}) {
+  return appendJsonVersionParams(`${buildChannelRoot(channelKey)}/pages/${pageNumber}.json`, { manual, buildId });
 }
 
-function buildCommentsUrl(channelKey, postId, { manual = false } = {}) {
-  return `${buildChannelRoot(channelKey)}/comments/${postId}.json${manual ? `?t=${Date.now()}` : ''}`;
+function buildCommentsUrl(channelKey, postId, { manual = false, buildId = '' } = {}) {
+  return appendJsonVersionParams(`${buildChannelRoot(channelKey)}/comments/${postId}.json`, { manual, buildId });
 }
 
 function buildCatalogUrl({ manual = false } = {}) {
@@ -2532,14 +2544,27 @@ async function loadPage(pageNumber) {
   const pageLoadPromise = (async () => {
     const requestChannelKey = state.activeChannelKey;
     const requestRenderVersion = state.feedRenderVersion;
-    const manual = state.activeChannelKey === requestChannelKey && state.activeFeedManual;
-    const response = await fetch(
-      buildPageUrl(requestChannelKey, pageNumber, { manual }),
-      getJsonFetchOptions(manual ? { manual: true } : { prefetch: true }),
-    );
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const requestBuildId = state.activeFeedBuildId;
+    const defaultManual = state.activeChannelKey === requestChannelKey && state.activeFeedManual;
+    const fetchPagePayload = async (manualRequest = defaultManual) => {
+      const response = await fetch(
+        buildPageUrl(requestChannelKey, pageNumber, {
+          manual: manualRequest,
+          buildId: requestBuildId,
+        }),
+        getJsonFetchOptions(manualRequest ? { manual: true } : { prefetch: true }),
+      );
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.json();
+    };
 
-    const payload = await response.json();
+    let payload = await fetchPagePayload();
+    if (requestBuildId && payload.build_id && payload.build_id !== requestBuildId && !defaultManual) {
+      payload = await fetchPagePayload(true);
+    }
+    if (requestBuildId && payload.build_id && payload.build_id !== requestBuildId) {
+      throw new Error('STALE_PAGE_BUILD');
+    }
     if (
       state.activeChannelKey === requestChannelKey &&
       state.feedRenderVersion === requestRenderVersion &&
@@ -2938,8 +2963,12 @@ async function showComments(postId) {
   elements.commentsView.classList.remove('hidden');
 
   try {
+    const commentsBuildId = state.activeFeedBuildId;
     const response = await fetch(
-      buildCommentsUrl(state.activeChannelKey, postId, { manual: state.activeFeedManual }),
+      buildCommentsUrl(state.activeChannelKey, postId, {
+        manual: state.activeFeedManual,
+        buildId: commentsBuildId,
+      }),
       getJsonFetchOptions(state.activeFeedManual ? { manual: true } : {}),
     );
     if (response.status === 404) {
@@ -2951,6 +2980,9 @@ async function showComments(postId) {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const payload = await response.json();
+    if (commentsBuildId && payload.build_id && payload.build_id !== commentsBuildId) {
+      throw new Error('STALE_COMMENTS_BUILD');
+    }
     const comments = payload.comments || [];
     elements.commentsLoading.classList.add('hidden');
 
@@ -3109,6 +3141,7 @@ function applyFeedPayload(channelKey, feedPayload, { manual = false } = {}) {
   state.activeFeedManual = manual;
   state.mediaRegistry = {};
   state.feed = feedPayload;
+  state.activeFeedBuildId = String(feedPayload?.build_id || '');
   const pagination = state.feed.pagination || {};
   state.posts = dedupePostsById(state.feed.posts || []);
   state.totalPosts = Number(pagination.total_posts) || state.posts.length;
