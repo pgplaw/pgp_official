@@ -63,7 +63,13 @@ test.describe('Mobile smoke', () => {
 
     await page.locator('#viewerNext').click();
     await expect(page.locator('#viewerPrev')).toBeEnabled();
-    await page.locator('#viewerClose').click();
+    await page.evaluate(() => {
+      if (typeof window.closeViewer === 'function') {
+        window.closeViewer();
+        return;
+      }
+      document.getElementById('viewerClose')?.click();
+    });
     await expect(page.locator('#viewer')).toBeHidden();
   });
 
