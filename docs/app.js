@@ -27,6 +27,7 @@ const state = {
   totalPages: 1,
   totalPosts: 0,
   pageSize: DEFAULT_PAGE_SIZE,
+  feedRenderVersion: 0,
   pageLoadPromises: new Map(),
   nextPagePrefetchHandle: null,
   channelFeedCache: new Map(),
@@ -755,6 +756,20 @@ function cloneJsonValue(value) {
     return structuredClone(value);
   }
   return JSON.parse(JSON.stringify(value));
+}
+
+function dedupePostsById(posts = []) {
+  const uniquePosts = [];
+  const seenIds = new Set();
+
+  posts.forEach((post) => {
+    const normalizedId = String(post?.id ?? '');
+    if (!normalizedId || seenIds.has(normalizedId)) return;
+    seenIds.add(normalizedId);
+    uniquePosts.push(post);
+  });
+
+  return uniquePosts;
 }
 
 function rememberFeedPayload(channelKey, payload) {
@@ -2494,6 +2509,7 @@ function scheduleNextPagePrefetch() {
 function resetFeed() {
   cancelNextPagePrefetch();
   state.rendered = 0;
+  state.appendNextPagePromise = null;
   elements.postFeed.innerHTML = '';
   void appendNextPage();
 }
@@ -2515,6 +2531,7 @@ async function loadPage(pageNumber) {
 
   const pageLoadPromise = (async () => {
     const requestChannelKey = state.activeChannelKey;
+    const requestRenderVersion = state.feedRenderVersion;
     const manual = state.activeChannelKey === requestChannelKey && state.activeFeedManual;
     const response = await fetch(
       buildPageUrl(requestChannelKey, pageNumber, { manual }),
@@ -2523,8 +2540,12 @@ async function loadPage(pageNumber) {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const payload = await response.json();
-    if (state.activeChannelKey === requestChannelKey && !state.loadedPages.has(pageNumber)) {
-      state.posts.push(...(payload.posts || []));
+    if (
+      state.activeChannelKey === requestChannelKey &&
+      state.feedRenderVersion === requestRenderVersion &&
+      !state.loadedPages.has(pageNumber)
+    ) {
+      state.posts = dedupePostsById([...state.posts, ...(payload.posts || [])]);
       state.loadedPages.add(pageNumber);
     }
   })();
@@ -2544,6 +2565,7 @@ async function appendNextPage() {
   }
 
   state.appendNextPagePromise = (async () => {
+    const requestRenderVersion = state.feedRenderVersion;
     try {
       if (state.rendered >= state.posts.length && state.loadedPages.size < state.totalPages) {
         elements.loadMoreButton.disabled = true;
@@ -2554,11 +2576,22 @@ async function appendNextPage() {
       return;
     }
 
-    const nextPosts = state.posts.slice(state.rendered, state.rendered + state.pageSize);
+    if (requestRenderVersion !== state.feedRenderVersion) {
+      elements.loadMoreButton.disabled = false;
+      return;
+    }
+
+    const renderedIds = new Set(
+      Array.from(elements.postFeed.querySelectorAll('.post-card[data-post-id]'))
+        .map((node) => String(node.dataset.postId || ''))
+        .filter(Boolean)
+    );
+    const nextSlice = state.posts.slice(state.rendered, state.rendered + state.pageSize);
+    const nextPosts = nextSlice.filter((post) => !renderedIds.has(String(post.id)));
     const fragment = document.createDocumentFragment();
     nextPosts.forEach((post) => fragment.appendChild(renderPostCard(post)));
     elements.postFeed.appendChild(fragment);
-    state.rendered += nextPosts.length;
+    state.rendered += nextSlice.length;
     elements.loadMoreButton.disabled = false;
     updateLoadMoreVisibility();
     updateFeedMeta();
@@ -3070,12 +3103,14 @@ async function resolveFeedPayloadForSwitch(channelKey, { force = false, prefetch
 function applyFeedPayload(channelKey, feedPayload, { manual = false } = {}) {
   cancelNextPagePrefetch();
   state.pageLoadPromises.clear();
+  state.feedRenderVersion += 1;
+  state.appendNextPagePromise = null;
   state.activeChannelKey = channelKey;
   state.activeFeedManual = manual;
   state.mediaRegistry = {};
   state.feed = feedPayload;
   const pagination = state.feed.pagination || {};
-  state.posts = state.feed.posts || [];
+  state.posts = dedupePostsById(state.feed.posts || []);
   state.totalPosts = Number(pagination.total_posts) || state.posts.length;
   state.totalPages = Number(pagination.total_pages) || 1;
   state.pageSize = Number(pagination.page_size) || DEFAULT_PAGE_SIZE;

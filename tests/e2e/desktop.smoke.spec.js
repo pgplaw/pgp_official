@@ -85,6 +85,52 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator(`#post-${postId}`)).toHaveClass(/post-card--targeted/);
   });
 
+  test('does not duplicate feed cards after overlapping load-more and refresh requests', async ({ page }) => {
+    await page.route('**/data/channels/pgp-official/pages/2.json', async (route) => {
+      await new Promise((resolve) => setTimeout(resolve, 220));
+      await route.continue();
+    });
+
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const loadMoreButton = page.locator('#loadMoreWrap:not(.hidden) #loadMoreButton');
+    await expect(loadMoreButton).toBeVisible();
+    const loadMoreClick = loadMoreButton.click();
+    await page.waitForTimeout(40);
+
+    await page.evaluate(async () => {
+      await Promise.all([
+        window.loadFeed('pgp-official', true),
+        window.loadFeed('pgp-official', true),
+        window.loadFeed('pgp-official', true),
+      ]);
+    });
+
+    await loadMoreClick;
+    await waitForFeedReady(page);
+    await page.waitForTimeout(250);
+
+    const duplicateInfo = await page.evaluate(() => {
+      const ids = Array.from(document.querySelectorAll('.post-card[data-post-id]'))
+        .map((node) => String(node.dataset.postId || ''))
+        .filter(Boolean);
+      const counts = ids.reduce((map, id) => {
+        map[id] = (map[id] || 0) + 1;
+        return map;
+      }, {});
+
+      return {
+        total: ids.length,
+        unique: new Set(ids).size,
+        duplicates: Object.entries(counts).filter(([, count]) => count > 1),
+      };
+    });
+
+    expect(duplicateInfo.duplicates).toEqual([]);
+    expect(duplicateInfo.total).toBe(duplicateInfo.unique);
+  });
+
   test('reveals scroll-to-top control after long scroll and returns to top', async ({ page }) => {
     await page.goto('/?channel=pg-tax');
     await waitForFeedReady(page);
