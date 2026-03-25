@@ -784,6 +784,28 @@ function dedupePostsById(posts = []) {
   return uniquePosts;
 }
 
+function deriveFeedBuildId(feedPayload) {
+  if (!feedPayload) return '';
+  if (feedPayload.build_id) {
+    return String(feedPayload.build_id);
+  }
+
+  const pagination = feedPayload.pagination || {};
+  const source = feedPayload.source || {};
+  const postIds = (feedPayload.posts || [])
+    .map((post) => String(post?.id ?? ''))
+    .filter(Boolean)
+    .join(',');
+
+  return [
+    source.channel_key || state.activeChannelKey || '',
+    pagination.total_posts || 0,
+    pagination.total_pages || 0,
+    pagination.page_size || DEFAULT_PAGE_SIZE,
+    postIds,
+  ].join('|');
+}
+
 function rememberFeedPayload(channelKey, payload) {
   if (!channelKey || !payload) return;
   if (state.channelFeedCache.has(channelKey)) {
@@ -3141,7 +3163,7 @@ function applyFeedPayload(channelKey, feedPayload, { manual = false } = {}) {
   state.activeFeedManual = manual;
   state.mediaRegistry = {};
   state.feed = feedPayload;
-  state.activeFeedBuildId = String(feedPayload?.build_id || '');
+  state.activeFeedBuildId = deriveFeedBuildId(feedPayload);
   const pagination = state.feed.pagination || {};
   state.posts = dedupePostsById(state.feed.posts || []);
   state.totalPosts = Number(pagination.total_posts) || state.posts.length;
