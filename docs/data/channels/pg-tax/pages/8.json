@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-26T05:57:56.427207+00:00",
-  "build_id": "e10b6ada3334",
+  "generated_at": "2026-03-26T08:41:19.101557+00:00",
+  "build_id": "2becec02a99e",
   "pagination": {
     "page": 8,
     "page_size": 16,
@@ -8,6 +8,34 @@
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2435,
+      "date": "2026-02-02T13:31:59+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1440,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": "data/channels/pg-tax/media/posts/videos/2435-video-note-0a84c7867ce3-v1.mp4",
+      "tg_url": "https://t.me/PG_Tax/2435",
+      "forwarded_from": null,
+      "reply_to": null,
+      "video_note": true,
+      "video_poster": {
+        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2435-video-note-poster-0425fe3d545a-v1.jpg",
+        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2435-video-note-poster-0425fe3d545a-v1.jpg",
+        "full_url": "data/channels/pg-tax/media/posts/video-posters/2435-video-note-poster-0425fe3d545a-v1.jpg",
+        "thumb_width": 640,
+        "thumb_height": 640,
+        "feed_width": 640,
+        "feed_height": 640,
+        "full_width": 640,
+        "full_height": 640,
+        "source_width": 640,
+        "source_height": 640
+      }
+    },
     {
       "id": 2434,
       "date": "2026-02-02T13:31:50+00:00",
@@ -47,10 +75,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2433-1-3b879abc0db4-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2433-1-3b879abc0db4-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/gPK8ltkCh68PazNI51tDMYFCOtCnVNqtD-5USz3s6TAQFZKF8v3s6KnDZvg-5H3Rka7TKpVCjdb14ER12npdzvNmZnhwQE09v0LzxZN259Dpcu7RAVxXNcrKu3H7vXf9In9xm-kfpR-_53Mnr15r-G8-_bQRVWLrRT1nV22XU5Sh4YE9oJ2SNjBSHOe8S6SJJ-_TeKHP-bhMHkRL4sIZFfzm4L3iGGbTupGNJdbQOj1bZs-Ui3ZQ3qyZmbwABeAcnyQvuk5BpZQlB_BT8l14Yf0mwKC4yBm9xw1RVQp89RdE0VECNsBD9HFG7qf2AFG8Jl0CbvEHX305C_UZiMKymA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2433-1-3b879abc0db4-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2433-1-1fbe1dabe09f-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2433-1-1fbe1dabe09f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/GhKV39gvPiLlKvp2-gdJ5rWUwC6uTY38CbfsGZnrGkbVFQWAeDj-ABoA6N6z6fTFonnLbSakIr01MijUw_s5Q88mA0kAE_vLYOtDjy06HXgLvZpG7wzhzW6ClioEsVRAIe7J-Z-lR8HFqDBBLtSIbKzYMQMUOTXd6vrThgYzPu37nTQmM87Ha-lw3QO9um0eOYviazpwdszvjEUOf4jo2r-UPqbS9YWpBmUGqWgftDT5Cqn5Hjmd3dxrjkNvnkeKRGl4arQY_eucNOWGq0IViyKrwYahSug2_RlBeWYt3p8QizyIJHlwPNKcdrHE8oBD1falrjhG3W5VdisMro6MVg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2433-1-1fbe1dabe09f-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -205,10 +233,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2427-1-73e7a8832948-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2427-1-73e7a8832948-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/PLW8b04g9BK864XQLguoNvlJSsioUE8BMCUGpIQGm2CELuGRycd4HItNfmGW-AHrOhWjzWHt14wLM0gIw4Yp0efPYWNXCTEUoL4yRGKMmb-Cl-CePruSnx3wngkmebiDk4qnqczgOlNJCYHw_FoToUGhKGPo8vm4U91ZF4Zlhuf8wwgLMPiWEvlpVo8sMA1r-VsZzXVlqX4yqzxGN85i8oqNqn58W0iZ2j0zoObZot6GiHzfNcudU0ERMOtYEJqJxbJ03w2JgmUxbp4oelU1IrxnQbGfdoksIrQW8jKBbeLIfUPKxu8DcD_GoNQbl-EOMuFCCaNs2aWu2GcHLOm5xg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2427-1-73e7a8832948-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2427-1-c28b8e393535-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2427-1-c28b8e393535-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/nGJRRV75aGTv5nJvSC0gAdX1aE7kyYJo-g8Zd-IVlqcNkQt-PQsaWUn6r8N0dR1eBXxtn0Vt5vNRTO3wvF26QPB9v71bxR2zbsZ_-IZDmLuwBKk93xkake5OGfIuWHmRZyeFT_mjnZcye1OuH6q3FXns0BQghLHpbYzKzI3Hfm_G7Er3kLC2Lg3KhZ-IC5WllNBMCfCwGghrJo08GIgO435O8X_kZPMcEBA8lgA2TZntgvigLALd36kP8b2pT_XT3GJSqkkmcisAzzDhCzE9wp2Ouav_ehjvPD7OC3Q460_7zjoeDEg3wfAHnCLVvjxWnrUOXYfcw44slExbbkD2oA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2427-1-c28b8e393535-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -292,10 +320,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2424-1-0052ab1e8af0-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2424-1-0052ab1e8af0-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/P0sKf47uKdJCtcaXVxzlK5kkC5-cNvDC0xb09BNkEg6J1O6hEbd-Vu3Lc9yqF0OrsiXGZFH8Uz5QyVqxGkby9kSlpu2Ul_AXT0NemwtgWYlMf40LMYL0kV-jlGKAXBOj8AnLWuK477H6siqcxoB1hqMH-vTxCpF_qUU5ojo7ZTcPzcC7PgPoTg2ZlPFdPMGpekkc2qWpIVHfgXwM6yno_eyts9JA0rZGM5c3po9k_rUF1mRd7yvqAoRjIqkqS4LrUbro0GRUYaCAa8yhAMX32yC00YuYgzUPpAeyLwPW_ss_mycFrEFURwNXCCTphC9R1TIwMdgxLKCA5DXTSclV3w.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2424-1-0052ab1e8af0-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2424-1-d27cd723627d-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2424-1-d27cd723627d-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/C6CCpWMtdu8oPDC7iZZmDbBc6UhRItrNiJxgl2o0FEL_lhDvkKqHkewa5MCs3XdjoSIOFcP5nI7PZKyXEnApvu1IL-bS0Enp9S1LgqtvyrXiAfzfj2xbs0RZMGtbMUHOaQoQwu8nfuwQHCiGsIvFVeEf-G17-gh66afw-93kDz6j8rIhTSniag8QOYuWEtLFzQX4mdGzM2vQ8hDnnm34BlkEYMEkZ_2wg6nCEqfYFL2ExPIy_6zOFbIUDaADuhaHrwFqrNJ-C-N83l2am0c7UOZU39OAzlpa1g6XzEBq7ocFPUz02eGnlznCaN-NDBeM1iT38yxKRMCt7-yGLVzqLQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2424-1-d27cd723627d-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -414,35 +442,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2419",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2418,
-      "date": "2026-01-27T07:55:42+00:00",
-      "text": "✍️ Нормотворчество\n \n🔴Минфин России предложил отменить обязательные аудиторские проверки бухгалтерской отчетности личных фондов. Соответствующий законопроект уже одобрен Правкомиссией по законопроектной деятельности. \n🛑 Под аудитом останутся только общественно полезные фонды. \nНовое решение не приведет к каким-либо негативным последствиям для системы контроля их деятельности, полагают в Минфине. Институт обязательного аудита нацелен прежде всего на реализацию общественного интереса, в то время как предназначение личного фонда – реализация в большой степени частного интереса.\n\n🔴В письме Президенту РФ Минфин предложил рассмотреть возможность легализации онлайн-казино в России - это может принести федеральному бюджету около 100 млрд руб. в год. Администрирование предлагается возложить на ППК «Единый регулятор азартных игр».\n \n🔴В России может появиться новый налог для маркетплейсов — НДС на импорт крупных партий непродовольственных товаров. \nℹ️ По мнению Минпромторга России, новый платеж мог бы выровнять фискальную нагрузку и сделать невыгодными схемы ввоза продукции из-за рубежа, при которых сейчас не уплачиваются налоги.\n \n🔴До окончания эксперимента с НПД в 2028 г. не будут введены новые налоги для самозанятых - сообщил член Комитета Госдумы по труду, социальной политике и делам ветеранов, замруководителя фракции «Единая Россия»Андрей Исаев.\n \n✈️ Международные новости\n \nКазахстан введет дополнительный утильсбор для сельхозтехники, ввозимой из России и Белоруссии.\n\n#главные_налоговые_новости",
-      "text_html": "✍️ Нормотворчество<br> <br>🔴Минфин России <a href=\"https://www.vedomosti.ru/economics/articles/2026/01/27/1171916-minfin-predlozhil-otmenit-obyazatelnie-auditorskie-proverki\" target=\"_blank\" rel=\"noopener noreferrer\">предложил</a> отменить обязательные аудиторские проверки бухгалтерской отчетности личных фондов. Соответствующий законопроект уже одобрен Правкомиссией по законопроектной деятельности. <br>🛑 Под аудитом останутся только общественно полезные фонды. <br>Новое решение не приведет к каким-либо негативным последствиям для системы контроля их деятельности, полагают в Минфине. Институт обязательного аудита нацелен прежде всего на реализацию общественного интереса, в то время как предназначение личного фонда – реализация в большой степени частного интереса.<br><br>🔴В письме Президенту РФ Минфин <a href=\"https://www.kommersant.ru/doc/8378475?query=%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3\" target=\"_blank\" rel=\"noopener noreferrer\">предложил</a> рассмотреть возможность легализации онлайн-казино в России - это может принести федеральному бюджету около 100 млрд руб. в год. Администрирование предлагается возложить на ППК «Единый регулятор азартных игр».<br> <br>🔴В России <a href=\"https://www.forbes.ru/biznes/554254-minfin-prorabatyvaet-vvedenie-nds-na-import-tovarov-cerez-marketplejsy\" target=\"_blank\" rel=\"noopener noreferrer\">может появиться</a> новый налог для маркетплейсов — НДС на импорт крупных партий непродовольственных товаров. <br>ℹ️ По мнению Минпромторга России, новый платеж мог бы выровнять фискальную нагрузку и сделать невыгодными схемы ввоза продукции из-за рубежа, при которых сейчас не уплачиваются налоги.<br> <br>🔴До окончания эксперимента с НПД в 2028 г. не будут введены новые налоги для самозанятых - <a href=\"https://iz.ru/2031760/2026-01-26/v-gosdume-zaiavili-ob-otsutstvii-planov-vvodit-novye-nalogi-dlia-samozaniatykh\" target=\"_blank\" rel=\"noopener noreferrer\">сообщил</a> член Комитета Госдумы по труду, социальной политике и делам ветеранов, замруководителя фракции «Единая Россия»Андрей Исаев.<br> <br>✈️ Международные новости<br> <br>Казахстан <a href=\"https://ria.ru/20260126/kazahstan-2070318721.html\" target=\"_blank\" rel=\"noopener noreferrer\">введет</a> дополнительный утильсбор для сельхозтехники, ввозимой из России и Белоруссии.<br><br>#главные_налоговые_новости",
-      "views": 1420,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2418-1-60f3308fa25b-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2418-1-60f3308fa25b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/jNqnUD0YFpUy5tvw-gspjori8Wol6gmVVk98c_G98EAXEGzgZW_BbFugIsuXqbuM48xwiaRSJbWWzVoh7aW7eRfuvsOIH1njcCkSz4bnzKk9RyZ_VHyTrMbHIT0C7XOJLh8DJQHAG1CmA3SwvMy_JODDZcvd_yxRvQoW1N4vwn-APrZF0e_7m1HXgSgm_HWZ2FcgfG6KReIJ9nHYqSuwzomdxWgQop0BBOhxjcjuOXCuMAMb69u6vWESdDuIAXaI2j1Qbm6nEokT0Dn3vW4v9qSIY1akBwwKpR0nr6lVQQEys6gELpElHVHh4e9cvXTDpetn4fYg4FNlixIB7ir7_w.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2418-1-60f3308fa25b-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2418",
       "forwarded_from": null,
       "reply_to": null
     }
