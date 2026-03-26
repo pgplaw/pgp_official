@@ -1,8 +1,10 @@
 {
-  "generated_at": "2026-03-26T18:18:24.405Z",
-  "success_count": 8,
-  "failure_count": 0,
-  "failure_channels": [],
+  "generated_at": "2026-03-26T19:49:12.485Z",
+  "success_count": 7,
+  "failure_count": 1,
+  "failure_channels": [
+    "pg-tax"
+  ],
   "channel_timeout_ms": 150000,
   "channels": [
     {
@@ -12,18 +14,9 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 54323,
+      "duration_ms": 54073,
       "error": null,
       "archive_before": {
-        "total_bytes": 328675297,
-        "file_count": 3072,
-        "media_bytes": 328251099,
-        "media_files": 3067,
-        "json_files": 5,
-        "page_json_files": 4,
-        "comment_json_files": 0
-      },
-      "archive_after": {
         "total_bytes": 338769575,
         "file_count": 3177,
         "media_bytes": 338347297,
@@ -32,11 +25,20 @@
         "page_json_files": 4,
         "comment_json_files": 0
       },
+      "archive_after": {
+        "total_bytes": 346011489,
+        "file_count": 3255,
+        "media_bytes": 345589211,
+        "media_files": 3250,
+        "json_files": 5,
+        "page_json_files": 4,
+        "comment_json_files": 0
+      },
       "archive_delta": {
-        "total_bytes": 10094278,
-        "file_count": 105,
-        "media_bytes": 10096198,
-        "media_files": 105,
+        "total_bytes": 7241914,
+        "file_count": 78,
+        "media_bytes": 7241914,
+        "media_files": 78,
         "json_files": 0,
         "page_json_files": 0,
         "comment_json_files": 0
@@ -49,13 +51,13 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 23259,
+      "duration_ms": 29799,
       "error": null,
       "archive_before": {
-        "total_bytes": 81905179,
-        "file_count": 840,
-        "media_bytes": 81687785,
-        "media_files": 837,
+        "total_bytes": 82811262,
+        "file_count": 849,
+        "media_bytes": 82593868,
+        "media_files": 846,
         "json_files": 3,
         "page_json_files": 2,
         "comment_json_files": 0
@@ -70,10 +72,10 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 906083,
-        "file_count": 9,
-        "media_bytes": 906083,
-        "media_files": 9,
+        "total_bytes": 0,
+        "file_count": 0,
+        "media_bytes": 0,
+        "media_files": 0,
         "json_files": 0,
         "page_json_files": 0,
         "comment_json_files": 0
@@ -83,21 +85,12 @@
       "key": "pg-tax",
       "channel_username": "PG_Tax",
       "channel_title": "PG Tax | Налоги",
-      "status": "success",
-      "exit_code": 0,
-      "signal": null,
-      "duration_ms": 143973,
-      "error": null,
+      "status": "failed",
+      "exit_code": null,
+      "signal": "SIGKILL",
+      "duration_ms": 150054,
+      "error": "spawnSync python ETIMEDOUT",
       "archive_before": {
-        "total_bytes": 650544664,
-        "file_count": 4180,
-        "media_bytes": 649280229,
-        "media_files": 4169,
-        "json_files": 11,
-        "page_json_files": 10,
-        "comment_json_files": 0
-      },
-      "archive_after": {
         "total_bytes": 670777959,
         "file_count": 4341,
         "media_bytes": 669510439,
@@ -106,11 +99,20 @@
         "page_json_files": 10,
         "comment_json_files": 0
       },
+      "archive_after": {
+        "total_bytes": 688116629,
+        "file_count": 4479,
+        "media_bytes": 686849109,
+        "media_files": 4468,
+        "json_files": 11,
+        "page_json_files": 10,
+        "comment_json_files": 0
+      },
       "archive_delta": {
-        "total_bytes": 20233295,
-        "file_count": 161,
-        "media_bytes": 20230210,
-        "media_files": 161,
+        "total_bytes": 17338670,
+        "file_count": 138,
+        "media_bytes": 17338670,
+        "media_files": 138,
         "json_files": 0,
         "page_json_files": 0,
         "comment_json_files": 0
@@ -123,10 +125,10 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 17693,
+      "duration_ms": 20235,
       "error": null,
       "archive_before": {
-        "total_bytes": 49580961,
+        "total_bytes": 49568442,
         "file_count": 679,
         "media_bytes": 49350728,
         "media_files": 677,
@@ -144,7 +146,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": -12519,
+        "total_bytes": 0,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -160,18 +162,9 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 55772,
+      "duration_ms": 67250,
       "error": null,
       "archive_before": {
-        "total_bytes": 163522291,
-        "file_count": 1321,
-        "media_bytes": 163138881,
-        "media_files": 1318,
-        "json_files": 3,
-        "page_json_files": 2,
-        "comment_json_files": 0
-      },
-      "archive_after": {
         "total_bytes": 166568202,
         "file_count": 1339,
         "media_bytes": 166232020,
@@ -180,11 +173,20 @@
         "page_json_files": 2,
         "comment_json_files": 0
       },
+      "archive_after": {
+        "total_bytes": 172281833,
+        "file_count": 1375,
+        "media_bytes": 171919681,
+        "media_files": 1372,
+        "json_files": 3,
+        "page_json_files": 2,
+        "comment_json_files": 0
+      },
       "archive_delta": {
-        "total_bytes": 3045911,
-        "file_count": 18,
-        "media_bytes": 3093139,
-        "media_files": 18,
+        "total_bytes": 5713631,
+        "file_count": 36,
+        "media_bytes": 5687661,
+        "media_files": 36,
         "json_files": 0,
         "page_json_files": 0,
         "comment_json_files": 0
@@ -197,18 +199,9 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 14174,
+      "duration_ms": 18211,
       "error": null,
       "archive_before": {
-        "total_bytes": 61350504,
-        "file_count": 790,
-        "media_bytes": 61133218,
-        "media_files": 787,
-        "json_files": 3,
-        "page_json_files": 2,
-        "comment_json_files": 0
-      },
-      "archive_after": {
         "total_bytes": 61642652,
         "file_count": 793,
         "media_bytes": 61425366,
@@ -217,11 +210,20 @@
         "page_json_files": 2,
         "comment_json_files": 0
       },
+      "archive_after": {
+        "total_bytes": 62522283,
+        "file_count": 802,
+        "media_bytes": 62304997,
+        "media_files": 799,
+        "json_files": 3,
+        "page_json_files": 2,
+        "comment_json_files": 0
+      },
       "archive_delta": {
-        "total_bytes": 292148,
-        "file_count": 3,
-        "media_bytes": 292148,
-        "media_files": 3,
+        "total_bytes": 879631,
+        "file_count": 9,
+        "media_bytes": 879631,
+        "media_files": 9,
         "json_files": 0,
         "page_json_files": 0,
         "comment_json_files": 0
@@ -234,18 +236,9 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 44260,
+      "duration_ms": 55296,
       "error": null,
       "archive_before": {
-        "total_bytes": 247258394,
-        "file_count": 2110,
-        "media_bytes": 246700694,
-        "media_files": 2105,
-        "json_files": 5,
-        "page_json_files": 4,
-        "comment_json_files": 0
-      },
-      "archive_after": {
         "total_bytes": 254881273,
         "file_count": 2176,
         "media_bytes": 254340250,
@@ -254,11 +247,20 @@
         "page_json_files": 4,
         "comment_json_files": 0
       },
+      "archive_after": {
+        "total_bytes": 264883026,
+        "file_count": 2260,
+        "media_bytes": 264342003,
+        "media_files": 2255,
+        "json_files": 5,
+        "page_json_files": 4,
+        "comment_json_files": 0
+      },
       "archive_delta": {
-        "total_bytes": 7622879,
-        "file_count": 66,
-        "media_bytes": 7639556,
-        "media_files": 66,
+        "total_bytes": 10001753,
+        "file_count": 84,
+        "media_bytes": 10001753,
+        "media_files": 84,
         "json_files": 0,
         "page_json_files": 0,
         "comment_json_files": 0
@@ -271,7 +273,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 16142,
+      "duration_ms": 18265,
       "error": null,
       "archive_before": {
         "total_bytes": 24539041,
@@ -303,10 +305,10 @@
     }
   ],
   "archive_totals": {
-    "total_bytes": 1649558406,
-    "media_bytes": 1646106196,
-    "file_count": 13660,
-    "media_files": 13626,
+    "total_bytes": 1690734005,
+    "media_bytes": 1687255825,
+    "file_count": 14005,
+    "media_files": 13971,
     "json_files": 34,
     "page_json_files": 26,
     "comment_json_files": 0
