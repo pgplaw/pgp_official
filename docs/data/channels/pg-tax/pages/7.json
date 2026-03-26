@@ -1,13 +1,41 @@
 {
-  "generated_at": "2026-03-26T11:42:19.742507+00:00",
-  "build_id": "ba2f8228a19c",
+  "generated_at": "2026-03-26T16:00:50.803745+00:00",
+  "build_id": "2db1fb5d6ac4",
   "pagination": {
     "page": 7,
     "page_size": 16,
-    "total_posts": 168,
+    "total_posts": 169,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2453,
+      "date": "2026-02-09T13:35:29+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1380,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": "data/channels/pg-tax/media/posts/videos/2453-video-note-93cff48614fa-v1.mp4",
+      "tg_url": "https://t.me/PG_Tax/2453",
+      "forwarded_from": null,
+      "reply_to": null,
+      "video_note": true,
+      "video_poster": {
+        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2453-video-note-poster-29457aa4d737-v1.jpg",
+        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2453-video-note-poster-29457aa4d737-v1.jpg",
+        "full_url": "data/channels/pg-tax/media/posts/video-posters/2453-video-note-poster-29457aa4d737-v1.jpg",
+        "thumb_width": 640,
+        "thumb_height": 640,
+        "feed_width": 640,
+        "feed_height": 640,
+        "full_width": 640,
+        "full_height": 640,
+        "source_width": 640,
+        "source_height": 640
+      }
+    },
     {
       "id": 2452,
       "date": "2026-02-09T13:33:53+00:00",
@@ -18,10 +46,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2452-1-e5a51e514ae2-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2452-1-e5a51e514ae2-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/eeGGmomKY738hr1zFpcfgGPBjGaAq8ARSd8vFWllH42CkxLHc0nOkYJueJYc7wFRaXGiagQE4rNeUIV6Br-kA7wWRaEhvUpJPNiFszFsqKsEkic92k5s1zTquhjH1PcussxPnABmglPUhYWk6TFJcM6DUcMUb1-nXjC6yE3sYApFomcS4psOiMvI80VVK0O5rR-XFFwzJ63IZgnyRmHYVG3h91p97dCatjkLzBxl_Juvk9WZ6cJv0ym9kzqaddbmIxaRWUHv6g4cfR_AbeBPppsewBdYU9R7C9PjATHQsqjoWe6oIkdt_YLYH2MBdruvqZFtKksBNPlqwToZuhe9Pg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2452-1-e5a51e514ae2-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2452-1-f60c3582fc01-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2452-1-f60c3582fc01-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/jjL_oHVUP65JpIDYF-IcRlAKcCv-lTWA8OOjZxC2ZPQaGF6uCSRNkOU0p3XP-gAzJk2z_RjzaLrmMk6FsGFBrjw-xeN5jbR8Wh_uKZ9hiB9ADq_19ql-a4wI-TGsmrOgM-xp_F-pV4hXhwRDF0wRWKO9S86nSodb5rpcVYdzRllLSSXSAbhRAUfarbpRMDKCohfxeSrCgdMMrOizawlflw3NTxQlZbdx0czGP-PB2Ev4qTHVA7lkIAzwpZ0PZjIviXJhzf_xYMlV_z5IKka23GofeaXsk4RLDkXan0m2uJnTM1bj1boeOS0Genu_HrjLM6FFD-0feryj2ISUbqjz7w.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2452-1-f60c3582fc01-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -47,10 +75,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2451-1-219b6d0751b1-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2451-1-219b6d0751b1-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/XyzcT2AtC0LXXZCAuL8VpMni0MHOuTH4UJE_sKTUD1ijW25TVPs5oa6xU8yx30jsls_LXtXjRDq9Fz1zvEEw9xmpMR-6BRuWjZ3sW-CW0dTfpQgE-E0xvFQUM3cfUoetQGvoQcDQIEWP5qa7PnJmd_qvuSS_JJCrbP1l9BCsXw4rkayJa6Ock6guwvuVauhkxrCpxVgcnUA-uZ2kjWRUHsETs5YukizH7W90ta4ypcntlSEu2MntsPAXeUz0ZlIfLZ6NC_tyEojQ6fIi0aDsHkffnkKmOb2pCK0x1v40Or8ZHzmKONGPlFDc31b4wRHFzmJol-Bp-6s-L2bZp2oIxQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2451-1-219b6d0751b1-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2451-1-4e999784432e-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2451-1-4e999784432e-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/KPUO-ZOB9NqUlxFjxcKCftN24gUCTEgKa4cw3PAjZ9p6L_RnFihoSVYAfm_uBV9iE9_RjkCZ9Q3ttAQxpwTy6h9bhiejs0MTb26ieCFEmCJwTNnV5VJEB5Fjh2B7L-MEXLHoOJM3Yv2JKvVHLIfNywvNLtL_jNXSAsVdYpWiwwdlkfdWR6qOBG1ind62u0suDMjuJIDaEMcuDGM2E_GB3Psf8gOLWHZ66r_ZB_ZpI1bXyr05HQa9kFOA9IsIuWxTSPBYBnucAaBTyTcRiRHGBiQ_iRaQFr_zPkQgfG5mCdQqK5z5jW1hysQ23CxRU3z5_3EngiMdng9q-EyEj9BXug.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2451-1-4e999784432e-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -76,10 +104,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2450-1-22f52c7fe295-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2450-1-22f52c7fe295-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/GTtP_Poinm2ONPievD0xrEBcPg1RPTfHPL-NGbzFHf0zLCpWsnnR4s1fPwq1_2JlNEVJFfad-lsA2gV4yWzgk2IIy7Dpb0UudxhqhQUGk-ouWALY5HR4_fbv1kr8HZLM94Ch3w3L6QORfDJn85T9IWCu3GcN9AwFQm7GLCN5CpwHO_XXoAQv0rC15LLGKDvrEg-vNJCdq8v9Qziok56akIHb-XWpa8JhpbwzRJhf7dyaBHJpUr-x6hYKcZKUFiE9yT8Z8z9Ewei26lnsi0yV7ng8-p1XY916MWjfRxkEgjPgWW_hGwkLc7uGov01MLZDULaERw0qn2yQ8-E70C2s7w.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2450-1-22f52c7fe295-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2450-1-2388457d32d4-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2450-1-2388457d32d4-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/h7qSTEPpgLcCJDqspAKVomUNYN-J7qWgW8buZWZLnDgYR-BKzROlJBxAhJWhDgLw2QIss1rOc-wNlMGc_Nc7helppmmxAGrNvEM_Xx2ItRGuSki1cdXV5YxPEmK6FBFD3XaZIuQ66HiDcqJRf8K4dMwxg7KHDFl8UOe6Viauem_7ExVDsA-bHY9qUPUwHee46RyGNwmjs9W8Zp_qwRihXTEUJHf2Zzi9PuxSfHmxSSzO6P1bCAywggZaojDH3E1vEo0b0PG9WMIoZiIcurSAp89vjBu-Pb_OZIqRi-ZIIKGzzeoX_mXQi3ePSQHrGQXr03qXWsWLjXDqkc1dRnfB0g.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2450-1-2388457d32d4-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -133,10 +161,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2448-1-c4b716231922-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2448-1-c4b716231922-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/bZQqtzc_jsfcvWe_fkwaAadzebMzXcUgnPO-gLo_6Rlz0SpBW8yYkhrVFrEfiybLn2-G_Ef5r79Rs2SamNM_YoU8nTx2i_txrNR2-BGNjmwvbIYcoUBMgTj1UuP65GAEOK9xLlbcduBKlcFEzHXKBJBXllN75OxB_A9YbTCOi7Ah4cF6MVDYkKn_PIR-NoDCuQzJfn6r-RpSA5cvrBX_jXUPcw-qMdHljX0_uOuP7z8RWJprW3LuYuIEZP07SGzAcCKUQt0g0tI59Bs-Df4ctIMsVpubN9Mh9oOZLnp52qUAizcm7fkDgtrEM_JysY_yghxWKexc8Aaw6Wr11UQXuA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2448-1-c4b716231922-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2448-1-b8ed065a8f0f-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2448-1-b8ed065a8f0f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/fjXigjAumqFFuz2_Xxv9AZN2tdLm6g2h0sGzjVkD_LpFnek01X9TdRzP0viIJhIFSbn6bBFJytYVaopdx4WL7baNi6S2GQNJbjipxF_MOZT7G1ev8r42SO6Sag-bZ4VrVvBI2x8GZOBfcixav-rQqHa86m2ns-EuUjU1HZcd298yU8uni5KJJ1fHUbv1B9Ag_nD5tF4QnOoBJNduPFRynUhxDk4g_-lFfkFYFSkxoTu7oe5_n721g_pr0XBt1gQSdih8zVwXQ4gWNdeqagmLDYM8hl1DxPtAK_UZu-sLL2PQY_TvCDLXxWAMxso0zxPJ8hHSLh-Bi4r9dD6wQwhpxw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2448-1-b8ed065a8f0f-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -162,10 +190,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2447-1-dc6645600ada-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2447-1-dc6645600ada-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/ksTDrAKYPgZHQTNKMDC9TEJePtygHFA4RRtkBYgiTnhzsS8YbZxpzKEuT6Gm8l5maFTftqE0ynC3f5nbDfu0PLR6HTnXrT3Vrc1KWVPwdaAGuDLPR3I2MBMB3EQWBmAlqRsKjqGmmDDWLRhejr-iHSQyELc5bDLTns_qO7op2qPu9J9f7ukrmrcqQB46c4iijlPgwdu4AeyV8sKk1IG9zmU9Dk1od0oWtVcF5yBZcCR395TKdI4xkPzxBx5ujdlcwajSpQvTSnIZS7cJafYsaQXlZGh9xCFVuBhRghJpcGlfnng_vm6R3oEWl1opONzd1nCLMxsTm4GOiwfVml9uBQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2447-1-dc6645600ada-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2447-1-4ba052bf92ea-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2447-1-4ba052bf92ea-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/T5TfoiHNYC5zNbHbA1a3j-G_ZhhhUK5upyWXNFTq6csmuORiUPSYwDBhhNeD6xK1HnaiNejB_HGgPmYR5tC-L9f1LiGV5vRKSlYYOSR2IQlxiInWslpnfZ3yMxMaKlNqIxEyW-KE4VOmEs-RfYjawujVXaEFQygLH_LlH8WERklBQqCogt2Kj3G9BgHbCC3QunCO7p3Xg24w7_pSirsC_2mOfBy1_hsume46osRBbNQ7gvSVdPVLvU6gU3aUq0O3aBRqk1s5-7ZWxqY83o_zw1HtsmcjneV8u7qxo7T3es5Ys5U3kB1fedH2VaBKEPTzbijpklIgeEDPNXd8sXbuBg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2447-1-4ba052bf92ea-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -191,10 +219,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2446-1-d72c0775b781-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2446-1-d72c0775b781-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/T4mbrHkGhPJWjlXxdgbCeeqAd5gvut5ob-qQMF83xNrLfUnUMwtkMHygy3H1Jge1Ut7K1fBl_BkxWyJ3mqmBUPL_n3opJSCSAb-z2Co7G-CjXjtWcttZC-P2NehDjabJS1aazkmxZuiwTrb09X8gMpdB7LnNeFLPI_koIfl7An1Tw8D0Zeb5oj8O9w2JdplYJWOniMCzYwZCmNfOOTKbD512GuLv8dnktnMuHRbpmRnI3Mm1EbIr52ca8DsYS17hm3aarwYjZrQLxKIKnGK7VyfZob7vy3CAgdXnroXNrtbMFlZ6mKziSUSTAwNUdsnmQBERfCbUDLr2HM4cMFWoEQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2446-1-d72c0775b781-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2446-1-1756e664b6d1-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2446-1-1756e664b6d1-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/IM3DGWfZTfw28GL9BvoMmpL1O8PbCa-hGaIymuvnOkhe4UanRM-vC3xe3DPjslixHJ8hKSR5VYdqa05i9KpNTAK5nlQQ8sUxNCqivees1YuKXM8bgJXGYLblBec0gB_T77phtXzBnXBnJ0GbeLIAiCK_FJgxkOfqRlZDaEQWX3UPiHbhsGntVcGG6wmXPbNTDCCivbtSA3xLWFbuqor4RetS0GsFXfzYkcXmirKAmSR9RSVN-ja2OVqLwJafRfG89v_NtRYap-0JBuAM9LBMceEFJB1_sK5kVQylMxNUGwRs4E-_FdJNIle8L09dEAOj9Ct_TJyHTJ6HF71WopL4Ww.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2446-1-1756e664b6d1-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -220,10 +248,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2445-1-db346125f6ea-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2445-1-db346125f6ea-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/FvB-PXfoq6ietMvXrh4YNZr5Bh3k6zIrhNs8U23C6RcvGlfkRLQkvjorHqdMlMDj9UXJ9pqXzVy_ppv0lkgc4KagVb6FW-hJOltaKoNc6o7VAMwY_tO0diCpiV97pxSwn79EoBgY8kkqK6rTJVdpLf_7Ie2rJDeM-jB9X9f6f6BqNmm320ZLSmK41sa9ofrsZ4gCwzRbACJXsNiV-1Pb1iC-6uw4v3ud8qs-muXErWkUgjr3RtY0gMbpp0MMyIsYMMvF_Pq4ViwqThYiwLLW8AbmZHqDsmHOHQOnURn-aX0dqz5o3VHtKNCTrTYl0i9fQD8hrjs2JyDj_BB-Rivc6Q.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2445-1-db346125f6ea-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2445-1-441f9cd3182a-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2445-1-441f9cd3182a-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/fnZ_WZvwnL9OKJ0IBY7pzzreZzbxbdciExwdBGgFaDtu4zSmuNn-w-Qb-UNk5aGUT5wtTd2bGhob6wy9DTnCQHge4nP_CaGFteJQfDLKnt1Z7xQhaCzu8pfmlMUhvHEKcX77hGQrMUKKzKwXDrTt1juxhucIqJ_0y2VggLsgkReB63XnUus_4GmkdnPDJiZnkjp9-PgKRKDA4jOP0dvlf67NClP5ADyxV9ZgWX-YYhjZlq37H4TnK2fD7D5u81mgtZltGNNkSNDGUIOp33CBtSet70XFCMjANsNGqX67MBawIPWmQjVMVFCuLKVdUwZzUgQco3kh5QkiBDpFfEAe9Q.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2445-1-441f9cd3182a-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -249,10 +277,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2444-1-6864bb985c9e-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2444-1-6864bb985c9e-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/D9VXtoGFIPk5beN50KGXump_ZF5aXyHZ9_dAXAHqzUn4mPUd0ioqPF3UCUc7ErINqNGmqn0Ql4siv2PcKMDRI5XYDB3Ok93NKND4hq-5l_Wwm83fPK_4Cglqn6ljEMzBnrRSuZIQZcqObj4T81DRoYY_c8r4X_pBIz-DMVRbNlDhVDf8I7XW3e0hTVYXuLrff3sUEzkGB2uzUb6TIp7oGNi6BMA8PqoVEZI9PE2JGX3j28JWCONIFyraX8-OYHpfh8VMmuTDf2PnH8XvXuCbWlaUnXy81XLonccMw2USXTVuQKDOHYVICtiLx4mOy9BnezRpthtxDixsI_bKGc0D0A.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2444-1-6864bb985c9e-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2444-1-388e1e5fd2c1-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2444-1-388e1e5fd2c1-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/slhh187Q_1f3hzBXD6N1VZkECgBhakaQGj8dPOoWwCfwQaPotgU1dIY_WxACu-bUph4FaeQZLJdowxf2aqVfUo6pADV_B22wj7nPTrYWgsC03u6PXk2trcnM8vWhYnu-e2NS1hR1eGmPLm3_7nysRrsGC2ecD1O6DxlSwRzhm_6KqA6ZlyA7N9ceWwEcOy-7bLmAawBp0X7KsAW4YneGbH5U46J9OMMOIqnaC7kH6SzF8uTNf-JY4iTbKgz7PF_1lm3lXtfJawH2QYxD9c61nOU0aK3aWHtGtmWEDMxIrnDqvBlwkVTZW8r8LEiBQTAWfMos6BC311wIGQMMyl7t5Q.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2444-1-388e1e5fd2c1-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -306,10 +334,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2442-1-680dbaba2e81-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2442-1-680dbaba2e81-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/SU7YQbTKIBSCyVdTdlFe5mr06zqcLI7cDbLAoCmP9FF1ssTT1Mcc9YtosrKchRJElG6RjfKCthhhku5eFqIocBvnRzjbk-TEBPc9xJANZoBKiLGln2LxKyEpiolsU0fJvzzez5UgZDt22AMNZ5Ku7VHn-P2BWRh2JZtROEvNw_Ix7JJpqcFUSS5jqhkARqcT7-LRuby9N4uVbE4m186Fx8NDBCXaegPI9fcZ-wMbEVetyQ-XauB_hGdvILZ3A1ZmbkXP33XZfauTHO6Qvcp3OLaSxIMuVqeBaNYalrkTYoS1pcB-RnEyUmtWuTSTqQ4YbIEUCM56TdNQzqJc134BPQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2442-1-680dbaba2e81-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2442-1-bbb737c953c2-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2442-1-bbb737c953c2-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Wv5T_j9oi6d8REEJOBqvN-98eixFcdOoN2c4PbsL65VJU7FN41TrfjByi4nz1KDIwdL4pwlO4vQa8ho4CKq8Or4tFtuqufapLZYnjicW4WHq6gvORXJ9LLqLEitlL8EELnQu23Se--st_m7PfkdehbVhx8Uob1BfzDFzioGsg_e7VFX8fqIWeXVXAGejKaIVZywhna0qhRFKw5DrXxqJnRNy_-BuplmjZfhUzxsqQUzjQ73I7LHeOVw2j8nM8Xbni63jgtRFFv41mEaPXbAAXAbZQlxjGTJt04OqfwBp8w82C9uff1djLvXuU_6Aoz9eNOT7l0O93s-f04SUoMEoHQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2442-1-bbb737c953c2-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -335,10 +363,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2441-1-4482e37a1b60-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2441-1-4482e37a1b60-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/qSek5KURB8Q4Po2JZZIqItz1f0e6zuA4-J6viFihsE_z_vz32fJHCaki5749MA7q6-gzBKEa0RVhmkWtjM3JbxhXRW_EzfByCY8bV7yso9fOUrGqF_fZ9zcbfnj3oCI9AUbJtu6Qz-gKX8Zynh6RXfxlA16iHtWpYnRZ2k4ddNb6T869tZdjNbys0zMufDl2Cmh__FHteiJ4s5HDPCBhA5DH2p10S5mX587_d7ROwgGjhlyMjTpDrj7ugtreOxz5whQSzfetTOC_6FX6miQa-TsiiXK41jLPpku_KL0PzmgKUJyVrL_IA9i6E2UGlcK0ssskLOn2MzKloGjN6gTaCA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2441-1-4482e37a1b60-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2441-1-2816b76ede83-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2441-1-2816b76ede83-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/ux14rU1Rdr7xc4vlRSd2FrEW-ARGgAJVXxiq-JbeV24hdic7rbdSa7ybEivFUikb_mA8UjazTPyiARfixyIYqpcmo2RUHPcm-eKDMbdxSBHvozT8euwYssjRI45jSnxYodiYl32tI4mGeJUJ7F6Jcfs21On4x0wIprlddDoRibRO7PGamAkeagoIFMZWsUEeW0Y7dZaex6VvyUsdyVNYAUFmB7s5zKzTWCtM2MsTiwclL6TpXFfwXoyhRAv_s7io1NUhDt0_BgAGAfHCr1_6XEC60P9H5cyvgVBgp9Y-2SK0fxeOUzhOUMYTuCjomkqAaZ7lDniavBcLvdXumNmH7A.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2441-1-2816b76ede83-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -364,10 +392,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2440-1-f763e1de0525-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2440-1-f763e1de0525-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/qS5BteE1aHfiua3Yacgl5Amk490KIXekazLBJobg_5EXLz-kn680CGNfkSp7xsXr6QD7wBmvE1gAZFajvIZKXhfkzfLXgZFKagx8jpWxDCqWstCwnWYJsZpv90g_cdGJ3jYeNi5bGa9Eew7WZXtTE1eXLZQeQARLYyFd5LzyOjPC0s6x8oHxriVKK0s21B1Sha9WSkls-7XcYJPw8zCcGVZjynwJKM1vyFZATnptnWW5GGUO0h-UGBMGvPyEFhuRYLW7YX5RW6u_iWAdQQz8pWGMcJD-u3lL55C2112GI1PslEd03EPRn_BWTJ3gPefjs1bPAeSp5MgYRreI7DZbkw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2440-1-f763e1de0525-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2440-1-304e1d9a11c0-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2440-1-304e1d9a11c0-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/JBPrDaaF7u2nJstKIZTDSrhBKopsmVztnBnoraasbocDS4-wdPqMNBIv94aXSh9LRnIn2YHUhtxW1eRJ-i0cmxWiLGX_PYDj2SxmWT-q3YTxBV6hf3uDg_trAnaHjmhTL8B-78m31RBwpiDirCQzDJKtg1Hu7F_ScFSBzIn5MivE6QGZGcxfu6JNNE7FnYLR7HgFQU-iqxB22ua8C_kCVl1s2lISeNTxXiLLXyp21xkFH8hSJZurEMXlAuBjyr2D43SNnENnz95WmKt7XxkSzSc60J4KJyeSkp1oj_52kfzYyyIN9X-tY_KcNRQSNNjY5d3aAKROWau2YLMmV41-UQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2440-1-304e1d9a11c0-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -421,10 +449,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2438-1-eff4afd00bd7-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2438-1-eff4afd00bd7-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/e1ETBWTE_NRozo7UHRQB6wuj2FoQr4sbHo2ftqp0N3iUAhPv1kKHM00Lw2o1Mv-DiuMyQYRWQS55ZfAdXccICCbcMFPPgH8tM_zlbqYlfr5F61wMn6E6F_z0WlbJJZ15o0mVABudnlXTl6yGICpS8KFg1N93FxBvxV5rhDY5nJYPvPyrQ3_b6WiVCXSJ9esqtO5B9wlv0ahVlvvU1drl0dq3gKISy-Z_ZsgFbKBeM2C_aVWfXlvQkM3AKBpQcI67Vo2D7r-m5jhD5XerXuiqYSzyvPR47Xp2bvZK4GM8vh3-60QbC02qvANdhcw1h37TEWkGjfpHHyUDsGGWGoC9fA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2438-1-eff4afd00bd7-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2438-1-42d0b45163f1-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2438-1-42d0b45163f1-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/uciZwuQuw4pWnT6KUd7IFZSHtCleT3uONfwBTlm1slHqNf0sF3H_3M1YrxnF0mRtVouTfhs2eq6hdG0JmLPtxyKxQ97fQ_Rvh_kKA5RWhfU4hUb3pQcKMziI-G8CxTGJDeNtsA7_y8vvTjo887VRYYCyFR0kPBR4AQ6J0dZhnweImduSInN5o2Te7p_qxTMleMs5TYuEwZqHQh98AfUoneAXo73GXeRtSSCDl-z1VZBU43TF1jAWVPCmIx9APpz5x_P2SYbUu9zLn0v-0ExuX0G8C0vtZt17UnnGJVDPs9ZGBWl8HgOZ1BrSEOupy99xhRpsw9fjUTOyCP0696UFUw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2438-1-42d0b45163f1-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -437,35 +465,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2438",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2437,
-      "date": "2026-02-03T10:00:01+00:00",
-      "text": "⚡️ Исключение ст. 199.2 УК из сферы действия особого порядка\n\nВ продолжение предыдущего поста рубрики партнер «Пепеляев Групп» Леонид Кравчинский комментирует законопроект Минфина.\n\n💬 Минфин предложил исключить статью 199.2 «сокрытие денежных средств либо имущества …, за счет которых должно производиться взыскание налогов» (сокрытие имущества) из сферы действия особого порядка возбуждения дел по налоговым преступлениям (особый порядок). \n\n🔍 Особый порядок\n\nОсобый порядок означает, что следователь может возбудить дело о налоговом преступлении (сейчас это статьи 198, 199, 199.1 и 199.2):\n✔️ только на основании переданных налоговым органом материалов и\n✔️ только если в течение 75 рабочих дней после вступления в силу решения налогового органа обязанность по уплате недоимки, пени и штрафов не исполнена согласно НК РФ.\n\n✍️ Обоснование законопроекта\n\nВ качестве причины исключения авторы законопроекта пишут, что «налогового правонарушения, аналогичного деянию, ответственность за которое предусмотрена статьей 199.2 УК РФ, в НК РФ не содержится».\n\nНо действительно ли это так?\n\n❓ А если найду?\n\nКак оно вообще совершается – это «сокрытие денежных средств либо имущества …, за счет которых должно производиться взыскание налогов»?\n\nИзвестный способ его совершения - распорядительные письма об уплате.\nНалогоплательщик ничего не искажает в своих декларациях, но налоги не платит. \nСвоим должникам он направляет распорядительные письма, в которых просит их уплатить задолженность не ему на расчётный счёт (с которого она была бы списана в уплату налогов!), а напрямую его кредиторам.\n\n📣 В этом случае:\n     1️⃣налоговый орган в процессе взыскания налогов может наложить арест на дебиторскую задолженность (за счёт дебиторской задолженности может быть погашена налоговая задолженность);\n     2️⃣если налогоплательщик распорядится этой дебиторской задолженностью посредством распорядительных писем, он совершит правонарушение, предусмотренное статьей 125 НК РФ; \n     3️⃣в порядке статьи 101.4 НК РФ налоговый орган составит акт о выявленном правонарушении, в котором будет указана сумма сокрытых денежных средств, рассмотрит возражения налогоплательщика и вынесет решение;\n     4️⃣если налогоплательщик не исполнит обязанность по решению, налоговый орган передаст в следственные органы материалы в установленном ст. 32 НК РФ порядке, и \n     ▫️особый порядок соблюдён.\n\n☝️ Как видим, в НК есть правонарушение, после совершения которого налогоплательщика можно подозревать именно в сокрытии имущества. \n\n❓ А если не найду?\n\nПричина введения законодателем особого порядка состоит не в наличии в НК правонарушений, аналогичных деяниям, ответственность за которые предусмотрена в УК.\n\n⚖️ Конституционный Суд неоднократно указывал, что уголовное законодательство является по своей природе крайним (исключительным) средством, с помощью которого государство реагирует на факты противоправного поведения в целях охраны общественных отношений, если она не может быть обеспечена должным образом с помощью правовых норм иной отраслевой принадлежности. \n\nЗаконодатель ввёл особый порядок, желая дать налогоплательщику возможность урегулировать спорные вопросы с налоговым органом до передачи спора в сферу уголовной юстиции. \n\n☝️ По тяжести деяния, общественной опасности, причинению вреда статья 199.2 УК не отличается от иных налоговых составов УК, и отсутствуют основания для лишения при её применении гарантий, предоставленных законодателем для случаев совершения налоговых преступлений (тем более, что ст. 199.2 «выросла» в 2003 году из ст. 199 УК).\n\n🛡 Вывод\n\nДаже если в НК РФ, как полагают разработчики, отсутствует состав налогового правонарушения, способный обеспечить соблюдение особого порядка при квалификации по статье 199.2 УК РФ, решение может быть найдено в разработке нового налогового состава.\n\nНо решение никак не в прекращении действия особого порядка для статьи 199.2 УК РФ.\n\n#изменения_законодательства\n#заметки_защитника\n\n➖➖\n📧 Если Вы столкнулись с обвинением в сокрытии, или налоговая проверка грозит уголовным делом, обратитесь к Леониду Кравчинскому: l.kravchinsky@pgplaw.ru",
-      "text_html": "⚡️ Исключение ст. 199.2 УК из сферы действия особого порядка<br><br>В продолжение предыдущего <a href=\"https://t.me/PG_Tax/2427\" target=\"_blank\" rel=\"noopener noreferrer\">поста</a> рубрики партнер «Пепеляев Групп» <a href=\"https://www.pgplaw.ru/to-get-the-team/leonid-kravchinskiy/\" target=\"_blank\" rel=\"noopener noreferrer\">Леонид Кравчинский</a> комментирует <a href=\"https://minfin.gov.ru/ru/om/obs/npa_projects/?id_57=9749-o_vnesenii_izmenenii_v_statyu_78_ugolovnogo_kodeksa_rossiiskoi_federatsii_i_statyu_140_ugolovno-protsessualnogo_kodeksa_rossiiskoi_federatsii\" target=\"_blank\" rel=\"noopener noreferrer\">законопроект</a> Минфина.<br><br>💬 Минфин предложил исключить статью 199.2 «сокрытие денежных средств либо имущества …, за счет которых должно производиться взыскание налогов» (сокрытие имущества) из сферы действия особого порядка возбуждения дел по налоговым преступлениям (особый порядок). <br><br>🔍 Особый порядок<br><br>Особый порядок означает, что следователь может возбудить дело о налоговом преступлении (сейчас это статьи 198, 199, 199.1 и 199.2):<br>✔️ только на основании переданных налоговым органом материалов и<br>✔️ только если в течение 75 рабочих дней после вступления в силу решения налогового органа обязанность по уплате недоимки, пени и штрафов не исполнена согласно НК РФ.<br><br>✍️ Обоснование законопроекта<br><br>В качестве причины исключения авторы законопроекта пишут, что «налогового правонарушения, аналогичного деянию, ответственность за которое предусмотрена статьей 199.2 УК РФ, в НК РФ не содержится».<br><br>Но действительно ли это так?<br><br>❓ А если найду?<br><br>Как оно вообще совершается – это «сокрытие денежных средств либо имущества …, за счет которых должно производиться взыскание налогов»?<br><br>Известный способ его совершения - распорядительные письма об уплате.<br>Налогоплательщик ничего не искажает в своих декларациях, но налоги не платит. <br>Своим должникам он направляет распорядительные письма, в которых просит их уплатить задолженность не ему на расчётный счёт (с которого она была бы списана в уплату налогов!), а напрямую его кредиторам.<br><br>📣 В этом случае:<br>     1️⃣налоговый орган в процессе взыскания налогов может наложить арест на дебиторскую задолженность (за счёт дебиторской задолженности может быть погашена налоговая задолженность);<br>     2️⃣если налогоплательщик распорядится этой дебиторской задолженностью посредством распорядительных писем, он совершит правонарушение, предусмотренное статьей 125 НК РФ; <br>     3️⃣в порядке статьи 101.4 НК РФ налоговый орган составит акт о выявленном правонарушении, в котором будет указана сумма сокрытых денежных средств, рассмотрит возражения налогоплательщика и вынесет решение;<br>     4️⃣если налогоплательщик не исполнит обязанность по решению, налоговый орган передаст в следственные органы материалы в установленном ст. 32 НК РФ порядке, и <br>     ▫️особый порядок соблюдён.<br><br>☝️ Как видим, в НК есть правонарушение, после совершения которого налогоплательщика можно подозревать именно в сокрытии имущества. <br><br>❓ А если не найду?<br><br>Причина введения законодателем особого порядка состоит не в наличии в НК правонарушений, аналогичных деяниям, ответственность за которые предусмотрена в УК.<br><br>⚖️ Конституционный Суд неоднократно указывал, что уголовное законодательство является по своей природе крайним (исключительным) средством, с помощью которого государство реагирует на факты противоправного поведения в целях охраны общественных отношений, если она не может быть обеспечена должным образом с помощью правовых норм иной отраслевой принадлежности. <br><br>Законодатель ввёл особый порядок, желая дать налогоплательщику возможность урегулировать спорные вопросы с налоговым органом до передачи спора в сферу уголовной юстиции. <br><br>☝️ По тяжести деяния, общественной опасности, причинению вреда статья 199.2 УК не отличается от иных налоговых составов УК, и отсутствуют основания для лишения при её применении гарантий, предоставленных законодателем для случаев совершения налоговых преступлений (тем более, что ст. 199.2 «выросла» в 2003 году из ст. 199 УК).<br><br>🛡 Вывод<br><br>Даже если в НК РФ, как полагают разработчики, отсутствует состав налогового правонарушения, способный обеспечить соблюдение особого порядка при квалификации по статье 199.2 УК РФ, решение может быть найдено в разработке нового налогового состава.<br><br>Но решение никак не в прекращении действия особого порядка для статьи 199.2 УК РФ.<br><br>#изменения_законодательства<br>#заметки_защитника<br><br>➖➖<br>📧 Если Вы столкнулись с обвинением в сокрытии, или налоговая проверка грозит уголовным делом, обратитесь к Леониду Кравчинскому: l.kravchinsky@pgplaw.ru",
-      "views": 1640,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2437-1-3461f459baea-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2437-1-3461f459baea-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/DrK9PqhUOqAY0Iq7EYQRcoZ1j1VXXCS-Xize36hMUCK-SNs8xyq_paoTxRRBK0goY9djOGlPWHmL6IYSRHkJaf2rrmW8CgOzjlrAH10_NBlXX7iRSA86NOAcYkm_louvLVubQrNLIyTcZJxlI3oKip1JCZLc9YrZ56c8iX_uh3nrA2pRXIucdjvT_1EA74IVOSZTbj4T1fIGA7rGbwpOTgpR3mOo0ACJ6AlIggwf-xWITefHuODRoErHZxWbijXdNSOpWGE5QDwuICnWs2rjgCS-SawzrT8HXZKUFyuOStRF_qghhl2fvAUBGYhVPkYtAaXqfjkjl0vYiy_1pBTMCA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2437-1-3461f459baea-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2437",
       "forwarded_from": null,
       "reply_to": null
     }
