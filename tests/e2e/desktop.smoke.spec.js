@@ -270,6 +270,14 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('#link-preview-host-desktop .post-card__link-preview')).toBeVisible();
     await expect(page.locator('#link-preview-host-desktop .post-card__link-preview-title')).toContainText('Видео обзор');
     await expect(page.locator('#link-preview-host-desktop .post-card__link-preview-badge')).toContainText('Видео');
+
+    const [mediaBox, copyBox] = await Promise.all([
+      page.locator('#link-preview-host-desktop .post-card__link-preview-media').boundingBox(),
+      page.locator('#link-preview-host-desktop .post-card__link-preview-copy').boundingBox(),
+    ]);
+    expect(mediaBox).toBeTruthy();
+    expect(copyBox).toBeTruthy();
+    expect(copyBox.x).toBeGreaterThanOrEqual(mediaBox.x + mediaBox.width + 8);
   });
 
   test('does not render link preview card when post already has physical media', async ({ page }) => {
