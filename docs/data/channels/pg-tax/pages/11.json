@@ -1,13 +1,41 @@
 {
-  "generated_at": "2026-03-26T08:41:19.108674+00:00",
-  "build_id": "2becec02a99e",
+  "generated_at": "2026-03-26T11:42:19.751852+00:00",
+  "build_id": "ba2f8228a19c",
   "pagination": {
     "page": 11,
     "page_size": 16,
-    "total_posts": 169,
+    "total_posts": 168,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2385,
+      "date": "2026-01-06T11:04:03+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 2080,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": "data/channels/pg-tax/media/posts/videos/2385-video-note-ca0da8d0eb35-v1.mp4",
+      "tg_url": "https://t.me/PG_Tax/2385",
+      "forwarded_from": null,
+      "reply_to": null,
+      "video_note": true,
+      "video_poster": {
+        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2385-video-note-poster-bd657cb94614-v1.jpg",
+        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2385-video-note-poster-bd657cb94614-v1.jpg",
+        "full_url": "data/channels/pg-tax/media/posts/video-posters/2385-video-note-poster-bd657cb94614-v1.jpg",
+        "thumb_width": 640,
+        "thumb_height": 640,
+        "feed_width": 640,
+        "feed_height": 640,
+        "full_width": 640,
+        "full_height": 640,
+        "source_width": 640,
+        "source_height": 640
+      }
+    },
     {
       "id": 2384,
       "date": "2026-01-06T11:03:41+00:00",
@@ -47,10 +75,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2382-1-77eb5f6087dd-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2382-1-77eb5f6087dd-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/qq027iYp6fK9p9yWmtvNLz4g5ILCOivXDq5eezFj7uyg0wZEBk1CuOGp18m0PHY37vbhfUyMqK18WpCya84ODHNUJ-XHGlr1UkdO0_V8jr1KsIh2PofxHgiYCRWE6VpqiwqYt07zeBSAmjCtM71K1Fc4UPW_TiBrpDHOtbYUrmKveh-Lh3ZtNJpm1lPutW7wgh4kUXedrNPPwXEbhsqzFChQ9C8SsozILUL0BerFgTRiJ0UglTR0glmeQ4ver0yTv4dVeL7N2MXiQOJEXn6UlRH3zzX4-DUvP8THtAG1oXCjkzIMihRfqgeEpkN5bq7YXpjC0p6Yn34aN5-qwima6g.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2382-1-77eb5f6087dd-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2382-1-bc7310f8e1a7-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2382-1-bc7310f8e1a7-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/U_NeTMGJ7BTiTNLqNci20jgxB5h7smAW5WqWMpw_j_QUSvUFhvzb9l2M5_IFIKgK884VQXFsNxPViDtTU0f0y6gkp5SHtEcLoTbzBLJrMmLd0-UtOq-uhyerep_pJR1Hd8XcPpsOJF7pUAuajkf0yyIQUao_LEspKwqax-UOzMgWqSPY3xNdzs4L6lessFaS55t4ZD_r70qXq67anxFNLIfvr2OA5ju2PI1hUnpsY8_JH-6XZXqHhoqGoqCR04X--SgmANVH5JuMS3oHG8go15vdKWZ9e--OqM3x79Runvm-L575ek2hbC4zlxNx3vUn5On48KPa-HczlXnZFx2PTQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2382-1-bc7310f8e1a7-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -104,10 +132,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2380-1-f98f17545c00-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2380-1-f98f17545c00-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/WT2su_TXzWNhAPpjTgGAtxlGxa7aPwZgRvLRGHboXnf0D3LWcO3yv8rqTVMTiUgYVUvzFcPEZir-w1N4DzpBaOLYtn9EX-AWPkNRoYyGeQh6x12AGZShfNUV2PAWJv4NS27jElPcUqGL_xRKMFk7ZbZM7_j9zVs32xHNEMYDMcsMWIllSmeKen7rM677Lw1jrvEatWC-Zsj2BCBq2I53N3Xyx0AvAyUAPdq53ZQXd2ImPB5Rz0jl5OjXKxjtgrtEDi-Qf572wPMdmUqXpB8ISF9LnDu8pZS8rCmadFDPhQP6y0ii3i4KdyhlfMtqEpuJaZ4c4tFSSBYB5RahW9qX7w.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2380-1-f98f17545c00-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2380-1-2878841b49c3-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2380-1-2878841b49c3-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/SNfg7xn8yvLIjr09caW-PaOPcGYYZc_8Ye2duAae_Sp7NmGR84v2mlN9fe7uTd306mUsAlDg21tkLiTp5q1P740xYZGIdDIQ-k09l43XSKRboIvVcGgIPLAR6BEQc6vtzJX4KiQbaucP5fNiMPXOpqAFtojodkaFl-SmXmEHe3dleMhbSiIvBLJzPzqTvf9ZqY1bTYWBxfLY8bc3QHkVqv1-ACcsJ94zBfCSQecmHA2N-h3Ryah_hv0HQAkGsQLZ4qZaM5LcIhRYlhBLiRAitp6kxcelYaSd1DuVLKwIk-C2q7_2P4MGgzL0RjitS9MPY4MEcloPMQgaVAlYUgfYLg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2380-1-2878841b49c3-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 495,
           "feed_width": 1800,
@@ -138,10 +166,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2379-1-4aba3cf520c5-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2379-1-4aba3cf520c5-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Y9EB7PiwIc64gg4kTlLQRwvlK58G7gppfZ21Cnxct7aHDlocFhXD-1OMUBajWz-8MwPaAg05P57VlNexEZU2mqrVJ-AVeipZ9R7kaHV5AjSvoVMBQmDxXf5IPhsvH6DL3hhr6S0adJbGVCaKlJwWGEFY3aVoEpZQGwYFOI8WTaUIGDBI1gmedod0LxzFTGzHm4HAvLR4VP2hxaXqeL5KI-RfoBniFQXKF-90OLF69hNLX89udu6Xc2VeAKyDGj8lGuREYywP0BF1hMhzcEy6VtoQm_6YBHjpOT77UXH6sZ0_t5OyKYAut02a7I_uCvkx8hB_FsOsCt8382lraXTQkA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2379-1-4aba3cf520c5-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2379-1-99d1131a3e0b-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2379-1-99d1131a3e0b-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/teuhr93dkoGkg-TITloeOADu90nLYIIRcSIm_RQEIT4hON6aOKQyMijfSdt5brpOSdcnM_UAnPHuPK37WQ5Ky0ENEZjQKQgmQjNA5L9m0reZtG0UPbmbQrssrwI_qQqfUbpdKAeUB92SkGVd2Wwo9ep-RA45zRBqiJrewrePtSP4RUM-1ARHDjh8N5afr8J8rjG7rOBOc_lmVB_tTFyUR5kgCz1abg5gSVkU8_Y70O1itqKhOiGX9X8TlfD2DRwABOvJQKcY5ZWwyhz29yItPDZP0UyDoqDJcAzWYQxJeRvEuSBlxRENHJVlnx6HC04zKmri2B55gprp17ymJECMfQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2379-1-99d1131a3e0b-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -167,10 +195,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2378-1-8b7fa5660a6e-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2378-1-8b7fa5660a6e-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/IwvruurbPY0eCGgcFC0PTecUoQj9QAvlsEmZeciQ6dZmz8Zc4_HD0it5YqMdxpbKKDO_DUlO-QkD55vQtShJJ6bw55ELbhL0h6tkyjqIWIAdaDGJwMN745xPYgr5XsaGZzcGnqXjockLMNDkjI9hsbcpWCHniFxFgL_wDzJaYfxrIgiO83MN5yc6aP873i_f3JOQe1WOnYg1ndR5HDDCBsOSVEr0aNXgfqXEtQTCV4LIOCj9J3pF-Nj6YaXnnupzRY5q4lEyEE37JZY_gCqJsumNLGUY9YrWNN7TCDXFSW_N8vxg2wcNpqpDyuuh3FP3zx0ueram_bA-hKHqrhytSw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2378-1-8b7fa5660a6e-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2378-1-9de9126ed248-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2378-1-9de9126ed248-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/MftH3zc3-bimm95NXHnukxkKD6MSBHbwpBG3_SKpAbATu8E2yHTvVwg5VNzp_UAZ984pdWBOMYMxWgsbBe5CkSSgjTcxlrie7Vlq8zcfUfSChujUayMzKGfAlxiBORNs4auzumVAHu9uyKtaOic0wD4qYXaAtccq0F_AofbsOJT7SpZatEa8nIbEy1hkuHNMxRXoB-AM3AImpfJdCfPd_v6u-NLlw9BpWYefEt8esEtMuNfdEHd1EauNu_2onNI0bF4fFb0oX4OT98IJdv6rrM4j0Obc8v19sU3tLBOGX4pCNDs7qvECJ6n9jbs6ltOCUbpi7LcaP-NV7hvBSbzFeg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2378-1-9de9126ed248-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 527,
           "feed_width": 1800,
@@ -212,63 +240,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2377",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2375,
-      "date": "2025-12-26T11:04:15+00:00",
-      "text": null,
-      "text_html": null,
-      "views": 1840,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": "data/channels/pg-tax/media/posts/videos/2375-video-note-78850e1bb8e5-v1.mp4",
-      "tg_url": "https://t.me/PG_Tax/2375",
-      "forwarded_from": null,
-      "reply_to": null,
-      "video_note": true,
-      "video_poster": {
-        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2375-video-note-poster-7e1fe10ea7a0-v1.jpg",
-        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2375-video-note-poster-7e1fe10ea7a0-v1.jpg",
-        "full_url": "data/channels/pg-tax/media/posts/video-posters/2375-video-note-poster-7e1fe10ea7a0-v1.jpg",
-        "thumb_width": 640,
-        "thumb_height": 640,
-        "feed_width": 640,
-        "feed_height": 640,
-        "full_width": 640,
-        "full_height": 640,
-        "source_width": 640,
-        "source_height": 640
-      }
-    },
-    {
-      "id": 2374,
-      "date": "2025-12-26T11:03:57+00:00",
-      "text": "🔥 Ответы на вопросы  #Сергей_Пепеляев_ON_AIR\n\nУправляющий партнер \"Пепеляев Групп\" Сергей Пепеляев продолжает отвечать на вопросы подписчиков, заданные в комментариях к рубрике 🎤\n\nВопрос дня:\n\n❓ Скажите, пожалуйста, ИИ заменит нас, юристов, или будет нам в помощь?",
-      "text_html": "🔥 Ответы на вопросы  #Сергей_Пепеляев_ON_AIR<br><br>Управляющий партнер \"Пепеляев Групп\" <a href=\"https://www.pgplaw.ru/to-get-the-team/sergey-pepeliaev/\" target=\"_blank\" rel=\"noopener noreferrer\">Сергей Пепеляев</a> продолжает отвечать на вопросы подписчиков, заданные в комментариях к рубрике 🎤<br><br>Вопрос дня:<br><br>❓ Скажите, пожалуйста, ИИ заменит нас, юристов, или будет нам в помощь?",
-      "views": 1770,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2374-1-59902844eeb8-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2374-1-59902844eeb8-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/t2SIZOXs47cR1fA968KjdL-vcK9pCfbiNefJtpBuEMno9renQASb-COugig45hH1GAoGzTolA8mUxO0UyeyRZVFbS_abrSpR38bO6D1yyhbMmmYP7702_KiuIRts1WBS-DoxF40qNP1rMJBqAUwtFt5iW8zmk5JuvF8XBQuCwFtj_pA3fsn2BXeUX9yCCzR_ycvZ-QdsDCe8tJ804riQiWm1vm_IWGjMPHpa0vXQZLhC03lQOxAjB3KvmoZF9oJvri251ElLPNGrDcr7GBdW0f1oLWKjLqe6jqTHRjSt3Zj0iYqe2vm0caCPnBOen9rXIImY0y9q4l6OisOywAInrg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2374-1-59902844eeb8-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2374",
       "forwarded_from": null,
       "reply_to": null
     }

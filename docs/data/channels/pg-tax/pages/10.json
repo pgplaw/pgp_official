@@ -1,13 +1,42 @@
 {
-  "generated_at": "2026-03-26T08:41:19.106766+00:00",
-  "build_id": "2becec02a99e",
+  "generated_at": "2026-03-26T11:42:19.749889+00:00",
+  "build_id": "ba2f8228a19c",
   "pagination": {
     "page": 10,
     "page_size": 16,
-    "total_posts": 169,
+    "total_posts": 168,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2403,
+      "date": "2026-01-19T13:05:27+00:00",
+      "text": "📚 История одного исследования\n\nСергей Савсерис, старший партнер «Пепеляев Групп»:\n\nВ начале 2022 года я задал себе вопрос, который тогда казался скорее исследовательским, чем прикладным:\nможно ли оценивать работу Верховного суда по налоговым спорам не по отдельным резонансным делам, а как систему — через объективные показатели?\n\nМне почти сразу стало понятно, что сами по себе абсолютные цифры мало что объясняют - нужно смотреть на изменение показателей во времени. Так появилось мое первое исследование — Оценка работы экономической коллегии ВС по налоговым спорам в 2021 году. В нем я сознательно взял более длинную перспективу и проанализировал количественные показатели работы и ВАС РФ, и Верховного суда за период с 2007 по 2021 год: количество налоговых споров, количество обращений, долю жалоб, и все это в динамике.\n\nИсследование оказалось востребованным, и в том же 2022 году в статье для журнала «Налоговед» я попробовал сформулировать методологию, которую для себя считаю ключевой до сих пор: соотношение количества обращений в ВС к общему количеству споров показывает качество работы судебной системы (чем ниже доля жалоб, тем качественнее работает судебная система). В свою очередь, эта величина зависит от доли дел, которые передаются на рассмотрение СКЭС ВС – чем выше процент переданных в СКЭС ВС дел, тем качественнее будет работать вся судебная система.\n\nДля меня принципиально важно, что этот подход впервые был последовательно применён именно к налоговым спорам в России — к массиву практики ВАС РФ и Верховного суда, который до этого, по сути, никогда не рассматривался как единая система данных.\n\nВ 2023 году исследование усложнилось. Помимо обновлённой статистики, я добавил данные, которые тогда системно никто не анализировал, — количество переданных дел, долю переданных дел по каждому судье СКЭС ВС. Это позволило посмотреть на работу коллегии уже не только институционально, но и персонально, через нагрузку судей и их результативность.\n\nДальше формат окончательно превратился не просто в ежегодный обзор, а в долгосрочную модель наблюдения: с сопоставимой методологией, накопленной динамикой и возможностью видеть изменения не по ощущениям, а по объективным количественным величинам (исследования 2024, 2025, 2026 годов).\n\nСо временем стало заметно, что сам подход — количественный анализ работы Верховного суда по налоговым спорам — начал воспроизводиться и в других обзорах на рынке.\nЭто естественно: техника расчётов и источники данных здесь понятны. Ключевая ценность этого проекта для меня не в формулах, а в самой идее системного взгляда и в накопленной динамике.\n\nСегодня для меня это исследование — не разовая публикация и не инфографика. Это способ из года в год смотреть на налоговые споры в Верховном суде как на живую систему: где меняется нагрузка, где перенастраивается судебный фильтр, где смещаются акценты.\n\nИ именно поэтому я продолжаю делать этот анализ ежегодно — сохраняя базовую логику, но постоянно расширяя оптику. Потому что ценность здесь не в одном отчёте, а в накопленной истории и возможности замечать сдвиги тогда, когда они только начинаются.\n\n🗓 12 февраля 2026 года на ежегодной конференции «Пепеляев Групп» «Налоги как искусство» я презентую очередное исследование — анализ работы Верховного суда по налоговым спорам за 2025 год. В нём я также представлю новые идеи и новые  данные для сравнительного анализа, которые не входили в предыдущие исследования.\n\nБуду рад видеть всех коллег и клиентов и обсудить мои выводы уже в очном формате. \n\n🌐 Регистрация по ссылке.",
+      "text_html": "📚 История одного исследования<br><br><a href=\"https://www.pgplaw.ru/to-get-the-team/sergey-savseris/\" target=\"_blank\" rel=\"noopener noreferrer\">Сергей Савсерис</a>, старший партнер «Пепеляев Групп»:<br><br>В начале 2022 года я задал себе вопрос, который тогда казался скорее исследовательским, чем прикладным:<br>можно ли оценивать работу Верховного суда по налоговым спорам не по отдельным резонансным делам, а как систему — через объективные показатели?<br><br>Мне почти сразу стало понятно, что сами по себе абсолютные цифры мало что объясняют - нужно смотреть на изменение показателей во времени. Так появилось мое первое исследование — <a href=\"https://zakon.ru/blog/2022/02/09/ocenka_raboty_skes_vs_po_nalogovym_sporam_v_2021_godu\" target=\"_blank\" rel=\"noopener noreferrer\">Оценка работы экономической коллегии ВС по налоговым спорам в 2021 году</a>. В нем я сознательно взял более длинную перспективу и проанализировал количественные показатели работы и ВАС РФ, и Верховного суда за период с 2007 по 2021 год: количество налоговых споров, количество обращений, долю жалоб, и все это в динамике.<br><br>Исследование оказалось востребованным, и в том же 2022 году <a href=\"https://e.nalogoved.ru/958182\" target=\"_blank\" rel=\"noopener noreferrer\">в статье для журнала «Налоговед»</a> я попробовал сформулировать методологию, которую для себя считаю ключевой до сих пор: соотношение количества обращений в ВС к общему количеству споров показывает качество работы судебной системы (чем ниже доля жалоб, тем качественнее работает судебная система). В свою очередь, эта величина зависит от доли дел, которые передаются на рассмотрение СКЭС ВС – чем выше процент переданных в СКЭС ВС дел, тем качественнее будет работать вся судебная система.<br><br>Для меня принципиально важно, что этот подход впервые был последовательно применён именно к налоговым спорам в России — к массиву практики ВАС РФ и Верховного суда, который до этого, по сути, никогда не рассматривался как единая система данных.<br><br>В 2023 году <a href=\"https://zakon.ru/blog/2023/04/24/kolichestvennaya_i_kachestvennaya_ocenka_raboty_skes_vs_po_nalogovym_sporam\" target=\"_blank\" rel=\"noopener noreferrer\">исследование</a> усложнилось. Помимо обновлённой статистики, я добавил данные, которые тогда системно никто не анализировал, — количество переданных дел, долю переданных дел по каждому судье СКЭС ВС. Это позволило посмотреть на работу коллегии уже не только институционально, но и персонально, через нагрузку судей и их результативность.<br><br>Дальше формат окончательно превратился не просто в ежегодный обзор, а в долгосрочную модель наблюдения: с сопоставимой методологией, накопленной динамикой и возможностью видеть изменения не по ощущениям, а по объективным количественным величинам (исследования <a href=\"https://zakon.ru/blog/2024/03/28/nalogovye_spory-2023_skes_vs__chempion_v_chetyreh_nominaciyah\" target=\"_blank\" rel=\"noopener noreferrer\">2024,</a> <a href=\"https://zakon.ru/blog/2025/03/05/kolichestvennayai_kachestvennaya_ocenka_raboty_skes_vs_po_nalogovym_sporam_v_2024_godu\" target=\"_blank\" rel=\"noopener noreferrer\">2025</a>, <a href=\"https://www.pgplaw.ru/upload/iblock/379/2xhy2m8deiy8vlay1erb1pzz1yqpg9t6/PG_Tax_disputes_VS_2025.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">2026</a> годов).<br><br>Со временем стало заметно, что сам подход — количественный анализ работы Верховного суда по налоговым спорам — начал воспроизводиться и в других обзорах на рынке.<br>Это естественно: техника расчётов и источники данных здесь понятны. Ключевая ценность этого проекта для меня не в формулах, а в самой идее системного взгляда и в накопленной динамике.<br><br>Сегодня для меня это исследование — не разовая публикация и не инфографика. Это способ из года в год смотреть на налоговые споры в Верховном суде как на живую систему: где меняется нагрузка, где перенастраивается судебный фильтр, где смещаются акценты.<br><br>И именно поэтому я продолжаю делать этот анализ ежегодно — сохраняя базовую логику, но постоянно расширяя оптику. Потому что ценность здесь не в одном отчёте, а в накопленной истории и возможности замечать сдвиги тогда, когда они только начинаются.<br><br>🗓 12 февраля 2026 года на ежегодной конференции «Пепеляев Групп» «Налоги как искусство» я презентую очередное исследование — анализ работы Верховного суда по налоговым спорам за 2025 год. В нём я также представлю новые идеи и новые  данные для сравнительного анализа, которые не входили в предыдущие исследования.<br><br>Буду рад видеть всех коллег и клиентов и обсудить мои выводы уже в очном формате. <br><br>🌐 Регистрация по <a href=\"https://www.pgplaw.ru/events/upcoming-events/nalogi-kak-iskusstvo/\" target=\"_blank\" rel=\"noopener noreferrer\">ссылке.</a>",
+      "views": 1410,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2403-1-c7eb1c087a0f-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2403-1-c7eb1c087a0f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/WwqJbEDQd9btEEATH4RjBSIrrpjKS4aL6t2lh2fclXpm2rYA1YcTsdkC1lwaV1GVCx8-GIk9iQjZfoGcqLJn6_MLXsJFUyuXsRp8OCMkhLdjFlE1OmOEbXV2AJL3V_NQsW1fSTDQLCGh-xjKEHvQojzEsmhRTLKgKPdHjXOMpj7_WAHCPjW9_JD4Efp7iHtFhGY8dPcc8zAjw2Hey5GFXYHkLQ9nrDtgYYAKl0jjppO3cmX133ZSiQI_pQ4CYfShBu1f5VV1mr3ljTQwp2ouAJoQ_N8SJYs_Ahxhs0NL-j_tnmpxs6reDpwuGqTObrjhsu2FIarozE37e7cmgxvQQg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2403-1-c7eb1c087a0f-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/PG_Tax/2403",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2402,
       "date": "2026-01-19T09:55:35+00:00",
@@ -37,10 +66,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2400-1-02e5e8cda004-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2400-1-02e5e8cda004-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/uj0oxrv5gxdr7YCUgsROfgXQdjr5QxzW38jNEVCE1coHPdI9QX6CAH1dQobG6rFchCDu0TbznqWS0qY5IjVodlzJ_KqGG6Ewd6r1iWvEK4ecBxAqeyDG-vlPVUXqO8KdcnTpcWrhJCYXbCYwWMr9Bvuq3yStK6SA5FITkOHJMXSmD8cn-UBxE4c1scVw3-6oZoxADq6_zg5aXvXZ272sB4m3iaXLXyqkM2iuoL6Hh4Bp9a8rp_0RP7EDqkXZX2uvS1yn-szmSsdjaePH-3kwz5iFuZTfn1n_mxiY8cLCwzUr3kp28ObiVNWoKa5KJj264J02M263t2yVk6RAKuCVOQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2400-1-02e5e8cda004-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2400-1-3a7b9e6efa9d-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2400-1-3a7b9e6efa9d-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/jkMjOk0s6SGo1HUklIPRBBlRokRrE310v2_p2_MosE2qkVA5HHRlLQ2a0U6m60omL_O6nfLS8jWPzyoYnwCuUpCqgsbWAGJCzyVDkDa2nNmAWKVe-2SCZ1GCR2N_jVKvRRoM8Xqz1htoqAi3omFM1tPjsgUL5_Qvs2K177BL_cvK9j-YEmOfkoJEZlt9B9z7Z6JepTVqO2GYMvzW8p6SZngepJXj4i5S1twnoxjC8bnHYfk7cc_6bljrBJNy8-s7lv-Eg360ZUlSclJreelrQbjPL663nmFHOgZ_EBSQbJ1ciwGcEoYbt7qzvjrBdLUsaiVbla9mP5ntzzHFaBV9jg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2400-1-3a7b9e6efa9d-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -66,10 +95,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2399-1-a12f2a857f0a-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2399-1-a12f2a857f0a-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/dffbSJP-YMtxXsHChSgSrFvHhTwfaYJ7B9t-wKNstLOMPYDEwS8LrCToEksiq4pXKOfdQYUtUhLZRd5E2NfOwuW-MR80nnqsDM_fHz6x24zEyzS8mB7Mq-hVoOWtpUHydj90MqWbEJnUWvbjbZX9V4W_sZekIoxPJ3kxdUecF4TGw5nbMJbZGgFiSO9JIF16CoPFPsHJoaW8SkC64b3__LVjNO65e92xYmnnCI2uJAGQJOEs7ZfcYshpQQ7ygc3W1CBZWv1ZQ69dh3ysfoWe2U-uIeQBmNBnyozdEdfapL7NcWBEdVNrRx6Tn2Ef9tPNVngXRGOWtfk3kMZPLRuTlg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2399-1-a12f2a857f0a-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2399-1-12830b013461-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2399-1-12830b013461-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/d4fKGaSZa3g3sAkoyoGgC11MczLyaPFEmc_44M5XABanfz6pNTh_dvoiZXUyK4vfH40565Y5qLO7KiNoIlBE4rRhAxNS3xqndYvyqcSfAXysqkGlNZa5GKQij-_N8W-fAwTnbcgk2kEW-0dEueXytyMqhrUO0_tfYZ0M-xw6odhpTg1Rs0IpJI2ogIhrcgyjwI3Re6cMf3Dx3ZWD2roIzQTvgk5QSu57b6jRs2ARj_hPwBThzjk2vauYozbMQmhxyrdTmxLRflxg7my0Tb-vcChROSVqkbYiAzmxsc4vqx385vj7919DdGFQTc1C6ZbyPDlC_QILHqzVYlPIoKP65g.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2399-1-12830b013461-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -124,10 +153,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2397-1-6bcdc1940f8a-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2397-1-6bcdc1940f8a-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/MsdXgIilwL9ZkuzTyM7tgWbvTl96_ADKfpxWPxx1tSKo6R9KgtbZPMgCjgC7X7ysUM8DZHhfRdRbqU0OIB7zhIalSClxZoezud8m9zCK7SSWbazy7g4exUq8w4-H2Bu3WuKFochzPkMP8_CGw0lRhjq68Pja__Rn8G4FZU4Qg2BoviNKxLxI_hBV050JDLBMnX6dpBYBk8ilxN-lXI_Dc7cnpZGddGrBQh6sb0ha3KQnAHDzkEw2tZxPRctrOkP5IqGIUkl9Cw5s9xtUK0Kn-nF6FYw-JKbDtWTRcTkI3YQ8F4U7acaOkfLbtzTKrPZSEISvqKMngt17P6yLvLUu_A.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2397-1-6bcdc1940f8a-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2397-1-6e8167a47b3b-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2397-1-6e8167a47b3b-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/S5NAgbf_p3dvhawtUQkJUWoZR0fIfsMOAy8iRiu9OzFh99Xt9Jr2RJ-EmRuh-Bb5IEe0hlVHRCTF23G_1FMRoedp6vSmq6RK4Cet6K9IxLvrRxJJxAMhEfHQtlzsjRhi6jUPOSu5ffzjlp18zksnFpCuI9UNUFnKV9P52DGLnQqIN5eWGCJ1aeztBZ3jM_AFYzJTfFP9mHb-ZN-FvCItppwMndnUYKCqKCpmLOaTRTMN0gkuoGvybNfOBrmEzLWX1R2e0SWdyN9_6FgGFwDQKXimkAV0oOX-IUCPmF67-OeCLWvYO3vSnjJQvadEYhIttYnDlIQY80Poi4Lkj4bTQw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2397-1-6e8167a47b3b-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -153,10 +182,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2396-1-cf292d2188d3-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2396-1-cf292d2188d3-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/KelGaUTwiKkRsaQk2XmE2lfqntvBXrQjeVpke062YG_7lFirWKBk8CDJdo4BsDaNUNRldhV06cmN1isV6EYR5PePjZCkXErtbmiKa4k9NJql9oFxPcaEC5tEVgTvHpOXPWWNIoChcq88SU4BBSAsHwkjztMGju2Xfd3jqxHGBY7rbgAmZvmes7A4wkLMQezylFM8N3Uv1LhlrXEon9g08EeAkNV6AlMUHXzI-3fxYZ11xNRgguNsCX9c1nROFvP8BHwpDLY49RQxuuUr4dFbq-3p68kmudt7mgTTu-isILTL2Eqw_Nn-PwLgLZwsd7DvdEYcQ-XiLvAEiB_ERhPmIg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2396-1-cf292d2188d3-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2396-1-3daebcd9b721-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2396-1-3daebcd9b721-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/V2GMCOIqhGd83YBPyJiL6_3huY3te24RqdTHPx09QxZ_BUGdIY63VD7CB5-P2fHSlnIRaUTO3_YhC6Likqh4mVRzCAuzDcX5kEKQGz5NSC_q3F88DIytQ051HTjjCbzbxkpVJk7bnqwk6-L44do_9IXgVZYeYnplosos_vuE2W0teoPhSXdC7QnrUn9WBkeZDkt4IX9jcESAbEo6mVAWAVpONvQ1zM-1uy1QR3MpS64vuYZH-oS3ndQy1WH6zIS-sECOI4IqKWQ4w1CIMHWZrBLQx0JIm696DXWSDQyGFslKVBIfEqBpYsGgXeTC7CGkKxcrFZpwtu_YpB_JvNT-ww.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2396-1-3daebcd9b721-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -211,10 +240,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2394-1-7055b9a6491f-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2394-1-7055b9a6491f-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/qf5gh18JDx_2Gxq1oxMHePiC-RdgZFLZQAyv6KhX8U4Xp8yY_zSry6mrzwDjXrdfQytawO49AxEuhvNutNg-yv9HXZ-3kYc2ZdvNJZpG7LUjYD-QG_Di2d2MDpqkKA7o4oV9h_t6RYNfSYhxOjEaOVL2eutHU-PYHyd0chovMFTkpy7L1DDynM2dJLGTFd_1chS_MY_eCB0aNOFNAaZFvhaLQ0BN61ZfPQgHCPAnH7agHYTM9ZD7-C5hqfEKCJ0A58t1KW2AB81k4aomKgD5awJ-sMqKDfUCX4bpnxQy5HCz3WCBakXSmy5ZgycBiL3zmBZQqxkD06hwGR_1wLevuA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2394-1-7055b9a6491f-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2394-1-1271bc17f77f-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2394-1-1271bc17f77f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Z_BlNYDhNvlo-STPiE4G9hFlZatOuiaUN8Ht435bVHfKrOZpmJmZ2PUepKYkbczlZrlu5Nhbx9Dmak4gDYw4AsioKzfOQRt-8ezmY8ZrIqZgLMOEWePGZDJj2J53mlMuvjYlM7gfuhwUi9VeSKr-y2dgT1AzrK_08g5Y9dg6pa1qfnOcYZ58WzRa59-ZQMGOyefn4X_Z9QBKp9Zxvwuqwx_bKe7ZoR29x8Qdx4bw2NrN93DpjlPtUCaB2XoNdW6eH-oglS1phbLyJiIxRUPGncWJ1-iORMRD5vdsZ1ztBOC_uHE9LZFmIrvT3P-vW4ATxn4MP0mJQAMpuoAzd2D59A.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2394-1-1271bc17f77f-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -240,10 +269,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2392-1-a40e76d30a91-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2392-1-a40e76d30a91-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/BfNJ51pNEsjtMYHg5FKzUty-JGb7lWRrcPN-5PP7YdbpJhjPP3UJlJepON846dX_pZQd9GTPyrgndibfTLRwyKVNKusXljLu48Z8bgKiipaHyHA9-ilKNh8JzJh_OIhYudMm25rCiFq_tjtmOqqXMWuuyoBSjjScguygqPomBBgPjiZhtaxQIeo-bDkNbfwAZYlPiiSNbhdEGHvsAvw77Wa-qle-Ii76MqLgvitkfzni7i3Yo01Y6MsL06KXKv-lKI7J0jfER6CS0uj7Xp1eAgsVmthtjBzo3huBF48UF3TZYtbzWyDraFCPsYvVs7RCGkFvHrfSOlTCINUnfRHkGA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2392-1-a40e76d30a91-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2392-1-05d68a67fe4d-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2392-1-05d68a67fe4d-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Z9t1n_H5J7KINzI3hw-47z6oIeSD3eeiHcyjDmmNQJmxcps9D7ZEQKCDtJUCQ4FzfI5UfL6DuGh0F_-xwHbAgZ8p7Y7P_hdqFeIpnWaxJ70VNsbhrqHapNuDu0K-LpdvllqvQbcjl0Esbo9AivaSPNAt4N1LdOGKumxVLctuRL49mB-Q4QluqwEcLwDWR8b-rmMWQ-pdRLoAI6juiQRyV4-mLhR-TTofQzXwUhDu4palVOSvaJHu5n_UdqKuXLWkRkX8Hu7bzJgCVibDplbAVqoYMXp7PLuLcFazRGcCECKqjHJfiOjjvyP-AVteXJBmgPJ_VsX1PTawRO8_vH-dIQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2392-1-05d68a67fe4d-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -269,10 +298,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2391-1-c74233144d23-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2391-1-c74233144d23-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/OnADIJVFSibGqH7JNF_K7xTeM8qiJGx_2uMaTqNjApF-ML8VCmO4E_RTznwCrJ-rctOmVDhZFdAY28UOjQHvATPPJJLbLygLLQJXxfpnkS9Wa-f7BZ_p9puyXp4sJCx4uv9Zi785yyiUZTFL317hgkDr73BcIm2f00H2oc-7a6b6SOrzen4RpsQFEVhz259bCi6bjONikDU7EFJp4nbFSsJi-CE0hE6Dp3Tsi95lWNyK7_fuhCpmDn4jVXKp-mK7m_xaAvUVQmtWLxPtsTxtVUNrc-74RHi-ephfplYEMY6lUszi5TbQkgeAwpxHybwy10W9W92uKe1yI6HWmz2RNg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2391-1-c74233144d23-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2391-1-838b02c9c0ca-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2391-1-838b02c9c0ca-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/hRLMgKm8s_yBfuU4RCqOnri5ZzVObL5uIug-IxUewy8_LKYj_qY9Xjpw8CyP9_q8m2gBjrndWqjDK9dWWHDuAACZaVktXPyWS1ofDBpj3ZI96PluQgUvzQZh99huIpCqzfLHNk6W8q1wunKjefdXAyy8i3eju82vPClXruA6plPUOnjc3ej5q1o-CLaXZDcfTKKhHEAvof-U8AfUbO063pudnjVBzU3tOuMb3uckQOGEieP9DDxszKhBVWiQDe_QMk0YqZsl1QFUZgMP-OMRxF2b7TQluwsWR4nI-mF8OgQIW6LcSfL1f1ifVkfvoIj70C4TDSyZcWIjS87atCMj7Q.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2391-1-838b02c9c0ca-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -370,10 +399,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2387-1-e78a6837243b-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2387-1-e78a6837243b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/QWViUiTnmKfwP7QiIMwOJJBe4xEqidxeXp4UyFQINgwdd-mFAM9RPdURLihvCxaoWfzbxpd30dooojDLz-FdWCo7wbviQfrl5t3peqSV3Svjmx3VnxFZlb4cswY7MtsnED84ChvsQfhjTaN_FZOoO-tEePwEC9rfRS06VPC9pDDtskBgZTatASMDB23ZW_nfdhNjlvAXE3YQHC9ZAoLLMGm4fqfsKWUTSG3CBQCNWKA7KLm5kwO1N6LD3ng4OmcM9TfexENdxCqsiXu8dEDkptvNgIL90frHpUCzBFgULbmvuVle484qTaBUXZqZYDo6vgsaPY40Ov4m5e-1qaR5TA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2387-1-e78a6837243b-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2387-1-3014058c7207-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2387-1-3014058c7207-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/R-s0QQG7W1DX0TIU88u9xBo7hr6rmJC3l89vxI0WIuOT3B6B_kFF3gRaEe8zZBSfiSbl2ND5AH7zNlGbS4VFcOotNYHHiguCuRljvxqF_6JO3GUDl9EhUF3dZggffyHrVgK6cHpREjHg6SNEleoock8EQU2CBgIJNjNi8zv9VlO7G8l148J2h1uW3AiGfUCS7PUe8bvEm2bE36InC_j1Vfw5fBxL2y_PFpmxxrIwBrYjsg-OG3w0DRJugDpQkplF27Fqld0oQ7qU-ozV2i_hSOao4TXLavlpJoHYuNUkeNNDhCrlNYg4RR1n3jintMBdO-N3ze1g4wTrJ2AqPwaa0A.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2387-1-3014058c7207-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -417,34 +446,6 @@
       "tg_url": "https://t.me/PG_Tax/2386",
       "forwarded_from": null,
       "reply_to": null
-    },
-    {
-      "id": 2385,
-      "date": "2026-01-06T11:04:03+00:00",
-      "text": null,
-      "text_html": null,
-      "views": 2080,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": "data/channels/pg-tax/media/posts/videos/2385-video-note-ca0da8d0eb35-v1.mp4",
-      "tg_url": "https://t.me/PG_Tax/2385",
-      "forwarded_from": null,
-      "reply_to": null,
-      "video_note": true,
-      "video_poster": {
-        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2385-video-note-poster-bd657cb94614-v1.jpg",
-        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2385-video-note-poster-bd657cb94614-v1.jpg",
-        "full_url": "data/channels/pg-tax/media/posts/video-posters/2385-video-note-poster-bd657cb94614-v1.jpg",
-        "thumb_width": 640,
-        "thumb_height": 640,
-        "feed_width": 640,
-        "feed_height": 640,
-        "full_width": 640,
-        "full_height": 640,
-        "source_width": 640,
-        "source_height": 640
-      }
     }
   ]
 }
