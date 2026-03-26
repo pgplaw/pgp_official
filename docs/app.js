@@ -332,6 +332,26 @@ function normalizePhoto(photo) {
   };
 }
 
+function normalizeLinkPreview(preview) {
+  if (!preview || typeof preview !== 'object') return null;
+
+  const href = String(preview.href || '').trim();
+  if (!href) return null;
+
+  const entry = {
+    href,
+    title: String(preview.title || '').trim(),
+    description: String(preview.description || '').trim(),
+    site_name: String(preview.site_name || '').trim(),
+    host: String(preview.host || '').trim(),
+    is_video: Boolean(preview.is_video),
+    image: normalizePhoto(preview.image),
+  };
+
+  if (!entry.title && !entry.description && !entry.image) return null;
+  return entry;
+}
+
 function isTruthyMediaFlag(value) {
   if (typeof value === 'boolean') return value;
   if (typeof value === 'number') return value > 0;
@@ -346,6 +366,11 @@ function hasVisiblePostBody(post) {
   const html = String(post?.text_html || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
   const text = String(post?.text || '').replace(/\s+/g, ' ').trim();
   return Boolean(html || text);
+}
+
+function hasPhysicalPostMedia(post) {
+  const photoCount = Array.isArray(post?.photos) ? post.photos.filter(Boolean).length : 0;
+  return photoCount > 0 || Boolean(post?.video_url);
 }
 
 function isRoundVideoPost(post) {
@@ -1883,6 +1908,35 @@ function buildRoundVideoPreviewMarkup(item, index) {
   `;
 }
 
+function buildLinkPreviewMarkup(preview) {
+  const normalizedPreview = normalizeLinkPreview(preview);
+  if (!normalizedPreview) return '';
+
+  const caption = normalizedPreview.site_name || normalizedPreview.host || '';
+  const descriptionMarkup = normalizedPreview.description
+    ? `<div class="post-card__link-preview-description">${escapeHtml(normalizedPreview.description)}</div>`
+    : '';
+  const imageMarkup = normalizedPreview.image
+    ? `
+      <div class="post-card__link-preview-media">
+        ${buildResponsiveImageTag(normalizedPreview.image, 0, false)}
+        ${normalizedPreview.is_video ? '<span class="post-card__link-preview-badge">Видео</span>' : ''}
+      </div>
+    `
+    : '';
+
+  return `
+    <a class="post-card__link-preview" href="${escapeHtml(normalizedPreview.href)}" target="_blank" rel="noopener noreferrer">
+      ${imageMarkup}
+      <div class="post-card__link-preview-copy">
+        ${caption ? `<div class="post-card__link-preview-caption">${escapeHtml(caption)}</div>` : ''}
+        <div class="post-card__link-preview-title">${escapeHtml(normalizedPreview.title || normalizedPreview.href)}</div>
+        ${descriptionMarkup}
+      </div>
+    </a>
+  `;
+}
+
 function buildMedia(post) {
   const media = [];
   const roundVideoPost = isRoundVideoPost(post);
@@ -2162,6 +2216,65 @@ function bindMediaFill(root) {
   });
 }
 
+function bindLinkPreviewImage(card, preview) {
+  const normalizedPreview = normalizeLinkPreview(preview);
+  const image = card?.querySelector('.post-card__link-preview img');
+  const media = card?.querySelector('.post-card__link-preview-media');
+  if (!image || !media || !normalizedPreview?.image) return;
+
+  const candidates = getOrderedImageCandidates(normalizedPreview.image, { isGallery: false, preferFull: false });
+  if (!candidates.length) {
+    media.classList.add('post-card__link-preview-media--unavailable');
+    media.innerHTML = '<span class="post-card__link-preview-media-fallback">Ссылка</span>';
+    return;
+  }
+
+  image.dataset.linkPreviewFallbackBound = 'true';
+  image.dataset.activeCandidateUrl = image.getAttribute('src') || candidates[0];
+
+  const showFallback = () => {
+    media.classList.add('post-card__link-preview-media--unavailable');
+    if (!media.querySelector('.post-card__link-preview-media-fallback')) {
+      media.insertAdjacentHTML('beforeend', '<span class="post-card__link-preview-media-fallback">Ссылка</span>');
+    }
+    image.classList.add('hidden');
+    image.setAttribute('aria-hidden', 'true');
+  };
+
+  const handleResolvedLoad = () => {
+    applyIntrinsicMediaLimit(image);
+    applyMediaFill(image);
+    logImageDiagnostics(image);
+  };
+
+  const handleError = () => {
+    const activeCandidate = normalizeMediaUrl(image.dataset.activeCandidateUrl || image.getAttribute('src'));
+    const activeIndex = candidates.findIndex((candidate) => normalizeMediaUrl(candidate) === activeCandidate);
+    const nextCandidate = candidates.slice(activeIndex + 1).find((candidate) => normalizeMediaUrl(candidate) !== activeCandidate);
+
+    if (nextCandidate) {
+      image.dataset.activeCandidateUrl = nextCandidate;
+      image.removeAttribute('srcset');
+      image.removeAttribute('sizes');
+      image.src = nextCandidate;
+      return;
+    }
+
+    showFallback();
+  };
+
+  image.addEventListener('load', handleResolvedLoad);
+  image.addEventListener('error', handleError);
+
+  if (image.complete) {
+    if (image.naturalWidth > 0 && image.naturalHeight > 0) {
+      handleResolvedLoad();
+    } else {
+      handleError();
+    }
+  }
+}
+
 function buildGeneratedPoster(url, size = 640) {
   return {
     thumb_url: url,
@@ -2415,11 +2528,13 @@ function renderPostCard(post) {
     (post.comments_count > 0 || post.comments_url || post.comments_available);
   const showVideoPostTitle = isRoundVideoOnly;
   const copyPostButtonMarkup = buildCopyPostButtonMarkup(postAnchorUrl);
+  const linkPreviewMarkup = hasPhysicalPostMedia(post) ? '' : buildLinkPreviewMarkup(post.link_preview);
   const metaMarkup = `
     ${showVideoPostTitle ? '<div class="post-card__title">Видео-пост</div>' : ''}
     ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : ''}
     ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
     ${text ? `<div class="post-card__text">${text}</div>` : ''}
+    ${linkPreviewMarkup}
   `;
   const roundVideoHeadMarkup = isRoundVideoOnly
     ? `
@@ -2439,7 +2554,7 @@ function renderPostCard(post) {
     ${buildMedia(post)}
     <div class="post-card__body">
       <div class="post-card__content">
-        ${isRoundVideoOnly ? (text ? `<div class="post-card__text">${text}</div>` : '') : metaMarkup}
+        ${isRoundVideoOnly ? `${text ? `<div class="post-card__text">${text}</div>` : ''}${linkPreviewMarkup}` : metaMarkup}
       </div>
       ${isRoundVideoOnly ? '' : copyPostButtonMarkup}
     </div>
@@ -2495,6 +2610,7 @@ function renderPostCard(post) {
     });
   });
 
+  bindLinkPreviewImage(article, post.link_preview);
   bindTelegramDeepLinks(article);
 
   return article;

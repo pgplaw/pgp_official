@@ -41,6 +41,7 @@ POSTS_THUMBS_DIR = POSTS_MEDIA_DIR / "thumbs"
 POSTS_FEED_DIR = POSTS_MEDIA_DIR / "feed"
 POSTS_VIDEOS_DIR = POSTS_MEDIA_DIR / "videos"
 POSTS_VIDEO_POSTERS_DIR = POSTS_MEDIA_DIR / "video-posters"
+POSTS_LINK_PREVIEWS_DIR = POSTS_MEDIA_DIR / "link-previews"
 CHANNEL_MEDIA_DIR = CHANNEL_DATA_DIR / "media"
 CHANNEL_AVATAR_PATH = CHANNEL_MEDIA_DIR / "channel-avatar.jpg"
 SUPERRES_MODEL_DIR = ROOT / "ops" / "models"
@@ -70,6 +71,9 @@ FETCH_RETRY_DELAYS = (1.0, 2.5, 5.0)
 FAST_EXTERNAL_RETRY_DELAYS: tuple[float, ...] = ()
 EXTERNAL_PAGE_TIMEOUT_SECONDS = 5
 EXTERNAL_IMAGE_TIMEOUT_SECONDS = 6
+LINK_PREVIEW_PAGE_TIMEOUT_SECONDS = 5
+LINK_PREVIEW_IMAGE_TIMEOUT_SECONDS = 6
+MAX_LINK_PREVIEW_CANDIDATES = 2
 DIRECT_POST_PROBE_FETCH_RETRY_DELAYS = (1.0, 2.0)
 DIRECT_POST_PROBE_TIMEOUT_SECONDS = 12
 DIRECT_POST_PROBE_STALE_MAX_IDS = 20
@@ -89,6 +93,7 @@ LOW_RES_SINGLE_MAX_UPSCALE_FACTOR = 2.35
 EDSR_X2_MODEL_URL = "https://raw.githubusercontent.com/opencv/opencv_contrib/4.x/modules/dnn_superres/samples/EDSR_x2.pb"
 FSRCNN_X2_MODEL_URL = "https://raw.githubusercontent.com/Saafke/FSRCNN_Tensorflow/master/models/FSRCNN_x2.pb"
 FAILED_EXTERNAL_PREVIEW_HOSTS: set[str] = set()
+FAILED_LINK_PREVIEW_HOSTS: set[str] = set()
 FAILED_SUPERRES_MODELS: dict[str, str] = {}
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -1342,6 +1347,138 @@ def mirror_round_videos(
     return changes_detected
 
 
+def mirror_link_previews(
+    posts: list[dict[str, Any]],
+    existing_posts: list[dict[str, Any]] | None = None,
+) -> bool:
+    POSTS_LINK_PREVIEWS_DIR.mkdir(parents=True, exist_ok=True)
+    active_relative_paths: set[str] = set()
+    changes_detected = False
+    existing_posts_by_id = {
+        int(entry.get("id")): entry
+        for entry in (existing_posts or [])
+        if entry.get("id")
+    }
+
+    for post in posts:
+        existing_post = existing_posts_by_id.get(int(post.get("id") or 0))
+        existing_preview = normalize_link_preview_entry(existing_post.get("link_preview") if existing_post else None)
+        if post_has_physical_media(post):
+            if post.pop("link_preview", None) is not None:
+                changes_detected = True
+            continue
+        candidate_urls = select_link_preview_candidates(post.get("text_html"))
+        if not candidate_urls:
+            if post.pop("link_preview", None) is not None:
+                changes_detected = True
+            continue
+
+        if existing_preview and existing_preview.get("href") in candidate_urls:
+            post["link_preview"] = existing_preview
+            remember_link_preview_assets(existing_preview, active_relative_paths)
+            continue
+
+        preview_entry = None
+        for link_url in candidate_urls:
+            hostname = normalize_host_label(urlparse(link_url).hostname)
+            if hostname and hostname in FAILED_LINK_PREVIEW_HOSTS:
+                continue
+
+            try:
+                page_html = fetch_page(
+                    link_url,
+                    timeout=LINK_PREVIEW_PAGE_TIMEOUT_SECONDS,
+                    retry_delays=FAST_EXTERNAL_RETRY_DELAYS,
+                    log_failures=False,
+                )
+            except Exception as error:  # pragma: no cover - network/runtime path
+                if hostname:
+                    FAILED_LINK_PREVIEW_HOSTS.add(hostname)
+                log.warning("Failed to fetch link preview page for post %s: %s", post.get("id"), error)
+                continue
+
+            preview_metadata = extract_link_preview_metadata(page_html, link_url, link_url)
+            if not preview_metadata or not preview_metadata.get("is_video"):
+                continue
+
+            preview_entry = normalize_link_preview_entry(preview_metadata)
+            if not preview_entry:
+                continue
+
+            image_url = preview_metadata.get("image_url")
+            if image_url:
+                try:
+                    image_bytes = fetch_binary(
+                        image_url,
+                        timeout=LINK_PREVIEW_IMAGE_TIMEOUT_SECONDS,
+                        retry_delays=FAST_EXTERNAL_RETRY_DELAYS,
+                        log_failures=False,
+                    )
+                    digest = hashlib.sha256(image_bytes).hexdigest()[:12]
+                    image_path = POSTS_LINK_PREVIEWS_DIR / f"{post['id']}-link-preview-{digest}-{IMAGE_VARIANT_VERSION}.jpg"
+                    if optimize_single_image(image_bytes, image_path, (1280, 960), quality=86):
+                        changes_detected = True
+                    relative_url = image_path.relative_to(DOCS_DIR).as_posix()
+                    active_relative_paths.add(relative_url)
+                    preview_entry["image"] = with_local_variant_dimensions(
+                        {
+                            "thumb_url": relative_url,
+                            "feed_url": relative_url,
+                            "full_url": relative_url,
+                            "source_url": image_url,
+                        },
+                        thumb_path=image_path,
+                        feed_path=image_path,
+                        full_path=image_path,
+                    )
+                except Exception as error:  # pragma: no cover - network/runtime path
+                    image_host = normalize_host_label(urlparse(image_url).hostname)
+                    if image_host:
+                        FAILED_LINK_PREVIEW_HOSTS.add(image_host)
+                    log.warning("Failed to mirror link preview image for post %s: %s", post.get("id"), error)
+
+            remember_link_preview_assets(preview_entry, active_relative_paths)
+            break
+
+        if preview_entry:
+            if post.get("link_preview") != preview_entry:
+                post["link_preview"] = preview_entry
+                changes_detected = True
+        elif post.pop("link_preview", None) is not None:
+            changes_detected = True
+
+    deleted_files = 0
+    deleted_bytes = 0
+    for path in POSTS_LINK_PREVIEWS_DIR.glob("*"):
+        if not path.is_file():
+            continue
+
+        relative_url = path.relative_to(DOCS_DIR).as_posix()
+        if relative_url in active_relative_paths:
+            continue
+
+        stat = path.stat()
+        age_seconds = max(0, time.time() - stat.st_mtime)
+        if not should_delete_inactive_media(path, age_seconds, {IMAGE_VARIANT_VERSION}):
+            continue
+
+        path.unlink()
+        changes_detected = True
+        deleted_files += 1
+        deleted_bytes += stat.st_size
+        log.info("Deleted stale mirrored link preview %s", path.relative_to(ROOT))
+
+    if deleted_files:
+        log.info(
+            "Link preview maintenance deleted %s files (%.1f MB) for %s",
+            deleted_files,
+            deleted_bytes / (1024 * 1024),
+            CHANNEL_KEY or "channel",
+        )
+
+    return changes_detected
+
+
 def validate_round_video_posts(posts: list[dict[str, Any]]) -> list[str]:
     errors: list[str] = []
 
@@ -1642,6 +1779,198 @@ def extract_preview_image_url(page_html: str, page_url: str) -> str | None:
             return urljoin(page_url, html_lib.unescape(match.group(1)))
 
     return None
+
+
+def extract_meta_content(
+    page_html: str,
+    *,
+    property_names: tuple[str, ...] = (),
+    name_names: tuple[str, ...] = (),
+    itemprop_names: tuple[str, ...] = (),
+) -> str | None:
+    patterns: list[str] = []
+    for name in property_names:
+        patterns.extend(
+            [
+                rf'<meta[^>]+property=["\']{re.escape(name)}["\'][^>]+content=["\']([^"\']+)["\']',
+                rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']{re.escape(name)}["\']',
+            ]
+        )
+    for name in name_names:
+        patterns.extend(
+            [
+                rf'<meta[^>]+name=["\']{re.escape(name)}["\'][^>]+content=["\']([^"\']+)["\']',
+                rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]+name=["\']{re.escape(name)}["\']',
+            ]
+        )
+    for name in itemprop_names:
+        patterns.extend(
+            [
+                rf'<meta[^>]+itemprop=["\']{re.escape(name)}["\'][^>]+content=["\']([^"\']+)["\']',
+                rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]+itemprop=["\']{re.escape(name)}["\']',
+            ]
+        )
+
+    for pattern in patterns:
+        match = re.search(pattern, page_html, re.IGNORECASE)
+        if match:
+            value = collapse_whitespace(html_lib.unescape(strip_tags(match.group(1))))
+            if value:
+                return value
+    return None
+
+
+def extract_page_title(page_html: str) -> str | None:
+    match = re.search(r"<title[^>]*>(.*?)</title>", page_html, re.IGNORECASE | re.DOTALL)
+    if not match:
+        return None
+    return collapse_whitespace(html_lib.unescape(strip_tags(match.group(1))))
+
+
+def normalize_host_label(hostname: str | None) -> str:
+    host = (hostname or "").strip().lower()
+    if not host:
+        return ""
+    return re.sub(r"^www\.", "", host)
+
+
+def score_link_preview_candidate(url: str) -> int:
+    parsed = urlparse(url)
+    host = (parsed.hostname or "").lower()
+    path = (parsed.path or "").lower()
+    query = (parsed.query or "").lower()
+    score = 0
+
+    if any(
+        token in host
+        for token in (
+            "youtube.com",
+            "youtu.be",
+            "rutube.ru",
+            "vkvideo.ru",
+            "vimeo.com",
+            "dzen.ru",
+            "smotrim.ru",
+            "twitch.tv",
+            "tiktok.com",
+        )
+    ):
+        score += 8
+
+    if host.endswith("vk.com") and "/video" in path:
+        score += 7
+
+    if any(token in path for token in ("/video", "/watch", "/shorts", "/clip", "/reel", "/live")):
+        score += 4
+
+    if "v=" in query or "video" in query:
+        score += 2
+
+    return score
+
+
+def select_link_preview_candidates(text_html: str | None) -> list[str]:
+    links = extract_external_links(text_html)
+    if not links:
+        return []
+    if len(links) == 1:
+        return links
+
+    ranked = sorted(
+        enumerate(links),
+        key=lambda item: (-score_link_preview_candidate(item[1]), item[0]),
+    )
+    selected = [url for _, url in ranked if score_link_preview_candidate(url) > 0][:MAX_LINK_PREVIEW_CANDIDATES]
+    return selected or links[:1]
+
+
+def extract_link_preview_metadata(page_html: str, page_url: str, link_url: str) -> dict[str, Any] | None:
+    title = (
+        extract_meta_content(page_html, property_names=("og:title",), name_names=("twitter:title",), itemprop_names=("headline",))
+        or extract_page_title(page_html)
+    )
+    description = extract_meta_content(
+        page_html,
+        property_names=("og:description",),
+        name_names=("description", "twitter:description"),
+        itemprop_names=("description",),
+    )
+    site_name = extract_meta_content(
+        page_html,
+        property_names=("og:site_name",),
+        name_names=("application-name",),
+    ) or normalize_host_label(urlparse(link_url).hostname)
+    image_url = extract_preview_image_url(page_html, page_url)
+    video_marker = (
+        extract_meta_content(
+            page_html,
+            property_names=("og:video", "og:video:url", "og:video:secure_url", "og:type"),
+            name_names=("twitter:player",),
+            itemprop_names=("embedURL",),
+        )
+        or ""
+    )
+    is_video = "video" in video_marker.lower() or score_link_preview_candidate(link_url) > 0
+
+    if not title and not description and not image_url:
+        return None
+
+    metadata: dict[str, Any] = {
+        "href": link_url,
+        "title": shorten_text(title or site_name or normalize_host_label(urlparse(link_url).hostname), 120),
+        "site_name": shorten_text(site_name, 48) if site_name else "",
+        "host": normalize_host_label(urlparse(link_url).hostname),
+        "is_video": bool(is_video),
+    }
+    if description:
+        cleaned_description = shorten_text(description, 220)
+        if cleaned_description and cleaned_description != metadata["title"]:
+            metadata["description"] = cleaned_description
+    if image_url:
+        metadata["image_url"] = image_url
+    return metadata
+
+
+def normalize_link_preview_entry(preview: Any) -> dict[str, Any] | None:
+    if not isinstance(preview, dict):
+        return None
+
+    href = str(preview.get("href") or "").strip()
+    if not href or not re.match(r"^https?://", href, re.IGNORECASE):
+        return None
+
+    entry: dict[str, Any] = {
+        "href": href,
+        "title": shorten_text(preview.get("title") or normalize_host_label(urlparse(href).hostname), 120),
+        "site_name": shorten_text(preview.get("site_name"), 48) if preview.get("site_name") else "",
+        "host": normalize_host_label(preview.get("host") or urlparse(href).hostname),
+        "is_video": bool(preview.get("is_video")),
+    }
+    description = preview.get("description")
+    if description:
+        entry["description"] = shorten_text(description, 220)
+
+    image = normalize_photo_entry(preview.get("image"))
+    if image:
+        entry["image"] = image
+
+    return entry
+
+
+def remember_link_preview_assets(preview: dict[str, Any] | None, active_relative_paths: set[str]) -> None:
+    image = normalize_photo_entry((preview or {}).get("image"))
+    if not image:
+        return
+
+    for key in ("thumb_url", "feed_url", "full_url"):
+        url = image.get(key)
+        if is_local_asset_url(url):
+            active_relative_paths.add(str(url))
+
+
+def post_has_physical_media(post: dict[str, Any]) -> bool:
+    photos = [normalize_photo_entry(photo) for photo in post.get("photos") or []]
+    return bool([photo for photo in photos if photo]) or bool(post.get("video_url"))
 
 
 def get_image_dimensions(raw_bytes: bytes) -> tuple[int, int] | None:
@@ -2047,10 +2376,6 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
             urljoin("https://t.me", html_lib.unescape(url))
             for url in re.findall(r"tgme_widget_message_photo_wrap[^>]+url\('([^']+)'\)", block)
         ]
-        if not photos:
-            link_preview_match = re.search(r"link_preview_image[^>]+url\('([^']+)'\)", block)
-            if link_preview_match:
-                photos = [urljoin("https://t.me", html_lib.unescape(link_preview_match.group(1)))]
         video_url = urljoin("https://t.me", html_lib.unescape(video_match.group(1))) if video_match else None
         video_width, video_height = extract_video_dimensions_from_html(block)
         video_media_hint = bool(video_url) or detect_video_media_hint(block)
@@ -2065,7 +2390,7 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
         text, text_html = build_text_fields(raw_text)
         forwarded_from = extract_forwarded_source(block)
 
-        if not text and not photos and not video_url and not video_media_hint:
+        if not text and not photos and not video_url and not video_media_hint and not select_link_preview_candidates(text_html):
             continue
 
         comments_url = None
@@ -3234,6 +3559,59 @@ def shorten_text(value: str | None, limit: int) -> str:
     return f"{clipped}…" if clipped else collapsed[:limit]
 
 
+def render_post_page_link_preview(post: dict[str, Any], root_prefix: str) -> str:
+    if post_has_physical_media(post):
+        return ""
+
+    preview = normalize_link_preview_entry(post.get("link_preview"))
+    if not preview:
+        return ""
+
+    image = normalize_photo_entry(preview.get("image"))
+    image_markup = ""
+    if image and image.get("full_url"):
+        image_src = image.get("feed_url") or image.get("full_url") or image.get("thumb_url")
+        srcset_parts: list[str] = []
+        for key, width_key in (("thumb_url", "thumb_width"), ("feed_url", "feed_width"), ("full_url", "full_width")):
+            candidate_url = image.get(key)
+            candidate_width = image.get(width_key)
+            if not candidate_url or not candidate_width:
+                continue
+            resolved_url = candidate_url if re.match(r"^https?://", candidate_url) else f"{root_prefix}{candidate_url.lstrip('./')}"
+            srcset_parts.append(f"{resolved_url} {candidate_width}w")
+        resolved_src = image_src if re.match(r"^https?://", image_src) else f"{root_prefix}{image_src.lstrip('./')}"
+        srcset_attr = (
+            f'srcset="{html_lib.escape(", ".join(srcset_parts))}" sizes="(max-width: 860px) calc(100vw - 88px), 220px" '
+            if srcset_parts
+            else ""
+        )
+        badge_markup = '<span class="post-card__link-preview-badge">Видео</span>' if preview.get("is_video") else ""
+        image_markup = (
+            '<div class="post-card__link-preview-media">'
+            f'<img src="{html_lib.escape(resolved_src)}" {srcset_attr}'
+            'alt="" loading="lazy" decoding="async">'
+            f"{badge_markup}"
+            '</div>'
+        )
+
+    description_markup = (
+        f'<div class="post-card__link-preview-description">{html_lib.escape(preview["description"])}</div>'
+        if preview.get("description")
+        else ""
+    )
+    caption = preview.get("site_name") or preview.get("host") or normalize_host_label(urlparse(preview["href"]).hostname)
+    return (
+        f'<a class="post-card__link-preview" href="{html_lib.escape(preview["href"])}" target="_blank" rel="noopener noreferrer">'
+        f"{image_markup}"
+        '<div class="post-card__link-preview-copy">'
+        f'<div class="post-card__link-preview-caption">{html_lib.escape(caption)}</div>'
+        f'<div class="post-card__link-preview-title">{html_lib.escape(preview["title"])}</div>'
+        f"{description_markup}"
+        '</div>'
+        '</a>'
+    )
+
+
 def render_post_page_media(post: dict[str, Any]) -> str:
     root_prefix = "../../../" if CHANNEL_KEY else "../../"
     photos = [normalize_photo_entry(photo) for photo in post.get("photos") or []]
@@ -3390,6 +3768,7 @@ def render_post_page_html(config: SiteConfig, post: dict[str, Any], comments_ena
       {render_post_page_media(post)}
       <div class="post-card__body">
         <div class="post-card__text">{post.get("text_html") or html_lib.escape(post.get("text") or "").replace(chr(10), "<br>")}</div>
+        {render_post_page_link_preview(post, root_prefix)}
       </div>
       <div class="post-card__footer">
         <div class="post-card__stats">
@@ -3584,12 +3963,20 @@ def main() -> int:
         video_metadata=video_metadata,
         existing_posts=existing_payload.get("posts") or [],
     ) or changes_detected
+    changes_detected = mirror_link_previews(
+        posts,
+        existing_posts=existing_payload.get("posts") or [],
+    ) or changes_detected
     round_video_errors = validate_round_video_posts(posts)
     if round_video_errors:
         for error in round_video_errors:
             log.error("Round video validation failed: %s", error)
         return 1
-    posts = [post for post in posts if post.get("text") or (post.get("photos") or []) or post.get("video_url")]
+    posts = [
+        post
+        for post in posts
+        if post.get("text") or (post.get("photos") or []) or post.get("video_url") or post.get("link_preview")
+    ]
     build_id = build_channel_build_id(posts, comments_enabled)
     active_ids = {post["id"] for post in posts}
     changes_detected = cleanup_removed_comment_files(active_ids) or changes_detected

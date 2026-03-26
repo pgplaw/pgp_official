@@ -232,6 +232,88 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('#scrollTopButton')).not.toHaveClass(/is-visible/);
   });
 
+  test('renders external link preview card at the end of post content', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'link-preview-host-desktop';
+      document.body.appendChild(host);
+      const previewUrl = `${window.location.origin}/assets/channel-avatar.jpg`;
+      const card = window.renderPostCard({
+        id: 999990,
+        date: new Date().toISOString(),
+        text: 'Ссылка на видео',
+        text_html: '<p>Ссылка на видео</p>',
+        photos: [],
+        tg_url: 'https://t.me/example/999990',
+        comments_count: 0,
+        link_preview: {
+          href: 'https://rutube.ru/video/example',
+          title: 'Видео обзор',
+          description: 'Краткое описание видео',
+          site_name: 'Rutube',
+          host: 'rutube.ru',
+          is_video: true,
+          image: {
+            thumb_url: previewUrl,
+            feed_url: previewUrl,
+            full_url: previewUrl,
+          },
+        },
+      });
+      host.appendChild(card);
+    });
+
+    await expect(page.locator('#link-preview-host-desktop .post-card__text')).toContainText('Ссылка на видео');
+    await expect(page.locator('#link-preview-host-desktop .post-card__link-preview')).toBeVisible();
+    await expect(page.locator('#link-preview-host-desktop .post-card__link-preview-title')).toContainText('Видео обзор');
+    await expect(page.locator('#link-preview-host-desktop .post-card__link-preview-badge')).toContainText('Видео');
+  });
+
+  test('does not render link preview card when post already has physical media', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'link-preview-media-guard-host-desktop';
+      document.body.appendChild(host);
+      const previewUrl = `${window.location.origin}/assets/channel-avatar.jpg`;
+      const card = window.renderPostCard({
+        id: 999989,
+        date: new Date().toISOString(),
+        text: 'Пост с картинкой',
+        text_html: '<p>Пост с картинкой</p>',
+        photos: [{
+          thumb_url: previewUrl,
+          feed_url: previewUrl,
+          full_url: previewUrl,
+        }],
+        tg_url: 'https://t.me/example/999989',
+        comments_count: 0,
+        link_preview: {
+          href: 'https://rutube.ru/video/example',
+          title: 'Видео обзор',
+          description: 'Краткое описание видео',
+          site_name: 'Rutube',
+          host: 'rutube.ru',
+          is_video: true,
+          image: {
+            thumb_url: previewUrl,
+            feed_url: previewUrl,
+            full_url: previewUrl,
+          },
+        },
+      });
+      host.appendChild(card);
+    });
+
+    await expect(page.locator('#link-preview-media-guard-host-desktop .post-card__media')).toBeVisible();
+    await expect(page.locator('#link-preview-media-guard-host-desktop .post-card__link-preview')).toHaveCount(0);
+  });
+
   test('keeps round-video title and copy action in one top row', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
