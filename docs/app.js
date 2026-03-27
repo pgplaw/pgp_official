@@ -1350,6 +1350,104 @@ function buildTelegramAppHref(value) {
   }
 }
 
+function parseTelegramPostLink(value) {
+  try {
+    const url = new URL(value, window.location.href);
+    if (!isTelegramWebUrl(url.href)) return null;
+
+    const parts = url.pathname.split('/').filter(Boolean);
+    if (!parts.length) return null;
+
+    if (parts[0].toLowerCase() === 's') {
+      parts.shift();
+    }
+
+    if (parts.length < 2) return null;
+
+    const username = String(parts[0] || '').trim();
+    const postId = Number.parseInt(parts[1], 10);
+    if (!username || !Number.isFinite(postId) || postId <= 0) return null;
+
+    return {
+      username,
+      postId,
+      webHref: url.toString(),
+    };
+  } catch (_) {
+    return null;
+  }
+}
+
+function findMirroredChannelByUsername(username) {
+  const normalizedUsername = String(username || '').trim().toLowerCase();
+  if (!normalizedUsername) return null;
+
+  return getCatalogChannels().find((channel) =>
+    String(channel?.channel_username || '').trim().toLowerCase() === normalizedUsername
+  ) || null;
+}
+
+function buildChannelPostUrl(channelKey, postId, { absolute = false } = {}) {
+  const resolvedPostId = Number.parseInt(postId, 10);
+  const resolvedChannelKey = String(channelKey || state.activeChannelKey || '').trim();
+  if (!resolvedChannelKey || !Number.isFinite(resolvedPostId) || resolvedPostId <= 0) return '';
+
+  const url = new URL(window.location.href);
+  url.hash = '';
+  url.search = '';
+  url.searchParams.set('channel', resolvedChannelKey);
+  url.hash = `post-${resolvedPostId}`;
+
+  return absolute ? url.toString() : `${url.pathname}${url.search}${url.hash}`;
+}
+
+function resolveMirroredTelegramPostLink(value) {
+  const parsed = parseTelegramPostLink(value);
+  if (!parsed) return null;
+
+  const channel = findMirroredChannelByUsername(parsed.username);
+  if (!channel?.key) return null;
+
+  const href = buildChannelPostUrl(channel.key, parsed.postId);
+  if (!href) return null;
+
+  return {
+    ...parsed,
+    channel,
+    href,
+  };
+}
+
+async function openMirroredTelegramPost(anchor) {
+  const mirrorHref = anchor.dataset.telegramMirrorHref || anchor.getAttribute('href') || anchor.href;
+  const channelKey = String(anchor.dataset.telegramMirrorChannelKey || '').trim();
+  const postId = Number.parseInt(anchor.dataset.telegramMirrorPostId || '', 10);
+  const fallbackUrl = anchor.dataset.telegramWebHref || '';
+
+  if (!mirrorHref || !channelKey || !Number.isFinite(postId) || postId <= 0) {
+    openTelegramAnchor(anchor);
+    return;
+  }
+
+  try {
+    if (channelKey === state.activeChannelKey) {
+      window.history.pushState({}, '', mirrorHref);
+      await focusPost(postId, fallbackUrl);
+      return;
+    }
+
+    await switchChannel(channelKey, { replace: false, scrollToTop: true });
+    if (state.activeChannelKey !== channelKey) {
+      openTelegramAnchor(anchor);
+      return;
+    }
+    window.history.replaceState({}, '', mirrorHref);
+    await focusPost(postId, fallbackUrl);
+  } catch (_) {
+    openTelegramAnchor(anchor);
+  }
+}
+
 function openTelegramAnchor(anchor) {
   const webHref = anchor.dataset.telegramWebHref || anchor.href;
   const appHref = anchor.dataset.telegramAppHref || buildTelegramAppHref(webHref);
@@ -1397,6 +1495,28 @@ function bindTelegramDeepLinks(root) {
     if (!isTelegramWebUrl(anchor.getAttribute('href') || anchor.href)) return;
 
     const webHref = anchor.href;
+    const mirrorTarget = resolveMirroredTelegramPostLink(webHref);
+    if (mirrorTarget) {
+      anchor.dataset.telegramBound = 'true';
+      anchor.dataset.telegramWebHref = webHref;
+      anchor.dataset.telegramMirrorHref = mirrorTarget.href;
+      anchor.dataset.telegramMirrorChannelKey = mirrorTarget.channel.key;
+      anchor.dataset.telegramMirrorPostId = String(mirrorTarget.postId);
+      anchor.href = mirrorTarget.href;
+      anchor.removeAttribute('target');
+      anchor.removeAttribute('rel');
+
+      anchor.addEventListener('click', (event) => {
+        if (event.defaultPrevented) return;
+        if (event.button !== 0) return;
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+        event.preventDefault();
+        void openMirroredTelegramPost(anchor);
+      });
+      return;
+    }
+
     const appHref = buildTelegramAppHref(webHref);
     if (!appHref) return;
 
@@ -2478,19 +2598,7 @@ function formatReplyLinkLabel(value) {
 }
 
 function buildPostAnchorUrl(postId) {
-  const resolvedPostId = Number.parseInt(postId, 10);
-  if (!Number.isFinite(resolvedPostId) || resolvedPostId <= 0) return '';
-
-  const url = new URL(window.location.href);
-  url.hash = '';
-  url.search = '';
-
-  if (state.activeChannelKey) {
-    url.searchParams.set('channel', state.activeChannelKey);
-  }
-
-  url.hash = `post-${resolvedPostId}`;
-  return url.toString();
+  return buildChannelPostUrl(state.activeChannelKey, postId, { absolute: true });
 }
 
 function resolveReplyTarget(post) {

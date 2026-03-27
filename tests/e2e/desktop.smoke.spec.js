@@ -108,6 +108,42 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator(`#post-${postId}`)).toHaveClass(/post-card--targeted/);
   });
 
+  test('routes mirrored telegram post links to the local post page instead of opening telegram', async ({ page }) => {
+    const targetFeedPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pg-tax', 'posts.json');
+    const targetFeed = JSON.parse(fs.readFileSync(targetFeedPath, 'utf8'));
+    const targetPostId = Number(targetFeed.posts?.[0]?.id || 0);
+    expect(targetPostId).toBeGreaterThan(0);
+
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(({ targetPostId }) => {
+      const host = document.createElement('div');
+      host.id = 'telegram-mirror-link-host';
+      document.body.appendChild(host);
+      const card = window.renderPostCard({
+        id: 999991,
+        date: new Date().toISOString(),
+        text: 'Ссылка на зеркальный пост',
+        text_html: `<p><a href="https://t.me/PG_Tax/${targetPostId}">Открыть налоговый пост</a></p>`,
+        photos: [],
+        tg_url: 'https://t.me/example/999991',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    }, { targetPostId });
+
+    const link = page.locator('#telegram-mirror-link-host .post-card__text a').first();
+    await expect(link).toBeVisible();
+    await expect.poll(async () => link.evaluate((node) => node.getAttribute('href') || '')).toContain(`channel=pg-tax#post-${targetPostId}`);
+
+    await link.click();
+    await waitForFeedReady(page);
+
+    await expect(page).toHaveURL(new RegExp(`channel=pg-tax.*#post-${targetPostId}`));
+    await expect(page.locator(`#post-${targetPostId}`)).toHaveClass(/post-card--targeted/);
+  });
+
   test('does not duplicate feed cards after overlapping load-more and refresh requests', async ({ page }) => {
     await page.route('**/data/channels/pgp-official/pages/2.json', async (route) => {
       await new Promise((resolve) => setTimeout(resolve, 220));
