@@ -1430,9 +1430,18 @@ async function openMirroredTelegramPost(anchor) {
   }
 
   try {
+    window.history.pushState({}, '', mirrorHref);
+
     if (channelKey === state.activeChannelKey) {
-      window.history.pushState({}, '', mirrorHref);
-      await focusPost(postId, fallbackUrl);
+      let focused = await focusPost(postId);
+      if (!focused) {
+        await loadFeed(channelKey, true);
+        window.history.replaceState({}, '', mirrorHref);
+        focused = await focusPost(postId);
+      }
+      if (!focused) {
+        openTelegramAnchor(anchor);
+      }
       return;
     }
 
@@ -1442,7 +1451,15 @@ async function openMirroredTelegramPost(anchor) {
       return;
     }
     window.history.replaceState({}, '', mirrorHref);
-    await focusPost(postId, fallbackUrl);
+    let focused = await focusPost(postId);
+    if (!focused) {
+      await loadFeed(channelKey, true);
+      window.history.replaceState({}, '', mirrorHref);
+      focused = await focusPost(postId);
+    }
+    if (!focused) {
+      openTelegramAnchor(anchor);
+    }
   } catch (_) {
     openTelegramAnchor(anchor);
   }
@@ -3307,7 +3324,7 @@ async function focusPost(postId, fallbackUrl = '') {
     if (fallbackUrl) {
       window.open(fallbackUrl, '_blank', 'noopener');
     }
-    return;
+    return false;
   }
 
   highlightPost(target);
@@ -3317,6 +3334,7 @@ async function focusPost(postId, fallbackUrl = '') {
     top: Math.max(0, targetTop),
     behavior: 'smooth',
   });
+  return true;
 }
 
 async function handleRoute() {

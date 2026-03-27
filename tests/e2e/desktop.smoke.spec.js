@@ -144,6 +144,59 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator(`#post-${targetPostId}`)).toHaveClass(/post-card--targeted/);
   });
 
+  test('forces a fresh mirrored channel feed before falling back from a telegram post link', async ({ page }) => {
+    const targetFeedPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pg-tax', 'posts.json');
+    const freshFeed = JSON.parse(fs.readFileSync(targetFeedPath, 'utf8'));
+    const targetPostId = Number(freshFeed.posts?.[0]?.id || 0);
+    expect(targetPostId).toBeGreaterThan(0);
+
+    const staleFeed = {
+      ...freshFeed,
+      pagination: {
+        ...(freshFeed.pagination || {}),
+        total_pages: 1,
+      },
+      posts: (freshFeed.posts || []).filter((post) => Number(post?.id) !== targetPostId).slice(0, 3),
+    };
+
+    await page.route('**/data/channels/pg-tax/posts.json**', async (route) => {
+      const url = route.request().url();
+      const payload = url.includes('t=') ? freshFeed : staleFeed;
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(payload),
+      });
+    });
+
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(({ targetPostId }) => {
+      const host = document.createElement('div');
+      host.id = 'telegram-mirror-stale-link-host';
+      document.body.appendChild(host);
+      const card = window.renderPostCard({
+        id: 999992,
+        date: new Date().toISOString(),
+        text: 'Ссылка на зеркальный пост с устаревшим кешем',
+        text_html: `<p><a href="https://t.me/PG_Tax/${targetPostId}">Открыть налоговый пост</a></p>`,
+        photos: [],
+        tg_url: 'https://t.me/example/999992',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    }, { targetPostId });
+
+    const link = page.locator('#telegram-mirror-stale-link-host .post-card__text a').first();
+    await expect(link).toBeVisible();
+    await link.click();
+    await waitForFeedReady(page);
+
+    await expect(page).toHaveURL(new RegExp(`channel=pg-tax.*#post-${targetPostId}`));
+    await expect(page.locator(`#post-${targetPostId}`)).toHaveClass(/post-card--targeted/);
+  });
+
   test('does not duplicate feed cards after overlapping load-more and refresh requests', async ({ page }) => {
     await page.route('**/data/channels/pgp-official/pages/2.json', async (route) => {
       await new Promise((resolve) => setTimeout(resolve, 220));
