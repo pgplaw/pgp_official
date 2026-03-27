@@ -241,6 +241,65 @@ function isUrlLikeLabel(value, href = '') {
   return Boolean(normalizedLabel && normalizedHref && normalizedLabel === normalizedHref);
 }
 
+function shouldInsertSpaceBetweenAnchorSegments(leftText, rightText) {
+  const left = String(leftText || '');
+  const right = String(rightText || '');
+  if (!left || !right) return false;
+
+  return /[0-9A-Za-zА-Яа-яЁё»"')\]]$/.test(left) && /^[0-9A-Za-zА-Яа-яЁё«"(]/.test(right);
+}
+
+function mergeAdjacentDuplicateAnchors(root) {
+  if (!root) return;
+
+  const anchors = [...root.querySelectorAll('a[href]')];
+  anchors.forEach((anchor) => {
+    if (!anchor.parentNode) return;
+
+    let currentHref = normalizeComparableUrl(anchor.getAttribute('href') || anchor.href);
+    if (!currentHref) return;
+
+    while (true) {
+      let separatorNode = null;
+      let nextNode = anchor.nextSibling;
+
+      if (nextNode && nextNode.nodeType === Node.TEXT_NODE && /^[\s\u00A0]*$/.test(nextNode.textContent || '')) {
+        separatorNode = nextNode;
+        nextNode = nextNode.nextSibling;
+      }
+
+      if (!nextNode || nextNode.nodeType !== Node.ELEMENT_NODE || nextNode.tagName !== 'A') {
+        break;
+      }
+
+      const nextHref = normalizeComparableUrl(nextNode.getAttribute('href') || nextNode.href);
+      if (!nextHref || nextHref !== currentHref) {
+        break;
+      }
+
+      const separatorText = separatorNode ? (separatorNode.textContent || '') : '';
+      const joiner = separatorText || (
+        shouldInsertSpaceBetweenAnchorSegments(anchor.textContent, nextNode.textContent) ? ' ' : ''
+      );
+
+      if (joiner) {
+        anchor.appendChild(document.createTextNode(joiner));
+      }
+
+      while (nextNode.firstChild) {
+        anchor.appendChild(nextNode.firstChild);
+      }
+
+      if (separatorNode) {
+        separatorNode.remove();
+      }
+      nextNode.remove();
+      currentHref = normalizeComparableUrl(anchor.getAttribute('href') || anchor.href);
+      if (!currentHref) break;
+    }
+  });
+}
+
 function normalizePostHtml(html) {
   if (!html || typeof document === 'undefined') return html || '';
 
@@ -287,6 +346,8 @@ function normalizePostHtml(html) {
       nextSibling.parentNode.insertBefore(document.createElement('br'), nextSibling);
     }
   });
+
+  mergeAdjacentDuplicateAnchors(template.content);
 
   return template.innerHTML
     .replace(/<\/a><br>(?=(?:\s|&nbsp;)*(?:▫️|🔘|📌|👉|#|[A-ZА-ЯЁ]))/g, '</a><br><br>')

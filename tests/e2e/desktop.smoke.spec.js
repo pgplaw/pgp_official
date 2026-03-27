@@ -197,6 +197,32 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator(`#post-${targetPostId}`)).toHaveClass(/post-card--targeted/);
   });
 
+  test('merges adjacent identical text links into one anchor', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'split-anchor-host';
+      document.body.appendChild(host);
+      const card = window.renderPostCard({
+        id: 999993,
+        date: new Date().toISOString(),
+        text: 'split anchor',
+        text_html: '<p><a href="https://example.com/story" target="_blank" rel="noopener noreferrer">Шохин</a><a href="https://example.com/story" target="_blank" rel="noopener noreferrer">подчеркнул</a>, что речь идет о важном вопросе.</p>',
+        photos: [],
+        tg_url: 'https://t.me/example/999993',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    });
+
+    const anchors = page.locator('#split-anchor-host .post-card__text a');
+    await expect(anchors).toHaveCount(1);
+    await expect(anchors.first()).toContainText('Шохин подчеркнул');
+    await expect(anchors.first()).toHaveAttribute('href', 'https://example.com/story');
+  });
+
   test('does not duplicate feed cards after overlapping load-more and refresh requests', async ({ page }) => {
     await page.route('**/data/channels/pgp-official/pages/2.json', async (route) => {
       await new Promise((resolve) => setTimeout(resolve, 220));
