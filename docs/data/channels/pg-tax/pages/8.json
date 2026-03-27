@@ -1,13 +1,42 @@
 {
-  "generated_at": "2026-03-26T21:08:04.299262+00:00",
-  "build_id": "2db1fb5d6ac4",
+  "generated_at": "2026-03-27T08:12:48.745496+00:00",
+  "build_id": "08eeb18c37fa",
   "pagination": {
     "page": 8,
     "page_size": 16,
-    "total_posts": 169,
+    "total_posts": 170,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2438,
+      "date": "2026-02-03T14:00:04+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1530,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2438-1-85414388e0fb-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2438-1-85414388e0fb-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/YqoYoGIC-Re-AjG5quFtJfGlU_M_rzrknBcTcDRy6iGJhXlIQ13lJlh71puQti1e0WVmgQiwskzQIg7QrH-Nc4mZiGelGHe9bVEg_H-XmfveyAELIiR8aePCocywz4G4NHbeV0tkDnHLCCJV5f6vGNOtfaQQ3L0F6hpsfcoCpFwflph73Enry9VK4Nnm_hyxp51EsfNdpdK0biUtVveh8AT7jtu6w1T5DXckWeL6fu39QJ4UYLduGJfWqEqf0-i0obp4wJUv8ZMUVNwL_QLMKxCkA29MzsYdMuxtrXKpBnGeVZzHLS1AJATY3dC44k0H2jJWctKOza8QLgs1RM7ACA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2438-1-85414388e0fb-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 420,
+          "feed_width": 1800,
+          "feed_height": 945,
+          "full_width": 1880,
+          "full_height": 987,
+          "source_width": 1880,
+          "source_height": 987
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/PG_Tax/2438",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2437,
       "date": "2026-02-03T10:00:01+00:00",
@@ -18,10 +47,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2437-1-bb17a4b71cfa-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2437-1-bb17a4b71cfa-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/J6uiJJe07LGbaOINmUtxCFiaFLl1cKqCdOMLfDJWaOSUbm7K-SwcbLL7UUvLEEYODwgLEW4-BgBVvvGXYOocRHj8jUWqAHTntBwCQdSvxv1fM-t9F5WeJzn9qzPkA7JLccsdggE9bcUhszmT5PxUqDErKH-nKrXe91Q9L7M1UyfNIMhKes5Lj5O02TIZiMTvMj5QJIowxb1zmedapSnpkcgq-NWkejDhskP28XM2BQIYBFnQUNTqFdujjdvgVPFwWrB1rXoWobq9Oa4ExoXMPwcgdgT602nv_6KXsp1ioLb7LOFWyf5QCkAyI2oikyr_RNrDvrEA8mMfM5E_qdH5iQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2437-1-bb17a4b71cfa-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2437-1-151a809224be-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2437-1-151a809224be-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/bc0_ckoEYgHfb1qN9Hp4GNTeP-kJCtutqNc0lW8jy2ZmZCbioP7GCIc8xFXyoU7QJrrJGYMHWYEmfg7l2ciQt75TULuTPiV5lL-JxMuH424Qn3VTr13ccxCQNumsSwWm7l1oYG3aClWRvZPjKHlgjbCS_j0YtPECXWiwt9JaHiNMWIsrXK0F9sZi1n6ghUYqhLh7eAisSH0EvVWptTtEON3u0gHeH3sa9MS15rALqfzyejgARWdKDnyyndJwg5Eh7fVCvjqwQVibtc-a0_xVOAddkYI2HXA8OPsSpFMcU8Az6fWmAhc8MR-zKgJnHyDzxXmN5R_j3YqRvAHiZ7pzwQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2437-1-151a809224be-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -47,10 +76,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2436-1-97229c5e0e2d-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2436-1-97229c5e0e2d-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/NRD2cMnXwK55uy705s-HSFqvwc7SbLHhfN-9TlSMh2BYD-FJ6utasayGAX5MSJ-7mXvY7b4dpmTqvYaU-KvhueOzZnIPri-B_FQbhMKq4foS_8fjRo5yVCWitHXMdjP3HDCLtxvDZ8h2GBW4boz9BdACw4vNFNZ0xwgTeV3-lOnPKb_K_2Ah94muQK4yAP5ZBU_JdYK4ixs1UpKhe-O-fUcBJuEQwEftFjh4CSYYLk--ZaKzAwLmeVfbRUetQVXsk3gyCkVRMpOvnaaUkQYPATaxejVOn8Puv1m5KSZtYr0qN8ord_cN7sYgbDKfkk-bAphnIpvVKK1kXCEOWYp3sA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2436-1-97229c5e0e2d-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2436-1-a6ade11af909-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2436-1-a6ade11af909-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/b-QBLU08lKYfxuOg_kD7HQzTYRBFL6FUPXp53E7WlNj4wnSN8Lps0sT3PDQssuMJwKo_y_HgPHApkcCtqDKJrdeQG-imieVy-ZjSrN_ZXC4wus-GUVo4Lt--4SbO19mI3StACJu3Iyh6f3S78x83UYUuLg7NBZX9dIIwi9EkIpCEWAsI1qZB8ELhzH21Y0R7PAI9MMqfgMjBpqBxycdMxK7WlQ27yUiuB9jV0WLo2Nt1BRcYlu9NdXH3IRGjindzGFlOClzqjIzjMRUQ3OHuzoGbBOxZhXKm0GyAkaoJ0TGlRQiYfPfe7L_Y0iUksIxnt75zcvfT3y6Wk5trAEdG3g.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2436-1-a6ade11af909-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -71,7 +100,7 @@
       "date": "2026-02-02T13:31:59+00:00",
       "text": null,
       "text_html": null,
-      "views": 1440,
+      "views": 1450,
       "comments_count": 0,
       "comments_url": null,
       "photos": [],
@@ -104,10 +133,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2434-1-2a2e4694700e-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2434-1-2a2e4694700e-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/N5SzDtcJ71udnn1v3-D06CE8MAwDrAAc3KsJd-4AqVMg_wJMRT_87eVF0iWY8bd_iEeHz7krRSpK8Vk14XFwXI8NTi0OiumPhq_JZXE_t91I5hqeqJS08JxeZwb_ignLWa6FGXebZnSx_QI0S2uMRB1sXbj2cx7Fg-4d2jHXqXYPmBKAFMKqn44DJZVF7MMOergwI3Ku3LO2ijxOk4hONT4TuWFg8wPGoPTWlEOFKKBhUNVpLyrVmcSDlkJTBEhVH0IHFxoGCRHCcMOH1y0L3c8LQunlyrc27VPt0nf20S5KBU8vtUyyHgFfI7gS9oIV6bbnp15MGfPl2WFvnduGXQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2434-1-2a2e4694700e-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2434-1-87f6dbbc01a1-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2434-1-87f6dbbc01a1-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/X4Rpf_yORZTDz3IJMsP4CJzeoY8R-AHnJbIEJCLrCLlIGINHmUTf1z3xlKLB__HSlsRZvav6LFwimld0bI0l_tFgd7_dQec00fxDfU0Uj7autE1vJsdmgjhEEq1P-DftiHcM9iXKrsSNFqnCdCis8CjS7J5DAlQCc4i_E1hyIUDPNCkCwQGtq8ZeG53JTS6C1nJoH8lSluBUhfBPd1IHHnVJgeqKdMbBe2aXuyvjCPgKBnYO6SvlWqOk7RlXbMqVyjjlfLw3UI1ipnlJ9hDfbMKokPXSeXV-mP_JQUySbo3zr3htfFu6P9hwEkXBNWv4Pb-LuuxiV2rFPcwq_88HZg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2434-1-87f6dbbc01a1-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -133,10 +162,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2433-1-c05d50a2078a-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2433-1-c05d50a2078a-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Y-CgmWuT-oiepJEJBTNzI7kVmZirBje0U84oaehFPyNA90kKuzIqq-1tbAMWbpuzxsDwx5jjyLhAhfbaqvgRawzumdtoWUPjbnQykT8zMBpX4mG0hCbc_souWljCzSNkFd67cAFSgMQSfkyoGdb0qMTJdrPNdzBeCRLkXVP2Ds1YdnvYL6T1xidWNZney2aSL431UuBchtANi9lFoNVOd0-YmLX6SsthwLo9zlu8B8ARp9s4qoqne6hvrA0xZe1lV1z7HwBD2xsNFv2brOdW5cP9qD5Qq--fi2ACo-rNqjr2We2sNJcZ-yMUYOj-rQ1ZZN-GrcXx4rZLrpCfX_R8Hg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2433-1-c05d50a2078a-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2433-1-433fed94ad4f-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2433-1-433fed94ad4f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/L-iooxzGLEIlcpOHWu00he8F07UHv0BSadx9yrZSKXEPa85nJjtw0Hml9tuEweOtpXd-HFV5FCuttH1iuiKptyJX4XZ26vP7h6bLn0sHbtXGk5yYHvaFD6_zdL7d143EBoRg-5__B_QGFyJ1dzSSw7f2-c7-21sFOgK83094yop194DIMBhkf1TypfgSkwBGhMfr290GxCq_CSnjtaG9fhO37yG3yEG6rTpShzj1Orq8cEJR78Hd1KgD88OPzKMPazLUg1-K_UdT-QFMf4fQOL1jPnZhykUe8DXkfwOVEtCB9TtcUlkxjJVVGRNtnZrQiYA-Gw5yYCKkLZjVp5adxA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2433-1-433fed94ad4f-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -162,10 +191,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2432-1-76ec65fb9907-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2432-1-76ec65fb9907-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/cgDeaZCNH9W_sju3n79uoKXeDQzfuwa3pSFFwqL1Oix5Jdy8KJ34pfd2_YnCwSRBH5cdcK8FBw8tuCkjj1qDENXqHkQ6ucMSzEfcEMkuGuyzl08l2sHurtjckmAnZz5cZIk1d46iUTOmIoVEjcGUtp3h84ogf7m0tciOSDV0BdYXaGipE_ZvA59o3jtFhVArGfxBPNCNDa5RVJXYKShzCJNrOdxCrDRvyD36uh96DZ_XK2C1cFobDuQ7YNVqdvi0S7kggz6XIc2vZArCUWqONGO0jDSgo_r5m6T5ILAlTNZhMR62xstKVNMnOnDwzO9eQ3K3oz2l-5MYRjeOShTriQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2432-1-76ec65fb9907-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2432-1-11402900d1af-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2432-1-11402900d1af-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/peF7vFYFKbNzV2Iw_aJHMzKSOeaKhk700EANTcaR0uiTomZyaY5u0nOmtPqiXld2OODD9uDWFv2XZ_vDS-STLglcRZKJoiWGTCXbvd88niueFP9G_3zrBqAOYzOOPE5wavWiuejk4fR31S--tHHtMLaqrKZ_w7ZFwtSQQjJXPFWnygQannqVk1Uu52Qiac5DxjgL1CqG3-I5ZTY4QPoubICWMUI3vdTw6im9S4kXLGQaTdB2MOqm-afdYaWkVJQX-NyXMHkOUQ7rnqoOY-Lb7iiC6b-Jm9VTRy3VqgWC0oLrOGHo9ufZaJDYvw880eyvr23q9UCfE9gYDd0xCU7gRw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2432-1-11402900d1af-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -233,10 +262,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2429-1-29f82424492f-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2429-1-29f82424492f-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/fPRSdQ0Z5HSYm29-xOF__kpKnJFOkuyF7M7rPE-BMOCpXLdDXO8BMtns6t2n-k6Vp_QQfzkxOnrvT4zWqbDy4EIvzY2tgscaaOcuSL9jBxfTZ_rzVbjnzzRd6HkMeh9LzWLZDzIUo3ND4APMgiUpcyzNUqqc4ZkqMbu2XCz0HpH2LciBkWczWSXg8r7U8LsahuzzyenDn4liPKx-C-AUDIQAaowE6lKWVAkfeRyKss4IPvW89nPRvATUFD261LmWq8jSJLZkMq2MYQO9OzZBuRp7FCA-jvu2joGNV3f68QX3pj2g1VgxaEvCrL4ReP5vuO-vbRGCaJxrSP3mKL00dw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2429-1-29f82424492f-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2429-1-517c7ddab4e3-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2429-1-517c7ddab4e3-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Z-TMzoWlIpRuW6y7-0LCnKglAJUonTM9Pq0ru03mBFjrBKFfE8ePnY8AIteIdfm0SImfaF_hj_Mru64tlJCLROtxaX-F3yBDd5LbqNSgt72_JC8VeiYQTBDCweKk4hyKNermOI19CASNSp_zFOvsgHt5fVvlk75kwPBjq3gjJ4Tm9MRyf099W370CnmcFL2oCxRrq6SjVsjlAHHLyybTTTxYOiH7Z1gzqQi8zfamGddaV6f3K4_S7ZJzz85_-_8C4wL6Ea5jOHvCwr3ydW1U8eAgVoa94sZmu_GPFeuok-bE_c_BqWYazKlfiBhjqKD2AapMkKdvAcrGdYaC7fMvqw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2429-1-517c7ddab4e3-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -262,10 +291,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2428-1-f9bc88c4a16b-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2428-1-f9bc88c4a16b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/mojMN4HoTRGrNwQLpk5NPu_5fxNyrmDMt1ZSEXudjm4ZIBhiL60aXmXE26ZTFdx2Z43tPKh7oDJThUJpvyGImO4w9PLOfPU8gzODgD2j8o9XS1wP9nNphRxpMXmjl-SlChWQvCZcrJ9PYdHgFwwVvnHdbvCgDlOtyH1H0L-q2QpAYRtH0FqvzvJIgJ4k_qAOiLHsDhZpjvpxWzhNmLzKVdwEvhFjVZPx_yu8wQQGQKlh9k11TlGTiZyTkTL2kZm5JngfvxNQqarF4BDlqG3DfBe8gsmKXMA-SvJB0Mb0LaefhB-XipF0Xjp1ObKbC_S6Nmby2E3-TqSUuW64NYzFfg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2428-1-f9bc88c4a16b-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2428-1-bdfc2e21777a-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2428-1-bdfc2e21777a-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Bh2Lad9ky2-UJas86xr0V13W_m5SLjatIn2JwaaeKKNAZ7egjnB7pDD7eG3DrKKuDwAhiZNgYdxNVeQK2OuMnmQCRDA7Q5tV5W0w3zD5Wbw9LgvqtmQ5qdZDtSMkxQ8Ab_6oF8XZRxU0oq7LT_DBLDNgwyN04s33c62cvlj8bBtV71plhsB-zH8k3fnkAGZI3y9uopUdgbzh_Fg_aOJhfIKO2A80wsY7bl8aoVcO6IxNS7HE0PKvbPwU9eTO8wJ90UTwysRlId1NmRxr62JtpfX8AiZMThqyafbDzaT2p-7csxHL33ZMWPOZzUfdka12xZ3NyyFnij7fNe5XhSUSLQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2428-1-bdfc2e21777a-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -286,15 +315,15 @@
       "date": "2026-01-29T11:00:11+00:00",
       "text": "⏰ Приостановление срока давности уголовного преследования при отсрочке (рассрочке) по налогам\n\nЗаконопроект Минфина России комментирует Партнер \"Пепеляев Групп\" Леонид Кравчинский.\n\n💬 Минфин предложил приостанавливать течение срока давности на время предоставления рассрочки или отсрочки (совместно для краткости – отсрочка) по уплате \"криминообразующей\" налоговой задолженности.\n\n📣 Обоснованность \n\nНа первый взгляд, предложение справедливо: налогоплательщику отодвинули срок уплаты налога, материалы не движутся в следственные органы, но срок давности продолжает истекать. \nВозможна ситуация, когда в результате предоставления отсрочки уплаты налога и налог не будет уплачен, и государство утратит возможность взыскания через механизм уголовного преследования.\nВозьмём для примера недоимку 60 млн. руб. по ВНП. Это особо крупный размер, срок давности уголовного преследования – 6 лет, исчисляется с момента, когда налог должен был быть уплачен.\nЕсли с этого момента до окончания отсрочки пройдёт более 6 лет, срок давности истечёт. \nТак, если за 2020 год налоговая проверка назначена в конце 2023, окончена в конце 2024, возражения, рассмотрение, ДМНК, снова возражения, рассмотрение, решение, жалоба, и к концу 2025 согласована отсрочка на 3 года. Отсрочка закончится в 2028. \nЕсли за 2020 было уклонение от уплаты налога, срок давности начнёт течь с 2021 и истечёт в 2027.\n\n🤝 Из этого можно заключить, что для баланса интересов предоставление отсрочки по налогам можно уравновесить такой же \"отсрочкой\" окончания срока давности уголовного преследования.\n\nОднако при внимательной оценке законопроект вызывает массу вопросов.\n\n❓Утрата права на внеуголовную защиту\n\nУсловие предоставления отсрочки – обязательное отсутствие оспаривания решения налогового органа.\n\nВ случае с предоставлением отсрочки продолжение течения срока давности уголовного преследования и его истечение уравновешивают отказ от судебной «доуголовной» защиты. \nС одной стороны, налогоплательщик отказывается от защиты, с другой – к моменту окончания отсрочки ему (чего и опасаются авторы законопроекта) уголовное преследование уже не грозит.\n\n⛓️‍💥 Теперь получится, что налогоплательщик, получив отсрочку, не только отказывается от внеуголовной защиты, но и остаётся под уголовным преследованием. \n\nЭто нарушает баланс интересов. \nПоэтому был бы справедлив один из вариантов: \n     ✔️отозвать законопроект полностью; \n     ✔️исключить из НК такое условие предоставления отсрочки как отказ от обжалования,\n     ✔️сохранить право дальнейшего обжалования решения налогового органа для ситуаций предоставления отсрочки.\n\n🛑 Сейчас звучат предложения изменить порядок исчисления срока давности уголовного преследования, сдвинув его на момент вступления в силу решения инспекции. Однако, с учётом практики проведения налоговых проверок, такое решение может существенно и необоснованно увеличить сроки давности. \n\n❓ Момент возобновления срока\n\nПредложено возобновлять течение срока давности с момента получения следственными органами материалов из налоговых органов.\n\nОднако более справедливым представляется возобновление течения сроков не с момента получения следственными органами материалов из налоговых органов, а с момента их направления налоговыми органами.\n\n☝️ Доктринальная конструкция сроков давности не предполагает скидок на межведомственное взаимодействие.\n\n❓ Исключение статьи 199.2 УК РФ из сферы действия особого порядка\n\nПредложено изменить статью 140 УПК РФ, исключив из неё статью 199.2 УК РФ (сокрытие денежных средств или имущества от взыскания). \n\nЭто значит, что состав сокрытия будет исключен из сферы действия особого порядка возбуждения уголовных дел, что никак нельзя признать обоснованным. \n\nПодробнее о предлагаемой поправке в статью 140 УПК РФ – в следующем выпуске.\n\n#изменения_законодательства\n#заметки_защитника\n\n➖➖\n📧 Если налоговая проверка может перерасти в уголовное дело, Вам необходима юридическая помощь. Обратитесь к Леониду Кравчинскому: l.kravchinsky@pgplaw.ru",
       "text_html": "⏰ Приостановление срока давности уголовного преследования при отсрочке (рассрочке) по налогам<br><br><a href=\"https://minfin.gov.ru/ru/om/obs/npa_projects/?id_57=9749-o_vnesenii_izmenenii_v_statyu_78_ugolovnogo_kodeksa_rossiiskoi_federatsii_i_statyu_140_ugolovno-protsessualnogo_kodeksa_rossiiskoi_federatsii\" target=\"_blank\" rel=\"noopener noreferrer\">Законопроект</a> Минфина России комментирует Партнер \"Пепеляев Групп\" <a href=\"https://www.pgplaw.ru/to-get-the-team/leonid-kravchinskiy/\" target=\"_blank\" rel=\"noopener noreferrer\">Леонид Кравчинский.</a><br><br>💬 Минфин предложил приостанавливать течение срока давности на время предоставления рассрочки или отсрочки (совместно для краткости – отсрочка) по уплате \"криминообразующей\" налоговой задолженности.<br><br>📣 Обоснованность <br><br>На первый взгляд, предложение справедливо: налогоплательщику отодвинули срок уплаты налога, материалы не движутся в следственные органы, но срок давности продолжает истекать. <br>Возможна ситуация, когда в результате предоставления отсрочки уплаты налога и налог не будет уплачен, и государство утратит возможность взыскания через механизм уголовного преследования.<br>Возьмём для примера недоимку 60 млн. руб. по ВНП. Это особо крупный размер, срок давности уголовного преследования – 6 лет, исчисляется с момента, когда налог должен был быть уплачен.<br>Если с этого момента до окончания отсрочки пройдёт более 6 лет, срок давности истечёт. <br>Так, если за 2020 год налоговая проверка назначена в конце 2023, окончена в конце 2024, возражения, рассмотрение, ДМНК, снова возражения, рассмотрение, решение, жалоба, и к концу 2025 согласована отсрочка на 3 года. Отсрочка закончится в 2028. <br>Если за 2020 было уклонение от уплаты налога, срок давности начнёт течь с 2021 и истечёт в 2027.<br><br>🤝 Из этого можно заключить, что для баланса интересов предоставление отсрочки по налогам можно уравновесить такой же \"отсрочкой\" окончания срока давности уголовного преследования.<br><br>Однако при внимательной оценке законопроект вызывает массу вопросов.<br><br>❓Утрата права на внеуголовную защиту<br><br>Условие предоставления отсрочки – обязательное отсутствие оспаривания решения налогового органа.<br><br>В случае с предоставлением отсрочки продолжение течения срока давности уголовного преследования и его истечение уравновешивают отказ от судебной «доуголовной» защиты. <br>С одной стороны, налогоплательщик отказывается от защиты, с другой – к моменту окончания отсрочки ему (чего и опасаются авторы законопроекта) уголовное преследование уже не грозит.<br><br>⛓️‍💥 Теперь получится, что налогоплательщик, получив отсрочку, не только отказывается от внеуголовной защиты, но и остаётся под уголовным преследованием. <br><br>Это нарушает баланс интересов. <br>Поэтому был бы справедлив один из вариантов: <br>     ✔️отозвать законопроект полностью; <br>     ✔️исключить из НК такое условие предоставления отсрочки как отказ от обжалования,<br>     ✔️сохранить право дальнейшего обжалования решения налогового органа для ситуаций предоставления отсрочки.<br><br>🛑 Сейчас звучат предложения изменить порядок исчисления срока давности уголовного преследования, сдвинув его на момент вступления в силу решения инспекции. Однако, с учётом практики проведения налоговых проверок, такое решение может существенно и необоснованно увеличить сроки давности. <br><br>❓ Момент возобновления срока<br><br>Предложено возобновлять течение срока давности с момента получения следственными органами материалов из налоговых органов.<br><br>Однако более справедливым представляется возобновление течения сроков не с момента получения следственными органами материалов из налоговых органов, а с момента их направления налоговыми органами.<br><br>☝️ Доктринальная конструкция сроков давности не предполагает скидок на межведомственное взаимодействие.<br><br>❓ Исключение статьи 199.2 УК РФ из сферы действия особого порядка<br><br>Предложено изменить статью 140 УПК РФ, исключив из неё статью 199.2 УК РФ (сокрытие денежных средств или имущества от взыскания). <br><br>Это значит, что состав сокрытия будет исключен из сферы действия особого порядка возбуждения уголовных дел, что никак нельзя признать обоснованным. <br><br>Подробнее о предлагаемой поправке в статью 140 УПК РФ – в следующем выпуске.<br><br>#изменения_законодательства<br>#заметки_защитника<br><br>➖➖<br>📧 Если налоговая проверка может перерасти в уголовное дело, Вам необходима юридическая помощь. Обратитесь к Леониду Кравчинскому: l.kravchinsky@pgplaw.ru",
-      "views": 1470,
+      "views": 1480,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2427-1-f807930e8643-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2427-1-f807930e8643-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Tm4JGWI7nroO2T4bPcd9YcRZp9kslTTlEoCl9MgEBXhHKKNxRj81UYVjcEpHpjYh3KOk3sfwGnD-P1Jaamy69sXlMC0tY5exeJYedJdwQw3B4FE8-QzNBSh9EziPbNj5Eb0Il88eEKG3tTzSNWtziMwIOVE_AdMn_NsfLJMghHJxoP1OvLV4Vii66r_llzLvjhNOyzNRAx3olgl34oRg2yhakR68vgIa5KiMGXGlGVqgy2ATRdNUsMtfLAKdQkVWZWvomUx-s81zY50Vm-Mte5WDiUzcvNKzmDploMji1syQblcFWAzPE6OcIocrdhZevwTSmp3BCcyJZ4xs7u5VBg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2427-1-f807930e8643-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2427-1-87592fda6196-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2427-1-87592fda6196-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/fqoi-QXYVgXVW7jqkgfYhpcX2MkPqBdGHWtuhoPfwEq26alS_uU0fTAsgecjIGH7IZWdxOEIsSdfnE_lU5yX7FDyODT-h2ClGNGetiq8tCH8DadEv8S5Gocw4U7SQCoyM5fkTM6jKKazPo3w9nrf74sNfdkE4rDDdnsgrQqlSor4nM87vL_BN1W1RQJiEY97AO9S5ADhj4dqywPdEMiuLiWcmaXDiLnU5bKCJewUvv1Mt39QjFRFrtftukDRp6qI7HZjfwa-bnMNhgfz4L25XxwNynOQ9A6J8Bos73rgRrTNM4q8uGNBpZqWr7JMLtwOkzRCiaHUoZcPWyhHpiGWIA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2427-1-87592fda6196-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -320,10 +349,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2426-1-72215136f4e1-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2426-1-72215136f4e1-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/g2CpffetrNHvXHCI520VKMaPhPjSabgjMjl8QTx_tcfdKJ5nA4_IY3i5QkhKc5xxNeGLUw4CeCb-hch30lP9WCPmj_2FA-2MTWgqxgHwJatNPV_6w1erQ_Nhas2qBXLjSIZsN85NGMKXmHoHqRFNZ5wLLF1yJOAbiRw4NWd1-yrXemz2CBMzPF9Bk6b1CHtjOcGgyOBHVuqc0uQKS6zBz44j-h73LakCek4muHKxNQW0jL0XwfMKItdu-X68hVzGt_sYb9ly6duNP7SNwv7aU4brWrUZgnYmxXbfERLSAlx0zMwtUsmA4iQNN7vuw-9TUq8_0J3iqY8k3NljObMhow.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2426-1-72215136f4e1-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2426-1-0da5fbde0ff7-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2426-1-0da5fbde0ff7-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/sXu5th0kYl7vJi7oq4iE7THGYKw7r-QG4odsgS9VnhnlQd_IOzcPhHBM7xqF42iwkncm5oGfvhKki3tJG7XyJv15h6I7Bbams5iSz9kDh1lZpussQAm0F4-k8XI7NbDtPkifyFhxDUfX2cxA5f1kUERpXvnkb4ifXnsh9WU4gScdGREaVIY-ArJNcIK-cHiOWtz44s0bN8aPMhNgwJ6pKy1l66pQNZOzIASnLMKdudBsBWvUjOuyxwamqzjgVW9QieTD0K_d6KRVt2VpE1698gzyOm2__F08pNlg4TZbSA7HKkNpdDSyKL4SASqU0KU4KPulxaOaYXcYUJ7Cuerz7g.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2426-1-0da5fbde0ff7-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -344,15 +373,15 @@
       "date": "2026-01-28T14:02:35+00:00",
       "text": "🔥 Представляем новую постоянную рубрику PG-Tax #заметки_защитника\n\nВ этой рубрике эксперты «Пепеляев Групп» будут делиться мнением об актуальной налоговой повестке в аспекте уголовно-правовой защиты налогоплательщика.\n\nВас ждут комментарии и рекомендации по самым разным вопросам налогово-уголовной тематики:\n     🔴изменения законодательства,\n     🔴позиции высших судебных инстанций, \n     🔴практика по уголовным делам,\n     🔴взаимодействие с правоохранительными органами,\n     🔴актуальные события рынка. \n\nПервый выпуск рубрики - уже завтра в канале 👉",
       "text_html": "🔥 Представляем новую постоянную рубрику PG-Tax #заметки_защитника<br><br>В этой рубрике эксперты «Пепеляев Групп» будут делиться мнением об актуальной налоговой повестке в аспекте уголовно-правовой защиты налогоплательщика.<br><br>Вас ждут комментарии и рекомендации по самым разным вопросам налогово-уголовной тематики:<br>     🔴изменения законодательства,<br>     🔴позиции высших судебных инстанций, <br>     🔴практика по уголовным делам,<br>     🔴взаимодействие с правоохранительными органами,<br>     🔴актуальные события рынка. <br><br>Первый выпуск рубрики - уже завтра в канале 👉",
-      "views": 1520,
+      "views": 1530,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2425-1-8b3add6cf15b-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2425-1-8b3add6cf15b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/HXpNj1eGW8XXzPWTTr9J7DwDkK8YA6rZVZ5Pzgwfo6If1BnTxi4kPECmWko2pieVfxSiubu-llm17F6Gc9sotIVZFySt_T5c6bm8AqYufuho5lCMRquzrVy2La_KPdHWbUrjsxy11KsSDAeBFPEkrNcTA7T-VIuVDsa2fFQI2rb3xzXuQFUgSnYUkYRDaOXihdZe6xfqM0s4ueO90SzMiS6ZghWSX7qI7K6Zkws1Zv0oKnSZBVzxeZ1Fx2cW6wpMBHqZUb_rWdNJtTqkfK8NKjJ5cwIOQWfvyLwsUQCCTPUSJYBYBdZHPesngGmiaLQmV0HP86MnHSQPdyCniCqWbQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2425-1-8b3add6cf15b-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2425-1-a69d371bbb4a-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2425-1-a69d371bbb4a-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/DbFbsV3BFk9LYzbixGjINa3igDGLIM3eoRc8sIM5QGqOENd6p6N5V3fr0PkdVWjw6ELNE0nqZERaKyq7fZ8G19Po9R2fJIt9fvBuOvlZwDAXnRea8ZMYzoTXR67fpJNSdSp7ugQJPhSRguqgyLwYcK-v77vyFngxPC3g5lPI1pMJFHRSfupXAYUSioTi_xlbQNouG91_paSzINcOiR29wVXmKb33zDIkgTz7cAhEE19DcXP3xr26nhzjIXzKBJVKvhCufMzH-KwkjnxGTDo9YiqNsYfvCSYLQJQgzkXt1GBo2bnnc8xKJO00rjW6MQkTPyLSBLEyCfvaLnrXISOcjw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2425-1-a69d371bbb4a-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -378,10 +407,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2424-1-ccf5f9240024-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2424-1-ccf5f9240024-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Tk8jY29-n2_1USlvn2_Gd_0wBsEu1OVBkAwIIvuOOLqZ8H14epr9DOcqQnDJM_b5dEt9GPX_W7WQszRFZfpOL7UW5i1kN4ysIw6WIhnvi1NAGubVJFQPKqw4QDlNb9HU0Ho1tj-LqpejTunppKrrcuGE1w6OX1dWaD6SKHjBqvMaMenVJxS8Zr6ooxdwnkJ7k7EFYmaxOKPDL1HbWcyTWGtpQTXrK-BNW7f_mgJ6nQ4mhmDFDH9nF0aayHtJON88jhsNRN-U4DOELEM3bo0r0IqxlaIuXrakq5jzxiewW8ofBK4EkjRdNluoyGmfOsIOaoyyp-PoN4J2dUePlzpl-Q.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2424-1-ccf5f9240024-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2424-1-c309447733dd-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2424-1-c309447733dd-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/PN_WQz0tbVx9a7wAB46LY6SbmcS39BoEZcBXqiUWuurbuRHYR9JGfFGE5iD5y7koffwiODVGcDpp9MHVZs442_ucVeNbZ2L9bcTUbZBaQTW4KLQfpOK1qqFTsKGbeJ7KHv-hMHfmAbzXc8ujIhRdLgMre11X9SrDdFTmssjkjWPqBBV7vMvwP0d5WTx8pid6x4Lq9tyB29eVZyZ4R0oOBkWhlFCcJsOvgz_sz5hlnn5NK-rCjky1LWaA4UNxQ2aLUZCu1rhXjjtPrUEna6gEUQwy3uiqA7hUME_x5inY6vR9NgZ4dMKIsCtqj5AmnBJSYgvxwEYvgdMPSuNNhZJkvQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2424-1-c309447733dd-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -407,10 +436,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2423-1-e5990f3f5382-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2423-1-e5990f3f5382-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/IAv5K6OsHbi_44MeG8lxFIxU2QJV2NdpDat861u-vz_2T_KqBc2rJoAUhdJHe6xP4zQf-URPffuwR7egVOvVW04qqbx5Ln4HPLly_jni-G9ocORin2YPifUjEpOFRtyggQJ9Pd28V3Qr96MD5DbA6_XKG0sF9NHBxYnQQArIMUnaQN32GfNgW-dWhhESjdxNGs6rwJhnKl3haL07Q7NraI91MVPJvnf9Kcl1SnkX_ueLSgy1-N4OgTO3zuto345Yf2iEx5KTts-NQvak6zzhQpVr_8Xo_huHa-PXU5hddCgKnFw0uYFDKAIMYUVCcMmM_ocTXJKyaUuR6DnjTPE3cg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2423-1-e5990f3f5382-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2423-1-8a0c03893cbc-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2423-1-8a0c03893cbc-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/MOgvq3WIShrmfxmLF706N6g3q2GZ1Fw90P5nZglGMvKpayKoG6-UTGS0eIItlOdo07AhsylP6RKw20J3MG4zTfhe4czbsCzDmCNtjqvix1auUnWbNgMWJvN4rmIjDN06W2PA_r7eAVaXpqtrFn3IOoAZZKveQdM67y69qcyumHeWgV1qwi3m_PUqjCB8twJqwRTsXnec_FL0diXZeT8gZhr_USqUHUxWNm75b0DpdFSaLzVrbSVmeXaEAaXdamRy2dkImv3CL9CyYZ3UCws47dGf_Tnx3JpsXCgIPqpvlThMfNTcZT2zpeJdOUKem28rqJBPmjMuR84iVbrhfC1zgw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2423-1-8a0c03893cbc-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -423,35 +452,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2423",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2421,
-      "date": "2026-01-27T14:02:46+00:00",
-      "text": "⛳️ 12 февраля приглашаем на ежегодную налоговую конференцию, где налоги предстанут как особая форма искусства — сложная и многослойная.\n\n🧩 Вместе с экспертами «Пепеляев Групп» мы посмотрим на ключевые налоговые сюжеты сквозь призму искусства и увидим, как из отдельных штрихов складывается цельный образ налоговой реальности.\n\n👉 Подробнее о гранях налогового искусства и регистрация по ссылке.\n\n#мероприятия",
-      "text_html": "⛳️ 12 февраля приглашаем на ежегодную налоговую конференцию, где налоги предстанут как особая форма искусства — сложная и многослойная.<br><br>🧩 Вместе с экспертами «Пепеляев Групп» мы посмотрим на ключевые налоговые сюжеты сквозь призму искусства и увидим, как из отдельных штрихов складывается цельный образ налоговой реальности.<br><br>👉 Подробнее о гранях налогового искусства и регистрация по <a href=\"https://www.pgplaw.ru/events/upcoming-events/nalogi-kak-iskusstvo/\" target=\"_blank\" rel=\"noopener noreferrer\">ссылке</a>.<br><br>#мероприятия",
-      "views": 1680,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2421-1-b05cb7d73ceb-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2421-1-b05cb7d73ceb-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/qnm0cnPLWG1bFlpLrwooLY4uhgzmfRe3kNJhD-g2qefkysgZvw856f6OpvL5rEfX9clVQDLzwzV8NqPcE1DHsWVQjcBPWba_FfRO_79XdKOdbfdNlcuvP2Ig0Fy6qx4nYEmsB5tK0388yY6GLw8tBQzvy0mQtnALd0cxj7lBLcqBbuAi4UcbMpz92ptVX9_OMZkWzgNBMIMrj886-4ZblEo677S27LhE2mOn9ZbqSP8r6zW7Gse12XN-MlZgts0WrW_D5g4I0cTfH7cOSYNP995cKuA-3yqjKZnvL7bxTcRgGTHDyYOXiu-xjdjSu5UJYgPke4AA83Wm9ZxIeTUHcA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2421-1-b05cb7d73ceb-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 420,
-          "feed_width": 1800,
-          "feed_height": 945,
-          "full_width": 1880,
-          "full_height": 987,
-          "source_width": 1880,
-          "source_height": 987
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2421",
       "forwarded_from": null,
       "reply_to": null
     }
