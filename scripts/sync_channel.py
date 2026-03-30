@@ -1530,9 +1530,69 @@ def parse_count(raw: str | None) -> int:
         return 0
 
 
+def extract_inline_emoji_fallback(attrs: str | None = None, inner_html: str | None = None) -> str:
+    attr_text = attrs or ""
+    candidates: list[str] = []
+
+    for attr_name in ("alt", "data-content", "aria-label", "emoji-text", "title"):
+        match = re.search(rf'{attr_name}=["\']([^"\']+)["\']', attr_text, re.IGNORECASE)
+        if match:
+            candidates.append(match.group(1))
+
+    if inner_html:
+        inner_text = html_lib.unescape(strip_tags(inner_html)).strip()
+        if inner_text:
+            candidates.append(inner_text)
+
+    for candidate in candidates:
+        value = html_lib.unescape(strip_tags(candidate or "")).strip()
+        if not value:
+            continue
+        if re.match(r"^https?://", value, re.IGNORECASE):
+            continue
+        return value
+
+    return ""
+
+
+def replace_inline_emoji_markup(raw_html: str) -> str:
+    if not raw_html:
+        return raw_html
+
+    def replace_img(match: re.Match[str]) -> str:
+        fallback = extract_inline_emoji_fallback(match.group(1))
+        return html_lib.escape(fallback) if fallback else ""
+
+    def replace_emoji_tag(match: re.Match[str]) -> str:
+        tag_name = (match.group(1) or "").lower()
+        attrs = match.group(2) or ""
+        inner_html = match.group(3) or ""
+        has_emoji_class = bool(
+            re.search(
+                r'class=["\'][^"\']*\b(?:emoji|custom-emoji|tg-emoji|animated-emoji)\b[^"\']*["\']',
+                attrs,
+                re.IGNORECASE,
+            )
+        )
+        if tag_name != "tg-emoji" and not has_emoji_class:
+            return match.group(0)
+
+        fallback = extract_inline_emoji_fallback(attrs, inner_html)
+        return html_lib.escape(fallback) if fallback else ""
+
+    replaced = re.sub(r"<img\b([^>]*)>", replace_img, raw_html, flags=re.IGNORECASE | re.DOTALL)
+    replaced = re.sub(
+        r"<(tg-emoji|span|i)\b([^>]*)>(.*?)</\1>",
+        replace_emoji_tag,
+        replaced,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    return replaced
+
+
 def build_text_fields(raw_html: str) -> tuple[str | None, str | None]:
     raw_html = raw_html or ""
-    raw_with_breaks = re.sub(r"<br\s*/?>", "\n", raw_html)
+    raw_with_breaks = replace_inline_emoji_markup(re.sub(r"<br\s*/?>", "\n", raw_html))
     anchors: list[str] = []
 
     def anchor_replacer(match: re.Match[str]) -> str:

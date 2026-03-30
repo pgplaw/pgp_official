@@ -223,6 +223,34 @@ test.describe('Desktop smoke', () => {
     await expect(anchors.first()).toHaveAttribute('href', 'https://example.com/story');
   });
 
+  test('renders telegram-style emoji markup as matching unicode emoji in post text', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'emoji-host';
+      document.body.appendChild(host);
+      const card = window.renderPostCard({
+        id: 999994,
+        date: new Date().toISOString(),
+        text: 'emoji markup',
+        text_html: '<p><a href="https://example.com/story"><img class="emoji" alt="🔥" src="/emoji/fire.png">Важная ссылка</a> <tg-emoji emoji-id="1">⚡️</tg-emoji> <span class="tg-emoji" title="📌"></span> новость</p>',
+        photos: [],
+        tg_url: 'https://t.me/example/999994',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    });
+
+    const text = page.locator('#emoji-host .post-card__text');
+    await expect(text).toContainText('🔥Важная ссылка ⚡️ 📌 новость');
+
+    const anchor = page.locator('#emoji-host .post-card__text a').first();
+    await expect(anchor).toContainText('🔥Важная ссылка');
+    await expect(anchor).toHaveAttribute('href', 'https://example.com/story');
+  });
+
   test('does not duplicate feed cards after overlapping load-more and refresh requests', async ({ page }) => {
     await page.route('**/data/channels/pgp-official/pages/2.json', async (route) => {
       await new Promise((resolve) => setTimeout(resolve, 220));

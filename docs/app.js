@@ -241,6 +241,56 @@ function isUrlLikeLabel(value, href = '') {
   return Boolean(normalizedLabel && normalizedHref && normalizedLabel === normalizedHref);
 }
 
+function extractInlineEmojiValue(element) {
+  if (!element || element.nodeType !== Node.ELEMENT_NODE) return '';
+
+  const candidates = [
+    element.getAttribute('alt'),
+    element.getAttribute('data-content'),
+    element.getAttribute('aria-label'),
+    element.getAttribute('emoji-text'),
+    element.getAttribute('title'),
+    element.textContent,
+  ];
+
+  for (const candidate of candidates) {
+    const value = String(candidate || '').trim();
+    if (!value) continue;
+    if (/^https?:\/\//i.test(value)) continue;
+    return value;
+  }
+
+  return '';
+}
+
+function isInlineEmojiElement(element) {
+  if (!element || element.nodeType !== Node.ELEMENT_NODE) return false;
+
+  const tagName = element.tagName.toLowerCase();
+  if (tagName === 'tg-emoji') return true;
+
+  const className = element.getAttribute('class') || '';
+  const src = element.getAttribute('src') || '';
+  const hasEmojiClass = /\b(?:emoji|custom-emoji|tg-emoji|animated-emoji)\b/i.test(className);
+
+  if (tagName === 'img') {
+    return hasEmojiClass || /emoji/i.test(src) || Boolean(extractInlineEmojiValue(element));
+  }
+
+  return hasEmojiClass;
+}
+
+function replaceInlineEmojiElements(root) {
+  if (!root) return;
+
+  root.querySelectorAll('img, tg-emoji, span, i').forEach((element) => {
+    if (!isInlineEmojiElement(element)) return;
+
+    const replacement = extractInlineEmojiValue(element);
+    element.replaceWith(document.createTextNode(replacement));
+  });
+}
+
 function shouldInsertSpaceBetweenAnchorSegments(leftText, rightText) {
   const left = String(leftText || '');
   const right = String(rightText || '');
@@ -305,6 +355,7 @@ function normalizePostHtml(html) {
 
   const template = document.createElement('template');
   template.innerHTML = html;
+  replaceInlineEmojiElements(template.content);
   const anchors = [...template.content.querySelectorAll('a[href]')];
   const namedHrefs = new Set();
 
