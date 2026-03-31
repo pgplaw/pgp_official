@@ -1,13 +1,42 @@
 {
-  "generated_at": "2026-03-31T06:01:09.985697+00:00",
-  "build_id": "baf2a26fdd64",
+  "generated_at": "2026-03-31T09:51:33.304970+00:00",
+  "build_id": "69a9c628facd",
   "pagination": {
     "page": 7,
     "page_size": 16,
-    "total_posts": 167,
+    "total_posts": 168,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2456,
+      "date": "2026-02-10T13:35:02+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1440,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2456-1-dfbab2a0b017-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2456-1-dfbab2a0b017-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/dFxExjdFZXXo4yz30I-TbscvNJAeknJxRdUIe9O2E1A9rcannioTrfZ_hafdELAs45AQndWc7FGxtxYvjzU_ZPHcpgC_7IO20GyF-ChUN056JQB2OLVi4R_CHpUAq9fQNGwN6NvFsxDX7s5Xq0qkEFGkZR51gIgpKMaPmzWrJTXLA8E7UalonXluFAqAhPnGtKPECU4-NT8rBlpN1nUMmvePmcfp-qkTL1b2xgdc92OvAS4WkPfgzWR7pyLM8GBos89YaMXlfbkLM5f1ac5QMwExHa0yAnDw2_reroAwglzmKgDZL93XCwTMXS49C0KDikThkjSEQP-Io1JPDVX3oA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2456-1-dfbab2a0b017-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 420,
+          "feed_width": 1800,
+          "feed_height": 945,
+          "full_width": 1880,
+          "full_height": 987,
+          "source_width": 1880,
+          "source_height": 987
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/PG_Tax/2456",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2455,
       "date": "2026-02-10T10:06:45+00:00",
@@ -306,10 +335,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2445-1-9a3a7a82691d-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2445-1-9a3a7a82691d-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/e33boabuLttqLzzH0ajkRBZ1QbGU9-uY6ddaH4YUbYwCvl9C8XFvh4e9Pr1PWY3C8I9TT8ysp3XWMmWek1iS-sLP8shAHV2UqoUNe3XDBCMHL73CLOFOgQy82nLne5qPFWGmTTqr6mjvPHpxvAeYm6CGpPDIVBR2sd1jrdOEuJ7CZ7MqdlcytQIaCkb1Jebj4cFWs-_mKR5KU7BtdfQSONkm8H3sPYVC3YiJCW-lxeFpwC4r8JwinlP_rLlywwBxzg4TAhWcjBo7KGev3za0XBiH3-qmeFHT_sQfKKNGV6Q8E0z1nGGCw6d-KifOiua8QKJDuuTkzL5XGEC3qQ8x3w.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2445-1-9a3a7a82691d-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2445-1-79da5f290413-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2445-1-79da5f290413-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/MX7dw8CDvo3t_NbDO1rSbDLY1cUAyy-LRm6HKDZJMLF7PeEw5MQxHb1qj9NOimf49GSEycgcyV0oyp4H7zW_l3EWiNH8xsRtE5ET_Y2zY30Debkd-F22nAQwLmRVNIcwf80iACxPH_dIhlCZMFNhxn6mjklawTvoue9fJ8FCapOviAoGPmGUK6Ymwe5KYSg1zY8CWpOpTvJ5buv3Lodztzfq1SlT62KQOWnaHZsfq-KvO95IDLatw0JSVGaXuYOnizpE9KvE2xe36nm5_ZOR1BNgMacr41zOXHNl69nOzHwtiBUh2Ng_XdMHVZAeJw9AfeUy4EdnROl8HnlujjHQ3g.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2445-1-79da5f290413-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -335,10 +364,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2444-1-c88f35bdf56a-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2444-1-c88f35bdf56a-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/BqA-JDWx76RT_Joebi1ESQwwVhv-xhkaFAozBFA7bNOmNXtariWeoC492Ki7IRpgUgXh7W154skNRcQOlINySSJdEKcmW3fcMETviVM3XFi48gu9LbgCj2_quBnPBmFsRLhhnrtfzdfCFo05jms1Rrgo0dTuv99gL9cLiSL4gaV-LocQrqFSLZvFUY5HQ37HvdoPYkXGflaqaT5yRJ6OrVHLaVwOTBkbxeZ-_u9EJT5Dapaiqg2oXSjk3t5TztnFuZS8zhN9uCnf8QaIzdOl4nFnb30UAfXYPA_agXzNvdqVlbQypW5n2nL-zaNtBSL8LIyzcvgvolhCeIxKvf83kg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2444-1-c88f35bdf56a-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2444-1-f27738106cb1-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2444-1-f27738106cb1-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/UFWtHv-ZrW8Eujsw1-5N0M0373cbKN7aI7v6JYRoNc4BAVI4QSCCDTQHCVzpC_5DxNI0OalsCTThoDjR0cw9sQhRZtNZORxf7SX_LvU5VGw15Eycgrm6ORy5X20z3ASAHvSAxk52HLs9avYZPIZQ3h5zXw2x9rN4yTLOSQDQNDGdLbCEPBC6gEU5offPO2hugoJo3KvdnsrF-nE5muFn27emb6WtmFBm-KTP-r5XMlBZUOTaxA28rq8srVdvfV__To61MttK2feEn3rMI_mS9TkROc61gmFRkVSVmo4xKT82JtIY3xJx9Mfk2yx7Pw8eiQvCXHjBdphvslcAUnG3dQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2444-1-f27738106cb1-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -437,35 +466,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2441",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2440,
-      "date": "2026-02-04T07:15:02+00:00",
-      "text": "✍️ Нормотворчество\n \nМинфин России рассмотрит возможность корректировки НДД от добычи углеводородного сырья. \n«Сейчас компании вышли с инициативой, учитывая усложнение добычи, рост издержек, больше в структуре добычи у нас доля трудноизвлекаемых запасов», – объяснил свое поручение вице-премьер Александр Новак.\n \n⚙️ Практика\n \nК началу февраля Реестр недобросовестных работодателей разросся до 656 лиц, большинство — это ИП, но есть и организации.\n🛑 Критерием для включения работодателя в реестр выступает нарушение трудового законодательства, связанное с нелегальной занятостью.\n \n⚖️ Судебные дела\n \nКонституционный Суд РФ разрешил гражданам регистрироваться по месту пребывания в нежилых помещениях, включая апартаменты гостиничного типа (Постановление от 03.02.2026 № 4-П). \n🛑 При этом Суд подчеркнул, что его выводы не распространяются на регистрацию по месту жительства и не отменяют более высокие ставки налога на имущество и коммунальные платежи для владельцев нежилых помещений.\n \n#главные_налоговые_новости",
-      "text_html": "✍️ Нормотворчество<br> <br>Минфин России <a href=\"https://www.vedomosti.ru/economics/news/2026/02/03/1173653-novak-poruchil\" target=\"_blank\" rel=\"noopener noreferrer\">рассмотрит</a> возможность корректировки НДД от добычи углеводородного сырья. <br>«Сейчас компании вышли с инициативой, учитывая усложнение добычи, рост издержек, больше в структуре добычи у нас доля трудноизвлекаемых запасов», – объяснил свое поручение вице-премьер Александр Новак.<br> <br>⚙️ Практика<br> <br>К началу февраля Реестр недобросовестных работодателей <a href=\"https://iz.ru/2036547/olga-anaseva/serym-sero-svyshe-650-kompanij-popali-v-reestr-nedobrosovestnyh-rabotodatelej\" target=\"_blank\" rel=\"noopener noreferrer\">разросся</a> до 656 лиц, большинство — это ИП, но есть и организации.<br>🛑 Критерием для включения работодателя в реестр выступает нарушение трудового законодательства, связанное с нелегальной занятостью.<br> <br>⚖️ Судебные дела<br> <br>Конституционный Суд РФ <a href=\"https://iz.ru/2036382/2026-02-03/konstitutcionnyi-sud-rossii-razreshil-registratciiu-v-apartamentakh\" target=\"_blank\" rel=\"noopener noreferrer\">разрешил</a> гражданам регистрироваться по месту пребывания в нежилых помещениях, включая апартаменты гостиничного типа (Постановление от 03.02.2026 № <a href=\"https://www.ksrf.ru/doc/KSRFDecision885638.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">4-П</a>). <br>🛑 При этом Суд подчеркнул, что его выводы не распространяются на регистрацию по месту жительства и не отменяют более высокие ставки налога на имущество и коммунальные платежи для владельцев нежилых помещений.<br> <br>#главные_налоговые_новости",
-      "views": 1480,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2440-1-a73828d43f9f-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2440-1-a73828d43f9f-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/hAtZuwdpQFKYz1Hfo5XpXBG0YsY05aHiE2KY1wt41gpeRX11vItTqldhIovhycUv5Ur-nObrdj8MuX16iLwy1Y0RmaeiK-_emiZO2mrcxGy-kPZoIEamTBc4ob5MK4Pl2_cjaTVN5RJ5ncCY160MdMkkttH6f-ul3nh1kaKAjRv0VUVOObNOkMdaZuwtRIUPcHlL1LuXVnY857SVrIJ02sifwaMLDtQbU6n8qUPErYr0WArbbaWpZdAim3028VIy4-dzuDwRRvNaNWDuNhhkhMc1oSL3eTc-rDADGeauV6b6MLz1BLvMwxY6aR5XXf2UFC8GCr_eSIVTEVYWpc07TQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2440-1-a73828d43f9f-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2440",
       "forwarded_from": null,
       "reply_to": null
     }

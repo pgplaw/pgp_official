@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-31T05:59:00.339349+00:00",
-  "build_id": "0c833178162e",
+  "generated_at": "2026-03-31T09:48:43.368375+00:00",
+  "build_id": "17c3fcc97f04",
   "pagination": {
     "page": 5,
     "page_size": 16,
-    "total_posts": 75,
+    "total_posts": 74,
     "total_pages": 5
   },
   "posts": [
@@ -18,9 +18,9 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1678-1-8a9f3b91bbfb-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1678-1-8a9f3b91bbfb-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/c3ZSK3cBIH2l2H9dA_7Yc1hXZv49qAsgkhMztbQPPzFzeETbYLk85NtcdlPiGmhvd_2HD9W1527JBn5whVx9vueJwPudJ_e6YxJKNV98iZhrHdGYeZbfK7N76ncBWggbliXo6m4xr-gfe8lAqawZl007Qw_tao98pNgDFdTNHw3SBTiQ8XphF0WxKa5Sj6oZN5QHFQfq6Evdiw-uE8NWIHsk9HDUDtW-WAHmhcO1ieX0QYgBECBoLjAZD_iEt3wV-h6MURStM-ek1VkB8q_HV-jhCBe03Fmx5CKIJuyPvl9pyHQn4-jDLiz6-37uB1UcwSlnfpFi--MoAQ5zUk8Q9g.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1678-1-399ce84fbf67-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1678-1-399ce84fbf67-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/n-ba2jNyB_3-Yl87nNK4x2XjolwoNoxq7rZbQNlQ7xEx4DNUzULnubOPk0lyau7FpQhbNdhWb_ELFBeLMQ6DfheCIhXK3ttyGzZD998xbItw0aw2HdBd2pFsbE27C8OQwp-2yuHBmfMgUAlhfY5R8T-vOtaOZoF1kSfxV48rKUflPb5JtqwpcQ2Rt2yT7HNmRQF-ozRARqHQB435gp7ld1KNX9rQCoEWemUZH6kotZOopPQbjM8jm2H-_aDWqSN7up183FISe2D9rC_-ODAjh1mMZvgwjReg_6pzdQSh_HqttM3DswV5qugP2JLhAYsl62iTzSwUgRtjcEwaXZ2Eaw.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -321,10 +321,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1665-1-40226e045ed2-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1665-1-40226e045ed2-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/K8y_9YtIvk6Mi_MnVc_-1PdKKW7NpvLu8-71FCdRJ86myEpjiAfDIlAxu5jqmyEP9TpEQUMbYr9nfjP7FjYOi7MjlCXvH8k-ESRvuQ7tu7JIFgLEltSojovi5nzMLCnXeT0OQv9-82p8dBWXNSHkX3EuXfXAraEStd08u0-KOKv4XR_4yUZgcQ-m0VQvbB7AXoZz2enst4rQa-jhdOy5kjvgGcZ7gI1Bw0FW_kGXNEOGJ-TuuPrQVwumnM9oS4uTxYpLnVkDuJTBDTfrxSoCcrqxQg9CG-xTXdIwCNqbybsTj0B9_3QuhpXV2r1YitRebX1T1azF0EJ6zGDTA1Oj1A.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1665-1-40226e045ed2-v8.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1665-1-060b1345202a-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1665-1-060b1345202a-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/kW9y-bp-_9uHkQ3PMpyQKh1WgQP2X_uL0MseCVS7ZS0kZ-zrI9gQ8MefmcaH_807rF6FRab3oS3vLrcodvFctrTabCeuQiYWHK0BH8chiwD05x4Q5qYNtfvmGTgcSEGfPmgnvdC7eU0D2En7U7Jz53cu7D0-tLn8QqjPZ9hCFCjlv79E-x_XGI8wKYC35ph3RzqShE6voc4b3e3tg3TSE5jMlOo62hFvMIw4PGEvwX_jEkNeMEjTkSTkrahzhSJva1J8cNXQxzEMdakgaBntenZohcTD6FssGr81iepwUW8yEaAxTMkDqsW7K6TgOeiWYKbCc3YKSJQKfD4K7a5eoA.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/feed/1665-1-060b1345202a-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -401,20 +401,6 @@
         "source_width": 640,
         "source_height": 640
       }
-    },
-    {
-      "id": 1662,
-      "date": "2025-12-31T08:59:54+00:00",
-      "text": "🎁 Дорогие друзья,\nПодходит к концу 2025 год, полный ярких событий, важных открытий, а иногда и сложных решений. \n\nЭтот год мы прошли вместе – через дела, встречи, разговоры, где было место и работе, и простому человеческому теплу.\n\nМы гордимся тем, что за профессиональными задачами сохраняем главное: отношения, в которых есть доверие, уважение и дружеская поддержка.\n\nПусть новый год принесет вам ощущение гармонии и уверенности. Пусть в доме звучит смех, в сердце живет спокойствие, а в делах – порядок и успех.\n\n ❤️ А мы, как всегда, рядом, чтобы помочь, поддержать и разделить с вами радость новых свершений.\n\nС Новым годом!\nКоманда «Пепеляев Групп» ❄️🎄",
-      "text_html": "🎁 Дорогие друзья,<br>Подходит к концу 2025 год, полный ярких событий, важных открытий, а иногда и сложных решений. <br><br>Этот год мы прошли вместе – через дела, встречи, разговоры, где было место и работе, и простому человеческому теплу.<br><br>Мы гордимся тем, что за профессиональными задачами сохраняем главное: отношения, в которых есть доверие, уважение и дружеская поддержка.<br><br>Пусть новый год принесет вам ощущение гармонии и уверенности. Пусть в доме звучит смех, в сердце живет спокойствие, а в делах – порядок и успех.<br><br> ❤️ А мы, как всегда, рядом, чтобы помочь, поддержать и разделить с вами радость новых свершений.<br><br>С Новым годом!<br>Команда «Пепеляев Групп» ❄️🎄",
-      "views": 7830,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": "https://cdn4.telesco.pe/file/78dea8eadf.mov?token=miVrYL3vTiBPvL8vbkipKQ-faWk9jU-JnXqqNatpfIF59TCbX2GEKz_crN_BCCwnq7x7vNqC1D9igYFfsyVrTkcORQH8ns332WNjjJr88P1O-94bY_PU3mlzq2UGuyax4q6dM6zoNXNHDxpFkIYyFfxJ-VZNzGKFjHjPDCGTdx43UgNVcBQqFyKvcBZv5pYoBFDdZmcI4_lFjsQa0fsd9G2OQqeDNh3FoYxvGThh6k8oVZKDiX7EVGC8GhKndlyGkZeozaf5uatTdHDr2_LvfVR3AQKKar92DelWyW98xnXfy6lUodqZQxxhLV2mIqwkw_-CX-KC_bzAEsOLp7LMVixZj9yCVr8LGBr4tRyVBJC_WdpsYdS_LAOOyVUaP0LdHj1YdncWFXap9sfxnBC3UCCa2S2cXPPB8qKh_mnDRhdiKtUumIXcHLF6sBLXM4zDQRz9Wa_TKQjvcM6aroYRY8ZqH3iRhXFQrcz8O4rUvG_eBPHp1Ylgq5JKcqE2vI1E5PA6T4pD0o8_KXAnLmUVMXXnRtMUoIFqOGLYCSAzCuqQLbjd71Q_Y6WhsN_R_irP1PAx3BBs7kv2lRjvjaLzpc19Kxpitc317TmCqsShuSDzlbyKA_7bD3BGi6e42LDOKwIIS6w_cubyf1Blf1Xayv6Sv5d2d8k_kDf50fTw8C8",
-      "tg_url": "https://t.me/pgp_official/1662",
-      "forwarded_from": null,
-      "reply_to": null
     }
   ]
 }
