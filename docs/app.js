@@ -16,6 +16,8 @@ const VIEWER_TRANSITION_MS = 360;
 const FEED_CACHE_MAX_ENTRIES = 6;
 const SCROLL_TOP_VISIBILITY_THRESHOLD_MIN = 360;
 const SCROLL_TOP_VISIBILITY_THRESHOLD_MAX = 720;
+const POST_ANCHOR_GAP_DESKTOP = 10;
+const POST_ANCHOR_GAP_MOBILE = 8;
 
 const state = {
   catalog: null,
@@ -55,11 +57,13 @@ const state = {
   viewerTransitionTimerId: null,
   scrollTopButtonVisible: false,
   scrollTopButtonSyncFrameId: null,
+  postAnchorOffsetSyncFrameId: null,
 };
 
 const elements = {
   channelMenu: document.getElementById('channelMenu'),
   channelCarousel: document.getElementById('channelCarousel'),
+  channelNav: document.querySelector('.channel-nav'),
   siteShell: document.querySelector('.site-shell'),
   siteTitle: document.getElementById('siteTitle'),
   siteDescription: document.getElementById('siteDescription'),
@@ -713,6 +717,7 @@ function scrollPageToTop() {
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
   queueScrollTopButtonVisibilitySync();
+  queuePostAnchorOffsetSync();
 }
 
 function smoothScrollPageToTop() {
@@ -759,6 +764,21 @@ function nextRenderFrame() {
     requestAnimationFrame(() => {
       requestAnimationFrame(resolve);
     });
+  });
+}
+
+function getPostAnchorGap() {
+  return window.matchMedia('(max-width: 860px)').matches
+    ? POST_ANCHOR_GAP_MOBILE
+    : POST_ANCHOR_GAP_DESKTOP;
+}
+
+function queuePostAnchorOffsetSync() {
+  if (state.postAnchorOffsetSyncFrameId != null) return;
+
+  state.postAnchorOffsetSyncFrameId = window.requestAnimationFrame(() => {
+    state.postAnchorOffsetSyncFrameId = null;
+    syncPostAnchorOffset();
   });
 }
 
@@ -1275,11 +1295,13 @@ function setChannelCarouselListOpen(open) {
   const nextOpen = Boolean(open);
   if (state.channelCarouselListOpen === nextOpen) {
     syncChannelCarouselListState();
+    queuePostAnchorOffsetSync();
     return;
   }
 
   state.channelCarouselListOpen = nextOpen;
   syncChannelCarouselListState();
+  queuePostAnchorOffsetSync();
 }
 
 function getChannelCarouselWidth(stage = getChannelCarouselStage()) {
@@ -1873,6 +1895,7 @@ function renderChannelMenu() {
   }).join('');
 
   renderMobileChannelCarousel();
+  queuePostAnchorOffsetSync();
 }
 
 function buildMobileChannelCarouselSurface(channel, index, total, { current = false } = {}) {
@@ -2730,6 +2753,12 @@ function buildPostAnchorUrl(postId) {
   return buildChannelPostUrl(state.activeChannelKey, postId, { absolute: true });
 }
 
+function updatePostHash(postId, { replace = false } = {}) {
+  const nextUrl = new URL(window.location.href);
+  nextUrl.hash = `post-${postId}`;
+  window.history[replace ? 'replaceState' : 'pushState']({}, '', nextUrl);
+}
+
 function resolveReplyTarget(post) {
   const reply = post.reply_to;
   if (!reply) return null;
@@ -2837,12 +2866,7 @@ function renderPostCard(post) {
       if (!Number.isFinite(targetPostId)) return;
 
       event.preventDefault();
-      const targetHash = `#post-${targetPostId}`;
-      if (window.location.hash !== targetHash) {
-        window.location.hash = targetHash;
-        return;
-      }
-
+      updatePostHash(targetPostId);
       void focusPost(targetPostId, link.dataset.replyTgUrl || '');
     });
   });
@@ -3391,8 +3415,52 @@ function getPostElement(postId) {
 }
 
 function getPostScrollOffset() {
-  const stickyNavHeight = elements.channelMenu?.closest('.channel-nav')?.getBoundingClientRect().height || 0;
-  return stickyNavHeight + 18;
+  const stickyNav = elements.channelNav || elements.channelMenu?.closest('.channel-nav');
+  if (!stickyNav) {
+    return getPostAnchorGap();
+  }
+
+  const rect = stickyNav.getBoundingClientRect();
+  const stickyBottom = Number.isFinite(rect.bottom) ? Math.max(0, rect.bottom) : 0;
+  return stickyBottom + getPostAnchorGap();
+}
+
+function syncPostAnchorOffset() {
+  const offset = Math.max(0, Math.ceil(getPostScrollOffset()));
+  document.documentElement.style.setProperty('--post-anchor-offset', `${offset}px`);
+  return offset;
+}
+
+function getPostScrollTop(target) {
+  if (!target) return 0;
+  return Math.max(0, target.getBoundingClientRect().top + window.scrollY - getPostScrollOffset());
+}
+
+async function alignPostToViewport(target) {
+  if (!target) return;
+
+  syncPostAnchorOffset();
+  const prefersReduced = prefersReducedMotion();
+  window.scrollTo({
+    top: getPostScrollTop(target),
+    behavior: prefersReduced ? 'auto' : 'smooth',
+  });
+
+  if (prefersReduced) {
+    await nextRenderFrame();
+  } else {
+    await wait(340);
+  }
+
+  syncPostAnchorOffset();
+  const correctedTop = getPostScrollTop(target);
+  if (Math.abs(window.scrollY - correctedTop) > 2) {
+    window.scrollTo({
+      top: correctedTop,
+      behavior: 'auto',
+    });
+    await nextRenderFrame();
+  }
 }
 
 function highlightPost(element) {
@@ -3441,11 +3509,7 @@ async function focusPost(postId, fallbackUrl = '') {
 
   highlightPost(target);
   await nextRenderFrame();
-  const targetTop = target.getBoundingClientRect().top + window.scrollY - getPostScrollOffset();
-  window.scrollTo({
-    top: Math.max(0, targetTop),
-    behavior: 'smooth',
-  });
+  await alignPostToViewport(target);
   return true;
 }
 
@@ -3769,6 +3833,7 @@ window.addEventListener('resize', () => {
     state.channelCarouselListOpen = false;
     syncChannelCarouselListState();
   }
+  queuePostAnchorOffsetSync();
   if (elements.viewer.classList.contains('hidden')) return;
   void animateViewerToIndex(state.viewerIndex, { immediate: true });
 });
@@ -3790,6 +3855,7 @@ if ('serviceWorker' in navigator) {
 setupChannelMenuWheelScroll();
 setupChannelCarouselInteractions();
 attachCopyInteractions();
+syncPostAnchorOffset();
 loadCatalog();
 updateInstallButtonState();
 queueScrollTopButtonVisibilitySync();

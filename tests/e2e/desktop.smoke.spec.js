@@ -106,6 +106,18 @@ test.describe('Desktop smoke', () => {
     await page.goto(`/?channel=pgp-official#post-${postId}`);
     await waitForFeedReady(page);
     await expect(page.locator(`#post-${postId}`)).toHaveClass(/post-card--targeted/);
+    await expect.poll(async () => page.evaluate((id) => {
+      const nav = document.querySelector('.channel-nav');
+      const target = document.getElementById(`post-${id}`);
+      if (!nav || !target) return null;
+      return Math.round(target.getBoundingClientRect().top - nav.getBoundingClientRect().bottom);
+    }, postId), { timeout: 2000 }).toBeLessThanOrEqual(16);
+    await expect.poll(async () => page.evaluate((id) => {
+      const nav = document.querySelector('.channel-nav');
+      const target = document.getElementById(`post-${id}`);
+      if (!nav || !target) return null;
+      return Math.round(target.getBoundingClientRect().top - nav.getBoundingClientRect().bottom);
+    }, postId), { timeout: 2000 }).toBeGreaterThanOrEqual(0);
   });
 
   test('routes mirrored telegram post links to the local post page instead of opening telegram', async ({ page }) => {

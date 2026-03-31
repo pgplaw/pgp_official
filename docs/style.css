@@ -14,6 +14,7 @@
   --radius-xl: 28px;
   --radius-lg: 20px;
   --radius-md: 14px;
+  --post-anchor-offset: 188px;
   --mono: "IBM Plex Mono", Consolas, monospace;
   --sans: "Manrope", "Segoe UI", sans-serif;
 }
@@ -1465,7 +1466,7 @@ label,
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-lg);
-  scroll-margin-top: 110px;
+  scroll-margin-top: var(--post-anchor-offset);
   content-visibility: auto;
   contain-intrinsic-size: 640px;
 }

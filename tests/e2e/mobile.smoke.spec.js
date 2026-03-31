@@ -73,6 +73,31 @@ test.describe('Mobile smoke', () => {
     await expect(page.locator('#viewer')).toBeHidden();
   });
 
+  test('aligns deep-linked post flush to the mobile sticky header', async ({ page }) => {
+    await page.goto('/?channel=pg-tax');
+    await waitForFeedReady(page);
+
+    const postId = await page.locator('.post-card').nth(2).getAttribute('data-post-id');
+    expect(postId).toBeTruthy();
+
+    await page.goto(`/?channel=pg-tax#post-${postId}`);
+    await waitForFeedReady(page);
+    await expect(page.locator(`#post-${postId}`)).toHaveClass(/post-card--targeted/);
+
+    await expect.poll(async () => page.evaluate((id) => {
+      const nav = document.querySelector('.channel-nav');
+      const target = document.getElementById(`post-${id}`);
+      if (!nav || !target) return null;
+      return Math.round(target.getBoundingClientRect().top - nav.getBoundingClientRect().bottom);
+    }, postId), { timeout: 2200 }).toBeLessThanOrEqual(18);
+    await expect.poll(async () => page.evaluate((id) => {
+      const nav = document.querySelector('.channel-nav');
+      const target = document.getElementById(`post-${id}`);
+      if (!nav || !target) return null;
+      return Math.round(target.getBoundingClientRect().top - nav.getBoundingClientRect().bottom);
+    }, postId), { timeout: 2200 }).toBeGreaterThanOrEqual(0);
+  });
+
   test('shows scroll-to-top control after swipe channel switch and long scroll', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
