@@ -2631,8 +2631,16 @@ def probe_newer_posts_from_direct_pages(
 
         if not candidate_post:
             if candidate_id == start_post_id + 1 and not_found_count == len(candidate_urls):
-                log.info("No newer direct Telegram posts detected after %s for @%s.", start_post_id, config.channel_username)
-                break
+                if stale_root_detected:
+                    log.warning(
+                        "Direct probe for @%s did not find post %s, but the root page is stale. "
+                        "Continuing probe to account for gaps in Telegram post ids.",
+                        config.channel_username,
+                        candidate_id,
+                    )
+                else:
+                    log.info("No newer direct Telegram posts detected after %s for @%s.", start_post_id, config.channel_username)
+                    break
             if observed_ids and max(observed_ids, default=0) < candidate_id:
                 direct_probe_stale_candidates.append(f"{candidate_id}:{','.join(str(item) for item in sorted(observed_ids)[-4:])}")
             consecutive_misses += 1
