@@ -3436,13 +3436,19 @@ function getPostScrollTop(target) {
   return Math.max(0, target.getBoundingClientRect().top + window.scrollY - getPostScrollOffset());
 }
 
+function getPostAnchorDelta(target) {
+  if (!target) return 0;
+  return target.getBoundingClientRect().top - getPostScrollOffset();
+}
+
 async function alignPostToViewport(target) {
   if (!target) return;
 
   syncPostAnchorOffset();
   const prefersReduced = prefersReducedMotion();
-  window.scrollTo({
-    top: getPostScrollTop(target),
+  target.scrollIntoView({
+    block: 'start',
+    inline: 'nearest',
     behavior: prefersReduced ? 'auto' : 'smooth',
   });
 
@@ -3452,11 +3458,15 @@ async function alignPostToViewport(target) {
     await wait(340);
   }
 
-  syncPostAnchorOffset();
-  const correctedTop = getPostScrollTop(target);
-  if (Math.abs(window.scrollY - correctedTop) > 2) {
-    window.scrollTo({
-      top: correctedTop,
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    syncPostAnchorOffset();
+    const delta = getPostAnchorDelta(target);
+    if (Math.abs(delta) <= 2) {
+      break;
+    }
+
+    window.scrollBy({
+      top: delta,
       behavior: 'auto',
     });
     await nextRenderFrame();
