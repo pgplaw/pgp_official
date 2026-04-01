@@ -1,13 +1,41 @@
 {
-  "generated_at": "2026-04-01T06:16:53.668362+00:00",
-  "build_id": "e19adc9fb14d",
+  "generated_at": "2026-04-01T10:19:40.386173+00:00",
+  "build_id": "8c5832c8f556",
   "pagination": {
     "page": 7,
     "page_size": 16,
-    "total_posts": 167,
+    "total_posts": 168,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2457,
+      "date": "2026-02-10T13:35:37+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1310,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": "data/channels/pg-tax/media/posts/videos/2457-video-note-bf319b3d3119-v1.mp4",
+      "tg_url": "https://t.me/PG_Tax/2457",
+      "forwarded_from": null,
+      "reply_to": null,
+      "video_note": true,
+      "video_poster": {
+        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2457-video-note-poster-381db791638c-v1.jpg",
+        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2457-video-note-poster-381db791638c-v1.jpg",
+        "full_url": "data/channels/pg-tax/media/posts/video-posters/2457-video-note-poster-381db791638c-v1.jpg",
+        "thumb_width": 640,
+        "thumb_height": 640,
+        "feed_width": 640,
+        "feed_height": 640,
+        "full_width": 640,
+        "full_height": 640,
+        "source_width": 640,
+        "source_height": 640
+      }
+    },
     {
       "id": 2456,
       "date": "2026-02-10T13:35:02+00:00",
@@ -18,10 +46,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2456-1-59bea16ffcf4-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2456-1-59bea16ffcf4-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Q4IGrCqsksL5UpqntjiregVUFU-7FbvLau0QFWF94akAedNtIMZfL7TdnW1w7NVvuU-Ob0XsO4-oSWCeQKczEddLjQYS-99TLFkdy4ZhF8mVtc5VYw9MfnxaPOrqQnGfR4SsFIBR2LuhAY3j7de25K-WkhvuTiYiwUXx5w8aJqrwhS9ev7pd42pkMzfHmpovwRIkNEEIG0NxbVBOSw8TeCCurYqF5awU8QiOWcNBREJytMPos3XynKAlvw3KruF3gfsqqT0PBaU1Hmz8lt1Jf-UFFyAre8tmfhySjVNycjzklUbVCFNEJDp7ysUCgKN1QMS6Qg3HukrEvuSQI2dx6A.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2456-1-59bea16ffcf4-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2456-1-4bc04bdd8f5c-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2456-1-4bc04bdd8f5c-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/cAi2zuf03AKydBmloddsuRwN-1VJ8HMlE5eiz3zQiLIlQxa2YXHxPNE8OiJAq4DmPB4Vtg7WPZjS5DRWBHQwWW9ItDzBI7FkOQd5kiodPx3_FRno1JhXUmc1q_JzYaLpXJlTJtyWjQYQ-PTuOI3yMGP4tdsk_sr76K6mYgVhxhBL5W1qY2KuPRDCNw59rvK7PjkkY9ZIy4sgnLieg_VJbFQluqEfBxVO_dGORSQeGxE8V5c5ywiDafemKACnrvymHIf6sBSbXavRQL15p3O3FeOOy2HCvx6VejNwGA3WvWfTc8nCdrP8PcrSl3mHAzkgv9JpRYVqDeClsXcGFutmBA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2456-1-4bc04bdd8f5c-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -71,15 +99,15 @@
       "date": "2026-02-10T08:00:27+00:00",
       "text": "✍️ Нормативное регулирование\n \n🔴Правительство РФ подготовило поправки к закону, которые запрещают иностранным компаниям формировать ценовые индикаторы. \nКотировки Argus используются в России в том числе для расчета налогов на добычу полезных ископаемых.\nПринятые в 2023 г. поправки в НК РФ предполагали использование внебиржевого индекса Петербургской биржи в качестве эталона цены на нефть в российских портах с 2024 г., но Минфин России перенес переход на биржевые индексы на 2025 г. \nПредложенные поправки направлены на то, чтобы продолжить использовать котировки международного агентства Argus (предполагается, что норма вступит в силу с 1 марта 2026 г.).\n \n🔴Минфин России предлагает обязать продавцов и производителей детской продукции получать сертификаты на продукцию для оплаты НДС по льготной ставке (10%). Качество продукции можно будет подтвердить и аналогичными документами, выданными в одной из стран - участниц ЕАЭС.\n\n🔴Минфин России предлагает закрепить за иностранцем, работающим в России, обязанность содержать членов своей семьи, которые переехали в страну вместе с ним и находятся у него на иждивении. \nОн должен будет обеспечивать их на уровне не ниже прожиточного минимума того субъекта РФ, где они живут (с учетом специального регионального коэффициента). Также предусмотрена уплата фиксированного авансового платежа по НДФЛ с учетом каждого ребенка иностранного гражданина.\nℹ️ ФНС России сформирует информацию о доходах мигрантов на основе отчетности работодателей по страховым взносам и заявленных иностранцем доходов, если он уплачивает НПД. Налоговые органы будут предоставлять информацию о доходах мигрантов в МВД каждые три месяца.\n \n⚖️ Судебные дела\n \n🔴ВС РФ подтвердил правомерность включения НДС в плату за услуги по обращению с твердыми коммунальными отходами (дело № А40-50646/2024).\n \n🔴Суд в Москве заблокировал два сайта, которые предлагали услуги по незаконной «оптимизации» налогов. Они оказывали услуги по подделке документов, предоставляющих плательщикам НДС право на вычеты по операциям, которые в действительности не были совершены. Доменные имена были зарегистрированы в Ирландии и на Виргинских островах.\n \n✈️ Международные новости\n \n🔴ФНС России окажет безвозмездную техническую помощь Абхазии для совершенствования системы налогового администрирования. \nРоссийская сторона обеспечит налоговое ведомство Республики контрольно-кассовой техникой, разработает и внедрит АСК НДС и онлайн-ККТ, а также разработает концепцию совершенствования налогообложения недвижимого имущества в Республике.\n\n#главные_налоговые_новости",
       "text_html": "✍️ Нормативное регулирование<br> <br>🔴Правительство РФ <a href=\"https://www.kommersant.ru/doc/8419179\" target=\"_blank\" rel=\"noopener noreferrer\">подготовило</a> поправки к закону, которые запрещают иностранным компаниям <a href=\"https://rspp.ru/events/news/pravitelstvo-rf-podgotovilo-popravki-k-zakonu-o-tsenovykh-indikatorakh-698996e2e7f84/\" target=\"_blank\" rel=\"noopener noreferrer\">формировать</a> ценовые индикаторы. <br>Котировки Argus используются в России в том числе для расчета налогов на добычу полезных ископаемых.<br>Принятые в 2023 г. поправки в НК РФ предполагали использование внебиржевого индекса Петербургской биржи в качестве эталона цены на нефть в российских портах с 2024 г., но Минфин России перенес переход на биржевые индексы на 2025 г. <br>Предложенные поправки направлены на то, чтобы продолжить использовать котировки международного агентства Argus (предполагается, что норма вступит в силу с 1 марта 2026 г.).<br> <br>🔴Минфин России <a href=\"https://www.kommersant.ru/doc/8420016?query=%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3\" target=\"_blank\" rel=\"noopener noreferrer\">предлагает</a> обязать продавцов и производителей детской продукции получать сертификаты на продукцию для оплаты НДС по льготной ставке (10%). Качество продукции можно будет подтвердить и аналогичными документами, выданными в одной из стран - участниц ЕАЭС.<br><br>🔴Минфин России <a href=\"https://www.vedomosti.ru/society/articles/2026/02/10/1175134-migrantov-obyazhut-soderzhat-chlenov-svoih-semei-na-urovne-prozhitochnogo-minimuma\" target=\"_blank\" rel=\"noopener noreferrer\">предлагает</a> закрепить за иностранцем, работающим в России, обязанность содержать членов своей семьи, которые переехали в страну вместе с ним и находятся у него на иждивении. <br>Он <a href=\"https://www.kommersant.ru/doc/8420106?query=%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3\" target=\"_blank\" rel=\"noopener noreferrer\">должен будет</a> обеспечивать их на уровне не ниже прожиточного минимума того субъекта РФ, где они живут (с учетом специального регионального коэффициента). Также предусмотрена уплата фиксированного авансового платежа по НДФЛ с учетом каждого ребенка иностранного гражданина.<br>ℹ️ ФНС России сформирует информацию о доходах мигрантов на основе отчетности работодателей по страховым взносам и заявленных иностранцем доходов, если он уплачивает НПД. Налоговые органы будут предоставлять информацию о доходах мигрантов в МВД каждые три месяца.<br> <br>⚖️ Судебные дела<br> <br>🔴ВС РФ <a href=\"https://pravo.ru/news/262322/\" target=\"_blank\" rel=\"noopener noreferrer\">подтвердил</a> правомерность включения НДС в плату за услуги по обращению с твердыми коммунальными отходами (дело № <a href=\"https://kad.arbitr.ru/Kad/Card?number=%D0%9040-50646%2F2024\" target=\"_blank\" rel=\"noopener noreferrer\">А40-50646/2024</a>).<br> <br>🔴Суд в Москве <a href=\"https://www.rbc.ru/rbcfreenews/6989ae739a7947132c359c95\" target=\"_blank\" rel=\"noopener noreferrer\">заблокировал</a> два сайта, которые предлагали услуги по незаконной «оптимизации» налогов. Они оказывали услуги по подделке документов, предоставляющих плательщикам НДС право на вычеты по операциям, которые в действительности не были совершены. Доменные имена были зарегистрированы в Ирландии и на Виргинских островах.<br> <br>✈️ Международные новости<br> <br>🔴ФНС России <a href=\"https://tass.ru/obschestvo/26392997\" target=\"_blank\" rel=\"noopener noreferrer\">окажет</a> безвозмездную техническую помощь Абхазии для совершенствования системы налогового администрирования. <br>Российская сторона <a href=\"https://www.nalog.gov.ru/rn77/news/international_activities/16601629/\" target=\"_blank\" rel=\"noopener noreferrer\">обеспечит</a> налоговое ведомство Республики контрольно-кассовой техникой, разработает и внедрит АСК НДС и онлайн-ККТ, а также разработает концепцию совершенствования налогообложения недвижимого имущества в Республике.<br><br>#главные_налоговые_новости",
-      "views": 1310,
+      "views": 1320,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2454-1-d7f2cda67fef-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2454-1-d7f2cda67fef-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/XbWbz7UTykCFXxSxyuXI4Pc9Uj3NAeF2CMcUl1jT1_4hSDUR2LKh4z2YKYaOvJnOJu0NNHtWnmvT3GS1Dz9MRt5iLMI8d_wTfwPyxiyXuirtHaXfaGgb9bvTfFO_m9MgG53LS4ISJC4Avie4Jg9F-8ih2XnTk8LgJBbrEi4g9EZE_w4W7epSi5YjuvsVCM9EUDRltCb_OHAfP05lW6bN9uzRYtZAL26zBF2vl6QCVapyt1snZKdV6ww_oOCx_nliTVgebNtlloDXpfNh1D9Tq1nq9-Z48SaFadNHBBB6THAMMMQX4_R4XLqb8BbsA-ZxR-foxgKkCsZvl_Ozp6prtg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2454-1-d7f2cda67fef-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2454-1-c5420154dec9-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2454-1-c5420154dec9-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/p2svf5IGpZN9mEzs2gIsN95CGmaSlD53Tlok56HY0s225o3XAC-jBASsvccKLiZCh4t81yx-fWKoHBLz4bBNNC-jV0stvpXLAQ1tASUdUe06TBl7M5OzKU_m6LVIIMFIoUhZKG0bOKBJ7LAzb3XvIovy8mnKcZ4ZCLWr9os_c1ECmpbI_t41cmuei0gOi1uwd8GoE931QCQHU2lU7S31VOWRAkUzhCQ3kKEVszEZt8JFEckRvMRbKdy4HUAJyCImnag2O8-WW336UB_OFVt758f1KQtWvFSO6-OC-15a7vRsSV5p2LpVqDq5Mffd4sOXubFHYdydvCHz65MCnmKTJg.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2454-1-c5420154dec9-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -133,10 +161,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2452-1-d0e5d71823a5-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2452-1-d0e5d71823a5-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/LL5JXGdnE51ps3zPTurp-PzyzBmgOi7muIRa-WkiNz57bQGqFm7KAjDizxEjqDFK-_stuNqx1XXY1SiuCZD_rgOnX5fWHeopn-85W2yI4H7KzOvDHZDgFz2qOuJl0am4hZeuiU5IwW_Hdb9N-0q6Ty10mpXheXw1k6F8G-nCKU8crHfikdvNaaTRrd-VTdD7cIbCSAN-wyj6JtJ3YFqZgHwK--zn8E5isWnrumU0GZILM9sbmBrawazIAUG-qfx0BKCjvCEcDOYbB9OEUhAPlZw7dKjMTQrx00qlBRUVx9WyyY1rgqTDINzJQnMAYtSfV4vfZiSG0FPJMc9ga_q-tw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2452-1-d0e5d71823a5-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2452-1-e61ba10d191f-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2452-1-e61ba10d191f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/i_Q3SWAhimzHZzSFWwgqj0w4kBoF3aBJdha_t8SheoOoUwiL3nqrAzmPdIy6jc0X6VCZ8jGE9-nQuoyu3CGNONVYux6s2yJWf5SyTHstfpw_cw6pdt1cFzTLBiCszr_7c85TdXmuJI8YtvsgTTRwd7ZUaQBYRvFvS1qxPyw3tRcWf0qbjgOlzC8D5eY5UnFAy5LIgR08wrevU1q8ggGfEfR_tbueZ0hjzgr4d10hf_XDenD8_l2YYOLvo4xGVbeeUReO56GH207wb_947Wzb2_FQvem3ba59OK0JubcyvprfLcjnCDV_rzlBWbH37Nnc1ezW6UfCRnRq2Z_mgypSpw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2452-1-e61ba10d191f-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -162,10 +190,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2451-1-11776bc709fc-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2451-1-11776bc709fc-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/IFFdC1gteS1KF8w1_455dNpaD3sDy9WGJcHf_YQ5VNaSjEdBmXmbbnNqJ1ntJqgurveZIuXq0ppe8JKqFDXn0YvgBsAzs_Z62mhs3x8W2Xr28Sao-7am2hqf7c7FPZqGOyYOZTOnAh-xtKGoPkWLUPefGjwmZMSxeOTG1vGMwBPoS6vW5EWdUV1S4eB4406oavr4jA66vCS5jjhwCgZ4U0uqerUXWTlRPkBCbQHV_sk_XTsJ-mlluK3DTApytF9GV6hu-Jfn22Vpza40GO00fkhV0VU9S6r9_70wdtxawxPc38Du6GjT3tLLmewHuys3HhNapi2UYkTW5nelrAu33Q.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2451-1-11776bc709fc-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2451-1-c5ec815e87d4-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2451-1-c5ec815e87d4-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/dh_ls5yuJrtN2cYy5o3dzixmw7j1UKfLE15nwnqhbl3R9rtMQ6WvSPnrZz3N7uuT9Pvr9J7ceIN-ZLjyfGGHg1qGdZRS04UFduN1HuRPsxD269y1hUfbUNnl2ZBM0gI3xR1SWWWD9gJYoHvXUKIvPxtMOcT_bLV-Vhy8L7zQFsAXQNzFpccWjULJ1n-ZrVm5w2dSTMIurwcFR178j2MRX3jnP5ubMXQdf8Ssk5EfL4oHeWdsWbenDiQOXp1Nlunhe9usCLbtlUSjhm-DPssVc9val0J7OGW_K26-TH9l_dKEF7pUR9OQ6wpkrFf431M_67XJhVXju1Ca6N74xRbN5A.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2451-1-c5ec815e87d4-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -335,10 +363,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2445-1-a9559c8c353d-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2445-1-a9559c8c353d-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/feKXoOMtVJAuM4-2L_SZDxynB5uC2ILSZcz2aOpLA-9Z9HDFCSrj-F-81Aodh0vBOnS39bPiNBIo4qqtyDx6hAPulJTnTHFTeL6wNhHCVPqq5q2DXX7cHE_Gbt2OtYCu6l6TQV_4HsUiLz_Gm2VDX0E2VTxmF6iNV-pvwAPxERVDzfQhENyaIkUd1jJ84p1Xyz_Pgj0r4mjiToeroVHQZYlXzGiQ8W3OLA-9WQKQ3xcoLCakF_ACI0MZP1eJ-X53O5jWsqEBOHR2A54bEQKC4ToTtYimjR5vY7mHIXAUGwzTGVSoADxL1d_Y-bjdccatIc1f3-4QR44qmAgISTbCbQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2445-1-a9559c8c353d-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2445-1-5a5ca19fd89a-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2445-1-5a5ca19fd89a-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Yy8DvglgA3iR2CirhHaUD4_UxQSP6zG6PHZg6fMv5BU64idTWFy80jHwX-G9Kz2pQh8lbiwNGbYCEozBtMaqBDtIALSG64TEMieyMW4RK3DNN2rLG1eItodEd6_m3_DpfuGXcZhosa2PNair_Wro_Fi35DDiATh0Rh39hX1rSDysETcxeZF4rw9ij7GZlSfv6zHNfkk2G2-P-4q4Ly-WdIxRbw6f2LCiTzbQ3JgokgbAg3nLGAC6Ta4CE1L22v20UNISEeYu9gDoggETa8vXFZvrvbC-X-nLTW63RGfGjRWMc3J4386dlX9v_tEiiWG1agldqiMpSE9N2oElNr28Og.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2445-1-5a5ca19fd89a-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -364,10 +392,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2444-1-0099bd1e758e-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2444-1-0099bd1e758e-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/SwSJlnsYmzPv1QCZNT8YhEhcVDqSAFBKlFOlKYKevRKFcn9x_0qtteOChsJsc8Bb3RiyVyPO4miHBDwVg2izvgWRijoqqwpVmvmmPGzpN_r15NWa5L1gQIumx-M4InOBMIxMgbRP7tZMbWg744gED0Gvh1tYgx-7uw84nIQ4QTim4vfQ2j05sF-QqOQ4GPv8AVCzXYARqzateHD5do2M-4UL9tMHC8TzUzFiNyZ2AUhsG4o140Am4WE5ER9GhTkP34CtJp455RR1qn7yNGqL6xuz0nYQaVCJePKQNbkxw5dtR2FNB-_w7cWpnfGwSukg0VxH12cSsavw03-hvuWW-A.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2444-1-0099bd1e758e-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2444-1-a7922ece050b-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2444-1-a7922ece050b-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/aRDpAH9dgbjXipPuGZvAgH-DXv6xCQ8qbRoEDk1jv5m9FiRRxr82xPDFKZnN5GbFbt_JMEdwTruX5db8ziiu4r9lIwMhJSd8UWmWRngrNWU-W-VJYq4mHWn2qBT7Er1M5CsQCxG3lNBychGUdyBZzretjpkSQY1Zjf0iABgPPyVDsNEeHmPhSF7ZPySuLEPBCvLq0lgM8oVe3X-msQInYnZvEf-CTbdujEyk6a1IHChN9lhAcKd6mniUfq3wUD0KMNowQDR8wj0xkHABQmKoF1cZQokP1wUTPe1pvY8o8VBkjlqNNnS9eU5QlbyfBSGjp1VpiBFP64_186XFlW05Hw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2444-1-a7922ece050b-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -437,35 +465,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2442",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2441,
-      "date": "2026-02-04T10:03:39+00:00",
-      "text": "Старший партнер «Пепеляев Групп» Сергей Савсерис продолжает публикацию рейтинга правовых позиций Конституционного суда.\n\n📈 Место № 9 \n\nОпределение КС РФ от 04.07.2017 № 1440-О по жалобе С.П. Бунеева\n\nЕще одно дело, получившее место № 9, посвящено темам дробления бизнеса и пределов налоговой оптимизации.\n\n💬 Цитируемость\n\n439 упоминаний за весь период (33-е место);\n349 упоминаний за последние 4 года (7-е место).\n\n🔍 О чём было дело\n\nНалоговый орган признал структуру группы взаимозависимых лиц искусственным дроблением бизнеса с использованием УСН и ЕНВД для снижения НДС и налога на прибыль и доначислил налоги, пени и штраф по п. 1 ст. 122 НК РФ.\n\nЖалоба в КС была направлена против норм НК РФ об объекте и базе по НДС и налогу на прибыль (ст. 146, 153, 154, 247–249, 274 НК РФ).\n\n⚖️ Ключевые правовые позиции\n\n     ✔️выбор льгот и специальных режимов допустим;\n     ✔️взаимозависимость контрагентов не опровергает презумпцию добросовестности и, сама по себе, не дает оснований к признанию налоговой выгоды необоснованной;\n     ❌но формальное структурирование без деловой цели и экономического смысла может быть переквалифицировано;\n     ✔️оспариваемые нормы НК РФ сами по себе конституционны;\n     ✔️налоговые последствия определяются через реконструкцию — так, как если бы злоупотребления не было.\n\n☝️ Особое мнение судьи К.В. Арановского\n\nСудья Арановский занял существенно более ограничительный по отношению к фискальному подходу взгляд. \n\nВ особом мнении подчёркнуто, что:\n     ✔️дробление бизнеса не запрещено законом и не образует само по себе правонарушения;\n     ✔️применение спецрежимов и формальное соблюдение НК — признак правомерного поведения;\n     ✔️«необоснованная налоговая выгода» и «недобросовестность» не являются самостоятельными основаниями ответственности;\n     ✔️отказ в принятии жалобы не означает согласия КС с тем толкованием норм, которое было применено судами по делу.\n\n❗️ Практическое значение\n\nОпределение стало опорной точкой для практики по борьбе с дроблением бизнеса и прочими налоговыми схемами:\n     🔴использование спецрежимов не создаёт иммунитета от переквалификации;\n     🔴решающим становится реальное экономическое содержание структуры и деловая цель.\n\n#рейтинг_позиций_КС\n\n➖➖\n📧 Если Вы столкнулись с претензиями об участии в налоговой схеме или у Вас есть вопросы о применении специальных налоговых режимов, напишите Сергею Савсерису: s.savseris@pgplaw.ru",
-      "text_html": "Старший партнер «Пепеляев Групп» <a href=\"https://www.pgplaw.ru/to-get-the-team/sergey-savseris/\" target=\"_blank\" rel=\"noopener noreferrer\">Сергей Савсерис</a> продолжает публикацию рейтинга правовых позиций Конституционного суда.<br><br>📈 Место № 9 <br><br>Определение КС РФ от 04.07.2017 № 1440-О по жалобе С.П. Бунеева<br><br>Еще одно дело, получившее место № 9, посвящено темам дробления бизнеса и пределов налоговой оптимизации.<br><br>💬 Цитируемость<br><br>439 упоминаний за весь период (33-е место);<br>349 упоминаний за последние 4 года (7-е место).<br><br>🔍 О чём было дело<br><br>Налоговый орган признал структуру группы взаимозависимых лиц искусственным дроблением бизнеса с использованием УСН и ЕНВД для снижения НДС и налога на прибыль и доначислил налоги, пени и штраф по п. 1 ст. 122 НК РФ.<br><br>Жалоба в КС была направлена против норм НК РФ об объекте и базе по НДС и налогу на прибыль (ст. 146, 153, 154, 247–249, 274 НК РФ).<br><br>⚖️ Ключевые правовые позиции<br><br>     ✔️выбор льгот и специальных режимов допустим;<br>     ✔️взаимозависимость контрагентов не опровергает презумпцию добросовестности и, сама по себе, не дает оснований к признанию налоговой выгоды необоснованной;<br>     ❌но формальное структурирование без деловой цели и экономического смысла может быть переквалифицировано;<br>     ✔️оспариваемые нормы НК РФ сами по себе конституционны;<br>     ✔️налоговые последствия определяются через реконструкцию — так, как если бы злоупотребления не было.<br><br>☝️ Особое мнение судьи К.В. Арановского<br><br>Судья Арановский занял существенно более ограничительный по отношению к фискальному подходу взгляд. <br><br>В особом мнении подчёркнуто, что:<br>     ✔️дробление бизнеса не запрещено законом и не образует само по себе правонарушения;<br>     ✔️применение спецрежимов и формальное соблюдение НК — признак правомерного поведения;<br>     ✔️«необоснованная налоговая выгода» и «недобросовестность» не являются самостоятельными основаниями ответственности;<br>     ✔️отказ в принятии жалобы не означает согласия КС с тем толкованием норм, которое было применено судами по делу.<br><br>❗️ Практическое значение<br><br>Определение стало опорной точкой для практики по борьбе с дроблением бизнеса и прочими налоговыми схемами:<br>     🔴использование спецрежимов не создаёт иммунитета от переквалификации;<br>     🔴решающим становится реальное экономическое содержание структуры и деловая цель.<br><br>#рейтинг_позиций_КС<br><br>➖➖<br>📧 Если Вы столкнулись с претензиями об участии в налоговой схеме или у Вас есть вопросы о применении специальных налоговых режимов, напишите Сергею Савсерису: s.savseris@pgplaw.ru",
-      "views": 1560,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2441-1-bee431d2624d-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2441-1-bee431d2624d-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/U38zLy3m_a9v7nvcNdPX9g2jfsMsWw0WtrQjgy2Tq3qnEEqmnWYOWsus_Q7StJK3uIJs47NxyH1u2vM-WRtf8ljfQWQ8hTM9Tbk8VA7Qp0GVN1kxo4Sg0e3f4hjQ5XCSVWCUlyuwwqLFe9A7qLdE1_TCLHbjApx4DOk9bjDaAAmINSvn_dz7I7J-VXEf51WnqeKF4jQmtjHIoao24mPH8BHkaURl8k6imAYjEmn4e42teFMRneZt-KyU-ix0mHgmKFE2kCCFF6v6awrXwLfeIBptyy_0baJjDP5EQS3hhGuZ5r_1rKIoZUDcE6JMEQ5mUhw1E8-CNDYV4zUICf6mSQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2441-1-bee431d2624d-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2441",
       "forwarded_from": null,
       "reply_to": null
     }

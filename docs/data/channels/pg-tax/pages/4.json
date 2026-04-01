@@ -1,13 +1,41 @@
 {
-  "generated_at": "2026-04-01T06:16:53.660396+00:00",
-  "build_id": "e19adc9fb14d",
+  "generated_at": "2026-04-01T10:19:40.378586+00:00",
+  "build_id": "8c5832c8f556",
   "pagination": {
     "page": 4,
     "page_size": 16,
-    "total_posts": 167,
+    "total_posts": 168,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2513,
+      "date": "2026-03-05T14:21:30+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1220,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": "data/channels/pg-tax/media/posts/videos/2513-video-note-04ecb9540dfc-v1.mp4",
+      "tg_url": "https://t.me/PG_Tax/2513",
+      "forwarded_from": null,
+      "reply_to": null,
+      "video_note": true,
+      "video_poster": {
+        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2513-video-note-poster-af937f273c11-v1.jpg",
+        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2513-video-note-poster-af937f273c11-v1.jpg",
+        "full_url": "data/channels/pg-tax/media/posts/video-posters/2513-video-note-poster-af937f273c11-v1.jpg",
+        "thumb_width": 640,
+        "thumb_height": 640,
+        "feed_width": 640,
+        "feed_height": 640,
+        "full_width": 640,
+        "full_height": 640,
+        "source_width": 640,
+        "source_height": 640
+      }
+    },
     {
       "id": 2512,
       "date": "2026-03-05T14:21:04+00:00",
@@ -61,7 +89,7 @@
       "date": "2026-03-05T08:22:56+00:00",
       "text": "✍️ Нормативное регулирование\n \n🔴Группа депутатов и сенаторов внесла в Госдуму законопроект № 1166230-8, который меняет порядок уплаты взносов финансовыми организациями в фонд службы финансового уполномоченного. \nДокумент разработали во исполнение Постановления КС РФ № 37-П 2025 г. Предложено ввести повышенные взносы для компаний, которые не предоставляют омбудсмену запрошенные документы или сведения. Омбудсмен или суд сможет снизить штрафную часть взноса с учетом степени вины компании. Также устанавливается порядок пересмотра дифференцированных ставок взносов и их публикации (не чаще одного раза в год, оспаривание в ВС РФ).\n \n🔴РСПП предлагает меру поддержки девелоперов — засчитывать в расходы для уменьшения налогов компенсации трат другим застройщикам, входящим в ту же группу компаний из одного региона. \nВ одном субъекте у крупного холдинга обычно 3-12 параллельных застройщиков, у средних региональных игроков — по 2-5, поэтому предложение РСПП касается очень большой доли рынка.\n \n🔴Ассоциация участников рынка электронной коммерции (АУРЭК) направила Председателю Правительства РФ письмо с призывом пересмотреть положения законопроекта, направленного на поддержку «Почты России» (3% отчисления операторов почтовой связи).\nСреди предлагаем мер поддержки АУРЭК критикует идею создания фонда повышения качества услуг почтовой связи, который будет пополняться за счет обязательных ежеквартальных отчислений операторов почтовой связи в размере 3% от доходов, полученных от деятельности по приему, обработке, перевозке и доставке посылок (организации федеральной почтовой связи от этих отчислений освобождаются). Такой платеж «неизбежно повлияет на структуру себестоимости логистических услуг», — предупредили в Ассоциации, отметив, что операторы будут вынуждены включить дополнительные издержки в тарифы.\n\n🛑 Комментарий Управляющего партнера «Пепеляев Групп»  Сергея Пепеляева о законопроекте - сегодня в канале.\n \n⚙️ Практика\n \nМинюст России зарегистрировал ряд приказов ФНС России о расширении межведомственного обмена сведениями о налогооблагаемом имуществе и его владельцах, что обеспечит проактивное (беззаявительное) предоставление налоговых льгот по имущественным налогам.\n \n⚖️ Судебные дела\n \nВерховный Суд РФ решит, когда в налоговых спорах нельзя применять расчетный метод, позволяющий вычитать расходы бизнеса для определения суммы налога. \nВ деле № А56-83561/2023 компании «Вокфорс» арбитражные суды согласились, что фирма искусственно создала условия для применения налоговых вычетов ради минимизации НДС и не смогла подтвердить, что ее контрагенты («технические» компании) реально исполняли обязательства, но в части налога на прибыль суды согласились использовать расчетный метод. Налоговый орган обратился в ВС РФ, настаивая, что учесть расходы могут лишь добросовестные лица, допустившие небрежность в выборе контрагентов.\n \n🛑 Комментарий Ведущего юриста «Пепеляев Групп» Константина Сасова об этом деле - в ближайшие дни в канале.\n\n#главные_налоговые_новости",
       "text_html": "✍️ Нормативное регулирование<br> <br>🔴Группа депутатов и сенаторов <a href=\"https://pravo.ru/news/262677/\" target=\"_blank\" rel=\"noopener noreferrer\">внесла</a> в Госдуму законопроект № <a href=\"https://sozd.duma.gov.ru/bill/1166230-8\" target=\"_blank\" rel=\"noopener noreferrer\">1166230-8,</a> который меняет порядок уплаты взносов финансовыми организациями в фонд службы финансового уполномоченного. <br>Документ разработали во исполнение Постановления КС РФ № 37-П 2025 г. Предложено ввести повышенные взносы для компаний, которые не предоставляют омбудсмену запрошенные документы или сведения. Омбудсмен или суд сможет снизить штрафную часть взноса с учетом степени вины компании. Также устанавливается порядок пересмотра дифференцированных ставок взносов и их публикации (не чаще одного раза в год, оспаривание в ВС РФ).<br> <br>🔴РСПП <a href=\"https://www.forbes.ru/finansy/556593-rspp-predlagaet-rassirit-ucet-rashodov-zastrojsikov-dla-sokrasenia-nalogov\" target=\"_blank\" rel=\"noopener noreferrer\">предлагает</a> меру поддержки девелоперов — засчитывать в расходы для уменьшения налогов компенсации трат другим застройщикам, входящим в ту же группу компаний из одного региона. <br>В одном субъекте у крупного холдинга обычно 3-12 параллельных застройщиков, у средних региональных игроков — по 2-5, поэтому предложение РСПП касается очень большой доли рынка.<br> <br>🔴Ассоциация участников рынка электронной коммерции (АУРЭК) <a href=\"https://www.forbes.ru/biznes/556523-aurek-napravila-misustinu-pis-mo-s-kritikoj-zakonoproekta-o-podderzke-pocty-rossii\" target=\"_blank\" rel=\"noopener noreferrer\">направила</a> Председателю Правительства РФ письмо с призывом пересмотреть положения законопроекта, направленного на поддержку «Почты России» (3% отчисления операторов почтовой связи).<br>Среди предлагаем мер поддержки АУРЭК критикует идею создания фонда повышения качества услуг почтовой связи, который будет пополняться за счет обязательных ежеквартальных отчислений операторов почтовой связи в размере 3% от доходов, полученных от деятельности по приему, обработке, перевозке и доставке посылок (организации федеральной почтовой связи от этих отчислений освобождаются). Такой платеж «неизбежно повлияет на структуру себестоимости логистических услуг», — предупредили в Ассоциации, отметив, что операторы будут вынуждены включить дополнительные издержки в тарифы.<br><br>🛑 Комментарий Управляющего партнера «Пепеляев Групп»  Сергея Пепеляева о законопроекте - сегодня в канале.<br> <br>⚙️ Практика<br> <br>Минюст России <a href=\"https://www.nalog.gov.ru/rn77/news/activities_fts/16606406/\" target=\"_blank\" rel=\"noopener noreferrer\">зарегистрировал</a> ряд приказов ФНС России о расширении межведомственного обмена сведениями о налогооблагаемом имуществе и его владельцах, что обеспечит проактивное (беззаявительное) предоставление налоговых льгот по имущественным налогам.<br> <br>⚖️ Судебные дела<br> <br>Верховный Суд РФ <a href=\"https://www.kommersant.ru/doc/8480238?query=%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3\" target=\"_blank\" rel=\"noopener noreferrer\">решит,</a> когда в налоговых спорах нельзя применять расчетный метод, позволяющий вычитать расходы бизнеса для определения суммы налога. <br>В <a href=\"https://nalogoved.ru/buduschie-pretsedenti/16329.html\" target=\"_blank\" rel=\"noopener noreferrer\">деле</a> № <a href=\"https://kad.arbitr.ru/card/190c209a-9072-431f-ae4e-33066985549e\" target=\"_blank\" rel=\"noopener noreferrer\">А56-83561/2023</a> компании «Вокфорс» арбитражные суды согласились, что фирма искусственно создала условия для применения налоговых вычетов ради минимизации НДС и не смогла подтвердить, что ее контрагенты («технические» компании) реально исполняли обязательства, но в части налога на прибыль суды согласились использовать расчетный метод. Налоговый орган обратился в ВС РФ, настаивая, что учесть расходы могут лишь добросовестные лица, допустившие небрежность в выборе контрагентов.<br> <br>🛑 Комментарий Ведущего юриста «Пепеляев Групп» Константина Сасова об этом деле - в ближайшие дни в канале.<br><br>#главные_налоговые_новости",
-      "views": 1100,
+      "views": 1110,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -95,10 +123,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2509-1-64965e889ae9-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2509-1-64965e889ae9-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/DbDhSHgK7GtlY6IDM3Y0mGHopmafGTruVNGc-_zuFTf2RNzaL4LlSnkDmxN_YUwky5qk58GgVYZ_m40Ab9N0Pg-oaBT-LwvkehVimWPdL9KkJL0OEYOtmvEm3_I68lnU_Jmoe2EPsI1aQmATZt3wjwsnaPHYWvksnW9FkRq0W9BM2bJ5VfhIufj7XHv2kNwEoiYF2My3LBezyyrIuiCIGl8_-jRpOFvSGAWsXfGYlMiL7-e0rWLYGnWpZ0bVukIDF8cS9bLA0TolOgSCsrI7hVkOJ_sC5vPAKJWaSL8jyFq72yFqHyoqL4-kkrqy4-fUZWMu0G2_Cb7gCg6o3DF4jg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2509-1-64965e889ae9-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2509-1-cf9a005af4d1-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2509-1-cf9a005af4d1-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/pZ-aQiSDN2E7URh_Hg6ckURcv0gAnwUwJxQgF_PBkJxwKsf75ZI3Mwt-FgqLISWamFB8yfVZ19bF3L1wrw5xoWfv6R-WOfciyu63bxQo-YAPhiF8ylIFsOh0e6KSWjR2eTnOZW4IQ0EhanTAYDzk6XJjSQDExl448XOO_h1_l_8pQNBFKuCzBiQ7uJ37l0tCXYr0WXzCMHw9T0G4coe91rdQXk0h7wxib7Hb991l10r7fhVragLPlZY-YglEJS3Gs0htbmTMIQ2fEy8xA3P0wSMGxVTO1VIU9ZsnIQgUnOeTUy-aSsDvgxBWmwRP0HjMlq0IUEBbLhcuaI0RZwcv_w.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2509-1-cf9a005af4d1-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -153,10 +181,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2507-1-a2b11e8acab5-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2507-1-a2b11e8acab5-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/vfBSOfta9p_pX06O13Per-x8QC-zrc7SxtpTed5Kf4n7Y8oAlA-Ic_aycOMFOst2wYGWPZBsZUYn4Pe1vQgkoUIGQG1HxdEkkqorrdx8tTnvxF_TMzEGONq386WeWnuG94x7i0b7wsUtA2hlamM72S4FG8dTwgQIyK2CvCskjnOK25UtESOHEBXDKIcJ-e3Vly82LU7vochdGixXbEPPxCEXwDsIto2PtRNeGCCvOudKh5-HPKaumEUpI_yUIxAgeghmU2D9N2BkEDfpP_BOfSZSQYTblA6HPr2tFfXyCV9sodbIiXz5d4H3FrhVLG2wLoSC6b-RTh672aQnkqNDnA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2507-1-a2b11e8acab5-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2507-1-839b9015b5de-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2507-1-839b9015b5de-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/FtlzEFC_pg8smvKiB1IdATI4Gxp5DVtRYwXOQZKkeh_4oOCbK6UFkLZ3tAN83BZtceuVsVWAg0P3QX0gcTIXev6cMUp5ETxOost6HJI6Mw4O7MZ-k9W0a576LpWkz5tSRIRetL2DeqgfCkHZt9QWfTvQdSd9RaIMG5WZykGoA_ofiCO2mfEf-nC_s0UpBUk0iZKuqqIAMcKeooxS2a_VfchbO_1PCrjYrO-HxyEFNiSaqM5vIMNtMMwiPE7HyH0e6P9KmjK2ZA_aWQPHdOchN-jNO-mqmNVTFZLI1iUAn8vZwkLpoSkO77O242joPRxk20reIU6O4OwWGr6XXxbW9g.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2507-1-839b9015b5de-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -210,10 +238,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2504-1-222dfb6e47b2-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2504-1-222dfb6e47b2-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/CaIkjYXOaj1vPeQVT3p4wnCgC4Wr6460_EFOj_FJDGsZYZZm1phXHuZwoyg53JelSfZ1WsDHMSYbTC87MTAxWH2RoM-vCOGzWlFFFODMSKRmc8elNHTAc1QhKh1C5BdVYa7Y1_uUA11F1iAfFA8uF7DUPQG1e7MI5ukYjvfwa7VDkj-UMFZByi-JaTY2Rf5CkLLo3_wWH9F3Fz9nmXdimVYvTZfdeLBlzhYK3_hN1toWBiaHVTrJReOq7qGEr--d-DjoDjYB8iC28K9ViWEhcoXjrSxU6n65s3QZP9FMSUA2yLPcYr2wawM6yG80WU6cg4_ojeWj5FuaumMYNMvUzA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2504-1-222dfb6e47b2-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2504-1-d3c49687f0f7-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2504-1-d3c49687f0f7-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/NZk1dtjdDpXhvwBXm68Fbk1fTqLtojk9plco-eFVRiNxl8ABtssyEG-z0XJsiyyypCW2dqyQE6dXmY1y69YLC5ezrJM8J1SCDOEZA9mguPCELKQr_o440SuxTvsHdIyzCvB-HK3W3XEFmA_V37iUmyywBCvBzRfZoiq2NLjbVHTcCkxW4Bit3yswlR8OjyIM8VntpsrisXPK1g9AfO_w28kzhqF9JkM2WyHR-YOX6TMYXEJOCVHZE3xDZNfrNIHCigo1v-2jXixmO5aFfVVBvi2c7h1eZrdZGCEJWRRXJIGohaobe41CaKRS3cg5NuZERXPdyQNgMPbFkZKfMqvWcw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2504-1-d3c49687f0f7-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -234,7 +262,7 @@
       "date": "2026-03-03T07:45:10+00:00",
       "text": "✍️ Нормативное регулирование\n \nМинфин России внес в Правительство РФ поправки в НК РФ, которые позволят сохранить доступ к отдельным мерам поддержки МСП для плавной адаптации бизнеса к изменениям 2026 г. \n\nСреди предложений:\n     🔴освобождение от НДС услуг общественного питания (с 1 апреля по 31 декабря 2026 г.);\n     🔴право на вычеты НДС по товарам, работам, услугам и имущественным правам, не использованные при применении ПСН – для предпринимателей, утративших с 2026 г. право на применение «патента»;\n     🔴право уменьшить на сумму уплаченного НДС доходы по УСН, полученные в виде предварительной оплаты в период, когда еще не был плательщиком НДС – для «упрощенцев», которые с 2026 г. стали плательщиками НДС;\n     🔴право не учитывать доходы в виде процентов по вкладам и остатков на счетах в банках в РФ предпринимателями с доходами за 2025 год не выше 60 млн руб., утратившими с 2026 г. освобождение от НДС на УСН (такое же право – для ИП, утративших с 2026 г. право на ПСН);\n     🔴выбор системы налогообложения для предпринимателей, совмещавших ПСН с ОСНО, и совмещавших ПСН с УСН;\n     🔴упрощение порядка применения пониженных страховых взносов.\n \n⚙️ Практика\n \nМайнинг: обеление рынка продолжается.\nСмотрите видео по теме на сайте ФНС 👉\n\n#главные_налоговые_новости",
       "text_html": "✍️ Нормативное регулирование<br> <br>Минфин России <a href=\"https://minfin.gov.ru/ru/press-center/?id_4=40208-predlozheno_smyagchit_perekhod_k_nalogovym_izmeneniyam_dlya_msp\" target=\"_blank\" rel=\"noopener noreferrer\">внес</a> в Правительство РФ поправки в НК РФ, которые <a href=\"https://www.vedomosti.ru/economics/articles/2026/03/02/1180087-minfin-predlozhil-popravki\" target=\"_blank\" rel=\"noopener noreferrer\">позволят</a> сохранить доступ к отдельным мерам поддержки МСП для плавной адаптации бизнеса к изменениям 2026 г. <br><br>Среди <a href=\"https://www.kommersant.ru/doc/8478469?query=%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3\" target=\"_blank\" rel=\"noopener noreferrer\">предложений</a><a href=\"https://www.kommersant.ru/doc/8478469?query=%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3\" target=\"_blank\" rel=\"noopener noreferrer\">:</a><br>     🔴<a href=\"https://rg.ru/2026/03/02/ekspert-ulianova-ob-idee-osvobodit-obshchepit-ot-nds-sohranit-zaniatost-v-otrasli.html\" target=\"_blank\" rel=\"noopener noreferrer\">освобождение</a> от НДС услуг общественного <a href=\"https://www.forbes.ru/finansy/556387-minfin-predlozil-vremenno-osvobodit-ot-uplaty-nds-restorany-i-kafe\" target=\"_blank\" rel=\"noopener noreferrer\">питания</a> (с 1 апреля по 31 декабря 2026 г.);<br>     🔴право на вычеты НДС по товарам, работам, услугам и имущественным правам, не использованные при применении ПСН – для предпринимателей, утративших с 2026 г. право на применение «патента»;<br>     🔴право уменьшить на сумму уплаченного НДС доходы по УСН, полученные в виде предварительной оплаты в период, когда еще не был плательщиком НДС – для «упрощенцев», которые с 2026 г. стали плательщиками НДС;<br>     🔴право не учитывать доходы в виде процентов по вкладам и остатков на счетах в банках в РФ предпринимателями с доходами за 2025 год не выше 60 млн руб., утратившими с 2026 г. освобождение от НДС на УСН (такое же право – для ИП, утративших с 2026 г. право на ПСН);<br>     🔴выбор системы налогообложения для предпринимателей, совмещавших ПСН с ОСНО, и совмещавших ПСН с УСН;<br>     🔴упрощение порядка применения пониженных страховых взносов.<br> <br>⚙️ Практика<br> <br>Майнинг: обеление рынка продолжается.<br>Смотрите <a href=\"https://www.nalog.gov.ru/rn77/news/smi/16605646/\" target=\"_blank\" rel=\"noopener noreferrer\">видео</a> по теме на сайте ФНС 👉<br><br>#главные_налоговые_новости",
-      "views": 1310,
+      "views": 1320,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -268,10 +296,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2501-1-bf53355b54e5-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2501-1-bf53355b54e5-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Vy5Fg-GXbIgRb4VcArEtQLT0juf_Ztw1eFcV92iAjYrSemapFRJWvi0MtctyibIRV9WHFMrQXntk-DTfFl_rZbNcV62vqtQbcmwKiOa5_w5PsIcz1LuA9-Kh3IZPXwL8K76Bj0VRsMXDgP8v9Qx6yQbrwpQgWkRYBI2lfWm6RVMZYTOrHwjNslX7tOCXwtj7scUxd8VINv5QC0hHSvrOj9vYlRXXPUwooSfAT0MfcXcPEdp2ovCNYQOUQNubqCmwk7IVVaP1ihIH3sFqMoulDseD4z4wvVyzzlndHlOTxGd4SyCe-lrr8BfOQHOPghbG0ezhraKipnesaQv3nwwLeA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2501-1-bf53355b54e5-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2501-1-6941a7168168-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2501-1-6941a7168168-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/CBYXzJ67HpRgiGmxiC6His-4_rsepOetiILfCKFQe1DZxySHLWSerzk3PdnL0QkT-XThPXuroaZVQWw18OqrXO6Grefe6ztyCKXoaEFZQ9IrRzQpmRqPbMxySEZg12ouaiObCIJhtvZ-W36Ft8amfDatdsxZikwsGgGg-BNFbY8sdTdAp9NdwnqU6mwvcjdn6eZmmV2sFSCqlchNJvJAOzxcmY9-07az4YqEgRdEoEN1y3uV_VvRB71IEGqejgP2V2k2Ir5o0Oril474ClL-QUxThPTkiTcJHqcT6wjEh6JBvPqESMghoIVSMzoJ18QNrnnnzSzTDvT32Rn1ssT57A.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2501-1-6941a7168168-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 478,
           "feed_width": 1800,
@@ -424,54 +452,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2494",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2491,
-      "date": "2026-02-26T13:27:50+00:00",
-      "text": "🏆 Делимся результатами индивидуального рейтинга Право-300 за 2025 год по налогам и валютному регулированию!\n\nРекомендованы: \n\n1️⃣1️⃣ юристов в налоговых номинациях\n4️⃣ юриста в категории «Валютное регулирование»\n\n4️⃣4️⃣ эксперта «Пепеляев Групп» отмечены в общей сложности. \n\nС полными результатами можно ознакомиться на сайте.\n\n🎉 Благодарим Право ру за проделанную работу и поздравляем коллег с профессиональными успехами!",
-      "text_html": "🏆 Делимся результатами индивидуального рейтинга Право-300 за 2025 год по налогам и валютному регулированию!<br><br>Рекомендованы: <br><br>1️⃣1️⃣ юристов в налоговых номинациях<br>4️⃣ юриста в категории «Валютное регулирование»<br><br>4️⃣4️⃣ эксперта «Пепеляев Групп» отмечены в общей сложности. <br><br>С полными результатами можно ознакомиться <a href=\"https://www.pgplaw.ru/news/press-releases/individualniy-reyting-pravo300-2025/\" target=\"_blank\" rel=\"noopener noreferrer\">на сайте</a>.<br><br>🎉 Благодарим Право ру за проделанную работу и поздравляем коллег с профессиональными успехами!",
-      "views": 1440,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-1-168026939456-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2491-1-168026939456-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/JFJlaVqqnMqtW927D33Pxug2RmSltnvtgyw-TKo1e2o6kHr5TV7uex0Q07XDTdz-OCSal4lKYiqJFRSRqGD1G_skI7RQ6jWYJ0yYv5xxj4quxPks1eDl_mZkPxbEbalxEhdKAUmf3Y7OaKdMnuaONo2sgtT3Li3-8dcc5JekYFFDxCdQdHfQccXQ1vAMEbZuUM5t5ny2LySGI3js5FVSHQCSFpdPglHRv_Cgy2ltuQdaJdAh3KhGegNUyRnXXnNyklu6Q5VXUVSF4hWWLdCz4F8yCZfD3QEqNO4zRH9FbkL7P8Y7gTyC8pfXu-4xje_gwEa9Nn2yRmUPK7XtfGr5Mw.jpg",
-          "thumb_width": 800,
-          "thumb_height": 523,
-          "full_width": 800,
-          "full_height": 523,
-          "source_width": 800,
-          "source_height": 523
-        },
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-2-02270aa99968-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2491-2-02270aa99968-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/n0AXi5U_UvBooFwUzZh2zI1r-cb3EGCCcaC5vpquHHHhm6y4S-FdgZGUKH-q0dFIbmlgXDPLuOxdwVdNdwVD9iLS0FtsspKfjwcxzMRQTXrS_-z7HINq8mqWlaQ8zdWObyziOs9sS0b34UVE3eJu0X0j0q9czTceRMAVj-6-D49TWCHbWq2rQhjsGF4u1gaOHCPzzPkrANf3pZfqFjc5Dnq8pVBKC0MNjTRigjzQs2irznGcBHmjVwa-Bt3OmDgPHncruM7y7Coaqdlhyqc7f_q3eqWGZRJ-J8DAeXIOvkzaHC0KJsdewTjXCM_Hz928iAljtkKnqbquMdP_7AV0_g.jpg",
-          "thumb_width": 800,
-          "thumb_height": 523,
-          "full_width": 800,
-          "full_height": 523,
-          "source_width": 800,
-          "source_height": 523
-        },
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-3-54d49dfbe809-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2491-3-54d49dfbe809-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/ulbPFofYpQ0WY6NnoEvee0hMUN_dYbJED6Iu_bnUpbjmzhT6Siq98l4DoHY7YqGYKwWHQDElDSmKYY4QERgsQrHZK4wjZjhUxnE8AZ_SoC2F6s4jr7DwB8s7plwP4XlLfs04KmIEr5Ghoo7BU71ZSO0C4T9ecrY1KknJXVU5GqVZt5AVOKrbc5toqw4wvEfOGPViRiPhSANJbH8ryh0TzGv_wtbXNFJ3fTglNaECY4wA3hdTIV8CT_5cAN7VYLAdGJpVwZdRxMuobp3llYu7V9qpy74ZE8oeIh5S4FDfrRk3o-vhIXlFUyVC81ueqrAYHffqIFP5j51MFnjdru3_BQ.jpg",
-          "thumb_width": 800,
-          "thumb_height": 523,
-          "full_width": 800,
-          "full_height": 523,
-          "source_width": 800,
-          "source_height": 523
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2491",
       "forwarded_from": null,
       "reply_to": null
     }

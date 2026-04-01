@@ -1,13 +1,42 @@
 {
-  "generated_at": "2026-04-01T06:14:19.329246+00:00",
-  "build_id": "0891f8b2878b",
+  "generated_at": "2026-04-01T10:16:51.337289+00:00",
+  "build_id": "1c1c939dd035",
   "pagination": {
     "page": 5,
     "page_size": 16,
-    "total_posts": 73,
+    "total_posts": 74,
     "total_pages": 5
   },
   "posts": [
+    {
+      "id": 1683,
+      "date": "2026-01-21T07:04:16+00:00",
+      "text": "⚡️ Правила ведения реестра российского ПО: что изменится?\n\n28 ноября 2025 г. Правительство РФ приняло комплекс поправок в ИТ-законодательство, утвердивших новые правила ведения реестра отечественного ПО, а также новые перечни – перечень доверенного ПО и перечень ПО для собственных нужд.\n\n🗓 Нововведения вступят в силу 1 марта 2026 г.\n\nРанее мы уже писали о готовящихся изменениях, когда они были на стадии проектов. В этом алерте выделяем ключевые различия между принятыми актами и их предварительными вариантами.\n\n❗️ Важно\n\nКомпаниям следует подготовиться к выполнению новых требований реестра отечественного ПО. Среди прочего, чтобы соблюсти требования, нужно в установленные сроки обеспечить совместимость ПО с двумя доверенными ОС, проанализировать корпоративную структуру на предмет иностранного/государственного участия.\nВ целях включения ПО в перечень доверенного либо для собственных нужд необходимо провести аудит соответствия ПО требованиям Закона № 325-ФЗ.\n\nПолный текст алерта доступен по ссылке👉\n\nℹ️ Если у вас остались вопросы по данной теме, вы можете связаться с Натальей Коваленко, партнером, и Евгением Леоновым, ведущим юристом «Пепеляев Групп».\n\n#pg_алерты",
+      "text_html": "⚡️ Правила ведения реестра российского ПО: что изменится?<br><br>28 ноября 2025 г. Правительство РФ приняло комплекс поправок в ИТ-законодательство, утвердивших новые правила ведения реестра отечественного ПО, а также новые перечни – перечень доверенного ПО и перечень ПО для собственных нужд.<br><br>🗓 Нововведения вступят в силу 1 марта 2026 г.<br><br>Ранее мы уже <a href=\"https://www.pgplaw.ru/analytics-and-brochures/alerts/planiruyutsya-masshtabnye-popravki-v-regulirovanii-it-otrasli/\" target=\"_blank\" rel=\"noopener noreferrer\">писали</a> о готовящихся изменениях, когда они были на стадии проектов. В этом алерте выделяем ключевые различия между принятыми актами и их предварительными вариантами.<br><br>❗️ Важно<br><br>Компаниям следует подготовиться к выполнению новых требований реестра отечественного ПО. Среди прочего, чтобы соблюсти требования, нужно в установленные сроки обеспечить совместимость ПО с двумя доверенными ОС, проанализировать корпоративную структуру на предмет иностранного/государственного участия.<br>В целях включения ПО в перечень доверенного либо для собственных нужд необходимо провести аудит соответствия ПО требованиям Закона № 325-ФЗ.<br><br>Полный текст алерта доступен <a href=\"https://www.pgplaw.ru/analytics-and-brochures/alerts/pravila-vedeniya-reestra-rossiyskogo-po/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a>👉<br><br>ℹ️ Если у вас остались вопросы по данной теме, вы можете связаться с <a href=\"https://www.pgplaw.ru/to-get-the-team/natalya-ivashchenko/\" target=\"_blank\" rel=\"noopener noreferrer\">Натальей Коваленко,</a> партнером, и Евгением Леоновым, ведущим юристом «Пепеляев Групп».<br><br>#pg_алерты",
+      "views": 1010,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1683-1-d87af9745c10-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1683-1-d87af9745c10-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/mTd9E2Sx6obgUTBj9cBgfG-S3Mw4Yhvecu33JCqu-_aD0uDg_UyZZoGpuHV7VuaRPl6v49YIxoPdlSUlatLb1VNNhWC8gLCoPiQ1_jwZVXXREn9_200HRZ6jKfKa33BYh1DT-YkZNLnRBkA0PM-NZKwHsBgJR77xwVLKj8uuxS-2PjejxXgNA43nj574OZlOR8g_AflikBisAz0ZP7UI5ImOvFZkZ1PTMip8y6R08pRwpDlSJrhYiQtbZzkU8Y8hjbENLSIbShFveXiZlfKEZsP8-IDlRVHRVJCNZWYVZgUv0eVOzi1PldhQuoyexE9oE_Gc9TGKiwS3DPl3Hh1IMQ.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/feed/1683-1-d87af9745c10-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/pgp_official/1683",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 1678,
       "date": "2026-01-19T13:02:02+00:00",
@@ -18,9 +47,9 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1678-1-41f8c1808847-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1678-1-41f8c1808847-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/GeBNJY4uOBnOgKknqU7RIuj99mw49KoO6wOPRHPkDchm-VIQ8tuZUZHDfbmzSkTjjW5OVbXhzQThD0KkwydaZ9_Bm2fPEyMuHbUNHJOTG_aLJY_MTAopNX39oOwjVEMQIx6anF9f5gZthzw32PH3rPiAKwZuypGCWOJBYpDt_Mqu6p365hj4Scd1egpel2hfoOXHJ2q_T_c-3KLl3Cg8OF_v3-1A_Ac5BdTJWgY41RVyA5Bl-ekIn5gqwWHwaPs0J4KNYKCg4lL4EbKhZA4Zd8LZM6jXHKUR431Wt1hiMbREPzdavJjRS1PdyDOXXSKnPrnhKefKkYHIs_DqyCLRMg.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1678-1-4678f2658d3f-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1678-1-4678f2658d3f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/StCAPsez-YYW59ri8g8D-iop7IIZn_F3rVZHBXxCuzTweXA71P7RxrZbA7seOSzgdWt2nUjdgmMFFwl3cOh0e98stCLsO1JfUc81dHZP_B-EtFPvhTvPQabiZM7oNj3746QDpR6JJfB4Elt9UnqTQS-hDOV4NjDCSeFznzXwbknzRkQPbFvz282TLaujXxdp8BcwM4ID0Ns5L6tjmx0MqkKSq9dWtJaWXUfpYzy1xOr9e-QU_RIBNs6-5pex5gcqLW3_GoSVjr18D-h8qAPObbmAllX_iM5Eavx6SStNUqimtMnPXHLTN7icRlPz1xQtjP9Z--KXjkF9vhTudpJzqg.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -51,9 +80,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1678-4-8179bb1711a1-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1678-4-8179bb1711a1-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/SQMQITIkJDcVSiZhzkk5Um13fKVRvuZmLlL2zBj_cBaL2IYPEngQPvzHebhzPTNjch3fhbQWUe2g0i27FE6MynpKor9WF8ehBbWcVTIrPR9eJHA3CnryT7XI82u2wsLe-4-RjajXayspQ5LdBKvwpiYcMnDEvoB-KglHiV7VzDYsx5Wr9P4ygI_XwV0p5HTnxFUUqr0auOGYgkL-t_B713ggiZ0zeGz42ySUzeu8GUukeX2gQgUXPtNFYHE5aUOejKWzMdrvskstTJzVHamD671MatSguZ03iD0yXEhM03_T3pXDY_Iwo_-cBmKzMNgOlk4_AJSgF37x_RcS3PTrpQ.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1678-4-829a32257310-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1678-4-829a32257310-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/HMkTR3fPWSjPQ3L1D90ls1CkqrIJwJcO_60PlFs3sAxrtG57-5Jl2xqhqC7yEsHHOQb2CEN1DJETVKkfbuR74GmMOgB7-HBg4ahDS8qk8tihl-qBRfe30owSvgQ6jEOYwv_IWIPn36fbKlvb_hAEtnkfLrS1BimPfkaifdgaffJKwOk0sSEi9X3ftOCc7bRbRqYb62t09DmBYDOok5rd71e07QlY414DPHhR1T55nf0urp7Nz1sZucz3DRkFa4sUDAI4t9ZWYygZr-sJmk8EX8mXmIboVuzQGTsax8c6-Bw-iZE_wj90CiDfaYL71RQqqz8YZyqXs_0ouEf8VkO_Wg.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -62,9 +91,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1678-5-adfbc8cacf0e-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1678-5-adfbc8cacf0e-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/EZSe8jZ68jasYHFqVEChDWfKafGTI1aX_ls2KiE09Cmjwt3XFN4BF1yBTTJ1QimcoxipOkEDClPf_4HcYaw0K2RxLUbIe7ky0fZSpUeImRnr9tMyznKHKh5OIeIW5MXUxmoLZ9md0cSAtl38hbrD_9qs9hLoLw1NqRPUVmOjPLDSz-UD3HMHbiL4T6fwemmXYotN-CCcVSZCvGu6q-iNjNAIVG4snZFJAzJtIWvDZnJ8nmQ00KbV19C2Bxpl-Wp3nAjJaj3_ok6-3SSKXvFjQ-lhRNtyfEvBRi44BClcVQ15rkCpgeQYknf0dv8vmACtR5RI9NGf-_Jbo-WwOzSt4A.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1678-5-3d7559b31a16-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1678-5-3d7559b31a16-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/tcZ4nyGz9HwQn5X1ssgBFzhX1-uBleP2kRry9RzJyuvhLNGIgXbVB9D2KixUUfA_MWjIi7OgouK0P8iACy6gX-_Y4HkPe02dubbQVJzleN2lHbc-eApK4P9wVcuqkNpM_FiarZimjktwL3TA1marHEukQC7LJnLhwNZiPTnDrgRmkbnQqFQSa8Qg0h27GkKlVFnLqCsdEqaOfVmPeVs-PMAPGi39hR2RB39e91iE8E3pObasfI6ODWRRcIQg-IU_e9TRaTmHoALyRAL5ANyf_K9SKvOMdJ3D4cUUphEe_zoD_haBz229mxx2EbfnKygXMPmidiI9ws4JJamRnHxY2g.jpg",
           "thumb_width": 799,
           "thumb_height": 800,
           "full_width": 799,
@@ -88,10 +117,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1677-1-304f27cc8e49-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1677-1-304f27cc8e49-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/FvCIOX5qJGn0z7mBGQOoaVpPjIMsIg1EpAKWEtRw4OmiU91pGxu8ejmi6qkqcgiSN0xKmVbzMm75Zh-28682gsT_YBi3dvDT-cCUy2C2s5b9LCrwXU0EBcb_aWleZy_5rkajLmsgklLvDUFk-_YL6SWje7SM3K4PFyDccw3_NzBM620rk-dpuGDGy13bMuiSBND34a_EnEjro6M2KNInQGLGOmb1aDv1lhm05TaGprkMq3CJuOPxjFjMWvT5P9RccbPHJ9o-Q18ZQepw89BN2EAuY9DGVIn5QBxZGICdtwci9JogH2Tf_HDwdjgSiZLmGijcUx0QA3kCdcie_9uTZg.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1677-1-304f27cc8e49-v8.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1677-1-c56edf84e49b-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1677-1-c56edf84e49b-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/P5uSZrGyLyCDWVWoreeRpfUxfM8VOOXVWDd0PNfwoH8WQEbY5xhN4OgPJh00Btez_5jaDVj5Tc-GiVVFiz-nocVBVe5JiR8Pv9RxYfHDAKJoPzkGM5nTh2z_ZIt5EvgijePwVM3AVKi46AFlJQJBX35NdYhcsWUqP8xD-jzYCvir90rtDd_x5a4FdIiAuRb-6lA75dGP1jlscwRAmOE5XR54cXgG1PR4N98Vm55zjVSVlOAf7zFpdYeUcMGZnEboYCJiEwbzi8tXwdTzYKym343-5JEMOIe4IqffwTdD_JOGfS1vPT9WOR-h_e3kco51Hy7aWO7CIp5tgp5FTr-63Q.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/feed/1677-1-c56edf84e49b-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -133,9 +162,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1674-2-0ccd40489e71-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1674-2-0ccd40489e71-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/VPe_73s2P_EZVWCO81_KJUlvnB4jrm8L3Magnj-WhuU3qzZJi4ot92yCXZhZR4unesapDhh15dhfG-_MQscXZIZpSUMZYqbL1pUZJQG5tOFXzC89e-3mHSgH_kQ4mIaxGrhMwQwjbisqp0ZyYrMATlIgJZw4ObPEhKxQ0Cwm25VerA4dzYOq13qBkMiNczfB3HICiya4oTWQj4lAh8_Rfu23bGf0dLGPkvRbJpArefCF8yVRo25uSpZ9IoxgQLXia7sKCSG7_6aERnfxDg6jmjapmWQXPraut7PAmvkUqI4kZLY3I0-2nLgsl4yrgZh5J884lOn9GkuHxcx8CYwizg.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1674-2-ba56653b58b5-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1674-2-ba56653b58b5-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/ly6-hGi9XKmyZxDN5UQmi3gUOpdrt6Nt4GGJ19FIdgoqXz1W3KZg7mY5o_KT51tsGmOXlglQ0E4m79GwCBwsPiRg8E4sn-_hd5j6uqpeXZYIuzKn5RUhyzT6PcPmeCc4PB8n9GnHfetA2LuZpe0cpEo_rrzJJXJvEOKlhyKIAOm7ebjkJdiY2_4xrs4GkJTjVSINp6BPN6fVDpiOy_yYSQPAZNoJx7FwpNAoCrt-LWhVRPG8N6Kuc_Rbf9PzcojaI-lubQTqmuaJnGdwzktYPPUKR9emLOWWVQ7KtK1mNpNNJVInM6EwP3kAy-U_xwOEhhwrkP79TOc1OChNIsCW-Q.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -159,9 +188,9 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1669-1-b6bf2873e447-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1669-1-b6bf2873e447-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/vYg303HGkD9zA1zKVDAUQBsQwqJhnwGGhPwXJ_VYWUC2xK4YzG3Ig6sxGbThybB2CO_LpdTXChVjT4ySz8vIDgA_THuka8tbEZxbkIlpMufmR0_-qJhvhdGychvq1kfu_BSU2sSzfdseqBOFCWM1Q0bNkAcmq4HTHqIePXN309LMTd0rIICk41o-FGqjAjPV7K6grMxsOyGk6OLVM8Koah47Eczku_GGJtsLEhBS6hhaN25MmUfzIyWzkcrD6xCQ6ar00pqMCBOojSzk3HmXVsWtWzJ55Ge56ya00GYBQ-dMaYVM_ACJQrV4OVBNgaPRIjGMC0kYkIhAzczVoX5auA.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1669-1-0282eccee2f0-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1669-1-0282eccee2f0-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/gsm_pJujO21paAjVXEs6Ea8wtCfEHMUDOSdoU1bx2ok1l8wLv8RnQQxxjGy-l69pgNmxjoU0L_cRAH-gf64b73EjDV5HGYid_ffmK0OaMQ-SziEnOzLhYHFuYdXAJeJOngFv90aY7DFGedx8hdw1Poe8bsubFdJWYLoVP0EAiGYT3tqBkWMHd3_GIXfsAlM7PvlxFKVZzQBT3DM6Q4l8iX7vemLI9ByvtBMd82wy12kqdcxzdN8n7_bxe1Ld0x4h4fJWs_LGgHqiQ-ABVk65pzJ7aYHjUnib7W6kwV3eFDszKx5bcUXB_2pJgxB0OiTtJNI9s9zCaTjNwWYRw70poQ.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -170,9 +199,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1669-2-109372010c6f-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1669-2-109372010c6f-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/elF2eQNlfLWq-hHrI0eSegOWbYiow71lZPpbiWyz70C_b5tBRhWMDf7mzMIr6thURkjSJxV95CIpN_J-F8Tf4eI5Tj3A30FvKtCsw3PCman7I7kP2Xou4IjDdcYgoykeFFsQlGwK5Zp7Sey-sqjmaJKr64MDY_SMPq1vlzum1V7qq5xKUPB9RHNxSuUcQHz9oiFKvUDLjuLk0XlBFIjqHrueGUcy93YrKrdPIdjGaIMNY5XKryZoRUxrStfC6DlHmZu20jXzQxaEEBOsXj0WyNl8RnGpZxGx9TJE-7v8Dfui9Lh4EJfH07DvhsoTOSmRttcrXdUcwhNvm9uqZ1VIrw.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1669-2-08c840da7693-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1669-2-08c840da7693-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/byvHD3JqBsx9vFou3A-_3Ki-HFFMGWk6zxExv3JvOldelhWbl2THS7lqxXvm_jQNIMqNGetC56oEETjCx08Ji01raTObCkG_LFG6duLJVh6fKWypCTwCkLADscsilireVR0ICs8uS5P6SBdivOwrYbptAiApdgl-fhIzSbOtFgHom6lTeR9M1LkPSDcgJgG6RI2DdPwFh6nXlZlBZwlY3Rbl5WGhv4bWyQ4AEzQYKwG7V0EMcp8pgI-9dkCEXDr_wf7UVAtgUOmq07khOy4EHBxgXFcAbAf5cxZZcr9NuXwnJFzf17AOpO67J9xgHnMLK_pwvI8UWjCp-cJEz1fzTQ.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -192,9 +221,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1669-4-5f853268726c-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1669-4-5f853268726c-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/eO-BlnkyI-zEdgSB5SX6sOfg81dpUalEDE84DLieUv9QtiD0ySejPskHUf7Hky25ya3OvUc4r1P-EvdbRtqpdWvU2MSurgMgUJH0CXAMn2y7443bXtrF4q8p_cQA89KmYBTJnFiSK7Sf6NFect68Uh3JiObO4ybu-Y8OWgpFktPtMNAMiGmPtQ01OPlgIqN2QeQaqOmljs13o9lIxvfiNC_6tuRyHqvClp9UWCIyT12elvK2xSVkZKsY9_DAK07pQEEZ4VrHzztL5Mh90p8yYpI7Iiwz370Dcj-S2xahr1PmmxXLDNtIEKf9f8LV47nUAcnHtJIfD1sEx-k9lx9VeA.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1669-4-25fe9fb4a592-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1669-4-25fe9fb4a592-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/mBUn-vkamXUp5LYYTYfUqQLvcicWnq7-63MoJt80Pf7NL7e3Bn8gvOtOBA7pLfT6PYX_PGswwUH4ikdujRTQ2vPayHH3GR_XF7jjKo6QBsuoMpZnQRNC7kYahRJZOmD3i2Q-RRZ9kFA1ZOVj_pPwDmLaMBq-s76VCL5LAl0ZCaslf6haBoZV2in6d7Ds7bntgoP2yLjRhZVvOmY3GBvzNEY-uR93X-r1FM0OI_dT4c-WUYwxO_YvQ3X10VAaPwkmhMUhC3Z46HXRP_0BYC0QPgYB5e4yD6kIJ3JOJJaq5wgkNHjeYumBG785Kgr4wW44T0R7iQAwuM3vi1cce8DAXg.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 800,
@@ -203,9 +232,9 @@
           "source_height": 800
         },
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1669-5-6b000a6a56a2-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1669-5-6b000a6a56a2-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/ubot4NqUUrKzlvfaH3ebvlmNrSTp0laKMcv6JYv2wFEzi1ugOpZ_YE-sV9pJGXjqSTnhUEpVMBsIdUz668GvSN-cb9lVod7MglaFB4JD5CiMLTwG7khRt5RTttwp0GEpqikqa7FSak2sVmfTy8wpYKJKkBRISE_n0rfmcGldypiQsan9EKH0XuR8AAc7ifYyGoqkj_rqLp2a75XJAwdS082dLN7RTZzJMdcwGKR9BRkdHi0072LAUnxjZJf7_Daa6ch2DhU0PJ0Z-raC0BG65cc-Eb6wy53NC5KnfywqkqzCJlsRxSnUeC1InyhUfMXKJ7_Okn1nAnuU-6ycSov0Hw.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1669-5-e68cdd55876d-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1669-5-e68cdd55876d-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/FuBXK_ELXBYMg38oL1iPlKvc7IWRIijEyqVlAKsFuoNchuI50CfpfyF5URTkkCb45d6qQoq_jp9L7UdKHa7O4orm4N-wJdz22IqziG7MW5YAmXQeO5lCcJzu9hwSFkTVtZUi4a7aA5B77loRmvaz7elye7vg4Dyu_1E55J31_tVKsGwemsL4l7A0Gv8XatiS8d7J0kyguHoGmyosoQLTXa5XcQkl5yxcyu-5KaUZSdsnqKi6AcUojYrSRljLsdElEcMf5j7B2rnz7-yGvdj7LwtooUE6J9nCeCr8j8qeQaQv7CD4zFGQvI7WptQla6aeqkvWjD4gZgpLzNnurF_cHw.jpg",
           "thumb_width": 799,
           "thumb_height": 800,
           "full_width": 799,
@@ -229,10 +258,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1668-1-074328942007-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1668-1-074328942007-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/JTXAagSHoO0RcHN-bwWS2cyGVhRr5JWtER1SD4o9YlFMDrL8xLauiNEuK2I6QJfq-lUvDeE50LfTNRt2Gzsirvsh8V5u9LCSQLuTWOActZID0NdQWnlqkBrhCjJueafCmST7x3f1QAfrYxiOYhcj2O-1mOfEp7WLCusYdVeh2htZU4v52FddWSSCQDfZAd8xZUbnIFG7xn2uMGOBJJjbsPTpzvvYFE56uTFii-tqkwqcRPgpmrI37emWfNYXjkokW6PxzNs4LKTkmfaB4YEOxOVwd7NDNKoa-QQlJAXWR_eGd2JKh2DYxEUdhAE2-pA9jThnrpGtYzAluKExWffuvg.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1668-1-074328942007-v8.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1668-1-89c8bf653ee5-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1668-1-89c8bf653ee5-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/POvcfCPz3CqhicQ79t1PCvDjUPQqlkWIA2hwieJIblPlonoztaIoIacJIIPGiCgFMEEID1fXSR6xC2SMan6fr0c_7y_If7BdCeoAZsmIqbusSzV0as0mJuMANIgtNZV7tanV019azIMw5MCoo2TOi6tXMs8WGAXHbVewgT2FVXoQm1RySk5nDR7tamh9gjP6NzCgW1LUlkmFqgMQbhHJgReGvkIj92B6Ra7Uzq6QVEK_EdlXzeqBAlwMzRGRikhV4tFa3yo74iixvABfRJ526VUfS7VsmYbTFqTv5T9xIhUnBrh_idhNB9kE0Dap6sHfbrH8FHk1VbGHXiNTspzFPA.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/feed/1668-1-89c8bf653ee5-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -253,7 +282,7 @@
       "date": "2026-01-16T07:00:56+00:00",
       "text": "📢  Продолжаем зимнюю серию вебинаров «Пепеляев Групп» для компаний розничной торговли.\n\n🎤 Очередной вебинар пройдет 28 января 2026 года в 11-00 и будет посвящён одной из самых «проблемных» зон в торговле — премиям, скидкам, маркетинговым услугам и подарочным картам.\n\nВ повестке:\n🔴как отличать премию от скидки и оплаты услуг — и почему ошибка в квалификации часто заканчивается доначислениями по НДС; \n🔴в каких ситуациях выплаты поставщиков магазинам переквалифицируются в оплату услуг и стоимость товара; \n🔴какие формулировки в договорах и KPI сегодня наиболее рискованные; \n🔴как налоговые органы и суды подходят к бонусам и ретро-скидкам; \n🔴подарочные карты: аванс, доход, безвозмездное получение, восстановление НДС — где чаще всего ошибаются торговые сети и их партнеры; \n🔴актуальные позиции Минфина, ФНС и Верховного суда, которые важно учитывать при построении моделей работы на 2026 год.\n🔍 Все эти и иные часто возникающие в практике торговых компаний вопросы с Вами обсудит старший партнер «Пепеляев Групп» Сергей Савсерис.\n\n🌐 При регистрации обязательно оставляйте ваши вопросы и кейсы — постараемся разобрать их в ходе вебинара.\n\nПоследующие вебинары серии пройдут в феврале. Следите за анонсами и подписывайтесь на новости «Пепеляев Групп».\n\n#мероприятия",
       "text_html": "📢  Продолжаем зимнюю серию вебинаров «Пепеляев Групп» для компаний розничной торговли.<br><br>🎤 Очередной вебинар пройдет 28 января 2026 года в 11-00 и будет посвящён одной из самых «проблемных» зон в торговле — премиям, скидкам, маркетинговым услугам и подарочным картам.<br><br>В повестке:<br>🔴как отличать премию от скидки и оплаты услуг — и почему ошибка в квалификации часто заканчивается доначислениями по НДС; <br>🔴в каких ситуациях выплаты поставщиков магазинам переквалифицируются в оплату услуг и стоимость товара; <br>🔴какие формулировки в договорах и KPI сегодня наиболее рискованные; <br>🔴как налоговые органы и суды подходят к бонусам и ретро-скидкам; <br>🔴подарочные карты: аванс, доход, безвозмездное получение, восстановление НДС — где чаще всего ошибаются торговые сети и их партнеры; <br>🔴актуальные позиции Минфина, ФНС и Верховного суда, которые важно учитывать при построении моделей работы на 2026 год.<br>🔍 Все эти и иные часто возникающие в практике торговых компаний вопросы с Вами обсудит старший партнер «Пепеляев Групп» Сергей Савсерис.<br><br>🌐 При <a href=\"https://www.pgplaw.ru/events/upcoming-events/premii-skidki-uslugi-podarochnye-karty/\" target=\"_blank\" rel=\"noopener noreferrer\">регистрации</a> обязательно оставляйте ваши вопросы и кейсы — постараемся разобрать их в ходе вебинара.<br><br>Последующие вебинары серии пройдут в феврале. Следите за анонсами и подписывайтесь на новости «Пепеляев Групп».<br><br>#мероприятия",
-      "views": 854,
+      "views": 855,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -292,10 +321,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1666-1-4ffff0d7795a-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1666-1-4ffff0d7795a-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Lb7RdpdGeJgp6pQLDTtvhl2VetVMGkaxg6ivBPH8Zvm0L92YOAbdiFSyEgI_YVEemLpx_kbuNf6FhdPNNFCsCjjVslk9eIFz88VLUkDeqvWOz4vBrqY0AroTDWEqM8lApVNSZ_iopcju8FknYhNDLfZFURPwxRioBOg4BvKHYggW2UQ3ehrmqvatq4isvdPc79hJ0E-LIvUjxq_U9Zk5qGzC_VfnpXW7ECfDynhkmfc87ke9jS4lljKHS3bq3X-7cDqyoV3mrjuJPwmzbZnHSHLwGBBbdnvDOfgNigcQUFtayVlr7tO_Q3P0S0St9UjrM_4k7Eujr8l-ANfMTL-0Ng.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1666-1-4ffff0d7795a-v8.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1666-1-44b525de8829-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1666-1-44b525de8829-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/fZd17FRzZrAPUA4Rbtr1Z5awCNsgqqcMmk59qUhErvkB9sz9hk1zXlcHVKKaEp1j7vZO_sjfKTuuSplfIsAavzRKzv01FhmUdIPgLV4_S-qGfkeGnjvoEOPXaDvZOyJepsEQxYiwVHWZFfQMssMlDkFiU8J3-fXAb_T3pUIljH9libuWqiXgiqicI-Zi3TVGi__gODswhPprIhRiEimwq3uTV-Hvonc5k_2PynR4A4eEWP1R3EiUlcT5qlLgqZAfSPxN4-rqULC3GrH-SS4Adqr97mUMstbDqHZ5dDPcW6S4WvVmoWfmg173QNv8H4am6Fn2PEEUJnSXSMITQo2_qQ.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/feed/1666-1-44b525de8829-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -321,10 +350,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1665-1-2094ab9c1dba-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1665-1-2094ab9c1dba-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/eplZaMjwMhi0Ni4Z4EHY5wF7xHNDQpoWbULlMgf-_nm_NBXf_Uxcw2JGcG-t84eyhZU0yI2Hj0JUIxvMI-wP-9NjWpCycnDOHYrWOdhjOsTvqvR0_fDfDNknLQI3nzOtHVKpS0TZkjd9KnWI8Eguh13tyiTzqjiTB5aIWls7ittbThkoQ12TKfIDGyqxL9PVgB89OegNEImH1zn0hhspXP3OBYfeGs0Krt01vIfzgW5M4uNxnI3DvrOrCS76ceTD8HoUPHnxNovJcxa3_-hJ496blBylihrXRgBQ_SdmrFEmRVK1DMj0zJyuIE9DCwPjT-69_719nYuDf92-bGn9ow.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1665-1-2094ab9c1dba-v8.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1665-1-5319abd65c55-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1665-1-5319abd65c55-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/b5cuy9I9byYetBjR5cdqAFahQ4ITP388Jw_l_mBU8lyEktVw5t2vm64SF4qSpSAMu4whJy3qHPlvO1HRD7jniGtB32HZHCOItm5rcuO31HJgu5yyyC8x_r1zFad53WZESeqxVqutr8RE5ymzFYq4ugAtL2knpKosAmfnn4FHDXQGWd1Bs39l28mIB9qDd41kHkloEivvbj6T1lIQ3uRxQEZzunatYH4Zk2DF3mszA3zoQOO4-7V4TsXp7vCgC4JFQehr0-Or7AKstgLqmJSJtCw852x3hyGGeX5HINWijjQfwPMRfhC_YjGh6UJFEF2eKLjReCGNRrsHlUH0Zl1lXQ.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/feed/1665-1-5319abd65c55-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -350,10 +379,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1664-1-547570251fe6-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1664-1-547570251fe6-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/SgPbSzrHN1BWd3sMu-dTYHiXTkSV5ZNeZSqJNyLP4Rwll3RirU0IydeEXDx8ZgLKtvb-X3k94enPURehSnSjEkHR75moGrttFUEM3GlavdATl9Gt50Gho89NVzl7GqXRUGEjOUukqZdMpAobtbOqo3V0Hdq80Fg89Vm38W_-iqlh-NHE9AMGj5t_Zz6meoQTT73KQV62T1w0xKV-mQwoWRw3sz9KMHTZd03PNxTmn9-JF1KLHOK3QIgLhzqpYtpJ7b9u5UpiIaXqbyW4424v5ei4ipmkjtoY61xHO7vh74wlbzaw5JkrOwhUZHQAVmQlM7crlDF8q1CAuVKajSlckQ.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1664-1-547570251fe6-v8.jpg",
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1664-1-4bbd0382dd8a-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1664-1-4bbd0382dd8a-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/QDZ091-NIprEHqHuwwQSLf2tisVMIByyzWGsSRJOJr3foZeivG8qRFIUftnv5y4iHdNJPH4gR08g1voz2LOzju5r7cM5wpOfX4RHd7zdJnU2FE48fKCuXCEqr8S2ROOs_1qAFA8EqseHuy0m20CZGJWZaO1eDXY323AEp25QuH57fJmrUq54fuqetlMTBDhWxVfk93KCZyIRCo2W8wSa-5vQ1phzUb-BAwOkk8i_Z-KxvcGi-3D_6ejEgPG8Gw7XRjPgpteGlYhPBpvcJ2EN1vVWQD9ZK1bB66vhR_LsoE6pkkey4Cxf_gpxcOlgFXAbViy1XLXyWmgRYycQd38slg.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/feed/1664-1-4bbd0382dd8a-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
