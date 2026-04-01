@@ -1,13 +1,42 @@
 {
-  "generated_at": "2026-04-01T10:19:40.388385+00:00",
-  "build_id": "8c5832c8f556",
+  "generated_at": "2026-04-01T17:42:07.903495+00:00",
+  "build_id": "c551ca3a7c73",
   "pagination": {
     "page": 8,
     "page_size": 16,
-    "total_posts": 168,
+    "total_posts": 169,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2442,
+      "date": "2026-02-04T14:02:56+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1530,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2442-1-7e78c2c530a9-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2442-1-7e78c2c530a9-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/BZbFrjcplvWv9alY7Y40t28kNpLJX3NclKdGSSRyalxpvyQqRKnE0F_F6TQW_oa_HyceZdH0i9uNwoxAE27wMAH9EB5EpXFP9PXhmU9M8yxfEBz2ry_yN8s0omyH7qZWItWFIqTRxdycpRKoOxp1dpcSoZv4aUOPpZpePS5G20hvCeKjcP5BKIDZ8haP38kcxRFlHDUyAz-4ONNsiRnTCem4RbkOV711J8zOcsgqzuI2P55S_JJ41Fq0htRfAx5Ctpz3BYE4-PCsb-ISCl3dTiGsxnMCvq64lxWObYKaxglMSykwiKiZuTvW3ai-jeM5hGWFoMkBfFOEpiMMqXVopA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2442-1-7e78c2c530a9-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 420,
+          "feed_width": 1800,
+          "feed_height": 945,
+          "full_width": 1880,
+          "full_height": 987,
+          "source_width": 1880,
+          "source_height": 987
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/PG_Tax/2442",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2441,
       "date": "2026-02-04T10:03:39+00:00",
@@ -18,10 +47,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2441-1-bee431d2624d-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2441-1-bee431d2624d-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/U38zLy3m_a9v7nvcNdPX9g2jfsMsWw0WtrQjgy2Tq3qnEEqmnWYOWsus_Q7StJK3uIJs47NxyH1u2vM-WRtf8ljfQWQ8hTM9Tbk8VA7Qp0GVN1kxo4Sg0e3f4hjQ5XCSVWCUlyuwwqLFe9A7qLdE1_TCLHbjApx4DOk9bjDaAAmINSvn_dz7I7J-VXEf51WnqeKF4jQmtjHIoao24mPH8BHkaURl8k6imAYjEmn4e42teFMRneZt-KyU-ix0mHgmKFE2kCCFF6v6awrXwLfeIBptyy_0baJjDP5EQS3hhGuZ5r_1rKIoZUDcE6JMEQ5mUhw1E8-CNDYV4zUICf6mSQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2441-1-bee431d2624d-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2441-1-937dfc25ffa5-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2441-1-937dfc25ffa5-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/hnYQ-dRNfMxitJ_TRm4qrQODptSJ0hZk9EBMNom4m0uOfrBjfezVEBrUKUazW2gKUpeW8ZxIlqStzTuHxosOD8efWIVRlAe9E49opbERTOeHCewNdvKllWaPo_kUDRCWYVLoi80ruO0TNoA3WBG5jTwpM8xgMg_QDyPcp8P8F3iz4DjAK_rGDY7n5jN-okIsMJ2Q5ECGgDM-yEjNy92AR0w2Nokqkmc-ktI6sG-zr0JJwVIaAIYQN1yTSgT_VeeayNAfQluGaPcxPIGMUVengaPdxBIwXnyZMY0PKkY3blhnQtLUZQnpk4gHlFARAQfWCeiWX9wvIwqXuppVH_aHfQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2441-1-937dfc25ffa5-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -47,10 +76,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2440-1-237eb60650d8-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2440-1-237eb60650d8-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/cMhs2InAruWQZcwG7d4Ej_bbjs47JNQHpDvk1MIwOonp2E6gWRI6zu7nNmjrIwvQkxxhFn2TxIxtRg8XpUcQLl11bAZ5uZ8etx3Thygj7oK6NZyw8n-RAKWLf-rmt4q66ktiWbVVDmLjT1w6F6Zb75r-LOu0H-wWTyrlTU6c96tz1iaEvBPq54WAmpX5dbnxiPm_2PebXoG1IvstJsejruONcwtrrP7SecUP67P-8aKlCgbR1xUtoMkKPrTPf7u9leFDWQt-sRzt6E51_pbhTolvOAQ3onYRxqGxIp2GGjlFXLHVHNDjsbY9vlO9VHg8nfXKJcNuDOBoHV61bGUpMA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2440-1-237eb60650d8-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2440-1-258ca1cc46e1-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2440-1-258ca1cc46e1-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/eKrHuXxIgj6xiMG9QvGM7XfDL2-gzE7ekaAnz9E0xc4qEcB3RPY7HXEtk95z0OJkZNScl6J-oo2jvPJ7gZolwdyYkZT9hwbkcE5fRjX29M1RDVjKO3HmdjToyXCPJTh7fob2Oe7UM3RiztaQPK54YA0VYRhn0t1oBEEskHkdGe2QoXiO-vIujM6q2OYChfXHRmitxLdmJuFV49Q-sp_xYKiek-ewVI8A6T-IHg2CRbemjyvJt-pBHdhsMB0KoLwpkTKNmsqNrP0ZPkcd7_Bh9WOnWloSru9vGa8_tLqhZhQuhpxitloaPpkFEor7VVMtRYSXJNrcm21YR57uYJl-7Q.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2440-1-258ca1cc46e1-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -104,10 +133,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2438-1-1a63e67e9df9-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2438-1-1a63e67e9df9-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/QXcqNCRt8b62sLgpLDV3txK6ky4eQMZr9O-7oPOFTqYFq_6-WVgw_qA58z2n3EVAcAudRbW8OO1adc-5E481cw7ZCZO__k0gQWH35N_qwxcJZtpa244MldhzDPQU3DF3UMFWVLKzAZDp1HIFgCOF-36JQubC2I1cZFujiwWTFs59J6CqaPQj0lEKw6Q71i-jI4q0LzCqfwTdWQUpTRyA0aYczxw34uQMJi7d-BKBTEujuKP8Us8pVEFYjJKH3jPQQ4W3Jlr_cnSGRpZC0BcDYsmPSakz4hbe9T32yPqb8nnTbZbqPA4wysQO7lyWzgKVvQwA0K8M15Cxh73i0FbanA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2438-1-1a63e67e9df9-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2438-1-24b9253a4568-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2438-1-24b9253a4568-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/NxLdN5qoBqNcmIWNfcXMnTq0jzgsKyUri02cuKgEJ5tp_Pbt0714KkuReIvuQ_TdvR9Us0lAvhE2LzlHBVP898E0F42-ryXnf0MFRCi-TIp3DnlzYd5kN8pXVRUN5gOc0gUwfyazq-GiVMM6lTfCL3O7Dj85F272xFUbrYbY6pvfRwg_k1adrfEvcIN1HaelzWC5-BrKf_ROG0k7lllNkw2GvM9Ju8KLpyf1Qw87FlL0Q01HauFlB_5IRquEuTzbHoBdvYTvbw9aARQ6KY-iCC_GIeUhgpUNtPz3cs9pTlVFMIWb6AUHNjaLRpww9rDQu1g9wZxeRO5d1HT6j9tpBQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2438-1-24b9253a4568-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -133,10 +162,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2437-1-f7eedb37e091-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2437-1-f7eedb37e091-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Wo12N8JdET4nKz4F1DeddJhK1x5IvJSSiKm0qqTrhec-rFmJC3k0_42JKkIG0LYqhuyGNOdjSKi4F6LbNssjy_odB7zF7EDOsikafjzUwyWUtuxi5IfITe5IgtN0cYkpxikQDrRRnIfXGEsWrbtZVFIqyKdmncCbmgo69m-xf791_BrPgY7Ah9OQ_SqOhiRQYJYNB7PZtjWqoQHr7nXGsIIHahJK3utnf2vxfgVQEi_3si1F3aPqIwTZ0l5Tv4h9_sVROx09J9I3mdwSORLcXXqiYcprmPyR9cMTsxf3wygnUUPLzdwT2j8FUQ15EpemxNnZEb2gpHbyEDXNn5ixqg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2437-1-f7eedb37e091-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2437-1-3bb27e3e6571-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2437-1-3bb27e3e6571-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/cqqXOQt3PUi5y3V2ImHbxd66tU41c7VvuLRN2HVUeS-j9Jkc5gvhyvg9CJ8G4gQV7_Lcdm2T4ReU1c52XJpOi0-dSDr9htoUfNQZO4_Rs9lroF1kuSQyEH3a0TA9vh1GTqJWwZ5dNsBIeXm6RgdFA42b2Xk3qiYcLoJljoWFKvNFz0nshMlD7dR9A1ysDQKiLvN2m1aFJIE5Gsy-bdMoC9-vQdjgPeMCZtzE1r7pATLxnHvm2Eii-KBsKs7wmXSZnADbzIEaFyRgfHwt_Gq1h6PfBMETpc9JosTk23mPKExmJJFnW5LKyv6c0myPLUhQkAThzVm_P0ZtV7948p9mUA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2437-1-3bb27e3e6571-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -162,10 +191,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2436-1-b5d307574cf5-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2436-1-b5d307574cf5-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/tOgh6DVOaZZY--ZGQYnVrD1MysO8YUQjG3UVfZzEFZHW4yDtPnHpbf_EPfWl_nQMyV6vqVfrKygUWzOtntrZazThSGzjtXv1cGhDpN6nppIm3LaDSZhquli-RWoJWJj82O2K1JUBUwLz-KX5uH6-j267UGdHCiEsbUCrI3t3z7A3Ozt-TQuIKPKBvhrfYzUoLFzLfGs43oa7-W4oSwUkng4saiozKfBcdBWRVpWb0Y3mEj4V1yA0vSHo44q0QAtVRvkE36sppYYWagAvDYrGESRxvTG_jRBZYDz1bMGW3Q9vu3afLjLYetNeQ5YslbqB-ZFDPL1pIT15Rmys6zVaMw.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2436-1-b5d307574cf5-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2436-1-872d21d82c31-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2436-1-872d21d82c31-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/cFgMBbJBuKE6yXqyHHbthrNipIboI9Jn5U1bUZJU5V-KjcJs8q0qeDEqmlJg2wVRD1VACTdk6lb3gj8vpyF2um6pecwQekLrsSYeG4q2DGxelnNyjVUQ4WuvGAjaHpRRRwrIyxkEx6SbusShBzkjTYz54xmrfzqpFyq0nT6aPD1Dot29Uh8vzAglC7MaPK0rotOVh4-TtnIvWh7UoptAHwE_siTSkooL7-NBmsI0lw9_mgo8JTJoDQUb_h8ScnX_c7HsfWgCXF_mX1-D9Unt7m5HD0uuKJG0nVLbwpEYgBR1ohX3sZbhAhQvbSsN4nRn79pFihm5qWBr366ZDdMECQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2436-1-872d21d82c31-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -219,10 +248,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2434-1-1069272d0f05-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2434-1-1069272d0f05-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/ZNLUK6E6NazOJQifLNK6kdasDYkuTn7iEErBm-bC0o873-RKEj2tK5z7OnIyWJgkrHv85WFdW70t51hK4BwA9o7bwG-NHKYUMjGqCGYNNUSpwiWWDdzAEv862BN-MT9hMC6KRuLFNGtohBiMu6T5zNeyW5czONG5mCUuOXmHSMZ-OgupQgNBSSptaalMsmr9-PXNbhZLiieLw9UIBhPrzxDXQq37YIkO3r7CDKlH5u_XCveoiqTnnQ3olKx9Is1enFq0xI5RnfuYld3jLJxSe4mcjKThTkLL9_DohoTetuq58zx2CmuwAOjgBlYaDDw3bqfrLRmY9t4ywjoGL-48nQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2434-1-1069272d0f05-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2434-1-19f6f1705df7-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2434-1-19f6f1705df7-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/Js5Yqos6SFZpIiqn1dXHQNuYjF-Wgvc2XLL5nM_Ixdk86lh435nQ9IAV3RsFVK69ESvcpf9v9PI5zktGwpkOH-WppGWjkg0i14p6ocPz-nO2JLsA0NXbz4xb2_h9pm7t8-zhGCvzE2TcLvi3DKnAh_i_4X61SDEInzeN-CDHd3sBtCWGCJKhbtW_RuhFNhUUU8BQTAZN0Q3KTlYc6Em-GHUcHhux6_YsF7NVzj4rTvakqUdAYG3kKN7EYLBqZwddHenO1gNb0HepV9tJFtGR1mm8jrFXBTRsE733AZraY8Bt2uoo8NDS7plLC9jz1AXGSeFiNpFoKbjkDetvS8d_IQ.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2434-1-19f6f1705df7-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -243,15 +272,15 @@
       "date": "2026-02-02T10:00:37+00:00",
       "text": "🔥 Новая статья 56.1 НК РФ: льготы для резидентов ТОР, СПВ, ОЭЗ теперь \"на привязи\"\n\n27 января Госдума приняла в третьем чтении Законопроект № 960752-8, который кардинально меняет правила игры для инвесторов в преференциальных режимах.\n\n💰 Главное нововведение: право на налоговые льготы теперь напрямую зависит от объема капитальных вложений.\n\n🔍 Суть реформы\n\nАнализ Минфина и ФНС за 2017-2023 гг. показал: у значительной части резидентов льготы формировали \"сверхдоходность\" при низкой инвестиционной активности (от 79,3% в Арктической зоне до 12,3% в ОЭЗ Калининград).\n\nНовая ст. 56.1 НК РФ вводит формулу:\n\nКапитальные вложения + НИОКР ≥ ТВмакс\n\nгде ТВмакс - совокупная экономия по налогу на прибыль, НДПИ, страховым взносам, налогу на имущество и земельному налогу.\n\nЕсли соотношение меньше 1, льготы приостанавливаются на весь следующий год.\n\n🎙 На кого распространяется\n\nНововведения распространяются только на новых резидентов со статусом после 1 апреля 2026. \n\n🛑 Действующие резиденты работают по старым правилам.\n\nПод действие попадают: ТОР, МТОР, СПВ, АЗ РФ, ОЭЗ, ОЭЗ Калининград, СЭЗ Крым и Севастополь.\n\n☝️ Ключевые условия\n\nДля применения льгот резидент обязан:\n     📎 Не нарушать отчетность (ст. 19.7 КоАП) более 2 раз за 3 года\n     📎 Выполнять обязательства по инвестсоглашению (KPI определяет регион)\n     📎 Механизм работает с третьего года после получения статуса\n\n🛑 Региональная гибкость: субъекты РФ могут устанавливать коэффициент менее 1 или даже 0, делая льготу безусловной, а также определять конкретные KPI.\n\nНе учитываются в капвложениях:\n     ❌ Легковые автомобили, мотоциклы, строительство жилья\n     ❌ Покупка б/у оборудования у взаимозависимых лиц\n\n🛑 Контроль: управляющие компании обязаны до 15 мая ежегодно информировать ФНС о выполнении обязательств. Отсутствие информации = автоматическая блокировка льгот.\n\n💰 Финансовые риски\n\nПри нарушении условий резидент теряет льготы на весь следующий год:\n\n     🔴Налог на прибыль: вместо 0-10% - 25%\n     🔴Страховые взносы: вместо 7,6% -30%\n     🔴Налог на имущество: вместо 0% - до 2,2%\n     🔴Земельный налог: вместо освобождения - до 1,5%\n\nДля трудоемких проектов риск потери льготы по взносам - критический.\n\n🛡 Что делать бизнесу\n\n     ✔️ Новым инвесторам: пересчитать финмодели с учетом \"инвестиционной привязки\" и регионального коэффициента.\n\n     ✔️ Юрслужбам и бухгалтерии: внедрить контроль своевременности отчетности, выполнения KPI, раздельный учет для расчета ТВмакс и сверку с УК до 15 мая.\n\n     ✔️ Планирование: схемы по \"накрутке\" инвестиций через непрофильные активы или б/у оборудование внутри холдинга не работают. Резервировать средства на случай применения общих ставок.\n\n🗓 Вступление в силу\n\n1 апреля 2026 года - для резидентов, получивших статус с этой даты.\n\n#изменения_законодательства \n#комментарий_эксперта\n#CпецИнвестРежимы\n\n➖➖\n📧 Если Вы планируете получить статус после 1 апреля 2026 или у Вас есть вопросы по применению специнвестрежимов, напишите Егору Лысенко: e.lysenko@pgplaw.ru",
       "text_html": "🔥 Новая статья 56.1 НК РФ: льготы для резидентов ТОР, СПВ, ОЭЗ теперь \"на привязи\"<br><br>27 января Госдума приняла в третьем чтении <a href=\"https://sozd.duma.gov.ru/bill/960752-8\" target=\"_blank\" rel=\"noopener noreferrer\">Законопроект № 960752-8</a>, который кардинально меняет правила игры для инвесторов в преференциальных режимах.<br><br>💰 Главное нововведение: право на налоговые льготы теперь напрямую зависит от объема капитальных вложений.<br><br>🔍 Суть реформы<br><br>Анализ Минфина и ФНС за 2017-2023 гг. показал: у значительной части резидентов льготы формировали \"сверхдоходность\" при низкой инвестиционной активности (от 79,3% в Арктической зоне до 12,3% в ОЭЗ Калининград).<br><br>Новая ст. 56.1 НК РФ вводит формулу:<br><br>Капитальные вложения + НИОКР ≥ ТВмакс<br><br>где ТВмакс - совокупная экономия по налогу на прибыль, НДПИ, страховым взносам, налогу на имущество и земельному налогу.<br><br>Если соотношение меньше 1, льготы приостанавливаются на весь следующий год.<br><br>🎙 На кого распространяется<br><br>Нововведения распространяются только на новых резидентов со статусом после 1 апреля 2026. <br><br>🛑 Действующие резиденты работают по старым правилам.<br><br>Под действие попадают: ТОР, МТОР, СПВ, АЗ РФ, ОЭЗ, ОЭЗ Калининград, СЭЗ Крым и Севастополь.<br><br>☝️ Ключевые условия<br><br>Для применения льгот резидент обязан:<br>     📎 Не нарушать отчетность (ст. 19.7 КоАП) более 2 раз за 3 года<br>     📎 Выполнять обязательства по инвестсоглашению (KPI определяет регион)<br>     📎 Механизм работает с третьего года после получения статуса<br><br>🛑 Региональная гибкость: субъекты РФ могут устанавливать коэффициент менее 1 или даже 0, делая льготу безусловной, а также определять конкретные KPI.<br><br>Не учитываются в капвложениях:<br>     ❌ Легковые автомобили, мотоциклы, строительство жилья<br>     ❌ Покупка б/у оборудования у взаимозависимых лиц<br><br>🛑 Контроль: управляющие компании обязаны до 15 мая ежегодно информировать ФНС о выполнении обязательств. Отсутствие информации = автоматическая блокировка льгот.<br><br>💰 Финансовые риски<br><br>При нарушении условий резидент теряет льготы на весь следующий год:<br><br>     🔴Налог на прибыль: вместо 0-10% - 25%<br>     🔴Страховые взносы: вместо 7,6% -30%<br>     🔴Налог на имущество: вместо 0% - до 2,2%<br>     🔴Земельный налог: вместо освобождения - до 1,5%<br><br>Для трудоемких проектов риск потери льготы по взносам - критический.<br><br>🛡 Что делать бизнесу<br><br>     ✔️ Новым инвесторам: пересчитать финмодели с учетом \"инвестиционной привязки\" и регионального коэффициента.<br><br>     ✔️ Юрслужбам и бухгалтерии: внедрить контроль своевременности отчетности, выполнения KPI, раздельный учет для расчета ТВмакс и сверку с УК до 15 мая.<br><br>     ✔️ Планирование: схемы по \"накрутке\" инвестиций через непрофильные активы или б/у оборудование внутри холдинга не работают. Резервировать средства на случай применения общих ставок.<br><br>🗓 Вступление в силу<br><br>1 апреля 2026 года - для резидентов, получивших статус с этой даты.<br><br>#изменения_законодательства <br>#комментарий_эксперта<br>#CпецИнвестРежимы<br><br>➖➖<br>📧 Если Вы планируете получить статус после 1 апреля 2026 или у Вас есть вопросы по применению специнвестрежимов, напишите <a href=\"https://www.pgplaw.ru/to-get-the-team/egor-lysenko/\" target=\"_blank\" rel=\"noopener noreferrer\">Егору Лысенко</a>: e.lysenko@pgplaw.ru",
-      "views": 1750,
+      "views": 1760,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2433-1-4b26203735c0-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2433-1-4b26203735c0-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/thoQ9CTfgJYSFDUhIjbroPiSyDpKR2cKM9fKmkgQr4cs6dBXSm2i6PTeqoM2aRqif66VJMKb_eIzxXd3JgLyG1jl66pSvJRIeSCeHIr9pByIH5dKNClzWKAG-lFhsfEktD6BZebnW8oTw2Wokpk6a-_GOfFs3LMGGs7P-ejxc2pFhx4Gbi7i9pQSkxbfA6KgffRIIhOKSG_zOKofoIHxFHvQ_NtybEujBsc0ORsctLZgy0EgbGyxaSs4namxJCmI-ZVsJ1ofJzD7BuF-sSHyfM3p5zdX-UvOmdckGL4HrwlA2OgvQ0xfuCEBQQJTyszRMLE94bgR9lxJnqAgoMc0zA.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2433-1-4b26203735c0-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2433-1-0e9d9b8bc2bb-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2433-1-0e9d9b8bc2bb-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/QWuIzLa3-YbtNv67xoK_N2I5xlnkYtQW5YGb4tmTcfPXJQKWAaF-PxTmTXFWKO6dvE7sqATkH6uqFVJPIuWvC7i6nzKGanwczpk_lYlTZDo1P7_pOqYo8t2RSS2q5YxIfPfQVvAN3VpC6-0ra5x0xnTHDj8XGl0yJkJwL5jPlvAbDY8ZVOabUzWYcPEuC8q7KSYCkwiWADoXflH8EB4yLOvyqrkpNLQaM8Cy5zLt278zhA-G1JZk0ykQxvcQBGBy6rzSZlT3IFonRLGig4uH6Wxb4IDkWgg6Nz8mrsh3EcDmZw1mpMWMFNE4rm4C7ZqOwab8Lpv-0xJk6ar_yHhb4Q.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2433-1-0e9d9b8bc2bb-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -277,10 +306,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2432-1-351bd0e04cf7-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2432-1-351bd0e04cf7-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/wAZV6RlwPinGG7bI3uM30Fzxa8gZz5EJ4lW6QUmp9EyoCYjf6Y8i2uel-6ShBzGfn6hO2NXY4nMqW24up0cBri-A3JnS_G1crLfWqntKVNzkVClQpi5mY5-jBRSicTLCnYVEt_I1YhCqXIptbH2-p7KC-8JRQCZwWCbhSwbRsPBZ-PJj45NALh2q6_OW1Qm9Qei9KUukm_5gpdUr39qNkFid204xl8ebJz2bMnU__Amhvl2ue94uFB2bgwsrMaeIhbPHxLNT2QK9iwcGw7sq6d2Q4-SO24rDquUakOnLkG33xojv2qdb3myEvy0F9UQpT0uvTDIpXO_5sXu8PFLG0Q.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2432-1-351bd0e04cf7-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2432-1-5a807d19c339-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2432-1-5a807d19c339-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/T4zbVaDYRpJmHzTCdJJsXtLDJlOVx4EVtp5_9s9gTKV8qUOlZruI33-s9fp7_f1ygMVjjOx8KfmdoByFF5vVwMUJK2IkIZfRkd9MG_aFrotmpfN2stVjEbsd2Xl-_iWB3hprYQebPrwpUBcr7bvhS_Dd8W2T0VO9pbmufOpcS4B9wuK3BEVx9d0jaNjeSIFCV5CoRvWJaQD9040ourYhnd17OxbZNrE0eEhGdwSCu6Lk9SEgPnU7-f1R08McZmdfNn_9f7rViG-Iwj_p_rDhROP852Vgj7U9sUpCN7sRP123YqBIgMO2ZJCAAM-zL6Ms1hQVSRr2g5b1-q66VUx6Gw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2432-1-5a807d19c339-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -348,10 +377,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2429-1-a5178202fdde-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2429-1-a5178202fdde-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/HOZYICd_ygl82l-e9T3wzlhHV1SEOIXXJ8bSyRCs2k06_zbpSFHsq53WK4tFdOvTX-kwsCJ_kpmF9viYZ36R_uUIcXil_Za-ACl43zPiobbPCfX1a-GbaVhH2N1WWYTJuuhcRArH2oSrXmyX2Q1guGyFHXHJkLqGYB2H_LYXSdR_OKgFDCgZgdMJ3D2InROUrg_S-nQSOjcdlZ4rQhV_48uAeYp0J4KGeNt0hU8dFSOriTHbGaQG5PyTtaiPg7K9sbcBMZsZIzHgYLx_Y_ylZ_UO3DMNDJlH_JwXT_vI74ChhZMcbDOqkucwXGWzTBn2sWw-e5ErIUQRPD1X3Osiog.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2429-1-a5178202fdde-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2429-1-e732be4a69f5-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2429-1-e732be4a69f5-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/VljMk1Q56zWmCqful3B41xzd9GweSaE2o_OVJeI4xGDC0erACUzbw4spw8G1f-VpZa6kMBPAH6kr27x2A4dhAJ7OhYCb9xapLhiU9Q0DE0rUngQ1Kbl9ag56hb2-66wPhjAiVSkIcs2Hn9RL1KZkeJP-thJxBSf2xDcn9Zo0cnwKr3QxxGsjpng1WHjz2sAmfSw5VSqVE_kL0lbs7I66PwUsOnWwlAFo1mOYbFQrhBoaylvKis9nspF8YKMiDrrIsgFFbU_YrZ5tiiOFcyNPPVfy--J6whFZ1ODfgmEIJn7hZ7KxWVRCeHxoiVEp0YwG8IsWtNBhTM_zd6yA7LlWNA.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2429-1-e732be4a69f5-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -377,10 +406,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2428-1-40fbc708482a-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2428-1-40fbc708482a-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/YNzI4CnidgyX6bgeLQaP0MxJSmG0DeJYynYgGkEvz-CmZmuakl8V1eR6RIwQKkGXyBRCxH4uSCVzy7JOoq2zmeiofZfzKwdj-w_b0BVQN91uGT2f11MIF9dJVjJWK3wuijgn0uQRVHDfjGLRrPK1YiDW7IYO9dvHWmeYLzuQUSw5BMmpoobVAylg9v2Uvdy-OJnv-spOsq9g3OO_B9POTeRBx-nnuwoInOoWZL_9YkYB9mzLOvSrv3HFTiUpcNonavttIDI9IdBN3oukgu-tIy3Co9O6rakIHRCYPpLcG46Cel8j8IHgPSqT7N4yHnNfOLmfJUT4oB7BTP_2zJv5sg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2428-1-40fbc708482a-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2428-1-a896808fe16a-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2428-1-a896808fe16a-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/rInlB06ISvJnKK7puqCDrfnUTsdnjdEIxYLsoOvNN0cS7dKEiXRMZ1gFjjeAJHsgOPa9A-2bKCEz4Yfk1hdxKZwourjy_OywoFAoc7q9qdwLuaRnHjLuZatmZ-lNw2ylCo7JdMeTEH3ojaHRGZk1JnlvjmuAx1Z0sl6gVEqN50UO6Zdp6zzToWV0lT4adC4fSt9m9crBjHB6iozP6Bac7CW2OulkxP7LCCv9fgEXSUMyfNS1wscS_m5i1Hte2NA50qr3GQwVudsKWIauwW5wv0orkDuXf86KgR1pHN9YK8hYNNfmyXUVVMiv66btTzYXgIK6b4b4tAV6P2mHQwRZhw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2428-1-a896808fe16a-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -406,10 +435,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2427-1-d53abaf0ded9-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2427-1-d53abaf0ded9-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/a_7NI24QjbsRubYGO2x9Z1PkvvDLWisqP5jmn2FYJR6xzMswJb--RQyGhSozZbsdZSNh14VpIVnzYrvj1bReyaKab1C8kq8bLAJuY2RQ0Vt9T2geYecKexF0022ct5kmY5yBirmioGVMxydewg63BORfpvIv1OVYULVaiLnu0GKQMfFJtC6o_4N1Sgq_ObKXB-o8d5lgww5KoVYdsby_RAKBjQgbOLFT1v9x83-oCRfMFKvA28frE9gPFzZON4yQD4z7P9kJ1bJCwuRbvMWKgnSQjexTIy6CmTo_Zp-kpVLLW-4kRb3QWfgsL-LV4SSG3YJ0LdSngPQVEsPM0dLrnQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2427-1-d53abaf0ded9-v8.jpg",
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2427-1-9bf600892007-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2427-1-9bf600892007-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/No1nklTMy1F19mqj8ueYk_4y313Ehqi1eFbbIoLSptMEeDnQVcNrw8jBWeJIMbAKoM01OzRLcxxOxEye9-IbRvsONOTvZRETxRREItEI4I-vnV1lEaAt9TIavE4e_e8qICJmoyiU-rH6Ff0JcBqN2w121lfFsZ9eca0_7f8Dvh0qO6ilsfFQ4oKJRAl66HqHS-NFhpJ0B_exVl-Wg54XYik64O0C-aJvREteZ-lo6MDZJkzNHtr57K4BwH_mFA2n2aYLe83XvEFi57p_goTGUzjTZwciy-Bu3w3MJL8-SpP9Ez6phEf4Ck5TFMWnxdYmxPQGe42AhK6W37s8oABnpw.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2427-1-9bf600892007-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -422,35 +451,6 @@
       ],
       "video_url": null,
       "tg_url": "https://t.me/PG_Tax/2427",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2426,
-      "date": "2026-01-29T08:10:46+00:00",
-      "text": "✍️ Нормотворчество\n \n🔴Госдума вместе с Минэкономразвития России, регионами и экспертами прорабатывает возможность сделать более эффективным туристический налог. \nПредставители отрасли говорят о необходимости сохранения ставки налога на уровне 2%, не повышая ее до 5% к 2029 г. \nПоднимается вопрос об отмене минимальной суточной таксы в 100 руб. и делегировании регионам права самостоятельно устанавливать минимальную сумму налога. \nСреди обсуждаемых проблем - отсутствие целевого характера налога, а отельеры жалуются на чрезмерную отчетность и контроль.\n 💰 Сборы от введенного в 2025 г. туристического налога по результатам трех кварталов составили 5,5 млрд руб., превысив прогноз ФНС России в 5 млрд руб. 63% обеспечивают Краснодарский, Ставропольский и Алтайский края, Санкт-Петербург.\n \n🔴Минприроды, Госдума и промышленники договорились о ставках платы за негативное воздействие на окружающую среду на 2026–2030 гг. \nДля выбросов ставки изменены по 9, а для сбросов — по 24 загрязняющим веществам. \n💰 В 2026 г. ставки вырастут только на 5%, а в дальнейшем они будут расти интенсивнее: в 2027 г. — на 15% к уровню базового 2025 г., в 2028 г. — на 25%, в 2029 г. — на 50%, в 2030 г. — на 100% к 2025 г.\n \n🔴Как считает глава ТПП России Сергей Катырин, именно стабильность налоговых правил, а не абсолютный уровень нагрузки, остается ключевой проблемой для семейных предприятий. \n💬 Семейный бизнес в России целесообразно поддержать закреплением налоговых условий без ухудшения как минимум на 10 лет. Такой подход, по аналогии с профессиональным налогом для самозанятых, может повысить устойчивость сектора и стимулировать его развитие.\n \n⚙️ Практика\n \n🔴В последнее время бизнес стал все чаще получать информационные письма от налоговых органов с предложением уточнить данные по уплате НДС и НДФЛ за периоды более трех лет назад. Письма носят рекомендательный характер.\n \n🔴Forbes опубликовал подробную инструкцию по оформлению налогового вычета по НДФЛ за медицинские услуги.\n\n#главные_налоговые_новости",
-      "text_html": "✍️ Нормотворчество<br> <br>🔴Госдума вместе с Минэкономразвития России, регионами и экспертами <a href=\"https://tass.ru/ekonomika/26274561\" target=\"_blank\" rel=\"noopener noreferrer\">прорабатывает</a> возможность сделать более эффективным туристический налог. <br>Представители отрасли говорят о необходимости сохранения ставки налога на уровне 2%, не повышая ее до 5% к 2029 г. <br>Поднимается вопрос об отмене минимальной суточной таксы в 100 руб. и делегировании регионам права самостоятельно устанавливать минимальную сумму налога. <br>Среди обсуждаемых проблем - отсутствие целевого характера налога, а отельеры жалуются на чрезмерную отчетность и контроль.<br> 💰 Сборы от введенного в 2025 г. туристического налога по результатам трех кварталов <a href=\"https://www.vedomosti.ru/economics/articles/2026/01/29/1172465-sbori-ot-turnaloga-previsili-godovoi-prognoz\" target=\"_blank\" rel=\"noopener noreferrer\">составили</a> 5,5 млрд руб., превысив прогноз ФНС России в 5 млрд руб. 63% обеспечивают Краснодарский, Ставропольский и Алтайский края, Санкт-Петербург.<br> <br>🔴Минприроды, Госдума и промышленники <a href=\"https://www.kommersant.ru/doc/8380200?query=%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3\" target=\"_blank\" rel=\"noopener noreferrer\">договорились</a> о ставках платы за негативное воздействие на окружающую среду на 2026–2030 гг. <br>Для выбросов ставки изменены по 9, а для сбросов — по 24 загрязняющим веществам. <br>💰 В 2026 г. ставки вырастут только на 5%, а в дальнейшем они будут расти интенсивнее: в 2027 г. — на 15% к уровню базового 2025 г., в 2028 г. — на 25%, в 2029 г. — на 50%, в 2030 г. — на 100% к 2025 г.<br> <br>🔴Как <a href=\"https://www.kommersant.ru/doc/8380379?query=%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3\" target=\"_blank\" rel=\"noopener noreferrer\">считает</a> глава ТПП России Сергей Катырин, именно стабильность налоговых правил, а не абсолютный уровень нагрузки, остается ключевой проблемой для семейных предприятий. <br>💬 Семейный бизнес в России целесообразно поддержать закреплением налоговых условий без ухудшения как минимум на 10 лет. Такой подход, по аналогии с профессиональным налогом для самозанятых, может повысить устойчивость сектора и стимулировать его развитие.<br> <br>⚙️ Практика<br> <br>🔴В последнее время бизнес стал все чаще <a href=\"https://www.forbes.ru/finansy/554213-nalogoviki-stali-case-predlagat-biznesu-oplatit-starye-dolgi?utm_source=forbes&amp;amp;utm_campaign=lnews\" target=\"_blank\" rel=\"noopener noreferrer\">получать</a> информационные письма от налоговых органов с предложением уточнить данные по уплате НДС и НДФЛ за периоды более трех лет назад. Письма носят рекомендательный характер.<br> <br>🔴Forbes <a href=\"https://www.forbes.ru/finansy/554286-kak-oformit-nalogovyj-vycet-vozvrasaem-ndfl-za-medicinskie-uslugi\" target=\"_blank\" rel=\"noopener noreferrer\">опубликовал</a> подробную инструкцию по оформлению налогового вычета по НДФЛ за медицинские услуги.<br><br>#главные_налоговые_новости",
-      "views": 1410,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2426-1-13dd0c5d27b5-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2426-1-13dd0c5d27b5-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/DY8GjFV22egGgMC9DqB35Q4zWPJHIIRIFflogXghs5Wv3Kb8iEfeiaA5RkYEY7SMf5e7D0lqGR83NLQCW51wz19ufTn8ufws-6HF3pRxriR0Z4lbyyDhrk5Gl6-k0dG53Lj0pXNhnpkewzho8vBdeXxf-HeK6VOBnHeyhoiNDfA-_P46Ojvkj8oLVu1Fz3rMyWBPSaIPE72Z5wTPGlxLv5dngX1o5HJt99c9EN4pABl30R6tzQHpXsEAHzZw18u7ws6BYlZsuirxbFBY_KZdOdgCEFG8BFddg-AEpU5x5f5gLRGLIp8cvC87QHPaFl4e-_FLK3vFoq99z-sK41Eikg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2426-1-13dd0c5d27b5-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "tg_url": "https://t.me/PG_Tax/2426",
       "forwarded_from": null,
       "reply_to": null
     }
