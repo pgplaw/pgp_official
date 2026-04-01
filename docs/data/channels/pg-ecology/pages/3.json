@@ -1,13 +1,42 @@
 {
-  "generated_at": "2026-03-31T22:01:45.140408+00:00",
-  "build_id": "e442a24ad64c",
+  "generated_at": "2026-04-01T06:18:07.167671+00:00",
+  "build_id": "6ce54ed69a81",
   "pagination": {
     "page": 3,
     "page_size": 16,
-    "total_posts": 42,
+    "total_posts": 43,
     "total_pages": 3
   },
   "posts": [
+    {
+      "id": 1277,
+      "date": "2026-01-28T04:00:01+00:00",
+      "text": "📣 29.12.2025 опубликован Федеральный закон от 29.12.2025 № 558-ФЗ \"О внесении изменений в статью 65 Водного кодекса Российской Федерации и статью 38 Федерального закона \"Об особо охраняемых природных территориях\"\n\n⏱️ Действует с 09.01.20206.\n\n#ИзмененияЗаконодательства",
+      "text_html": "📣 29.12.2025 опубликован <a href=\"http://publication.pravo.gov.ru/document/0001202512290046?index=1\" target=\"_blank\" rel=\"noopener noreferrer\">Федеральный закон от 29.12.2025 № 558-ФЗ</a> \"О внесении изменений в статью 65 Водного кодекса Российской Федерации и статью 38 Федерального закона \"Об особо охраняемых природных территориях\"<br><br>⏱️ Действует с 09.01.20206.<br><br>#ИзмененияЗаконодательства",
+      "views": 724,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1277-1-9e8eeb8e939f-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1277-1-9e8eeb8e939f-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/pRxYo9SMXdQCCefpn30VxMzo8v5V5o6ZyVtQjgfB9h8ZTKFdl85lmuhnP9nNIpLGejUJzNlUqeNT1N0Xa-7x3SQQMIjw-4or5NFWPpBxoEsmK6sR6DPJ0tS1q0We-MCopjInlrD_21dV0aJk9iNXlA9BHDBh5dJZ91AKQalfLE21ipCBFgw9jPinK7hN2VfIHzv6nrgxV-xhR2d-l90N-jBUMKTSShABhiTIjsTdmO6EIcJDqqGCq_zv84irLLvquK2EHaonnZV_YTAxHHihSaoy-sWgCKIzuJ6JBtkWUiY3iua5_ReH5Vf8V8P3-3T92GqFlCKWrCxXPw0iy3k9cg.jpg",
+          "feed_url": "data/channels/pg-ecology/media/posts/feed/1277-1-9e8eeb8e939f-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752
+        }
+      ],
+      "video_url": null,
+      "tg_url": "https://t.me/pgecology/1277",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 1276,
       "date": "2026-01-26T04:00:02+00:00",
@@ -191,10 +220,10 @@
       "comments_url": null,
       "photos": [
         {
-          "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1268-1-d1191f7058fb-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1268-1-d1191f7058fb-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/KE2uylSTKOWxSe-PjfdVEmu1TmR9TrqejxyLxu5FgQ7mMdl0km26nYNx27aZF4yLPtjuNgASI7uPgvOj3Ef4_hyMnDHrTVSBODS4Ik44AvNzxoDYDd1XmpyJlIYKS1g3SKYSR_dtr7mIUvQaVpfDfKSuieOwqJJ6C0jJIjOj0X3MZ6shiyjMP2dNE8oCbQ8aocA4OX80jEDNwdv1XnxD5wcubvBD3stBpn1Jkcf3wAqtvIzbTwp_qd164Pr0VuHK6bXwoZRmbrx1apEXx4eDCrD8RuQW4MilX_zxuI3Trk6bUWIyjSg3xHaKEmlkVUvEWncPh3or80Yc2_NpdbtFPA.jpg",
-          "feed_url": "data/channels/pg-ecology/media/posts/feed/1268-1-d1191f7058fb-v8.jpg",
+          "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1268-1-610eef181329-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1268-1-610eef181329-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/k8NWE6Wkp3pzko1AbYStgwOdEtf5MMl0MlVoFYKQmP-s5Uu6FufDTAKml2ECtYnkUL3A5nCAxQjjCthk_o_m9ALet_0YvkeuR5_7oGJiZtqPp3HbKvnIntQFU-PhFXv-leiq2pSMoLe1rNpGXkXwaXTPdr9s7_RKRn_mrH3kahvYpi9qxXmYBzzwNpMxvzkA6XoQm3gnsf79t19h09WdfrLN4wgrVm_-pLAPuNTx4ojil9Irbh0D5Wvjmc7912xYYEr9eaUFCs_UaU8bp5zyREXAXdJxVnbU6xVMswavEOSwZMHLP4o2QIqPXwlr3XhjY-lk72LuuDAGcwOKzthVbA.jpg",
+          "feed_url": "data/channels/pg-ecology/media/posts/feed/1268-1-610eef181329-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "feed_width": 1800,
