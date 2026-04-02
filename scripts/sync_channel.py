@@ -3568,17 +3568,56 @@ def normalize_telegram_post_url(url: str) -> str:
     return f"https://t.me/{'/'.join(normalized_segments)}".rstrip("/")
 
 
+def normalize_post_text_for_fingerprint(value: Any) -> str:
+    return collapse_whitespace(strip_tags(str(value or "")))
+
+
+def normalize_forwarded_source_url(post: dict[str, Any]) -> str:
+    forwarded = post.get("forwarded_from") or {}
+    return normalize_telegram_post_url(str(forwarded.get("source_url") or forwarded.get("channel_url") or ""))
+
+
+def build_post_media_fingerprint(post: dict[str, Any]) -> str:
+    photos = [photo for photo in (post.get("photos") or []) if photo]
+    video_url = normalize_telegram_post_url(str(post.get("video_url") or ""))
+    link_preview = post.get("link_preview") or {}
+    link_preview_url = normalize_telegram_post_url(str(link_preview.get("href") or ""))
+    return "|".join(
+        [
+            str(len(photos)),
+            video_url,
+            "note" if bool(post.get("video_note")) else "",
+            link_preview_url,
+        ]
+    )
+
+
+def get_post_duplicate_fingerprint(post: dict[str, Any]) -> str:
+    forwarded_source_url = normalize_forwarded_source_url(post)
+    if not forwarded_source_url:
+        return ""
+
+    date_value = str(post.get("date") or "").strip()
+    text_value = normalize_post_text_for_fingerprint(post.get("text_html") or post.get("text"))
+    media_fingerprint = build_post_media_fingerprint(post)
+    return f"fwd:{forwarded_source_url}|{date_value}|{text_value}|{media_fingerprint}"
+
+
 def dedupe_posts(posts: list[dict[str, Any]]) -> list[dict[str, Any]]:
     unique_posts: list[dict[str, Any]] = []
     seen_ids: set[int] = set()
     seen_tg_urls: set[str] = set()
+    seen_duplicate_fingerprints: set[str] = set()
 
     for post in posts:
         post_id = int(post.get("id") or 0)
         canonical_tg_url = normalize_telegram_post_url(str(post.get("tg_url") or ""))
+        duplicate_fingerprint = get_post_duplicate_fingerprint(post)
         if post_id and post_id in seen_ids:
             continue
         if canonical_tg_url and canonical_tg_url in seen_tg_urls:
+            continue
+        if duplicate_fingerprint and duplicate_fingerprint in seen_duplicate_fingerprints:
             continue
 
         if post_id:
@@ -3586,6 +3625,8 @@ def dedupe_posts(posts: list[dict[str, Any]]) -> list[dict[str, Any]]:
         if canonical_tg_url:
             seen_tg_urls.add(canonical_tg_url)
             post["tg_url"] = canonical_tg_url
+        if duplicate_fingerprint:
+            seen_duplicate_fingerprints.add(duplicate_fingerprint)
         unique_posts.append(post)
 
     return unique_posts

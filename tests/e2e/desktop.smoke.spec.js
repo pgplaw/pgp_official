@@ -263,7 +263,7 @@ test.describe('Desktop smoke', () => {
     await expect(anchor).toHaveAttribute('href', 'https://example.com/story');
   });
 
-  test('deduplicates repeated telegram post urls in the antitrust feed', async ({ page }) => {
+  test('deduplicates repeated forwarded album posts in the antitrust feed', async ({ page }) => {
     const postsPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pg-antitrust', 'posts.json');
     const postsPayload = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
     const sourcePost = postsPayload.posts[0];
@@ -275,13 +275,14 @@ test.describe('Desktop smoke', () => {
         ...(postsPayload.pagination || {}),
         page: 1,
         total_pages: 1,
-        total_posts: (postsPayload.posts || []).length + 3,
+        total_posts: (postsPayload.posts || []).length + 4,
       },
       posts: [
-        { ...sourcePost, id: 990001 },
-        { ...sourcePost, id: 990002 },
-        { ...sourcePost, id: 990003 },
-        { ...sourcePost, id: 990004 },
+        { ...sourcePost, id: 990001, tg_url: 'https://t.me/PgAntitrust/990001' },
+        { ...sourcePost, id: 990002, tg_url: 'https://t.me/PgAntitrust/990002' },
+        { ...sourcePost, id: 990003, tg_url: 'https://t.me/PgAntitrust/990003' },
+        { ...sourcePost, id: 990004, tg_url: 'https://t.me/PgAntitrust/990004' },
+        { ...sourcePost, id: 990005, tg_url: 'https://t.me/PgAntitrust/990005' },
         ...(postsPayload.posts || []).slice(1),
       ],
     };

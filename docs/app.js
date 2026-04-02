@@ -954,6 +954,30 @@ function normalizeTelegramPostUrl(url) {
   }
 }
 
+function normalizePostTextForFingerprint(value) {
+  return String(value || '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function normalizeForwardedSourceUrl(post) {
+  const forwarded = post?.forwarded_from || {};
+  return normalizeTelegramPostUrl(forwarded.source_url || forwarded.channel_url || '');
+}
+
+function getPostMediaFingerprint(post) {
+  const photos = Array.isArray(post?.photos) ? post.photos.filter(Boolean) : [];
+  const videoUrl = normalizeTelegramPostUrl(post?.video_url || '');
+  const linkPreviewUrl = normalizeTelegramPostUrl(post?.link_preview?.href || '');
+  return [
+    photos.length,
+    videoUrl,
+    Boolean(post?.video_note) ? 'note' : '',
+    linkPreviewUrl,
+  ].join('|');
+}
+
 function getPostCanonicalKey(post) {
   const telegramUrl = normalizeTelegramPostUrl(post?.tg_url);
   if (telegramUrl) {
@@ -968,21 +992,40 @@ function getPostCanonicalKey(post) {
   return '';
 }
 
+function getPostDuplicateFingerprint(post) {
+  const forwardedSourceUrl = normalizeForwardedSourceUrl(post);
+  const textFingerprint = normalizePostTextForFingerprint(post?.text_html || post?.text || '');
+  const mediaFingerprint = getPostMediaFingerprint(post);
+  const dateValue = String(post?.date || '').trim();
+
+  if (forwardedSourceUrl) {
+    return `fwd:${forwardedSourceUrl}|${dateValue}|${textFingerprint}|${mediaFingerprint}`;
+  }
+
+  return '';
+}
+
 function dedupePostsById(posts = []) {
   const uniquePosts = [];
   const seenIds = new Set();
   const seenCanonicalKeys = new Set();
+  const seenDuplicateFingerprints = new Set();
 
   posts.forEach((post) => {
     const normalizedId = String(post?.id ?? '');
     const canonicalKey = getPostCanonicalKey(post);
+    const duplicateFingerprint = getPostDuplicateFingerprint(post);
     if (normalizedId && seenIds.has(normalizedId)) return;
     if (canonicalKey && seenCanonicalKeys.has(canonicalKey)) return;
+    if (duplicateFingerprint && seenDuplicateFingerprints.has(duplicateFingerprint)) return;
     if (normalizedId) {
       seenIds.add(normalizedId);
     }
     if (canonicalKey) {
       seenCanonicalKeys.add(canonicalKey);
+    }
+    if (duplicateFingerprint) {
+      seenDuplicateFingerprints.add(duplicateFingerprint);
     }
     uniquePosts.push(post);
   });
@@ -2836,8 +2879,12 @@ function renderPostCard(post) {
   article.id = `post-${post.id}`;
   article.dataset.postId = String(post.id);
   const canonicalPostKey = getPostCanonicalKey(post);
+  const duplicateFingerprint = getPostDuplicateFingerprint(post);
   if (canonicalPostKey) {
     article.dataset.postCanonicalKey = canonicalPostKey;
+  }
+  if (duplicateFingerprint) {
+    article.dataset.postDuplicateFingerprint = duplicateFingerprint;
   }
 
   const text = normalizePostHtmlSpacing(normalizePostHtml(post.text_html)) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
@@ -2943,11 +2990,17 @@ function pruneDuplicateFeedCards() {
 
   const seenPostIds = new Set();
   const seenCanonicalKeys = new Set();
+  const seenDuplicateFingerprints = new Set();
   let removed = 0;
   elements.postFeed.querySelectorAll('.post-card[data-post-id]').forEach((card) => {
     const postId = String(card.dataset.postId || '').trim();
     const canonicalKey = String(card.dataset.postCanonicalKey || '').trim();
-    if ((postId && seenPostIds.has(postId)) || (canonicalKey && seenCanonicalKeys.has(canonicalKey))) {
+    const duplicateFingerprint = String(card.dataset.postDuplicateFingerprint || '').trim();
+    if (
+      (postId && seenPostIds.has(postId)) ||
+      (canonicalKey && seenCanonicalKeys.has(canonicalKey)) ||
+      (duplicateFingerprint && seenDuplicateFingerprints.has(duplicateFingerprint))
+    ) {
       card.remove();
       removed += 1;
       return;
@@ -2957,6 +3010,9 @@ function pruneDuplicateFeedCards() {
     }
     if (canonicalKey) {
       seenCanonicalKeys.add(canonicalKey);
+    }
+    if (duplicateFingerprint) {
+      seenDuplicateFingerprints.add(duplicateFingerprint);
     }
   });
 
@@ -3094,24 +3150,33 @@ async function appendNextPage() {
 
     const renderedIds = new Set();
     const renderedCanonicalKeys = new Set();
+    const renderedDuplicateFingerprints = new Set();
     Array.from(elements.postFeed.querySelectorAll('.post-card[data-post-id]')).forEach((node) => {
       const postId = String(node.dataset.postId || '').trim();
       const canonicalKey = String(node.dataset.postCanonicalKey || '').trim();
+      const duplicateFingerprint = String(node.dataset.postDuplicateFingerprint || '').trim();
       if (postId) {
         renderedIds.add(postId);
       }
       if (canonicalKey) {
         renderedCanonicalKeys.add(canonicalKey);
       }
+      if (duplicateFingerprint) {
+        renderedDuplicateFingerprints.add(duplicateFingerprint);
+      }
     });
     const nextSlice = state.posts.slice(state.rendered, state.rendered + state.pageSize);
     const nextPosts = nextSlice.filter((post) => {
       const postId = String(post?.id ?? '').trim();
       const canonicalKey = getPostCanonicalKey(post);
+      const duplicateFingerprint = getPostDuplicateFingerprint(post);
       if (postId && renderedIds.has(postId)) {
         return false;
       }
       if (canonicalKey && renderedCanonicalKeys.has(canonicalKey)) {
+        return false;
+      }
+      if (duplicateFingerprint && renderedDuplicateFingerprints.has(duplicateFingerprint)) {
         return false;
       }
       return true;
