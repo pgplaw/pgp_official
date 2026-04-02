@@ -3546,6 +3546,51 @@ def build_source_payload(config: SiteConfig, comments_enabled: bool) -> dict[str
     }
 
 
+def normalize_telegram_post_url(url: str) -> str:
+    raw = (url or "").strip()
+    if not raw:
+        return ""
+
+    try:
+        parsed = urlparse(raw)
+    except Exception:
+        return raw.rstrip("/")
+
+    host = (parsed.netloc or "").lower().replace("www.", "")
+    if host != "t.me":
+        return raw.rstrip("/")
+
+    segments = [segment for segment in (parsed.path or "").split("/") if segment]
+    normalized_segments = segments[1:] if segments[:1] == ["s"] else segments
+    if len(normalized_segments) >= 2 and normalized_segments[1].isdigit():
+        return f"https://t.me/{normalized_segments[0]}/{normalized_segments[1]}"
+
+    return f"https://t.me/{'/'.join(normalized_segments)}".rstrip("/")
+
+
+def dedupe_posts(posts: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    unique_posts: list[dict[str, Any]] = []
+    seen_ids: set[int] = set()
+    seen_tg_urls: set[str] = set()
+
+    for post in posts:
+        post_id = int(post.get("id") or 0)
+        canonical_tg_url = normalize_telegram_post_url(str(post.get("tg_url") or ""))
+        if post_id and post_id in seen_ids:
+            continue
+        if canonical_tg_url and canonical_tg_url in seen_tg_urls:
+            continue
+
+        if post_id:
+            seen_ids.add(post_id)
+        if canonical_tg_url:
+            seen_tg_urls.add(canonical_tg_url)
+            post["tg_url"] = canonical_tg_url
+        unique_posts.append(post)
+
+    return unique_posts
+
+
 def build_channel_build_id(posts: list[dict[str, Any]], comments_enabled: bool) -> str:
     digest = hashlib.sha1()
     digest.update(f"comments:{int(comments_enabled)}|count:{len(posts)}".encode("utf-8"))
@@ -3997,6 +4042,14 @@ def main() -> int:
             cutoff=subtract_months(datetime.now(timezone.utc), config.recent_posts_months),
         )
     )
+    deduped_posts = dedupe_posts(posts)
+    if len(deduped_posts) != len(posts):
+        log.warning(
+            "Deduplicated %s repeated post entries for @%s before media sync",
+            len(posts) - len(deduped_posts),
+            config.channel_username,
+        )
+        posts = deduped_posts
     enrich_reply_posts_from_pages(posts, config)
 
     reply_references = asyncio.run(fetch_reply_references_for_posts(config, posts))
@@ -4045,6 +4098,14 @@ def main() -> int:
         for post in posts
         if post.get("text") or (post.get("photos") or []) or post.get("video_url") or post.get("link_preview")
     ]
+    deduped_posts = dedupe_posts(posts)
+    if len(deduped_posts) != len(posts):
+        log.warning(
+            "Deduplicated %s repeated post entries for @%s before writing feed",
+            len(posts) - len(deduped_posts),
+            config.channel_username,
+        )
+        posts = deduped_posts
     build_id = build_channel_build_id(posts, comments_enabled)
     active_ids = {post["id"] for post in posts}
     changes_detected = cleanup_removed_comment_files(active_ids) or changes_detected

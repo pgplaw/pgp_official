@@ -928,14 +928,62 @@ function cloneJsonValue(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
+function normalizeTelegramPostUrl(url) {
+  const raw = String(url || '').trim();
+  if (!raw) return '';
+
+  try {
+    const parsed = new URL(raw, window.location.origin);
+    const host = parsed.hostname.replace(/^www\./i, '').toLowerCase();
+    if (host !== 't.me') {
+      parsed.hash = '';
+      return parsed.toString().replace(/\/+$/, '');
+    }
+
+    const segments = parsed.pathname.split('/').filter(Boolean);
+    const normalizedSegments = segments[0] === 's' ? segments.slice(1) : segments;
+    if (normalizedSegments.length >= 2 && /^\d+$/.test(normalizedSegments[1])) {
+      return `https://t.me/${normalizedSegments[0]}/${normalizedSegments[1]}`;
+    }
+
+    parsed.search = '';
+    parsed.hash = '';
+    return parsed.toString().replace(/\/+$/, '');
+  } catch {
+    return raw.replace(/\/+$/, '');
+  }
+}
+
+function getPostCanonicalKey(post) {
+  const telegramUrl = normalizeTelegramPostUrl(post?.tg_url);
+  if (telegramUrl) {
+    return `tg:${telegramUrl}`;
+  }
+
+  const postId = String(post?.id ?? '').trim();
+  if (postId) {
+    return `id:${postId}`;
+  }
+
+  return '';
+}
+
 function dedupePostsById(posts = []) {
   const uniquePosts = [];
   const seenIds = new Set();
+  const seenCanonicalKeys = new Set();
 
   posts.forEach((post) => {
     const normalizedId = String(post?.id ?? '');
-    if (!normalizedId || seenIds.has(normalizedId)) return;
-    seenIds.add(normalizedId);
+    const canonicalKey = getPostCanonicalKey(post);
+    if (normalizedId && seenIds.has(normalizedId)) return;
+    if (canonicalKey && seenCanonicalKeys.has(canonicalKey)) return;
+    if (normalizedId) {
+      seenIds.add(normalizedId);
+    }
+    if (canonicalKey) {
+      seenCanonicalKeys.add(canonicalKey);
+    }
     uniquePosts.push(post);
   });
 
@@ -966,10 +1014,14 @@ function deriveFeedBuildId(feedPayload) {
 
 function rememberFeedPayload(channelKey, payload) {
   if (!channelKey || !payload) return;
+  const normalizedPayload = cloneJsonValue(payload);
+  if (Array.isArray(normalizedPayload.posts)) {
+    normalizedPayload.posts = dedupePostsById(normalizedPayload.posts);
+  }
   if (state.channelFeedCache.has(channelKey)) {
     state.channelFeedCache.delete(channelKey);
   }
-  state.channelFeedCache.set(channelKey, cloneJsonValue(payload));
+  state.channelFeedCache.set(channelKey, normalizedPayload);
   while (state.channelFeedCache.size > FEED_CACHE_MAX_ENTRIES) {
     const firstKey = state.channelFeedCache.keys().next().value;
     if (!firstKey) break;
@@ -979,7 +1031,12 @@ function rememberFeedPayload(channelKey, payload) {
 
 function readCachedFeedPayload(channelKey) {
   const payload = state.channelFeedCache.get(channelKey);
-  return payload ? cloneJsonValue(payload) : null;
+  if (!payload) return null;
+  const clonedPayload = cloneJsonValue(payload);
+  if (Array.isArray(clonedPayload.posts)) {
+    clonedPayload.posts = dedupePostsById(clonedPayload.posts);
+  }
+  return clonedPayload;
 }
 
 function invalidateFeedPayloadCache(channelKey = null) {
@@ -2778,6 +2835,10 @@ function renderPostCard(post) {
   article.className = 'post-card';
   article.id = `post-${post.id}`;
   article.dataset.postId = String(post.id);
+  const canonicalPostKey = getPostCanonicalKey(post);
+  if (canonicalPostKey) {
+    article.dataset.postCanonicalKey = canonicalPostKey;
+  }
 
   const text = normalizePostHtmlSpacing(normalizePostHtml(post.text_html)) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
   const photoCount = Array.isArray(post.photos) ? post.photos.filter(Boolean).length : 0;
@@ -2875,6 +2936,31 @@ function renderPostCard(post) {
   bindTelegramDeepLinks(article);
 
   return article;
+}
+
+function pruneDuplicateFeedCards() {
+  if (!elements.postFeed) return 0;
+
+  const seenPostIds = new Set();
+  const seenCanonicalKeys = new Set();
+  let removed = 0;
+  elements.postFeed.querySelectorAll('.post-card[data-post-id]').forEach((card) => {
+    const postId = String(card.dataset.postId || '').trim();
+    const canonicalKey = String(card.dataset.postCanonicalKey || '').trim();
+    if ((postId && seenPostIds.has(postId)) || (canonicalKey && seenCanonicalKeys.has(canonicalKey))) {
+      card.remove();
+      removed += 1;
+      return;
+    }
+    if (postId) {
+      seenPostIds.add(postId);
+    }
+    if (canonicalKey) {
+      seenCanonicalKeys.add(canonicalKey);
+    }
+  });
+
+  return removed;
 }
 
 function updateFeedMeta() {
@@ -3006,16 +3092,34 @@ async function appendNextPage() {
       return;
     }
 
-    const renderedIds = new Set(
-      Array.from(elements.postFeed.querySelectorAll('.post-card[data-post-id]'))
-        .map((node) => String(node.dataset.postId || ''))
-        .filter(Boolean)
-    );
+    const renderedIds = new Set();
+    const renderedCanonicalKeys = new Set();
+    Array.from(elements.postFeed.querySelectorAll('.post-card[data-post-id]')).forEach((node) => {
+      const postId = String(node.dataset.postId || '').trim();
+      const canonicalKey = String(node.dataset.postCanonicalKey || '').trim();
+      if (postId) {
+        renderedIds.add(postId);
+      }
+      if (canonicalKey) {
+        renderedCanonicalKeys.add(canonicalKey);
+      }
+    });
     const nextSlice = state.posts.slice(state.rendered, state.rendered + state.pageSize);
-    const nextPosts = nextSlice.filter((post) => !renderedIds.has(String(post.id)));
+    const nextPosts = nextSlice.filter((post) => {
+      const postId = String(post?.id ?? '').trim();
+      const canonicalKey = getPostCanonicalKey(post);
+      if (postId && renderedIds.has(postId)) {
+        return false;
+      }
+      if (canonicalKey && renderedCanonicalKeys.has(canonicalKey)) {
+        return false;
+      }
+      return true;
+    });
     const fragment = document.createDocumentFragment();
     nextPosts.forEach((post) => fragment.appendChild(renderPostCard(post)));
     elements.postFeed.appendChild(fragment);
+    pruneDuplicateFeedCards();
     state.rendered += nextSlice.length;
     elements.loadMoreButton.disabled = false;
     updateLoadMoreVisibility();

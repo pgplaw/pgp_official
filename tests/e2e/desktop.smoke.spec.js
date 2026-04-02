@@ -263,6 +263,53 @@ test.describe('Desktop smoke', () => {
     await expect(anchor).toHaveAttribute('href', 'https://example.com/story');
   });
 
+  test('deduplicates repeated telegram post urls in the antitrust feed', async ({ page }) => {
+    const postsPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pg-antitrust', 'posts.json');
+    const postsPayload = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
+    const sourcePost = postsPayload.posts[0];
+    expect(sourcePost).toBeTruthy();
+
+    const duplicatedPayload = {
+      ...postsPayload,
+      pagination: {
+        ...(postsPayload.pagination || {}),
+        page: 1,
+        total_pages: 1,
+        total_posts: (postsPayload.posts || []).length + 3,
+      },
+      posts: [
+        { ...sourcePost, id: 990001 },
+        { ...sourcePost, id: 990002 },
+        { ...sourcePost, id: 990003 },
+        { ...sourcePost, id: 990004 },
+        ...(postsPayload.posts || []).slice(1),
+      ],
+    };
+
+    await page.route('**/data/channels/pg-antitrust/posts.json**', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(duplicatedPayload),
+      });
+    });
+
+    await page.goto('/?channel=pg-antitrust');
+    await waitForFeedReady(page);
+
+    const duplicateInfo = await page.evaluate(() => {
+      const cards = Array.from(document.querySelectorAll('.post-card[data-post-id]'));
+      const counts = cards.reduce((map, node) => {
+        const key = String(node.dataset.postCanonicalKey || node.dataset.postId || '');
+        map[key] = (map[key] || 0) + 1;
+        return map;
+      }, {});
+      return Object.entries(counts).filter(([, count]) => count > 1);
+    });
+
+    expect(duplicateInfo).toEqual([]);
+  });
+
   test('does not duplicate feed cards after overlapping load-more and refresh requests', async ({ page }) => {
     await page.route('**/data/channels/pgp-official/pages/2.json', async (route) => {
       await new Promise((resolve) => setTimeout(resolve, 220));
