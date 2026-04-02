@@ -3569,7 +3569,18 @@ async def fetch_video_metadata_for_posts(config: SiteConfig, posts: list[dict[st
         log.info("Telegram user session is not configured. Video media sync skipped.")
         return {}
 
-    post_ids = [int(post["id"]) for post in posts if post.get("id")]
+    def should_fetch_video_metadata(post: dict[str, Any]) -> bool:
+        if not post.get("id"):
+            return False
+        if post.get("video_note") or post.get("video_url"):
+            return True
+        if post.get("videos"):
+            return False
+        if post.get("forwarded_from") and (post.get("photos") or []):
+            return True
+        return False
+
+    post_ids = [int(post["id"]) for post in posts if should_fetch_video_metadata(post)]
     if not post_ids:
         return {}
 
