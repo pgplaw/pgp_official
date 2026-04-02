@@ -91,14 +91,27 @@ test.describe('Desktop smoke', () => {
   });
 
   test('renders attached post videos alongside photos and opens them in the viewer', async ({ page }) => {
+    const docsRoot = path.join(process.cwd(), 'docs');
+    const channelDataRoot = path.join(docsRoot, 'data', 'channels');
+    const availableVideoPath = fs.readdirSync(channelDataRoot, { recursive: true })
+      .map((entry) => path.join(channelDataRoot, entry.toString()))
+      .find((entryPath) => entryPath.endsWith('.mp4'));
+    expect(availableVideoPath, 'Expected at least one local mirrored mp4 for the attached-video regression.').toBeTruthy();
+    const availablePosterPath = fs.readdirSync(channelDataRoot, { recursive: true })
+      .map((entry) => path.join(channelDataRoot, entry.toString()))
+      .find((entryPath) => /video-posters[\\/].+\.jpg$/i.test(entryPath));
+    const localVideoUrl = path.relative(docsRoot, availableVideoPath).replace(/\\/g, '/');
+    const localPosterUrl = availablePosterPath
+      ? path.relative(docsRoot, availablePosterPath).replace(/\\/g, '/')
+      : null;
+
     await page.goto('/?channel=pg-antitrust');
     await waitForFeedReady(page);
 
-    await page.evaluate(() => {
+    await page.evaluate(({ localVideoUrl, localPosterUrl }) => {
       const host = document.createElement('div');
       host.id = 'attached-video-host';
       document.body.appendChild(host);
-      const poster = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><rect width="100%" height="100%" fill="%2310a9b2"/></svg>';
       const photo = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><rect width="100%" height="100%" fill="%232b3350"/></svg>';
       const card = window.renderPostCard({
         id: 999995,
@@ -117,27 +130,27 @@ test.describe('Desktop smoke', () => {
           full_height: 360,
         }],
         videos: [{
-          url: 'https://example.com/synthetic-video.mp4',
-          source_url: 'https://example.com/synthetic-video.mp4',
+          url: localVideoUrl,
+          source_url: localVideoUrl,
           width: 640,
           height: 360,
-          poster: {
-            thumb_url: poster,
-            feed_url: poster,
-            full_url: poster,
+          poster: localPosterUrl ? {
+            thumb_url: localPosterUrl,
+            feed_url: localPosterUrl,
+            full_url: localPosterUrl,
             thumb_width: 640,
             thumb_height: 360,
             feed_width: 640,
             feed_height: 360,
             full_width: 640,
             full_height: 360,
-          },
+          } : null,
         }],
         tg_url: 'https://t.me/example/999995',
         comments_count: 0,
       });
       host.appendChild(card);
-    });
+    }, { localVideoUrl, localPosterUrl });
 
     const triggers = page.locator('#attached-video-host .media-trigger');
     await expect(triggers).toHaveCount(2);
@@ -145,7 +158,7 @@ test.describe('Desktop smoke', () => {
 
     await triggers.nth(1).click();
     await expect(page.locator('#viewer')).toBeVisible();
-    await expect(page.locator('#viewer .viewer__slide video').first()).toHaveAttribute('src', /synthetic-video\.mp4/);
+    await expect(page.locator('#viewer .viewer__slide video').first()).toHaveAttribute('src', new RegExp(localVideoUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
     await page.locator('#viewerClose').click();
     await expect(page.locator('#viewer')).toBeHidden();
   });
