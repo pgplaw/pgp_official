@@ -41,6 +41,8 @@ POSTS_THUMBS_DIR = POSTS_MEDIA_DIR / "thumbs"
 POSTS_FEED_DIR = POSTS_MEDIA_DIR / "feed"
 POSTS_VIDEOS_DIR = POSTS_MEDIA_DIR / "videos"
 POSTS_VIDEO_POSTERS_DIR = POSTS_MEDIA_DIR / "video-posters"
+POSTS_ATTACHED_VIDEOS_DIR = POSTS_MEDIA_DIR / "attached-videos"
+POSTS_ATTACHED_VIDEO_POSTERS_DIR = POSTS_MEDIA_DIR / "attached-video-posters"
 POSTS_LINK_PREVIEWS_DIR = POSTS_MEDIA_DIR / "link-previews"
 CHANNEL_MEDIA_DIR = CHANNEL_DATA_DIR / "media"
 CHANNEL_AVATAR_PATH = CHANNEL_MEDIA_DIR / "channel-avatar.jpg"
@@ -374,6 +376,60 @@ def normalize_photo_entry(photo: Any) -> dict[str, Any] | None:
 
 def normalize_video_poster_entry(poster: Any) -> dict[str, Any] | None:
     return normalize_photo_entry(poster)
+
+
+def normalize_video_entry(video: Any) -> dict[str, Any] | None:
+    if not video:
+        return None
+
+    if isinstance(video, str):
+        normalized_url = video.lstrip("./")
+        if not normalized_url:
+            return None
+        entry: dict[str, Any] = {"url": normalized_url}
+        if re.match(r"^https?://", normalized_url):
+            entry["source_url"] = normalized_url
+        return entry
+
+    if not isinstance(video, dict):
+        return None
+
+    normalized_url = str(
+        video.get("url")
+        or video.get("video_url")
+        or video.get("src")
+        or video.get("full_url")
+        or ""
+    ).lstrip("./")
+    if not normalized_url:
+        return None
+
+    entry = {"url": normalized_url}
+    source_url = str(video.get("source_url") or video.get("original_url") or "").strip()
+    if not source_url and re.match(r"^https?://", normalized_url, re.IGNORECASE):
+        source_url = normalized_url
+    if source_url and re.match(r"^https?://", source_url):
+        entry["source_url"] = source_url
+
+    poster = normalize_video_poster_entry(video.get("poster") or video.get("video_poster"))
+    if poster:
+        entry["poster"] = poster
+
+    for key, source_key in (("width", "width"), ("height", "height")):
+        parsed = parse_positive_int(video.get(source_key))
+        if parsed:
+            entry[key] = parsed
+
+    return entry
+
+
+def normalize_video_entries(videos: Any) -> list[dict[str, Any]]:
+    normalized_entries: list[dict[str, Any]] = []
+    for video in videos or []:
+        entry = normalize_video_entry(video)
+        if entry:
+            normalized_entries.append(entry)
+    return normalized_entries
 
 
 def read_image_dimensions(path: Path) -> tuple[int | None, int | None]:
@@ -942,6 +998,56 @@ def extract_video_dimensions_from_html(block: str) -> tuple[int | None, int | No
     return None, None
 
 
+def extract_standard_video_entries_from_html(block: str) -> list[dict[str, Any]]:
+    video_chunks = re.findall(r"(<video\b[\s\S]*?</video>)", block, re.IGNORECASE)
+    entries: list[dict[str, Any]] = []
+    seen_urls: set[str] = set()
+
+    for chunk in video_chunks:
+        video_tag_match = re.search(r"<video\b([^>]*)>", chunk, re.IGNORECASE)
+        if not video_tag_match:
+            continue
+
+        video_tag = video_tag_match.group(0)
+        src_match = re.search(r'\bsrc="([^"]+)"', video_tag, re.IGNORECASE)
+        if not src_match:
+            src_match = re.search(r'<source[^>]+src="([^"]+)"', chunk, re.IGNORECASE)
+        if not src_match:
+            continue
+
+        width, height = extract_video_dimensions_from_html(chunk)
+        if detect_round_video_hint(chunk, width, height):
+            continue
+
+        normalized_url = urljoin("https://t.me", html_lib.unescape(src_match.group(1)).strip())
+        if not normalized_url or normalized_url in seen_urls:
+            continue
+        seen_urls.add(normalized_url)
+
+        entry: dict[str, Any] = {
+            "url": normalized_url,
+            "source_url": normalized_url,
+        }
+        if width and height:
+            entry["width"] = width
+            entry["height"] = height
+
+        poster_match = re.search(r'\bposter="([^"]+)"', video_tag, re.IGNORECASE)
+        if poster_match:
+            poster_url = urljoin("https://t.me", html_lib.unescape(poster_match.group(1)).strip())
+            if poster_url:
+                entry["poster"] = {
+                    "thumb_url": poster_url,
+                    "feed_url": poster_url,
+                    "full_url": poster_url,
+                    "source_url": poster_url,
+                }
+
+        entries.append(entry)
+
+    return entries
+
+
 def is_square_like_dimensions(width: int | None, height: int | None, tolerance: float = 0.12) -> bool:
     if not width or not height:
         return False
@@ -1339,6 +1445,274 @@ def mirror_round_videos(
     if deleted_files:
         log.info(
             "Round video maintenance deleted %s files (%.1f MB) for %s",
+            deleted_files,
+            deleted_bytes / (1024 * 1024),
+            CHANNEL_KEY or "channel",
+        )
+
+    return changes_detected
+
+
+def reuse_existing_attached_video_assets(
+    post: dict[str, Any],
+    existing_post: dict[str, Any] | None,
+    active_relative_paths: set[str],
+) -> bool:
+    if not existing_post:
+        return False
+
+    existing_videos = normalize_video_entries(existing_post.get("videos"))
+    if not existing_videos:
+        return False
+
+    reused = False
+    reusable_entries: list[dict[str, Any]] = []
+    for entry in existing_videos:
+        local_video_path = resolve_local_asset_path(entry.get("url"))
+        if not is_valid_local_video(local_video_path):
+            return False
+
+        normalized_entry: dict[str, Any] = {"url": entry["url"]}
+        active_relative_paths.add(entry["url"])
+
+        source_url = str(entry.get("source_url") or "").strip()
+        if source_url and re.match(r"^https?://", source_url, re.IGNORECASE):
+            normalized_entry["source_url"] = source_url
+
+        for key in ("width", "height"):
+            parsed = parse_positive_int(entry.get(key))
+            if parsed:
+                normalized_entry[key] = parsed
+
+        poster = normalize_video_poster_entry(entry.get("poster"))
+        if poster:
+            poster_urls = [
+                poster.get("thumb_url"),
+                poster.get("feed_url"),
+                poster.get("full_url"),
+            ]
+            if any(is_valid_local_image(resolve_local_asset_path(url)) for url in poster_urls):
+                normalized_entry["poster"] = poster
+                for url in poster_urls:
+                    if is_local_asset_url(url):
+                        active_relative_paths.add(str(url))
+
+        reusable_entries.append(normalized_entry)
+
+    if post.get("videos") != reusable_entries:
+        post["videos"] = reusable_entries
+        reused = True
+
+    return reused
+
+
+def mirror_attached_videos(
+    posts: list[dict[str, Any]],
+    video_metadata: dict[int, dict[str, Any]] | None = None,
+    existing_posts: list[dict[str, Any]] | None = None,
+) -> bool:
+    POSTS_ATTACHED_VIDEOS_DIR.mkdir(parents=True, exist_ok=True)
+    POSTS_ATTACHED_VIDEO_POSTERS_DIR.mkdir(parents=True, exist_ok=True)
+    active_relative_paths: set[str] = set()
+    changes_detected = False
+    video_metadata = video_metadata or {}
+    existing_posts_by_id = {
+        int(entry.get("id")): entry
+        for entry in (existing_posts or [])
+        if entry.get("id")
+    }
+
+    for post in posts:
+        if post.get("video_note"):
+            continue
+
+        existing_post = existing_posts_by_id.get(int(post["id"]))
+        current_entries = normalize_video_entries(post.get("videos"))
+        metadata_entries = (video_metadata.get(post["id"]) or {}).get("attached_videos") or []
+
+        if not metadata_entries:
+            if reuse_existing_attached_video_assets(post, existing_post, active_relative_paths):
+                changes_detected = True
+                continue
+
+            if current_entries:
+                for entry in current_entries:
+                    video_url = entry.get("url")
+                    if is_local_asset_url(video_url):
+                        local_video_path = resolve_local_asset_path(video_url)
+                        if is_valid_local_video(local_video_path):
+                            active_relative_paths.add(str(video_url))
+                    poster = normalize_video_poster_entry(entry.get("poster"))
+                    if not poster:
+                        continue
+                    for key in ("thumb_url", "feed_url", "full_url"):
+                        url = poster.get(key)
+                        if is_local_asset_url(url):
+                            poster_path = resolve_local_asset_path(url)
+                            if is_valid_local_image(poster_path):
+                                active_relative_paths.add(str(url))
+                if post.get("videos") != current_entries:
+                    post["videos"] = current_entries
+                    changes_detected = True
+            elif post.get("videos"):
+                post.pop("videos", None)
+                changes_detected = True
+            continue
+
+        mirrored_entries: list[dict[str, Any]] = []
+        for index, metadata_entry in enumerate(metadata_entries):
+            existing_entry = current_entries[index] if index < len(current_entries) else None
+            raw_bytes = metadata_entry.get("video_bytes")
+            extension = (
+                str(metadata_entry.get("video_extension") or "").strip().lower()
+                or infer_video_extension_from_url(
+                    (existing_entry or {}).get("source_url") or (existing_entry or {}).get("url")
+                )
+                or "mp4"
+            )
+
+            if not raw_bytes and existing_entry:
+                local_existing_path = resolve_local_asset_path(existing_entry.get("url"))
+                if is_valid_local_video(local_existing_path):
+                    try:
+                        raw_bytes = local_existing_path.read_bytes()
+                    except Exception:
+                        raw_bytes = None
+
+            if not raw_bytes and existing_entry:
+                remote_video_url = str(existing_entry.get("source_url") or existing_entry.get("url") or "").strip()
+                if re.match(r"^https?://", remote_video_url, re.IGNORECASE):
+                    try:
+                        raw_bytes = fetch_binary(
+                            remote_video_url,
+                            timeout=40,
+                            retry_delays=FAST_EXTERNAL_RETRY_DELAYS,
+                            accept="video/*,*/*;q=0.8",
+                            extra_headers={"Referer": str(post.get("tg_url") or "")},
+                        )
+                    except Exception:
+                        raw_bytes = None
+
+            if not raw_bytes:
+                continue
+
+            optimized_bytes = optimize_video_for_streaming(raw_bytes, extension)
+            if optimized_bytes != raw_bytes:
+                raw_bytes = optimized_bytes
+                changes_detected = True
+
+            digest = hashlib.sha256(raw_bytes).hexdigest()[:12]
+            filename = f"{post['id']}-video-{index + 1}-{digest}-{VIDEO_VARIANT_VERSION}.{extension}"
+            video_path = POSTS_ATTACHED_VIDEOS_DIR / filename
+            if not video_path.exists() or video_path.read_bytes() != raw_bytes:
+                video_path.write_bytes(raw_bytes)
+                changes_detected = True
+
+            relative_video_url = video_path.relative_to(DOCS_DIR).as_posix()
+            active_relative_paths.add(relative_video_url)
+            mirrored_entry: dict[str, Any] = {"url": relative_video_url}
+
+            source_url = str((existing_entry or {}).get("source_url") or "").strip()
+            if source_url and re.match(r"^https?://", source_url, re.IGNORECASE):
+                mirrored_entry["source_url"] = source_url
+
+            for key in ("width", "height"):
+                parsed = parse_positive_int(metadata_entry.get(key) or (existing_entry or {}).get(key))
+                if parsed:
+                    mirrored_entry[key] = parsed
+
+            poster_bytes = metadata_entry.get("poster_bytes")
+            if not poster_bytes and existing_entry:
+                existing_poster = normalize_video_poster_entry(existing_entry.get("poster"))
+                if existing_poster:
+                    for key in ("full_url", "feed_url", "thumb_url"):
+                        poster_path = resolve_local_asset_path(existing_poster.get(key))
+                        if is_valid_local_image(poster_path):
+                            try:
+                                poster_bytes = poster_path.read_bytes()
+                                break
+                            except Exception:
+                                continue
+
+            if not poster_bytes:
+                poster_bytes = extract_video_poster_bytes(raw_bytes, extension)
+
+            if poster_bytes:
+                poster_digest = hashlib.sha256(poster_bytes).hexdigest()[:12]
+                poster_filename = f"{post['id']}-video-{index + 1}-poster-{poster_digest}-{VIDEO_VARIANT_VERSION}.jpg"
+                poster_path = POSTS_ATTACHED_VIDEO_POSTERS_DIR / poster_filename
+                if optimize_single_image(poster_bytes, poster_path, (1280, 1280), quality=88):
+                    changes_detected = True
+                relative_poster_url = poster_path.relative_to(DOCS_DIR).as_posix()
+                active_relative_paths.add(relative_poster_url)
+                mirrored_entry["poster"] = with_local_variant_dimensions(
+                    {
+                        "thumb_url": relative_poster_url,
+                        "feed_url": relative_poster_url,
+                        "full_url": relative_poster_url,
+                    },
+                    thumb_path=poster_path,
+                    feed_path=poster_path,
+                    full_path=poster_path,
+                )
+
+            mirrored_entries.append(mirrored_entry)
+
+        if mirrored_entries:
+            if post.get("videos") != mirrored_entries:
+                post["videos"] = mirrored_entries
+                changes_detected = True
+            if post.get("video_url"):
+                post.pop("video_url", None)
+                post.pop("video_width", None)
+                post.pop("video_height", None)
+                post.pop("video_poster", None)
+                changes_detected = True
+        elif reuse_existing_attached_video_assets(post, existing_post, active_relative_paths):
+            changes_detected = True
+        elif current_entries:
+            for entry in current_entries:
+                if is_local_asset_url(entry.get("url")):
+                    local_video_path = resolve_local_asset_path(entry.get("url"))
+                    if is_valid_local_video(local_video_path):
+                        active_relative_paths.add(str(entry["url"]))
+                poster = normalize_video_poster_entry(entry.get("poster"))
+                if poster:
+                    for key in ("thumb_url", "feed_url", "full_url"):
+                        url = poster.get(key)
+                        if is_local_asset_url(url):
+                            poster_path = resolve_local_asset_path(url)
+                            if is_valid_local_image(poster_path):
+                                active_relative_paths.add(str(url))
+            if post.get("videos") != current_entries:
+                post["videos"] = current_entries
+                changes_detected = True
+
+    deleted_files = 0
+    deleted_bytes = 0
+    for base_dir in (POSTS_ATTACHED_VIDEOS_DIR, POSTS_ATTACHED_VIDEO_POSTERS_DIR):
+        for path in base_dir.glob("*"):
+            if not path.is_file():
+                continue
+
+            relative_url = path.relative_to(DOCS_DIR).as_posix()
+            if relative_url in active_relative_paths:
+                continue
+
+            stat = path.stat()
+            age_seconds = max(0, time.time() - stat.st_mtime)
+            if not should_delete_inactive_media(path, age_seconds, {VIDEO_VARIANT_VERSION}):
+                continue
+
+            path.unlink()
+            changes_detected = True
+            deleted_files += 1
+            deleted_bytes += stat.st_size
+            log.info("Deleted stale mirrored attached video asset %s", path.relative_to(ROOT))
+
+    if deleted_files:
+        log.info(
+            "Attached video maintenance deleted %s files (%.1f MB) for %s",
             deleted_files,
             deleted_bytes / (1024 * 1024),
             CHANNEL_KEY or "channel",
@@ -2030,7 +2404,8 @@ def remember_link_preview_assets(preview: dict[str, Any] | None, active_relative
 
 def post_has_physical_media(post: dict[str, Any]) -> bool:
     photos = [normalize_photo_entry(photo) for photo in post.get("photos") or []]
-    return bool([photo for photo in photos if photo]) or bool(post.get("video_url"))
+    videos = normalize_video_entries(post.get("videos"))
+    return bool([photo for photo in photos if photo]) or bool(post.get("video_url")) or bool(videos)
 
 
 def get_image_dimensions(raw_bytes: bytes) -> tuple[int, int] | None:
@@ -2428,18 +2803,20 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
         views_match = re.search(r'tgme_widget_message_views[^>]*>([^<]+)<', block)
         comments_count_match = re.search(r'tgme_widget_message_replies_count[^>]*>([^<]*)<', block)
         comments_link_match = re.search(r'tgme_widget_message_replies[^>]*href="([^"]+)"', block)
-        video_match = re.search(r'<video[^>]+src="([^"]+)"', block)
-        if not video_match:
-            video_match = re.search(r'<source[^>]+src="([^"]+)"', block)
-
         photos = [
             urljoin("https://t.me", html_lib.unescape(url))
             for url in re.findall(r"tgme_widget_message_photo_wrap[^>]+url\('([^']+)'\)", block)
         ]
-        video_url = urljoin("https://t.me", html_lib.unescape(video_match.group(1))) if video_match else None
-        video_width, video_height = extract_video_dimensions_from_html(block)
-        video_media_hint = bool(video_url) or detect_video_media_hint(block)
+        standard_videos = extract_standard_video_entries_from_html(block)
+        primary_video = standard_videos[0] if standard_videos else None
+        video_width = primary_video.get("width") if primary_video else None
+        video_height = primary_video.get("height") if primary_video else None
+        if not video_width or not video_height:
+            video_width, video_height = extract_video_dimensions_from_html(block)
+        video_media_hint = bool(primary_video) or detect_video_media_hint(block)
         video_note = detect_round_video_hint(block, video_width, video_height) if video_media_hint else False
+        video_url = primary_video.get("url") if (primary_video and video_note) else None
+        videos = [] if video_note else standard_videos
         reply_to = extract_reply_reference(block, config)
         text_source_block = strip_anchor_block_by_class(block, "tgme_widget_message_reply") if reply_to else block
         raw_text = extract_div_inner_html_by_class(
@@ -2450,7 +2827,7 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
         text, text_html = build_text_fields(raw_text)
         forwarded_from = extract_forwarded_source(block)
 
-        if not text and not photos and not video_url and not video_media_hint and not select_link_preview_candidates(text_html):
+        if not text and not photos and not videos and not video_url and not video_media_hint and not select_link_preview_candidates(text_html):
             continue
 
         comments_url = None
@@ -2467,12 +2844,15 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
             "comments_url": comments_url,
             "photos": photos,
             "video_url": video_url,
+            "videos": videos,
             "tg_url": f"https://t.me/{config.channel_username}/{post_id}",
             "forwarded_from": forwarded_from,
             "reply_to": reply_to,
         }
         if video_note:
             entry["video_note"] = True
+            if primary_video and primary_video.get("poster"):
+                entry["video_poster"] = primary_video["poster"]
         if video_width and video_height:
             entry["video_width"] = video_width
             entry["video_height"] = video_height
@@ -2884,6 +3264,10 @@ def enrich_reply_posts_from_pages(posts: list[dict[str, Any]], config: SiteConfi
             post["video_url"] = enriched_post.get("video_url")
             changed = True
 
+        if enriched_post.get("videos") and enriched_post.get("videos") != post.get("videos"):
+            post["videos"] = enriched_post.get("videos")
+            changed = True
+
         if enriched_post.get("video_poster") and enriched_post.get("video_poster") != post.get("video_poster"):
             post["video_poster"] = enriched_post.get("video_poster")
             changed = True
@@ -2915,6 +3299,22 @@ def get_downloadable_photo_targets(message: Any) -> list[Any]:
         targets.append(webpage.photo)
 
     return targets
+
+
+def is_standard_video_message(message: Any) -> bool:
+    if is_round_video_message(message):
+        return False
+
+    document = getattr(getattr(message, "media", None), "document", None)
+    mime_type = (getattr(document, "mime_type", None) or "").lower()
+    if mime_type.startswith("video/"):
+        return True
+
+    for attribute in getattr(document, "attributes", []) or []:
+        if all(getattr(attribute, key, None) is not None for key in ("w", "h", "duration")):
+            return True
+
+    return False
 
 
 def is_round_video_message(message: Any) -> bool:
@@ -2951,6 +3351,17 @@ def get_message_video_extension(message: Any) -> str:
     }.get(mime_type, "mp4")
 
 
+async def download_message_video_poster_bytes(client: Any, message: Any) -> bytes | None:
+    for thumb in (-1, 0):
+        try:
+            poster_bytes = await client.download_media(message, file=bytes, thumb=thumb)
+            if poster_bytes:
+                return poster_bytes
+        except Exception:
+            continue
+    return None
+
+
 def build_api_photo_placeholders(post_id: int, count: int) -> list[dict[str, str]]:
     placeholders: list[dict[str, str]] = []
     for index in range(count):
@@ -2973,6 +3384,7 @@ def build_post_from_api_message(
     config: SiteConfig,
     *,
     photo_count: int = 0,
+    video_count: int = 0,
     video_note: bool = False,
     video_width: int | None = None,
     video_height: int | None = None,
@@ -2999,6 +3411,7 @@ def build_post_from_api_message(
         "comments_url": f"https://t.me/{config.channel_username}/{post_id}?comment=1" if comments_count > 0 else None,
         "photos": build_api_photo_placeholders(post_id, photo_count) if photo_count > 0 else [],
         "video_url": None,
+        "videos": [],
         "tg_url": f"https://t.me/{config.channel_username}/{post_id}",
         "forwarded_from": None,
         "reply_to": None,
@@ -3010,7 +3423,7 @@ def build_post_from_api_message(
         entry["video_width"] = video_width
         entry["video_height"] = video_height
 
-    if not entry["text"] and not entry["photos"] and not entry.get("video_note"):
+    if not entry["text"] and not entry["photos"] and video_count <= 0 and not entry.get("video_note"):
         return None
 
     return entry
@@ -3087,11 +3500,13 @@ async def recover_newer_posts_from_api(
                         downloaded_photos.append(raw_bytes)
 
             is_round_video = is_round_video_message(message)
+            standard_video_count = 1 if is_standard_video_message(message) else 0
             video_width, video_height = get_message_video_dimensions(message)
             recovered_post = build_post_from_api_message(
                 message,
                 config,
                 photo_count=len(downloaded_photos),
+                video_count=standard_video_count,
                 video_note=is_round_video,
                 video_width=video_width,
                 video_height=video_height,
@@ -3112,16 +3527,20 @@ async def recover_newer_posts_from_api(
             )
 
             downloaded_photos: list[bytes] = []
+            standard_video_count = 0
             for message in ordered_group:
                 for target in get_downloadable_photo_targets(message):
                     raw_bytes = await client.download_media(target, file=bytes)
                     if raw_bytes:
                         downloaded_photos.append(raw_bytes)
+                if is_standard_video_message(message):
+                    standard_video_count += 1
 
             recovered_post = build_post_from_api_message(
                 anchor_message,
                 config,
                 photo_count=len(downloaded_photos),
+                video_count=standard_video_count,
             )
             if not recovered_post:
                 continue
@@ -3147,7 +3566,7 @@ async def recover_newer_posts_from_api(
 async def fetch_video_metadata_for_posts(config: SiteConfig, posts: list[dict[str, Any]]) -> dict[int, dict[str, Any]]:
     credentials = get_telegram_session_credentials()
     if not credentials:
-        log.info("Telegram user session is not configured. Round video sync skipped.")
+        log.info("Telegram user session is not configured. Video media sync skipped.")
         return {}
 
     post_ids = [int(post["id"]) for post in posts if post.get("id")]
@@ -3166,14 +3585,66 @@ async def fetch_video_metadata_for_posts(config: SiteConfig, posts: list[dict[st
 
         channel = await client.get_entity(config.channel_username)
 
+        grouped_messages_cache: dict[int, list[Any]] = {}
+
         for batch in chunked(post_ids, 100):
             for message in await client.get_messages(channel, ids=batch):
                 if not message or not getattr(message, "id", None):
                     continue
 
-                video_width, video_height = get_message_video_dimensions(message)
                 is_round_video = is_round_video_message(message)
-                if not is_round_video and not video_width and not video_height:
+                grouped_id = getattr(message, "grouped_id", None)
+                related_messages = [message]
+                if grouped_id:
+                    grouped_id = int(grouped_id)
+                    related_messages = grouped_messages_cache.get(grouped_id) or []
+                    if not related_messages:
+                        ids = list(range(max(1, int(message.id) - 10), int(message.id) + 11))
+                        neighbours = await client.get_messages(channel, ids=ids)
+                        related_messages = sorted(
+                            [
+                                neighbour
+                                for neighbour in neighbours
+                                if neighbour and getattr(neighbour, "grouped_id", None) == grouped_id
+                            ],
+                            key=lambda item: int(getattr(item, "id", 0) or 0),
+                        )
+                        if not related_messages:
+                            related_messages = [message]
+                        grouped_messages_cache[grouped_id] = related_messages
+
+                video_width, video_height = get_message_video_dimensions(message)
+                attached_videos: list[dict[str, Any]] = []
+                if not is_round_video:
+                    for related_message in related_messages:
+                        if not is_standard_video_message(related_message):
+                            continue
+
+                        payload_entry: dict[str, Any] = {}
+                        video_dimensions = get_message_video_dimensions(related_message)
+                        if video_dimensions[0] and video_dimensions[1]:
+                            payload_entry["width"] = video_dimensions[0]
+                            payload_entry["height"] = video_dimensions[1]
+
+                        try:
+                            raw_bytes = await client.download_media(related_message, file=bytes)
+                            if raw_bytes:
+                                payload_entry["video_bytes"] = raw_bytes
+                                payload_entry["video_extension"] = get_message_video_extension(related_message)
+                        except Exception as error:  # pragma: no cover - network/runtime path
+                            log.warning("Attached video download failed on post %s: %s", int(message.id), error)
+
+                        try:
+                            poster_bytes = await download_message_video_poster_bytes(client, related_message)
+                            if poster_bytes:
+                                payload_entry["poster_bytes"] = poster_bytes
+                        except Exception as error:  # pragma: no cover - network/runtime path
+                            log.warning("Attached video poster download failed on post %s: %s", int(message.id), error)
+
+                        if payload_entry:
+                            attached_videos.append(payload_entry)
+
+                if not is_round_video and not attached_videos and not video_width and not video_height:
                     continue
 
                 payload: dict[str, Any] = {}
@@ -3191,16 +3662,14 @@ async def fetch_video_metadata_for_posts(config: SiteConfig, posts: list[dict[st
                     except Exception as error:  # pragma: no cover - network/runtime path
                         log.warning("Round video download failed on post %s: %s", int(message.id), error)
                     try:
-                        poster_bytes = await client.download_media(message, file=bytes, thumb=-1)
+                        poster_bytes = await download_message_video_poster_bytes(client, message)
                         if poster_bytes:
                             payload["poster_bytes"] = poster_bytes
-                    except Exception:
-                        try:
-                            poster_bytes = await client.download_media(message, file=bytes, thumb=0)
-                            if poster_bytes:
-                                payload["poster_bytes"] = poster_bytes
-                        except Exception as error:  # pragma: no cover - network/runtime path
-                            log.warning("Round video poster download failed on post %s: %s", int(message.id), error)
+                    except Exception as error:  # pragma: no cover - network/runtime path
+                        log.warning("Round video poster download failed on post %s: %s", int(message.id), error)
+
+                if attached_videos:
+                    payload["attached_videos"] = attached_videos
 
                 if payload:
                     results[int(message.id)] = payload
@@ -3580,12 +4049,22 @@ def normalize_forwarded_source_url(post: dict[str, Any]) -> str:
 def build_post_media_fingerprint(post: dict[str, Any]) -> str:
     photos = [photo for photo in (post.get("photos") or []) if photo]
     video_url = normalize_telegram_post_url(str(post.get("video_url") or ""))
+    videos = normalize_video_entries(post.get("videos"))
+    video_fingerprint = ",".join(
+        (
+            normalize_telegram_post_url(str(video.get("source_url") or ""))
+            or f"{parse_positive_int(video.get('width')) or 0}x{parse_positive_int(video.get('height')) or 0}:{int(bool(video.get('poster')))}"
+        )
+        for video in videos
+    )
     link_preview = post.get("link_preview") or {}
     link_preview_url = normalize_telegram_post_url(str(link_preview.get("href") or ""))
     return "|".join(
         [
             str(len(photos)),
             video_url,
+            str(len(videos)),
+            video_fingerprint,
             "note" if bool(post.get("video_note")) else "",
             link_preview_url,
         ]
@@ -3640,8 +4119,7 @@ def build_channel_build_id(posts: list[dict[str, Any]], comments_enabled: bool) 
             (
                 f"{post.get('id')}|{post.get('date') or ''}|"
                 f"{post.get('comments_count') or 0}|"
-                f"{len(post.get('photos') or [])}|"
-                f"{post.get('video_url') or ''}|"
+                f"{build_post_media_fingerprint(post)}|"
                 f"{int(bool(post.get('video_note')))};"
             ).encode("utf-8")
         )
@@ -3770,11 +4248,13 @@ def render_post_page_media(post: dict[str, Any]) -> str:
     root_prefix = "../../../" if CHANNEL_KEY else "../../"
     photos = [normalize_photo_entry(photo) for photo in post.get("photos") or []]
     photos = [photo for photo in photos if photo]
-    if not photos and not post.get("video_url"):
+    videos = normalize_video_entries(post.get("videos"))
+    if not photos and not videos and not post.get("video_url"):
         return ""
 
     media_items: list[str] = []
-    is_gallery = len(photos) > 1
+    total_items = len(photos) + len(videos) + (1 if post.get("video_url") else 0)
+    is_gallery = total_items > 1
     sizes_attr = (
         "(max-width: 480px) calc(100vw - 44px), (max-width: 860px) calc(50vw - 28px), 520px"
         if is_gallery
@@ -3839,6 +4319,21 @@ def render_post_page_media(post: dict[str, Any]) -> str:
             )
         )
 
+    for video in videos:
+        video_src = video["url"]
+        if not re.match(r"^https?://", video_src):
+            video_src = f"{root_prefix}{video_src.lstrip('./')}"
+        poster = normalize_video_poster_entry(video.get("poster"))
+        poster_attr = ""
+        if poster:
+            poster_src = poster.get("full_url") or poster.get("feed_url") or poster.get("thumb_url")
+            if poster_src:
+                poster_src = poster_src if re.match(r"^https?://", poster_src) else f"{root_prefix}{poster_src.lstrip('./')}"
+                poster_attr = f' poster="{html_lib.escape(poster_src)}"'
+        media_items.append(
+            f'<video src="{html_lib.escape(video_src)}"{poster_attr} preload="metadata" controls playsinline></video>'
+        )
+
     video_poster = normalize_video_poster_entry(post.get("video_poster"))
     if post.get("video_url"):
         video_src = post["video_url"]
@@ -3855,7 +4350,7 @@ def render_post_page_media(post: dict[str, Any]) -> str:
 
     if len(media_items) > 1:
         gallery_class = "post-card__media post-card__media--gallery"
-    elif post.get("video_note") and not photos and post.get("video_url"):
+    elif post.get("video_note") and not photos and not videos and post.get("video_url"):
         gallery_class = "post-card__media post-card__media--round-video"
     else:
         gallery_class = "post-card__media"
@@ -3868,7 +4363,14 @@ def render_post_page_html(config: SiteConfig, post: dict[str, Any], comments_ena
     title = shorten_text(post.get("text") or f"Пост #{post['id']}", 72) or f"Пост #{post['id']}"
     description = shorten_text(strip_tags(post.get("text_html") or post.get("text") or ""), 180) or config.site_description
     first_photo = normalize_photo_entry((post.get("photos") or [None])[0])
-    og_image = f"{root_prefix}{first_photo['full_url']}" if first_photo else f"{root_prefix}{config.avatar_path}"
+    first_video = normalize_video_entry((post.get("videos") or [None])[0])
+    first_video_poster = normalize_video_poster_entry((first_video or {}).get("poster")) or normalize_video_poster_entry(post.get("video_poster"))
+    if first_photo:
+        og_image = f"{root_prefix}{first_photo['full_url']}"
+    elif first_video_poster and first_video_poster.get("full_url"):
+        og_image = f"{root_prefix}{first_video_poster['full_url']}"
+    else:
+        og_image = f"{root_prefix}{config.avatar_path}"
     comments_link = f'{feed_href}#comments-{post["id"]}' if comments_enabled else feed_href
     comments_cta = ""
     if comments_enabled and (post.get("comments_count") or post.get("comments_url") or post.get("comments_available")):
@@ -4125,6 +4627,11 @@ def main() -> int:
         video_metadata=video_metadata,
         existing_posts=existing_payload.get("posts") or [],
     ) or changes_detected
+    changes_detected = mirror_attached_videos(
+        posts,
+        video_metadata=video_metadata,
+        existing_posts=existing_payload.get("posts") or [],
+    ) or changes_detected
     changes_detected = mirror_link_previews(
         posts,
         existing_posts=existing_payload.get("posts") or [],
@@ -4137,7 +4644,7 @@ def main() -> int:
     posts = [
         post
         for post in posts
-        if post.get("text") or (post.get("photos") or []) or post.get("video_url") or post.get("link_preview")
+        if post.get("text") or (post.get("photos") or []) or (post.get("videos") or []) or post.get("video_url") or post.get("link_preview")
     ]
     deduped_posts = dedupe_posts(posts)
     if len(deduped_posts) != len(posts):

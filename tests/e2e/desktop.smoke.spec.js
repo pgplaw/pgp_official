@@ -90,6 +90,66 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('#viewer')).toBeHidden();
   });
 
+  test('renders attached post videos alongside photos and opens them in the viewer', async ({ page }) => {
+    await page.goto('/?channel=pg-antitrust');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'attached-video-host';
+      document.body.appendChild(host);
+      const poster = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><rect width="100%" height="100%" fill="%2310a9b2"/></svg>';
+      const photo = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><rect width="100%" height="100%" fill="%232b3350"/></svg>';
+      const card = window.renderPostCard({
+        id: 999995,
+        date: new Date().toISOString(),
+        text: 'mixed media',
+        text_html: '<p>Пост с фотографией и прикрепленным видео.</p>',
+        photos: [{
+          thumb_url: photo,
+          feed_url: photo,
+          full_url: photo,
+          thumb_width: 640,
+          thumb_height: 360,
+          feed_width: 640,
+          feed_height: 360,
+          full_width: 640,
+          full_height: 360,
+        }],
+        videos: [{
+          url: 'https://example.com/synthetic-video.mp4',
+          source_url: 'https://example.com/synthetic-video.mp4',
+          width: 640,
+          height: 360,
+          poster: {
+            thumb_url: poster,
+            feed_url: poster,
+            full_url: poster,
+            thumb_width: 640,
+            thumb_height: 360,
+            feed_width: 640,
+            feed_height: 360,
+            full_width: 640,
+            full_height: 360,
+          },
+        }],
+        tg_url: 'https://t.me/example/999995',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    });
+
+    const triggers = page.locator('#attached-video-host .media-trigger');
+    await expect(triggers).toHaveCount(2);
+    await expect(triggers.nth(1).locator('video')).toHaveCount(1);
+
+    await triggers.nth(1).click();
+    await expect(page.locator('#viewer')).toBeVisible();
+    await expect(page.locator('#viewer .viewer__slide video').first()).toHaveAttribute('src', /synthetic-video\.mp4/);
+    await page.locator('#viewerClose').click();
+    await expect(page.locator('#viewer')).toBeHidden();
+  });
+
   test('loads more posts and deep-link target resolves', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);

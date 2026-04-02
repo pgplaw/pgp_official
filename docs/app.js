@@ -448,6 +448,37 @@ function normalizePhoto(photo) {
   };
 }
 
+function normalizeVideo(video) {
+  if (!video) return null;
+  if (typeof video === 'string') {
+    const normalizedUrl = String(video).trim();
+    return normalizedUrl ? { url: normalizedUrl, source_url: normalizedUrl } : null;
+  }
+  if (typeof video !== 'object') return null;
+
+  const parseDimension = (value) => {
+    const parsed = Number.parseInt(value, 10);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+  };
+
+  const url = String(video.url || video.video_url || video.src || video.full_url || '').trim();
+  if (!url) return null;
+
+  return {
+    url,
+    source_url: typeof video.source_url === 'string'
+      ? video.source_url.trim()
+      : (/^https?:\/\//i.test(url) ? url : ''),
+    width: parseDimension(video.width),
+    height: parseDimension(video.height),
+    poster: normalizePhoto(video.poster || video.video_poster),
+  };
+}
+
+function getAttachedVideos(post) {
+  return Array.isArray(post?.videos) ? post.videos.map(normalizeVideo).filter(Boolean) : [];
+}
+
 function normalizeLinkPreview(preview) {
   if (!preview || typeof preview !== 'object') return null;
 
@@ -486,14 +517,15 @@ function hasVisiblePostBody(post) {
 
 function hasPhysicalPostMedia(post) {
   const photoCount = Array.isArray(post?.photos) ? post.photos.filter(Boolean).length : 0;
-  return photoCount > 0 || Boolean(post?.video_url);
+  return photoCount > 0 || Boolean(post?.video_url) || getAttachedVideos(post).length > 0;
 }
 
 function isRoundVideoPost(post) {
   if (!post?.video_url) return false;
 
   const photoCount = Array.isArray(post.photos) ? post.photos.filter(Boolean).length : 0;
-  if (photoCount > 0) return false;
+  const attachedVideoCount = getAttachedVideos(post).length;
+  if (photoCount > 0 || attachedVideoCount > 0) return false;
 
   const explicitHint = isTruthyMediaFlag(post.video_note) || Boolean(post.video_poster);
   const urlHint = /video-note/i.test(String(post.video_url || ''));
@@ -969,10 +1001,16 @@ function normalizeForwardedSourceUrl(post) {
 function getPostMediaFingerprint(post) {
   const photos = Array.isArray(post?.photos) ? post.photos.filter(Boolean) : [];
   const videoUrl = normalizeTelegramPostUrl(post?.video_url || '');
+  const attachedVideos = getAttachedVideos(post);
   const linkPreviewUrl = normalizeTelegramPostUrl(post?.link_preview?.href || '');
   return [
     photos.length,
     videoUrl,
+    attachedVideos.length,
+    attachedVideos.map((video) => (
+      normalizeTelegramPostUrl(video.source_url || '')
+      || `${Number.parseInt(video.width, 10) || 0}x${Number.parseInt(video.height, 10) || 0}:${video.poster ? 1 : 0}`
+    )).join(','),
     Boolean(post?.video_note) ? 'note' : '',
     linkPreviewUrl,
   ].join('|');
@@ -2312,6 +2350,7 @@ function buildLinkPreviewMarkup(preview) {
 function buildMedia(post) {
   const media = [];
   const roundVideoPost = isRoundVideoPost(post);
+  const seenVideoUrls = new Set();
 
   (post.photos || []).forEach((photo) => {
     const entry = normalizePhoto(photo);
@@ -2323,14 +2362,30 @@ function buildMedia(post) {
     }
   });
 
-  if (post.video_url) {
+  getAttachedVideos(post).forEach((video) => {
+    const normalizedUrl = normalizeMediaUrl(video.url);
+    if (normalizedUrl && seenVideoUrls.has(normalizedUrl)) return;
+    if (normalizedUrl) seenVideoUrls.add(normalizedUrl);
     media.push({
-      type: roundVideoPost ? 'round-video' : 'video',
-      url: post.video_url,
-      width: post.video_width || null,
-      height: post.video_height || null,
-      poster: post.video_poster ? normalizePhoto(post.video_poster) : null,
+      type: 'video',
+      ...video,
     });
+  });
+
+  if (post.video_url) {
+    const normalizedUrl = normalizeMediaUrl(post.video_url);
+    if (!normalizedUrl || !seenVideoUrls.has(normalizedUrl)) {
+      if (normalizedUrl) {
+        seenVideoUrls.add(normalizedUrl);
+      }
+      media.push({
+        type: roundVideoPost ? 'round-video' : 'video',
+        url: post.video_url,
+        width: post.video_width || null,
+        height: post.video_height || null,
+        poster: post.video_poster ? normalizePhoto(post.video_poster) : null,
+      });
+    }
   }
 
   if (!media.length) return '';
@@ -2889,7 +2944,8 @@ function renderPostCard(post) {
 
   const text = normalizePostHtmlSpacing(normalizePostHtml(post.text_html)) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
   const photoCount = Array.isArray(post.photos) ? post.photos.filter(Boolean).length : 0;
-  const isRoundVideoOnly = Boolean(isRoundVideoPost(post) && post.video_url && photoCount === 0);
+  const attachedVideoCount = getAttachedVideos(post).length;
+  const isRoundVideoOnly = Boolean(isRoundVideoPost(post) && post.video_url && photoCount === 0 && attachedVideoCount === 0);
   if (isRoundVideoOnly) {
     article.classList.add('post-card--round-video-only');
   }
