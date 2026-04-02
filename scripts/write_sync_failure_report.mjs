@@ -26,7 +26,7 @@ const report = {
   exit_code: exitCode,
   commit_sha: process.env.GITHUB_SHA || null,
   run_id: process.env.GITHUB_RUN_ID || null,
-  tail: logLines.slice(-80),
+  tail: logLines.slice(-200),
 };
 
 const nextContent = `${JSON.stringify(report, null, 2)}\n`;

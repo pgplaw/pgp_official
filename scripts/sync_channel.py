@@ -3044,11 +3044,22 @@ def probe_newer_posts_from_direct_pages(
         consecutive_misses = 0
 
     if not discovered:
-        if stale_root_detected and (direct_probe_stale_candidates or (direct_probe_hard_errors and direct_probe_fetch_successes == 0)):
+        if stale_root_detected and existing_top_post_id and current_top_post_id < existing_top_post_id:
             stale_tail = ", ".join(direct_probe_stale_candidates[:4]) or "n/a"
             raise RuntimeError(
                 f"Direct probe for @{config.channel_username} did not recover newer posts "
+                f"after the top post regressed from {existing_top_post_id} to {current_top_post_id} "
                 f"(stale candidates: {stale_tail}; hard_errors={direct_probe_hard_errors})"
+            )
+        if stale_root_detected and (direct_probe_stale_candidates or (direct_probe_hard_errors and direct_probe_fetch_successes == 0)):
+            stale_tail = ", ".join(direct_probe_stale_candidates[:4]) or "n/a"
+            log.warning(
+                "Direct probe for @%s did not confirm newer posts; keeping current top %s "
+                "(stale candidates: %s; hard_errors=%s)",
+                config.channel_username,
+                current_top_post_id,
+                stale_tail,
+                direct_probe_hard_errors,
             )
         return posts
 
