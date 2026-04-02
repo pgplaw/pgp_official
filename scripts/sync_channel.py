@@ -131,6 +131,33 @@ def load_json(path: Path, default: Any) -> Any:
         return default
 
 
+def load_existing_feed_posts(existing_payload: dict[str, Any] | None) -> list[dict[str, Any]]:
+    posts: list[dict[str, Any]] = []
+    payload = existing_payload or {}
+
+    for post in deepcopy(payload.get("posts") or []):
+        if isinstance(post, dict):
+            posts.append(post)
+
+    page_payloads: list[tuple[int, Path]] = []
+    for path in PAGES_DIR.glob("*.json"):
+        try:
+            page_number = int(path.stem)
+        except ValueError:
+            continue
+        if page_number < 2:
+            continue
+        page_payloads.append((page_number, path))
+
+    for _, path in sorted(page_payloads, key=lambda item: item[0]):
+        page_payload = load_json(path, {})
+        for post in deepcopy(page_payload.get("posts") or []):
+            if isinstance(post, dict):
+                posts.append(post)
+
+    return dedupe_posts(posts)
+
+
 def json_without_generated_at(value: Any) -> Any:
     if isinstance(value, dict):
         return {
@@ -2516,8 +2543,7 @@ def choose_better_preview_bytes(current_bytes: bytes | None, candidate_bytes: by
     return candidate_bytes
 
 
-def build_post_media_page_urls(post: dict[str, Any]) -> list[str]:
-    tg_url = (post.get("tg_url") or "").strip()
+def build_telegram_post_page_urls(tg_url: str) -> list[str]:
     if not tg_url.startswith("https://t.me/"):
         return []
 
@@ -2539,6 +2565,22 @@ def build_post_media_page_urls(post: dict[str, Any]) -> list[str]:
         urls.append(url)
 
     return urls
+
+
+def build_post_media_page_urls(post: dict[str, Any]) -> list[str]:
+    return build_telegram_post_page_urls((post.get("tg_url") or "").strip())
+
+
+def extract_post_id_from_telegram_url(tg_url: str | None) -> int | None:
+    normalized = normalize_telegram_post_url(str(tg_url or ""))
+    if not normalized.startswith("https://t.me/"):
+        return None
+
+    parsed = urlparse(normalized)
+    segments = [segment for segment in (parsed.path or "").split("/") if segment]
+    if len(segments) >= 2 and segments[1].isdigit():
+        return int(segments[1])
+    return None
 
 
 def extract_telegram_post_block(page_html: str, post_id: int) -> str | None:
@@ -3295,6 +3337,48 @@ def enrich_reply_posts_from_pages(posts: list[dict[str, Any]], config: SiteConfi
                 post["video_width"] = enriched_post.get("video_width")
                 post["video_height"] = enriched_post.get("video_height")
                 changed = True
+
+    return changed
+
+
+def enrich_forwarded_posts_from_source_pages(posts: list[dict[str, Any]]) -> bool:
+    forwarded_posts = [
+        post
+        for post in posts
+        if post.get("forwarded_from")
+        and not post.get("video_note")
+        and not (post.get("videos") or [])
+    ]
+    if not forwarded_posts:
+        return False
+
+    changed = False
+    log.info("Enriching %s forwarded posts from forwarded source pages", len(forwarded_posts))
+
+    for post in forwarded_posts:
+        source_url = normalize_forwarded_source_url(post)
+        source_post_id = extract_post_id_from_telegram_url(source_url)
+        if not source_url or not source_post_id:
+            continue
+
+        enriched_videos: list[dict[str, Any]] = []
+        for page_url in build_telegram_post_page_urls(source_url):
+            try:
+                page_html = fetch_page(page_url, timeout=10, retry_delays=FAST_EXTERNAL_RETRY_DELAYS, log_failures=False)
+            except Exception:
+                continue
+
+            source_block = extract_telegram_post_block(page_html, source_post_id)
+            if not source_block:
+                continue
+
+            enriched_videos = extract_standard_video_entries_from_html(source_block)
+            if enriched_videos:
+                break
+
+        if enriched_videos and enriched_videos != post.get("videos"):
+            post["videos"] = enriched_videos
+            changed = True
 
     return changed
 
@@ -4569,10 +4653,11 @@ def main() -> int:
         write_manifest(config)
 
     existing_payload = load_json(POSTS_PATH, {})
+    existing_posts = load_existing_feed_posts(existing_payload)
     try:
         initial_page_html = fetch_page(config.channel_web_url)
     except Exception as error:  # pragma: no cover - network/runtime path
-        if existing_payload.get("posts"):
+        if existing_posts:
             log.error(
                 "Failed to fetch initial page for @%s. Keeping existing mirror data and marking sync as failed: %s",
                 config.channel_username,
@@ -4586,7 +4671,7 @@ def main() -> int:
     if parsed_channel_description:
         config.site_description = parsed_channel_description
     posts = collect_posts(config, initial_page_html=initial_page_html)
-    if not posts and existing_payload.get("posts"):
+    if not posts and existing_posts:
         log.error(
             "No posts were collected for @%s. Existing mirror data was left untouched and sync marked as failed.",
             config.channel_username,
@@ -4595,7 +4680,7 @@ def main() -> int:
     posts = probe_newer_posts_from_direct_pages(
         config,
         posts,
-        existing_top_post_id=get_highest_post_id(existing_payload.get("posts") or []),
+        existing_top_post_id=get_highest_post_id(existing_posts),
         cutoff=subtract_months(datetime.now(timezone.utc), config.recent_posts_months),
     )
     api_recovery_photo_overrides: dict[int, list[bytes]] = {}
@@ -4616,6 +4701,7 @@ def main() -> int:
         )
         posts = deduped_posts
     enrich_reply_posts_from_pages(posts, config)
+    enrich_forwarded_posts_from_source_pages(posts)
 
     reply_references = asyncio.run(fetch_reply_references_for_posts(config, posts))
     photo_overrides = asyncio.run(fetch_high_res_photos_for_posts(config, posts))
@@ -4647,16 +4733,16 @@ def main() -> int:
     changes_detected = mirror_round_videos(
         posts,
         video_metadata=video_metadata,
-        existing_posts=existing_payload.get("posts") or [],
+        existing_posts=existing_posts,
     ) or changes_detected
     changes_detected = mirror_attached_videos(
         posts,
         video_metadata=video_metadata,
-        existing_posts=existing_payload.get("posts") or [],
+        existing_posts=existing_posts,
     ) or changes_detected
     changes_detected = mirror_link_previews(
         posts,
-        existing_posts=existing_payload.get("posts") or [],
+        existing_posts=existing_posts,
     ) or changes_detected
     round_video_errors = validate_round_video_posts(posts)
     if round_video_errors:
