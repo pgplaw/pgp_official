@@ -2583,6 +2583,18 @@ def extract_post_id_from_telegram_url(tg_url: str | None) -> int | None:
     return None
 
 
+def extract_telegram_post_reference(tg_url: str | None) -> tuple[str, int] | None:
+    normalized = normalize_telegram_post_url(str(tg_url or ""))
+    if not normalized.startswith("https://t.me/"):
+        return None
+
+    parsed = urlparse(normalized)
+    segments = [segment for segment in (parsed.path or "").split("/") if segment]
+    if len(segments) >= 2 and segments[1].isdigit():
+        return segments[0], int(segments[1])
+    return None
+
+
 def extract_telegram_post_block(page_html: str, post_id: int) -> str | None:
     blocks = split_telegram_post_blocks(page_html)
 
@@ -3681,6 +3693,7 @@ async def fetch_video_metadata_for_posts(config: SiteConfig, posts: list[dict[st
 
     api_id, api_hash, session_string = credentials
     results: dict[int, dict[str, Any]] = {}
+    posts_by_id = {int(post["id"]): post for post in posts if post.get("id")}
 
     from telethon import TelegramClient
     from telethon.sessions import StringSession
@@ -3690,65 +3703,128 @@ async def fetch_video_metadata_for_posts(config: SiteConfig, posts: list[dict[st
             raise RuntimeError("TELEGRAM_SESSION_STR is not authorized.")
 
         channel = await client.get_entity(config.channel_username)
+        entity_cache: dict[str, Any] = {config.channel_username.lower(): channel}
+        grouped_messages_cache: dict[tuple[str, int], list[Any]] = {}
 
-        grouped_messages_cache: dict[int, list[Any]] = {}
+        async def resolve_entity(channel_username: str) -> Any:
+            cache_key = channel_username.lower()
+            cached = entity_cache.get(cache_key)
+            if cached is not None:
+                return cached
+            entity = await client.get_entity(channel_username)
+            entity_cache[cache_key] = entity
+            return entity
+
+        async def collect_related_messages(entity_key: str, entity: Any, anchor_message: Any) -> list[Any]:
+            grouped_id = getattr(anchor_message, "grouped_id", None)
+            if not grouped_id:
+                return [anchor_message]
+
+            grouped_id = int(grouped_id)
+            cache_key = (entity_key, grouped_id)
+            related_messages = grouped_messages_cache.get(cache_key) or []
+            if related_messages:
+                return related_messages
+
+            ids = list(range(max(1, int(anchor_message.id) - 10), int(anchor_message.id) + 11))
+            neighbours = await client.get_messages(entity, ids=ids)
+            related_messages = sorted(
+                [
+                    neighbour
+                    for neighbour in neighbours
+                    if neighbour and getattr(neighbour, "grouped_id", None) == grouped_id
+                ],
+                key=lambda item: int(getattr(item, "id", 0) or 0),
+            )
+            if not related_messages:
+                related_messages = [anchor_message]
+            grouped_messages_cache[cache_key] = related_messages
+            return related_messages
+
+        async def collect_attached_videos(anchor_post_id: int, related_messages: list[Any]) -> list[dict[str, Any]]:
+            attached_videos: list[dict[str, Any]] = []
+
+            for related_message in related_messages:
+                if not is_standard_video_message(related_message):
+                    continue
+
+                payload_entry: dict[str, Any] = {}
+                video_dimensions = get_message_video_dimensions(related_message)
+                if video_dimensions[0] and video_dimensions[1]:
+                    payload_entry["width"] = video_dimensions[0]
+                    payload_entry["height"] = video_dimensions[1]
+
+                try:
+                    raw_bytes = await client.download_media(related_message, file=bytes)
+                    if raw_bytes:
+                        payload_entry["video_bytes"] = raw_bytes
+                        payload_entry["video_extension"] = get_message_video_extension(related_message)
+                except Exception as error:  # pragma: no cover - network/runtime path
+                    log.warning("Attached video download failed on post %s: %s", anchor_post_id, error)
+
+                try:
+                    poster_bytes = await download_message_video_poster_bytes(client, related_message)
+                    if poster_bytes:
+                        payload_entry["poster_bytes"] = poster_bytes
+                except Exception as error:  # pragma: no cover - network/runtime path
+                    log.warning("Attached video poster download failed on post %s: %s", anchor_post_id, error)
+
+                if payload_entry:
+                    attached_videos.append(payload_entry)
+
+            return attached_videos
 
         for batch in chunked(post_ids, 100):
             for message in await client.get_messages(channel, ids=batch):
                 if not message or not getattr(message, "id", None):
                     continue
 
+                post_id = int(message.id)
+                post = posts_by_id.get(post_id)
                 is_round_video = is_round_video_message(message)
-                grouped_id = getattr(message, "grouped_id", None)
-                related_messages = [message]
-                if grouped_id:
-                    grouped_id = int(grouped_id)
-                    related_messages = grouped_messages_cache.get(grouped_id) or []
-                    if not related_messages:
-                        ids = list(range(max(1, int(message.id) - 10), int(message.id) + 11))
-                        neighbours = await client.get_messages(channel, ids=ids)
-                        related_messages = sorted(
-                            [
-                                neighbour
-                                for neighbour in neighbours
-                                if neighbour and getattr(neighbour, "grouped_id", None) == grouped_id
-                            ],
-                            key=lambda item: int(getattr(item, "id", 0) or 0),
-                        )
-                        if not related_messages:
-                            related_messages = [message]
-                        grouped_messages_cache[grouped_id] = related_messages
+                related_messages = await collect_related_messages(config.channel_username.lower(), channel, message)
 
                 video_width, video_height = get_message_video_dimensions(message)
                 attached_videos: list[dict[str, Any]] = []
                 if not is_round_video:
-                    for related_message in related_messages:
-                        if not is_standard_video_message(related_message):
-                            continue
-
-                        payload_entry: dict[str, Any] = {}
-                        video_dimensions = get_message_video_dimensions(related_message)
-                        if video_dimensions[0] and video_dimensions[1]:
-                            payload_entry["width"] = video_dimensions[0]
-                            payload_entry["height"] = video_dimensions[1]
-
-                        try:
-                            raw_bytes = await client.download_media(related_message, file=bytes)
-                            if raw_bytes:
-                                payload_entry["video_bytes"] = raw_bytes
-                                payload_entry["video_extension"] = get_message_video_extension(related_message)
-                        except Exception as error:  # pragma: no cover - network/runtime path
-                            log.warning("Attached video download failed on post %s: %s", int(message.id), error)
-
-                        try:
-                            poster_bytes = await download_message_video_poster_bytes(client, related_message)
-                            if poster_bytes:
-                                payload_entry["poster_bytes"] = poster_bytes
-                        except Exception as error:  # pragma: no cover - network/runtime path
-                            log.warning("Attached video poster download failed on post %s: %s", int(message.id), error)
-
-                        if payload_entry:
-                            attached_videos.append(payload_entry)
+                    attached_videos = await collect_attached_videos(post_id, related_messages)
+                    if not attached_videos and post and post.get("forwarded_from"):
+                        source_reference = extract_telegram_post_reference(normalize_forwarded_source_url(post))
+                        if source_reference:
+                            source_channel_username, source_post_id = source_reference
+                            try:
+                                source_entity = await resolve_entity(source_channel_username)
+                                source_messages = await client.get_messages(source_entity, ids=[source_post_id])
+                                source_message = next(
+                                    (
+                                        candidate
+                                        for candidate in (source_messages or [])
+                                        if candidate and getattr(candidate, "id", None)
+                                    ),
+                                    None,
+                                )
+                                if source_message and getattr(source_message, "id", None):
+                                    source_related_messages = await collect_related_messages(
+                                        source_channel_username.lower(),
+                                        source_entity,
+                                        source_message,
+                                    )
+                                    attached_videos = await collect_attached_videos(post_id, source_related_messages)
+                                    if attached_videos:
+                                        log.info(
+                                            "Recovered %s attached videos for forwarded post %s from @%s/%s",
+                                            len(attached_videos),
+                                            post_id,
+                                            source_channel_username,
+                                            source_post_id,
+                                        )
+                            except Exception as error:  # pragma: no cover - network/runtime path
+                                log.warning(
+                                    "Forwarded source video sync failed on post %s from %s: %s",
+                                    post_id,
+                                    normalize_forwarded_source_url(post),
+                                    error,
+                                )
 
                 if not is_round_video and not attached_videos and not video_width and not video_height:
                     continue
@@ -3778,7 +3854,7 @@ async def fetch_video_metadata_for_posts(config: SiteConfig, posts: list[dict[st
                     payload["attached_videos"] = attached_videos
 
                 if payload:
-                    results[int(message.id)] = payload
+                    results[post_id] = payload
 
             await asyncio.sleep(0.1)
 
