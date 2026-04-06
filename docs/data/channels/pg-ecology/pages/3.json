@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-06T10:45:22.208485+00:00",
+  "generated_at": "2026-04-06T20:03:19.674845+00:00",
   "build_id": "c46833064aaa",
   "pagination": {
     "page": 3,
@@ -19,9 +19,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1281-1-1c3c46e4ef75-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1281-1-1c3c46e4ef75-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/HjEI6xLTpjzVA9qlD7Zi3COxfXS03pnBWlHEDVNireBnVBJ5qrE808LvWb_IKpAsSQooVUcZoYKvpQOzvaEt5R5OZw5o05U0_z6EmKSbdHky7GKfQ1jDADQrqX-PNTpux72riz3lDq0kmE87ayeb2zOXAQxLEOlx7_bIOp9DtisyP5q8oS3tlTZHHt0rtv3Y4f751ficHWF1SGLAfLaJQfMr_6KmdU-p-KZL1hEvC0HTP73pCNr7LDX0tkw1syjd-7B-sZ2Q6I67gHzAVJ4tEcpZmYZTJkA17tiRp9JDIhOkt0Tn8SG5oNMChZN5PSXGCs8x2uQyZEJxthth_28XMg.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1281-1-1c3c46e4ef75-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1281-1-1c3c46e4ef75-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "feed_width": 1800,
@@ -29,7 +28,8 @@
           "full_width": 1880,
           "full_height": 1880,
           "source_width": 1880,
-          "source_height": 1880
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/HjEI6xLTpjzVA9qlD7Zi3COxfXS03pnBWlHEDVNireBnVBJ5qrE808LvWb_IKpAsSQooVUcZoYKvpQOzvaEt5R5OZw5o05U0_z6EmKSbdHky7GKfQ1jDADQrqX-PNTpux72riz3lDq0kmE87ayeb2zOXAQxLEOlx7_bIOp9DtisyP5q8oS3tlTZHHt0rtv3Y4f751ficHWF1SGLAfLaJQfMr_6KmdU-p-KZL1hEvC0HTP73pCNr7LDX0tkw1syjd-7B-sZ2Q6I67gHzAVJ4tEcpZmYZTJkA17tiRp9JDIhOkt0Tn8SG5oNMChZN5PSXGCs8x2uQyZEJxthth_28XMg.jpg"
         }
       ],
       "video_url": null,
@@ -49,9 +49,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1280-1-481fd1b580ca-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1280-1-481fd1b580ca-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/qpA28kPsGwgotHf3qK-k-miYKbwnnEE_xaeb8b5BSWYr5800ne9VdKj29yDBg5lO6ghfImd9L1uUfAGS29IHLOv_cShVExpmb3VOQ6Nr55V8ITWojz8tiASq4S2d12LeQfkML42Fj0r8EDG6xQ8uB6sqhdZjh9i1B3p8W0Gc3IvqRcKO4x5MRMitsANzymL4Mki0vOpjgy-037GUOEmR9lHf8AlKjTqjJsj9HiRroqN667qDQ6ItXd9aliLGm8JFj5nq5na8YWQi853dG_B1DUKnsQmxAEAjb3ePqUjEOqRDkzkq_64-fY9eM05S0xrAOB_XoQEI_SLwMOlcU4Ys3Q.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1280-1-481fd1b580ca-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1280-1-481fd1b580ca-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -59,7 +58,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/qpA28kPsGwgotHf3qK-k-miYKbwnnEE_xaeb8b5BSWYr5800ne9VdKj29yDBg5lO6ghfImd9L1uUfAGS29IHLOv_cShVExpmb3VOQ6Nr55V8ITWojz8tiASq4S2d12LeQfkML42Fj0r8EDG6xQ8uB6sqhdZjh9i1B3p8W0Gc3IvqRcKO4x5MRMitsANzymL4Mki0vOpjgy-037GUOEmR9lHf8AlKjTqjJsj9HiRroqN667qDQ6ItXd9aliLGm8JFj5nq5na8YWQi853dG_B1DUKnsQmxAEAjb3ePqUjEOqRDkzkq_64-fY9eM05S0xrAOB_XoQEI_SLwMOlcU4Ys3Q.jpg"
         }
       ],
       "video_url": null,
@@ -94,9 +94,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1277-1-cdb263f6c284-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1277-1-cdb263f6c284-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Qs6epBGUptubSzAVvRQ-VIjR86bNt_02pJW4FbSjkAF4RX4FCdpOUGGpoBUr1H0KF66QqRWXNu8kCBGuWg2RFn0mj1tXZ8PeYMsYNFyGrW9jRHQrkohkZKEBbOnbbjSTnCA77KXoHcjWSe_g_ynD8d8OQRDnvciGh5eq6zWjT3ACUH2d99DaCVB4quGnsIhL2rrVv6COVctlV8-ruw9_ao3vcX7_Y2z7L9jDZVywMU06u4niA0gQD9TvP-RB3AyO9IuzZuVqGatOLB0hIZt6lvUfxaEbJQ0XZcIC4Z2x-7hLyDbZBEbjUsP1pLLrMNsFprNTKsDpBRYowCrZ-47sBA.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1277-1-cdb263f6c284-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1277-1-cdb263f6c284-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -104,7 +103,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/Qs6epBGUptubSzAVvRQ-VIjR86bNt_02pJW4FbSjkAF4RX4FCdpOUGGpoBUr1H0KF66QqRWXNu8kCBGuWg2RFn0mj1tXZ8PeYMsYNFyGrW9jRHQrkohkZKEBbOnbbjSTnCA77KXoHcjWSe_g_ynD8d8OQRDnvciGh5eq6zWjT3ACUH2d99DaCVB4quGnsIhL2rrVv6COVctlV8-ruw9_ao3vcX7_Y2z7L9jDZVywMU06u4niA0gQD9TvP-RB3AyO9IuzZuVqGatOLB0hIZt6lvUfxaEbJQ0XZcIC4Z2x-7hLyDbZBEbjUsP1pLLrMNsFprNTKsDpBRYowCrZ-47sBA.jpg"
         }
       ],
       "video_url": null,
@@ -124,9 +124,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1276-1-5d3dca27374a-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1276-1-5d3dca27374a-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/W8YRX6us3kpZWMcKMrGPdnzECiGn9tztZAXbjm4ngT-9yZHpho3BlrRBhuNQ7maE1ZnMcqtRyyquk73MCmFO0XVMoP5SIj48xaUQdkR7GnfziOEMj_ujgO4jGYfuNJ4tpJV17vYCp37Mz4geRngVZ5a7VJVt7iazpXx6syikcL95C7sVZXM1GzUd6kaH7t5Sthk-XEY60_rZqm1m5vvtwT8YZLeoBLL55BJiwaNTv8dEk5I0z0QracI4lXrOzhvHDMuXxbaJV-EHarA6bikdmrRvmqxVo_BdLc5m-trusmta1DQd7UNv0z9MxYri2TWh_pO3idbvZ7vBOeejCWAyqw.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1276-1-5d3dca27374a-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1276-1-5d3dca27374a-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -134,7 +133,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/W8YRX6us3kpZWMcKMrGPdnzECiGn9tztZAXbjm4ngT-9yZHpho3BlrRBhuNQ7maE1ZnMcqtRyyquk73MCmFO0XVMoP5SIj48xaUQdkR7GnfziOEMj_ujgO4jGYfuNJ4tpJV17vYCp37Mz4geRngVZ5a7VJVt7iazpXx6syikcL95C7sVZXM1GzUd6kaH7t5Sthk-XEY60_rZqm1m5vvtwT8YZLeoBLL55BJiwaNTv8dEk5I0z0QracI4lXrOzhvHDMuXxbaJV-EHarA6bikdmrRvmqxVo_BdLc5m-trusmta1DQd7UNv0z9MxYri2TWh_pO3idbvZ7vBOeejCWAyqw.jpg"
         }
       ],
       "video_url": null,
@@ -154,9 +154,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1275-1-042501d6f621-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1275-1-042501d6f621-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/EqkZTHgXj_WLw-3iLK7Gbq4cBv4319CJ2eglDn64j3o6ErSpvNpY70oervdEf0DGQQCl10G87sNJDGolkafr7yYNMnvSP_ZJcFvrzCUYeOyK1ijqGsp4nzkMkTtVylh64fGVw8uvS5nSg5ICIeqWF3lmWrihznfq9xReR8P8gXKheA3ztTlN0Wu6XjScaYvJJHA8ByMfPOIoMFpnWOL2AIe98FMJ0A4ZSyEkfTXhJfN8lStHBDHwWF85cvzNzMD2pHYAu19R-iTkeNNYl9AldgdcAI2S5jSvGiSKCe8QFQuHF4wnOyVzFWeKDukOyALm1g7o3aS_-Ow39C9ncNeTKQ.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1275-1-042501d6f621-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1275-1-042501d6f621-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -164,7 +163,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/EqkZTHgXj_WLw-3iLK7Gbq4cBv4319CJ2eglDn64j3o6ErSpvNpY70oervdEf0DGQQCl10G87sNJDGolkafr7yYNMnvSP_ZJcFvrzCUYeOyK1ijqGsp4nzkMkTtVylh64fGVw8uvS5nSg5ICIeqWF3lmWrihznfq9xReR8P8gXKheA3ztTlN0Wu6XjScaYvJJHA8ByMfPOIoMFpnWOL2AIe98FMJ0A4ZSyEkfTXhJfN8lStHBDHwWF85cvzNzMD2pHYAu19R-iTkeNNYl9AldgdcAI2S5jSvGiSKCe8QFQuHF4wnOyVzFWeKDukOyALm1g7o3aS_-Ow39C9ncNeTKQ.jpg"
         }
       ],
       "video_url": null,
@@ -199,9 +199,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1273-1-989873b9f36f-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1273-1-989873b9f36f-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/mHq59adfCxDjGMEBFiwR6dg5RIEUjKu9Y0ZX5P4kvMu7fk87G3nujL0r_wWaWC1XdKQNVpYhEX0cnPUcCI-jOazdAuDTpuTEkRYK02Z2CYcjcyXVQpaHonHhdhpVrSveEtqrpe2LD_SFINZYA9cyCTOsVM5I338ARgvsOO-R6cMU21P3zUq4u_NIrsT1q4pkQzl7H2LBjWKBn73LLWH4IyHfpDw_Pt-qziaNFuwcFvpLzidsaB3l9XVp2wpLqpn46n8bWdkOXOI7jh_ChW1q3SNnquYTczJu1guy_Asy1EcBaYJ-BKyPLR98dizyzevMIdm3V-yMhKr21gKcVNDMPA.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1273-1-989873b9f36f-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1273-1-989873b9f36f-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -209,7 +208,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/mHq59adfCxDjGMEBFiwR6dg5RIEUjKu9Y0ZX5P4kvMu7fk87G3nujL0r_wWaWC1XdKQNVpYhEX0cnPUcCI-jOazdAuDTpuTEkRYK02Z2CYcjcyXVQpaHonHhdhpVrSveEtqrpe2LD_SFINZYA9cyCTOsVM5I338ARgvsOO-R6cMU21P3zUq4u_NIrsT1q4pkQzl7H2LBjWKBn73LLWH4IyHfpDw_Pt-qziaNFuwcFvpLzidsaB3l9XVp2wpLqpn46n8bWdkOXOI7jh_ChW1q3SNnquYTczJu1guy_Asy1EcBaYJ-BKyPLR98dizyzevMIdm3V-yMhKr21gKcVNDMPA.jpg"
         }
       ],
       "video_url": null,
@@ -244,9 +244,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1270-1-c4a6123adb5b-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1270-1-c4a6123adb5b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/C2IW8MrRTYoCLdqt0v6qhB5Qa0f5jsq6sH-t-0niJmuNcuVKLhFIFsqXxhbQH3m7RVMZm1KE9PcPY2cUvREqr5Tk04MymB80DV-iqh5ukR2FuT1zrjpP48wIztuAx7ed30S0wyNtw6GcZKSbemTc2pP9odGaRrSQ0d-538UTjj0-AHNvS0ADBe2FmTOGCPKdOIeONihR009CMjYe4Av3wMjgs-qWsCOdZjoFiJ0k0SHqODPu7R3BgHwmKtj2IX_Yd6G1a9dClKTThgFZ0SwrTBtG3H0o7a8xNWmhn7iLoZaBMZz7R81osC1EVqpmfBhAWsqzWsmGICHWcFIWry4qww.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1270-1-c4a6123adb5b-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1270-1-c4a6123adb5b-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -254,7 +253,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/C2IW8MrRTYoCLdqt0v6qhB5Qa0f5jsq6sH-t-0niJmuNcuVKLhFIFsqXxhbQH3m7RVMZm1KE9PcPY2cUvREqr5Tk04MymB80DV-iqh5ukR2FuT1zrjpP48wIztuAx7ed30S0wyNtw6GcZKSbemTc2pP9odGaRrSQ0d-538UTjj0-AHNvS0ADBe2FmTOGCPKdOIeONihR009CMjYe4Av3wMjgs-qWsCOdZjoFiJ0k0SHqODPu7R3BgHwmKtj2IX_Yd6G1a9dClKTThgFZ0SwrTBtG3H0o7a8xNWmhn7iLoZaBMZz7R81osC1EVqpmfBhAWsqzWsmGICHWcFIWry4qww.jpg"
         }
       ],
       "video_url": null,
@@ -274,9 +274,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1269-1-7c23b1717b6e-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1269-1-7c23b1717b6e-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/MU754WU08y9eiq3xBoOUfb8_Z3_-7RNTzJXx1fQz3tbT_Gl27tb0KThdLW2opdDtLO9CkXmRD8wvtuQszpnL_6gd-rhzsRgGzZQkKQdEMOyOM8XNv9DVQ2xdZRUxjXWpLnoSa8ep_GKIRLXH1Cmj1DmeAxctC0UJGOJ3JR8RlIBduvdCV7VnuDEwZCa9tsQjCVMgcN1BkqS1Z0pMMUEfIRprol19UiKz6aq-mIKHCxjtzD7MFHuHjsmd2EiSFDdzcxre3MHT-1lr54FOpOSmMc1ks5Mf42b0OdFPc2zeXh-4UsX2p9mGHrRtUFTI6SoQ2rm9eGZjvU6V2ZUef_-5Dw.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1269-1-7c23b1717b6e-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1269-1-7c23b1717b6e-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -284,7 +283,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/MU754WU08y9eiq3xBoOUfb8_Z3_-7RNTzJXx1fQz3tbT_Gl27tb0KThdLW2opdDtLO9CkXmRD8wvtuQszpnL_6gd-rhzsRgGzZQkKQdEMOyOM8XNv9DVQ2xdZRUxjXWpLnoSa8ep_GKIRLXH1Cmj1DmeAxctC0UJGOJ3JR8RlIBduvdCV7VnuDEwZCa9tsQjCVMgcN1BkqS1Z0pMMUEfIRprol19UiKz6aq-mIKHCxjtzD7MFHuHjsmd2EiSFDdzcxre3MHT-1lr54FOpOSmMc1ks5Mf42b0OdFPc2zeXh-4UsX2p9mGHrRtUFTI6SoQ2rm9eGZjvU6V2ZUef_-5Dw.jpg"
         }
       ],
       "video_url": null,
@@ -304,9 +304,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1268-1-c876b47b82b5-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1268-1-c876b47b82b5-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/irf48SiQ9saCdFFcq9-AQGEYYIto152ZCUglsG79ociMDMlAiznqNYGaT4qu-l96M4-y6HQV9pZ9KKKgQE-7uhjZoeZMDaxY1t-zMsJdX8UY_8TMMrYb2Vm8ldcMrWQccbvfpoxbSVmFbrA3M98iHmSID5a8fPvyZ2eoxOchkor0-znlEXJ2-vNp-RFbTHRv5WbbaPPFQYg29dOftzmidsxtW-DnItNzLYav5wt_2QOhFEoin6r1hpiWS3NDi-Ehbdo79EjePuqvupNpGwpZN1yD9-ngyk8zwSs7oQHjYNeM6arEr_aik2bhGT6xLx6Fvrl62dt6YtGDB7pLErnfTw.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1268-1-c876b47b82b5-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1268-1-c876b47b82b5-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "feed_width": 1800,
@@ -314,7 +313,8 @@
           "full_width": 1880,
           "full_height": 1880,
           "source_width": 1880,
-          "source_height": 1880
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/irf48SiQ9saCdFFcq9-AQGEYYIto152ZCUglsG79ociMDMlAiznqNYGaT4qu-l96M4-y6HQV9pZ9KKKgQE-7uhjZoeZMDaxY1t-zMsJdX8UY_8TMMrYb2Vm8ldcMrWQccbvfpoxbSVmFbrA3M98iHmSID5a8fPvyZ2eoxOchkor0-znlEXJ2-vNp-RFbTHRv5WbbaPPFQYg29dOftzmidsxtW-DnItNzLYav5wt_2QOhFEoin6r1hpiWS3NDi-Ehbdo79EjePuqvupNpGwpZN1yD9-ngyk8zwSs7oQHjYNeM6arEr_aik2bhGT6xLx6Fvrl62dt6YtGDB7pLErnfTw.jpg"
         }
       ],
       "video_url": null,
@@ -328,7 +328,7 @@
       "date": "2026-01-12T04:01:09+00:00",
       "text": "В частности, продлеваются:\n\n▪️период, когда ЗОУИТ считаются установленными при отсутствии сведений о таких зонах в ЕГРН – до 2033г.;  \n\n▪️период, когда ЗОУИТ установленные НПА или решениями об их установлении, считаются установленными вне зависимости от соответствия решений требованиям ст. 106 Земельного кодекса РФ – до 2031г.;\n\n▪️срок установления ЗОУИТ, которая ранее не была установлена, такая зона и ее границы должны быть установлены в срок до 2033г.;\n\n▪️срок для обращения в органы государственной власти, МСУ правообладателей зданий, сооружений, в связи с размещением которых установлены ЗОУИТ, с целью приведения в соответствие с положением о ЗОУИТ требований к ее предельным размерам, ограничениям использования земельных участков - до 01.07.2032;\n\n▪️срок для установления ЗОУИТ, требование об установлении которой предусмотрено законом, или ее границ до 01.01.2033;\n\n▪️период, в течение которого в целях установления, изменения, прекращения существования СЗЗ не требуются представление застройщиком решения об установлении или изменении СЗЗ, а также внесение сведений о таких зонах в ЕГРН – до марта 2031;\n\n▪️срок принятия решения об установлении зон минимальных расстояний до магистральных или промышленных трубопроводов – до 2033г.\n\n☝️Также предусмотрены полномочия РФ по освобождению от применения ограничений в отношении зданий, сооружений, объектов незавершенного строительства, созданных до принятия положения о ЗОУИТ, и земельных участков, права на которые возникли до дня вступления в силу такого положения, при условии, что это не создает угрозу жизни граждан, обороне страны и безопасности государства.\n\n#ИзмененияЗаконодательства",
       "text_html": "В частности, продлеваются:<br><br>▪️период, когда ЗОУИТ считаются установленными при отсутствии сведений о таких зонах в ЕГРН – до 2033г.;  <br><br>▪️период, когда ЗОУИТ установленные НПА или решениями об их установлении, считаются установленными вне зависимости от соответствия решений требованиям ст. 106 Земельного кодекса РФ – до 2031г.;<br><br>▪️срок установления ЗОУИТ, которая ранее не была установлена, такая зона и ее границы должны быть установлены в срок до 2033г.;<br><br>▪️срок для обращения в органы государственной власти, МСУ правообладателей зданий, сооружений, в связи с размещением которых установлены ЗОУИТ, с целью приведения в соответствие с положением о ЗОУИТ требований к ее предельным размерам, ограничениям использования земельных участков - до 01.07.2032;<br><br>▪️срок для установления ЗОУИТ, требование об установлении которой предусмотрено законом, или ее границ до 01.01.2033;<br><br>▪️период, в течение которого в целях установления, изменения, прекращения существования СЗЗ не требуются представление застройщиком решения об установлении или изменении СЗЗ, а также внесение сведений о таких зонах в ЕГРН – до марта 2031;<br><br>▪️срок принятия решения об установлении зон минимальных расстояний до магистральных или промышленных трубопроводов – до 2033г.<br><br>☝️Также предусмотрены полномочия РФ по освобождению от применения ограничений в отношении зданий, сооружений, объектов незавершенного строительства, созданных до принятия положения о ЗОУИТ, и земельных участков, права на которые возникли до дня вступления в силу такого положения, при условии, что это не создает угрозу жизни граждан, обороне страны и безопасности государства.<br><br>#ИзмененияЗаконодательства",
-      "views": 887,
+      "views": 888,
       "comments_count": 0,
       "comments_url": null,
       "photos": [],
@@ -349,9 +349,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1266-1-69e5337a58a2-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1266-1-69e5337a58a2-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/GP2caK9YitPnR0vRGGqqIp_L3Lw-WrB8nSYW9xK0rc2HUz6Q07x0IoHnbVld6aPgxs0p1qJ45q89BfrEbz14SXu_a54R1ua5QdfnKzZIs87Bxaq0GcNWveUlsSHQX5_erxKE-RDkPoY6IFvQCakHD2j1CWvrSCu2QjcTak8vAzsB8w2uokLuV1spHXib2EP-9g_A_fKPOIA6s_GdhFWOt4xpMb-q-QfBiCvcuNGSQl-12qqIkhAr5IfirPCEojkXCKr5kAq5OvENBERL6U2LtWpt2F6DxRGg1tYULgrjsgknoIXiC41W6s1KhTAmlHYZAOEIm6TnfO0IFnkQhIjdng.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1266-1-69e5337a58a2-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1266-1-69e5337a58a2-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -359,7 +358,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/GP2caK9YitPnR0vRGGqqIp_L3Lw-WrB8nSYW9xK0rc2HUz6Q07x0IoHnbVld6aPgxs0p1qJ45q89BfrEbz14SXu_a54R1ua5QdfnKzZIs87Bxaq0GcNWveUlsSHQX5_erxKE-RDkPoY6IFvQCakHD2j1CWvrSCu2QjcTak8vAzsB8w2uokLuV1spHXib2EP-9g_A_fKPOIA6s_GdhFWOt4xpMb-q-QfBiCvcuNGSQl-12qqIkhAr5IfirPCEojkXCKr5kAq5OvENBERL6U2LtWpt2F6DxRGg1tYULgrjsgknoIXiC41W6s1KhTAmlHYZAOEIm6TnfO0IFnkQhIjdng.jpg"
         }
       ],
       "video_url": null,
