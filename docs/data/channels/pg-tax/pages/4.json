@@ -1,13 +1,33 @@
 {
-  "generated_at": "2026-04-06T12:21:07.095213+00:00",
-  "build_id": "284c32171250",
+  "generated_at": "2026-04-06T12:49:48.819269+00:00",
+  "build_id": "47cf1f71e3cc",
   "pagination": {
     "page": 4,
     "page_size": 16,
-    "total_posts": 172,
+    "total_posts": 173,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2522,
+      "date": "2026-03-10T13:41:22+00:00",
+      "text": "⚡️ ФАС России подтвердила позицию о незаконности рекламы в Telegram\n\nВ пятницу мы писали о рисках отказа в учёте расходов по налогу на прибыль в связи с распространившейся в СМИ информацией о том, что ФАС России считает размещение рекламы в Telegram нарушающим требования российского законодательства о рекламе. \n\nСегодня регулятор опубликовал на своём сайте разъяснения с подтверждением этой позиции:\n\nВ связи с принятием Роскомнадзором мер по ограничению доступа к... мессенджерам Телеграм и Вотсап ФАС России усматривает в размещении рекламы на данных ресурсах признаки нарушения части 10.7 статьи 5 Федерального закона «О рекламе».\n \nСлужба отмечает, что в случае принятия Роскомнадзором мер по ограничению доступа к информационным ресурсам в соответствии с законодательством, реклама на таких ресурсах запрещается. Ответственность за такое нарушение несут как рекламодатель, так и рекламораспространитель.\n\n🛑 Среди прочих ресурсов, реклама на которых запрещена, наряду с Телеграм, ФАС России назвала Ютуб и Вотсап.  \n\n#изменения_законодательства",
+      "text_html": "⚡️ ФАС России подтвердила позицию о незаконности рекламы в Telegram<br><br>В пятницу мы писали о рисках отказа в учёте расходов по налогу на прибыль в связи с распространившейся в СМИ информацией о том, что ФАС России считает размещение рекламы в Telegram нарушающим требования российского законодательства о рекламе. <br><br>Сегодня регулятор <a href=\"https://fas.gov.ru/news/34556\" target=\"_blank\" rel=\"noopener noreferrer\">опубликовал</a> на своём сайте разъяснения с подтверждением этой позиции:<br><br>В связи с принятием Роскомнадзором мер по ограничению доступа к... мессенджерам Телеграм и Вотсап ФАС России усматривает в размещении рекламы на данных ресурсах признаки нарушения части 10.7 статьи 5 Федерального закона «О рекламе».<br> <br>Служба отмечает, что в случае принятия Роскомнадзором мер по ограничению доступа к информационным ресурсам в соответствии с законодательством, реклама на таких ресурсах запрещается. Ответственность за такое нарушение несут как рекламодатель, так и рекламораспространитель.<br><br>🛑 Среди прочих ресурсов, реклама на которых запрещена, наряду с Телеграм, ФАС России назвала Ютуб и Вотсап.  <br><br>#изменения_законодательства",
+      "views": 1320,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PG_Tax/2522",
+      "forwarded_from": null,
+      "reply_to": {
+        "post_id": 2516,
+        "title": "⚡️ ФАС фактически объявила рекламу в Telegram незаконной. Налоговые последствия могут оказаться куда болезненнее…",
+        "tg_url": "https://t.me/PG_Tax/2516",
+        "channel_username": "PG_Tax"
+      }
+    },
     {
       "id": 2521,
       "date": "2026-03-10T10:05:38+00:00",
@@ -19,9 +39,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2521-1-1c52bfa82181-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2521-1-1c52bfa82181-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/ZfPMRmvVc9UNMGWYaSKXQ_gyQZckQARBLjm5VoVj61odE-R_eIXrveAZ6CucaxrgCJnG9YsYNpLQJO6-V0Wj2Iip_AkflCGUvwtveFroC0VSWDHBdk4ydhmN6TNKPoAvXUVYhGWS2989SgiZPc8sUHV1nzkk6bYD-ceT6K27g0n3jn1B6QaJXXrDJ7f871Y6hT2EjRIHzPo-yDBgvq-t75sH7SOkeXYXsCERzyealCEE0AT1oNc_HnxEeUP9uAfwxahTGFlzPZCMNzru0Fa98fJyo3GITxRuW8oQOjFjUIlkjhd-0rRsQeyIjVlFP_SAvp2JIQVJJ84VnvI9mmkLXQ.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2521-1-1c52bfa82181-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2521-1-1c52bfa82181-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -29,7 +48,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/ZfPMRmvVc9UNMGWYaSKXQ_gyQZckQARBLjm5VoVj61odE-R_eIXrveAZ6CucaxrgCJnG9YsYNpLQJO6-V0Wj2Iip_AkflCGUvwtveFroC0VSWDHBdk4ydhmN6TNKPoAvXUVYhGWS2989SgiZPc8sUHV1nzkk6bYD-ceT6K27g0n3jn1B6QaJXXrDJ7f871Y6hT2EjRIHzPo-yDBgvq-t75sH7SOkeXYXsCERzyealCEE0AT1oNc_HnxEeUP9uAfwxahTGFlzPZCMNzru0Fa98fJyo3GITxRuW8oQOjFjUIlkjhd-0rRsQeyIjVlFP_SAvp2JIQVJJ84VnvI9mmkLXQ.jpg"
         }
       ],
       "video_url": null,
@@ -49,9 +69,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2520-1-7ec973869613-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2520-1-7ec973869613-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/OVwUhvFWpOFoxXQAvdf7AJeR4WmGi_sA5z0ZwbdZjtbTlP2QwtdYlfm-VLjXppw-fderx3MIbVz9Cg771OElTuPGXXL_8rLNcrhN_C7OUkjOSW2eBvS3fXKvHWqhQa36BRy7ZOkrPCqJSMHG1A2qDCa2RJIJhjykMRPyeTncfWTDFeKw6nqb8zML6NP-dLQH6vOliStYaF5FT6YlicqdXDd7Wx8UY6fxAbhMv5VCuuwzy5ieX7AKtpesoq9ZkZlf77PPiEvNUh0skG4bz0n_zWngLfWDU8WJ7Nn0iNmjcps2SSinrOrzYftNaejmb3f-CJgdoTQDkpWtdiHJnBE0Ww.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2520-1-7ec973869613-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2520-1-7ec973869613-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -59,7 +78,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/OVwUhvFWpOFoxXQAvdf7AJeR4WmGi_sA5z0ZwbdZjtbTlP2QwtdYlfm-VLjXppw-fderx3MIbVz9Cg771OElTuPGXXL_8rLNcrhN_C7OUkjOSW2eBvS3fXKvHWqhQa36BRy7ZOkrPCqJSMHG1A2qDCa2RJIJhjykMRPyeTncfWTDFeKw6nqb8zML6NP-dLQH6vOliStYaF5FT6YlicqdXDd7Wx8UY6fxAbhMv5VCuuwzy5ieX7AKtpesoq9ZkZlf77PPiEvNUh0skG4bz0n_zWngLfWDU8WJ7Nn0iNmjcps2SSinrOrzYftNaejmb3f-CJgdoTQDkpWtdiHJnBE0Ww.jpg"
         }
       ],
       "video_url": null,
@@ -79,9 +99,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2518-1-8b68e6ab720b-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2518-1-8b68e6ab720b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/VHDdkZpH2lB1_pIXJFuAOHMwFt_RfQiJljupfS3eMeRVfzZ27Hap983TP5bYWm9bPe8vuj5IaM7tmc5fT-QDeFWkkPMpboDrC83JnYf-kz3HkPfrJsnr3byt_bjc5kOEoiYpVvZIcr48pO0vZLXhTTj31qaQwzw9tjdqM76Shq5a8CGrTtk0Kp680_hiievDeB3cZUQZE5Lu0BWOFnXo-BC9P0Wy1lAdO010rlfrphzgfICkjeL7vwlzy0ikykAR6DIlYoPzaHUix2Cx5_zzY786eNigfEOivY4pHfI4aQVMTGXmqFOa2390vqYlpfrg-YYvLBdTw6R_Brvk8Z_yaQ.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2518-1-8b68e6ab720b-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2518-1-8b68e6ab720b-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -89,7 +108,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/VHDdkZpH2lB1_pIXJFuAOHMwFt_RfQiJljupfS3eMeRVfzZ27Hap983TP5bYWm9bPe8vuj5IaM7tmc5fT-QDeFWkkPMpboDrC83JnYf-kz3HkPfrJsnr3byt_bjc5kOEoiYpVvZIcr48pO0vZLXhTTj31qaQwzw9tjdqM76Shq5a8CGrTtk0Kp680_hiievDeB3cZUQZE5Lu0BWOFnXo-BC9P0Wy1lAdO010rlfrphzgfICkjeL7vwlzy0ikykAR6DIlYoPzaHUix2Cx5_zzY786eNigfEOivY4pHfI4aQVMTGXmqFOa2390vqYlpfrg-YYvLBdTw6R_Brvk8Z_yaQ.jpg"
         }
       ],
       "video_url": null,
@@ -129,9 +149,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2516-1-4e8c99c57a45-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2516-1-4e8c99c57a45-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/GCyexmk8Tp43IUXgdUg0qMt-_a4WBzk9u80OCe08GHQX1wUlKlp1EOvDgp3RMP5LzHiRXF1rTAUuUqofQ4YR3vsuADkKVyuucXqJ_vPx4zRImzzEKZS17x2Qnwf5iudOL3TsAAmtRHhr8QP_fKi7E-jPMO9L36GXN9zSq-cbPWynGCJiSK3fx__NC9cL7P7JRiebKhhkoPBWexZ3_eTc8DzquY5SK0ftTDEHJw1ElgQ24jkfgJaz6WQglgxreupcJJNMPMiLtGO1TGLYQGjQtPR3k5pkFNJNY47WUkwStAL-p17yzqg9o0e34xUcc2iYNfK-HmwbQkwZAC8YL5kdbg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2516-1-4e8c99c57a45-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2516-1-4e8c99c57a45-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -139,7 +158,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/GCyexmk8Tp43IUXgdUg0qMt-_a4WBzk9u80OCe08GHQX1wUlKlp1EOvDgp3RMP5LzHiRXF1rTAUuUqofQ4YR3vsuADkKVyuucXqJ_vPx4zRImzzEKZS17x2Qnwf5iudOL3TsAAmtRHhr8QP_fKi7E-jPMO9L36GXN9zSq-cbPWynGCJiSK3fx__NC9cL7P7JRiebKhhkoPBWexZ3_eTc8DzquY5SK0ftTDEHJw1ElgQ24jkfgJaz6WQglgxreupcJJNMPMiLtGO1TGLYQGjQtPR3k5pkFNJNY47WUkwStAL-p17yzqg9o0e34xUcc2iYNfK-HmwbQkwZAC8YL5kdbg.jpg"
         }
       ],
       "video_url": null,
@@ -159,9 +179,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2515-1-c1a77012eb73-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2515-1-c1a77012eb73-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/KYg7O16FPho0IFgBfXWv8SBmfuVDHxcVAw3aneyjQGTQboE2Sg2MDjMkbqXtqbZbtCGvJEZzvd9JRsLjbcaocmWesv1ho-7rH-obsf-J5yNvyN4usLRhSTHC5l0o4fmrLA2nRDEKPghNIMvVzwXTQOpWCIfx73c95vS1fRlpRXevAYxu8htTYt5ho5GQGlEfYFcFMkXZKpr0PSwSAi5Mt9xylUgdE21ty5-WkmPHmJG0p677o6eXPvwgXNFOQ7NKkRf72RKK4dqfT13jHShQD31rK08j9foLHgWlx-bt6OSJY17LECOcT_6RM6vSfrE5Ft-25dvn9iIB2wK8b6bDCg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2515-1-c1a77012eb73-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2515-1-c1a77012eb73-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -169,7 +188,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/KYg7O16FPho0IFgBfXWv8SBmfuVDHxcVAw3aneyjQGTQboE2Sg2MDjMkbqXtqbZbtCGvJEZzvd9JRsLjbcaocmWesv1ho-7rH-obsf-J5yNvyN4usLRhSTHC5l0o4fmrLA2nRDEKPghNIMvVzwXTQOpWCIfx73c95vS1fRlpRXevAYxu8htTYt5ho5GQGlEfYFcFMkXZKpr0PSwSAi5Mt9xylUgdE21ty5-WkmPHmJG0p677o6eXPvwgXNFOQ7NKkRf72RKK4dqfT13jHShQD31rK08j9foLHgWlx-bt6OSJY17LECOcT_6RM6vSfrE5Ft-25dvn9iIB2wK8b6bDCg.jpg"
         }
       ],
       "video_url": null,
@@ -233,9 +253,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2512-1-2d4092d224bc-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2512-1-2d4092d224bc-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/va6YoazqUMzOLBICmPWEJJnrjmrRDT7xaDmk66HJwMkldDJdA0eBpM_yefv6zguVIlwOlSlsehx3BVVp96KpMRymaztbXya5bWTxEk2-i5r7ZHLea0cllX4MT_JJX1RxkpiTPKQGWPwahmPcC_wkACDWP-BDLkVJcpOGbVOeUCnEnrM_qjFe8043Pq_P89mzLSMXzImTnZDEetB7VtzGXq2qzSqDchto2OY-WC_j74aiFDXJsfg_N9S7-l22UvkcbP-vJ0H8IV1BWt3ajYRGP1U-XO79lPx3fbqUbRenYCVZfrOJ-psC_wRSAOOzBHXJyxJUVZwcg3S7jIJ6P5jcVA.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2512-1-2d4092d224bc-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2512-1-2d4092d224bc-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -243,7 +262,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/va6YoazqUMzOLBICmPWEJJnrjmrRDT7xaDmk66HJwMkldDJdA0eBpM_yefv6zguVIlwOlSlsehx3BVVp96KpMRymaztbXya5bWTxEk2-i5r7ZHLea0cllX4MT_JJX1RxkpiTPKQGWPwahmPcC_wkACDWP-BDLkVJcpOGbVOeUCnEnrM_qjFe8043Pq_P89mzLSMXzImTnZDEetB7VtzGXq2qzSqDchto2OY-WC_j74aiFDXJsfg_N9S7-l22UvkcbP-vJ0H8IV1BWt3ajYRGP1U-XO79lPx3fbqUbRenYCVZfrOJ-psC_wRSAOOzBHXJyxJUVZwcg3S7jIJ6P5jcVA.jpg"
         }
       ],
       "video_url": null,
@@ -283,9 +303,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2510-1-3ae09dc9977b-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2510-1-3ae09dc9977b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/jrW3zHFlQFwk1dUjr9GkeyNHw5BqQ_j_4koA7owfv3GtO18R00qZrKlfASZQx4IjhrTRf4Oe9IgJszpdcbz_8kwJf_HILwhrBBUjumosflgufaIuZdI5sclR6MoeibcyHkrgutVagXvvV3i-Qyzzy2vN4uTz4eeFuBrulHUz5qOTnX3a4pFH-L6bK36_1iT1AYBLoRl4vVtqrf_q-RczNMhGgN8EPBkparPScU4APdFUl4W8wu6IkZBolYQNNcoZOF-PJMgTXZS6-hdSksvK24NzDmVrtm0YZ9RvSiejxQGCSQrE0Vncnd2WPCF9X4fiDhjZGDCgtu3CVawnDmoz8Q.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2510-1-3ae09dc9977b-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2510-1-3ae09dc9977b-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -293,7 +312,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/jrW3zHFlQFwk1dUjr9GkeyNHw5BqQ_j_4koA7owfv3GtO18R00qZrKlfASZQx4IjhrTRf4Oe9IgJszpdcbz_8kwJf_HILwhrBBUjumosflgufaIuZdI5sclR6MoeibcyHkrgutVagXvvV3i-Qyzzy2vN4uTz4eeFuBrulHUz5qOTnX3a4pFH-L6bK36_1iT1AYBLoRl4vVtqrf_q-RczNMhGgN8EPBkparPScU4APdFUl4W8wu6IkZBolYQNNcoZOF-PJMgTXZS6-hdSksvK24NzDmVrtm0YZ9RvSiejxQGCSQrE0Vncnd2WPCF9X4fiDhjZGDCgtu3CVawnDmoz8Q.jpg"
         }
       ],
       "video_url": null,
@@ -313,9 +333,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2509-1-757668cfa26d-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2509-1-757668cfa26d-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/LcR-MQo4SjbbVB4bG-FNvMf0Q6J2mu6Lvzoyj3d1RORCCPD7lgFJGLZw1CXSXrZTqhI-OV3eJSzMIOwcDckzO4TkTT_odZmpo7djmZ1Pc_mbA4XX4VJ-RMGaGWEaEcMjIOf_Dit0m2RQxcpVoojxaEyI2Cpl2Jp6HilXGjmR_ULabkMwctxNFqNAJJJqdisv6a4pPNDxmGvOitU7wk85blSTSTaYjs5O7rvdqaNxbnsBOXRAXyf5jDXQsKOvhU0SUiLy0DaYiCf7B7rYr2OBYOHupVGMW4b0f1ZectOGhm39VKLWTMdbHuVVsVjlu_tybDd3-N0PZn6d5XSjUGCIcA.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2509-1-757668cfa26d-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2509-1-757668cfa26d-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -323,7 +342,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/LcR-MQo4SjbbVB4bG-FNvMf0Q6J2mu6Lvzoyj3d1RORCCPD7lgFJGLZw1CXSXrZTqhI-OV3eJSzMIOwcDckzO4TkTT_odZmpo7djmZ1Pc_mbA4XX4VJ-RMGaGWEaEcMjIOf_Dit0m2RQxcpVoojxaEyI2Cpl2Jp6HilXGjmR_ULabkMwctxNFqNAJJJqdisv6a4pPNDxmGvOitU7wk85blSTSTaYjs5O7rvdqaNxbnsBOXRAXyf5jDXQsKOvhU0SUiLy0DaYiCf7B7rYr2OBYOHupVGMW4b0f1ZectOGhm39VKLWTMdbHuVVsVjlu_tybDd3-N0PZn6d5XSjUGCIcA.jpg"
         }
       ],
       "video_url": null,
@@ -343,9 +363,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2508-1-56fdc03ab786-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2508-1-56fdc03ab786-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/T0BvcgsQ4Jx6VMPMcJFoLFpXeijWUvIT3e-4x2czTapMqmV9W2ZXob7XkXnVpCS5avyw6p1qk6BxLw3_t94HG8mHvi76O8iikmeF4-KacBt1gSwB4fjam5lfFvJXJJKPIz_y8n5HQ6253eNhwnDV5RcQU_1XnopCwxD_XZri1YdQdo_xTvpxxHji3SFO-NJ-4P76mgc-Ffj6Nemtcz_ftZ9By159-JKiQbOH9rov-uqYllgRaaV5ju05I5yr9_e4Xi_5fQJeDxW4wI4JxpLrYa3pyBHq1LKOQPJPbbpsm4M9SJNyBEPC_6-wWW3b1OfCr3e8x3IbpyfBM7pypM_6Wg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2508-1-56fdc03ab786-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2508-1-56fdc03ab786-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -353,7 +372,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/T0BvcgsQ4Jx6VMPMcJFoLFpXeijWUvIT3e-4x2czTapMqmV9W2ZXob7XkXnVpCS5avyw6p1qk6BxLw3_t94HG8mHvi76O8iikmeF4-KacBt1gSwB4fjam5lfFvJXJJKPIz_y8n5HQ6253eNhwnDV5RcQU_1XnopCwxD_XZri1YdQdo_xTvpxxHji3SFO-NJ-4P76mgc-Ffj6Nemtcz_ftZ9By159-JKiQbOH9rov-uqYllgRaaV5ju05I5yr9_e4Xi_5fQJeDxW4wI4JxpLrYa3pyBHq1LKOQPJPbbpsm4M9SJNyBEPC_6-wWW3b1OfCr3e8x3IbpyfBM7pypM_6Wg.jpg"
         }
       ],
       "video_url": null,
@@ -373,9 +393,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2507-1-4e79fea8339b-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2507-1-4e79fea8339b-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/g_nIdDLdQGbcPJfeLlkf1rrkoB_Lo0nWVWKNOsnzSKn4GvI-61bN1G-vOvIcBWPKeX_nhBC9NayZlHAm97wnuYszvYcZBM_Q_4FJ_6ouf45P91VmpAPYLKbRCgfADfS2dnsTBg89j_vF6PujFcKI3kJMgws9FsWnnvCIP11sKrF89DrUEE5O4yp2a1HiV9vi_DQJmv0tE3UzKTrkGDx2iyRL23WSBpiCfcHAvwBBU1pf6NoW2RJ5TwM7yOhxqbpYzmAeYZd1CxWuWXOygb4hd_4Yvy0x2ItAplmteKPXrE_KeKAoVZ2fdZmmyK5_Tdo4rOEenEvMRT_8mzqj0clSZg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2507-1-4e79fea8339b-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2507-1-4e79fea8339b-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -383,7 +402,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/g_nIdDLdQGbcPJfeLlkf1rrkoB_Lo0nWVWKNOsnzSKn4GvI-61bN1G-vOvIcBWPKeX_nhBC9NayZlHAm97wnuYszvYcZBM_Q_4FJ_6ouf45P91VmpAPYLKbRCgfADfS2dnsTBg89j_vF6PujFcKI3kJMgws9FsWnnvCIP11sKrF89DrUEE5O4yp2a1HiV9vi_DQJmv0tE3UzKTrkGDx2iyRL23WSBpiCfcHAvwBBU1pf6NoW2RJ5TwM7yOhxqbpYzmAeYZd1CxWuWXOygb4hd_4Yvy0x2ItAplmteKPXrE_KeKAoVZ2fdZmmyK5_Tdo4rOEenEvMRT_8mzqj0clSZg.jpg"
         }
       ],
       "video_url": null,
@@ -420,36 +440,6 @@
         "source_width": 640,
         "source_height": 640
       }
-    },
-    {
-      "id": 2504,
-      "date": "2026-03-03T10:06:46+00:00",
-      "text": null,
-      "text_html": null,
-      "views": 1160,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2504-1-b514bcd6c0b9-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2504-1-b514bcd6c0b9-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/B2hOvi3RbBVt9_kVOXc12BrWXderpZoajCGDh7wFeqFS8VPp49nAgXwDBUOk64kOoy7197gfp2Whsj0qpsZmICBLP-VLcw9X-rnvaGVgz4w1nV6tye0Mze9G-RvnK5BrX7EI7xFXo7FP9e5i3LJkxgxmXssseiLfil03OgFh_ApmecSEii79JPyBU1uZ5D3N8zf1_g3P71sDzUeG-2wFqCyEuvNWGD5ZzZdD_COZIrkQ2WNKSGjjBlplmgwgsRX9-1QCLMCTakHTYeQ43rQA8zs4MXzSB70-E32K8SyOskwPcrpeEd1HwpvuzqkuCwIBDDKFm973qx19M9zyDFyy4w.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2504-1-b514bcd6c0b9-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2504",
-      "forwarded_from": null,
-      "reply_to": null
     }
   ]
 }

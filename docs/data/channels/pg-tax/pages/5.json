@@ -1,13 +1,43 @@
 {
-  "generated_at": "2026-04-06T12:21:07.097733+00:00",
-  "build_id": "284c32171250",
+  "generated_at": "2026-04-06T12:49:48.821861+00:00",
+  "build_id": "47cf1f71e3cc",
   "pagination": {
     "page": 5,
     "page_size": 16,
-    "total_posts": 172,
+    "total_posts": 173,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2504,
+      "date": "2026-03-03T10:06:46+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1160,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2504-1-b514bcd6c0b9-v8.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2504-1-b514bcd6c0b9-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2504-1-b514bcd6c0b9-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/B2hOvi3RbBVt9_kVOXc12BrWXderpZoajCGDh7wFeqFS8VPp49nAgXwDBUOk64kOoy7197gfp2Whsj0qpsZmICBLP-VLcw9X-rnvaGVgz4w1nV6tye0Mze9G-RvnK5BrX7EI7xFXo7FP9e5i3LJkxgxmXssseiLfil03OgFh_ApmecSEii79JPyBU1uZ5D3N8zf1_g3P71sDzUeG-2wFqCyEuvNWGD5ZzZdD_COZIrkQ2WNKSGjjBlplmgwgsRX9-1QCLMCTakHTYeQ43rQA8zs4MXzSB70-E32K8SyOskwPcrpeEd1HwpvuzqkuCwIBDDKFm973qx19M9zyDFyy4w.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PG_Tax/2504",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2502,
       "date": "2026-03-03T07:45:10+00:00",
@@ -19,9 +49,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2502-1-97b56329ce93-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2502-1-97b56329ce93-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/hDHbxm24HpOIcyDHGEvOiIpob7PVD0AR7eB6b6MgOi-0bzNb7-0321Qt_NrO9G9QY4oKS06QVXRKrbqwHXy_GpMSTltQ_iwQ7Gjx-NzKOoWfP9teEaSaLBLjmJSo3MaOV6bcLd3mCbde0IcMKbQHvTUnaDZayIN-MN_MhQYo2pj5GGSro8BmTMJrkbFaNFBxACJxG03x2B3C6VTevyxhBkh7wW5X55FS-x5ZepR4iaXHPlPeLUXPBgU1RwFwgndAvEHc5lAHfNq9-aetRht8IM4W97gWc-Ou0aR-M7Zj858MfowAcvhT612qiU0y1yAaiXhicb7PnVFavYqBx_5gmA.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2502-1-97b56329ce93-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2502-1-97b56329ce93-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -29,7 +58,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/hDHbxm24HpOIcyDHGEvOiIpob7PVD0AR7eB6b6MgOi-0bzNb7-0321Qt_NrO9G9QY4oKS06QVXRKrbqwHXy_GpMSTltQ_iwQ7Gjx-NzKOoWfP9teEaSaLBLjmJSo3MaOV6bcLd3mCbde0IcMKbQHvTUnaDZayIN-MN_MhQYo2pj5GGSro8BmTMJrkbFaNFBxACJxG03x2B3C6VTevyxhBkh7wW5X55FS-x5ZepR4iaXHPlPeLUXPBgU1RwFwgndAvEHc5lAHfNq9-aetRht8IM4W97gWc-Ou0aR-M7Zj858MfowAcvhT612qiU0y1yAaiXhicb7PnVFavYqBx_5gmA.jpg"
         }
       ],
       "video_url": null,
@@ -49,9 +79,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2501-1-101d086d12a1-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2501-1-101d086d12a1-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/ax_G7mg8Ze60jGiRe7BziuxCuOazAbhCCJMqYTbrp3WqJQF7RVN5l7BpeYZMEB480ICdsVA_XLiwBLoy-xO7hlsCSvDnCdXqH1daWgTT0-QpgNeyKlPd7c3FDc3jVb6MCLMuCNK6zm3O_353xuImM1Dkor-RDB7Dwzh0tuj9RGHW0KYNj1NfW49UOj-XvAmRYoL6kbbyq2bYiQt5OxIBCKO9OE19Czv9vHw3S__o8hOFhZVQBK_AK1IRLmSQvkVfrQrasXFwnrmsoPNzXgTs5dtNcrtSzD5iZJKs2TZd7c0088L9qWZoMBixv-Uz3bWd_qZoLQ1C7D-WNSWR05n8ug.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2501-1-101d086d12a1-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2501-1-101d086d12a1-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 478,
           "feed_width": 1800,
@@ -59,7 +88,8 @@
           "full_width": 1880,
           "full_height": 1123,
           "source_width": 1880,
-          "source_height": 1123
+          "source_height": 1123,
+          "source_url": "https://cdn4.telesco.pe/file/ax_G7mg8Ze60jGiRe7BziuxCuOazAbhCCJMqYTbrp3WqJQF7RVN5l7BpeYZMEB480ICdsVA_XLiwBLoy-xO7hlsCSvDnCdXqH1daWgTT0-QpgNeyKlPd7c3FDc3jVb6MCLMuCNK6zm3O_353xuImM1Dkor-RDB7Dwzh0tuj9RGHW0KYNj1NfW49UOj-XvAmRYoL6kbbyq2bYiQt5OxIBCKO9OE19Czv9vHw3S__o8hOFhZVQBK_AK1IRLmSQvkVfrQrasXFwnrmsoPNzXgTs5dtNcrtSzD5iZJKs2TZd7c0088L9qWZoMBixv-Uz3bWd_qZoLQ1C7D-WNSWR05n8ug.jpg"
         }
       ],
       "video_url": null,
@@ -79,9 +109,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2498-1-6fe6f1bf50f4-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2498-1-6fe6f1bf50f4-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/gAfEmDMF6U7BNZOBFgnp_MoXebweugWWTQWj5lUKfN9QOjXZkwiE6tSq_P9O1GpbdzAAR_4ianDPhzgwa0BvJj83AjQS8XgQeNxqAHuCQ_byUCHaExa0INFsEabkQaYu5E4tMdPQ7o41WVjCfb4MBxq1syONfO3KqS9QukARXz3_Wo6aVNJTD6zJ8Rq2ZRnqzK2suEGkwL2llgJg7q5LwJfVTjCBYF7Qg9zI6Zuo_LRyqi0iuZIY-EhevN3j4ExT6x3ALsugOQ9TKLEfP1GNiI_Ohg1NvXEXHYM6Z32lIc-jSRdjPRk-rUMjHFv2LEwiAnQXWUnAbWtni_w6MEEBqg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2498-1-6fe6f1bf50f4-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2498-1-6fe6f1bf50f4-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -89,7 +118,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/gAfEmDMF6U7BNZOBFgnp_MoXebweugWWTQWj5lUKfN9QOjXZkwiE6tSq_P9O1GpbdzAAR_4ianDPhzgwa0BvJj83AjQS8XgQeNxqAHuCQ_byUCHaExa0INFsEabkQaYu5E4tMdPQ7o41WVjCfb4MBxq1syONfO3KqS9QukARXz3_Wo6aVNJTD6zJ8Rq2ZRnqzK2suEGkwL2llgJg7q5LwJfVTjCBYF7Qg9zI6Zuo_LRyqi0iuZIY-EhevN3j4ExT6x3ALsugOQ9TKLEfP1GNiI_Ohg1NvXEXHYM6Z32lIc-jSRdjPRk-rUMjHFv2LEwiAnQXWUnAbWtni_w6MEEBqg.jpg"
         }
       ],
       "video_url": null,
@@ -109,9 +139,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2497-1-c54380beca9e-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2497-1-c54380beca9e-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/nvL6ScuJudx5lDpdqHFesUw-1nA78TRXfhreZrAAEy2uN6zCV7OKqL7Eup3WljnlaQuZjbArq4hAQ8BX4TLlFee0j7crQnwMPJpmmU-n_KtdwiSKQx_lxYXcYD57g1VSa2GGoDwboxOeKbWAa_8SufrYIS1LufLSp-APqYI0QM8O1FkmMvftzeMyd-Ubgg18IYXqsTOWcLFztYEXzOCmK759fbKgwXyYHRxJXvJFFSqHGjt2RmgnX6acv6LzdCgHBt6Wn2qg6to-Zz9RN_mlJK2ldlAm31sx5bXMsZMUcF_ubI_zSFg3cZ3HRmN9RGo4KOuVl6CVWTqQWshyBOS55A.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2497-1-c54380beca9e-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2497-1-c54380beca9e-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -119,7 +148,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/nvL6ScuJudx5lDpdqHFesUw-1nA78TRXfhreZrAAEy2uN6zCV7OKqL7Eup3WljnlaQuZjbArq4hAQ8BX4TLlFee0j7crQnwMPJpmmU-n_KtdwiSKQx_lxYXcYD57g1VSa2GGoDwboxOeKbWAa_8SufrYIS1LufLSp-APqYI0QM8O1FkmMvftzeMyd-Ubgg18IYXqsTOWcLFztYEXzOCmK759fbKgwXyYHRxJXvJFFSqHGjt2RmgnX6acv6LzdCgHBt6Wn2qg6to-Zz9RN_mlJK2ldlAm31sx5bXMsZMUcF_ubI_zSFg3cZ3HRmN9RGo4KOuVl6CVWTqQWshyBOS55A.jpg"
         }
       ],
       "video_url": null,
@@ -139,9 +169,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2496-1-011025e24e4c-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2496-1-011025e24e4c-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/LethaLOULwKZy1S7SuDggN84POsxS7cXKbM4l2sAZ5ixEW6bpAe5bhwm58XRP1TwvqHPdgb-6qOZ7Mg6LPUhv-hD03KabyLlapYm9nrPHjyRnXm3davRNrng4qWLDPKXlf0tJlg4IczWU10FXcR0NwiC6dN2ZSHmdmYgNaPG7bR04tOL0lH8Ro_M9t2duf9XjUE-e_V3WfTLGkwXE8u5n95kJoFoB1yI2_3lVLmJFFtp0Q7RBFrJTtqclHfIs3MzexwlUv7zGDNctgN-M20VvaSbfRhDz7hxpSMX57CGZk40kNyWtMYbIGLue3qHSHe_90R6KtFK68cMt8oIqbUwbg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2496-1-011025e24e4c-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2496-1-011025e24e4c-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 486,
           "feed_width": 1800,
@@ -149,7 +178,8 @@
           "full_width": 1880,
           "full_height": 1142,
           "source_width": 1880,
-          "source_height": 1142
+          "source_height": 1142,
+          "source_url": "https://cdn4.telesco.pe/file/LethaLOULwKZy1S7SuDggN84POsxS7cXKbM4l2sAZ5ixEW6bpAe5bhwm58XRP1TwvqHPdgb-6qOZ7Mg6LPUhv-hD03KabyLlapYm9nrPHjyRnXm3davRNrng4qWLDPKXlf0tJlg4IczWU10FXcR0NwiC6dN2ZSHmdmYgNaPG7bR04tOL0lH8Ro_M9t2duf9XjUE-e_V3WfTLGkwXE8u5n95kJoFoB1yI2_3lVLmJFFtp0Q7RBFrJTtqclHfIs3MzexwlUv7zGDNctgN-M20VvaSbfRhDz7hxpSMX57CGZk40kNyWtMYbIGLue3qHSHe_90R6KtFK68cMt8oIqbUwbg.jpg"
         }
       ],
       "video_url": null,
@@ -194,9 +224,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2494-1-8dd9cdddde76-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2494-1-8dd9cdddde76-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/oZzhpVrCamCglJF7seq5vRQVcW74SAdBk0JCOlhLN4j-7-tCmOPJ0VDs93W86RpPmkarl7UeK1bTwTpUU7EQhbXWzq0m7RVV2tY3aOLSt_Aw0ySWnyCx7GHf9GKMfYnf5En5W91_3VzV7V8JtsXg7YmfV215aCivoiY5AZpcowwHyIolw5LaTCeC8_RVAsFwb9UW8lY1WPVDD-xJynGAd_rf87lDs5YEW9-aMa9rMVC37GxT4w0Cceo2f8h56gDBBB01vrG7_31cRIC9UPt93nT3bM6bYwlh7HMUz5Hx3e5lFs0bzXE_23thApMscCqxp38oI6w8R09pb7sxvVEmqg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2494-1-8dd9cdddde76-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2494-1-8dd9cdddde76-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -204,7 +233,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/oZzhpVrCamCglJF7seq5vRQVcW74SAdBk0JCOlhLN4j-7-tCmOPJ0VDs93W86RpPmkarl7UeK1bTwTpUU7EQhbXWzq0m7RVV2tY3aOLSt_Aw0ySWnyCx7GHf9GKMfYnf5En5W91_3VzV7V8JtsXg7YmfV215aCivoiY5AZpcowwHyIolw5LaTCeC8_RVAsFwb9UW8lY1WPVDD-xJynGAd_rf87lDs5YEW9-aMa9rMVC37GxT4w0Cceo2f8h56gDBBB01vrG7_31cRIC9UPt93nT3bM6bYwlh7HMUz5Hx3e5lFs0bzXE_23thApMscCqxp38oI6w8R09pb7sxvVEmqg.jpg"
         }
       ],
       "video_url": null,
@@ -224,36 +254,39 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-1-c8f212e40cf2-v8.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/2491-1-c8f212e40cf2-v8.jpg",
           "full_url": "data/channels/pg-tax/media/posts/2491-1-c8f212e40cf2-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/pkFxTZ7oFSRnHm0F2DgAJo8Vh2z4wX4eafqUJu4s-8zg-c1Mh2UlNg8OvUQhQMBRgpZGSN18aqyQ56wq-Vzsp48rqTomJqiwhp5Y2iMTFJbxJVi2CCZoINJSU7Xsq41XJkOv4Ha8XolxxIcOi_RrJ0x9pc0bBMN0Kbk7OCyPa1e_knHI27JrMkf4iZNSxcdiyxSQbAuf0Hs45ZLEKKQwhkCxm0UJSqfxhLYBly-LdsK9a-smeG8zQePwcHfDy1sm2xBaAk0xRgYRodi87gD8AdtR-ITRGNFHpLXEsb6wYWmyNH2DR5NbtSJhPJ4JnjcrDN_BxlP6ifxpnehj4WUuAw.jpg",
           "thumb_width": 800,
           "thumb_height": 523,
           "full_width": 800,
           "full_height": 523,
           "source_width": 800,
-          "source_height": 523
+          "source_height": 523,
+          "source_url": "https://cdn4.telesco.pe/file/pkFxTZ7oFSRnHm0F2DgAJo8Vh2z4wX4eafqUJu4s-8zg-c1Mh2UlNg8OvUQhQMBRgpZGSN18aqyQ56wq-Vzsp48rqTomJqiwhp5Y2iMTFJbxJVi2CCZoINJSU7Xsq41XJkOv4Ha8XolxxIcOi_RrJ0x9pc0bBMN0Kbk7OCyPa1e_knHI27JrMkf4iZNSxcdiyxSQbAuf0Hs45ZLEKKQwhkCxm0UJSqfxhLYBly-LdsK9a-smeG8zQePwcHfDy1sm2xBaAk0xRgYRodi87gD8AdtR-ITRGNFHpLXEsb6wYWmyNH2DR5NbtSJhPJ4JnjcrDN_BxlP6ifxpnehj4WUuAw.jpg"
         },
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-2-1686528999e1-v8.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/2491-2-1686528999e1-v8.jpg",
           "full_url": "data/channels/pg-tax/media/posts/2491-2-1686528999e1-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/E7I-h0QmXPyg40MbgY7lwitfu-i_1e3uM_mB9Jd3xqXB-iBBg_0qKe4S5GzqCB_w9WOcK2VKSlSUZMCqy-eo7mw0SOaUkG4ov6GCMiuEglKE7HzDCSZxe9uqbZ3TAF5E0BHiNFiB1a0lgbKFVfcfvK8kKocNJ1to_4sKnkS-I3tQiUqnvoHeHsgX3QRmuTWuvQkOrTpVDDseQoGj_yvyxIf3-MtPMKbB37-AeNglQg1XJR39tVpxC5k4R-TeeSMSgjQE4q-5egf9ZnY1J_mryJcrk-6m90liNfaxX2xVesOz3R5CozEJ-bGf0B09dcGMTZfni8EP63gDoatCk1TLrw.jpg",
           "thumb_width": 800,
           "thumb_height": 523,
           "full_width": 800,
           "full_height": 523,
           "source_width": 800,
-          "source_height": 523
+          "source_height": 523,
+          "source_url": "https://cdn4.telesco.pe/file/E7I-h0QmXPyg40MbgY7lwitfu-i_1e3uM_mB9Jd3xqXB-iBBg_0qKe4S5GzqCB_w9WOcK2VKSlSUZMCqy-eo7mw0SOaUkG4ov6GCMiuEglKE7HzDCSZxe9uqbZ3TAF5E0BHiNFiB1a0lgbKFVfcfvK8kKocNJ1to_4sKnkS-I3tQiUqnvoHeHsgX3QRmuTWuvQkOrTpVDDseQoGj_yvyxIf3-MtPMKbB37-AeNglQg1XJR39tVpxC5k4R-TeeSMSgjQE4q-5egf9ZnY1J_mryJcrk-6m90liNfaxX2xVesOz3R5CozEJ-bGf0B09dcGMTZfni8EP63gDoatCk1TLrw.jpg"
         },
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-3-7f9cf04d3ea6-v8.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/2491-3-7f9cf04d3ea6-v8.jpg",
           "full_url": "data/channels/pg-tax/media/posts/2491-3-7f9cf04d3ea6-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/iIr7rLiqMfLkSDkBx-lJ3PEfULp6uyOEw1BFcQq75ZOFKy9EI2bM0YVRPsQd9vyEunxye8urTc0M1ivktZQuEfsTLDLKdVR_CbluKPAtKj7cJmTCyUq2zwOGg4pFgi2Yh4nsSF5L4zJgrY-7s_IsamPMLHE1w27AIIE9uZM-d1QU_NipWfqdkIEx9mXz7uDh4CbVWZ-Ju-DKGgIcJX7GMxfC-P52Lw0-q7I9CcehTzuk92EMoJa6MjzEP6mvdEARSWYOsB8uZmo3RfoTzm-WLxjr99MP-UjC_GtZlyhP2iXSo-YCsx0EZqBDirc4Yd3L7ppi1cS6rq-GmleR5bFkSg.jpg",
           "thumb_width": 800,
           "thumb_height": 523,
           "full_width": 800,
           "full_height": 523,
           "source_width": 800,
-          "source_height": 523
+          "source_height": 523,
+          "source_url": "https://cdn4.telesco.pe/file/iIr7rLiqMfLkSDkBx-lJ3PEfULp6uyOEw1BFcQq75ZOFKy9EI2bM0YVRPsQd9vyEunxye8urTc0M1ivktZQuEfsTLDLKdVR_CbluKPAtKj7cJmTCyUq2zwOGg4pFgi2Yh4nsSF5L4zJgrY-7s_IsamPMLHE1w27AIIE9uZM-d1QU_NipWfqdkIEx9mXz7uDh4CbVWZ-Ju-DKGgIcJX7GMxfC-P52Lw0-q7I9CcehTzuk92EMoJa6MjzEP6mvdEARSWYOsB8uZmo3RfoTzm-WLxjr99MP-UjC_GtZlyhP2iXSo-YCsx0EZqBDirc4Yd3L7ppi1cS6rq-GmleR5bFkSg.jpg"
         }
       ],
       "video_url": null,
@@ -273,9 +306,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2489-1-1c186baf03f8-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2489-1-1c186baf03f8-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/ThyNKK2_9jmzjyM4gDP4UZktgGsL8ZGQRD40llMxOqwDkDd5yOG0vBMl_1KeTFYcDq1ptWk1JassbwajyT8uuGrwL9vcj0OCYoUGKxihNYDHldp-x78k2hramMabUoZn-pbtnyDb5rPFOqdTYPH88IyyfAHOgw0Bm9d2zvnBZ-P1bBoOCd3LPmiLilWX3vdA2Bt3wKjJomlI2R8-zJ6NKfg42KVUR8pqI2vbAtvkb4GT07reE25yvtawOmfqLUtkP7MNSVt5SFxW_5yF4haKEvBslciYtXNg6Dw_UUoqg2rfbUhgNMESmjy7uMYM7DeGWqfIXRGkNnKIo1G6t1zd4g.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2489-1-1c186baf03f8-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2489-1-1c186baf03f8-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -283,7 +315,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/ThyNKK2_9jmzjyM4gDP4UZktgGsL8ZGQRD40llMxOqwDkDd5yOG0vBMl_1KeTFYcDq1ptWk1JassbwajyT8uuGrwL9vcj0OCYoUGKxihNYDHldp-x78k2hramMabUoZn-pbtnyDb5rPFOqdTYPH88IyyfAHOgw0Bm9d2zvnBZ-P1bBoOCd3LPmiLilWX3vdA2Bt3wKjJomlI2R8-zJ6NKfg42KVUR8pqI2vbAtvkb4GT07reE25yvtawOmfqLUtkP7MNSVt5SFxW_5yF4haKEvBslciYtXNg6Dw_UUoqg2rfbUhgNMESmjy7uMYM7DeGWqfIXRGkNnKIo1G6t1zd4g.jpg"
         }
       ],
       "video_url": null,
@@ -303,9 +336,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2488-1-7fa6ebb240c2-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2488-1-7fa6ebb240c2-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/s3CAA3e6gyjarIZ8bLHD-fB-VBu2fHWLxFDVV0gd36B2_m3-s_bldRkUw5V3RUBdL1SjSGBeXEQBsHYGsprYQ8BQ5dejcrTJo9CTRe3Y71jLwH0_C9U0JeWmsfjInk-WAgonQzLjms4BMd8eOHtiHnQgMHHFyDBdaCmBwhtYxrl3y1kYThUZmGDZY4Dp9ZOJFmqGrU9lyW6iQLz4tOFUvtUXAPGmbdjC9S3OwZLTWtbpIKFiUWoOF1jF7WHX455-kMdVhQOXALVrdSj2adQE22mijquQllI8_Xje5HVH0pZf-29LeIxfGkYOqNQMeoAZ6OsNBd4vGvZlEZ8ZOYAOIg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2488-1-7fa6ebb240c2-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2488-1-7fa6ebb240c2-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -313,7 +345,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/s3CAA3e6gyjarIZ8bLHD-fB-VBu2fHWLxFDVV0gd36B2_m3-s_bldRkUw5V3RUBdL1SjSGBeXEQBsHYGsprYQ8BQ5dejcrTJo9CTRe3Y71jLwH0_C9U0JeWmsfjInk-WAgonQzLjms4BMd8eOHtiHnQgMHHFyDBdaCmBwhtYxrl3y1kYThUZmGDZY4Dp9ZOJFmqGrU9lyW6iQLz4tOFUvtUXAPGmbdjC9S3OwZLTWtbpIKFiUWoOF1jF7WHX455-kMdVhQOXALVrdSj2adQE22mijquQllI8_Xje5HVH0pZf-29LeIxfGkYOqNQMeoAZ6OsNBd4vGvZlEZ8ZOYAOIg.jpg"
         }
       ],
       "video_url": null,
@@ -327,15 +360,14 @@
       "date": "2026-02-25T11:06:14+00:00",
       "text": "Старший партнер «Пепеляев Групп» Сергей Савсерис продолжает публикацию рейтинга правовых позиций Конституционного суда.\n\nМесто № 7 \n\nПостановление КС РФ от 20.02.2001 № 3-П по ЗАО \"Востокнефтересурс\"\n\nДоктрина о формальной определённости налоговых норм, которая перестала работать\n\n📈 Цитируемость\n• 3267 упоминаний за весь период (4 место в общем рейтинге)\n• 102 упоминания за последние 4 года (30 место)\n\n🔍 О чём был спор\n\nЗАО «Востокнефтересурс» оспаривало отказ в вычете НДС при неденежных формах расчётов. \nКомпания заявила вычет НДС по поставке нефтепродуктов, оплатив их зачётом встречных требований, без перечисления денежных средств.\n\nНалоговые органы и суды исходили из того, что «фактическая уплата» НДС поставщику возможна только в денежной форме, и отказали в вычете.\n\nСпор свёлся к вопросу определённости налоговой нормы: формулировка о «фактически уплаченных поставщику суммах налога» допускала разные толкования — включает ли она любые законные формы исполнения обязательства (зачёт, уступку требования) либо ограничивается исключительно денежной оплатой. Неясность этой формулы позволяла правоприменителю выбирать более жёсткое толкование, что и стало предметом конституционной проверки.\n\n⚖️ Ключевая правовая позиция \n\nФормальная определённость налоговой нормы — конституционное требование.\n\nКонституционный Суд сформулировал базовый стандарт качества налогового регулирования:\n     ✔️ налоговые нормы должны быть достаточно точными и однозначными,\n     ✔️ их расплывчатость создает риск произвольного и дискриминационного применения,\n     ✔️ иное – несовместимо с принципами правового государства, юридического равенства и равенства налогообложения.\n\nИменно из этой логики вытекают:\n🔴пункт 7 статьи 3 НК РФ — о толковании неустранимых сомнений в пользу налогоплательщика;\n🔴конституционный запрет на налогообложение, основанное на дефектных нормах.\n\n❓ Почему позиция утрачивает практическое значение\n\nСущественное снижение цитируемости в последние годы объясняется не улучшением качества налогового законодательства — напротив, расплывчатых и внутренне противоречивых норм в НК РФ более чем достаточно.\n\nПричина иная - суды крайне неохотно выносят решения в пользу налогоплательщиков, ссылаясь на:\n🔴неопределённость налоговой нормы;\n🔴дефекты юридической техники;\n🔴пункт 7 статьи 3 НК РФ.\n\nНа практике можно пересчитать по пальцам случаи, когда суд применяет правило о толковании неустранимых сомнений в пользу налогоплательщика.\n\nПравовая позиция, лежащая в основе Постановления № 3-П, всё чаще остаётся доктринальной, а не прикладной.\n\n#рейтинг_позиций_КС\n\n➖➖\n📧 Если Ваш успех в споре с налоговым органом зависит от толкования налоговой нормы, напишите Сергею Савсерису: s.savseris@pgplaw.ru",
       "text_html": "Старший партнер «Пепеляев Групп» <a href=\"https://www.pgplaw.ru/to-get-the-team/sergey-savseris/\" target=\"_blank\" rel=\"noopener noreferrer\">Сергей Савсерис</a> продолжает публикацию рейтинга правовых позиций Конституционного суда.<br><br>Место № 7 <br><br>Постановление КС РФ от 20.02.2001 № 3-П по ЗАО \"Востокнефтересурс\"<br><br>Доктрина о формальной определённости налоговых норм, которая перестала работать<br><br>📈 Цитируемость<br>• 3267 упоминаний за весь период (4 место в общем рейтинге)<br>• 102 упоминания за последние 4 года (30 место)<br><br>🔍 О чём был спор<br><br>ЗАО «Востокнефтересурс» оспаривало отказ в вычете НДС при неденежных формах расчётов. <br>Компания заявила вычет НДС по поставке нефтепродуктов, оплатив их зачётом встречных требований, без перечисления денежных средств.<br><br>Налоговые органы и суды исходили из того, что «фактическая уплата» НДС поставщику возможна только в денежной форме, и отказали в вычете.<br><br>Спор свёлся к вопросу определённости налоговой нормы: формулировка о «фактически уплаченных поставщику суммах налога» допускала разные толкования — включает ли она любые законные формы исполнения обязательства (зачёт, уступку требования) либо ограничивается исключительно денежной оплатой. Неясность этой формулы позволяла правоприменителю выбирать более жёсткое толкование, что и стало предметом конституционной проверки.<br><br>⚖️ Ключевая правовая позиция <br><br>Формальная определённость налоговой нормы — конституционное требование.<br><br>Конституционный Суд сформулировал базовый стандарт качества налогового регулирования:<br>     ✔️ налоговые нормы должны быть достаточно точными и однозначными,<br>     ✔️ их расплывчатость создает риск произвольного и дискриминационного применения,<br>     ✔️ иное – несовместимо с принципами правового государства, юридического равенства и равенства налогообложения.<br><br>Именно из этой логики вытекают:<br>🔴пункт 7 статьи 3 НК РФ — о толковании неустранимых сомнений в пользу налогоплательщика;<br>🔴конституционный запрет на налогообложение, основанное на дефектных нормах.<br><br>❓ Почему позиция утрачивает практическое значение<br><br>Существенное снижение цитируемости в последние годы объясняется не улучшением качества налогового законодательства — напротив, расплывчатых и внутренне противоречивых норм в НК РФ более чем достаточно.<br><br>Причина иная - суды крайне неохотно выносят решения в пользу налогоплательщиков, ссылаясь на:<br>🔴неопределённость налоговой нормы;<br>🔴дефекты юридической техники;<br>🔴пункт 7 статьи 3 НК РФ.<br><br>На практике можно пересчитать по пальцам случаи, когда суд применяет правило о толковании неустранимых сомнений в пользу налогоплательщика.<br><br>Правовая позиция, лежащая в основе Постановления № 3-П, всё чаще остаётся доктринальной, а не прикладной.<br><br>#рейтинг_позиций_КС<br><br>➖➖<br>📧 Если Ваш успех в споре с налоговым органом зависит от толкования налоговой нормы, напишите Сергею Савсерису: s.savseris@pgplaw.ru",
-      "views": 1280,
+      "views": 1290,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2487-1-c6c1bb95cae7-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2487-1-c6c1bb95cae7-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/vxW8ciTW_MMZCoa--buExZQfsWPgncbsXS7s3Rd31bTLYWs4WHr0HX8OnyAJmQraN4zIpYXBC8JSv-YWrBhq1tLaQ2Yi0oPuFNB7-TJGiFEVzAmnwHFCNIjaPkOEAXiITxoJGKHPSvislJS87HzS8SWfMi1vJ02UrFq6mM0ETIhxju9DGMKirtmfA6_WpwL3TLUQAqtZJWDu3Ys4LpTmyxeh-Uch2FxRQrGVJdgmMmjGwA8-zt1zTfdQZ9zaDYJnTmOpcPxXpgpaJ5tPIjCAQ3gNC_of4VVcbOa-43yEjl3Fr6aCW10mspaWS3trCtkBAHqoFs1OyFDG1YgabVNVrg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2487-1-c6c1bb95cae7-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2487-1-c6c1bb95cae7-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -343,7 +375,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/vxW8ciTW_MMZCoa--buExZQfsWPgncbsXS7s3Rd31bTLYWs4WHr0HX8OnyAJmQraN4zIpYXBC8JSv-YWrBhq1tLaQ2Yi0oPuFNB7-TJGiFEVzAmnwHFCNIjaPkOEAXiITxoJGKHPSvislJS87HzS8SWfMi1vJ02UrFq6mM0ETIhxju9DGMKirtmfA6_WpwL3TLUQAqtZJWDu3Ys4LpTmyxeh-Uch2FxRQrGVJdgmMmjGwA8-zt1zTfdQZ9zaDYJnTmOpcPxXpgpaJ5tPIjCAQ3gNC_of4VVcbOa-43yEjl3Fr6aCW10mspaWS3trCtkBAHqoFs1OyFDG1YgabVNVrg.jpg"
         }
       ],
       "video_url": null,
@@ -363,9 +396,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2486-1-e6230d4380ce-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2486-1-e6230d4380ce-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/cNoDBaU7m1TiB0hOaxk5z-XajphILPDdVryXd7-sdGts8QsrJJbWhwnBFuT5RLcoug_pwGpwHNf0BuPUWjZx0NgaoXYejZs49LSgJ85MGOpGMZlOq6KL94sK7S8vpxDEZxqAv7fGTgHRtuzSb-QXRKeP7xuEZuyju3wSHLf7D_TI7GL3bebJDjpb_qA0qOXDWXZsCw5Xf6YJ-aXDKuVyL76V0o6NPDD7sG5iPwRarRvmAxssqxTWKElyf7LSfvJ12ZQE4ep3ZLt385s1GY543Wfl5ziGaX-8zK2ZchghrS6RuMdXXvg1l-5nY5dZJEtYokycSJhKJePAk_6a_W7JyQ.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2486-1-e6230d4380ce-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2486-1-e6230d4380ce-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -373,7 +405,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/cNoDBaU7m1TiB0hOaxk5z-XajphILPDdVryXd7-sdGts8QsrJJbWhwnBFuT5RLcoug_pwGpwHNf0BuPUWjZx0NgaoXYejZs49LSgJ85MGOpGMZlOq6KL94sK7S8vpxDEZxqAv7fGTgHRtuzSb-QXRKeP7xuEZuyju3wSHLf7D_TI7GL3bebJDjpb_qA0qOXDWXZsCw5Xf6YJ-aXDKuVyL76V0o6NPDD7sG5iPwRarRvmAxssqxTWKElyf7LSfvJ12ZQE4ep3ZLt385s1GY543Wfl5ziGaX-8zK2ZchghrS6RuMdXXvg1l-5nY5dZJEtYokycSJhKJePAk_6a_W7JyQ.jpg"
         }
       ],
       "video_url": null,
@@ -393,9 +426,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2485-1-eda234ea76fe-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2485-1-eda234ea76fe-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/lx9OIwW7tcjyVMRMstZUIlzXxVPjcfl5_CuJ5opo5KB_O01qw1Mm9CPflcxI-LfD6pgmQ5CLwkt5a-w1Vqf18CjO68_OlsyXHRTKuhgfXmHWF62orS5jfc9abUeW-Olf2t2gttqbshJhVDy1aKX0OHwtMpOwW7lhNbIXVLFqOMFxHR0f5f--uMRWodFUWDaITkNxvvrvp7x52K-0MiQwKbsIn9QZKu6AyBdtrtd56K7lCOegyJTP0l1ooIzytgrLjCItrvgn5NyxawWuhHT_RrE5ziiH399bfX2I2wSjtwINTxwFvpr4466aAYMNJPpfEY5PWd40pt-yLdUlc8m5IQ.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2485-1-eda234ea76fe-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2485-1-eda234ea76fe-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -403,7 +435,8 @@
           "full_width": 1880,
           "full_height": 987,
           "source_width": 1880,
-          "source_height": 987
+          "source_height": 987,
+          "source_url": "https://cdn4.telesco.pe/file/lx9OIwW7tcjyVMRMstZUIlzXxVPjcfl5_CuJ5opo5KB_O01qw1Mm9CPflcxI-LfD6pgmQ5CLwkt5a-w1Vqf18CjO68_OlsyXHRTKuhgfXmHWF62orS5jfc9abUeW-Olf2t2gttqbshJhVDy1aKX0OHwtMpOwW7lhNbIXVLFqOMFxHR0f5f--uMRWodFUWDaITkNxvvrvp7x52K-0MiQwKbsIn9QZKu6AyBdtrtd56K7lCOegyJTP0l1ooIzytgrLjCItrvgn5NyxawWuhHT_RrE5ziiH399bfX2I2wSjtwINTxwFvpr4466aAYMNJPpfEY5PWd40pt-yLdUlc8m5IQ.jpg"
         }
       ],
       "video_url": null,
@@ -423,9 +456,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2484-1-1428c9da682f-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2484-1-1428c9da682f-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/eCrnlQSfYQdnxFZCW1xso63f6FYU-JKC4EpiQ3tDWvOQa6oAhyX9jnVrWUxnLcE4w2ifi_4MlFxugpGOH3UaJ9O1avKLoKbuF7vvVZ58JPBOEl2V9c0acRhdSYidp7IYqz1KFsueqqwhUmSHOezSf6grZXF83xqN-W4c0OUm0efyLRwaz1MkUcZwkybSS_wSq5xIJmiVJpQ46TdqpBDGezSd8HQJnDrNU3SUuCWhINW1K-mXf6aJUI3Dp7nobTHr0XXbrsvS2o40SXo1xgopl-Fl7_Ay0w17MnZJdqo_hrQu6vufuimIu6GRAhfUsZDdq1aF32aE-oOJpnV_8Nu4ww.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2484-1-1428c9da682f-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2484-1-1428c9da682f-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -433,7 +465,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/eCrnlQSfYQdnxFZCW1xso63f6FYU-JKC4EpiQ3tDWvOQa6oAhyX9jnVrWUxnLcE4w2ifi_4MlFxugpGOH3UaJ9O1avKLoKbuF7vvVZ58JPBOEl2V9c0acRhdSYidp7IYqz1KFsueqqwhUmSHOezSf6grZXF83xqN-W4c0OUm0efyLRwaz1MkUcZwkybSS_wSq5xIJmiVJpQ46TdqpBDGezSd8HQJnDrNU3SUuCWhINW1K-mXf6aJUI3Dp7nobTHr0XXbrsvS2o40SXo1xgopl-Fl7_Ay0w17MnZJdqo_hrQu6vufuimIu6GRAhfUsZDdq1aF32aE-oOJpnV_8Nu4ww.jpg"
         }
       ],
       "video_url": null,
@@ -453,9 +486,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2483-1-35277d21d3ee-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2483-1-35277d21d3ee-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/jHvIVK7b_I8yOC2iNFXJIeNlIpp1_uiE1MasyZtLRhWPLWoH5zZuW-fDhFbEDm2IVdbO0oOnEQ8hYFaMhgClnE3LjcXLpL8iWbh3FWCBiNGhw81KMgglgA61sCks9qTwI614iFPy_tHf6L5q6wI-rhw4A0UkZSsAB07YZRwVFYHEBbiOmVZdW735yj_O4OtiBfjDun0y4J6fedofTCgNHroJzyNrAjXUoW4_lB45lzECXJ12SuVG7QJ1iGm625hXzRIW2bAs1BDZf8tkAirdiSUKvAstTsV9OpBLjBcHCA0QuZfuNatf0hpsk4zWs3wZm-CZDEyRl8MFkkeUJMGZzw.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2483-1-35277d21d3ee-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2483-1-35277d21d3ee-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -463,42 +495,13 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/jHvIVK7b_I8yOC2iNFXJIeNlIpp1_uiE1MasyZtLRhWPLWoH5zZuW-fDhFbEDm2IVdbO0oOnEQ8hYFaMhgClnE3LjcXLpL8iWbh3FWCBiNGhw81KMgglgA61sCks9qTwI614iFPy_tHf6L5q6wI-rhw4A0UkZSsAB07YZRwVFYHEBbiOmVZdW735yj_O4OtiBfjDun0y4J6fedofTCgNHroJzyNrAjXUoW4_lB45lzECXJ12SuVG7QJ1iGm625hXzRIW2bAs1BDZf8tkAirdiSUKvAstTsV9OpBLjBcHCA0QuZfuNatf0hpsk4zWs3wZm-CZDEyRl8MFkkeUJMGZzw.jpg"
         }
       ],
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/PG_Tax/2483",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2482,
-      "date": "2026-02-21T10:31:42+00:00",
-      "text": "\"...Отдавайте кесарево кесарю\"\n\nОткрытая лекция Партнера Санкт-Петербургской налоговой практики \"Пепеляев Групп\" Сергея Сосновского об основах налогового права.\n\n⏰ сегодня в 16 часов\n\n➡️Подключиться к трансляции",
-      "text_html": "\"...Отдавайте кесарево кесарю\"<br><br>Открытая лекция Партнера Санкт-Петербургской налоговой практики \"Пепеляев Групп\" <a href=\"https://www.pgplaw.ru/to-get-the-team/sergey-sosnovskiy/\" target=\"_blank\" rel=\"noopener noreferrer\">Сергея Сосновского</a> об основах налогового права.<br><br>⏰ сегодня в 16 часов<br><br>➡️<a href=\"https://m.vkvideo.ru/video-68636053_456239593\" target=\"_blank\" rel=\"noopener noreferrer\">Подключиться к трансляции</a>",
-      "views": 1750,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2482-1-2605826b638d-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2482-1-2605826b638d-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/O7EQfeLfD0m0IFZXdIEOJ3mgIeplMm-7dOHWImfEm1axccRfp7UgB0nphJ3tERAhfZhf3vzEF6s287cJsWqnhVE5sgZO42Jt8hJxMV8WVj2aIVJMVYAK4uPYbw-2fgH1ESBEvgsbHFF1yjXI_A_jVdYalDO0qZmKjzNN6Je4j-J8a9ffrwYdfo8Pq6iqdJpjSnrtIDIJPebO1GD8IBbzzG9BHP3ma64ZSYPoIwe8tqdC51fXizJOPMcGgxlgzDHsY_IRnu5rpjBZO10tddm5m_ckaou5Az2yYtghUyFQmHDMQyFmF76Ub97IFM7InIS2bYIsKsxjB12OUUpjDHPiXQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2482-1-2605826b638d-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2482",
       "forwarded_from": null,
       "reply_to": null
     }
