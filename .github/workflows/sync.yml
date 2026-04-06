@@ -57,7 +57,24 @@ jobs:
       - name: Build multi-channel site index
         run: node scripts/build_site_index.mjs
 
-      - name: Sync configured Telegram channels
+      - name: Configure git author
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Publish shared site artifacts if changed
+        shell: bash
+        run: |
+          git add -A -- docs/data/channels docs/manifest.webmanifest
+          if git diff --cached --quiet; then
+            echo "No shared artifact changes."
+          else
+            git commit -m "chore: refresh shared site artifacts [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Sync configured Telegram channels progressively
         id: sync_channels
         shell: bash
         env:
@@ -67,10 +84,72 @@ jobs:
           TG_ENABLE_SUPERRES: "0"
         run: |
           set +e
-          node scripts/sync_channels.mjs 2>&1 | tee sync.log
-          status=${PIPESTATUS[0]}
+          rm -rf .sync-results
+          mkdir -p .sync-results
+          : > sync.log
+          status=0
+          channel_keys=$(node -e "const fs=require('fs'); const config=JSON.parse(fs.readFileSync('config/channels.json','utf8')); console.log(config.channels.map((channel) => channel.key).join('\n'));")
+
+          while IFS= read -r channel_key; do
+            if [ -z "$channel_key" ]; then
+              continue
+            fi
+
+            echo "=== Progressive publish for $channel_key ===" | tee -a sync.log
+            node scripts/sync_one_channel.mjs --channel "$channel_key" --result-path ".sync-results/$channel_key.json" 2>&1 | tee -a sync.log
+            channel_status=${PIPESTATUS[0]}
+
+            if [ "$channel_status" -ne 0 ]; then
+              status=1
+              git restore --source=HEAD --staged --worktree -- "docs/data/channels/$channel_key" 2>/dev/null || true
+              if [ -d "docs/channels/$channel_key" ]; then
+                git restore --source=HEAD --staged --worktree -- "docs/channels/$channel_key" 2>/dev/null || true
+              fi
+              git clean -fd -- "docs/data/channels/$channel_key" 2>/dev/null || true
+              if [ -d "docs/channels/$channel_key" ]; then
+                git clean -fd -- "docs/channels/$channel_key" 2>/dev/null || true
+              fi
+              continue
+            fi
+
+            git add -A -- "docs/data/channels/$channel_key"
+            if [ -d "docs/channels/$channel_key" ]; then
+              git add -A -- "docs/channels/$channel_key"
+            fi
+
+            if git diff --cached --quiet; then
+              echo "No publishable changes for $channel_key." | tee -a sync.log
+              continue
+            fi
+
+            git commit -m "chore: refresh telegram mirror ($channel_key) [skip ci]" 2>&1 | tee -a sync.log
+            commit_status=${PIPESTATUS[0]}
+            if [ "$commit_status" -ne 0 ]; then
+              status=1
+              break
+            fi
+
+            git pull --rebase origin main 2>&1 | tee -a sync.log
+            pull_status=${PIPESTATUS[0]}
+            if [ "$pull_status" -ne 0 ]; then
+              status=1
+              break
+            fi
+
+            git push 2>&1 | tee -a sync.log
+            push_status=${PIPESTATUS[0]}
+            if [ "$push_status" -ne 0 ]; then
+              status=1
+              break
+            fi
+          done <<< "$channel_keys"
+
           echo "exit_code=$status" >> "$GITHUB_OUTPUT"
           exit 0
+
+      - name: Write sync report
+        if: always()
+        run: node scripts/write_sync_report.mjs .sync-results
 
       - name: Write sync failure report
         if: always()
@@ -83,19 +162,15 @@ jobs:
           git status --short
           python scripts/print_sync_diagnostics.py
 
-      - name: Commit and push if changed
+      - name: Commit and push sync reports if changed
         if: always()
+        shell: bash
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A -- docs/data docs/manifest.webmanifest
-          if [ -d docs/channels ]; then
-            git add -A -- docs/channels
-          fi
+          git add -A -- docs/data/sync-report.json docs/data/sync-failure.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "chore: refresh telegram mirror [skip ci]"
+            git commit -m "chore: update sync reports [skip ci]"
             git pull --rebase origin main
             git push
           fi
