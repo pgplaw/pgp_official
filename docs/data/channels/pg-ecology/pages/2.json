@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-06T12:23:40.450241+00:00",
+  "generated_at": "2026-04-06T17:18:28.782701+00:00",
   "build_id": "c46833064aaa",
   "pagination": {
     "page": 2,
@@ -19,9 +19,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1299-1-ab602cde3cec-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1299-1-ab602cde3cec-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/M5XvM2e2OdtuYJBlYsHg-fTaSmMhLuLB0CgI5F0Ee_flHQsYhwqu3vzEyngyCXJiYwg5H7kULKARpGMGqi4FeQg7GHuEmYMxFLcMh0VR4X91y1svojczEPlaMCJe6jvvTSYSp7JTjYWahzi0kr-d1JZ95PKhzJj6ZWR_t5zZijUaU_6C7WKamtjKxTkg9twlo6fjq_Q2U-5oe9yPPjKQJQbQzJBmhArhaIamGKxSEKhyklofgagpmrQiW1lJHrpPzulYzOsWKg3nPAYWNXYcRURUDvaYcXH3TtXJRyaD_TxeMMsE5RgZZxClp7VH8nmYcUrdTdvbZ8L9ldNDKtBTRw.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1299-1-ab602cde3cec-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1299-1-ab602cde3cec-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -29,7 +28,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/M5XvM2e2OdtuYJBlYsHg-fTaSmMhLuLB0CgI5F0Ee_flHQsYhwqu3vzEyngyCXJiYwg5H7kULKARpGMGqi4FeQg7GHuEmYMxFLcMh0VR4X91y1svojczEPlaMCJe6jvvTSYSp7JTjYWahzi0kr-d1JZ95PKhzJj6ZWR_t5zZijUaU_6C7WKamtjKxTkg9twlo6fjq_Q2U-5oe9yPPjKQJQbQzJBmhArhaIamGKxSEKhyklofgagpmrQiW1lJHrpPzulYzOsWKg3nPAYWNXYcRURUDvaYcXH3TtXJRyaD_TxeMMsE5RgZZxClp7VH8nmYcUrdTdvbZ8L9ldNDKtBTRw.jpg"
         }
       ],
       "video_url": null,
@@ -64,9 +64,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1297-1-c3af4992c99f-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1297-1-c3af4992c99f-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/HuNSgJWOcol5uYV4dRsY367na876CQZDSMn1tGM86Ro_aHzCvPInlh3qJ_3JtLMtWjRdo6vuUYoaod_SP8V7sz7SyImxtf6BEayRgp0JONWF7bmqJw8BjoNp3vJXhIsY7dCOcWlAwL4xNexeJ7I3-8YpvBDzxn3ERSYGG3z9jtcwRyLeAfL7g7Y9O8niDp50kX6vlAuuaWLstTIpurXfZZPuk7SPWuJLBPKjF2FJXg0x9SIvXqWbaMSQCcFRnXmsuWMzEW5y9LntyAksMJJRwCQSYOhQBY_UHgdNxu7JdY_jx2gpoeFC-nUqrEHp0CtSUf9uywy_uBjCyqkvoTi3Jg.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1297-1-c3af4992c99f-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1297-1-c3af4992c99f-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -74,7 +73,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/HuNSgJWOcol5uYV4dRsY367na876CQZDSMn1tGM86Ro_aHzCvPInlh3qJ_3JtLMtWjRdo6vuUYoaod_SP8V7sz7SyImxtf6BEayRgp0JONWF7bmqJw8BjoNp3vJXhIsY7dCOcWlAwL4xNexeJ7I3-8YpvBDzxn3ERSYGG3z9jtcwRyLeAfL7g7Y9O8niDp50kX6vlAuuaWLstTIpurXfZZPuk7SPWuJLBPKjF2FJXg0x9SIvXqWbaMSQCcFRnXmsuWMzEW5y9LntyAksMJJRwCQSYOhQBY_UHgdNxu7JdY_jx2gpoeFC-nUqrEHp0CtSUf9uywy_uBjCyqkvoTi3Jg.jpg"
         }
       ],
       "video_url": null,
@@ -109,9 +109,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1293-1-e6ff83fa02f3-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1293-1-e6ff83fa02f3-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/YZ-fBeigSY1hbTHSaZ0ANjlEWTWsPgkhh_BTqagT0ZcGrXfYd_kYMeKmTTVCwo21lMCHq0I0kzzwQn2c6y8V8uPysywmW4CwR63BxTvwOcoASf0Qy8nMlqExqfJgP43KfiPR70a-2pQMKAViSWUg0rZx08vetYkQeIe0bVYhm9UJHhftgVjH6LwshZJUOpOxQF-Z6I6BMCHGdX2IQHUo_gpP-XKUJ3K_kPBW45WErPlW7zCvd4CmvpSRyIIdXjVtUAu_Xhu1bi53eYwr6ZBaCpJFgjFP-8fScJRYPr4xuoZJBUukMuDzXFodChgmUpdoRewQE-YSwgNj6qCM6YPJxA.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1293-1-e6ff83fa02f3-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1293-1-e6ff83fa02f3-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -119,7 +118,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/YZ-fBeigSY1hbTHSaZ0ANjlEWTWsPgkhh_BTqagT0ZcGrXfYd_kYMeKmTTVCwo21lMCHq0I0kzzwQn2c6y8V8uPysywmW4CwR63BxTvwOcoASf0Qy8nMlqExqfJgP43KfiPR70a-2pQMKAViSWUg0rZx08vetYkQeIe0bVYhm9UJHhftgVjH6LwshZJUOpOxQF-Z6I6BMCHGdX2IQHUo_gpP-XKUJ3K_kPBW45WErPlW7zCvd4CmvpSRyIIdXjVtUAu_Xhu1bi53eYwr6ZBaCpJFgjFP-8fScJRYPr4xuoZJBUukMuDzXFodChgmUpdoRewQE-YSwgNj6qCM6YPJxA.jpg"
         }
       ],
       "video_url": null,
@@ -139,9 +139,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1292-1-b332d40f4391-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1292-1-b332d40f4391-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/ilmWRpA6fNdAy6yO3lIwuXF8EhKyiKm-sqgVkKzOPVG-n1hFF2VEVVySWqt8oZMKbGwCiL51EIIcKvgQE3fy2EwAAdreaYczhZBwqg6VK5GHq0sLjG5U-HIN3dDpyDcv2pcrXYvuy663llSR-DDckpKxqT4dDmT4Gyo-CklXFXp4ZSaRAtpHK-5ApYZqbqvTYNDSikoJyecxeKGd3G6TTvuSMapuNL2vG9qaWqFn3q4UIrsDkZ0oCJV2pDq-LvcQhRYdiFOId_lZb1KE09zuRnC--UAwPG4-CroIDckH4kHr4TYhQr37FPmG-2o0GGfY1ubTbXvilWjw5t5Kmhq0Rg.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1292-1-b332d40f4391-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1292-1-b332d40f4391-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 523,
           "feed_width": 1800,
@@ -149,7 +148,8 @@
           "full_width": 1880,
           "full_height": 1229,
           "source_width": 1880,
-          "source_height": 1229
+          "source_height": 1229,
+          "source_url": "https://cdn4.telesco.pe/file/ilmWRpA6fNdAy6yO3lIwuXF8EhKyiKm-sqgVkKzOPVG-n1hFF2VEVVySWqt8oZMKbGwCiL51EIIcKvgQE3fy2EwAAdreaYczhZBwqg6VK5GHq0sLjG5U-HIN3dDpyDcv2pcrXYvuy663llSR-DDckpKxqT4dDmT4Gyo-CklXFXp4ZSaRAtpHK-5ApYZqbqvTYNDSikoJyecxeKGd3G6TTvuSMapuNL2vG9qaWqFn3q4UIrsDkZ0oCJV2pDq-LvcQhRYdiFOId_lZb1KE09zuRnC--UAwPG4-CroIDckH4kHr4TYhQr37FPmG-2o0GGfY1ubTbXvilWjw5t5Kmhq0Rg.jpg"
         }
       ],
       "video_url": null,
@@ -184,9 +184,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1290-1-932e44b163a7-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1290-1-932e44b163a7-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/OmZqVt80iddGunZ8n5pV5XCP9Sniq_JCeVIOV1M6a7XffSLhBMJMTGzVOTXu_ZjapBjyVegeiDgy8sZQ19b4e1jO3CEWaoJUrjmL_S2hKRV-gfpiQa-MWni-I7KzxH7-IJL4QfDyvQp7dW6VzoV3GUx0Fu0N7_-0iKvvhxLkCSa89hrGXvKgOh9evX2aJN0RZlaw9s84tdsJq0K8H6HKh8e9PboJO7CsdNM-Ai_cD5neeQoRJUjxO9lNn5vOt7lHl8hj05L_EFk0nCx-CfXObxJ0EyS2KzLtSoyMU9lbcGKTlvo_fHNF5sBQD7qwtE8sjDSknDFS-bGsz58vy69TPw.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1290-1-932e44b163a7-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1290-1-932e44b163a7-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -194,7 +193,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/OmZqVt80iddGunZ8n5pV5XCP9Sniq_JCeVIOV1M6a7XffSLhBMJMTGzVOTXu_ZjapBjyVegeiDgy8sZQ19b4e1jO3CEWaoJUrjmL_S2hKRV-gfpiQa-MWni-I7KzxH7-IJL4QfDyvQp7dW6VzoV3GUx0Fu0N7_-0iKvvhxLkCSa89hrGXvKgOh9evX2aJN0RZlaw9s84tdsJq0K8H6HKh8e9PboJO7CsdNM-Ai_cD5neeQoRJUjxO9lNn5vOt7lHl8hj05L_EFk0nCx-CfXObxJ0EyS2KzLtSoyMU9lbcGKTlvo_fHNF5sBQD7qwtE8sjDSknDFS-bGsz58vy69TPw.jpg"
         }
       ],
       "video_url": null,
@@ -214,9 +214,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1289-1-870f51fd6b08-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1289-1-870f51fd6b08-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/JtiVwxoskY8Hm3CFBqOtEF-ffcmWgfAKvl-di5WLrNaAzEUrMp4U_S23kWg7tL7w1GY2dTojBkFnybk9iRnUlSP6H004btp8-5IvSpvRtJua2t5tlqc5y-UY6qSFdckoLNw7Kx07RDYAdGKtA5uA1VT3bNfN2D37zqPjikpILOuE0KFQKDdtONKp4m8m5mLFDHD-MvWhXr19qq65kYhZl-e2FEZfzrnemiYybcoXt7ZPi0JQIchljc0_ACA-Ln__1Ka4kFZmIg-uAWUxNCkyKvdHY-JWr4lyrf_y9dPbMU8JFSJGKwsIyakn1fTbVgc1ClRL8cgrZ2FJt4_rESEl1w.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1289-1-870f51fd6b08-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1289-1-870f51fd6b08-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -224,7 +223,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/JtiVwxoskY8Hm3CFBqOtEF-ffcmWgfAKvl-di5WLrNaAzEUrMp4U_S23kWg7tL7w1GY2dTojBkFnybk9iRnUlSP6H004btp8-5IvSpvRtJua2t5tlqc5y-UY6qSFdckoLNw7Kx07RDYAdGKtA5uA1VT3bNfN2D37zqPjikpILOuE0KFQKDdtONKp4m8m5mLFDHD-MvWhXr19qq65kYhZl-e2FEZfzrnemiYybcoXt7ZPi0JQIchljc0_ACA-Ln__1Ka4kFZmIg-uAWUxNCkyKvdHY-JWr4lyrf_y9dPbMU8JFSJGKwsIyakn1fTbVgc1ClRL8cgrZ2FJt4_rESEl1w.jpg"
         }
       ],
       "video_url": null,
@@ -244,9 +244,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1288-1-22088a1f62a3-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1288-1-22088a1f62a3-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/esWA0RGBv4hP1ENoVvCo9yJmQtknsopm7BkekPW3oQNBfrkEXtMSB7NT2OQm5wq3zC_iGUJNup9-tuLaq3h7aio2xLQBmcu7geNEUWyWwcd2tDGBL5IdbXtMS2o-nmwSjw29F5NU7bv_OvSIkdAvQmYMjmsIXmWcaoxaS7l9U8oR5mhjufOPC-lurJYkb1Tl59n7Jk-Qfp8GiJGq43Tcax8rxaj3oWf-R864uMaVPXLD8ng07F9GhT5d82yGmmrYUc7Q4Zc7c_qOsDxNSkizFKkTxUZUaoogIdgYCpwNxr74hjFcYdDtwLsWSAdWqC-1OB45D_4rMdG78r79oz_tKQ.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1288-1-22088a1f62a3-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1288-1-22088a1f62a3-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -254,7 +253,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/esWA0RGBv4hP1ENoVvCo9yJmQtknsopm7BkekPW3oQNBfrkEXtMSB7NT2OQm5wq3zC_iGUJNup9-tuLaq3h7aio2xLQBmcu7geNEUWyWwcd2tDGBL5IdbXtMS2o-nmwSjw29F5NU7bv_OvSIkdAvQmYMjmsIXmWcaoxaS7l9U8oR5mhjufOPC-lurJYkb1Tl59n7Jk-Qfp8GiJGq43Tcax8rxaj3oWf-R864uMaVPXLD8ng07F9GhT5d82yGmmrYUc7Q4Zc7c_qOsDxNSkizFKkTxUZUaoogIdgYCpwNxr74hjFcYdDtwLsWSAdWqC-1OB45D_4rMdG78r79oz_tKQ.jpg"
         }
       ],
       "video_url": null,
@@ -274,9 +274,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1287-1-5b3565cb05ec-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1287-1-5b3565cb05ec-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/uyuhoTIKmLj4MvmzdXs_zHqLy7guIarH7XHNyHSLOkyh_0kn847b6Yq8Rs57qFtbeNZ1X-3zPxuNj1GW9t9G8JpWlPAsYg1s6p0_AvouAhuizPGIDzDSNxjywze8tqfzrp9wWSY_rMH2P5lzLQXRWR4n_Cp2yGj86-iGVV2lcoLOS-xriEZ34uP3JSRCYwpJJnGIDQJ8RN4Z9r1iZaDk81T2aIFeWu42vpR8uFk5nb6X8Nfr2VC68fCiftZxtQDv_DpMEjFbD2txkHMccGB7j_nVYDecyoIu4a13F1fbTcMPWke7mr718-miolgzuS01mwPnXRw6d_cOl5LKrHXRMw.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1287-1-5b3565cb05ec-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1287-1-5b3565cb05ec-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -284,7 +283,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/uyuhoTIKmLj4MvmzdXs_zHqLy7guIarH7XHNyHSLOkyh_0kn847b6Yq8Rs57qFtbeNZ1X-3zPxuNj1GW9t9G8JpWlPAsYg1s6p0_AvouAhuizPGIDzDSNxjywze8tqfzrp9wWSY_rMH2P5lzLQXRWR4n_Cp2yGj86-iGVV2lcoLOS-xriEZ34uP3JSRCYwpJJnGIDQJ8RN4Z9r1iZaDk81T2aIFeWu42vpR8uFk5nb6X8Nfr2VC68fCiftZxtQDv_DpMEjFbD2txkHMccGB7j_nVYDecyoIu4a13F1fbTcMPWke7mr718-miolgzuS01mwPnXRw6d_cOl5LKrHXRMw.jpg"
         }
       ],
       "video_url": null,
@@ -313,7 +313,7 @@
       "date": "2026-02-09T04:00:06+00:00",
       "text": "🌾 Изменения порядка перевода земель сельскохозяйственного назначения \n\nФедеральным законом от 01.04.2025 N 52-ФЗ внесен ряд важных изменений в положения Федерального закона от 21.12.2004 N 172-ФЗ \"О переводе земель или земельных участков из одной категории в другую\", касающихся порядка и условий перевода земель из одной категории в другую.\n\nИзменения вступают в силу с 01.03.2026, а отдельные положения – с 01.01.2027, в частности:\n\n🔸 новые особенности перевода земель сельхозназначения (ст. 7 Закона № 172-ФЗ) вступают в силу с 01.01.2027;\n \n🔸 до 01.01.2027 положения Закона № 172-Ф действующей редакции не применяются к отношениям по добыче общераспространенных полезных ископаемых (ОПИ);\n\n🔸установлена возможность по 31.12.2033 перевода земель сельскохозяйственных угодий или земельных участков в составе таких земель в другую категорию в целях добычи ОПИ для реализации приоритетных проектов по модернизации и расширению инфраструктуры (Федеральный закон от 31.07.2020 N 254-ФЗ).\n\nОсновные моменты\n\n▪️Полномочия исполнительного органа субъекта РФ по изданию Акта о переводе земель/участков сельскохозяйственного назначения не распространяются на земли федеральной собственности.\n\n▪️Для перевода земель/участков сельскохозяйственных угодий в другую категорию законодательным органом субъекта РФ, необходимо заключение Минсельхоза, однако не направление заключения в установленные сроки не является препятствием для принятия Акта о переводе земель/участков.\n\n▪️Перевод земель сельскохозяйственных угодий/участков в составе таких земель в другую категорию в случаях, связанных с добычей ОПИ не допускается.\n\n▪️Перевод земель/участков сельскохозяйственных угодий в другую категорию, в т.ч. для целей, не связанных с добычей ОПИ, не допускается, если они включены в перечень особо ценных продуктивных сельскохозяйственных угодий.\n\n🤔 В соответствии со ст. 7 Закона о недрах, пользователь недр, получивший горный отвод, имеет исключительное право осуществлять в его границах пользование недрами в соответствии с предоставленной лицензией.\n\nМежду тем, как указано в Постановлении КС РФ № 56-П от 06.12.2024, само по себе наличие у лица лицензии на пользование недрами не освобождает это лицо от обязанности соблюдать земельное законодательство и не дает права добывать полезные ископаемые на земельных участках сельхозназначения.\n\n⚠️ С учетом положений Закона № 52-ФЗ, с 01.03.2026\n\n1️⃣ Лица, имеющие лицензию на недропользование, связанное с добычей ОПИ на землях сельхозугодий не смогут приступить к добыче, поскольку действует запрет на перевод таких земель для целей добычи ОПИ.\n\n2️⃣ Лицам, имеющим лицензию на добычу полезных ископаемых (не ОПИ) на землях сельхозугодий для перевода таких земель необходимо будет получить заключение Минсельхоза России.\n\n☝️При этом, необходимо понимать, что \n\nСельхозугодья это не все и не любые земли сельхозназначения, а только наиболее продуктивные земли, предназначенные для сельхозпроизводства (не путать с особо ценными продуктивными сельхозугодьями, которые включены в отдельный перечень), как правило, земельные участки в составе сельхозугодий имеют ВРИ «для сельскохозяйственного использования», согласно сведениям ЕГРН.\n\nСельхозугодья не могут включаться в границы территории ведения гражданами садоводства для собственных нужд, а также использоваться для строительства садовых домов, жилых домов, хозяйственных построек и гаражей на садовом земельном участке (ч. 6 ст. 79 ЗК РФ), следовательно, если в отношении земельного участка в ЕГРН указан упомянутый ВРИ, на перевод такого земельного участка ограничения, предусмотренные Законом № 52-ФЗ не распространяются.",
       "text_html": "🌾 Изменения порядка перевода земель сельскохозяйственного назначения <br><br><a href=\"http://publication.pravo.gov.ru/document/0001202504010018\" target=\"_blank\" rel=\"noopener noreferrer\">Федеральным законом от 01.04.2025 N 52-ФЗ</a> внесен ряд важных изменений в положения Федерального закона от 21.12.2004 N 172-ФЗ \"О переводе земель или земельных участков из одной категории в другую\", касающихся порядка и условий перевода земель из одной категории в другую.<br><br>Изменения вступают в силу с 01.03.2026, а отдельные положения – с 01.01.2027, в частности:<br><br>🔸 новые особенности перевода земель сельхозназначения (ст. 7 Закона № 172-ФЗ) вступают в силу с 01.01.2027;<br> <br>🔸 до 01.01.2027 положения Закона № 172-Ф действующей редакции не применяются к отношениям по добыче общераспространенных полезных ископаемых (ОПИ);<br><br>🔸установлена возможность по 31.12.2033 перевода земель сельскохозяйственных угодий или земельных участков в составе таких земель в другую категорию в целях добычи ОПИ для реализации приоритетных проектов по модернизации и расширению инфраструктуры (Федеральный закон от 31.07.2020 N 254-ФЗ).<br><br>Основные моменты<br><br>▪️Полномочия исполнительного органа субъекта РФ по изданию Акта о переводе земель/участков сельскохозяйственного назначения не распространяются на земли федеральной собственности.<br><br>▪️Для перевода земель/участков сельскохозяйственных угодий в другую категорию законодательным органом субъекта РФ, необходимо заключение Минсельхоза, однако не направление заключения в установленные сроки не является препятствием для принятия Акта о переводе земель/участков.<br><br>▪️Перевод земель сельскохозяйственных угодий/участков в составе таких земель в другую категорию в случаях, связанных с добычей ОПИ не допускается.<br><br>▪️Перевод земель/участков сельскохозяйственных угодий в другую категорию, в т.ч. для целей, не связанных с добычей ОПИ, не допускается, если они включены в перечень особо ценных продуктивных сельскохозяйственных угодий.<br><br>🤔 В соответствии со ст. 7 Закона о недрах, пользователь недр, получивший горный отвод, имеет исключительное право осуществлять в его границах пользование недрами в соответствии с предоставленной лицензией.<br><br>Между тем, как указано в Постановлении КС РФ № 56-П от 06.12.2024, само по себе наличие у лица лицензии на пользование недрами не освобождает это лицо от обязанности соблюдать земельное законодательство и не дает права добывать полезные ископаемые на земельных участках сельхозназначения.<br><br>⚠️ С учетом положений Закона № 52-ФЗ, с 01.03.2026<br><br>1️⃣ Лица, имеющие лицензию на недропользование, связанное с добычей ОПИ на землях сельхозугодий не смогут приступить к добыче, поскольку действует запрет на перевод таких земель для целей добычи ОПИ.<br><br>2️⃣ Лицам, имеющим лицензию на добычу полезных ископаемых (не ОПИ) на землях сельхозугодий для перевода таких земель необходимо будет получить заключение Минсельхоза России.<br><br>☝️При этом, необходимо понимать, что <br><br>Сельхозугодья это не все и не любые земли сельхозназначения, а только наиболее продуктивные земли, предназначенные для сельхозпроизводства (не путать с особо ценными продуктивными сельхозугодьями, которые включены в отдельный перечень), как правило, земельные участки в составе сельхозугодий имеют ВРИ «для сельскохозяйственного использования», согласно сведениям ЕГРН.<br><br>Сельхозугодья не могут включаться в границы территории ведения гражданами садоводства для собственных нужд, а также использоваться для строительства садовых домов, жилых домов, хозяйственных построек и гаражей на садовом земельном участке (ч. 6 ст. 79 ЗК РФ), следовательно, если в отношении земельного участка в ЕГРН указан упомянутый ВРИ, на перевод такого земельного участка ограничения, предусмотренные Законом № 52-ФЗ не распространяются.",
-      "views": 5110,
+      "views": 5120,
       "comments_count": 0,
       "comments_url": null,
       "photos": [],
@@ -334,9 +334,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1284-1-e1c0c07ea874-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1284-1-e1c0c07ea874-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/rmjJevwWIEgo7usao1Qpt23Z-_gQEnNWRyg9ePl3aKZwlH2NLRXOFgL_tocQkwjiPyQT8pdR0NDjU_fN5v6ftPOoAUEGlXDtJL2l-8nnFfGll-77YxeVPpMFfToNUHUT-wX7ZiLSuumyzz0AIuDbIRSpZNOEoBnTlUTvhXv35EESOqYlCsClfhexjWQKe8IHfw0I9C6atli60vNmmPKSH_pO1j50lPls7TAavgFIaEDA-BzyfHQ2M6XXipLX3a9iyPAB8ZtzIi_jE87NRmoM2h-3NnjLnRmgJB-MfURuNihTcbx1nsXVi1d5JWrOnMSF3i83_eJykh4KvgLTLHfadQ.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1284-1-e1c0c07ea874-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1284-1-e1c0c07ea874-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -344,7 +343,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/rmjJevwWIEgo7usao1Qpt23Z-_gQEnNWRyg9ePl3aKZwlH2NLRXOFgL_tocQkwjiPyQT8pdR0NDjU_fN5v6ftPOoAUEGlXDtJL2l-8nnFfGll-77YxeVPpMFfToNUHUT-wX7ZiLSuumyzz0AIuDbIRSpZNOEoBnTlUTvhXv35EESOqYlCsClfhexjWQKe8IHfw0I9C6atli60vNmmPKSH_pO1j50lPls7TAavgFIaEDA-BzyfHQ2M6XXipLX3a9iyPAB8ZtzIi_jE87NRmoM2h-3NnjLnRmgJB-MfURuNihTcbx1nsXVi1d5JWrOnMSF3i83_eJykh4KvgLTLHfadQ.jpg"
         }
       ],
       "video_url": null,
@@ -379,9 +379,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1282-1-75fb441f6276-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1282-1-75fb441f6276-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/jxuHQz8S1ti22E8dmty3BrVO_UnIeYjWnRDc-LnHQvrvgwBc91P9jmHVxTn_Dt9oU2hu0GwT7tC9zpq4VAvQ-A-8i8wndfmKhM0zHab1I2lbttJTV0vBkgrGgptYFWRNo8bc9IeFu-yxfX_DHcEnrnWlCgChlahyiGhS4_NcKRpoZBShqGfRz-tcvJOP4cn-w6pmzJhRyxa_sqgjNLb5f-IRlyG5mlF-Mi8EMlZo4sbD0tfQDDqMCQYdc91XMzkhclH96g43KD21DetM4OvZ-gtLztbrpTc4d5fnsnMaXtXG-Y2mZhH02-f4bPwehjZQdxSSS51TddM-cPAh5dRiOw.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1282-1-75fb441f6276-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1282-1-75fb441f6276-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -389,7 +388,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/jxuHQz8S1ti22E8dmty3BrVO_UnIeYjWnRDc-LnHQvrvgwBc91P9jmHVxTn_Dt9oU2hu0GwT7tC9zpq4VAvQ-A-8i8wndfmKhM0zHab1I2lbttJTV0vBkgrGgptYFWRNo8bc9IeFu-yxfX_DHcEnrnWlCgChlahyiGhS4_NcKRpoZBShqGfRz-tcvJOP4cn-w6pmzJhRyxa_sqgjNLb5f-IRlyG5mlF-Mi8EMlZo4sbD0tfQDDqMCQYdc91XMzkhclH96g43KD21DetM4OvZ-gtLztbrpTc4d5fnsnMaXtXG-Y2mZhH02-f4bPwehjZQdxSSS51TddM-cPAh5dRiOw.jpg"
         }
       ],
       "video_url": null,
