@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-06T10:46:33.064226+00:00",
+  "generated_at": "2026-04-06T13:25:09.435950+00:00",
   "build_id": "47e8c48a6acf",
   "pagination": {
     "page": 2,
@@ -19,9 +19,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/437-1-660be0e073be-v8.jpg",
-          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/437-1-660be0e073be-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Ilcen4F33RYxs039F1iNplLlF4GTU4SPKm8Bo-laWe6ubhCYcP2bXwgF7gl97_xV-BaM59aLdfWLu5YbWDHvGdzAmy2e-dM1tN9635qslyQ8iUNrJHMceHni01nicxzc7DJEcXdLKIpF_FSBguOuwjM6l_iYbs7yawCX8RcoQFUDwSUjutohjuZw2Me6DIc8pbvyMUlKw8ju4oH3xns8Eal3XloEBA-gxFRp2umYxxCB4m7tfXyxPlLbK75ZQjHEj6Yrr3HYQ8DFdV5ocK23wkdd9CQol7XwetPTv3nxY8ZhKyHyhk7EHD0UM9QpBowGqf1tAgPXx4JTAj9Q6D8WqA.jpg",
           "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/feed/437-1-660be0e073be-v8.jpg",
+          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/437-1-660be0e073be-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 450,
           "feed_width": 1800,
@@ -29,7 +28,8 @@
           "full_width": 1880,
           "full_height": 1058,
           "source_width": 1880,
-          "source_height": 1058
+          "source_height": 1058,
+          "source_url": "https://cdn4.telesco.pe/file/Ilcen4F33RYxs039F1iNplLlF4GTU4SPKm8Bo-laWe6ubhCYcP2bXwgF7gl97_xV-BaM59aLdfWLu5YbWDHvGdzAmy2e-dM1tN9635qslyQ8iUNrJHMceHni01nicxzc7DJEcXdLKIpF_FSBguOuwjM6l_iYbs7yawCX8RcoQFUDwSUjutohjuZw2Me6DIc8pbvyMUlKw8ju4oH3xns8Eal3XloEBA-gxFRp2umYxxCB4m7tfXyxPlLbK75ZQjHEj6Yrr3HYQ8DFdV5ocK23wkdd9CQol7XwetPTv3nxY8ZhKyHyhk7EHD0UM9QpBowGqf1tAgPXx4JTAj9Q6D8WqA.jpg"
         }
       ],
       "video_url": null,
@@ -64,9 +64,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/434-1-e29493518c64-v8.jpg",
-          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/434-1-e29493518c64-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/CvrkdGVT2u7zSqhaYxib8j1vU9NjE3T9AtNVNzSjtU_9He-aWJwvjU0PFcJrh4Hnw2wCgAWROKct2C3fRzy1kNOVEgQWkUkszS3izO1p3pT_ptTvWIxpxVt3Gvx-HNuiFQD5fMduWGIxYA22YONkZbBQQmP7C2HY7-MnQwPat6DI4SH8dVYk1lxm0PZjQH1VxKQQg2-RxuuZqBW0EceTx7o_eF4vi9yt7TyYMSzNFRwu1Qrzlz44RKvQiK5iBxH6lBX7OuX3_gv9FtS4YCkzkj9CyWSmTbyjJ51rTruO9mktkBCpCU1XxhDqhTZTMlkR0YkxDBPq2FnHe23wwVY3fg.jpg",
           "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/feed/434-1-e29493518c64-v8.jpg",
+          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/434-1-e29493518c64-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -74,7 +73,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/CvrkdGVT2u7zSqhaYxib8j1vU9NjE3T9AtNVNzSjtU_9He-aWJwvjU0PFcJrh4Hnw2wCgAWROKct2C3fRzy1kNOVEgQWkUkszS3izO1p3pT_ptTvWIxpxVt3Gvx-HNuiFQD5fMduWGIxYA22YONkZbBQQmP7C2HY7-MnQwPat6DI4SH8dVYk1lxm0PZjQH1VxKQQg2-RxuuZqBW0EceTx7o_eF4vi9yt7TyYMSzNFRwu1Qrzlz44RKvQiK5iBxH6lBX7OuX3_gv9FtS4YCkzkj9CyWSmTbyjJ51rTruO9mktkBCpCU1XxhDqhTZTMlkR0YkxDBPq2FnHe23wwVY3fg.jpg"
         }
       ],
       "video_url": null,
@@ -94,9 +94,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/433-1-299ed8d12148-v8.jpg",
-          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/433-1-299ed8d12148-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/hO-P6ufPhFsrGgY4TYqoF3rkNGjzJzDVUIn9G1BcNNCbffwlruawyM_fJitLYG8pIvFgskTrLbKDg8un1kV_PzZvEweRG15QBNro83EaeUH22TMWHY7oMJmM_pggfyj--kGNw0KVGc74OoEdQz2x1ZZ3u3HqsCAoUJ0p0qGwA1FhUKJDSGPO_bRwQTDAm-BizUhyOBqvX3CUudJBCv8cL-tPZqrrYzATXRxDvIShIS0p3cfSNcW6XL7EBLhhOUBBe7I1XX1l_NSWSyUk1NPpcpllpvlSJ4IhrNTATpSpFhGnOeH6VO0XPhgmmIW92ePLqzGujI5naAexvQXcm8Hkbw.jpg",
           "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/feed/433-1-299ed8d12148-v8.jpg",
+          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/433-1-299ed8d12148-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -104,7 +103,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/hO-P6ufPhFsrGgY4TYqoF3rkNGjzJzDVUIn9G1BcNNCbffwlruawyM_fJitLYG8pIvFgskTrLbKDg8un1kV_PzZvEweRG15QBNro83EaeUH22TMWHY7oMJmM_pggfyj--kGNw0KVGc74OoEdQz2x1ZZ3u3HqsCAoUJ0p0qGwA1FhUKJDSGPO_bRwQTDAm-BizUhyOBqvX3CUudJBCv8cL-tPZqrrYzATXRxDvIShIS0p3cfSNcW6XL7EBLhhOUBBe7I1XX1l_NSWSyUk1NPpcpllpvlSJ4IhrNTATpSpFhGnOeH6VO0XPhgmmIW92ePLqzGujI5naAexvQXcm8Hkbw.jpg"
         }
       ],
       "video_url": null,
@@ -124,9 +124,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/432-1-fb7d24e58221-v8.jpg",
-          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/432-1-fb7d24e58221-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/HWdGL16GvPmHpOXyF14-onZW3Hz7Fs7QhMivqLCF2iuYHzeM294OjIO04HHD_qT7FmPLakAAB55J2D7yU5Yx-RCIbdkZE5zqBngx83eHzGogjnqvW39O-0J8MoPUDinOOuLl8eZev6ItZNhEsWvDs8jQcrLN2yQUwgp-aft5WI-mosl4OWaYjNR3cxaPlpCy1I1c2NwImGLTyY9IGXRsOlcNOCFxReAjG0iCkquOIkebuTE6r3eV2t0swQ1G5u8UiMo0n-gXCraX5KAAFmrAqBmbyCCshxYmtawfcIDbGBqPqAy3HVZ95t8vbfOsIfO8bnWO0mHw7HqWmC63Npfg0g.jpg",
           "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/feed/432-1-fb7d24e58221-v8.jpg",
+          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/432-1-fb7d24e58221-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -134,7 +133,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/HWdGL16GvPmHpOXyF14-onZW3Hz7Fs7QhMivqLCF2iuYHzeM294OjIO04HHD_qT7FmPLakAAB55J2D7yU5Yx-RCIbdkZE5zqBngx83eHzGogjnqvW39O-0J8MoPUDinOOuLl8eZev6ItZNhEsWvDs8jQcrLN2yQUwgp-aft5WI-mosl4OWaYjNR3cxaPlpCy1I1c2NwImGLTyY9IGXRsOlcNOCFxReAjG0iCkquOIkebuTE6r3eV2t0swQ1G5u8UiMo0n-gXCraX5KAAFmrAqBmbyCCshxYmtawfcIDbGBqPqAy3HVZ95t8vbfOsIfO8bnWO0mHw7HqWmC63Npfg0g.jpg"
         }
       ],
       "video_url": null,
@@ -168,15 +168,14 @@
       "date": "2026-03-13T06:52:16+00:00",
       "text": "🃏В бизнесе, как и в покере, выигрывает не тот, у кого больше карт, а тот, кто лучше понимает правила игры и вовремя делает правильную ставку.\n\n♠️ 26 марта приглашаем представителей бизнеса на встречу «Банкротный покер», на которой вместе с экспертами «Пепеляев Групп» обсудим актуальные вопросы банкротства, судебную практику и стратегии защиты бизнеса. Разберём реальные ситуации, сильные и слабые комбинации в спорах, а также новые подходы судов и государственных органов.\n\n♦️ Субсидиарная ответственность: всегда ли к одиннадцати туз? \n\n♦️ Защита сделок: фулл-хаус или пас?\n\n♦️  Налоги в банкротстве: игра с государством по-крупному:\n\n♦️ Семейные вопросы: когда в проигрыше тот, кто не играл.\n\n♦️ Другие тонкости банкротства для заядлых игроков.\n\nПриходите, чтобы разобраться в правилах игры и научиться держать сильную руку в банкротных спорах.\n\n⚡️ Подробнее о мероприятии и регистрация по ссылке.",
       "text_html": "🃏В бизнесе, как и в покере, выигрывает не тот, у кого больше карт, а тот, кто лучше понимает правила игры и вовремя делает правильную ставку.<br><br>♠️ 26 марта приглашаем представителей бизнеса на встречу « <a href=\"https://www.pgplaw.ru/events/upcoming-events/bankrotnyy-poker/\" target=\"_blank\" rel=\"noopener noreferrer\">Банкротный покер</a> », на которой вместе с экспертами «Пепеляев Групп» обсудим актуальные вопросы банкротства, судебную практику и стратегии защиты бизнеса. Разберём реальные ситуации, сильные и слабые комбинации в спорах, а также новые подходы судов и государственных органов.<br><br>♦️ Субсидиарная ответственность: всегда ли к одиннадцати туз? <br><br>♦️ Защита сделок: фулл-хаус или пас?<br><br>♦️  Налоги в банкротстве: игра с государством по-крупному:<br><br>♦️ Семейные вопросы: когда в проигрыше тот, кто не играл.<br><br>♦️ Другие тонкости банкротства для заядлых игроков.<br><br>Приходите, чтобы разобраться в правилах игры и научиться держать сильную руку в банкротных спорах.<br><br>⚡️ Подробнее о мероприятии и регистрация по <a href=\"https://www.pgplaw.ru/events/upcoming-events/bankrotnyy-poker/\" target=\"_blank\" rel=\"noopener noreferrer\">ссылке.</a>",
-      "views": 5040,
+      "views": 5050,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
           "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/429-1-6645045a3df2-v8.jpg",
-          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/429-1-6645045a3df2-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/AaKRFpLvb58jygEJnomCyXfMu2WWBQ1yFGpxnPaUkJKzi2bEnL37_WsMbncBcMhIPxGo2Zf_DHic37pvX1nI4FBTqCeIcoN-AY6f_8XT-4qRBAjgkTIUDeh9Hyk8EfWnp45dGrIUEIMjzNUMs8vC6C4ChgdkwfnjKgCXeRGTJF1Q-VAOe9ecnE6Q-DlldumhRP0jabHgGrkspDI3f_IEHpocRJuMkNYRCjnShWFlZoCdk_CiNT-dQOKsOD4K5XWcY7i_TLaCVrwuPk1bn2IXpGqyxfc2d9l8-4cBJBkozmro_frzmeHNYQ-5q2hgEWjzYd2aq6ApRQOCvIQtGh_xBQ.jpg",
           "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/feed/429-1-6645045a3df2-v8.jpg",
+          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/429-1-6645045a3df2-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -184,7 +183,8 @@
           "full_width": 1880,
           "full_height": 987,
           "source_width": 1880,
-          "source_height": 987
+          "source_height": 987,
+          "source_url": "https://cdn4.telesco.pe/file/AaKRFpLvb58jygEJnomCyXfMu2WWBQ1yFGpxnPaUkJKzi2bEnL37_WsMbncBcMhIPxGo2Zf_DHic37pvX1nI4FBTqCeIcoN-AY6f_8XT-4qRBAjgkTIUDeh9Hyk8EfWnp45dGrIUEIMjzNUMs8vC6C4ChgdkwfnjKgCXeRGTJF1Q-VAOe9ecnE6Q-DlldumhRP0jabHgGrkspDI3f_IEHpocRJuMkNYRCjnShWFlZoCdk_CiNT-dQOKsOD4K5XWcY7i_TLaCVrwuPk1bn2IXpGqyxfc2d9l8-4cBJBkozmro_frzmeHNYQ-5q2hgEWjzYd2aq6ApRQOCvIQtGh_xBQ.jpg"
         }
       ],
       "video_url": null,
@@ -219,9 +219,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/426-1-44dea5071ed9-v8.jpg",
-          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/426-1-44dea5071ed9-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/RN5GWuUcEDDFhK7ZkHYDG_HOV4s-Bco__duSwvaqm2FQcDtQuTucw1Kz6FWajCybSGCeiPyNgcfxy5ub2baTarDhdBSYuC_pRY8sQzlTy50I_Vzy7PtZX2stA-d5qKQhEA9FFBze8n02U2SHjeItxdL3DM7cRG-e6WKqYANuT3RtlZ1UkXxgukeXhpjMr9-p40aexLY1PxYbAUG3_3it6Qprel3FLnApfJ6r8bQLYg7nSJGFIjdfzAfplf47vXVanrj5_dRrtas_mxxRqhCaj9xbD3GOf1mJLnqBAnLNqCrnyWFJKUZzHeUWxjNcwR9trdP_Y5dZiVZ3wo0cej6RBw.jpg",
           "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/feed/426-1-44dea5071ed9-v8.jpg",
+          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/426-1-44dea5071ed9-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -229,7 +228,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/RN5GWuUcEDDFhK7ZkHYDG_HOV4s-Bco__duSwvaqm2FQcDtQuTucw1Kz6FWajCybSGCeiPyNgcfxy5ub2baTarDhdBSYuC_pRY8sQzlTy50I_Vzy7PtZX2stA-d5qKQhEA9FFBze8n02U2SHjeItxdL3DM7cRG-e6WKqYANuT3RtlZ1UkXxgukeXhpjMr9-p40aexLY1PxYbAUG3_3it6Qprel3FLnApfJ6r8bQLYg7nSJGFIjdfzAfplf47vXVanrj5_dRrtas_mxxRqhCaj9xbD3GOf1mJLnqBAnLNqCrnyWFJKUZzHeUWxjNcwR9trdP_Y5dZiVZ3wo0cej6RBw.jpg"
         }
       ],
       "video_url": null,
@@ -264,9 +264,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/424-1-bb4d5869e1af-v8.jpg",
-          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/424-1-bb4d5869e1af-v8.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/r0xtu__rKBhv6CC5LJorPdw365XF_iEYdTgeIi19eBEkdZqj7KtWMdNyE2UpfCu_LhlrHGaOrQYXd-tlsko5EYt-4mJytjwh0fTLXvMfkMFmP2jjSOtFUjx8WDr7nzm8SLGc30S7sG2h0TkQuWAXJUj1R8xuYkY2gvuctcvJKjIx28hLQ-CbZpbibfelSqwbfPtxQwhlc2Id7ka3mGQwLw0s_2Mu_wOgUiRDvJZqa4z6WaukbkdDd3uygDG2N4lgAd316IKjxrPdT7r8hF-8Nqjld6xKzyTInQFeqSwTLdSxZGHlrNXKlrDU172RrJlbdXq9v_BsSOPN7GMZ1ddZwg.jpg",
           "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/feed/424-1-bb4d5869e1af-v8.jpg",
+          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/424-1-bb4d5869e1af-v8.jpg",
           "thumb_width": 800,
           "thumb_height": 450,
           "feed_width": 1800,
@@ -274,7 +273,8 @@
           "full_width": 1880,
           "full_height": 1058,
           "source_width": 1880,
-          "source_height": 1058
+          "source_height": 1058,
+          "source_url": "https://cdn4.telesco.pe/file/r0xtu__rKBhv6CC5LJorPdw365XF_iEYdTgeIi19eBEkdZqj7KtWMdNyE2UpfCu_LhlrHGaOrQYXd-tlsko5EYt-4mJytjwh0fTLXvMfkMFmP2jjSOtFUjx8WDr7nzm8SLGc30S7sG2h0TkQuWAXJUj1R8xuYkY2gvuctcvJKjIx28hLQ-CbZpbibfelSqwbfPtxQwhlc2Id7ka3mGQwLw0s_2Mu_wOgUiRDvJZqa4z6WaukbkdDd3uygDG2N4lgAd316IKjxrPdT7r8hF-8Nqjld6xKzyTInQFeqSwTLdSxZGHlrNXKlrDU172RrJlbdXq9v_BsSOPN7GMZ1ddZwg.jpg"
         }
       ],
       "video_url": null,
