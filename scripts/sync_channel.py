@@ -58,6 +58,8 @@ STALE_MEDIA_RETENTION_DAYS = 3
 STALE_MEDIA_RETENTION_SECONDS = STALE_MEDIA_RETENTION_DAYS * 24 * 60 * 60
 LEGACY_VARIANT_RETENTION_DAYS = 1
 LEGACY_VARIANT_RETENTION_SECONDS = LEGACY_VARIANT_RETENTION_DAYS * 24 * 60 * 60
+PHOTO_ASSET_REUSE_AFTER_HOURS = 24
+PHOTO_ASSET_REUSE_AFTER_SECONDS = PHOTO_ASSET_REUSE_AFTER_HOURS * 60 * 60
 
 BASE_HEADERS = {
     "User-Agent": (
@@ -532,6 +534,69 @@ def with_local_variant_dimensions(
     if "source_height" not in enriched and enriched.get("full_height"):
         enriched["source_height"] = enriched["full_height"]
     return enriched
+
+
+def is_post_old_enough_for_photo_reuse(post: dict[str, Any]) -> bool:
+    post_date = parse_iso_datetime(str(post.get("date") or "").strip())
+    if not post_date:
+        return False
+    if post_date.tzinfo is None:
+        post_date = post_date.replace(tzinfo=timezone.utc)
+    age_seconds = (datetime.now(timezone.utc) - post_date.astimezone(timezone.utc)).total_seconds()
+    return age_seconds >= PHOTO_ASSET_REUSE_AFTER_SECONDS
+
+
+def reuse_existing_photo_assets(
+    post: dict[str, Any],
+    existing_post: dict[str, Any] | None,
+    active_relative_paths: set[str],
+) -> list[dict[str, Any]] | None:
+    if not existing_post or not is_post_old_enough_for_photo_reuse(post):
+        return None
+
+    current_photos = [normalize_photo_entry(raw_photo) for raw_photo in post.get("photos") or []]
+    current_photos = [photo for photo in current_photos if photo]
+    existing_photos = [normalize_photo_entry(raw_photo) for raw_photo in existing_post.get("photos") or []]
+    existing_photos = [photo for photo in existing_photos if photo]
+
+    if not current_photos or len(current_photos) != len(existing_photos):
+        return None
+
+    is_single_photo_post = len(existing_photos) == 1
+    reused_photos: list[dict[str, Any]] = []
+
+    for photo in existing_photos:
+        full_url = photo.get("full_url")
+        thumb_url = photo.get("thumb_url")
+        feed_url = photo.get("feed_url") if is_single_photo_post else None
+        full_path = resolve_local_asset_path(full_url)
+        thumb_path = resolve_local_asset_path(thumb_url)
+        feed_path = resolve_local_asset_path(feed_url) if feed_url else None
+
+        if not (
+            is_local_asset_url(full_url)
+            and is_local_asset_url(thumb_url)
+            and is_valid_local_image(full_path)
+            and is_valid_local_image(thumb_path)
+            and (not is_single_photo_post or is_valid_local_image(feed_path))
+        ):
+            return None
+
+        active_relative_paths.add(str(full_url))
+        active_relative_paths.add(str(thumb_url))
+        if feed_url:
+            active_relative_paths.add(str(feed_url))
+
+        reused_photos.append(
+            with_local_variant_dimensions(
+                photo,
+                thumb_path=thumb_path,
+                feed_path=feed_path if is_single_photo_post else None,
+                full_path=full_path,
+            )
+        )
+
+    return reused_photos
 
 
 def infer_video_extension_from_url(video_url: str | None, default: str = "mp4") -> str:
@@ -1093,20 +1158,37 @@ def detect_round_video_hint(block: str, width: int | None = None, height: int | 
     return False
 
 
-def mirror_post_photos(posts: list[dict[str, Any]], photo_overrides: dict[int, list[bytes]] | None = None) -> bool:
+def mirror_post_photos(
+    posts: list[dict[str, Any]],
+    photo_overrides: dict[int, list[bytes]] | None = None,
+    existing_posts: list[dict[str, Any]] | None = None,
+) -> bool:
     POSTS_MEDIA_DIR.mkdir(parents=True, exist_ok=True)
     POSTS_THUMBS_DIR.mkdir(parents=True, exist_ok=True)
     POSTS_FEED_DIR.mkdir(parents=True, exist_ok=True)
     active_relative_paths: set[str] = set()
     changes_detected = False
     photo_overrides = photo_overrides or {}
+    existing_posts_by_id = {
+        int(entry.get("id")): entry
+        for entry in (existing_posts or [])
+        if entry.get("id")
+    }
 
     for post in posts:
         mirrored_photos: list[dict[str, Any]] = []
         post_photo_overrides = photo_overrides.get(post["id"], [])
+        existing_post = existing_posts_by_id.get(int(post["id"]))
         normalized_photos = [normalize_photo_entry(raw_photo) for raw_photo in post.get("photos") or []]
         normalized_photos = [photo for photo in normalized_photos if photo]
         is_single_photo_post = len(normalized_photos) == 1
+
+        if not post_photo_overrides:
+            reused_photos = reuse_existing_photo_assets(post, existing_post, active_relative_paths)
+            if reused_photos is not None:
+                if post.get("photos") != reused_photos:
+                    post["photos"] = reused_photos
+                continue
 
         for index, photo in enumerate(normalized_photos):
             full_source = photo["full_url"]
@@ -4806,7 +4888,11 @@ def main() -> int:
         )
 
     changes_detected = avatar_changed
-    changes_detected = mirror_post_photos(posts, photo_overrides=photo_overrides) or changes_detected
+    changes_detected = mirror_post_photos(
+        posts,
+        photo_overrides=photo_overrides,
+        existing_posts=existing_posts,
+    ) or changes_detected
     changes_detected = mirror_round_videos(
         posts,
         video_metadata=video_metadata,
