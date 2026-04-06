@@ -2312,6 +2312,7 @@ def score_link_preview_candidate(url: str) -> int:
             "vimeo.com",
             "dzen.ru",
             "smotrim.ru",
+            "tv.rbc.ru",
             "twitch.tv",
             "tiktok.com",
         )
