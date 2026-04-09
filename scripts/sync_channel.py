@@ -3672,6 +3672,29 @@ def enrich_post_media_from_pages(posts: list[dict[str, Any]], config: SiteConfig
     return changed
 
 
+def drop_unresolved_round_video_placeholders(posts: list[dict[str, Any]]) -> bool:
+    changed = False
+    for post in posts:
+        if not post.get("video_note"):
+            continue
+        if post.get("video_url") or (post.get("videos") or []):
+            continue
+        if not post.get("unsupported_media"):
+            continue
+
+        log.warning(
+            "Dropping unresolved round-video placeholder for post %s after direct-page recovery produced no video source",
+            post.get("id"),
+        )
+        post.pop("video_note", None)
+        post.pop("video_poster", None)
+        post.pop("video_width", None)
+        post.pop("video_height", None)
+        changed = True
+
+    return changed
+
+
 def get_downloadable_photo_targets(message: Any) -> list[Any]:
     targets: list[Any] = []
 
@@ -5054,6 +5077,7 @@ def main() -> int:
         )
         posts = deduped_posts
     enrich_post_media_from_pages(posts, config)
+    drop_unresolved_round_video_placeholders(posts)
     enrich_reply_posts_from_pages(posts, config)
     enrich_forwarded_posts_from_source_pages(posts)
 
