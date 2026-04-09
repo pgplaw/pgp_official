@@ -1069,7 +1069,7 @@ def detect_video_media_hint(block: str) -> bool:
 def detect_unsupported_telegram_media_placeholder(block: str) -> bool:
     return bool(
         re.search(
-            r"(This media is not supported in your browser|Please open Telegram to view this post|Open Telegram to view this post)",
+            r"This media is not supported in your browser",
             block,
             re.IGNORECASE,
         )
@@ -2863,7 +2863,38 @@ def enrich_post_with_direct_page_video_meta(post: dict[str, Any], page_html: str
     return changed
 
 
-def extract_enriched_post_from_page(page_html: str, page_url: str, post_id: int, config: SiteConfig) -> dict[str, Any] | None:
+def build_minimal_post_shell(post_id: int, config: SiteConfig, base_post: dict[str, Any] | None = None) -> dict[str, Any]:
+    base_post = base_post or {}
+    return {
+        "id": post_id,
+        "date": base_post.get("date"),
+        "text": base_post.get("text"),
+        "text_html": base_post.get("text_html"),
+        "views": base_post.get("views"),
+        "comments_count": base_post.get("comments_count"),
+        "comments_url": base_post.get("comments_url"),
+        "photos": list(base_post.get("photos") or []),
+        "video_url": base_post.get("video_url"),
+        "videos": normalize_video_entries(base_post.get("videos") or []),
+        "tg_url": base_post.get("tg_url") or f"https://t.me/{config.channel_username}/{post_id}",
+        "forwarded_from": base_post.get("forwarded_from"),
+        "reply_to": base_post.get("reply_to"),
+        "video_note": bool(base_post.get("video_note")),
+        "video_poster": normalize_video_poster_entry(base_post.get("video_poster")) if base_post.get("video_poster") else None,
+        "video_width": base_post.get("video_width"),
+        "video_height": base_post.get("video_height"),
+        "unsupported_media": bool(base_post.get("unsupported_media")),
+    }
+
+
+def extract_enriched_post_from_page(
+    page_html: str,
+    page_url: str,
+    post_id: int,
+    config: SiteConfig,
+    *,
+    base_post: dict[str, Any] | None = None,
+) -> dict[str, Any] | None:
     candidate_post = next(
         (
             post
@@ -2873,6 +2904,9 @@ def extract_enriched_post_from_page(page_html: str, page_url: str, post_id: int,
         None,
     )
     if not candidate_post:
+        fallback_post = build_minimal_post_shell(post_id, config, base_post)
+        if enrich_post_with_direct_page_video_meta(fallback_post, page_html, page_url):
+            return fallback_post
         return None
 
     enrich_post_with_direct_page_video_meta(candidate_post, page_html, page_url)
@@ -3644,7 +3678,7 @@ def enrich_post_media_from_pages(posts: list[dict[str, Any]], config: SiteConfig
             except Exception:
                 continue
 
-            enriched_post = extract_enriched_post_from_page(page_html, page_url, post_id, config)
+            enriched_post = extract_enriched_post_from_page(page_html, page_url, post_id, config, base_post=post)
             if enriched_post:
                 break
 
@@ -3672,14 +3706,41 @@ def enrich_post_media_from_pages(posts: list[dict[str, Any]], config: SiteConfig
     return changed
 
 
-def drop_unresolved_round_video_placeholders(posts: list[dict[str, Any]]) -> bool:
+def has_reusable_existing_round_video_assets(existing_post: dict[str, Any] | None) -> bool:
+    if not existing_post:
+        return False
+
+    existing_video_url = existing_post.get("video_url")
+    if is_valid_local_video(resolve_local_asset_path(existing_video_url)):
+        return True
+
+    existing_poster = normalize_video_poster_entry(existing_post.get("video_poster"))
+    if existing_poster:
+        for key in ("thumb_url", "feed_url", "full_url"):
+            if is_valid_local_image(resolve_local_asset_path(existing_poster.get(key))):
+                return True
+
+    return False
+
+
+def drop_unresolved_round_video_placeholders(
+    posts: list[dict[str, Any]],
+    existing_posts: list[dict[str, Any]] | None = None,
+) -> bool:
     changed = False
+    existing_posts_by_id = {
+        int(entry.get("id")): entry
+        for entry in (existing_posts or [])
+        if entry.get("id")
+    }
     for post in posts:
         if not post.get("video_note"):
             continue
         if post.get("video_url") or (post.get("videos") or []):
             continue
         if not post.get("unsupported_media"):
+            continue
+        if has_reusable_existing_round_video_assets(existing_posts_by_id.get(int(post.get("id") or 0))):
             continue
 
         log.warning(
@@ -5077,7 +5138,7 @@ def main() -> int:
         )
         posts = deduped_posts
     enrich_post_media_from_pages(posts, config)
-    drop_unresolved_round_video_placeholders(posts)
+    drop_unresolved_round_video_placeholders(posts, existing_posts=existing_posts)
     enrich_reply_posts_from_pages(posts, config)
     enrich_forwarded_posts_from_source_pages(posts)
 
