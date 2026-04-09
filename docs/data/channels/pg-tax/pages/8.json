@@ -1,13 +1,73 @@
 {
-  "generated_at": "2026-04-09T10:43:39.858891+00:00",
-  "build_id": "48f615c4a8b3",
+  "generated_at": "2026-04-09T16:52:30.191365+00:00",
+  "build_id": "d8be2f5800f7",
   "pagination": {
     "page": 8,
     "page_size": 16,
-    "total_posts": 178,
+    "total_posts": 180,
     "total_pages": 12
   },
   "posts": [
+    {
+      "id": 2456,
+      "date": "2026-02-10T13:35:02+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1440,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2456-1-2b87c1065093-v8.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2456-1-2b87c1065093-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2456-1-2b87c1065093-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 420,
+          "feed_width": 1800,
+          "feed_height": 945,
+          "full_width": 1880,
+          "full_height": 987,
+          "source_width": 1880,
+          "source_height": 987,
+          "source_url": "https://cdn4.telesco.pe/file/Me8qyjM9M_tRsZrMztzIOPHQXaNARGxFu22MFiVMwDgdZ7VGypPgZZk7su-O7lFdS4w061STNN5507pS3Ku8ppFN8AhGnFWBAQVzCRcFC3CM6tEpUuMZLetZPCkKOMQy-HbZ2WxzkxMZwFQpnPUGEtbyAQQH5hNXNORwOYdtloLvStoipiHsOXm2qX5rDwBZpZS-RgU6vDYpeL8klxevckj240zuBvv4olGLWUCU-j4LTtH9WYLpwzyMCGH7NjFY3W9WoM16mz-lVzFSrXiG09hMoKau0sk1Alhmi0Ptk7VHORu7a37C6h0_OQB7zDg9PJbDdXLol83mjB-aQFbkmg.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PG_Tax/2456",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
+      "id": 2455,
+      "date": "2026-02-10T10:06:45+00:00",
+      "text": "🏆 Итоги рейтинга налоговых событий 2025\n\nПервые недели года Вы голосовали за ТОП налоговых событий 2025 года, и настало время подвести итоги.\n\nℹ️ Напомним, что мы не включали в рейтинг очевидные события в ТОПе, а выбирали значимые налоговые события года, которые могли остаться в тени \"громких\" изменений.\n\n👍 Самое важное позитивное событие\n\nСамым важным и позитивным событием признано Постановление КС РФ от 25.11.2025 № 41-П по жалобе ПАО «Банк ВТБ» по вопросу взыскания поставщиком допвознаграждения с покупателя, компенсирующего ранее отсутствующую обязанность уплатить НДС.\n\n🏢 Событие комментирует Советник \"Пепеляев Групп\" Пётр Попов: \nДля большинства ситуаций с точки зрения природы налога все ясно: куда НДС, туда и цена. Есть, однако, пусть и редкие, но значимые ситуации, когда доплата делает продолжение договорных отношений разорительным для покупателя, а ее отсутствие или расторжение договора может разорить продавца.\n\n👎 Самое важное негативное событие\n\nОдно из самых важных и негативных событий - утверждение национального плана по обелению отдельных секторов экономики.\n\n🏢 Событие комментирует Старший партнер \"Пепеляев Групп\" Сергей Савсерис:\nС точки зрения налоговой политики ключевой задачей становится поиск баланса между контролем и уровнем обязательных изъятий. Без учета экономической емкости бизнеса борьба с «серыми» схемами рискует трансформироваться из инструмента оздоровления рынка в фактор структурного сжатия экономики и ослабления налоговой базы.\n\nНаряду с обелением экономики оценку самых важных негативных получили ещё четыре события года:\n     ➖ внесудебное взыскание задолженности с физических лиц,\n     ➖ Постановление КС РФ от 10.04.2025 № 16-П о конституционности повышения госпошлин при обращении в суды, \n     ➖ активность прокуратуры в налоговых спорах,\n     ➖ практика по \"делам блогеров\".\n\nПодробные итоги рейтинга с комментариями экспертов \"Пепеляев групп\" к ключевым событиям читайте в нашем материале на сайте ПГ 👉\n\n#рейтинг_налоговых_событий\n#экспертный_материал",
+      "text_html": "🏆 Итоги рейтинга налоговых событий 2025<br><br>Первые недели года Вы голосовали за ТОП налоговых событий 2025 года, и настало время подвести итоги.<br><br>ℹ️ Напомним, что мы не включали в рейтинг очевидные события в ТОПе, а выбирали значимые налоговые события года, которые могли остаться в тени \"громких\" изменений.<br><br>👍 Самое важное позитивное событие<br><br>Самым важным и позитивным событием признано Постановление КС РФ от 25.11.2025 № 41-П по жалобе ПАО «Банк ВТБ» по вопросу взыскания поставщиком допвознаграждения с покупателя, компенсирующего ранее отсутствующую обязанность уплатить НДС.<br><br>🏢 Событие комментирует Советник \"Пепеляев Групп\" <a href=\"https://www.pgplaw.ru/to-get-the-team/petr-popov/\" target=\"_blank\" rel=\"noopener noreferrer\">Пётр Попов</a>: <br>Для большинства ситуаций с точки зрения природы налога все ясно: куда НДС, туда и цена. Есть, однако, пусть и редкие, но значимые ситуации, когда доплата делает продолжение договорных отношений разорительным для покупателя, а ее отсутствие или расторжение договора может разорить продавца.<br><br>👎 Самое важное негативное событие<br><br>Одно из самых важных и негативных событий - утверждение национального плана по обелению отдельных секторов экономики.<br><br>🏢 Событие комментирует Старший партнер \"Пепеляев Групп\" <a href=\"https://www.pgplaw.ru/to-get-the-team/sergey-savseris/\" target=\"_blank\" rel=\"noopener noreferrer\">Сергей Савсерис</a>:<br>С точки зрения налоговой политики ключевой задачей становится поиск баланса между контролем и уровнем обязательных изъятий. Без учета экономической емкости бизнеса борьба с «серыми» схемами рискует трансформироваться из инструмента оздоровления рынка в фактор структурного сжатия экономики и ослабления налоговой базы.<br><br>Наряду с обелением экономики оценку самых важных негативных получили ещё четыре события года:<br>     ➖ внесудебное взыскание задолженности с физических лиц,<br>     ➖ Постановление КС РФ от 10.04.2025 № 16-П о конституционности повышения госпошлин при обращении в суды, <br>     ➖ активность прокуратуры в налоговых спорах,<br>     ➖ практика по \"делам блогеров\".<br><br>Подробные итоги рейтинга с комментариями экспертов \"Пепеляев групп\" к ключевым событиям читайте <a href=\"https://www.pgplaw.ru/analytics-and-brochures/tax-reviews/reyting-nalogovykh-sobytiy-2025-goda/\" target=\"_blank\" rel=\"noopener noreferrer\">в нашем материале</a> на сайте ПГ 👉<br><br>#рейтинг_налоговых_событий<br>#экспертный_материал",
+      "views": 1500,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2455-1-e6ac0642f434-v8.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2455-1-e6ac0642f434-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2455-1-e6ac0642f434-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/XA6mJNsuoB1YBcLcpBQuQDZqGPyRM4VUMj32eqUmfIQXZ-FinexNtuO8Ql20ALZAgXERmm4Bns16U37zGXM1OnRtk1h9ltTfCfpavnEe0GkLc_sugnyVjetfZbMIm9SHqiHdNlKPjzU2BEtE5rlH3vuhqGoU8jdwziWZj1nWvcQoPNlD-o8Mi1NmUnjuq0QutG_ydVfkytCjRTIRQJmjdIUHjpkaIg5vyq-Lou0iJPRr85nRb391kR8ipvgIWPospmsyzvBO6hmEUlLD_pwv5-pY0RpfjOB-XztXGToHqCCzOy3Yo1NLvMrrKAGzbx8WNP-s2Q70l0FetMbwVxtt9A.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PG_Tax/2455",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2454,
       "date": "2026-02-10T08:00:27+00:00",
@@ -173,9 +233,9 @@
       "reply_to": null,
       "video_note": true,
       "video_poster": {
-        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-25f2bfd1b7cd-v1.jpg",
-        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-25f2bfd1b7cd-v1.jpg",
-        "full_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-25f2bfd1b7cd-v1.jpg",
+        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-3137c8efee91-v1.jpg",
+        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-3137c8efee91-v1.jpg",
+        "full_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-3137c8efee91-v1.jpg",
         "thumb_width": 640,
         "thumb_height": 640,
         "feed_width": 640,
@@ -424,65 +484,6 @@
       "tg_url": "https://t.me/PG_Tax/2441",
       "forwarded_from": null,
       "reply_to": null
-    },
-    {
-      "id": 2440,
-      "date": "2026-02-04T07:15:02+00:00",
-      "text": "✍️ Нормотворчество\n \nМинфин России рассмотрит возможность корректировки НДД от добычи углеводородного сырья. \n«Сейчас компании вышли с инициативой, учитывая усложнение добычи, рост издержек, больше в структуре добычи у нас доля трудноизвлекаемых запасов», – объяснил свое поручение вице-премьер Александр Новак.\n \n⚙️ Практика\n \nК началу февраля Реестр недобросовестных работодателей разросся до 656 лиц, большинство — это ИП, но есть и организации.\n🛑 Критерием для включения работодателя в реестр выступает нарушение трудового законодательства, связанное с нелегальной занятостью.\n \n⚖️ Судебные дела\n \nКонституционный Суд РФ разрешил гражданам регистрироваться по месту пребывания в нежилых помещениях, включая апартаменты гостиничного типа (Постановление от 03.02.2026 № 4-П). \n🛑 При этом Суд подчеркнул, что его выводы не распространяются на регистрацию по месту жительства и не отменяют более высокие ставки налога на имущество и коммунальные платежи для владельцев нежилых помещений.\n \n#главные_налоговые_новости",
-      "text_html": "✍️ Нормотворчество<br> <br>Минфин России <a href=\"https://www.vedomosti.ru/economics/news/2026/02/03/1173653-novak-poruchil\" target=\"_blank\" rel=\"noopener noreferrer\">рассмотрит</a> возможность корректировки НДД от добычи углеводородного сырья. <br>«Сейчас компании вышли с инициативой, учитывая усложнение добычи, рост издержек, больше в структуре добычи у нас доля трудноизвлекаемых запасов», – объяснил свое поручение вице-премьер Александр Новак.<br> <br>⚙️ Практика<br> <br>К началу февраля Реестр недобросовестных работодателей <a href=\"https://iz.ru/2036547/olga-anaseva/serym-sero-svyshe-650-kompanij-popali-v-reestr-nedobrosovestnyh-rabotodatelej\" target=\"_blank\" rel=\"noopener noreferrer\">разросся</a> до 656 лиц, большинство — это ИП, но есть и организации.<br>🛑 Критерием для включения работодателя в реестр выступает нарушение трудового законодательства, связанное с нелегальной занятостью.<br> <br>⚖️ Судебные дела<br> <br>Конституционный Суд РФ <a href=\"https://iz.ru/2036382/2026-02-03/konstitutcionnyi-sud-rossii-razreshil-registratciiu-v-apartamentakh\" target=\"_blank\" rel=\"noopener noreferrer\">разрешил</a> гражданам регистрироваться по месту пребывания в нежилых помещениях, включая апартаменты гостиничного типа (Постановление от 03.02.2026 № <a href=\"https://www.ksrf.ru/doc/KSRFDecision885638.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">4-П</a>). <br>🛑 При этом Суд подчеркнул, что его выводы не распространяются на регистрацию по месту жительства и не отменяют более высокие ставки налога на имущество и коммунальные платежи для владельцев нежилых помещений.<br> <br>#главные_налоговые_новости",
-      "views": 1490,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2440-1-5ee857373d5e-v8.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2440-1-5ee857373d5e-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2440-1-5ee857373d5e-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752,
-          "source_url": "https://cdn4.telesco.pe/file/daL3DEuZEeuJD4jcIUbstkV7PjUtlMjyRMUPUgmjVwtpoaT7OHhIy4qCiiX-eDqDlsAoAzbpGZPSgoMq3EqdsvKotbabMwPn2AVK_s7S-Y4EktsJc4yp4qybSdoDiKa0v6Ocp3XNSWhmGZhRKEUdOgErSvEbEPEXvsLBNY_xVdt5v-ND6uZA4JgWHA58W0n9i3csb5P6WJZLSq4KdNtlkc3kLOMhoxTA4f1T3P0o0T69H-eTpD7iG-8LkpDgSdyBBxaOCrBS-hsUpz35JXeSPLI1qeXwPJ8uC5acO_G2RfYM_0wQ9SX13MolEFXTzc4gyJjYiz2udXs-mWDRkBgKbQ.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2440",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2439,
-      "date": "2026-02-03T14:00:12+00:00",
-      "text": null,
-      "text_html": null,
-      "views": 1460,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": "data/channels/pg-tax/media/posts/videos/2439-video-note-851b7cc12fad-v1.mp4",
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2439",
-      "forwarded_from": null,
-      "reply_to": null,
-      "video_note": true,
-      "video_poster": {
-        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2439-video-note-poster-8fb286222160-v1.jpg",
-        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2439-video-note-poster-8fb286222160-v1.jpg",
-        "full_url": "data/channels/pg-tax/media/posts/video-posters/2439-video-note-poster-8fb286222160-v1.jpg",
-        "thumb_width": 640,
-        "thumb_height": 640,
-        "feed_width": 640,
-        "feed_height": 640,
-        "full_width": 640,
-        "full_height": 640,
-        "source_width": 640,
-        "source_height": 640
-      }
     }
   ]
 }
