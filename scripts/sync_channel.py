@@ -83,6 +83,9 @@ DIRECT_POST_PROBE_TIMEOUT_SECONDS = 12
 DIRECT_POST_PROBE_STALE_MAX_IDS = 20
 DIRECT_POST_PROBE_FOLLOWUP_MAX_IDS = 4
 DIRECT_POST_PROBE_MAX_CONSECUTIVE_MISSES = 6
+DIRECT_POST_GAP_PROBE_WINDOW_POSTS = FEED_PAGE_SIZE * 2
+DIRECT_POST_GAP_PROBE_MAX_GAP = 3
+DIRECT_POST_GAP_PROBE_MAX_IDS = 12
 MIN_EXTERNAL_OVERRIDE_WIDTH = 1000
 MIN_EXTERNAL_OVERRIDE_RATIO_GAIN = 1.15
 MAX_EXTERNAL_OVERRIDE_RATIO_DELTA = 0.12
@@ -1148,6 +1151,53 @@ def extract_standard_video_entries_from_html(block: str) -> list[dict[str, Any]]
         entries.append(entry)
 
     return entries
+
+
+def extract_round_video_entry_from_html(block: str, page_url: str = "https://t.me") -> dict[str, Any] | None:
+    video_tag_match = re.search(
+        r"<video\b([^>]*)class=\"[^\"]*(?:roundvideo|video_note|message_roundvideo)[^\"]*\"([^>]*)>",
+        block,
+        re.IGNORECASE,
+    )
+    if not video_tag_match:
+        return None
+
+    video_tag = video_tag_match.group(0)
+    src_match = re.search(r'\bsrc="([^"]+)"', video_tag, re.IGNORECASE)
+    if not src_match:
+        src_match = re.search(r'<source[^>]+src="([^"]+)"', block, re.IGNORECASE)
+    if not src_match:
+        return None
+
+    normalized_url = urljoin(page_url, html_lib.unescape(src_match.group(1)).strip())
+    if not normalized_url:
+        return None
+
+    width, height = extract_video_dimensions_from_html(block)
+    entry: dict[str, Any] = {
+        "url": normalized_url,
+        "source_url": normalized_url,
+    }
+    if width and height:
+        entry["width"] = width
+        entry["height"] = height
+
+    thumb_match = re.search(
+        r'tgme_widget_message_roundvideo_thumb[^>]+url\((?:&quot;|"|&#x27;|&#39;|\\?")?([^)"\'\\]+)(?:&quot;|"|&#x27;|&#39;|\\?")?\)',
+        block,
+        re.IGNORECASE,
+    )
+    if thumb_match:
+        poster_url = urljoin(page_url, html_lib.unescape(thumb_match.group(1)).strip())
+        if poster_url:
+            entry["poster"] = {
+                "thumb_url": poster_url,
+                "feed_url": poster_url,
+                "full_url": poster_url,
+                "source_url": poster_url,
+            }
+
+    return entry
 
 
 def is_square_like_dimensions(width: int | None, height: int | None, tolerance: float = 0.12) -> bool:
@@ -3118,16 +3168,17 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
             urljoin("https://t.me", html_lib.unescape(url))
             for url in re.findall(r"tgme_widget_message_photo_wrap[^>]+url\('([^']+)'\)", block)
         ]
+        round_video = extract_round_video_entry_from_html(block)
         standard_videos = extract_standard_video_entries_from_html(block)
-        primary_video = standard_videos[0] if standard_videos else None
+        primary_video = round_video or (standard_videos[0] if standard_videos else None)
         video_width = primary_video.get("width") if primary_video else None
         video_height = primary_video.get("height") if primary_video else None
         if not video_width or not video_height:
             video_width, video_height = extract_video_dimensions_from_html(block)
         unsupported_media = detect_unsupported_telegram_media_placeholder(block)
         video_media_hint = bool(primary_video) or detect_video_media_hint(block) or unsupported_media
-        video_note = detect_round_video_hint(block, video_width, video_height) if video_media_hint else False
-        video_url = primary_video.get("url") if (primary_video and video_note) else None
+        video_note = bool(round_video) or (detect_round_video_hint(block, video_width, video_height) if video_media_hint else False)
+        video_url = round_video.get("url") if round_video else (primary_video.get("url") if (primary_video and video_note) else None)
         videos = [] if video_note else standard_videos
         reply_to = extract_reply_reference(block, config)
         text_source_block = strip_anchor_block_by_class(block, "tgme_widget_message_reply") if reply_to else block
@@ -3163,8 +3214,9 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
         }
         if video_note:
             entry["video_note"] = True
-            if primary_video and primary_video.get("poster"):
-                entry["video_poster"] = primary_video["poster"]
+            video_poster = (round_video or primary_video or {}).get("poster")
+            if video_poster:
+                entry["video_poster"] = video_poster
         if video_width and video_height:
             entry["video_width"] = video_width
             entry["video_height"] = video_height
@@ -3372,6 +3424,98 @@ def probe_newer_posts_from_direct_pages(
 
     log.info(
         "Discovered %s newer posts via direct Telegram post probes: %s",
+        len(discovered),
+        ", ".join(str(int(post.get("id") or 0)) for post in discovered),
+    )
+    combined_posts = posts + discovered
+    combined_posts.sort(key=lambda post: post.get("date") or "", reverse=True)
+    return combined_posts[: config.messages_limit]
+
+
+def probe_gap_posts_from_direct_pages(
+    config: SiteConfig,
+    posts: list[dict[str, Any]],
+    *,
+    cutoff: datetime,
+) -> list[dict[str, Any]]:
+    window_posts = posts[:DIRECT_POST_GAP_PROBE_WINDOW_POSTS]
+    ranked_ids = sorted(
+        {
+            int(post.get("id") or 0)
+            for post in window_posts
+            if int(post.get("id") or 0) > 0
+            and (
+                (post_date := parse_iso_datetime(post.get("date"))) is None
+                or post_date >= cutoff
+            )
+        },
+        reverse=True,
+    )
+    if len(ranked_ids) < 2:
+        return posts
+
+    candidate_ids: list[int] = []
+    seen_candidates: set[int] = set()
+    for higher_id, lower_id in zip(ranked_ids, ranked_ids[1:]):
+        gap_size = higher_id - lower_id - 1
+        if gap_size <= 0 or gap_size > DIRECT_POST_GAP_PROBE_MAX_GAP:
+            continue
+
+        for candidate_id in range(higher_id - 1, lower_id, -1):
+            if candidate_id in seen_candidates:
+                continue
+            seen_candidates.add(candidate_id)
+            candidate_ids.append(candidate_id)
+            if len(candidate_ids) >= DIRECT_POST_GAP_PROBE_MAX_IDS:
+                break
+
+        if len(candidate_ids) >= DIRECT_POST_GAP_PROBE_MAX_IDS:
+            break
+
+    if not candidate_ids:
+        return posts
+
+    discovered: list[dict[str, Any]] = []
+    seen_ids = {int(post.get("id") or 0) for post in posts}
+
+    for candidate_id in candidate_ids:
+        recovered_post = None
+        for candidate_url in (
+            f"https://t.me/{config.channel_username}/{candidate_id}?embed=1&mode=tme",
+            f"https://t.me/{config.channel_username}/{candidate_id}?embed=1",
+        ):
+            try:
+                page_html = fetch_page(
+                    candidate_url,
+                    timeout=DIRECT_POST_PROBE_TIMEOUT_SECONDS,
+                    retry_delays=FAST_EXTERNAL_RETRY_DELAYS,
+                    log_failures=False,
+                )
+            except Exception:
+                continue
+
+            recovered_post = extract_enriched_post_from_page(page_html, candidate_url, candidate_id, config)
+            if recovered_post:
+                break
+
+        if not recovered_post:
+            continue
+
+        recovered_date = parse_iso_datetime(recovered_post.get("date"))
+        if recovered_date and recovered_date < cutoff:
+            continue
+
+        if candidate_id in seen_ids:
+            continue
+
+        discovered.append(recovered_post)
+        seen_ids.add(candidate_id)
+
+    if not discovered:
+        return posts
+
+    log.info(
+        "Recovered %s missing gap posts via direct Telegram pages: %s",
         len(discovered),
         ", ".join(str(int(post.get("id") or 0)) for post in discovered),
     )
@@ -5118,6 +5262,11 @@ def main() -> int:
         config,
         posts,
         existing_top_post_id=get_highest_post_id(existing_posts),
+        cutoff=subtract_months(datetime.now(timezone.utc), config.recent_posts_months),
+    )
+    posts = probe_gap_posts_from_direct_pages(
+        config,
+        posts,
         cutoff=subtract_months(datetime.now(timezone.utc), config.recent_posts_months),
     )
     api_recovery_photo_overrides: dict[int, list[bytes]] = {}
