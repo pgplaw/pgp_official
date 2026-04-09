@@ -1066,6 +1066,16 @@ def detect_video_media_hint(block: str) -> bool:
     )
 
 
+def detect_unsupported_telegram_media_placeholder(block: str) -> bool:
+    return bool(
+        re.search(
+            r"(This media is not supported in your browser|Please open Telegram to view this post|Open Telegram to view this post)",
+            block,
+            re.IGNORECASE,
+        )
+    )
+
+
 def extract_video_dimensions_from_html(block: str) -> tuple[int | None, int | None]:
     video_tag_match = re.search(r"<video\b[^>]*>", block, re.IGNORECASE)
     if not video_tag_match:
@@ -2363,6 +2373,24 @@ def extract_meta_content(
     return None
 
 
+def extract_meta_int_content(
+    page_html: str,
+    *,
+    property_names: tuple[str, ...] = (),
+    name_names: tuple[str, ...] = (),
+    itemprop_names: tuple[str, ...] = (),
+) -> int | None:
+    value = extract_meta_content(
+        page_html,
+        property_names=property_names,
+        name_names=name_names,
+        itemprop_names=itemprop_names,
+    )
+    if not value or not re.fullmatch(r"\d+", value):
+        return None
+    return int(value)
+
+
 def extract_page_title(page_html: str) -> str | None:
     match = re.search(r"<title[^>]*>(.*?)</title>", page_html, re.IGNORECASE | re.DOTALL)
     if not match:
@@ -2739,6 +2767,118 @@ def fetch_telegram_post_page_override(post: dict[str, Any], current_bytes: bytes
     return None
 
 
+def extract_video_entry_from_page_meta(page_html: str, page_url: str) -> dict[str, Any] | None:
+    video_url = extract_meta_content(
+        page_html,
+        property_names=("og:video:secure_url", "og:video:url", "og:video"),
+        name_names=("twitter:player:stream",),
+    )
+    if not video_url:
+        return None
+
+    normalized_video_url = urljoin(page_url, html_lib.unescape(video_url).strip())
+    if not re.match(r"^https?://", normalized_video_url, re.IGNORECASE):
+        return None
+
+    width = extract_meta_int_content(
+        page_html,
+        property_names=("og:video:width",),
+        name_names=("twitter:player:width",),
+    )
+    height = extract_meta_int_content(
+        page_html,
+        property_names=("og:video:height",),
+        name_names=("twitter:player:height",),
+    )
+
+    entry: dict[str, Any] = {
+        "url": normalized_video_url,
+        "source_url": normalized_video_url,
+    }
+    if width and height:
+        entry["width"] = width
+        entry["height"] = height
+
+    poster_url = extract_preview_image_url(page_html, page_url)
+    if poster_url:
+        entry["poster"] = {
+            "thumb_url": poster_url,
+            "feed_url": poster_url,
+            "full_url": poster_url,
+            "source_url": poster_url,
+        }
+
+    return entry
+
+
+def enrich_post_with_direct_page_video_meta(post: dict[str, Any], page_html: str, page_url: str) -> bool:
+    video_entry = extract_video_entry_from_page_meta(page_html, page_url)
+    if not video_entry:
+        return False
+
+    changed = False
+    width = video_entry.get("width") or post.get("video_width")
+    height = video_entry.get("height") or post.get("video_height")
+    is_round_video = bool(post.get("video_note")) or detect_round_video_hint(page_html, width, height)
+
+    if width and height:
+        if post.get("video_width") != width or post.get("video_height") != height:
+            post["video_width"] = width
+            post["video_height"] = height
+            changed = True
+
+    if is_round_video:
+        if post.get("video_url") != video_entry["url"]:
+            post["video_url"] = video_entry["url"]
+            changed = True
+        if post.get("videos"):
+            post["videos"] = []
+            changed = True
+        if not post.get("video_note"):
+            post["video_note"] = True
+            changed = True
+        poster = normalize_video_poster_entry(video_entry.get("poster"))
+        if poster and post.get("video_poster") != poster:
+            post["video_poster"] = poster
+            changed = True
+    else:
+        normalized_video = normalize_video_entry(video_entry)
+        if normalized_video and post.get("videos") != [normalized_video]:
+            post["videos"] = [normalized_video]
+            changed = True
+        if post.get("video_url"):
+            post.pop("video_url", None)
+            changed = True
+        if post.get("video_note"):
+            post.pop("video_note", None)
+            changed = True
+        if post.get("video_poster"):
+            post.pop("video_poster", None)
+            changed = True
+
+    if post.get("unsupported_media"):
+        post.pop("unsupported_media", None)
+        changed = True
+
+    return changed
+
+
+def extract_enriched_post_from_page(page_html: str, page_url: str, post_id: int, config: SiteConfig) -> dict[str, Any] | None:
+    candidate_post = next(
+        (
+            post
+            for post in parse_posts(page_html, config)
+            if int(post.get("id") or 0) == post_id
+        ),
+        None,
+    )
+    if not candidate_post:
+        return None
+
+    enrich_post_with_direct_page_video_meta(candidate_post, page_html, page_url)
+    return candidate_post
+
+
 def fetch_external_preview_override(post: dict[str, Any], current_bytes: bytes | None = None) -> bytes | None:
     if not ENABLE_EXTERNAL_PREVIEW_OVERRIDE:
         return None
@@ -2950,7 +3090,8 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
         video_height = primary_video.get("height") if primary_video else None
         if not video_width or not video_height:
             video_width, video_height = extract_video_dimensions_from_html(block)
-        video_media_hint = bool(primary_video) or detect_video_media_hint(block)
+        unsupported_media = detect_unsupported_telegram_media_placeholder(block)
+        video_media_hint = bool(primary_video) or detect_video_media_hint(block) or unsupported_media
         video_note = detect_round_video_hint(block, video_width, video_height) if video_media_hint else False
         video_url = primary_video.get("url") if (primary_video and video_note) else None
         videos = [] if video_note else standard_videos
@@ -2993,6 +3134,8 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
         if video_width and video_height:
             entry["video_width"] = video_width
             entry["video_height"] = video_height
+        if unsupported_media:
+            entry["unsupported_media"] = True
 
         posts.append(entry)
 
@@ -3135,14 +3278,7 @@ def probe_newer_posts_from_direct_pages(
 
             parsed_posts = parse_posts(page_html, config)
             observed_ids.update(int(post.get("id") or 0) for post in parsed_posts if int(post.get("id") or 0))
-            candidate_post = next(
-                (
-                    post
-                    for post in parsed_posts
-                    if int(post.get("id") or 0) == candidate_id
-                ),
-                None,
-            )
+            candidate_post = extract_enriched_post_from_page(page_html, candidate_url, candidate_id, config)
             if candidate_post:
                 break
 
@@ -3473,6 +3609,64 @@ def enrich_forwarded_posts_from_source_pages(posts: list[dict[str, Any]]) -> boo
 
         if enriched_videos and enriched_videos != post.get("videos"):
             post["videos"] = enriched_videos
+            changed = True
+
+    return changed
+
+
+def should_enrich_post_media_from_page(post: dict[str, Any]) -> bool:
+    if post.get("videos") or post.get("video_url"):
+        return False
+    if post.get("unsupported_media"):
+        return True
+    if post.get("video_note") and not post.get("video_url"):
+        return True
+    return False
+
+
+def enrich_post_media_from_pages(posts: list[dict[str, Any]], config: SiteConfig) -> bool:
+    candidate_posts = [post for post in posts if should_enrich_post_media_from_page(post)]
+    if not candidate_posts:
+        return False
+
+    changed = False
+    log.info("Enriching %s media-placeholder posts from direct Telegram pages", len(candidate_posts))
+
+    for post in candidate_posts:
+        post_id = int(post.get("id") or 0)
+        if post_id <= 0:
+            continue
+
+        enriched_post = None
+        for page_url in build_post_media_page_urls(post):
+            try:
+                page_html = fetch_page(page_url, timeout=10, retry_delays=FAST_EXTERNAL_RETRY_DELAYS, log_failures=False)
+            except Exception:
+                continue
+
+            enriched_post = extract_enriched_post_from_page(page_html, page_url, post_id, config)
+            if enriched_post:
+                break
+
+        if not enriched_post:
+            continue
+
+        for key in ("text", "text_html", "photos", "video_url", "videos", "video_poster", "video_width", "video_height"):
+            if enriched_post.get(key) is None:
+                continue
+            if enriched_post.get(key) != post.get(key):
+                post[key] = enriched_post.get(key)
+                changed = True
+
+        if enriched_post.get("video_note") and not post.get("video_note"):
+            post["video_note"] = True
+            changed = True
+        elif not enriched_post.get("video_note") and post.get("video_note") and not post.get("video_url"):
+            post.pop("video_note", None)
+            changed = True
+
+        if post.get("unsupported_media") and (post.get("video_url") or post.get("videos")):
+            post.pop("unsupported_media", None)
             changed = True
 
     return changed
@@ -4859,6 +5053,7 @@ def main() -> int:
             config.channel_username,
         )
         posts = deduped_posts
+    enrich_post_media_from_pages(posts, config)
     enrich_reply_posts_from_pages(posts, config)
     enrich_forwarded_posts_from_source_pages(posts)
 
@@ -4912,6 +5107,8 @@ def main() -> int:
         for error in round_video_errors:
             log.error("Round video validation failed: %s", error)
         return 1
+    for post in posts:
+        post.pop("unsupported_media", None)
     posts = [
         post
         for post in posts
