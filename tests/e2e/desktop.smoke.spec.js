@@ -697,10 +697,10 @@ test.describe('Desktop smoke', () => {
   });
 
   test('opens actual bankrotstvo round-video viewer on desktop without fallback', async ({ page }) => {
-    await page.goto('/?channel=bankrotstvo-mustknow');
+    await page.goto('/?channel=bankrotstvo-mustknow#post-444');
     await waitForFeedReady(page);
 
-    const card = page.locator('.post-card--round-video-only').first();
+    const card = page.locator('#post-444');
     await expect(card).toBeVisible();
     await card.locator('.media-trigger').click();
     await expect(page.locator('#viewer')).toBeVisible();
