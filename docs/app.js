@@ -520,6 +520,31 @@ function hasPhysicalPostMedia(post) {
   return photoCount > 0 || Boolean(post?.video_url) || getAttachedVideos(post).length > 0;
 }
 
+function isSquareLikeDimensions(width, height, tolerance = 0.12) {
+  const parsedWidth = Number.parseInt(width, 10);
+  const parsedHeight = Number.parseInt(height, 10);
+  if (!Number.isFinite(parsedWidth) || !Number.isFinite(parsedHeight) || parsedWidth <= 0 || parsedHeight <= 0) {
+    return false;
+  }
+
+  return Math.abs(parsedWidth - parsedHeight) / Math.max(parsedWidth, parsedHeight) <= tolerance;
+}
+
+function hasSquareRoundVideoHint(post) {
+  if (!post) return false;
+
+  if (isSquareLikeDimensions(post.video_width, post.video_height)) {
+    return true;
+  }
+
+  const poster = normalizePhoto(post.video_poster);
+  if (!poster) return false;
+
+  const posterWidth = poster.feed_width || poster.full_width || poster.thumb_width || poster.source_width;
+  const posterHeight = poster.feed_height || poster.full_height || poster.thumb_height || poster.source_height;
+  return isSquareLikeDimensions(posterWidth, posterHeight);
+}
+
 function isRoundVideoPost(post) {
   if (!post?.video_url) return false;
 
@@ -529,9 +554,10 @@ function isRoundVideoPost(post) {
 
   const explicitHint = isTruthyMediaFlag(post.video_note) || Boolean(post.video_poster);
   const urlHint = /video-note/i.test(String(post.video_url || ''));
+  const squareHint = hasSquareRoundVideoHint(post);
   const noCompetingContent = !post.reply_to && !post.forwarded_from && !hasVisiblePostBody(post);
 
-  return explicitHint || urlHint || noCompetingContent;
+  return explicitHint || urlHint || squareHint || noCompetingContent;
 }
 
 function buildCopyPostButtonMarkup(postAnchorUrl) {
@@ -2854,13 +2880,35 @@ function normalizeRoundVideoOnlyCard(article, post, mediaRoot) {
     return;
   }
 
-  article.classList.add('post-card--round-video-only');
+  const photoCount = Array.isArray(post.photos) ? post.photos.filter(Boolean).length : 0;
+  const attachedVideoCount = getAttachedVideos(post).length;
+  const isRoundVideoOnly = Boolean(
+    post.video_url &&
+    photoCount === 0 &&
+    attachedVideoCount === 0 &&
+    !post.reply_to &&
+    !post.forwarded_from &&
+    !hasVisiblePostBody(post)
+  );
+  if (isRoundVideoOnly) {
+    article.classList.add('post-card--round-video-only');
+  }
 
   const trigger = mediaRoot.querySelector('.media-trigger');
+  const triggerCount = mediaRoot.querySelectorAll('.media-trigger').length;
   const mediaItems = state.mediaRegistry[mediaRoot.dataset.mediaId] || [];
   const item = mediaItems[0] || null;
-  if (trigger && item && item.type === 'round-video') {
-    upgradeRoundVideoTrigger(trigger, item);
+  if (trigger && triggerCount === 1 && item) {
+    const normalizedItem = {
+      ...item,
+      type: 'round-video',
+      poster: item.poster || (post.video_poster ? normalizePhoto(post.video_poster) : null),
+    };
+    state.mediaRegistry[mediaRoot.dataset.mediaId] = [normalizedItem];
+    mediaRoot.classList.remove('post-card__media--gallery');
+    mediaRoot.classList.add('post-card__media--round-video');
+    trigger.classList.add('media-trigger--round-video');
+    upgradeRoundVideoTrigger(trigger, normalizedItem);
   }
 }
 

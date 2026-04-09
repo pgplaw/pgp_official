@@ -668,6 +668,34 @@ test.describe('Desktop smoke', () => {
     await page.locator('#viewerClose').click();
     await expect(page.locator('#viewer')).toBeHidden();
   });
+
+  test('keeps square single-video posts round even if explicit video-note flag is missing', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'round-video-square-hint-host-desktop';
+      document.body.appendChild(host);
+      const card = window.renderPostCard({
+        id: 999994,
+        date: new Date().toISOString(),
+        text: 'Короткая подпись к кружку',
+        text_html: '<p>Короткая подпись к кружку</p>',
+        photos: [],
+        video_url: 'data:video/mp4;base64,AAAA',
+        video_width: 640,
+        video_height: 640,
+        tg_url: 'https://t.me/example/999994',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    });
+
+    await expect(page.locator('#round-video-square-hint-host-desktop .media-video-note__placeholder')).toBeVisible();
+    await expect(page.locator('#round-video-square-hint-host-desktop .post-card__media video')).toHaveCount(0);
+  });
+
   test('opens actual bankrotstvo round-video viewer on desktop without fallback', async ({ page }) => {
     await page.goto('/?channel=bankrotstvo-mustknow');
     await waitForFeedReady(page);
