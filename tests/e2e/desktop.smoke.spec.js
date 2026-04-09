@@ -711,4 +711,14 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('#viewer .viewer__fallback')).toHaveCount(0);
     await expect(page.locator('#viewer video')).toBeVisible();
   });
+
+  test('renders paged pg-tax round-video posts as round previews after deep-link loading', async ({ page }) => {
+    await page.goto('/?channel=pg-tax#post-2558');
+    await waitForFeedReady(page);
+
+    const card = page.locator('#post-2558');
+    await expect(card).toBeVisible();
+    await expect(card.locator('.media-video-note img, .media-video-note__placeholder')).toBeVisible();
+    await expect(card.locator('.post-card__media video')).toHaveCount(0);
+  });
 });
