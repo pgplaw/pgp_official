@@ -1,13 +1,48 @@
 {
-  "generated_at": "2026-04-09T22:04:33.834652+00:00",
-  "build_id": "38fd719b73c3",
+  "generated_at": "2026-04-09T22:48:53.494672+00:00",
+  "build_id": "92911c6b9585",
   "pagination": {
     "page": 2,
     "page_size": 16,
-    "total_posts": 81,
+    "total_posts": 85,
     "total_pages": 6
   },
   "posts": [
+    {
+      "id": 1772,
+      "date": "2026-03-23T14:29:52+00:00",
+      "text": "🃏В бизнесе, как и в покере, выигрывает не тот, у кого больше карт, а тот, кто лучше понимает правила игры и вовремя делает правильную ставку.\n\n♠️ 26 марта приглашаем представителей бизнеса на встречу «Банкротный покер», на которой вместе с экспертами «Пепеляев Групп» обсудим актуальные вопросы банкротства, судебную практику и стратегии защиты бизнеса. Разберём реальные ситуации, сильные и слабые комбинации в спорах, а также новые подходы судов и государственных органов.\n\n♦️ Субсидиарная ответственность: всегда ли к одиннадцати туз? \n\n♦️ Защита сделок: фулл-хаус или пас?\n\n♦️  Налоги в банкротстве: игра с государством по-крупному:\n\n♦️ Семейные вопросы: когда в проигрыше тот, кто не играл.\n\n♦️ Другие тонкости банкротства для заядлых игроков.\n\nПриходите, чтобы разобраться в правилах игры и научиться держать сильную руку в банкротных спорах.\n\n⚡️ Подробнее о мероприятии и регистрация по ссылке.",
+      "text_html": "🃏В бизнесе, как и в покере, выигрывает не тот, у кого больше карт, а тот, кто лучше понимает правила игры и вовремя делает правильную ставку.<br><br>♠️ 26 марта приглашаем представителей бизнеса на встречу « <a href=\"https://www.pgplaw.ru/events/upcoming-events/bankrotnyy-poker/\" target=\"_blank\" rel=\"noopener noreferrer\">Банкротный покер</a> », на которой вместе с экспертами «Пепеляев Групп» обсудим актуальные вопросы банкротства, судебную практику и стратегии защиты бизнеса. Разберём реальные ситуации, сильные и слабые комбинации в спорах, а также новые подходы судов и государственных органов.<br><br>♦️ Субсидиарная ответственность: всегда ли к одиннадцати туз? <br><br>♦️ Защита сделок: фулл-хаус или пас?<br><br>♦️  Налоги в банкротстве: игра с государством по-крупному:<br><br>♦️ Семейные вопросы: когда в проигрыше тот, кто не играл.<br><br>♦️ Другие тонкости банкротства для заядлых игроков.<br><br>Приходите, чтобы разобраться в правилах игры и научиться держать сильную руку в банкротных спорах.<br><br>⚡️ Подробнее о мероприятии и регистрация по <a href=\"https://www.pgplaw.ru/events/upcoming-events/bankrotnyy-poker/\" target=\"_blank\" rel=\"noopener noreferrer\">ссылке.</a>",
+      "views": 741,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1772-1-9243e11e1847-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/feed/1772-1-9243e11e1847-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1772-1-9243e11e1847-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 420,
+          "feed_width": 1800,
+          "feed_height": 945,
+          "full_width": 1880,
+          "full_height": 987,
+          "source_width": 1880,
+          "source_height": 987,
+          "source_url": "https://cdn4.telesco.pe/file/jwHuW367dPzWaSxLeNWS_LPZZnOlJaFLmKNY-Jq9eK2aWRx9cFZZxjZziJNK8VwhT3OOtNSAHGGgXbXiRqVQShWkkT8aBSzDMrl-kZITO1HEVGPL14lT4EXB5BEUUB99vVeFM5bk7_3723a-CAuYfixyY_QvVMPz3BFkIHv0-NZrZpDH06DuC_1dW5duhjEwALgPVXh9y8LJfHNa7uCHhnR-LNlpRco43SQWO69it1Sh8yJ_0bp8EZCwgxQDMolYod9vw7OyHJVqHJoTSvpw7lcPljHiBiTqaSWvtugcCbzd5Ewm9Ln89C7iOH2c0_KleKf1YgX2xYvkbV1cTmwFqA.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1772",
+      "forwarded_from": {
+        "source_url": "https://t.me/bankrotstvo_mustknow/429",
+        "channel_url": "https://t.me/s/bankrotstvo_mustknow",
+        "channel_username": "bankrotstvo_mustknow",
+        "channel_title": "Банкротство | Взгляд эксперта"
+      },
+      "reply_to": null
+    },
     {
       "id": 1769,
       "date": "2026-03-20T14:05:01+00:00",
@@ -57,6 +92,104 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/pgp_official/1769",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
+      "id": 1771,
+      "date": "2026-03-20T14:05:01+00:00",
+      "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
+      "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
+      "views": 5910,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1771-1-14e42e7bdf41-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1771-1-14e42e7bdf41-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/sEc0rYY7Mh5MgGo0LDkWAMX4Vumv3ukekNqEt2Bq8QxZEHVxsScTka4wWqh6f71CML4yeVwvvRP4LP6e0g7HhqEstxSo0tyvK7w2evPcA9S6pZFZS0PJ8Gj37Lpn4p-ea_8iZOWZzeyAaahms3MC6u_a9VZMDE6YYIdYVhe1bBCyw1AxmdnX-8darU0RHoRzaH4VEsgGsYKONAGvb3JfNGjzTXKtLYI4UF63WH4bJwO4PZP96R37fDVO3-hcpPQPZszl_xsZe4UQzw1qzroFURMneATi3soRyCVrBTT9nRvAtA-tiU34G6_mF_JQCqO2t9o4wc2AQMmXW2Gi1jby-A.jpg",
+          "thumb_width": 800,
+          "thumb_height": 668,
+          "full_width": 800,
+          "full_height": 668,
+          "source_width": 800,
+          "source_height": 668
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1771-2-d28c9d459712-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1771-2-d28c9d459712-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/dbEk7buDkwZOMpMiYFTQbvJeqP-59Vli41N-kBNw6Ai3OqVcIBkoxNiz7xgMepxBGrLykV08ekeQcl9CXGPYU1gxRUjR2QhY36Du27KD76jghrOmMrjXKRcCiUXYZMITE9X8ZDiArRPMUcuZ-PFq6x33KgxMM7p3tNXR_RqisRbeyMltllQCF1Z-b6o1-GkS3DcWqy09VhJY2rlA3DU-q5yqpD54CISFMX0TGVF6Hyfm-WMphPbtG45d7fJA_p1IX1OoKGfa8LeuMYev7Qe_QA0bMbnqMbDMjVvGZv2HSjfgqsCmIeMqftyE8DDYLfruE0MtiKj0x_wK1Y3-uGOCZg.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1771-3-996da092ea9b-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1771-3-996da092ea9b-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/FroWTeDPEvW8Tq2BzPkZU6uPBHyFabFqocdTshy3lbf75ckbvSK0ipdl3InBN3bK8V-AVIq4qe1GwpQkwcSG4hgnOX7kv_spr1dVpI9TO9WHnVJA21DMT70a2QExDSTKrkZXB7fjRXo0F9eAcLduz8fmmBKrPGtRRuqybtuLCwNK2nlJYmiFVlJgi4uUKTVVjv6iiGp0Obm0d6X6wZbOKwEJoKvD4H7fxsertnrifTeOWRuZnvx7q7mb-B8Zx1ovVgR_8zw0ife7V2AwAoETl91jQaSSH5bqZFsWlRWudHLw6XMLk9rz6uM30d8h-eYsV2DdAX2CrGZnj97pGKIwzQ.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1771",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
+      "id": 1770,
+      "date": "2026-03-20T14:05:01+00:00",
+      "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
+      "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
+      "views": 5910,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1770-1-a37cd3b1bc87-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1770-1-a37cd3b1bc87-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/ewru_Ul4TO8Q_nUG4TBmrX0JJ8mHIbO8uLu_vLCgVnMEDgsM-_Ecmu0mZ782xeU5tnjfwKCl7QdGcfUPs_Xg2nH-hPQSsIqtzg6GU6AnebOYxCfz8dlEUURkHLy1kNHXVztAlS4p1KJVbqWaHiuCzWOcZ6VoNeS9FYCTNln_ja6VwzwBvmmESIK-7jCZJa4f4iYv4bnrCwCET1eZ7fZOKTB23kMYzQDjv8zef-ii5WSGo6DCqTGhZOSDL8VMI7pNMX6rX5AStU9TUpevz1COA-YbEApg7EoRWfvgRdtPT6tyceiyEtar-gmyINOUt3RC_8gunvaDcZmHY0WGHklmNw.jpg",
+          "thumb_width": 800,
+          "thumb_height": 668,
+          "full_width": 800,
+          "full_height": 668,
+          "source_width": 800,
+          "source_height": 668
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1770-2-0cd12ad39652-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1770-2-0cd12ad39652-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/MgJEboreqN-LH6Yq8sb9GPLJRnJuzs72iRk2o4N2dwNDUdG2g5RaDFHqE-K4qEOX3qvtUWY8WuRdTy_fgWTG_mLmt2aUE0ynGzTNLOvdZlBRJrKFozyBuqBw68Sge935BXPudFzGKooOqnM-oVU2bJ-6o9BqCceqXpschdnf2dDlhwmRUHcTgschSu5kmEupcfa0usz3i2Ii5HAw7OJn-U9_RjD3QSFLCrF9ySit32vfDQBj4xX25sGci7AL9Gj5k1Nj6-p-PUA3RaZcYOoyH19YioVr-yShHezTMYe708KFQG-cgB-191ZqHNds2Hw99DXbGVpELtFS8UDg7obohw.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1770-3-8d5e2dbfba42-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1770-3-8d5e2dbfba42-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/jVVu2IhWTIL8GURqtwyOc_QUJ0bkCDDq1UH_foWaAoGPrZd-gurKOkqhe6_-2zXDKY-v093lInfyw5J0pWcoTU4wkhW8xmVsf08i95sxqUI5rNvneSwrprPNiYqBPsZHQRlirHLGCKWu07EfYWdCdXwyv3k4RSPuff42WztGvKYgJkn3rFa6KkBoeiSlfJouWDP47c8m_BTow3e_1D8WCfDNK1ZKWMT2eHUM13zRUP2vDTjgbqzdpWrJlDh7Pyg0R0QD31ddIBMRRyBvqeeWnX5701h3n9vzmmKzGSwJmtV0-BkFGJZO71V6l-WcipaCP3gPMdlNhdM7s_gHW7Lsmw.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1770",
       "forwarded_from": null,
       "reply_to": null
     },
@@ -225,7 +358,7 @@
       "date": "2026-03-16T07:00:01+00:00",
       "text": "🔍 Начинаем рабочую неделю с рубрикой #PGГрамотность\n\nПочему, съев два яблока, не стоит говорить, что съел несколько яблок?\n\n☝️ Читайте в карточке правописания!",
       "text_html": "🔍 Начинаем рабочую неделю с рубрикой #PGГрамотность<br><br>Почему, съев два яблока, не стоит говорить, что съел несколько яблок?<br><br>☝️ Читайте в карточке правописания!",
-      "views": 804,
+      "views": 805,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -261,11 +394,49 @@
       "reply_to": null
     },
     {
+      "id": 1763,
+      "date": "2026-03-16T07:00:01+00:00",
+      "text": "🔍 Начинаем рабочую неделю с рубрикой #PGГрамотность\n\nПочему, съев два яблока, не стоит говорить, что съел несколько яблок?\n\n☝️ Читайте в карточке правописания!",
+      "text_html": "🔍 Начинаем рабочую неделю с рубрикой #PGГрамотность<br><br>Почему, съев два яблока, не стоит говорить, что съел несколько яблок?<br><br>☝️ Читайте в карточке правописания!",
+      "views": 805,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1763-1-dd4056e567e2-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1763-1-dd4056e567e2-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/pRbU0JvsLmk_yfmhD6blDOC1DNoXf7j42J657J8wTB6fxReDyK5hUjZXszS476949YBvx1dWxxeiXCoHHgyFlyqOs5zOPL3FXKSvPBVbeiosgHGKuaFv6ycpH9dk3NbewWKxxjtOzhRzvtFm636u0mWO6jl3mh-gIMU_Qf5d-oejGuV9cmFOWhs5NVcy0Kq_F6cRLvB77VnuAOzxmdmfOXJRphOZX0h_y7RuoB_FZlwiTaAY-lFzdZuMGvNhOJaaQV6U1uSCSEplyFXfwL87C2ZrQVEu4pMGQSStkWfYFIrWYIpGzIxxpu_foiDS8OQo9sWL6UIhbAgloBXOp8pA2g.jpg",
+          "thumb_width": 800,
+          "thumb_height": 800,
+          "full_width": 800,
+          "full_height": 800,
+          "source_width": 800,
+          "source_height": 800
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1763-2-a47f3ebc00df-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1763-2-a47f3ebc00df-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/H5QVhc6AJcPIashfxG6OBZUbGJlE1ca5KItn0Ver_PcAqifucaK8ZR0b_dvzZJPrOMQI98-iFWt1xq8N3ybpTk7PetQlPTkGD6DHjoqrGrV320BnFA-eIlq470cAyweZ5YrB3ShiMu_bnkf3h5Q16Dd-yRRpW7v8AFY6KCcZ21kMvDFEMYZgTEtpl9l5xm5t8j3X6A6I_3_-SepdhJbwpLeQLCP0sb-uCUHqVFLyzQCRPVyu59Dy8I_jVC_0fPAWsF5b-kehEoKjKQ_TWFxX-VHziW91GPKEh8aijfca3GwnuOsW2y-9vDMOlDTiM2vunvcw0j2JMJ45tG2bxcBmKw.jpg",
+          "thumb_width": 800,
+          "thumb_height": 800,
+          "full_width": 800,
+          "full_height": 800,
+          "source_width": 800,
+          "source_height": 800
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1763",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
       "id": 1761,
       "date": "2026-03-13T12:00:01+00:00",
       "text": "📜 Когда можно ограничить патент: позиция Конституционного суда по принудительным лицензиям\n\nКС впервые подробно разъяснил условия выдачи принудительных лицензий на изобретения, указав, что при оценке недостаточного использования патента можно учитывать не только объем поставок, но и экономическую доступность товара.\n\n🔘Как отмечает Константин Шарловский, партнер, руководитель практики фармацевтики и здравоохранения «Пепеляев Групп» в материале Право.ru, КС фактически сблизил судебный механизм принудительной лицензии по ст. 1362 ГК РФ с административным механизмом по ст. 1360 ГК РФ: оба инструмента применяются в исключительных случаях и направлены на защиту жизни и здоровья граждан.\n\n💬 По словам Константина, суд де-факто расширил само понимание «недостаточного использования изобретения»: речь может идти не только о дефиците препарата, но и о его чрезмерно высокой цене. При этом универсальных критериев для оценки дефицита и ценовой недоступности пока нет, а значит, многие вопросы по-прежнему останутся на усмотрение судов.\n\nПостановление может повлиять на дальнейшую практику по спорам о принудительных лицензиях, однако насколько именно – пока говорить рано.\n\n👉 Полная версия комментария доступна на сайте.",
       "text_html": "📜 Когда можно ограничить патент: позиция Конституционного суда по принудительным лицензиям<br><br>КС впервые подробно разъяснил условия выдачи принудительных лицензий на изобретения, указав, что при оценке недостаточного использования патента можно учитывать не только объем поставок, но и экономическую доступность товара.<br><br>🔘Как отмечает <a href=\"https://www.pgplaw.ru/to-get-the-team/sharlovskiy/\" target=\"_blank\" rel=\"noopener noreferrer\">Константин Шарловский</a>, партнер, руководитель практики фармацевтики и здравоохранения «Пепеляев Групп» в материале <a href=\"https://pravo.ru/story/262790/\" target=\"_blank\" rel=\"noopener noreferrer\">Право.ru</a>, КС фактически сблизил судебный механизм принудительной лицензии по ст. 1362 ГК РФ с административным механизмом по ст. 1360 ГК РФ: оба инструмента применяются в исключительных случаях и направлены на защиту жизни и здоровья граждан.<br><br>💬 По словам Константина, суд де-факто расширил само понимание «недостаточного использования изобретения»: речь может идти не только о дефиците препарата, но и о его чрезмерно высокой цене. При этом универсальных критериев для оценки дефицита и ценовой недоступности пока нет, а значит, многие вопросы по-прежнему останутся на усмотрение судов.<br><br>Постановление может повлиять на дальнейшую практику по спорам о принудительных лицензиях, однако насколько именно – пока говорить рано.<br><br>👉 Полная версия комментария доступна <a href=\"https://www.pgplaw.ru/analytics-and-brochures/articles-comments-interviews/kogda-mozhno-ogranichit-patent/\" target=\"_blank\" rel=\"noopener noreferrer\">на сайте.</a>",
-      "views": 940,
+      "views": 941,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -407,131 +578,6 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/pgp_official/1757",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1756,
-      "date": "2026-03-11T07:00:01+00:00",
-      "text": "⚡️Субсидиарная ответственность – 2025: что учесть в 2026. Авторский видео обзор от Юлии Литовцевой  \n\nЮлия Литовцева, руководитель практики банкротства и антикризисной защиты бизнеса Пепеляев Групп в очередном выпуске Банкротство…. Нет, не Must see, а Взгляд эксперта! \n🔎 Почему мы немного изменили название наших видеовыпусков? Да потому что юристы Пепеляев Групп не только знают законы, но и чтут их! Как вы догадались, все дело во вступившем в силу с 1 марта 2026 года законе о борьбе с англицизмами.\n\n📌 Этот выпуск посвящен новым нюансам внебанкротной субсидиарной ответственности. \n\n👉 Смотрите на YouTube, Rutube, VKи нашем сайте. \n\n#Банкротство_mustsee\n#Субсидиарная_ответственность",
-      "text_html": "⚡️Субсидиарная ответственность – 2025: что учесть в 2026. Авторский видео обзор от Юлии Литовцевой  <br><br>Юлия Литовцева, руководитель <a href=\"https://www.pgplaw.ru/practice-and-industry/practices/bankruptcy/\" target=\"_blank\" rel=\"noopener noreferrer\">практики банкротства и антикризисной защиты бизнеса</a> Пепеляев Групп в очередном выпуске Банкротство…. Нет, не Must see, а Взгляд эксперта! <br>🔎 Почему мы немного изменили название наших видеовыпусков? Да потому что юристы Пепеляев Групп не только знают законы, но и чтут их! Как вы догадались, все дело во вступившем в силу с 1 марта 2026 года законе о борьбе с англицизмами.<br><br>📌 Этот выпуск посвящен новым нюансам внебанкротной субсидиарной ответственности. <br><br>👉 Смотрите на <a href=\"https://youtu.be/XiS1perDPz8\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube</a><a href=\"https://youtu.be/KJgsDaCtEdE\" target=\"_blank\" rel=\"noopener noreferrer\">,</a> <a href=\"https://rutube.ru/video/6c439b26751fb30a5970f5b1f5774759/\" target=\"_blank\" rel=\"noopener noreferrer\">Rutube,</a> <a href=\"https://vkvideo.ru/video-227047542_456239403?sh=4\" target=\"_blank\" rel=\"noopener noreferrer\">VK</a><a href=\"https://vkvideo.ru/video-227047542_456239295\" target=\"_blank\" rel=\"noopener noreferrer\">и</a> <a href=\"https://www.pgplaw.ru/analytics-and-brochures/video/subsidiarnaya-otvetstvennost-chto-uchest-v-2026/\" target=\"_blank\" rel=\"noopener noreferrer\">нашем сайте.</a> <br><br>#Банкротство_mustsee<br>#Субсидиарная_ответственность",
-      "views": 910,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1756-1-71e50ff869f9-v8.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1756-1-71e50ff869f9-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1756-1-71e50ff869f9-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 450,
-          "feed_width": 1800,
-          "feed_height": 1012,
-          "full_width": 1880,
-          "full_height": 1058,
-          "source_width": 1880,
-          "source_height": 1058,
-          "source_url": "https://cdn4.telesco.pe/file/GRdWmBxd6THuKWavTb_R43mzIR2Stf7h_Ulb13vXLTbAyyLr3LY8u_gC8KfxEZLgTtMJINVjP2QhXbB2XCurUeots8FHq6p3Y75TO03K5Tck9E_-30LU5wFhJpBnyibF_1vc_T7rox1kE_9Kws2J3haflXsPHINBcJO11GvNaW6joZbBxQxr28Ts3H4CvESlqvgWEQTmIHRX6OOdIANDVmo7LSTqtQm67dwMyItPkjaMFNOAMyIX7Rdp9I9A_aDytOTJmTs0jhde-4GFpKzM8KC29Bgm-Rr_3nbFyE7qVTyLw1wXFegDzee3bu7HB5bHxre7PK6Pi2psnAEz4-KlKA.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/1756",
-      "forwarded_from": {
-        "source_url": "https://t.me/bankrotstvo_mustknow/424",
-        "channel_url": "https://t.me/s/bankrotstvo_mustknow",
-        "channel_username": "bankrotstvo_mustknow",
-        "channel_title": "Банкротство | Взгляд эксперта"
-      },
-      "reply_to": null
-    },
-    {
-      "id": 1755,
-      "date": "2026-03-10T11:59:58+00:00",
-      "text": "💼 Эксперт «Пепеляев Групп» выступит на ежегодной HR-конференции Ассоциации Европейской Бизнеса\n\n26 марта 2026 г. состоится ежегодная конференция HR-комитета Ассоциации европейского бизнеса «Кадровые ресурсы в 2025-м: вызовы, которые мы принимаем».\n\n🎙 В мероприятии примет участие руководитель практики трудового и миграционного права «Пепеляев Групп», Виталия Кузнецова. В рамках сессии подкомитета по трудовому праву АЕБ она выступит с докладом «Дисциплинарные составы: “подводные камни” для работодателя».\n\n▫️В своем выступлении Виталия расскажет о сложностях при применения дисциплинарных взысканий на практике, типичных ошибках работодателей, актуальных тенденциях в судебной практике.\n\n🔴Дата: 26 марта 2026\n🔴Время: 09:30–16:30\n🔴Место: Москва, ул. Лесная, д. 9, конференц-центр «Меллинг, Войтишкин и партнеры»\n\n👉 Подробнее о программе и регистрация — на сайте организатора.",
-      "text_html": "💼 Эксперт «Пепеляев Групп» выступит на ежегодной HR-конференции Ассоциации Европейской Бизнеса<br><br>26 марта 2026 г. состоится ежегодная конференция HR-комитета Ассоциации европейского бизнеса «Кадровые ресурсы в 2025-м: вызовы, которые мы принимаем».<br><br>🎙 В мероприятии примет участие руководитель практики трудового и миграционного права «Пепеляев Групп», <a href=\"https://www.pgplaw.ru/to-get-the-team/kuznetsova/\" target=\"_blank\" rel=\"noopener noreferrer\">Виталия Кузнецова</a>. В рамках сессии подкомитета по трудовому праву АЕБ она выступит с докладом «Дисциплинарные составы: “подводные камни” для работодателя».<br><br>▫️В своем выступлении Виталия расскажет о сложностях при применения дисциплинарных взысканий на практике, типичных ошибках работодателей, актуальных тенденциях в судебной практике.<br><br>🔴Дата: 26 марта 2026<br>🔴Время: 09:30–16:30<br>🔴Место: Москва, ул. Лесная, д. 9, конференц-центр «Меллинг, Войтишкин и партнеры»<br><br>👉 Подробнее о программе и регистрация — <a href=\"https://aebrus.ru/ru/aeb-events/annual-hr-conference-human-resources-in-2025-the-challenges-we-accept/\" target=\"_blank\" rel=\"noopener noreferrer\">на сайте организатора</a>.",
-      "views": 978,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1755-1-bcd7d94f9dca-v8.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1755-1-bcd7d94f9dca-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1755-1-bcd7d94f9dca-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752,
-          "source_url": "https://cdn4.telesco.pe/file/LEKgoXBD94DFjvK1m-VensJgtVkhruEt64mA-4FihZl3uK_Tem37PP7xJjwDx-EXSxbagcUCyu7pwtLxST6ID1MtQ11W-Zs3RzkPOPYW2ISgZkjhvHuV-TgMm4froGNEW50d2iu9kAUMeLepGrwNCdI1Yhtl2t3BQGmvv-Q4ggWdPGC66yCfYxq0F5s-aa-rMNActrrd15giSes1A1XvlZJV7gb3BTWaGXpz1j_2aDbpqMlzWhLfFdSwNensEEi_1ec1ZgsF3rw6fLiZwQ7vIKrCKwA0qKy_8zfS2dObhqA7uGkK3yPFiiNJtY6PsK9SsvdDw1RrJBrdYRLpTM2G0A.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/1755",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1754,
-      "date": "2026-03-10T08:59:58+00:00",
-      "text": "💻 Телекоммуникации, медиа, ИТ, персональные данные: дайджест\n\nВ обзоре собрали ключевые законодательные инициативы, регуляторные тренды, судебную практику и события отрасли.\n\nГлавные новости:\n\n🔘Минцифры России утвердило перечень ИТ-профессий в рамках образовательных соглашений;\n🔘Правительство РФ включило ERP-системы в единый перечень объектов КИИ; \n🔘Минцифры России предложило распространить налоговые ИТ-льготы на компании с госучастием;\n🔘ответственность за нарушения в сфере законодательства о критической информационной инфраструктуре планируется смягчить; \n🔘Роскомнадзор обнаружил нарушения правил установки ТСПУ у 33 операторов связи.\n\n👉 Какие изменения могут повлиять на бизнес, и на что стоит обратить внимание компаниям – читайте по ссылке.",
-      "text_html": "💻 Телекоммуникации, медиа, ИТ, персональные данные: дайджест<br><br>В обзоре собрали ключевые законодательные инициативы, регуляторные тренды, судебную практику и события отрасли.<br><br>Главные новости:<br><br>🔘Минцифры России утвердило перечень ИТ-профессий в рамках образовательных соглашений;<br>🔘Правительство РФ включило ERP-системы в единый перечень объектов КИИ; <br>🔘Минцифры России предложило распространить налоговые ИТ-льготы на компании с госучастием;<br>🔘ответственность за нарушения в сфере законодательства о критической информационной инфраструктуре планируется смягчить; <br>🔘Роскомнадзор обнаружил нарушения правил установки ТСПУ у 33 операторов связи.<br><br>👉 Какие изменения могут повлиять на бизнес, и на что стоит обратить внимание компаниям – <a href=\"https://www.pgplaw.ru/analytics-and-brochures/telecom-digest/telecom-digest-10-03-26/\" target=\"_blank\" rel=\"noopener noreferrer\">читайте по ссылке</a>.",
-      "views": 1040,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1754-1-29bdaee25c70-v8.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1754-1-29bdaee25c70-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1754-1-29bdaee25c70-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 280,
-          "feed_width": 1800,
-          "feed_height": 630,
-          "full_width": 1880,
-          "full_height": 658,
-          "source_width": 1880,
-          "source_height": 658,
-          "source_url": "https://cdn4.telesco.pe/file/KbK681jpRoTbgLHMIagYY8OsX3Y7YnneiSfcRb04Fq7XS8nccOgj01-Qg--o_rxTJX4Zd0pQhIgla8xQgptsdZn1rvA-4r4zxGtG0OUypKHNLf-9a6v1DkGb9Rg9fygwYvNBVGN37Cen4SyO0CblAvTIX8-WAH9a7J_8u9vkwJktwHm2A6prTimFjnhmhSq9pXl0eqS-3hDM_pIi-T5kUVQeXTOqIkRXqTlTFjXXpP-dbK7n5tDxofwzSavooSnUgneQCqfrcl7mUOwNPfD7SiSJLZncTtkuUBXSud8KEdgtjPsf_AD95HSLV_Az_ttitRSqg2EJRNkZBShBJefHwg.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/1754",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1753,
-      "date": "2026-03-08T06:59:58+00:00",
-      "text": "🌸 Милые дамы,\n\nВы сочетаете в себе силу и мягкость, точность и интуицию, профессионализм и искреннее человеческое тепло. Ваши решения формируют команды, проекты и будущее, а ваше присутствие наполняет пространство гармонией и уверенностью.\n\nПоздравляем вас с праздником весны и желаем вдохновения, внутреннего спокойствия, поддержки близких и радости в каждом дне! \n\nКоманда «Пепеляев Групп»🌺",
-      "text_html": "🌸 Милые дамы,<br><br>Вы сочетаете в себе силу и мягкость, точность и интуицию, профессионализм и искреннее человеческое тепло. Ваши решения формируют команды, проекты и будущее, а ваше присутствие наполняет пространство гармонией и уверенностью.<br><br>Поздравляем вас с праздником весны и желаем вдохновения, внутреннего спокойствия, поддержки близких и радости в каждом дне! <br><br>Команда «Пепеляев Групп»🌺",
-      "views": 1070,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1753-1-e52e686caa28-v8.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1753-1-e52e686caa28-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1753-1-e52e686caa28-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 319,
-          "feed_width": 1800,
-          "feed_height": 718,
-          "full_width": 1880,
-          "full_height": 750,
-          "source_width": 1880,
-          "source_height": 750,
-          "source_url": "https://cdn4.telesco.pe/file/Ft_jhRW2EEtKY79-OMGChoix9ulPdeZUXJeNjr0W6iwDcxY_x338bM9Xn04BB24V3nH9FpziZuDDTJK_1K8ir5tG-SUzbDCjLlSwOsiam9DJZ1FE23ifrBz5V4dcb-7boVMZNBQrBB71XVZDvZkuSVPHv2Yuasc3RoZ7fClDNT0uBSlxoCckgd9AkfmGxdeITytXL2EBKgfNbfZmRa9yw_boc003ycfeUehO8avDcD_arbkY_LWANXGxEH0wmJsa3CpN1xdkes6f1XGiF69s_zxRjptGyvum_UQSxYxFbpCDcf5a1x8EYKzfTg39MX6OZU32GdOHbyQfI_s5d2XyRw.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/1753",
       "forwarded_from": null,
       "reply_to": null
     }
