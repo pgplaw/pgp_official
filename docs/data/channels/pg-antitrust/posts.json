@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-09T22:05:15.054084+00:00",
-  "build_id": "1efce26b4f50",
+  "generated_at": "2026-04-09T22:49:34.808539+00:00",
+  "build_id": "ad6ce24a1406",
   "site": {
     "channel_username": "PgAntitrust",
     "channel_title": "PG Antitrust | Антимонопольное право",
@@ -20,7 +20,7 @@
   "pagination": {
     "page": 1,
     "page_size": 16,
-    "total_posts": 38,
+    "total_posts": 39,
     "total_pages": 3
   },
   "posts": [
@@ -53,6 +53,35 @@
       "tg_url": "https://t.me/PgAntitrust/1385",
       "forwarded_from": null,
       "reply_to": null
+    },
+    {
+      "id": 1384,
+      "date": "2026-04-07T07:34:24+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 229,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": "data/channels/pg-antitrust/media/posts/videos/1384-video-note-60a09769e16c-v1.mp4",
+      "videos": [],
+      "tg_url": "https://t.me/PgAntitrust/1384",
+      "forwarded_from": null,
+      "reply_to": null,
+      "video_note": true,
+      "video_poster": {
+        "thumb_url": "data/channels/pg-antitrust/media/posts/video-posters/1384-video-note-poster-cff8fd3cb3bf-v1.jpg",
+        "feed_url": "data/channels/pg-antitrust/media/posts/video-posters/1384-video-note-poster-cff8fd3cb3bf-v1.jpg",
+        "full_url": "data/channels/pg-antitrust/media/posts/video-posters/1384-video-note-poster-cff8fd3cb3bf-v1.jpg",
+        "thumb_width": 640,
+        "thumb_height": 640,
+        "feed_width": 640,
+        "feed_height": 640,
+        "full_width": 640,
+        "full_height": 640,
+        "source_width": 640,
+        "source_height": 640
+      }
     },
     {
       "id": 1383,
@@ -512,41 +541,6 @@
         "channel_url": "https://t.me/s/bankrotstvo_mustknow",
         "channel_username": "bankrotstvo_mustknow",
         "channel_title": "Банкротство | Взгляд эксперта"
-      },
-      "reply_to": null
-    },
-    {
-      "id": 1362,
-      "date": "2026-03-13T12:04:01+00:00",
-      "text": "📧 Еженедельные рассылки «Пепеляев Групп»: чтобы важные изменения в законодательстве не прошли мимо\n\nДрузья, напоминаем, что у «Пепеляев Групп» выходят еженедельные рассылки по ключевым изменениям в законодательстве и правоприменительной практике.\n\n▫️Наши эксперты регулярно готовят аналитические материалы по наиболее актуальным темам — от налогов и банкротства до антимонопольного регулирования, антикризисной защиты бизнеса и других отраслевых вопросов. В рассылках краткие обзоры новостей, комментарии экспертов и практические рекомендации для бизнеса.\n\nСейчас, когда в работе Telegram могут возникать ограничения, для нас особенно важно оставаться с вами на связи и продолжать оперативно делиться экспертной аналитикой ❤️\n\n👉 Подписаться на рассылки",
-      "text_html": "📧 Еженедельные рассылки «Пепеляев Групп»: чтобы важные изменения в законодательстве не прошли мимо<br><br>Друзья, напоминаем, что у «Пепеляев Групп» выходят <a href=\"https://www.pgplaw.ru/subscribe/?utm_source=telegram\" target=\"_blank\" rel=\"noopener noreferrer\">еженедельные рассылки</a> по ключевым изменениям в законодательстве и правоприменительной практике.<br><br>▫️Наши эксперты регулярно готовят аналитические материалы по наиболее актуальным темам — от налогов и банкротства до антимонопольного регулирования, антикризисной защиты бизнеса и других отраслевых вопросов. В рассылках краткие обзоры новостей, комментарии экспертов и практические рекомендации для бизнеса.<br><br>Сейчас, когда в работе Telegram могут возникать ограничения, для нас особенно важно оставаться с вами на связи и продолжать оперативно делиться экспертной аналитикой ❤️<br><br>👉 <a href=\"https://www.pgplaw.ru/subscribe/?utm_source=telegram\" target=\"_blank\" rel=\"noopener noreferrer\">Подписаться на рассылки</a>",
-      "views": 489,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1362-1-692ff39c4655-v8.jpg",
-          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1362-1-692ff39c4655-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1362-1-692ff39c4655-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752,
-          "source_url": "https://cdn4.telesco.pe/file/UCeKXpuYmoYXRmNcEdL_Rbiie6EzYsYcC3W5K_szb29Sb5F2R9Cm5YqFrhV6mc_qtp0IWbk4DR2P3rLitcEhcKCv6emHR9bhYmjFVrrghTj0NzPKewLl31kg7oYkK3gXyBlVK21LE_qVU5ByUriz8kkdrH7gxkLKHXdh0j3WA-L9n7DTtytoj0xbijD4NPUDjChvxt4AYrfs24fBGmQ7eV-7pLny5tGSaoT4Jlt0s-SWIKCCaEw7hnpoY12ZmbHeOYkxYLh6FW6gPf8XHxpcctfuyYvpQzjJqqoRC46luQTcyYSe6oCIu4IK8oVg_AovmgllgiLj6t-szOnF3vRcLg.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PgAntitrust/1362",
-      "forwarded_from": {
-        "source_url": "https://t.me/pgp_official/1758",
-        "channel_url": "https://t.me/s/pgp_official",
-        "channel_username": "pgp_official",
-        "channel_title": "Pepeliaev Group | Пепеляев Групп"
       },
       "reply_to": null
     }
