@@ -88,9 +88,10 @@ jobs:
           mkdir -p .sync-results
           : > sync.log
           status=0
-          channel_keys=$(node -e "const fs=require('fs'); const config=JSON.parse(fs.readFileSync('config/channels.json','utf8')); console.log(config.channels.map((channel) => channel.key).join('\n'));")
+          mapfile -t channel_keys < <(node -e "const fs=require('fs'); const config=JSON.parse(fs.readFileSync('config/channels.json','utf8')); for (const channel of config.channels) console.log(channel.key);")
 
-          while IFS= read -r channel_key; do
+          for channel_key in "${channel_keys[@]}"; do
+            channel_key="${channel_key//$'\r'/}"
             if [ -z "$channel_key" ]; then
               continue
             fi
@@ -142,7 +143,7 @@ jobs:
               status=1
               break
             fi
-          done <<< "$channel_keys"
+          done
 
           echo "exit_code=$status" >> "$GITHUB_OUTPUT"
           exit 0
