@@ -1,10 +1,9 @@
 {
-  "generated_at": "2026-04-11T17:58:58.313Z",
-  "success_count": 5,
-  "failure_count": 3,
+  "generated_at": "2026-04-11T19:59:13.304Z",
+  "success_count": 6,
+  "failure_count": 2,
   "failure_channels": [
     "pgp-official",
-    "pg-tax",
     "investment-law"
   ],
   "channel_timeout_ms": 150000,
@@ -16,7 +15,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 19611,
+      "duration_ms": 18341,
       "error": null,
       "archive_before": {
         "total_bytes": 918346823,
@@ -53,7 +52,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 55208,
+      "duration_ms": 51880,
       "error": null,
       "archive_before": {
         "total_bytes": 226438028,
@@ -87,11 +86,11 @@
       "key": "pg-tax",
       "channel_username": "PG_Tax",
       "channel_title": "PG Tax | Налоги",
-      "status": "failed",
+      "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 150022,
-      "error": "spawnSync python ETIMEDOUT",
+      "duration_ms": 141558,
+      "error": null,
       "archive_before": {
         "total_bytes": 1441604459,
         "file_count": 10920,
@@ -127,7 +126,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 77690,
+      "duration_ms": 71161,
       "error": null,
       "archive_before": {
         "total_bytes": 83306616,
@@ -164,7 +163,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 12922,
+      "duration_ms": 12099,
       "error": null,
       "archive_before": {
         "total_bytes": 353284827,
@@ -201,7 +200,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 23956,
+      "duration_ms": 22541,
       "error": null,
       "archive_before": {
         "total_bytes": 157954864,
@@ -238,7 +237,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 76655,
+      "duration_ms": 71855,
       "error": null,
       "archive_before": {
         "total_bytes": 551726906,
@@ -275,7 +274,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 43548,
+      "duration_ms": 42701,
       "error": null,
       "archive_before": {
         "total_bytes": 47244945,
