@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-10T22:05:34.104Z",
+  "generated_at": "2026-04-11T00:00:47.755Z",
   "success_count": 6,
   "failure_count": 2,
   "failure_channels": [
@@ -15,7 +15,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 18774,
+      "duration_ms": 13604,
       "error": null,
       "archive_before": {
         "total_bytes": 918346823,
@@ -52,13 +52,13 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 54515,
+      "duration_ms": 41161,
       "error": null,
       "archive_before": {
-        "total_bytes": 226395112,
-        "file_count": 2268,
-        "media_bytes": 226148623,
-        "media_files": 2265,
+        "total_bytes": 226438028,
+        "file_count": 2269,
+        "media_bytes": 226191539,
+        "media_files": 2266,
         "json_files": 3,
         "page_json_files": 2,
         "comment_json_files": 0
@@ -73,10 +73,10 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 42916,
-        "file_count": 1,
-        "media_bytes": 42916,
-        "media_files": 1,
+        "total_bytes": 0,
+        "file_count": 0,
+        "media_bytes": 0,
+        "media_files": 0,
         "json_files": 0,
         "page_json_files": 0,
         "comment_json_files": 0
@@ -89,18 +89,9 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 146477,
+      "duration_ms": 99214,
       "error": null,
       "archive_before": {
-        "total_bytes": 1440744774,
-        "file_count": 10906,
-        "media_bytes": 1439320929,
-        "media_files": 10894,
-        "json_files": 12,
-        "page_json_files": 11,
-        "comment_json_files": 0
-      },
-      "archive_after": {
         "total_bytes": 1440867588,
         "file_count": 10908,
         "media_bytes": 1439443743,
@@ -109,10 +100,19 @@
         "page_json_files": 11,
         "comment_json_files": 0
       },
+      "archive_after": {
+        "total_bytes": 1440990406,
+        "file_count": 10910,
+        "media_bytes": 1439566561,
+        "media_files": 10898,
+        "json_files": 12,
+        "page_json_files": 11,
+        "comment_json_files": 0
+      },
       "archive_delta": {
-        "total_bytes": 122814,
+        "total_bytes": 122818,
         "file_count": 2,
-        "media_bytes": 122814,
+        "media_bytes": 122818,
         "media_files": 2,
         "json_files": 0,
         "page_json_files": 0,
@@ -126,7 +126,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 75549,
+      "duration_ms": 48517,
       "error": null,
       "archive_before": {
         "total_bytes": 83306616,
@@ -163,7 +163,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 12801,
+      "duration_ms": 8630,
       "error": null,
       "archive_before": {
         "total_bytes": 353284827,
@@ -200,7 +200,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 23975,
+      "duration_ms": 16277,
       "error": null,
       "archive_before": {
         "total_bytes": 157954864,
@@ -237,7 +237,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 75743,
+      "duration_ms": 55311,
       "error": null,
       "archive_before": {
         "total_bytes": 551726906,
@@ -274,7 +274,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 43185,
+      "duration_ms": 29108,
       "error": null,
       "archive_before": {
         "total_bytes": 47244945,
@@ -306,10 +306,10 @@
     }
   ],
   "archive_totals": {
-    "total_bytes": 3779170597,
-    "media_bytes": 3775156763,
-    "file_count": 32561,
-    "media_files": 32523,
+    "total_bytes": 3779293415,
+    "media_bytes": 3775279581,
+    "file_count": 32563,
+    "media_files": 32525,
     "json_files": 38,
     "page_json_files": 30,
     "comment_json_files": 0
