@@ -1,13 +1,33 @@
 {
-  "generated_at": "2026-04-13T07:33:25.091019+00:00",
-  "build_id": "bce72c2b472b",
+  "generated_at": "2026-04-13T11:59:19.541685+00:00",
+  "build_id": "34ca845c0856",
   "pagination": {
     "page": 4,
     "page_size": 16,
-    "total_posts": 182,
+    "total_posts": 180,
     "total_pages": 12
   },
   "posts": [
+    {
+      "id": 2537,
+      "date": "2026-03-16T13:05:42+00:00",
+      "text": "Напоминаем, что 18 марта «Пепеляев Групп» совместно с Уполномоченным по защите прав предпринимателей в Приморском крае и Корпорацией развития Дальнего Востока и Арктики проведет вебинар для инвесторов 🤓\n\nРегистрация здесь 👉",
+      "text_html": "Напоминаем, что 18 марта «Пепеляев Групп» совместно с Уполномоченным по защите прав предпринимателей в Приморском крае и Корпорацией развития Дальнего Востока и Арктики проведет вебинар для инвесторов 🤓<br><br><a href=\"https://xn--25-9kcqjffxnf3b.xn--p1ai/events/42473/\" target=\"_blank\" rel=\"noopener noreferrer\">Регистрация здесь</a> 👉",
+      "views": 1010,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PG_Tax/2537",
+      "forwarded_from": null,
+      "reply_to": {
+        "post_id": 2511,
+        "title": "🔥 Вебинар по инвестрежимам от ПГ, УЗПП в Приморском крае и Корпорации развития Дальнего Востока и Арктики",
+        "tg_url": "https://t.me/PG_Tax/2511",
+        "channel_username": "PG_Tax"
+      }
+    },
     {
       "id": 2533,
       "date": "2026-03-16T13:05:09+00:00",
@@ -498,26 +518,6 @@
       "tg_url": "https://t.me/PG_Tax/2518",
       "forwarded_from": null,
       "reply_to": null
-    },
-    {
-      "id": 2517,
-      "date": "2026-03-06T11:12:46+00:00",
-      "text": "Взгляд экспертов антимонопольной практики «Пепеляев Групп» на ситуацию читайте по плашке ⬆️",
-      "text_html": "Взгляд экспертов антимонопольной практики «Пепеляев Групп» на ситуацию читайте по плашке ⬆️",
-      "views": 1240,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2517",
-      "forwarded_from": null,
-      "reply_to": {
-        "post_id": 1359,
-        "title": "⚡️ФАС считает нарушением размещение рекламы в Telegram",
-        "tg_url": "https://t.me/PgAntitrust/1359",
-        "channel_username": "PgAntitrust"
-      }
     }
   ]
 }
