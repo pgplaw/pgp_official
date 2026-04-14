@@ -32,20 +32,37 @@ jobs:
         with:
           ref: main
 
+      - name: Skip stale queued run
+        id: freshness
+        shell: bash
+        run: |
+          git fetch --no-tags --depth=1 origin main
+          current_head="$(git rev-parse origin/main)"
+          if [ "$GITHUB_SHA" != "$current_head" ]; then
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+            echo "Stale queued run for $GITHUB_SHA; current main is $current_head. Skipping."
+          else
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Set up Python
+        if: steps.freshness.outputs.stale != 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Set up Node.js
+        if: steps.freshness.outputs.stale != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
       - name: Install dependencies
+        if: steps.freshness.outputs.stale != 'true'
         run: pip install -r requirements.txt
 
       - name: Ensure FFmpeg
+        if: steps.freshness.outputs.stale != 'true'
         shell: bash
         run: |
           if ! command -v ffmpeg >/dev/null 2>&1; then
@@ -55,14 +72,17 @@ jobs:
           ffmpeg -version | head -n 1
 
       - name: Build multi-channel site index
+        if: steps.freshness.outputs.stale != 'true'
         run: node scripts/build_site_index.mjs
 
       - name: Configure git author
+        if: steps.freshness.outputs.stale != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Commit shared site artifacts if changed
+        if: steps.freshness.outputs.stale != 'true'
         shell: bash
         run: |
           git add -A -- docs/data/channels docs/manifest.webmanifest
@@ -74,6 +94,7 @@ jobs:
 
       - name: Sync configured Telegram channels progressively
         id: sync_channels
+        if: steps.freshness.outputs.stale != 'true'
         shell: bash
         env:
           TELEGRAM_API_ID: ${{ secrets.TELEGRAM_API_ID }}
@@ -134,22 +155,23 @@ jobs:
           exit 0
 
       - name: Write sync report
-        if: always()
+        if: always() && steps.freshness.outputs.stale != 'true'
         run: node scripts/write_sync_report.mjs .sync-results
 
       - name: Write sync failure report
-        if: always()
+        if: always() && steps.freshness.outputs.stale != 'true'
         run: node scripts/write_sync_failure_report.mjs "${{ steps.sync_channels.outputs.exit_code }}"
 
       - name: Show sync diagnostics
-        if: always()
+        if: always() && steps.freshness.outputs.stale != 'true'
         continue-on-error: true
         run: |
           git status --short
           python scripts/print_sync_diagnostics.py
 
       - name: Commit sync reports if changed
-        if: always()
+        id: commit_reports
+        if: always() && steps.freshness.outputs.stale != 'true'
         shell: bash
         run: |
           report_paths=("docs/data/sync-report.json")
@@ -165,7 +187,7 @@ jobs:
           fi
 
       - name: Push accumulated sync commits
-        if: always()
+        if: always() && steps.freshness.outputs.stale != 'true' && steps.commit_reports.outcome != 'failure'
         shell: bash
         run: |
           if [ -z "$(git rev-list --max-count=1 origin/main..HEAD)" ]; then
@@ -183,5 +205,5 @@ jobs:
           git push
 
       - name: Fail job if sync failed
-        if: steps.sync_channels.outputs.exit_code != '0'
+        if: steps.freshness.outputs.stale != 'true' && steps.sync_channels.outputs.exit_code != '0'
         run: exit 1
