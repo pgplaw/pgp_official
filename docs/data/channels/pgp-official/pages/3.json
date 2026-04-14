@@ -1,189 +1,19 @@
 {
-  "generated_at": "2026-04-14T10:20:16.396260+00:00",
-  "build_id": "15675fefea26",
+  "generated_at": "2026-04-14T12:04:03.817652+00:00",
+  "build_id": "ef90931f1f3d",
   "pagination": {
     "page": 3,
     "page_size": 16,
-    "total_posts": 90,
+    "total_posts": 85,
     "total_pages": 6
   },
   "posts": [
-    {
-      "id": 1762,
-      "date": "2026-03-16T07:00:01+00:00",
-      "text": "🔍 Начинаем рабочую неделю с рубрикой #PGГрамотность\n\nПочему, съев два яблока, не стоит говорить, что съел несколько яблок?\n\n☝️ Читайте в карточке правописания!",
-      "text_html": "🔍 Начинаем рабочую неделю с рубрикой #PGГрамотность<br><br>Почему, съев два яблока, не стоит говорить, что съел несколько яблок?<br><br>☝️ Читайте в карточке правописания!",
-      "views": 813,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1762-1-7b7d12cdb33c-v8.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/1762-1-7b7d12cdb33c-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1762-1-7b7d12cdb33c-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 800,
-          "full_width": 800,
-          "full_height": 800,
-          "source_width": 800,
-          "source_height": 800,
-          "source_url": "https://cdn4.telesco.pe/file/XIc19zN6haNgzkZT1CtWA6by_67kci3NPODRafkAiNyAUzRocFe_EgR1oKEYeouMfuvOuq-ZjrAswtDCbsdT_hwhduSSultNicFy57tuKzo6Rko3cWOH-xhUP3HHg2JN6xmaGbmY3gE3H1QgpO_Htbsf2BZpkNIkVYun368yrxf3IeKCSFHY5c59ltllSydaLey7UTbjgqhJTBq2fyoxfJgE_ibMsiISi6awDwt5MB9L6HdL8en90iwKlk8l9tofxAg5crDBod27uBfYt2LJ6RgaSXspTUKwYAKjmyeLEEGgO-5WCHMWxYCv0L2eFNu6Q_sWn5H2BsfsqQOJUM3GcQ.jpg"
-        },
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1762-2-645f49eb3e6d-v8.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/1762-2-645f49eb3e6d-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1762-2-645f49eb3e6d-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 800,
-          "full_width": 800,
-          "full_height": 800,
-          "source_width": 800,
-          "source_height": 800,
-          "source_url": "https://cdn4.telesco.pe/file/QjgqDQU5TIIII2UJc2RKXww_elg105PpFGIeox5QOg_zSD8rFKq_8YbQGuBmNkXscWhPulQYVQcCaT1zcJ36Rb3f_ohxEi3QSaVTNbuuILn46kvE_YuMNusEtze1qBzOOnsql7aNvePR-6bd0rau8PsCM8yDVRS4dCN8pRbZrIDEf_nZagmwxmd4zgx0ZWEB5RqoqaYHmoH5xf0ZEVgqchrolRHybo4IDkABANYYb4tzUerQ_xYIZjdtv8MUgwwIXqomKT6g6rZ_6BoW_1FNRgpFXUtZm2dMl3RVc_ddh06jkaxXb1-amxV0BEYBB3OjNJkZP0Yhv_dPGB3JrN-3bQ.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/1762",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1763,
-      "date": "2026-03-16T07:00:01+00:00",
-      "text": "🔍 Начинаем рабочую неделю с рубрикой #PGГрамотность\n\nПочему, съев два яблока, не стоит говорить, что съел несколько яблок?\n\n☝️ Читайте в карточке правописания!",
-      "text_html": "🔍 Начинаем рабочую неделю с рубрикой #PGГрамотность<br><br>Почему, съев два яблока, не стоит говорить, что съел несколько яблок?<br><br>☝️ Читайте в карточке правописания!",
-      "views": 813,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1763-1-dd4056e567e2-v8.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/1763-1-dd4056e567e2-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1763-1-dd4056e567e2-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 800,
-          "full_width": 800,
-          "full_height": 800,
-          "source_width": 800,
-          "source_height": 800,
-          "source_url": "https://cdn4.telesco.pe/file/pRbU0JvsLmk_yfmhD6blDOC1DNoXf7j42J657J8wTB6fxReDyK5hUjZXszS476949YBvx1dWxxeiXCoHHgyFlyqOs5zOPL3FXKSvPBVbeiosgHGKuaFv6ycpH9dk3NbewWKxxjtOzhRzvtFm636u0mWO6jl3mh-gIMU_Qf5d-oejGuV9cmFOWhs5NVcy0Kq_F6cRLvB77VnuAOzxmdmfOXJRphOZX0h_y7RuoB_FZlwiTaAY-lFzdZuMGvNhOJaaQV6U1uSCSEplyFXfwL87C2ZrQVEu4pMGQSStkWfYFIrWYIpGzIxxpu_foiDS8OQo9sWL6UIhbAgloBXOp8pA2g.jpg"
-        },
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1763-2-a47f3ebc00df-v8.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/1763-2-a47f3ebc00df-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1763-2-a47f3ebc00df-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 800,
-          "full_width": 800,
-          "full_height": 800,
-          "source_width": 800,
-          "source_height": 800,
-          "source_url": "https://cdn4.telesco.pe/file/H5QVhc6AJcPIashfxG6OBZUbGJlE1ca5KItn0Ver_PcAqifucaK8ZR0b_dvzZJPrOMQI98-iFWt1xq8N3ybpTk7PetQlPTkGD6DHjoqrGrV320BnFA-eIlq470cAyweZ5YrB3ShiMu_bnkf3h5Q16Dd-yRRpW7v8AFY6KCcZ21kMvDFEMYZgTEtpl9l5xm5t8j3X6A6I_3_-SepdhJbwpLeQLCP0sb-uCUHqVFLyzQCRPVyu59Dy8I_jVC_0fPAWsF5b-kehEoKjKQ_TWFxX-VHziW91GPKEh8aijfca3GwnuOsW2y-9vDMOlDTiM2vunvcw0j2JMJ45tG2bxcBmKw.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/1763",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1761,
-      "date": "2026-03-13T12:00:01+00:00",
-      "text": "📜 Когда можно ограничить патент: позиция Конституционного суда по принудительным лицензиям\n\nКС впервые подробно разъяснил условия выдачи принудительных лицензий на изобретения, указав, что при оценке недостаточного использования патента можно учитывать не только объем поставок, но и экономическую доступность товара.\n\n🔘Как отмечает Константин Шарловский, партнер, руководитель практики фармацевтики и здравоохранения «Пепеляев Групп» в материале Право.ru, КС фактически сблизил судебный механизм принудительной лицензии по ст. 1362 ГК РФ с административным механизмом по ст. 1360 ГК РФ: оба инструмента применяются в исключительных случаях и направлены на защиту жизни и здоровья граждан.\n\n💬 По словам Константина, суд де-факто расширил само понимание «недостаточного использования изобретения»: речь может идти не только о дефиците препарата, но и о его чрезмерно высокой цене. При этом универсальных критериев для оценки дефицита и ценовой недоступности пока нет, а значит, многие вопросы по-прежнему останутся на усмотрение судов.\n\nПостановление может повлиять на дальнейшую практику по спорам о принудительных лицензиях, однако насколько именно – пока говорить рано.\n\n👉 Полная версия комментария доступна на сайте.",
-      "text_html": "📜 Когда можно ограничить патент: позиция Конституционного суда по принудительным лицензиям<br><br>КС впервые подробно разъяснил условия выдачи принудительных лицензий на изобретения, указав, что при оценке недостаточного использования патента можно учитывать не только объем поставок, но и экономическую доступность товара.<br><br>🔘Как отмечает <a href=\"https://www.pgplaw.ru/to-get-the-team/sharlovskiy/\" target=\"_blank\" rel=\"noopener noreferrer\">Константин Шарловский</a>, партнер, руководитель практики фармацевтики и здравоохранения «Пепеляев Групп» в материале <a href=\"https://pravo.ru/story/262790/\" target=\"_blank\" rel=\"noopener noreferrer\">Право.ru</a>, КС фактически сблизил судебный механизм принудительной лицензии по ст. 1362 ГК РФ с административным механизмом по ст. 1360 ГК РФ: оба инструмента применяются в исключительных случаях и направлены на защиту жизни и здоровья граждан.<br><br>💬 По словам Константина, суд де-факто расширил само понимание «недостаточного использования изобретения»: речь может идти не только о дефиците препарата, но и о его чрезмерно высокой цене. При этом универсальных критериев для оценки дефицита и ценовой недоступности пока нет, а значит, многие вопросы по-прежнему останутся на усмотрение судов.<br><br>Постановление может повлиять на дальнейшую практику по спорам о принудительных лицензиях, однако насколько именно – пока говорить рано.<br><br>👉 Полная версия комментария доступна <a href=\"https://www.pgplaw.ru/analytics-and-brochures/articles-comments-interviews/kogda-mozhno-ogranichit-patent/\" target=\"_blank\" rel=\"noopener noreferrer\">на сайте.</a>",
-      "views": 956,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1761-1-861691f85ea6-v8.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1761-1-861691f85ea6-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1761-1-861691f85ea6-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752,
-          "source_url": "https://cdn4.telesco.pe/file/Fgwj3AySTvf7hRstaXaVLzAnB5BYukhXSGguwT4vX7J9rAnEzGG663rmpIRSyVjJaltQBt1n0sAASWK_0xIF-3DnH18FYfVhOePS3GxWp5RLvMh2VNy3cDHcpmrwAPl5xTIHTuhXibeTk55c5197WqHLCGmhIlvLrQVwY1uVr0qsVa5oipA3IEo4LsS8iqDV7mR8BfBsDJaCS27Hznc3OjWnKfftihzt9o9Kmvr8wwKRWDOMGkcC_xrd7vbWUa5K0aqPnzyF8oVH7OPEzvVDtNv9Bio7ikMO2GIqZesFcgp7fmPCimFIl0FbXc_imVYB6VQH8mtfcAxGgQs0-naQdw.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/1761",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1760,
-      "date": "2026-03-12T13:15:01+00:00",
-      "text": "🏢 Еженедельная подборка обзоров от практик «Пепеляев Групп»\n\nЧто изменилось в регулировании, и на что стоит обратить внимание бизнесу?\n\n▫️ Налоговые новости. Дайджест за 2–8 марта 2026 г.\n\n▫️ СпецИнвестРежимы в Сибири и на Дальнем Востоке. Дайджест 2–8 марта 2026 г.\n\n▫️ Ограничения и меры поддержки для бизнеса: дайджест за 23 февраля – 8 марта 2026 г.\n\n▫️ Телекоммуникации, медиа, ИТ, персональные данные. Дайджест за 15 января – 05 марта 2026 г.\n\n▫️ Банкротство: взгляд эксперта. Обзор №311 за 5–11 марта 2026 г.\n\nСмотрите также новые видео:\n\n🔘 Двойное налогообложение доходов налоговых резидентов РФ от удаленки в Казахстане \nVK | Rutube | YouTube\n\n🔘 Изменения в камеральном налоговом контроле. Сергей Разгулин в гостях у Сергея Пепеляева\nVK | Rutube | YouTube\n\n🔘Субсидиарная ответственность – 2025: что учесть в 2026. Часть 1 \nVK | Rutube | YouTube\n\n#pg_обзоры_недели",
-      "text_html": "🏢 Еженедельная подборка обзоров от практик «Пепеляев Групп»<br><br>Что изменилось в регулировании, и на что стоит обратить внимание бизнесу?<br><br>▫️ <a href=\"https://www.pgplaw.ru/analytics-and-brochures/tax-reviews/tax-news-digest-09-03-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Налоговые новости. Дайджест за 2–8 марта 2026 г.</a><br><br>▫️ <a href=\"https://www.pgplaw.ru/analytics-and-brochures/spec-invest-obzor/invest-news-digest-26-03-09/\" target=\"_blank\" rel=\"noopener noreferrer\">СпецИнвестРежимы в Сибири и на Дальнем Востоке. Дайджест 2–8 марта 2026 г.</a><br><br>▫️ <a href=\"https://www.pgplaw.ru/analytics-and-brochures/sanctions-support-digest/support-digest-09-03-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Ограничения и меры поддержки для бизнеса: дайджест за 23 февраля – 8 марта 2026 г.</a><br><br>▫️ <a href=\"https://www.pgplaw.ru/analytics-and-brochures/telecom-digest/telecom-digest-10-03-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Телекоммуникации, медиа, ИТ, персональные данные. Дайджест за 15 января – 05 марта 2026 г.</a><br><br>▫️ <a href=\"https://www.pgplaw.ru/analytics-and-brochures/bankruptcy-must-read/bankruptcy-digest-11-03-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Банкротство: взгляд эксперта. Обзор №311 за 5–11 марта 2026 г.</a><br>Смотрите также новые видео:<br><br>🔘 Двойное налогообложение доходов налоговых резидентов РФ от удаленки в Казахстане <br><a href=\"https://vkvideo.ru/video-227047542_456239401\" target=\"_blank\" rel=\"noopener noreferrer\">VK</a> | <a href=\"https://rutube.ru/video/212a95dd7d83b77ff56b25bd478f6582/\" target=\"_blank\" rel=\"noopener noreferrer\">Rutube</a> | <a href=\"https://youtu.be/PWVeNsfNZ6w\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube</a><br><br>🔘 Изменения в камеральном налоговом контроле. Сергей Разгулин в гостях у Сергея Пепеляева<br><a href=\"https://vkvideo.ru/video-227047542_456239400?sh=4\" target=\"_blank\" rel=\"noopener noreferrer\">VK</a> | <a href=\"https://rutube.ru/video/55deb33c8d93e2f65eac900430bd6e39/\" target=\"_blank\" rel=\"noopener noreferrer\">Rutube</a> | <a href=\"https://youtu.be/koWssw1PGQI\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube</a><br><br>🔘Субсидиарная ответственность – 2025: что учесть в 2026. Часть 1 <br><a href=\"https://vkvideo.ru/video-227047542_456239403?sh=4\" target=\"_blank\" rel=\"noopener noreferrer\">VK</a> | <a href=\"https://rutube.ru/video/6c439b26751fb30a5970f5b1f5774759/\" target=\"_blank\" rel=\"noopener noreferrer\">Rutube</a> | <a href=\"https://youtu.be/XiS1perDPz8\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube</a><br><br>#pg_обзоры_недели",
-      "views": 950,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1760-1-b54206280166-v8.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1760-1-b54206280166-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1760-1-b54206280166-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752,
-          "source_url": "https://cdn4.telesco.pe/file/gp9z9MwJJJeb5ls9EpI8yMS0nXitQtMGfIBWUs567NXAl01ZiX0s_MdIh6KsQpR25nWbcrRjeEcc5lgWa2BuyynHRJ6R-iWrDp78qXh8LJ02ZJORmEFveDH9TpZpirXJw4ltevdtNjhch1tO_a5zIrq7Dff0MOzuAZrhFvtQ2Hz9xLLVyQdlr7ruFE9XBBQjN_JK8wwvqDNWprbbDvnZYna2NMamDjGtwBVNZ-Lm7zhqFCME69QKEguNIxbjWmKOvbPg3n1c5L5phgOrnIUC51Ss7vufkHAKaUdXjgHey_uSGZa3vs1LjpJt2Y-5ITmenCE3JNeW6dfg1qrk2Ol_Ww.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/1760",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1759,
-      "date": "2026-03-12T10:00:02+00:00",
-      "text": "🔍 19 марта состоится очередное заседание Комплаенс Клуба, которое будет посвящено этическому комплаенсу и ценностному управлению в организации.\n\nВопросы для обсуждения:\n▫️ Этический комплаенс — это в первую очередь защита компании от рисков или инвестиция в ее репутацию и устойчивое развитие? Где проходит грань?\n▫️Правовое просвещение и сознание права.\n▫️Как превратить комплаенс-политики из «бумажных тигров» и формальных тестов в реальные поведенческие модели для сотрудников всех уровней?\n▫️Ценностное управление vs. комплаенс по правилам: что эффективнее в долгосрочной перспективе для предотвращения нарушений? Могут ли они сосуществовать, и как?\n▫️Как говорить о коррупции и этических дилеммах без запугивания, но и без излишней академичности? Как сделать тему актуальной для рядового сотрудника?\n▫️Должно ли антикоррупционное просвещение выходить за рамки компании? Какова роль корпораций в просвещении и даже общества в целом?\n▫️Лучшие практики и вызовы на стыке бизнеса и общества.\n\n📍 Место: офис «Пепеляев Групп»\n\n🌐 Регистрация доступна по ссылке.\n\n#pg_мероприятия",
-      "text_html": "🔍 19 марта состоится очередное заседание Комплаенс Клуба, которое будет посвящено этическому комплаенсу и ценностному управлению в организации.<br><br>Вопросы для обсуждения:<br>▫️ Этический комплаенс — это в первую очередь защита компании от рисков или инвестиция в ее репутацию и устойчивое развитие? Где проходит грань?<br>▫️Правовое просвещение и сознание права.<br>▫️Как превратить комплаенс-политики из «бумажных тигров» и формальных тестов в реальные поведенческие модели для сотрудников всех уровней?<br>▫️Ценностное управление vs. комплаенс по правилам: что эффективнее в долгосрочной перспективе для предотвращения нарушений? Могут ли они сосуществовать, и как?<br>▫️Как говорить о коррупции и этических дилеммах без запугивания, но и без излишней академичности? Как сделать тему актуальной для рядового сотрудника?<br>▫️Должно ли антикоррупционное просвещение выходить за рамки компании? Какова роль корпораций в просвещении и даже общества в целом?<br>▫️Лучшие практики и вызовы на стыке бизнеса и общества.<br><br>📍 Место: офис «Пепеляев Групп»<br><br>🌐 Регистрация доступна <a href=\"https://www.pgplaw.ru/events/upcoming-events/eticheskiy-komplaens-i-tsennostnoe-upravlenie-v-organizatsii-vklad-korporativnogo-sektora-v-antikorr/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a>.<br><br>#pg_мероприятия",
-      "views": 966,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1759-1-d257c94b722c-v8.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1759-1-d257c94b722c-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1759-1-d257c94b722c-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 420,
-          "feed_width": 1800,
-          "feed_height": 945,
-          "full_width": 1880,
-          "full_height": 987,
-          "source_width": 1880,
-          "source_height": 987,
-          "source_url": "https://cdn4.telesco.pe/file/O13q8p4KVSNFwOr9aRKv3bSQ2-WyfRrTB9ct_Vl1tJvsarlm8UwQt14emTxIRco-gsNLvmPzQQwEr3iZDQXCBrRjGSqv7JYuHju1UnXf3WWBSeyuG3SU_D1Nyn7Q7S6f80eKeY-FAbwman7M29fdAy2BZEHOx-x6Bmc7UiicDA80Kg9P9JryyTJKOu4ucu0PeFjU9XzRFAWAa42caQWeAVQ0FBgPEYIw_Qsmv2mhlIBtM-oupaK0d1TcAW2wkcF5G_heRTFcthR-rxATy73xBna4LEE5Ogp0GZwazeOAICegsAL1OoUmcnwmr2iNH4qRnDCvTvBO-0uN3c-VXr0Jiw.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/1759",
-      "forwarded_from": null,
-      "reply_to": null
-    },
     {
       "id": 1758,
       "date": "2026-03-12T07:02:33+00:00",
       "text": "📧 Еженедельные рассылки «Пепеляев Групп»: чтобы важные изменения в законодательстве не прошли мимо\n\nДрузья, напоминаем, что у «Пепеляев Групп» выходят еженедельные рассылки по ключевым изменениям в законодательстве и правоприменительной практике.\n\n▫️Наши эксперты регулярно готовят аналитические материалы по наиболее актуальным темам — от налогов и банкротства до антимонопольного регулирования, антикризисной защиты бизнеса и других отраслевых вопросов. В рассылках краткие обзоры новостей, комментарии экспертов и практические рекомендации для бизнеса.\n\nСейчас, когда в работе Telegram могут возникать ограничения, для нас особенно важно оставаться с вами на связи и продолжать оперативно делиться экспертной аналитикой ❤️\n\n👉 Подписаться на рассылки",
       "text_html": "📧 Еженедельные рассылки «Пепеляев Групп»: чтобы важные изменения в законодательстве не прошли мимо<br><br>Друзья, напоминаем, что у «Пепеляев Групп» выходят <a href=\"https://www.pgplaw.ru/subscribe/?utm_source=telegram\" target=\"_blank\" rel=\"noopener noreferrer\">еженедельные рассылки</a> по ключевым изменениям в законодательстве и правоприменительной практике.<br><br>▫️Наши эксперты регулярно готовят аналитические материалы по наиболее актуальным темам — от налогов и банкротства до антимонопольного регулирования, антикризисной защиты бизнеса и других отраслевых вопросов. В рассылках краткие обзоры новостей, комментарии экспертов и практические рекомендации для бизнеса.<br><br>Сейчас, когда в работе Telegram могут возникать ограничения, для нас особенно важно оставаться с вами на связи и продолжать оперативно делиться экспертной аналитикой ❤️<br><br>👉 <a href=\"https://www.pgplaw.ru/subscribe/?utm_source=telegram\" target=\"_blank\" rel=\"noopener noreferrer\">Подписаться на рассылки</a>",
-      "views": 3940,
+      "views": 3950,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -536,6 +366,200 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/pgp_official/1744",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
+      "id": 1742,
+      "date": "2026-03-02T07:04:19+00:00",
+      "text": "🔍 Начинаем рабочую неделю с рубрикой #PG_Грамотность \n\nОбороты с предлогом согласно. Выделять запятыми или нет?\n\n☝️ Читайте в карточке правописания!",
+      "text_html": "🔍 Начинаем рабочую неделю с рубрикой #PG_Грамотность <br><br>Обороты с предлогом согласно. Выделять запятыми или нет?<br><br>☝️ Читайте в карточке правописания!",
+      "views": 1190,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1742-1-75cba4ca0d8f-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1742-1-75cba4ca0d8f-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1742-1-75cba4ca0d8f-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 800,
+          "full_width": 800,
+          "full_height": 800,
+          "source_width": 800,
+          "source_height": 800,
+          "source_url": "https://cdn4.telesco.pe/file/RewmXSYC7rBEBnoOA-uSXpIG2eUreTkSJciyBlrEGhmorRF-bv5TLVdTmWDWV9EIov3cKYofnnKuh4T9hdG9FrMSlqJfEGpeEBGpqJGZtOY1Da5-wMafA2SIDfhD2Be0wHJbZIvX1keW-F_ESPccSrcr5XzGQT1_N02BxoS0u_pY4F3yh6vYNsDxc-Jx0oYFkClTaLXxFoyrAbqAQodWCVAVVdyyOVEiwYbTEIRNTE8ixaGpC6lCJnFugJ3dDXo9tkNA6EmZhMSKp_Jw_LHmVaJnNah5lmLAidcZQGJ8F6rUEjtPYi62v2cxl20jdj3FTRJSZhwbjQyo8NmMzmEILw.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1742-2-d65d6f927f96-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1742-2-d65d6f927f96-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1742-2-d65d6f927f96-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 800,
+          "full_width": 800,
+          "full_height": 800,
+          "source_width": 800,
+          "source_height": 800,
+          "source_url": "https://cdn4.telesco.pe/file/OoKBHpM90lNQSnAMrE728c0QLhKpt59VvEvWR3dKMDJ1vgyCn9__Iy0jewQW7j76IMGHgbXGDw-kilYbLtQN2KBZ9YX6hG-TTkHgvovLwqJfeNV5NU8ZwWSPS9TQmfMoOhXa7i-JwlNpaTnbbxdd-5EUw53babJ_ZzOE-T_na6xZKyNLrU5v0b0JVkx24UcgBQEaxeAC5lilnh6A-uPBc-LxNLf6bNCvlOVSGhyb5kBrHLMvaliQH1zRfMFdN20dYgJrIDqZ9cWHNtXP7gsoqtn8lI_knz7p47ZEV2KDjjg1Y8bc_FnEH1oyOlnLTTG7Ec16mrqqF8DMQKVUFD9-Jg.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1742",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
+      "id": 1741,
+      "date": "2026-02-27T13:47:27+00:00",
+      "text": "🏆 Управляющий партнер «Пепеляев Групп» Сергей Пепеляев награжден медалью Федеральной палаты адвокатов РФ «За профессионализм».\n\nНаграда присуждается за особые, выдающиеся результаты и достижения в профессиональной деятельности и безупречную деловую репутацию.\n\n🔘Сергей Пепеляев более 35 лет углубленно занимается вопросами налогообложения компаний и граждан, а также проблемами инвестиционной деятельности, судопроизводства.\n\nКак практик он защищал права и интересы компаний в самых масштабных и значимых судебных спорах в Конституционном Суде РФ, Верховном Суде РФ, арбитражных судах о законности доначислений налогов и платежей, отмене не соответствующих законам актов Правительства РФ, министерств и ведомств, неконституционных положений законов, консультировал по вопросам налогообложения инвестиционной и текущей деятельности и др.\n\n👉Читать новость на сайте.",
+      "text_html": "🏆 Управляющий партнер «Пепеляев Групп» Сергей Пепеляев награжден медалью Федеральной палаты адвокатов РФ «За профессионализм».<br><br>Награда присуждается за особые, выдающиеся результаты и достижения в профессиональной деятельности и безупречную деловую репутацию.<br><br>🔘Сергей Пепеляев более 35 лет углубленно занимается вопросами налогообложения компаний и граждан, а также проблемами инвестиционной деятельности, судопроизводства.<br><br>Как практик он защищал права и интересы компаний в самых масштабных и значимых судебных спорах в Конституционном Суде РФ, Верховном Суде РФ, арбитражных судах о законности доначислений налогов и платежей, отмене не соответствующих законам актов Правительства РФ, министерств и ведомств, неконституционных положений законов, консультировал по вопросам налогообложения инвестиционной и текущей деятельности и др.<br><br>👉Читать новость <a href=\"https://www.pgplaw.ru/news/press-releases/sergey-pepelyaev-nagrazhden-medalyu-federalnoy-palaty-advokatov-rossiyskoy-federatsii-za-professiona/\" target=\"_blank\" rel=\"noopener noreferrer\">на сайте.</a>",
+      "views": 2750,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1741-1-c5eaaf61cea8-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/feed/1741-1-c5eaaf61cea8-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1741-1-c5eaaf61cea8-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 486,
+          "feed_width": 1800,
+          "feed_height": 1094,
+          "full_width": 1880,
+          "full_height": 1142,
+          "source_width": 1880,
+          "source_height": 1142,
+          "source_url": "https://cdn4.telesco.pe/file/OqJ0-YBrJbxDvlwLkhG2eqQR9zqfqsQ2rHYp5lJ1Zq7KDS_FCF5i-FzrOoLr4Qdmfs0LcvDi7TDbExTIzfPvngS2cBxSAQ0yWZlhz3CG9zWu2tVosba-HfXauYxJHfPEt7gcNGl-5dwQETbMGMLI_7jjxF3TUtq7BPhcMGEF4gX2D2ipGJyt4LXCtji6K22MOzlub31_FjXLzb5J5wvZYZhm9QOc2OzkdZXcKVvXo-Q9GgXtdNl1NSu7QO97b0K6ihtW9ISI6L-EIqiY04jT1zDhlpyQNt890Cos7xFCPLfRTsPOZUVv8mDOwWwYmxJ4ZHUk8sDLM8-8ZziI7PQ36g.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1741",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
+      "id": 1736,
+      "date": "2026-02-26T14:16:14+00:00",
+      "text": "🏆 Эксперты «Пепеляев Групп» продемонстрировали выдающиеся результаты в индивидуальном рейтинге Право-300, 2025\n\n44 юриста «Пепеляев Групп» рекомендованы индивидуальным рейтингом Право-300 по результатам 2025 года. Трое из экспертов отмечены в рейтинге впервые.\n\n📎 Полный список рекомендованных юристов в карточках и на сайте.\n\nПоздравляем коллег с профессиональными успехами 🎉\n\n#pg_победы",
+      "text_html": "🏆 Эксперты «Пепеляев Групп» продемонстрировали выдающиеся результаты в индивидуальном рейтинге Право-300, 2025<br><br>44 юриста «Пепеляев Групп» рекомендованы индивидуальным рейтингом Право-300 по результатам 2025 года. Трое из экспертов отмечены в рейтинге впервые.<br><br>📎 Полный список рекомендованных юристов в карточках и <a href=\"https://www.pgplaw.ru/news/press-releases/individualniy-reyting-pravo300-2025/\" target=\"_blank\" rel=\"noopener noreferrer\">на сайте.</a><br><br>Поздравляем коллег с профессиональными успехами 🎉<br><br>#pg_победы",
+      "views": 1450,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1736-1-b1d86d8fb8b8-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1736-1-b1d86d8fb8b8-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1736-1-b1d86d8fb8b8-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 450,
+          "full_width": 800,
+          "full_height": 450,
+          "source_width": 800,
+          "source_height": 450,
+          "source_url": "https://cdn4.telesco.pe/file/m3nx1OdEM-DOpTtaFNIjXqmDB52UESMTRs6N5XfL8ZNqB3d9kZzahoP_tDVdLapzh_ZhPEcgcWbLQbcm3d63YG4ut9ubvqcF41bfc79Hh9hisV-gfQZ_6ugwuh0BhXoYajstIDu8ZTeJptxqaotWSQqIqx4sxShUmmt2TuHEcyMyuWrGWiD-8PARpOJIhK_-Jg1nYBjnVi886-bKnGwr4FjN1FKi9qbN_D1QvB1wSvYTsPtN8mpfyyP5KD0XuQXEQ8h78kdZ3TjXYLQ_odISEZuk7B0fNMj2QFM6AsNEF4EZoStD7Z0S-V-03F9-d6u7FDsJJNgpCaJkLIgaMYEPbw.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1736-2-da9088ea9ad9-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1736-2-da9088ea9ad9-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1736-2-da9088ea9ad9-v8.jpg",
+          "thumb_width": 554,
+          "thumb_height": 800,
+          "full_width": 554,
+          "full_height": 800,
+          "source_width": 554,
+          "source_height": 800,
+          "source_url": "https://cdn4.telesco.pe/file/oja4S4-1cdqmjiQx6pz0wbp17KDekM_UT32XZQhQSrrgPg5KhEBrm_b-QK2xD9BYjz56vwQOdUVI1mI8LD9twS-krjTFbOLB1J2EFke12_0Wtktt8CFY2z7JMdqRJ-NRW1M0BeTi-hsB6gvjHiOkJGG_VvlegjCy_Vale8hTJ4ZuRWbjZwlLCC1XfczeUEUnQvf1__ZnCZDEv_JaPeD3x0THk-IJdO8_rrJvUwBvoBMdChyUAH5aOCB7RVH2_lj5JxrA6UoXFgNILoU8143NspvE1dFey17sh_AwC4kTrnZEktM5uwIdum4UaNJqPIjbOhBoI3rnzPOCuRpgYyF1MA.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1736-3-93f1e56a6bc9-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1736-3-93f1e56a6bc9-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1736-3-93f1e56a6bc9-v8.jpg",
+          "thumb_width": 554,
+          "thumb_height": 800,
+          "full_width": 554,
+          "full_height": 800,
+          "source_width": 554,
+          "source_height": 800,
+          "source_url": "https://cdn4.telesco.pe/file/WRwNR0QVnvKJOD7nUQZreBIv0I2IPWqnXE5kOPG-9lna0YPV3GxY1m3FJ9ZvyIXODusJLCHFAnRlRAS3M-QVhtoZKpPbN-0vDs782c6p7TR0ByW03WJry54Mx8NI610mH4i-9Z-pbRJwMR25EjVGvSOMyi982iUO4_mefho3B_fb-fmFb1FRoVomA8De6k4rA9NCbrGWayO1ZOyRZZix7H4DJ4WNMMMZ9B3BXsMp-hBwKZf40CwZ6BhHfHynAP3fJ09lszVesE5n6TI3WlvXqo1Z4mks86EDfhtBmrDaGNr9prib41ftISctKlnUJnynyScMjpCsOese6pw-_KB5lA.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1736-4-894c4aadcc29-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1736-4-894c4aadcc29-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1736-4-894c4aadcc29-v8.jpg",
+          "thumb_width": 554,
+          "thumb_height": 800,
+          "full_width": 554,
+          "full_height": 800,
+          "source_width": 554,
+          "source_height": 800,
+          "source_url": "https://cdn4.telesco.pe/file/eQJ0Wj2X73yigFrdyaf_F_BlpVpc2jV7FWrGrcwGLCivxWpgR7wmvqIMJP2lF65nRCNJL_nI2tD9Qvh4tri9Ub0AS6T5b9jigZwKdyHgCRySQu86vzX6XfAMKWRzVjoEE2DPlQeOZ0tZW6z7SNXMaKYKJkKfxGRm0jRVZBTZEW-aBAdSuXwQ0lxhtCCHDRPpUI2F9q9XVO-OfS9Zbk1LSO91tK-JVsJQidDZbkNE7NTZ1FmcX83OyxF_vOPPSA1A3pBmM34Xl3GxIByhbOUKfQFcwzQFDuAqYPSYd0OBJWTlKW5whJnGJB0vBwy9xhvbDf1dR0xZYGjkTHKD-mYPdg.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1736",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
+      "id": 1735,
+      "date": "2026-02-26T09:59:01+00:00",
+      "text": "🏢 Еженедельная подборка обзоров от практик «Пепеляев Групп»\n\nВ одном месте – изменения в налоговом праве и в мире банкротства, актуальные новости для инвесторов в Сибири и на Дальнем Востоке, обзор законодательства и практики в сфере антикризисного регулирования, а также значимые споры в сфере экологии.\n\n▫️ Банкротство: MustRead за 19–26 февраля 2026 г. Выпуск № 309\n\n▫️ Значимые споры в сфере экологии за январь и февраль 2026 г.\n\n▫️ Ограничения и меры поддержки для бизнеса: дайджест за 9–22 февраля 2026 г.\n\n▫️ СпецИнвестРежимы в Сибири и на Дальнем Востоке. Дайджест 16–22 февраля 2026 г.\n\n▫️ Налоговые новости. Дайджест за 16–22 февраля 2026 г.\n\n#pg_обзоры_недели",
+      "text_html": "🏢 Еженедельная подборка обзоров от практик «Пепеляев Групп»<br><br>В одном месте – изменения в налоговом праве и в мире банкротства, актуальные новости для инвесторов в Сибири и на Дальнем Востоке, обзор законодательства и практики в сфере антикризисного регулирования, а также значимые споры в сфере экологии.<br><br>▫️ <a href=\"https://www.pgplaw.ru/analytics-and-brochures/bankruptcy-must-read/bankruptcy-must-read-26-02-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Банкротство: MustRead за 19–26 февраля 2026 г. Выпуск № 309</a><br><br>▫️ <a href=\"https://www.pgplaw.ru/analytics-and-brochures/ecology-digest/ecology-digest-24-02-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Значимые споры в сфере экологии за январь и февраль 2026 г.</a><br><br>▫️ <a href=\"https://www.pgplaw.ru/analytics-and-brochures/sanctions-support-digest/support-digest-23-02-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Ограничения и меры поддержки для бизнеса: дайджест за 9–22 февраля 2026 г.</a><br><br>▫️ <a href=\"https://www.pgplaw.ru/analytics-and-brochures/spec-invest-obzor/invest-news-digest-26-02-23/\" target=\"_blank\" rel=\"noopener noreferrer\">СпецИнвестРежимы в Сибири и на Дальнем Востоке. Дайджест 16–22 февраля 2026 г.</a><br><br>▫️ <a href=\"https://www.pgplaw.ru/analytics-and-brochures/tax-reviews/tax-news-digest-23-02-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Налоговые новости. Дайджест за 16–22 февраля 2026 г.</a><br><br>#pg_обзоры_недели",
+      "views": 1070,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1735-1-7c63a6b4d3fa-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/feed/1735-1-7c63a6b4d3fa-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1735-1-7c63a6b4d3fa-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/FmL2DGjdMZNBOFZpe2bJe9lGkS8NmU4mqhWnv-mJ1m-8fl5t1aTqf2XHTd78vgvmJvD0LmJPnjelADsUKttVLSFsBJS6WsKpSjotrP1q_FcGPjpiIhvWRxwmO9BdeIaJc-pMShl1jk4dRBtIUm8h5eb0vaRz7PWd2aigM8Es3m8GbdFSnQfZ0cGdrNua567-s21U4wGfjJZDjRPtMv8UwcBnzisDP2jbC6z_yfxmCL-sV5AmLgd1wGed07sbyQ8jXHwD8lCQHnhpJGpAqNsE07DAK0I0_pCgpvLU42ZUqPgrzIAltk8VAHrcLlWK5u1hfjNTE2lhb9VWPcm1Pc8-VQ.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1735",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
+      "id": 1734,
+      "date": "2026-02-25T13:00:13+00:00",
+      "text": "☂️ Ограничения и меры поддержки для бизнеса: дайджест\n\n🔘Подготовлены поправки в ГК о плате за отказ от договора; \n\n🔘Разработаны правила, по которым будут проверять маркетплейсы.\n\nПодробнее – по ссылке.\n\n#антикризисная_поддержка_бизнеса",
+      "text_html": "☂️ Ограничения и меры поддержки для бизнеса: дайджест<br><br>🔘Подготовлены поправки в ГК о плате за отказ от договора; <br><br>🔘Разработаны правила, по которым будут проверять маркетплейсы.<br><br>Подробнее – <a href=\"https://www.pgplaw.ru/analytics-and-brochures/sanctions-support-digest/support-digest-23-02-26/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке.</a><br><br>#антикризисная_поддержка_бизнеса",
+      "views": 955,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1734-1-cbb4f19c91a3-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/feed/1734-1-cbb4f19c91a3-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1734-1-cbb4f19c91a3-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 420,
+          "feed_width": 1800,
+          "feed_height": 945,
+          "full_width": 1880,
+          "full_height": 987,
+          "source_width": 1880,
+          "source_height": 987,
+          "source_url": "https://cdn4.telesco.pe/file/VRW9BWs5jYL8Pl0cYPRyin826_czVSeRZIM1XTABWscynyuovVrisP84xued0UfnxBDvMxoao2MnsgJHa45rodF9EczrFjWOx20ChsJZi17S3DhEn3_9PBTPYVfzSIXPDpDUy1TkyCNq-VX0z5EXzt0oIs7lxwCXz0tdAI2Q70JMx_mD2z43ejp7ezhVxPoJt7EE_dvhMcQet4M0sACW2a6OohbKAxb035ccw6CGluPocKeaFurnGR1-FmY7YZJP6ZrmujtrjuTR5fe_Ghxgd-z3aVcDcEqWGY98PtrGndBcp4AhIx05ZbYGy3V3FiTfEUdYqOdpnXuvv1Cr9Gtz6g.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1734",
       "forwarded_from": null,
       "reply_to": null
     }
