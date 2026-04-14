@@ -384,6 +384,58 @@ test.describe('Desktop smoke', () => {
     expect(duplicateInfo).toEqual([]);
   });
 
+  test('deduplicates repeated mirrored media posts even when ids and local asset paths differ', async ({ page }) => {
+    const postsPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pgp-official', 'posts.json');
+    const postsPayload = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
+    const sourcePost = (postsPayload.posts || []).find((post) => Array.isArray(post.photos) && post.photos.length > 0);
+    expect(sourcePost).toBeTruthy();
+
+    const remapPhotos = (photos, token) => photos.map((photo, index) => ({
+      ...photo,
+      thumb_url: `data/channels/pgp-official/media/posts/thumbs/${token}-${index + 1}.jpg`,
+      feed_url: `data/channels/pgp-official/media/posts/feed/${token}-${index + 1}.jpg`,
+      full_url: `data/channels/pgp-official/media/posts/${token}-${index + 1}.jpg`,
+    }));
+
+    const duplicatedPayload = {
+      ...postsPayload,
+      pagination: {
+        ...(postsPayload.pagination || {}),
+        page: 1,
+        total_pages: 1,
+        total_posts: (postsPayload.posts || []).length + 1,
+      },
+      posts: [
+        { ...sourcePost, id: 980001, tg_url: 'https://t.me/pgp_official/980001', photos: remapPhotos(sourcePost.photos, 'dup-a') },
+        { ...sourcePost, id: 980002, tg_url: 'https://t.me/pgp_official/980002', photos: remapPhotos(sourcePost.photos, 'dup-b') },
+        ...(postsPayload.posts || []).slice(1),
+      ],
+    };
+
+    await page.route('**/data/channels/pgp-official/posts.json**', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(duplicatedPayload),
+      });
+    });
+
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const duplicateInfo = await page.evaluate(() => {
+      const cards = Array.from(document.querySelectorAll('.post-card[data-post-id]'));
+      const counts = cards.reduce((map, node) => {
+        const key = String(node.dataset.postDuplicateFingerprint || node.dataset.postCanonicalKey || node.dataset.postId || '');
+        map[key] = (map[key] || 0) + 1;
+        return map;
+      }, {});
+      return Object.entries(counts).filter(([, count]) => count > 1);
+    });
+
+    expect(duplicateInfo).toEqual([]);
+  });
+
   test('does not duplicate feed cards after overlapping load-more and refresh requests', async ({ page }) => {
     await page.route('**/data/channels/pgp-official/pages/2.json', async (route) => {
       await new Promise((resolve) => setTimeout(resolve, 220));

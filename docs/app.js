@@ -1024,17 +1024,40 @@ function normalizeForwardedSourceUrl(post) {
   return normalizeTelegramPostUrl(forwarded.source_url || forwarded.channel_url || '');
 }
 
+function normalizeMediaFingerprintUrl(url) {
+  const raw = String(url || '').trim();
+  if (!raw) return '';
+
+  try {
+    const parsed = new URL(raw, window.location.href);
+    if (/^https?:$/i.test(parsed.protocol)) {
+      parsed.search = '';
+      parsed.hash = '';
+      return parsed.toString().replace(/\/+$/, '');
+    }
+  } catch {
+    return raw.replace(/\/+$/, '');
+  }
+
+  return raw.replace(/\/+$/, '');
+}
+
 function getPostMediaFingerprint(post) {
-  const photos = Array.isArray(post?.photos) ? post.photos.filter(Boolean) : [];
-  const videoUrl = normalizeTelegramPostUrl(post?.video_url || '');
+  const photos = Array.isArray(post?.photos) ? post.photos.map(normalizePhoto).filter(Boolean) : [];
+  const photoFingerprint = photos.map((photo) => (
+    normalizeMediaFingerprintUrl(photo.source_url || photo.full_url || photo.feed_url || photo.thumb_url)
+    || `${Number.parseInt(photo.source_width, 10) || Number.parseInt(photo.full_width, 10) || 0}x${Number.parseInt(photo.source_height, 10) || Number.parseInt(photo.full_height, 10) || 0}`
+  )).join(',');
+  const videoUrl = normalizeMediaFingerprintUrl(post?.video_url || '');
   const attachedVideos = getAttachedVideos(post);
   const linkPreviewUrl = normalizeTelegramPostUrl(post?.link_preview?.href || '');
   return [
     photos.length,
+    photoFingerprint,
     videoUrl,
     attachedVideos.length,
     attachedVideos.map((video) => (
-      normalizeTelegramPostUrl(video.source_url || '')
+      normalizeMediaFingerprintUrl(video.source_url || video.url || '')
       || `${Number.parseInt(video.width, 10) || 0}x${Number.parseInt(video.height, 10) || 0}:${video.poster ? 1 : 0}`
     )).join(','),
     Boolean(post?.video_note) ? 'note' : '',
@@ -1061,9 +1084,18 @@ function getPostDuplicateFingerprint(post) {
   const textFingerprint = normalizePostTextForFingerprint(post?.text_html || post?.text || '');
   const mediaFingerprint = getPostMediaFingerprint(post);
   const dateValue = String(post?.date || '').trim();
+  const hasPhysicalMedia = (
+    (Array.isArray(post?.photos) && post.photos.some(Boolean))
+    || Boolean(post?.video_url)
+    || getAttachedVideos(post).length > 0
+    || Boolean(post?.video_note)
+  );
 
   if (forwardedSourceUrl) {
     return `fwd:${forwardedSourceUrl}|${dateValue}|${textFingerprint}|${mediaFingerprint}`;
+  }
+  if (hasPhysicalMedia) {
+    return `media:${dateValue}|${textFingerprint}|${mediaFingerprint}`;
   }
 
   return '';
