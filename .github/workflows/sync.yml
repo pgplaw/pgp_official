@@ -152,7 +152,12 @@ jobs:
         if: always()
         shell: bash
         run: |
-          git add -A -- docs/data/sync-report.json docs/data/sync-failure.json
+          report_paths=("docs/data/sync-report.json")
+          if [ -e "docs/data/sync-failure.json" ] || git ls-files --error-unmatch "docs/data/sync-failure.json" >/dev/null 2>&1; then
+            report_paths+=("docs/data/sync-failure.json")
+          fi
+
+          git add -A -- "${report_paths[@]}"
           if git diff --cached --quiet; then
             echo "No changes."
           else
@@ -166,6 +171,12 @@ jobs:
           if [ -z "$(git rev-list --max-count=1 origin/main..HEAD)" ]; then
             echo "No local sync commits to push."
             exit 0
+          fi
+
+          if ! git diff --quiet || ! git diff --cached --quiet; then
+            echo "Tracked changes remain before final push."
+            git status --short
+            exit 1
           fi
 
           git pull --rebase origin main
