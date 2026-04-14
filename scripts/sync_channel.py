@@ -83,6 +83,7 @@ DIRECT_POST_PROBE_TIMEOUT_SECONDS = 12
 DIRECT_POST_PROBE_STALE_MAX_IDS = 20
 DIRECT_POST_PROBE_FOLLOWUP_MAX_IDS = 4
 DIRECT_POST_PROBE_MAX_CONSECUTIVE_MISSES = 6
+DIRECT_POST_REGRESSION_FAIL_MIN_DELTA = 2
 DIRECT_POST_GAP_PROBE_WINDOW_POSTS = FEED_PAGE_SIZE * 2
 DIRECT_POST_GAP_PROBE_MAX_GAP = 3
 DIRECT_POST_GAP_PROBE_MAX_IDS = 12
@@ -3403,12 +3404,29 @@ def probe_newer_posts_from_direct_pages(
         consecutive_misses = 0
 
     if not discovered:
-        if stale_root_detected and existing_top_post_id and current_top_post_id < existing_top_post_id:
+        regression_delta = max(existing_top_post_id - current_top_post_id, 0)
+        if (
+            stale_root_detected
+            and existing_top_post_id
+            and current_top_post_id < existing_top_post_id
+            and regression_delta >= DIRECT_POST_REGRESSION_FAIL_MIN_DELTA
+        ):
             stale_tail = ", ".join(direct_probe_stale_candidates[:4]) or "n/a"
             raise RuntimeError(
                 f"Direct probe for @{config.channel_username} did not recover newer posts "
                 f"after the top post regressed from {existing_top_post_id} to {current_top_post_id} "
                 f"(stale candidates: {stale_tail}; hard_errors={direct_probe_hard_errors})"
+            )
+        if stale_root_detected and regression_delta > 0:
+            stale_tail = ", ".join(direct_probe_stale_candidates[:4]) or "n/a"
+            log.warning(
+                "Direct probe for @%s did not recover a small top-post regression from %s to %s; "
+                "continuing with current data (stale candidates: %s; hard_errors=%s)",
+                config.channel_username,
+                existing_top_post_id,
+                current_top_post_id,
+                stale_tail,
+                direct_probe_hard_errors,
             )
         if stale_root_detected and (direct_probe_stale_candidates or (direct_probe_hard_errors and direct_probe_fetch_successes == 0)):
             stale_tail = ", ".join(direct_probe_stale_candidates[:4]) or "n/a"
@@ -3679,8 +3697,28 @@ def should_enrich_reply_post_from_page(post: dict[str, Any]) -> bool:
     return compact_text == compact_reply or compact_text.startswith(compact_reply)
 
 
+def select_posts_for_reply_page_enrichment(posts: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    selected: list[dict[str, Any]] = []
+    for post in posts[: FEED_PAGE_SIZE * 2]:
+        if should_enrich_reply_post_from_page(post):
+            selected.append(post)
+    return selected
+
+
+def select_posts_for_forwarded_page_enrichment(posts: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    selected: list[dict[str, Any]] = []
+    for post in posts[: FEED_PAGE_SIZE * 2]:
+        if (
+            post.get("forwarded_from")
+            and not post.get("video_note")
+            and not (post.get("videos") or [])
+        ):
+            selected.append(post)
+    return selected
+
+
 def enrich_reply_posts_from_pages(posts: list[dict[str, Any]], config: SiteConfig) -> bool:
-    reply_posts = [post for post in posts if should_enrich_reply_post_from_page(post)]
+    reply_posts = select_posts_for_reply_page_enrichment(posts)
     if not reply_posts:
         return False
 
@@ -3751,13 +3789,7 @@ def enrich_reply_posts_from_pages(posts: list[dict[str, Any]], config: SiteConfi
 
 
 def enrich_forwarded_posts_from_source_pages(posts: list[dict[str, Any]]) -> bool:
-    forwarded_posts = [
-        post
-        for post in posts
-        if post.get("forwarded_from")
-        and not post.get("video_note")
-        and not (post.get("videos") or [])
-    ]
+    forwarded_posts = select_posts_for_forwarded_page_enrichment(posts)
     if not forwarded_posts:
         return False
 

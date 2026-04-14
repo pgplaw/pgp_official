@@ -220,7 +220,8 @@ test.describe('Mobile smoke', () => {
     });
 
     await page.locator('#round-video-fallback-host-mobile').scrollIntoViewIfNeeded();
-    await expect(page.locator('#round-video-fallback-host-mobile .media-video-note img')).toBeVisible();
+    await expect(page.locator('#round-video-fallback-host-mobile .media-video-note')).toBeVisible();
+    await expect(page.locator('#round-video-fallback-host-mobile .media-video-note img')).toHaveAttribute('src', /channel-avatar\.jpg/);
     await page.locator('#round-video-fallback-host-mobile .media-trigger').click();
     await expect(page.locator('#viewer .viewer__fallback')).toContainText(/временно недоступно/i);
   });
