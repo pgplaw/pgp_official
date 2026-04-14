@@ -62,7 +62,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Publish shared site artifacts if changed
+      - name: Commit shared site artifacts if changed
         shell: bash
         run: |
           git add -A -- docs/data/channels docs/manifest.webmanifest
@@ -70,8 +70,6 @@ jobs:
             echo "No shared artifact changes."
           else
             git commit -m "chore: refresh shared site artifacts [skip ci]"
-            git pull --rebase origin main
-            git push
           fi
 
       - name: Sync configured Telegram channels progressively
@@ -130,19 +128,6 @@ jobs:
               break
             fi
 
-            git pull --rebase origin main 2>&1 | tee -a sync.log
-            pull_status=${PIPESTATUS[0]}
-            if [ "$pull_status" -ne 0 ]; then
-              status=1
-              break
-            fi
-
-            git push 2>&1 | tee -a sync.log
-            push_status=${PIPESTATUS[0]}
-            if [ "$push_status" -ne 0 ]; then
-              status=1
-              break
-            fi
           done
 
           echo "exit_code=$status" >> "$GITHUB_OUTPUT"
@@ -163,7 +148,7 @@ jobs:
           git status --short
           python scripts/print_sync_diagnostics.py
 
-      - name: Commit and push sync reports if changed
+      - name: Commit sync reports if changed
         if: always()
         shell: bash
         run: |
@@ -172,9 +157,19 @@ jobs:
             echo "No changes."
           else
             git commit -m "chore: update sync reports [skip ci]"
-            git pull --rebase origin main
-            git push
           fi
+
+      - name: Push accumulated sync commits
+        if: always()
+        shell: bash
+        run: |
+          if [ -z "$(git rev-list --max-count=1 origin/main..HEAD)" ]; then
+            echo "No local sync commits to push."
+            exit 0
+          fi
+
+          git pull --rebase origin main
+          git push
 
       - name: Fail job if sync failed
         if: steps.sync_channels.outputs.exit_code != '0'
