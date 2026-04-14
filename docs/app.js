@@ -1065,6 +1065,24 @@ function getPostMediaFingerprint(post) {
   ].join('|');
 }
 
+function getPostMediaShapeFingerprint(post) {
+  const photos = Array.isArray(post?.photos) ? post.photos.map(normalizePhoto).filter(Boolean) : [];
+  const attachedVideos = getAttachedVideos(post);
+  return [
+    photos.length,
+    photos.map((photo) => (
+      `${Number.parseInt(photo.source_width, 10) || Number.parseInt(photo.full_width, 10) || 0}x${Number.parseInt(photo.source_height, 10) || Number.parseInt(photo.full_height, 10) || 0}`
+    )).join(','),
+    `${Number.parseInt(post?.video_width, 10) || 0}x${Number.parseInt(post?.video_height, 10) || 0}`,
+    attachedVideos.length,
+    attachedVideos.map((video) => (
+      `${Number.parseInt(video.width, 10) || 0}x${Number.parseInt(video.height, 10) || 0}:${video.poster ? 1 : 0}`
+    )).join(','),
+    Boolean(post?.video_note) ? 'note' : '',
+    post?.link_preview ? '1' : '0',
+  ].join('|');
+}
+
 function getPostCanonicalKey(post) {
   const telegramUrl = normalizeTelegramPostUrl(post?.tg_url);
   if (telegramUrl) {
@@ -1101,19 +1119,39 @@ function getPostDuplicateFingerprint(post) {
   return '';
 }
 
+function getPostLooseDuplicateFingerprint(post) {
+  const forwardedSourceUrl = normalizeForwardedSourceUrl(post);
+  if (forwardedSourceUrl) return '';
+
+  const textFingerprint = normalizePostTextForFingerprint(post?.text_html || post?.text || '');
+  const dateValue = String(post?.date || '').trim();
+  const hasPhysicalMedia = (
+    (Array.isArray(post?.photos) && post.photos.some(Boolean))
+    || Boolean(post?.video_url)
+    || getAttachedVideos(post).length > 0
+    || Boolean(post?.video_note)
+  );
+
+  if (!dateValue || !textFingerprint || !hasPhysicalMedia) return '';
+  return `media-shape:${dateValue}|${textFingerprint}|${getPostMediaShapeFingerprint(post)}`;
+}
+
 function dedupePostsById(posts = []) {
   const uniquePosts = [];
   const seenIds = new Set();
   const seenCanonicalKeys = new Set();
   const seenDuplicateFingerprints = new Set();
+  const seenLooseDuplicateFingerprints = new Set();
 
   posts.forEach((post) => {
     const normalizedId = String(post?.id ?? '');
     const canonicalKey = getPostCanonicalKey(post);
     const duplicateFingerprint = getPostDuplicateFingerprint(post);
+    const looseDuplicateFingerprint = getPostLooseDuplicateFingerprint(post);
     if (normalizedId && seenIds.has(normalizedId)) return;
     if (canonicalKey && seenCanonicalKeys.has(canonicalKey)) return;
     if (duplicateFingerprint && seenDuplicateFingerprints.has(duplicateFingerprint)) return;
+    if (looseDuplicateFingerprint && seenLooseDuplicateFingerprints.has(looseDuplicateFingerprint)) return;
     if (normalizedId) {
       seenIds.add(normalizedId);
     }
@@ -1122,6 +1160,9 @@ function dedupePostsById(posts = []) {
     }
     if (duplicateFingerprint) {
       seenDuplicateFingerprints.add(duplicateFingerprint);
+    }
+    if (looseDuplicateFingerprint) {
+      seenLooseDuplicateFingerprints.add(looseDuplicateFingerprint);
     }
     uniquePosts.push(post);
   });
@@ -3015,11 +3056,15 @@ function renderPostCard(post) {
   article.dataset.postId = String(post.id);
   const canonicalPostKey = getPostCanonicalKey(post);
   const duplicateFingerprint = getPostDuplicateFingerprint(post);
+  const looseDuplicateFingerprint = getPostLooseDuplicateFingerprint(post);
   if (canonicalPostKey) {
     article.dataset.postCanonicalKey = canonicalPostKey;
   }
   if (duplicateFingerprint) {
     article.dataset.postDuplicateFingerprint = duplicateFingerprint;
+  }
+  if (looseDuplicateFingerprint) {
+    article.dataset.postLooseDuplicateFingerprint = looseDuplicateFingerprint;
   }
 
   const text = normalizePostHtmlSpacing(normalizePostHtml(post.text_html)) || escapeHtml(post.text || '').replace(/\n/g, '<br>');
@@ -3127,15 +3172,18 @@ function pruneDuplicateFeedCards() {
   const seenPostIds = new Set();
   const seenCanonicalKeys = new Set();
   const seenDuplicateFingerprints = new Set();
+  const seenLooseDuplicateFingerprints = new Set();
   let removed = 0;
   elements.postFeed.querySelectorAll('.post-card[data-post-id]').forEach((card) => {
     const postId = String(card.dataset.postId || '').trim();
     const canonicalKey = String(card.dataset.postCanonicalKey || '').trim();
     const duplicateFingerprint = String(card.dataset.postDuplicateFingerprint || '').trim();
+    const looseDuplicateFingerprint = String(card.dataset.postLooseDuplicateFingerprint || '').trim();
     if (
       (postId && seenPostIds.has(postId)) ||
       (canonicalKey && seenCanonicalKeys.has(canonicalKey)) ||
-      (duplicateFingerprint && seenDuplicateFingerprints.has(duplicateFingerprint))
+      (duplicateFingerprint && seenDuplicateFingerprints.has(duplicateFingerprint)) ||
+      (looseDuplicateFingerprint && seenLooseDuplicateFingerprints.has(looseDuplicateFingerprint))
     ) {
       card.remove();
       removed += 1;
@@ -3149,6 +3197,9 @@ function pruneDuplicateFeedCards() {
     }
     if (duplicateFingerprint) {
       seenDuplicateFingerprints.add(duplicateFingerprint);
+    }
+    if (looseDuplicateFingerprint) {
+      seenLooseDuplicateFingerprints.add(looseDuplicateFingerprint);
     }
   });
 
@@ -3287,10 +3338,12 @@ async function appendNextPage() {
     const renderedIds = new Set();
     const renderedCanonicalKeys = new Set();
     const renderedDuplicateFingerprints = new Set();
+    const renderedLooseDuplicateFingerprints = new Set();
     Array.from(elements.postFeed.querySelectorAll('.post-card[data-post-id]')).forEach((node) => {
       const postId = String(node.dataset.postId || '').trim();
       const canonicalKey = String(node.dataset.postCanonicalKey || '').trim();
       const duplicateFingerprint = String(node.dataset.postDuplicateFingerprint || '').trim();
+      const looseDuplicateFingerprint = String(node.dataset.postLooseDuplicateFingerprint || '').trim();
       if (postId) {
         renderedIds.add(postId);
       }
@@ -3300,12 +3353,16 @@ async function appendNextPage() {
       if (duplicateFingerprint) {
         renderedDuplicateFingerprints.add(duplicateFingerprint);
       }
+      if (looseDuplicateFingerprint) {
+        renderedLooseDuplicateFingerprints.add(looseDuplicateFingerprint);
+      }
     });
     const nextSlice = state.posts.slice(state.rendered, state.rendered + state.pageSize);
     const nextPosts = nextSlice.filter((post) => {
       const postId = String(post?.id ?? '').trim();
       const canonicalKey = getPostCanonicalKey(post);
       const duplicateFingerprint = getPostDuplicateFingerprint(post);
+      const looseDuplicateFingerprint = getPostLooseDuplicateFingerprint(post);
       if (postId && renderedIds.has(postId)) {
         return false;
       }
@@ -3313,6 +3370,9 @@ async function appendNextPage() {
         return false;
       }
       if (duplicateFingerprint && renderedDuplicateFingerprints.has(duplicateFingerprint)) {
+        return false;
+      }
+      if (looseDuplicateFingerprint && renderedLooseDuplicateFingerprints.has(looseDuplicateFingerprint)) {
         return false;
       }
       return true;

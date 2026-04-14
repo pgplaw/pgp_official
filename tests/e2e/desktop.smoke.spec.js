@@ -395,6 +395,7 @@ test.describe('Desktop smoke', () => {
       thumb_url: `data/channels/pgp-official/media/posts/thumbs/${token}-${index + 1}.jpg`,
       feed_url: `data/channels/pgp-official/media/posts/feed/${token}-${index + 1}.jpg`,
       full_url: `data/channels/pgp-official/media/posts/${token}-${index + 1}.jpg`,
+      source_url: `https://cdn4.telesco.pe/file/${token}-${index + 1}.jpg`,
     }));
 
     const duplicatedPayload = {
@@ -423,17 +424,10 @@ test.describe('Desktop smoke', () => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
 
-    const duplicateInfo = await page.evaluate(() => {
-      const cards = Array.from(document.querySelectorAll('.post-card[data-post-id]'));
-      const counts = cards.reduce((map, node) => {
-        const key = String(node.dataset.postDuplicateFingerprint || node.dataset.postCanonicalKey || node.dataset.postId || '');
-        map[key] = (map[key] || 0) + 1;
-        return map;
-      }, {});
-      return Object.entries(counts).filter(([, count]) => count > 1);
-    });
-
-    expect(duplicateInfo).toEqual([]);
+    const renderedIds = await page.locator('.post-card[data-post-id="980001"], .post-card[data-post-id="980002"]').evaluateAll(
+      (nodes) => nodes.map((node) => node.getAttribute('data-post-id')),
+    );
+    expect(renderedIds).toHaveLength(1);
   });
 
   test('does not duplicate feed cards after overlapping load-more and refresh requests', async ({ page }) => {

@@ -4819,6 +4819,33 @@ def build_post_media_fingerprint(post: dict[str, Any]) -> str:
     )
 
 
+def build_post_media_shape_fingerprint(post: dict[str, Any]) -> str:
+    photos = [normalize_photo_entry(photo) for photo in (post.get("photos") or []) if photo]
+    photos = [photo for photo in photos if photo]
+    photo_shape_fingerprint = ",".join(
+        f"{parse_positive_int(photo.get('source_width')) or parse_positive_int(photo.get('full_width')) or 0}x"
+        f"{parse_positive_int(photo.get('source_height')) or parse_positive_int(photo.get('full_height')) or 0}"
+        for photo in photos
+    )
+    videos = normalize_video_entries(post.get("videos"))
+    attached_video_shape_fingerprint = ",".join(
+        f"{parse_positive_int(video.get('width')) or 0}x{parse_positive_int(video.get('height')) or 0}:"
+        f"{int(bool(video.get('poster')))}"
+        for video in videos
+    )
+    return "|".join(
+        [
+            str(len(photos)),
+            photo_shape_fingerprint,
+            f"{parse_positive_int(post.get('video_width')) or 0}x{parse_positive_int(post.get('video_height')) or 0}",
+            str(len(videos)),
+            attached_video_shape_fingerprint,
+            "note" if bool(post.get("video_note")) else "",
+            str(int(bool(post.get("link_preview")))),
+        ]
+    )
+
+
 def get_post_duplicate_fingerprint(post: dict[str, Any]) -> str:
     forwarded_source_url = normalize_forwarded_source_url(post)
     date_value = str(post.get("date") or "").strip()
@@ -4839,21 +4866,44 @@ def get_post_duplicate_fingerprint(post: dict[str, Any]) -> str:
     return ""
 
 
+def get_post_loose_duplicate_fingerprint(post: dict[str, Any]) -> str:
+    if normalize_forwarded_source_url(post):
+        return ""
+
+    date_value = str(post.get("date") or "").strip()
+    text_value = normalize_post_text_for_fingerprint(post.get("text_html") or post.get("text"))
+    has_physical_media = bool(
+        [photo for photo in (post.get("photos") or []) if photo]
+        or post.get("video_url")
+        or normalize_video_entries(post.get("videos"))
+        or post.get("video_note")
+    )
+    if not date_value or not text_value or not has_physical_media:
+        return ""
+
+    media_shape_fingerprint = build_post_media_shape_fingerprint(post)
+    return f"media-shape:{date_value}|{text_value}|{media_shape_fingerprint}"
+
+
 def dedupe_posts(posts: list[dict[str, Any]]) -> list[dict[str, Any]]:
     unique_posts: list[dict[str, Any]] = []
     seen_ids: set[int] = set()
     seen_tg_urls: set[str] = set()
     seen_duplicate_fingerprints: set[str] = set()
+    seen_loose_duplicate_fingerprints: set[str] = set()
 
     for post in posts:
         post_id = int(post.get("id") or 0)
         canonical_tg_url = normalize_telegram_post_url(str(post.get("tg_url") or ""))
         duplicate_fingerprint = get_post_duplicate_fingerprint(post)
+        loose_duplicate_fingerprint = get_post_loose_duplicate_fingerprint(post)
         if post_id and post_id in seen_ids:
             continue
         if canonical_tg_url and canonical_tg_url in seen_tg_urls:
             continue
         if duplicate_fingerprint and duplicate_fingerprint in seen_duplicate_fingerprints:
+            continue
+        if loose_duplicate_fingerprint and loose_duplicate_fingerprint in seen_loose_duplicate_fingerprints:
             continue
 
         if post_id:
@@ -4863,6 +4913,8 @@ def dedupe_posts(posts: list[dict[str, Any]]) -> list[dict[str, Any]]:
             post["tg_url"] = canonical_tg_url
         if duplicate_fingerprint:
             seen_duplicate_fingerprints.add(duplicate_fingerprint)
+        if loose_duplicate_fingerprint:
+            seen_loose_duplicate_fingerprints.add(loose_duplicate_fingerprint)
         unique_posts.append(post)
 
     return unique_posts
