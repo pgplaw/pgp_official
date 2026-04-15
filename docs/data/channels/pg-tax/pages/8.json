@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-15T06:12:26.221340+00:00",
-  "build_id": "d53cb1c84e19",
+  "generated_at": "2026-04-15T10:48:12.814153+00:00",
+  "build_id": "f7e3b1fd5e0b",
   "pagination": {
     "page": 8,
     "page_size": 16,
@@ -8,6 +8,36 @@
     "total_pages": 12
   },
   "posts": [
+    {
+      "id": 2464,
+      "date": "2026-02-12T13:05:43+00:00",
+      "text": "📢 Позиции Минфина и ФНС за январь\n\nВ фокусе внимания ведомств в начале года:\n     🔴ограничения ФИНВ при приобретении имущества за счёт субсидий,\n     🔴НДС в связи с обслуживанием банковских карт,\n     🔴НДС при оказании услуг платёжных агентов,\n     🔴НДФЛ от источников в Казахстане,\n     🔴вопросы применения УПД.\n\nЭкспресс-обзор писем Минфина и ФНС России за январь читайте на сайте ПГ 👉\n\n#обзор_писем_Минфина_ФНС\n\n➖➖\n💡 Индивидуальные обзоры изменений налогового законодательства и практики, учитывающие специфику Вашего бизнеса, по расписанию в Ваш почтовый ящик можно оформить здесь.",
+      "text_html": "📢 Позиции Минфина и ФНС за январь<br><br>В фокусе внимания ведомств в начале года:<br>     🔴ограничения ФИНВ при приобретении имущества за счёт субсидий,<br>     🔴НДС в связи с обслуживанием банковских карт,<br>     🔴НДС при оказании услуг платёжных агентов,<br>     🔴НДФЛ от источников в Казахстане,<br>     🔴вопросы применения УПД.<br><br>Экспресс-обзор писем Минфина и ФНС России за январь читайте <a href=\"https://www.pgplaw.ru/analytics-and-brochures/tax-reviews/pisma-minfina-i-fns-obnovleniya-yanvarya-2026-g/\" target=\"_blank\" rel=\"noopener noreferrer\">на сайте</a> ПГ 👉<br><br>#обзор_писем_Минфина_ФНС<br><br>➖➖<br>💡 Индивидуальные обзоры изменений налогового законодательства и практики, учитывающие специфику Вашего бизнеса, по расписанию в Ваш почтовый ящик можно оформить <a href=\"https://www.pgplaw.ru/practice-and-industry/practices/obzory-zakonodatelstva-i-praktiki/\" target=\"_blank\" rel=\"noopener noreferrer\">здесь.</a>",
+      "views": 1570,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2464-1-2e1e24a44d85-v8.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2464-1-2e1e24a44d85-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2464-1-2e1e24a44d85-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/F0ZgxVCzIzujCP5h3DFWhrvMZxTZs3QRqy-WyXuRSl_EHAGRW9yajETMiWEwdBA-zRZTIxm9lLyF_y9RJrI2MOcOGty56t9QouAvmjl4WpMzgpKI-FIyQziT2cRAe2cI3ipUUEpXLPvO5UGxQeyn7wDg3TVE0qlCSCelW_Vmt6lUtsiCcKWpeuV_TZsoEdGXKNxt_yTSo22VM-qLs4a0I1sgqjnocADfo4s_mAuUuxH564aYvgZBvLCRjFG_k5wMH_hGKWldx_JqX1SRELcmVPJTJ-7ppA68p3lM3IHe1x1o3t6HFYjuBWNebDrmxVepEMUNtYhcM9g6RGcFXalQOQ.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PG_Tax/2464",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2463,
       "date": "2026-02-12T11:07:55+00:00",
@@ -441,9 +471,9 @@
       "reply_to": null,
       "video_note": true,
       "video_poster": {
-        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-ecf4406e41d2-v1.jpg",
-        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-ecf4406e41d2-v1.jpg",
-        "full_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-ecf4406e41d2-v1.jpg",
+        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-20843b07a63f-v1.jpg",
+        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-20843b07a63f-v1.jpg",
+        "full_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-20843b07a63f-v1.jpg",
         "thumb_width": 640,
         "thumb_height": 640,
         "feed_width": 640,
@@ -453,36 +483,6 @@
         "source_width": 640,
         "source_height": 640
       }
-    },
-    {
-      "id": 2448,
-      "date": "2026-02-06T13:01:45+00:00",
-      "text": null,
-      "text_html": null,
-      "views": 1510,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2448-1-a032754da8fe-v8.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2448-1-a032754da8fe-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2448-1-a032754da8fe-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 420,
-          "feed_width": 1800,
-          "feed_height": 945,
-          "full_width": 1880,
-          "full_height": 987,
-          "source_width": 1880,
-          "source_height": 987,
-          "source_url": "https://cdn4.telesco.pe/file/B3PARBpWKY2eY0U-dFCdztMd64nJC-NQtAuYvtTyik2YZCv4OHneM6tyAsRxazw9nutkWopMFT0o2PP2adFXUXvU5HVwHj7wH75oYx_Hs1C9rlldvjblr_SdtsupxIfPntWejVMc8RjdACsKUkQYilLi-aOcasppYSiRinT5Hp9LiGVJxaOjjjqQbO2VPr4fau6PePtay301dL-9AyhcGnUQ-axtUFYnupBmfXh1klxjT1ssWlLC2NYW27JD8w61EHHHhghWh1yqR2c4inNvwe9QtTx38jilL1AyqmipBFXQsEUPfQmftbt902Hg99dOmg8O2IbguoyDHcP_L5p5iA.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2448",
-      "forwarded_from": null,
-      "reply_to": null
     }
   ]
 }
