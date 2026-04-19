@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-04-16T16:12:00.499024+00:00",
-  "build_id": "336fdd184c4c",
+  "generated_at": "2026-04-19T07:52:33.252861+00:00",
+  "build_id": "051394f369d2",
   "pagination": {
     "page": 6,
     "page_size": 16,
-    "total_posts": 84,
+    "total_posts": 83,
     "total_pages": 6
   },
   "posts": [
@@ -147,46 +147,6 @@
         "channel_username": "PgAntitrust",
         "channel_title": "PG Antitrust | Антимонопольное право"
       },
-      "reply_to": null
-    },
-    {
-      "id": 1674,
-      "date": "2026-01-19T07:00:23+00:00",
-      "text": "🔍 Открываем новую рабочую неделю с рубрикой #PGГрамотность\n\nСчет-фактура. Мужской или женский род?\n\n☝️ Читайте в карточке правописания!",
-      "text_html": "🔍 Открываем новую рабочую неделю с рубрикой #PGГрамотность<br><br>Счет-фактура. Мужской или женский род?<br><br>☝️ Читайте в карточке правописания!",
-      "views": 904,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1674-1-e9e282f6e1fe-v8.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/1674-1-e9e282f6e1fe-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1674-1-e9e282f6e1fe-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 800,
-          "full_width": 800,
-          "full_height": 800,
-          "source_width": 800,
-          "source_height": 800,
-          "source_url": "https://cdn4.telesco.pe/file/Y-tU8K5FP8OUQkgdQEcXO9gBCz56X0Ye2fobKeIB-d6rPUPwm8LdpPH98-vg_JOi6ioomIU-XHR9PGDdBc6J3ZCQsb-RjsfQXoaXGhEze-DHAhqvFUX-3jqnsXjZn7vOOQ242upI8VAFbg3V9u4ygjOH2cccrKTrhAgKgmfe3kJI8Awgw_d3YHJ3u_682-Dq025eqhIWbnwiXaG96jt4PeWfDfxHMBeYeXEBtE6fIveqXHcIKxev126R3L3_sJKjJX8__UFa6VckDVEIcA003WD4jpzdnuYMSF4iO-Nr5SJ0pR6sZe5QLpVXqZ32JGCJCD5oEyftLhKiAswWioXEnA.jpg"
-        },
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1674-2-15ec11917ddd-v8.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/1674-2-15ec11917ddd-v8.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1674-2-15ec11917ddd-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 800,
-          "full_width": 800,
-          "full_height": 800,
-          "source_width": 800,
-          "source_height": 800,
-          "source_url": "https://cdn4.telesco.pe/file/GKsGn2Jji9HkdZKxsCqjV4mOpDjCe1bubkYAJwoXGmTXWHgqQe8OlgdvbVKWYRDOwoqS40FbzvKv752N_p2DhIZkrqNaYjtsdeDPJt_Rnuv2RRrpLPVqAU51NhPBtaB7p1PcHe7x5eZAzYt7hEC7DzFglV4AdNze5uyUOPQuP3N1V6YiLIfl0AKRlNUULf6vPaziMybY7cmMxWjP3H0CWYCzpSAq5qBON7BUSBHPxezTrXiJlD8DYvTujdnXKYRSM1sheF7ZeSC97c-EQictmgizuUHmtE0Gz4uHNo1nA9kCp6Ji-WtPOHCeAdRzVPTlJAbpFIBqFhSXwvKoxW7wNw.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/1674",
-      "forwarded_from": null,
       "reply_to": null
     }
   ]
