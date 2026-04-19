@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-04-19T07:54:32.443241+00:00",
-  "build_id": "13416fe47abe",
+  "generated_at": "2026-04-19T10:27:55.955075+00:00",
+  "build_id": "df254a51f14b",
   "pagination": {
     "page": 12,
     "page_size": 16,
-    "total_posts": 181,
+    "total_posts": 180,
     "total_pages": 12
   },
   "posts": [
@@ -127,26 +127,6 @@
       "tg_url": "https://t.me/PG_Tax/2403",
       "forwarded_from": null,
       "reply_to": null
-    },
-    {
-      "id": 2402,
-      "date": "2026-01-19T09:55:35+00:00",
-      "text": "⚡️ Напоминаем о голосовании за ТОП налоговых событий 2025 года!\n\nНе забудьте принять участие в выборе важных налоговых событий 2025 года.\n\nЖдём Ваши анкеты до окончания завтрашнего дня.\nГолосование потребует несколько минут.\n\n➡️ Голосовать за налоговое событие года",
-      "text_html": "⚡️ Напоминаем о голосовании за ТОП налоговых событий 2025 года!<br><br>Не забудьте принять участие в выборе важных налоговых событий 2025 года.<br><br>Ждём Ваши анкеты до окончания завтрашнего дня.<br>Голосование потребует несколько минут.<br><br>➡️ <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSePk0yztpHBZB6RUKWRr9-Z2jdqcUZs901w3oTTgUkrtnfAQg/viewform\" target=\"_blank\" rel=\"noopener noreferrer\">Голосовать за налоговое событие года</a>",
-      "views": 1410,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2402",
-      "forwarded_from": null,
-      "reply_to": {
-        "post_id": 2387,
-        "title": "🔥 Голосование за ТОП налоговых событий 2025 года!",
-        "tg_url": "https://t.me/PG_Tax/2387",
-        "channel_username": "PG_Tax"
-      }
     }
   ]
 }
