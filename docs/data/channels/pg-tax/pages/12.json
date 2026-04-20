@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-20T11:08:45.769874+00:00",
-  "build_id": "c4865c53f5a4",
+  "generated_at": "2026-04-20T14:20:32.447906+00:00",
+  "build_id": "e49181f8b139",
   "pagination": {
     "page": 12,
     "page_size": 16,
@@ -8,6 +8,26 @@
     "total_pages": 12
   },
   "posts": [
+    {
+      "id": 2409,
+      "date": "2026-01-21T10:11:36+00:00",
+      "text": "⬆️ Дополнительно к комментарию Сергея - см. пост о Письме ФНС России от 19.01.2026 №Д-18-18/2@",
+      "text_html": "⬆️ Дополнительно к комментарию Сергея - см. пост о Письме ФНС России от 19.01.2026 №Д-18-18/2@",
+      "views": 1410,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PG_Tax/2409",
+      "forwarded_from": null,
+      "reply_to": {
+        "post_id": 1054,
+        "title": "Должник моего должника - мой должник",
+        "tg_url": "https://t.me/infotaxme/1054",
+        "channel_username": "infotaxme"
+      }
+    },
     {
       "id": 2408,
       "date": "2026-01-21T10:05:19+00:00",
@@ -65,36 +85,6 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/PG_Tax/2407",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2406,
-      "date": "2026-01-20T13:03:26+00:00",
-      "text": "🎬 #Видео. Валютный контроль: генпрокуратура усиливает свою роль и давление на импортёров\n\nИз нового ролика старшего партнера «Пепеляев Групп» Ивана Хаменушко вы узнаете:\n🔴как Генпрокуратура усиливает валютный контроль, \n🔴какие новые полномочия она получила, \n🔴почему импортёры и компании с иностранным участием должны быть особенно внимательны. \n\nТакже разбираем смягчение правил для физлиц и историческое значение рубля как валюты международных расчётов.\n\nСмотрите:\n\n📱 на VK Видео\n📱в YouTube",
-      "text_html": "🎬 #Видео. Валютный контроль: генпрокуратура усиливает свою роль и давление на импортёров<br><br>Из нового ролика старшего партнера «Пепеляев Групп» <a href=\"https://www.pgplaw.ru/to-get-the-team/ivan-khamenushko/\" target=\"_blank\" rel=\"noopener noreferrer\">Ивана Хаменушко</a> вы узнаете:<br>🔴как Генпрокуратура усиливает валютный контроль, <br>🔴какие новые полномочия она получила, <br>🔴почему импортёры и компании с иностранным участием должны быть особенно внимательны. <br><br>Также разбираем смягчение правил для физлиц и историческое значение рубля как валюты международных расчётов.<br><br>Смотрите:<br><br>📱 на <a href=\"https://vkvideo.ru/video-227047542_456239388\" target=\"_blank\" rel=\"noopener noreferrer\">VK Видео</a><br>📱в <a href=\"https://youtu.be/f-k7Jgnw7uY\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube</a>",
-      "views": 1610,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2406-1-21695681c383-v8.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2406-1-21695681c383-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2406-1-21695681c383-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 450,
-          "feed_width": 1800,
-          "feed_height": 1012,
-          "full_width": 1880,
-          "full_height": 1058,
-          "source_width": 1880,
-          "source_height": 1058,
-          "source_url": "https://cdn4.telesco.pe/file/WE2vbx108dbGrQsii7eiMNNcfT1p_V5w3sqOwwnrHrRdtOR0bbW4ONY8WgUJFLc-iu4C1OZz3_zrhzHso_AjMV3Gl5YzaNbGZMP3EwUKBN756sXJLQpYFLVNWi8R0UoMWwtYqh6FodOi-xWP9jsx4Mq3kJE_CqGML8ufpolNNwo9NO0VlMCG_EGpoxqGhUZ3GicWDXVZ-_f1p0FXZEH-pXzqHAf7xDD0-I3HpiouZlMRBy_HCa76hBDc8ymK96oFLy9dqIORNw15mVpIfYDc0rODBDAxOG8GMts5Mjsl-nytAul10AiNzzHNaqKjBOQRnfUnEZKyMWxZMkUa7E0gAA.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2406",
       "forwarded_from": null,
       "reply_to": null
     }
