@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-20T09:32:15.656267+00:00",
-  "build_id": "77d29de91e45",
+  "generated_at": "2026-04-20T11:08:45.755350+00:00",
+  "build_id": "c4865c53f5a4",
   "pagination": {
     "page": 6,
     "page_size": 16,
@@ -8,6 +8,35 @@
     "total_pages": 12
   },
   "posts": [
+    {
+      "id": 2513,
+      "date": "2026-03-05T14:21:30+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1250,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": "data/channels/pg-tax/media/posts/videos/2513-video-note-04ecb9540dfc-v1.mp4",
+      "videos": [],
+      "tg_url": "https://t.me/PG_Tax/2513",
+      "forwarded_from": null,
+      "reply_to": null,
+      "video_note": true,
+      "video_poster": {
+        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2513-video-note-poster-d97441a590c7-v1.jpg",
+        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2513-video-note-poster-d97441a590c7-v1.jpg",
+        "full_url": "data/channels/pg-tax/media/posts/video-posters/2513-video-note-poster-d97441a590c7-v1.jpg",
+        "thumb_width": 640,
+        "thumb_height": 640,
+        "feed_width": 640,
+        "feed_height": 640,
+        "full_width": 640,
+        "full_height": 640,
+        "source_width": 640,
+        "source_height": 640
+      }
+    },
     {
       "id": 2512,
       "date": "2026-03-05T14:21:04+00:00",
@@ -439,58 +468,6 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/PG_Tax/2494",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2491,
-      "date": "2026-02-26T13:27:50+00:00",
-      "text": "🏆 Делимся результатами индивидуального рейтинга Право-300 за 2025 год по налогам и валютному регулированию!\n\nРекомендованы: \n\n1️⃣1️⃣ юристов в налоговых номинациях\n4️⃣ юриста в категории «Валютное регулирование»\n\n4️⃣4️⃣ эксперта «Пепеляев Групп» отмечены в общей сложности. \n\nС полными результатами можно ознакомиться на сайте.\n\n🎉 Благодарим Право ру за проделанную работу и поздравляем коллег с профессиональными успехами!",
-      "text_html": "🏆 Делимся результатами индивидуального рейтинга Право-300 за 2025 год по налогам и валютному регулированию!<br><br>Рекомендованы: <br><br>1️⃣1️⃣ юристов в налоговых номинациях<br>4️⃣ юриста в категории «Валютное регулирование»<br><br>4️⃣4️⃣ эксперта «Пепеляев Групп» отмечены в общей сложности. <br><br>С полными результатами можно ознакомиться <a href=\"https://www.pgplaw.ru/news/press-releases/individualniy-reyting-pravo300-2025/\" target=\"_blank\" rel=\"noopener noreferrer\">на сайте</a>.<br><br>🎉 Благодарим Право ру за проделанную работу и поздравляем коллег с профессиональными успехами!",
-      "views": 1460,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-1-c8f212e40cf2-v8.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/2491-1-c8f212e40cf2-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2491-1-c8f212e40cf2-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 523,
-          "full_width": 800,
-          "full_height": 523,
-          "source_width": 800,
-          "source_height": 523,
-          "source_url": "https://cdn4.telesco.pe/file/pkFxTZ7oFSRnHm0F2DgAJo8Vh2z4wX4eafqUJu4s-8zg-c1Mh2UlNg8OvUQhQMBRgpZGSN18aqyQ56wq-Vzsp48rqTomJqiwhp5Y2iMTFJbxJVi2CCZoINJSU7Xsq41XJkOv4Ha8XolxxIcOi_RrJ0x9pc0bBMN0Kbk7OCyPa1e_knHI27JrMkf4iZNSxcdiyxSQbAuf0Hs45ZLEKKQwhkCxm0UJSqfxhLYBly-LdsK9a-smeG8zQePwcHfDy1sm2xBaAk0xRgYRodi87gD8AdtR-ITRGNFHpLXEsb6wYWmyNH2DR5NbtSJhPJ4JnjcrDN_BxlP6ifxpnehj4WUuAw.jpg"
-        },
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-2-1686528999e1-v8.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/2491-2-1686528999e1-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2491-2-1686528999e1-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 523,
-          "full_width": 800,
-          "full_height": 523,
-          "source_width": 800,
-          "source_height": 523,
-          "source_url": "https://cdn4.telesco.pe/file/E7I-h0QmXPyg40MbgY7lwitfu-i_1e3uM_mB9Jd3xqXB-iBBg_0qKe4S5GzqCB_w9WOcK2VKSlSUZMCqy-eo7mw0SOaUkG4ov6GCMiuEglKE7HzDCSZxe9uqbZ3TAF5E0BHiNFiB1a0lgbKFVfcfvK8kKocNJ1to_4sKnkS-I3tQiUqnvoHeHsgX3QRmuTWuvQkOrTpVDDseQoGj_yvyxIf3-MtPMKbB37-AeNglQg1XJR39tVpxC5k4R-TeeSMSgjQE4q-5egf9ZnY1J_mryJcrk-6m90liNfaxX2xVesOz3R5CozEJ-bGf0B09dcGMTZfni8EP63gDoatCk1TLrw.jpg"
-        },
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2491-3-7f9cf04d3ea6-v8.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/2491-3-7f9cf04d3ea6-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2491-3-7f9cf04d3ea6-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 523,
-          "full_width": 800,
-          "full_height": 523,
-          "source_width": 800,
-          "source_height": 523,
-          "source_url": "https://cdn4.telesco.pe/file/iIr7rLiqMfLkSDkBx-lJ3PEfULp6uyOEw1BFcQq75ZOFKy9EI2bM0YVRPsQd9vyEunxye8urTc0M1ivktZQuEfsTLDLKdVR_CbluKPAtKj7cJmTCyUq2zwOGg4pFgi2Yh4nsSF5L4zJgrY-7s_IsamPMLHE1w27AIIE9uZM-d1QU_NipWfqdkIEx9mXz7uDh4CbVWZ-Ju-DKGgIcJX7GMxfC-P52Lw0-q7I9CcehTzuk92EMoJa6MjzEP6mvdEARSWYOsB8uZmo3RfoTzm-WLxjr99MP-UjC_GtZlyhP2iXSo-YCsx0EZqBDirc4Yd3L7ppi1cS6rq-GmleR5bFkSg.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2491",
       "forwarded_from": null,
       "reply_to": null
     }
