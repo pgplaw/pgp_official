@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-04-20T14:18:56.450209+00:00",
-  "build_id": "27c59575d247",
+  "generated_at": "2026-04-20T15:51:08.704590+00:00",
+  "build_id": "9509aa69bb7d",
   "pagination": {
     "page": 3,
     "page_size": 16,
-    "total_posts": 42,
+    "total_posts": 41,
     "total_pages": 3
   },
   "posts": [
@@ -368,35 +368,6 @@
       "tg_url": "https://t.me/PgAntitrust/1333",
       "forwarded_from": null,
       "reply_to": null
-    },
-    {
-      "id": 1329,
-      "date": "2026-01-20T14:19:11+00:00",
-      "text": null,
-      "text_html": null,
-      "views": 505,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": "data/channels/pg-antitrust/media/posts/videos/1329-video-note-9c85e280e54a-v1.mp4",
-      "videos": [],
-      "tg_url": "https://t.me/PgAntitrust/1329",
-      "forwarded_from": null,
-      "reply_to": null,
-      "video_note": true,
-      "video_poster": {
-        "thumb_url": "data/channels/pg-antitrust/media/posts/video-posters/1329-video-note-poster-31483129c987-v1.jpg",
-        "feed_url": "data/channels/pg-antitrust/media/posts/video-posters/1329-video-note-poster-31483129c987-v1.jpg",
-        "full_url": "data/channels/pg-antitrust/media/posts/video-posters/1329-video-note-poster-31483129c987-v1.jpg",
-        "thumb_width": 640,
-        "thumb_height": 640,
-        "feed_width": 640,
-        "feed_height": 640,
-        "full_width": 640,
-        "full_height": 640,
-        "source_width": 640,
-        "source_height": 640
-      }
     }
   ]
 }
