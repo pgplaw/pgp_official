@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-20T16:57:42.037Z",
+  "generated_at": "2026-04-20T17:55:49.358Z",
   "success_count": 8,
   "failure_count": 0,
   "failure_channels": [],
@@ -12,7 +12,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 69468,
+      "duration_ms": 69071,
       "error": null,
       "archive_before": {
         "total_bytes": 926025606,
@@ -49,7 +49,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 43891,
+      "duration_ms": 42621,
       "error": null,
       "archive_before": {
         "total_bytes": 228859711,
@@ -86,7 +86,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 81151,
+      "duration_ms": 81063,
       "error": null,
       "archive_before": {
         "total_bytes": 1459395611,
@@ -123,7 +123,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 65408,
+      "duration_ms": 65693,
       "error": null,
       "archive_before": {
         "total_bytes": 84869178,
@@ -160,7 +160,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 62844,
+      "duration_ms": 58914,
       "error": null,
       "archive_before": {
         "total_bytes": 355225279,
@@ -197,7 +197,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 25463,
+      "duration_ms": 24628,
       "error": null,
       "archive_before": {
         "total_bytes": 160327076,
@@ -234,10 +234,10 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 56986,
+      "duration_ms": 56883,
       "error": null,
       "archive_before": {
-        "total_bytes": 554294573,
+        "total_bytes": 554294574,
         "file_count": 4672,
         "media_bytes": 553671290,
         "media_files": 4667,
@@ -255,7 +255,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 1,
+        "total_bytes": 0,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -271,7 +271,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 39461,
+      "duration_ms": 39363,
       "error": null,
       "archive_before": {
         "total_bytes": 48513215,
