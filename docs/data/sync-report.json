@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T23:11:01.207Z",
+  "generated_at": "2026-04-23T00:04:44.620Z",
   "success_count": 8,
   "failure_count": 0,
   "failure_channels": [],
@@ -12,7 +12,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 63687,
+      "duration_ms": 57742,
       "error": null,
       "archive_before": {
         "total_bytes": 926577712,
@@ -49,7 +49,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 43560,
+      "duration_ms": 39782,
       "error": null,
       "archive_before": {
         "total_bytes": 229215951,
@@ -86,7 +86,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 77515,
+      "duration_ms": 73152,
       "error": null,
       "archive_before": {
         "total_bytes": 1460953187,
@@ -123,7 +123,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 64797,
+      "duration_ms": 61713,
       "error": null,
       "archive_before": {
         "total_bytes": 85108020,
@@ -160,7 +160,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 59403,
+      "duration_ms": 53054,
       "error": null,
       "archive_before": {
         "total_bytes": 355203083,
@@ -197,7 +197,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 28769,
+      "duration_ms": 26024,
       "error": null,
       "archive_before": {
         "total_bytes": 160750100,
@@ -234,7 +234,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 54227,
+      "duration_ms": 47518,
       "error": null,
       "archive_before": {
         "total_bytes": 554989004,
@@ -271,7 +271,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 38982,
+      "duration_ms": 35097,
       "error": null,
       "archive_before": {
         "total_bytes": 48515172,
