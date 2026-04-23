@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-23T16:13:47.451Z",
+  "generated_at": "2026-04-23T17:52:45.385Z",
   "success_count": 8,
   "failure_count": 0,
   "failure_channels": [],
@@ -12,7 +12,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 60217,
+      "duration_ms": 75678,
       "error": null,
       "archive_before": {
         "total_bytes": 926795238,
@@ -49,7 +49,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 39296,
+      "duration_ms": 54419,
       "error": null,
       "archive_before": {
         "total_bytes": 229202369,
@@ -86,7 +86,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 71057,
+      "duration_ms": 86361,
       "error": null,
       "archive_before": {
         "total_bytes": 1461862398,
@@ -123,10 +123,10 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 59373,
+      "duration_ms": 76762,
       "error": null,
       "archive_before": {
-        "total_bytes": 85108020,
+        "total_bytes": 85119155,
         "file_count": 1105,
         "media_bytes": 84896671,
         "media_files": 1103,
@@ -144,7 +144,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 11135,
+        "total_bytes": 0,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -160,7 +160,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 55522,
+      "duration_ms": 67210,
       "error": null,
       "archive_before": {
         "total_bytes": 355208335,
@@ -197,7 +197,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 26948,
+      "duration_ms": 32096,
       "error": null,
       "archive_before": {
         "total_bytes": 160949595,
@@ -234,7 +234,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 43822,
+      "duration_ms": 52363,
       "error": null,
       "archive_before": {
         "total_bytes": 555673919,
@@ -271,10 +271,10 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 35742,
+      "duration_ms": 45103,
       "error": null,
       "archive_before": {
-        "total_bytes": 48515172,
+        "total_bytes": 48507944,
         "file_count": 547,
         "media_bytes": 48230499,
         "media_files": 544,
@@ -292,7 +292,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": -7228,
+        "total_bytes": 0,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
