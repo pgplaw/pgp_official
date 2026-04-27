@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-04-27T11:21:39.143692+00:00",
-  "build_id": "1ca41dfbef01",
+  "generated_at": "2026-04-27T12:59:54.614889+00:00",
+  "build_id": "4db746b36d61",
   "pagination": {
     "page": 12,
     "page_size": 16,
-    "total_posts": 178,
+    "total_posts": 177,
     "total_pages": 12
   },
   "posts": [
@@ -37,26 +37,6 @@
       "tg_url": "https://t.me/PG_Tax/2421",
       "forwarded_from": null,
       "reply_to": null
-    },
-    {
-      "id": 2420,
-      "date": "2026-01-27T11:25:21+00:00",
-      "text": "Подробности о проблеме двойного налогообложения доходов налоговых резидентов РФ от удаленки в Казахстане подписчики «Налоговеда» могут почитать на сайте журнала 👉",
-      "text_html": "Подробности о проблеме двойного налогообложения доходов налоговых резидентов РФ от удаленки в Казахстане подписчики «Налоговеда» могут почитать <a href=\"https://e.nalogoved.ru/1167095\" target=\"_blank\" rel=\"noopener noreferrer\">на сайте</a> журнала 👉",
-      "views": 1590,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2420",
-      "forwarded_from": null,
-      "reply_to": {
-        "post_id": 2419,
-        "title": "🛡 «Пепеляев Групп» защитила физических лиц в спорах о зачёте налога, уплаченного в Казахстане",
-        "tg_url": "https://t.me/PG_Tax/2419",
-        "channel_username": "PG_Tax"
-      }
     }
   ]
 }
