@@ -1,13 +1,53 @@
 {
-  "generated_at": "2026-04-27T09:09:25.323702+00:00",
-  "build_id": "b77e56e2b007",
+  "generated_at": "2026-04-27T11:18:42.764404+00:00",
+  "build_id": "7313bbff4582",
   "pagination": {
     "page": 5,
     "page_size": 16,
-    "total_posts": 78,
+    "total_posts": 79,
     "total_pages": 5
   },
   "posts": [
+    {
+      "id": 1721,
+      "date": "2026-02-16T07:04:14+00:00",
+      "text": "🔍 Начинаем рабочую неделю с рубрикой #PG_Грамотность\n\nTelegram-канал или телеграм-канал, Т-канал или ТГ-канал. Как правильно?\n\n☝️ Читайте в карточке правописания!",
+      "text_html": "🔍 Начинаем рабочую неделю с рубрикой #PG_Грамотность<br><br>Telegram-канал или телеграм-канал, Т-канал или ТГ-канал. Как правильно?<br><br>☝️ Читайте в карточке правописания!",
+      "views": 1130,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1721-1-85f4479119d3-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1721-1-85f4479119d3-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1721-1-85f4479119d3-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 800,
+          "full_width": 800,
+          "full_height": 800,
+          "source_width": 800,
+          "source_height": 800,
+          "source_url": "https://cdn4.telesco.pe/file/JHP5N-sRFTAysYU5xZFtQVz7gNiepEubYAFXUrMhaMuyhGqgZmvc08emXFipYi0myhPb3Q6NxWnnmIUG0oBoSRcNzwvX_Bt5pI-NQp3BFvdwpCGXzXmVICA1sj2Pmb1V7VU2DegkGvXE2i7-CLLkIYETD9K5Lxf-bWwMpQse7fxJytBnjwvPBx-Mro2U2kujXz9ZUKNTRnBUh4KV7Qz57BoAtlzPS6zoaVeDD_RcmvZCs6wNU_0v2JLc_zlTg3LPAZczXipjhyXWodQuSAn8IAKm_wFNiwPsuzIZiP6Sp1QsF3BHiadB0rPsscDMCazQHswXGtHV7fN4SvK_GuMGWA.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1721-2-8c6dc84743bc-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1721-2-8c6dc84743bc-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1721-2-8c6dc84743bc-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 800,
+          "full_width": 800,
+          "full_height": 800,
+          "source_width": 800,
+          "source_height": 800,
+          "source_url": "https://cdn4.telesco.pe/file/K2HB7xSUNciHjuddbsfK0_Ia2QIO7qi9OpJJNaK7utp4bzYNNTQsMX_HxO-RfyEBL3CIlRH59Z8GCLrC9uITcklw2aHG6hZ_OUi18i7fj8oqtMqjOg_RyZbHoUc9bH9cpnyp-nbI0C1rTEJfXS1vSdoN7rLeGbmDM6C_CTB7yYv3l4mTbIG202IVIgU4Mozr9eZQtm_jU7bJzNXpSzffyO1LQfGhgy4x2CpA-Q68wmP2wTbQhpf6Va3GxzAZItvCyZtgudq3cCGueKuEANx9j_7trHfth6YY0yIe3XxwPUbzcinxV89JboeUYiPxGAguET7N_vE0j_i4f_asy9e84A.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1721",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 1720,
       "date": "2026-02-12T13:04:27+00:00",
