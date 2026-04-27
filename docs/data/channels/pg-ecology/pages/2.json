@@ -1,13 +1,43 @@
 {
-  "generated_at": "2026-04-26T22:39:38.204251+00:00",
-  "build_id": "7a775c5950fc",
+  "generated_at": "2026-04-27T04:02:45.339705+00:00",
+  "build_id": "e832e10e90f2",
   "pagination": {
     "page": 2,
     "page_size": 16,
-    "total_posts": 52,
+    "total_posts": 53,
     "total_pages": 4
   },
   "posts": [
+    {
+      "id": 1316,
+      "date": "2026-04-06T04:00:03+00:00",
+      "text": "📣 Подготовлен проект приказа Минприроды России «Об утверждении Порядка ведения собственниками водных объектов и водопользователями учета объема забора (изъятия) водных ресурсов из водных объектов и объема сброса сточных, в том числе дренажных, вод, их качества, регулярных наблюдений за водными объектами (их морфометрическими особенностями) и их водоохранными зонами»\n\nПроект подготовлен взамен действующего порядка (утв. приказом Минприроды России от 09.11.2020 г. N 903), в связи с истечением срока его действия 01.09.2026.\n\n⏱️ Предусмотрено вступление документа в силу с 01.09.2026 и ограничение его действия до 01.09.2032. \n\n#ПроектНПА",
+      "text_html": "📣 Подготовлен <a href=\"https://regulation.gov.ru/projects/166069/\" target=\"_blank\" rel=\"noopener noreferrer\">проект приказа Минприроды России</a> «Об утверждении Порядка ведения собственниками водных объектов и водопользователями учета объема забора (изъятия) водных ресурсов из водных объектов и объема сброса сточных, в том числе дренажных, вод, их качества, регулярных наблюдений за водными объектами (их морфометрическими особенностями) и их водоохранными зонами»<br><br>Проект подготовлен взамен действующего порядка (утв. приказом Минприроды России от 09.11.2020 г. N 903), в связи с истечением срока его действия 01.09.2026.<br><br>⏱️ Предусмотрено вступление документа в силу с 01.09.2026 и ограничение его действия до 01.09.2032. <br><br>#ПроектНПА",
+      "views": 337,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1316-1-e3747461202c-v8.jpg",
+          "feed_url": "data/channels/pg-ecology/media/posts/feed/1316-1-e3747461202c-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1316-1-e3747461202c-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/aqMejbddNjfx1wRBIfrYOQ8H28dqG3Sp0lXZGUtg51ovvr6bF_-rT-0QzVsGU9MnQ6UoQJbxNJcyHC1Ez0QO2xf2pIPyc3e5N20Vrm777iluE9JzYpoR-8WTVHQgel4k9QxTVG0AQ9qIodyN5Swka5My5KezOOeXfiEgQ1ovg0DioyZ7-7DTEIrfVo17l4eBAmXwitxoxjTB7GQUwJkasUBTyXa0oYXX_kcTZ9WAwInies48gBb7nyxKIyaqrRM4fIDvbMwFWzR8Lk_YVj6HMdEXexG7S0pPQTRUTlE8a1LWYD3sRhki10ufZP3grSmdhGwODIrl7rOLKoVmMv3f5w.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgecology/1316",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 1315,
       "date": "2026-04-03T04:00:01+00:00",
@@ -491,36 +521,6 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/pgecology/1301",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1300,
-      "date": "2026-03-11T04:00:00+00:00",
-      "text": "🌞 Уважаемые участники канала, доброго дня!\n\nМы подготовили новый обзор судебной практики по экологии для журнала EcoStandard.journal. \n\nВ этот раз подобрали интересные позиции судов по спорам о взыскании платы за НВОС:\n\n🔸Применение коэффициентов при расчете платы и учете затрат на осуществление природоохранных мероприятий;\n\n🔸Изменение категории НВОС объекта, в связи с производственной деятельностью которого исчисляется плата за НВОС;\n\n🔸Исчисление платы за размещение отходов вскрышных пород, в связи с неподтверждением исключения НВОС объекта размещения отходов;\n\n🔸Доначисление платы с применением повышающего коэффициента в связи с размещение отходов, в отношении которых лимит на их размещение не утвержден;\n\n🔸Доначисление платы в связи с расхождением сведений декларации о плате за НВОС и отчета об осуществлении ПЭК.",
-      "text_html": "🌞 Уважаемые участники канала, доброго дня!<br><br>Мы подготовили новый <a href=\"https://journal.ecostandard.ru/eco/razbor-zakonodatelstva/obzor-sudebnoy-praktiki-po-sporam-svyazannym-s-vzyskaniem-platy-za-nvos/?lang=ru\" target=\"_blank\" rel=\"noopener noreferrer\">обзор судебной практики по экологии</a> для журнала <a href=\"https://journal.ecostandard.ru/\" target=\"_blank\" rel=\"noopener noreferrer\">EcoStandard.journal</a>. <br><br>В этот раз подобрали интересные позиции судов по спорам о взыскании платы за НВОС:<br><br>🔸Применение коэффициентов при расчете платы и учете затрат на осуществление природоохранных мероприятий;<br><br>🔸Изменение категории НВОС объекта, в связи с производственной деятельностью которого исчисляется плата за НВОС;<br><br>🔸Исчисление платы за размещение отходов вскрышных пород, в связи с неподтверждением исключения НВОС объекта размещения отходов;<br><br>🔸Доначисление платы с применением повышающего коэффициента в связи с размещение отходов, в отношении которых лимит на их размещение не утвержден;<br><br>🔸Доначисление платы в связи с расхождением сведений декларации о плате за НВОС и отчета об осуществлении ПЭК.",
-      "views": 1770,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1300-1-de6e4754d69c-v8.jpg",
-          "feed_url": "data/channels/pg-ecology/media/posts/feed/1300-1-de6e4754d69c-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1300-1-de6e4754d69c-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 800,
-          "feed_width": 1800,
-          "feed_height": 1800,
-          "full_width": 1880,
-          "full_height": 1880,
-          "source_width": 1880,
-          "source_height": 1880,
-          "source_url": "https://cdn4.telesco.pe/file/sYKyTqY1iZw4ciu7OkbVi-hFjIkxiwZmnBVO8fLPI_J0xdLDnxL-3X7616DSJOaN6YDZpHWTonoWn4T4-Tn_7RMBAMq5W90yNLwaUeLE0SIkmEDf8BOBxUdwwk33wijnqsrH4fWBRZPz4DI-wXw8ssy0bo5nVf19NZVP-hfpWgRDlbATzj55Mh5gAQrKp05oijq_rIdfvCCXmaYegcH4GKjczlIAP_9arSZMY5SDKVlxo4-vN7lTak2HEUElzn2pdeW-X-gNAGz0KLx-mo63uRJfSAPMz7pLe5xN0BYzftHDhJUn0xJRwxGQynZz4VBfAGoBtVd7WOlutY__Y-aD_Q.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgecology/1300",
       "forwarded_from": null,
       "reply_to": null
     }
