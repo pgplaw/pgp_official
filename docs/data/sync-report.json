@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-28T18:09:28.153Z",
+  "generated_at": "2026-04-28T19:59:55.731Z",
   "success_count": 7,
   "failure_count": 1,
   "failure_channels": [
@@ -14,7 +14,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 91873,
+      "duration_ms": 54118,
       "error": null,
       "archive_before": {
         "total_bytes": 929648600,
@@ -51,7 +51,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 12897,
+      "duration_ms": 8356,
       "error": null,
       "archive_before": {
         "total_bytes": 241071364,
@@ -88,7 +88,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 99152,
+      "duration_ms": 72815,
       "error": null,
       "archive_before": {
         "total_bytes": 1464219810,
@@ -125,7 +125,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 99366,
+      "duration_ms": 62075,
       "error": null,
       "archive_before": {
         "total_bytes": 85401758,
@@ -162,7 +162,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 78027,
+      "duration_ms": 51472,
       "error": null,
       "archive_before": {
         "total_bytes": 355198348,
@@ -199,7 +199,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 38493,
+      "duration_ms": 26718,
       "error": null,
       "archive_before": {
         "total_bytes": 161456292,
@@ -236,7 +236,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 59655,
+      "duration_ms": 40069,
       "error": null,
       "archive_before": {
         "total_bytes": 557183887,
@@ -273,7 +273,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 54826,
+      "duration_ms": 35418,
       "error": null,
       "archive_before": {
         "total_bytes": 48503688,
