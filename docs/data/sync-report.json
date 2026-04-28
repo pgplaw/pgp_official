@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-28T22:18:37.206Z",
+  "generated_at": "2026-04-28T23:20:11.201Z",
   "success_count": 7,
   "failure_count": 1,
   "failure_channels": [
@@ -14,7 +14,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 76547,
+      "duration_ms": 83803,
       "error": null,
       "archive_before": {
         "total_bytes": 929648600,
@@ -51,7 +51,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 11231,
+      "duration_ms": 12858,
       "error": null,
       "archive_before": {
         "total_bytes": 241071364,
@@ -88,7 +88,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 91796,
+      "duration_ms": 99600,
       "error": null,
       "archive_before": {
         "total_bytes": 1464219810,
@@ -125,7 +125,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 86867,
+      "duration_ms": 93857,
       "error": null,
       "archive_before": {
         "total_bytes": 85401758,
@@ -162,7 +162,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 72332,
+      "duration_ms": 76559,
       "error": null,
       "archive_before": {
         "total_bytes": 355198348,
@@ -199,7 +199,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 34796,
+      "duration_ms": 38558,
       "error": null,
       "archive_before": {
         "total_bytes": 161456292,
@@ -236,7 +236,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 56039,
+      "duration_ms": 61952,
       "error": null,
       "archive_before": {
         "total_bytes": 557183887,
@@ -273,10 +273,10 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 49410,
+      "duration_ms": 54448,
       "error": null,
       "archive_before": {
-        "total_bytes": 48503688,
+        "total_bytes": 48503689,
         "file_count": 547,
         "media_bytes": 48230499,
         "media_files": 544,
@@ -294,7 +294,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 1,
+        "total_bytes": 0,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
