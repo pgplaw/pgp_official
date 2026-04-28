@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-28T10:01:52.264746+00:00",
-  "build_id": "9880b6f0ef17",
+  "generated_at": "2026-04-28T11:57:49.243893+00:00",
+  "build_id": "864ba2eaa84d",
   "pagination": {
     "page": 9,
     "page_size": 16,
@@ -8,6 +8,36 @@
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2472,
+      "date": "2026-02-17T10:57:01+00:00",
+      "text": "🎬 Новое видео: Добросовестная реализация имущества или злонамеренное сокрытие от взыскания налоговой задолженности? Риски приобретателя\n\nСмотрите через:\n\n📱 ВК Видео\n📱 YouTube\n\nВас ждет обсуждение рискованных сделок с имуществом при наличии налоговой задолженности, позиции Верховного суда и налоговых органов, ключевые признаки недобросовестности и многое другое.\n\n#видеоинтервью_Пепеляев_Налоговед",
+      "text_html": "🎬 Новое видео: Добросовестная реализация имущества или злонамеренное сокрытие от взыскания налоговой задолженности? Риски приобретателя<br><br>Смотрите через:<br><br>📱 <a href=\"https://vkvideo.ru/video-227047542_456239396?sh=4\" target=\"_blank\" rel=\"noopener noreferrer\">ВК Видео</a><br>📱 <a href=\"https://youtu.be/8xjSijqCei8\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube</a><br><br>Вас ждет обсуждение рискованных сделок с имуществом при наличии налоговой задолженности, позиции Верховного суда и налоговых органов, ключевые признаки недобросовестности и многое другое.<br><br>#видеоинтервью_Пепеляев_Налоговед",
+      "views": 1400,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2472-1-8e1ba561f088-v8.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2472-1-8e1ba561f088-v8.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2472-1-8e1ba561f088-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 450,
+          "feed_width": 1800,
+          "feed_height": 1012,
+          "full_width": 1880,
+          "full_height": 1058,
+          "source_width": 1880,
+          "source_height": 1058,
+          "source_url": "https://cdn4.telesco.pe/file/I5duinFq5CR_7b-JwBDok9ypE_CRqgL7P5GPUhfXsPQLCndbc3F3XHD7NHcd51QqF5K6LxdDs_Z3JFpyxGTU8Ki8mAackDYpdltllyKQDc6x1I2hZvdnL6B5pYWopXXcNdGAE0NBUto45IP99vE9N6jqsVHlCPpQzrcoTgdAdyEIluQuDeWZXOZydLt_89y-29gyrSc_vQBCB3BPtRXf7xckgNzZ31HX-6L_gUOPPYcLS3aMmv6ZWS1X_PJ78X-jrHMNXvq-xDDivPV4nqX5LilMd_aPCsi9e1zS3e3vN8S7Nnmt9slSa9gBIY_mS4Y-S7eXD_aAvL2J5AaMnU90_w.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PG_Tax/2472",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2471,
       "date": "2026-02-17T07:10:06+00:00",
@@ -460,36 +490,6 @@
         "source_width": 640,
         "source_height": 640
       }
-    },
-    {
-      "id": 2456,
-      "date": "2026-02-10T13:35:02+00:00",
-      "text": null,
-      "text_html": null,
-      "views": 1460,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2456-1-2b87c1065093-v8.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2456-1-2b87c1065093-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2456-1-2b87c1065093-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 420,
-          "feed_width": 1800,
-          "feed_height": 945,
-          "full_width": 1880,
-          "full_height": 987,
-          "source_width": 1880,
-          "source_height": 987,
-          "source_url": "https://cdn4.telesco.pe/file/Me8qyjM9M_tRsZrMztzIOPHQXaNARGxFu22MFiVMwDgdZ7VGypPgZZk7su-O7lFdS4w061STNN5507pS3Ku8ppFN8AhGnFWBAQVzCRcFC3CM6tEpUuMZLetZPCkKOMQy-HbZ2WxzkxMZwFQpnPUGEtbyAQQH5hNXNORwOYdtloLvStoipiHsOXm2qX5rDwBZpZS-RgU6vDYpeL8klxevckj240zuBvv4olGLWUCU-j4LTtH9WYLpwzyMCGH7NjFY3W9WoM16mz-lVzFSrXiG09hMoKau0sk1Alhmi0Ptk7VHORu7a37C6h0_OQB7zDg9PJbDdXLol83mjB-aQFbkmg.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2456",
-      "forwarded_from": null,
-      "reply_to": null
     }
   ]
 }
