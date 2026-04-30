@@ -1,13 +1,70 @@
 {
-  "generated_at": "2026-04-30T05:00:14.183355+00:00",
-  "build_id": "dc4a13cb3e89",
+  "generated_at": "2026-04-30T07:31:07.182413+00:00",
+  "build_id": "7b67127c8203",
   "pagination": {
     "page": 2,
     "page_size": 16,
-    "total_posts": 38,
+    "total_posts": 39,
     "total_pages": 3
   },
   "posts": [
+    {
+      "id": 1072,
+      "date": "2026-03-20T22:33:53+00:00",
+      "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
+      "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
+      "views": 220,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/investment-law/media/posts/thumbs/1072-1-a7d59cb6039c-v8.jpg",
+          "feed_url": "data/channels/investment-law/media/posts/1072-1-a7d59cb6039c-v8.jpg",
+          "full_url": "data/channels/investment-law/media/posts/1072-1-a7d59cb6039c-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 668,
+          "full_width": 800,
+          "full_height": 668,
+          "source_width": 800,
+          "source_height": 668,
+          "source_url": "https://cdn4.telesco.pe/file/ZwwC6t7vOKRwiJDdqW99XnYbJcgS3v40M-90M14deNJCrJeiYfLLkiD6Zv3YZBvAew2tgZLwzUTZZx_LCcOdh1xL9rc5HdkhAi1YBtqDoi8HsBWgwA_pXdzphObb157447BHGHHrR-uyEhvG4l-qVxRcuZ7fIn8go4onTaPSt_8FBPCxHqwFs7sFFPU54MbHWWojuwX6Fde2yKlxU1Rv8z27bUzsYDNt8Y8yfIhAQRpoACXdv2fucbldIsVTqJicam4D05_2pQrW8Q9nfSAu3A0nPBmq2H7fF0KYiDyFtL1at6Zs6r-UwNWj44VQazW5x_n63f8S5A28XymyxUHTYw.jpg"
+        },
+        {
+          "thumb_url": "data/channels/investment-law/media/posts/thumbs/1072-2-cb2e1031903e-v8.jpg",
+          "feed_url": "data/channels/investment-law/media/posts/1072-2-cb2e1031903e-v8.jpg",
+          "full_url": "data/channels/investment-law/media/posts/1072-2-cb2e1031903e-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/rQBWsxTLIE4_cC1uT1ukG3Mh4wYr_Tn9qLlKLEJWryQOnuK0Q7UfzcbcbtTkyrEWYBRd63wzYPqJkUsi8jHoQdMk4txj7V_FOaMDdCdU8O87Tm6LvHws0JehEIKVT8n_fsXR0rJTt5EJWtbA0XKRojXTn9f3AS_7a4OOWt7EU_DVpMJETekMkGQC1udi81MqRpzscdx-euI8wB2PF1TalYeyDT3z_q3JyPkg-obZTzyyntRGaTFIftZ28saLohM6t_IoSbfEVUiZVnZ-QUB_jnYtePGA_9BLciEsvjbNivjc46FT2J3DKHzQ_Amv_8OR6QN0xpR8e90NSEIX9Id6ug.jpg"
+        },
+        {
+          "thumb_url": "data/channels/investment-law/media/posts/thumbs/1072-3-cd0f83073284-v8.jpg",
+          "feed_url": "data/channels/investment-law/media/posts/1072-3-cd0f83073284-v8.jpg",
+          "full_url": "data/channels/investment-law/media/posts/1072-3-cd0f83073284-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/X6OmaV3ZNCc_wv5YiDSfrncSwDasnfqaOnRVboBaW-AJsbETlEvyCkyk3ecbDLn-wabrV2Hzx4SL40RJv1wtoH-2Tnco9QWcvZl9MpUuzBjmU7LfixfcEbyyMhX0xzT1kMp6PrZ7JTq7i7HkPhzM0vF28zb_Hul-f3LfgbmP5dpbIesqxMAkC4W1tF8jnmmUL3DbsS2Rx-fJD6pCURcM_XD2lunjQCT-XhBE7ezlrF7YlTGY5fsqrvczCJLyRgv0eLPS7RSVcS91UKii24-Gf94mLjh4u8DK7tbeoJ4Pwdey1KUzCUMNSk2DpwiWrhUujRuTj9bWJqfJJw7i05vBXQ.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/InvestmentLaw/1072",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1769",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      },
+      "reply_to": null
+    },
     {
       "id": 1071,
       "date": "2026-03-20T22:33:53+00:00",
@@ -347,41 +404,6 @@
       "videos": [],
       "tg_url": "https://t.me/InvestmentLaw/1047",
       "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1046,
-      "date": "2026-02-18T12:52:43+00:00",
-      "text": "⭐️ В рамках рубрики «Восток – дело тонкое» поздравляем вас с Праздником Весны – Новым годом по лунному календарю! Праздник отмечается в первый день первого месяца по лунному календарю и является одним из самых значимых традиционных народных торжеств в странах Восточной Азии.\n\nЗа многие годы работы Chinese Desk, специализированной практики «Пепеляев Групп» по правовому сопровождению китайских инвесторов в России, нам посчастливилось близко познакомиться с культурой и историей Китая, и мы рады рассказать вам о некоторых традициях и обычаях китайского Нового года.\n\n🎉 Народные гуляния в Поднебесной начинаются еще накануне, чтобы с благодарностью проводить уходящий год и зимнюю стужу, подготовиться к радостной встрече новой Весны. \n\n🔘Дома украшаются красными бумажными фонариками, парными надписями с пожеланиями процветания, узорными вырезками из бумаги и новогодними картинками. Часто на входных дверях можно увидеть перевернутый иероглиф «счастье», написанный на красной бумаге, – так в дом привлекаются счастье и благополучие, ведь выражение «счастье перевернулось» созвучно выражению «счастье пришло».\n\n#pg_ВостокДелоТонкое",
-      "text_html": "⭐️ В рамках рубрики «Восток – дело тонкое» поздравляем вас с Праздником Весны – Новым годом по лунному календарю! Праздник отмечается в первый день первого месяца по лунному календарю и является одним из самых значимых традиционных народных торжеств в странах Восточной Азии.<br><br>За многие годы работы <a href=\"https://www.pgplaw.ru/geography-of-services/abroad/china/\" target=\"_blank\" rel=\"noopener noreferrer\">Chinese Desk</a>, специализированной практики «Пепеляев Групп» по правовому сопровождению китайских инвесторов в России, нам посчастливилось близко познакомиться с культурой и историей Китая, и мы рады рассказать вам о некоторых традициях и обычаях китайского Нового года.<br><br>🎉 Народные гуляния в Поднебесной начинаются еще накануне, чтобы с благодарностью проводить уходящий год и зимнюю стужу, подготовиться к радостной встрече новой Весны. <br><br>🔘Дома украшаются красными бумажными фонариками, парными надписями с пожеланиями процветания, узорными вырезками из бумаги и новогодними картинками. Часто на входных дверях можно увидеть перевернутый иероглиф «счастье», написанный на красной бумаге, – так в дом привлекаются счастье и благополучие, ведь выражение «счастье перевернулось» созвучно выражению «счастье пришло».<br><br>#pg_ВостокДелоТонкое",
-      "views": 263,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/investment-law/media/posts/thumbs/1046-1-7b26f1c60480-v8.jpg",
-          "feed_url": "data/channels/investment-law/media/posts/feed/1046-1-7b26f1c60480-v8.jpg",
-          "full_url": "data/channels/investment-law/media/posts/1046-1-7b26f1c60480-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 533,
-          "feed_width": 1800,
-          "feed_height": 1199,
-          "full_width": 1880,
-          "full_height": 1253,
-          "source_width": 1880,
-          "source_height": 1253,
-          "source_url": "https://cdn4.telesco.pe/file/L33wwe--pn76pfsS3kW4It-7OO9ZYclGMb-kHQT-eS76C9ojhShI9cDXxmUvlc6LxyxFz3ayzOP-8RPHipFuzWmxw4a9Ik8NCXShT0-GyUg5XsUtAQnJlqN3SBFNxWrKgmeS6zlNyrBGP_ATZWdMgXdgcWFly9-D_DI0raYQ9NgM5nbOBdTTIiZUXSxY88YPfH9vZI_UwBM1muUKNslBWKS42edZ49YfAuSu-gD4Q6YyfmlDuNX5EI0wW9u5bOjRXdkciPkNFmdZX5J1dudqt-44yPMJuUBLzayyaw2BZZ0R9Tm9DLz4gsN_KdxnUohgsLmvJik1G1TPxiqUZiJv5g.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/InvestmentLaw/1046",
-      "forwarded_from": {
-        "source_url": "https://t.me/pgp_official/1724",
-        "channel_url": "https://t.me/s/pgp_official",
-        "channel_username": "pgp_official",
-        "channel_title": "Pepeliaev Group | Пепеляев Групп"
-      },
       "reply_to": null
     }
   ]
