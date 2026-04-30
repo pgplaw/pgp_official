@@ -2524,6 +2524,29 @@ function buildPollMarkup(poll) {
   `;
 }
 
+function normalizePostPolls(post) {
+  const sourcePolls = [];
+  if (post?.poll) sourcePolls.push(post.poll);
+  if (Array.isArray(post?.polls)) sourcePolls.push(...post.polls);
+
+  const seen = new Set();
+  return sourcePolls
+    .map(normalizePoll)
+    .filter(Boolean)
+    .filter((poll) => {
+      const key = JSON.stringify(poll);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+}
+
+function buildPostPollsMarkup(post) {
+  return normalizePostPolls(post)
+    .map((poll) => buildPollMarkup(poll))
+    .join('');
+}
+
 function buildMedia(post) {
   const media = [];
   const roundVideoPost = isRoundVideoPost(post);
@@ -3162,7 +3185,7 @@ function renderPostCard(post) {
   const showVideoPostTitle = isRoundVideoOnly;
   const copyPostButtonMarkup = buildCopyPostButtonMarkup(postAnchorUrl);
   const linkPreviewMarkup = hasPhysicalPostMedia(post) ? '' : buildLinkPreviewMarkup(post.link_preview);
-  const pollMarkup = buildPollMarkup(post.poll);
+  const pollMarkup = buildPostPollsMarkup(post);
   const metaMarkup = `
     ${showVideoPostTitle ? '<div class="post-card__title">Видео-пост</div>' : ''}
     ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : ''}

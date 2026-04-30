@@ -1073,7 +1073,7 @@ def detect_video_media_hint(block: str) -> bool:
 def detect_unsupported_telegram_media_placeholder(block: str) -> bool:
     return bool(
         re.search(
-            r"This media is not supported in your browser",
+            r"(This media is not supported in your browser|Please open Telegram to view this post|message_media_not_supported|media_not_supported)",
             block,
             re.IGNORECASE,
         )
@@ -2968,6 +2968,8 @@ def build_minimal_post_shell(post_id: int, config: SiteConfig, base_post: dict[s
         "tg_url": base_post.get("tg_url") or f"https://t.me/{config.channel_username}/{post_id}",
         "forwarded_from": base_post.get("forwarded_from"),
         "reply_to": base_post.get("reply_to"),
+        "poll": base_post.get("poll"),
+        "polls": list(base_post.get("polls") or []),
         "video_note": bool(base_post.get("video_note")),
         "video_poster": normalize_video_poster_entry(base_post.get("video_poster")) if base_post.get("video_poster") else None,
         "video_width": base_post.get("video_width"),
@@ -3320,7 +3322,7 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
         video_height = primary_video.get("height") if primary_video else None
         if not video_width or not video_height:
             video_width, video_height = extract_video_dimensions_from_html(block)
-        unsupported_media = detect_unsupported_telegram_media_placeholder(block)
+        unsupported_media = detect_unsupported_telegram_media_placeholder(block) and not (photos or round_video or standard_videos)
         video_media_hint = bool(primary_video) or detect_video_media_hint(block) or unsupported_media
         video_note = bool(round_video) or (detect_round_video_hint(block, video_width, video_height) if video_media_hint else False)
         video_url = round_video.get("url") if round_video else (primary_video.get("url") if (primary_video and video_note) else None)
@@ -4008,7 +4010,7 @@ def enrich_post_media_from_pages(posts: list[dict[str, Any]], config: SiteConfig
         if not enriched_post:
             continue
 
-        for key in ("text", "text_html", "photos", "video_url", "videos", "video_poster", "video_width", "video_height"):
+        for key in ("text", "text_html", "photos", "video_url", "videos", "video_poster", "video_width", "video_height", "poll", "polls"):
             if enriched_post.get(key) is None:
                 continue
             if enriched_post.get(key) != post.get(key):
@@ -4170,6 +4172,90 @@ def get_message_comments_count(message: Any) -> int:
     return int(getattr(replies, "replies", 0) or 0)
 
 
+def extract_api_text(value: Any) -> str:
+    if not value:
+        return ""
+    if isinstance(value, str):
+        return collapse_whitespace(value)
+    for attribute in ("text", "message"):
+        candidate = getattr(value, attribute, None)
+        if candidate:
+            return collapse_whitespace(str(candidate))
+    return collapse_whitespace(str(value))
+
+
+def normalize_poll_option_key(value: Any) -> bytes:
+    if value is None:
+        return b""
+    if isinstance(value, bytes):
+        return value
+    try:
+        return bytes(value)
+    except (TypeError, ValueError):
+        return str(value).encode("utf-8", "ignore")
+
+
+def extract_poll_from_api_message(message: Any) -> dict[str, Any] | None:
+    media = getattr(message, "media", None)
+    poll = getattr(media, "poll", None)
+    if not poll:
+        return None
+
+    answers = list(getattr(poll, "answers", []) or [])
+    if not answers:
+        return None
+
+    results = getattr(media, "results", None)
+    result_entries = list(getattr(results, "results", []) or [])
+    result_by_option = {
+        normalize_poll_option_key(getattr(result, "option", None)): result
+        for result in result_entries
+    }
+
+    total_voters = int(getattr(results, "total_voters", 0) or 0)
+    if total_voters <= 0:
+        total_voters = sum(int(getattr(result, "voters", 0) or 0) for result in result_entries)
+
+    options: list[dict[str, Any]] = []
+    for answer in answers:
+        text = extract_api_text(getattr(answer, "text", None))
+        if not text:
+            continue
+
+        option_key = normalize_poll_option_key(getattr(answer, "option", None))
+        result = result_by_option.get(option_key)
+        voters = int(getattr(result, "voters", 0) or 0) if result else 0
+        option: dict[str, Any] = {"text": text}
+        if total_voters > 0:
+            option["percent"] = round((voters / total_voters) * 100, 1)
+        if voters > 0:
+            option["voters"] = voters
+        if bool(getattr(result, "correct", False)):
+            option["correct"] = True
+        options.append(option)
+
+    if not options:
+        return None
+
+    is_quiz = bool(getattr(poll, "quiz", False))
+    is_public = bool(getattr(poll, "public_voters", False))
+    poll_type = "Quiz" if is_quiz else "Poll"
+    if not is_public:
+        poll_type = f"Anonymous {poll_type}"
+
+    payload: dict[str, Any] = {
+        "type": poll_type,
+        "question": extract_api_text(getattr(poll, "question", None)) or extract_api_text(getattr(message, "message", None)),
+        "total_voters": total_voters,
+        "options": options,
+    }
+    if bool(getattr(poll, "multiple_choice", False)):
+        payload["multiple_choice"] = True
+    if bool(getattr(poll, "closed", False)):
+        payload["closed"] = True
+    return payload
+
+
 def build_post_from_api_message(
     message: Any,
     config: SiteConfig,
@@ -4192,6 +4278,7 @@ def build_post_from_api_message(
     else:
         date_value = None
 
+    poll = extract_poll_from_api_message(message)
     entry: dict[str, Any] = {
         "id": post_id,
         "date": date_value,
@@ -4208,13 +4295,15 @@ def build_post_from_api_message(
         "reply_to": None,
     }
 
+    if poll:
+        entry["poll"] = poll
     if video_note:
         entry["video_note"] = True
     if video_width and video_height:
         entry["video_width"] = video_width
         entry["video_height"] = video_height
 
-    if not entry["text"] and not entry["photos"] and video_count <= 0 and not entry.get("video_note"):
+    if not entry["text"] and not entry["photos"] and video_count <= 0 and not entry.get("video_note") and not poll:
         return None
 
     return entry
@@ -4653,6 +4742,64 @@ async def fetch_reply_references_for_posts(config: SiteConfig, posts: list[dict[
         return result
 
 
+async def fetch_poll_results_for_posts(config: SiteConfig, posts: list[dict[str, Any]]) -> dict[int, dict[str, Any]]:
+    credentials = get_telegram_session_credentials()
+    if not credentials:
+        if any(post.get("poll") or post.get("unsupported_media") for post in posts):
+            log.info("Telegram user session is not configured. API-only poll sync skipped.")
+        return {}
+
+    selected_ids = [
+        int(post["id"])
+        for post in posts
+        if post.get("id")
+        and (
+            post.get("poll")
+            or post.get("unsupported_media")
+            or (
+                not post.get("text")
+                and not (post.get("photos") or [])
+                and not (post.get("videos") or [])
+                and not post.get("video_url")
+            )
+        )
+    ]
+    if not selected_ids:
+        return {}
+
+    api_id, api_hash, session_string = credentials
+    results: dict[int, dict[str, Any]] = {}
+
+    from telethon import TelegramClient
+    from telethon.sessions import StringSession
+
+    async with TelegramClient(StringSession(session_string), int(api_id), api_hash) as client:
+        if not await client.is_user_authorized():
+            raise RuntimeError("TELEGRAM_SESSION_STR is not authorized.")
+
+        channel = await client.get_entity(config.channel_username)
+
+        for batch in chunked(selected_ids, 100):
+            for message in await client.get_messages(channel, ids=batch):
+                if not message or not getattr(message, "id", None):
+                    continue
+
+                poll = extract_poll_from_api_message(message)
+                if not poll:
+                    continue
+
+                results[int(message.id)] = poll
+            await asyncio.sleep(0.1)
+
+    if results:
+        log.info(
+            "Fetched Telegram poll results for %s post(s): %s",
+            len(results),
+            ", ".join(str(post_id) for post_id in sorted(results)),
+        )
+    return results
+
+
 async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[str, Any]]) -> dict[int, list[bytes]]:
     selected_ids = select_posts_for_high_res_media(posts)
     if not selected_ids:
@@ -5067,16 +5214,122 @@ def dedupe_posts(posts: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return unique_posts
 
 
+def post_has_renderable_content_without_poll(post: dict[str, Any]) -> bool:
+    return bool(
+        post.get("text")
+        or strip_tags(post.get("text_html") or "")
+        or (post.get("photos") or [])
+        or (post.get("videos") or [])
+        or post.get("video_url")
+        or post.get("link_preview")
+    )
+
+
+def is_poll_only_post(post: dict[str, Any]) -> bool:
+    return bool(post.get("poll")) and not post_has_renderable_content_without_poll(post)
+
+
+def append_embedded_poll(target_post: dict[str, Any], source_post: dict[str, Any]) -> None:
+    poll = dict(source_post.get("poll") or {})
+    if not poll:
+        return
+
+    source_post_id = int(source_post.get("id") or 0)
+    if source_post_id > 0:
+        poll["source_post_id"] = source_post_id
+    if source_post.get("date"):
+        poll["source_date"] = source_post.get("date")
+
+    polls = list(target_post.get("polls") or [])
+    if target_post.get("poll"):
+        polls.insert(0, target_post.pop("poll"))
+
+    source_keys = {
+        int(item.get("source_post_id") or 0)
+        for item in polls
+        if isinstance(item, dict)
+    }
+    if source_post_id and source_post_id in source_keys:
+        return
+
+    polls.append(poll)
+    target_post["polls"] = polls
+
+
+def attach_poll_only_posts_to_previous_posts(posts: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    if not any(is_poll_only_post(post) for post in posts):
+        return posts
+
+    ordered_posts = sorted(
+        posts,
+        key=lambda post: (
+            parse_iso_datetime(post.get("date")) or datetime.min.replace(tzinfo=timezone.utc),
+            int(post.get("id") or 0),
+        ),
+    )
+    posts_by_id = {
+        int(post.get("id") or 0): post
+        for post in posts
+        if int(post.get("id") or 0) > 0
+    }
+    attached_ids: set[int] = set()
+    previous_content_post: dict[str, Any] | None = None
+
+    for post in ordered_posts:
+        post_id = int(post.get("id") or 0)
+        if is_poll_only_post(post):
+            if not previous_content_post:
+                continue
+
+            previous_id = int(previous_content_post.get("id") or 0)
+            post_date = parse_iso_datetime(post.get("date"))
+            previous_date = parse_iso_datetime(previous_content_post.get("date"))
+            if previous_id <= 0 or post_id <= previous_id or post_id - previous_id > 10:
+                continue
+            if post_date and previous_date and (post_date - previous_date) > timedelta(minutes=20):
+                continue
+
+            append_embedded_poll(previous_content_post, post)
+            attached_ids.add(post_id)
+            continue
+
+        if post_has_renderable_content_without_poll(post):
+            previous_content_post = post
+
+    if not attached_ids:
+        return posts
+
+    log.info(
+        "Attached %s poll-only post(s) to their preceding content posts: %s",
+        len(attached_ids),
+        ", ".join(str(post_id) for post_id in sorted(attached_ids)),
+    )
+    return [
+        post
+        for post in posts
+        if int(post.get("id") or 0) not in attached_ids and int(post.get("id") or 0) in posts_by_id
+    ]
+
+
 def build_channel_build_id(posts: list[dict[str, Any]], comments_enabled: bool) -> str:
     digest = hashlib.sha1()
     digest.update(f"comments:{int(comments_enabled)}|count:{len(posts)}".encode("utf-8"))
     for post in posts:
+        poll_fingerprint = json.dumps(
+            {
+                "poll": post.get("poll"),
+                "polls": post.get("polls"),
+            },
+            ensure_ascii=False,
+            sort_keys=True,
+        )
         digest.update(
             (
                 f"{post.get('id')}|{post.get('date') or ''}|"
                 f"{post.get('comments_count') or 0}|"
                 f"{build_post_media_fingerprint(post)}|"
-                f"{int(bool(post.get('video_note')))};"
+                f"{int(bool(post.get('video_note')))}|"
+                f"{poll_fingerprint};"
             ).encode("utf-8")
         )
     return digest.hexdigest()[:12]
@@ -5244,11 +5497,27 @@ def format_poll_type_label(value: str | None) -> str:
     return raw or "Опрос"
 
 
-def render_post_page_poll(post: dict[str, Any]) -> str:
-    poll = normalize_poll_entry(post.get("poll"))
-    if not poll:
-        return ""
+def normalize_post_poll_entries(post: dict[str, Any]) -> list[dict[str, Any]]:
+    polls: list[dict[str, Any]] = []
+    if post.get("poll"):
+        polls.append(post.get("poll"))
+    polls.extend(post.get("polls") or [])
 
+    normalized_polls: list[dict[str, Any]] = []
+    seen_keys: set[str] = set()
+    for poll in polls:
+        normalized_poll = normalize_poll_entry(poll)
+        if not normalized_poll:
+            continue
+        key = json.dumps(normalized_poll, ensure_ascii=False, sort_keys=True)
+        if key in seen_keys:
+            continue
+        seen_keys.add(key)
+        normalized_polls.append(normalized_poll)
+    return normalized_polls
+
+
+def render_post_page_poll_entry(poll: dict[str, Any]) -> str:
     options_markup = []
     for option in poll["options"]:
         percent = option.get("percent")
@@ -5295,6 +5564,13 @@ def render_post_page_poll(post: dict[str, Any]) -> str:
         '</div>'
         '</section>'
     )
+
+
+def render_post_page_polls(post: dict[str, Any]) -> str:
+    polls = normalize_post_poll_entries(post)
+    if not polls:
+        return ""
+    return "".join(render_post_page_poll_entry(poll) for poll in polls)
 
 
 def render_post_page_media(post: dict[str, Any]) -> str:
@@ -5477,7 +5753,7 @@ def render_post_page_html(config: SiteConfig, post: dict[str, Any], comments_ena
       {render_post_page_media(post)}
       <div class="post-card__body">
         <div class="post-card__text">{post.get("text_html") or html_lib.escape(post.get("text") or "").replace(chr(10), "<br>")}</div>
-        {render_post_page_poll(post)}
+        {render_post_page_polls(post)}
         {render_post_page_link_preview(post, root_prefix)}
       </div>
       <div class="post-card__footer">
@@ -5659,6 +5935,7 @@ def main() -> int:
     enrich_forwarded_posts_from_source_pages(posts)
 
     reply_references = asyncio.run(fetch_reply_references_for_posts(config, posts))
+    poll_results = asyncio.run(fetch_poll_results_for_posts(config, posts))
     photo_overrides = asyncio.run(fetch_high_res_photos_for_posts(config, posts))
     if api_recovery_photo_overrides:
         photo_overrides = {
@@ -5674,6 +5951,12 @@ def main() -> int:
             post["reply_to"] = reply_to
 
     for post in posts:
+        poll = poll_results.get(int(post["id"]))
+        if poll:
+            post["poll"] = poll
+            post.pop("unsupported_media", None)
+
+    for post in posts:
         if post["id"] in comment_results:
             post["comments_count"] = len(comment_results[post["id"]])
 
@@ -5682,6 +5965,8 @@ def main() -> int:
             f"Telegram API exposed newer post {latest_api_post_id} for @{config.channel_username}, "
             f"but sync only collected up to {get_highest_post_id(posts)}"
         )
+
+    posts = attach_poll_only_posts_to_previous_posts(posts)
 
     changes_detected = avatar_changed
     changes_detected = mirror_post_photos(
@@ -5713,7 +5998,13 @@ def main() -> int:
     posts = [
         post
         for post in posts
-        if post.get("text") or (post.get("photos") or []) or (post.get("videos") or []) or post.get("video_url") or post.get("link_preview")
+        if post.get("text")
+        or (post.get("photos") or [])
+        or (post.get("videos") or [])
+        or post.get("video_url")
+        or post.get("link_preview")
+        or post.get("poll")
+        or (post.get("polls") or [])
     ]
     deduped_posts = dedupe_posts(posts)
     if len(deduped_posts) != len(posts):

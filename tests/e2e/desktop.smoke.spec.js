@@ -627,6 +627,15 @@ test.describe('Desktop smoke', () => {
             { text: 'Подробный разбор', percent: 36 },
           ],
         },
+        polls: [{
+          type: 'Anonymous Poll',
+          question: 'Признали бы нарушение?',
+          total_voters: 95,
+          options: [
+            { text: 'Да', percent: 71.6 },
+            { text: 'Нет', percent: 28.4 },
+          ],
+        }],
         tg_url: 'https://t.me/PgAntitrust/999982',
         comments_count: 0,
       });
@@ -634,10 +643,11 @@ test.describe('Desktop smoke', () => {
     });
 
     const poll = page.locator('#poll-preview-host .post-card__poll');
-    await expect(poll).toBeVisible();
-    await expect(poll.locator('.post-card__poll-question')).toContainText('Какой формат полезнее?');
-    await expect(poll.locator('.post-card__poll-option')).toHaveCount(2);
-    await expect(poll.locator('.post-card__poll-option-percent').first()).toContainText('64%');
+    await expect(poll).toHaveCount(2);
+    await expect(poll.first().locator('.post-card__poll-question')).toContainText('Какой формат полезнее?');
+    await expect(poll.nth(1).locator('.post-card__poll-question')).toContainText('Признали бы нарушение?');
+    await expect(poll.first().locator('.post-card__poll-option')).toHaveCount(2);
+    await expect(poll.first().locator('.post-card__poll-option-percent').first()).toContainText('64%');
     await expect(poll.locator('button')).toHaveCount(0);
   });
 

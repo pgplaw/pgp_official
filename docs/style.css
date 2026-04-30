@@ -1754,6 +1754,10 @@ label,
   box-shadow: 0 12px 28px rgba(39, 44, 62, 0.08);
 }
 
+.post-card__poll + .post-card__poll {
+  margin-top: 12px;
+}
+
 .post-card__poll-head {
   display: flex;
   align-items: flex-start;
