@@ -87,6 +87,10 @@ DIRECT_POST_REGRESSION_FAIL_MIN_DELTA = 2
 DIRECT_POST_GAP_PROBE_WINDOW_POSTS = FEED_PAGE_SIZE * 2
 DIRECT_POST_GAP_PROBE_MAX_GAP = 3
 DIRECT_POST_GAP_PROBE_MAX_IDS = 12
+POLL_API_CONTEXT_POSTS = FEED_PAGE_SIZE * 8
+POLL_API_FOLLOWUP_MAX_IDS = 6
+POLL_API_GAP_MAX_GAP = 12
+POLL_API_MAX_SELECTED_IDS = 800
 MIN_EXTERNAL_OVERRIDE_WIDTH = 1000
 MIN_EXTERNAL_OVERRIDE_RATIO_GAIN = 1.15
 MAX_EXTERNAL_OVERRIDE_RATIO_DELTA = 0.12
@@ -3727,6 +3731,59 @@ def chunked(sequence: list[int], size: int) -> list[list[int]]:
     return [sequence[index:index + size] for index in range(0, len(sequence), size)]
 
 
+def select_poll_api_probe_ids(posts: list[dict[str, Any]]) -> list[int]:
+    known_ids = {
+        int(post.get("id") or 0)
+        for post in posts
+        if int(post.get("id") or 0) > 0
+    }
+    selected_ids: list[int] = []
+    seen_ids: set[int] = set()
+
+    def add_probe_id(post_id: int, *, allow_known: bool = False) -> None:
+        if post_id <= 0 or post_id in seen_ids:
+            return
+        if not allow_known and post_id in known_ids:
+            return
+        if len(selected_ids) >= POLL_API_MAX_SELECTED_IDS:
+            return
+        seen_ids.add(post_id)
+        selected_ids.append(post_id)
+
+    for post in posts:
+        post_id = int(post.get("id") or 0)
+        if post_id <= 0:
+            continue
+        if (
+            post.get("poll")
+            or post.get("unsupported_media")
+            or (
+                not post.get("text")
+                and not (post.get("photos") or [])
+                and not (post.get("videos") or [])
+                and not post.get("video_url")
+            )
+        ):
+            add_probe_id(post_id, allow_known=True)
+
+    ranked_ids = sorted(known_ids, reverse=True)
+    for higher_id, lower_id in zip(ranked_ids, ranked_ids[1:]):
+        gap_size = higher_id - lower_id - 1
+        if gap_size <= 0 or gap_size > POLL_API_GAP_MAX_GAP:
+            continue
+        for candidate_id in range(lower_id + 1, higher_id):
+            add_probe_id(candidate_id)
+
+    for post in posts[:POLL_API_CONTEXT_POSTS]:
+        post_id = int(post.get("id") or 0)
+        if post_id <= 0 or not post_has_renderable_content_without_poll(post):
+            continue
+        for candidate_id in range(post_id + 1, post_id + POLL_API_FOLLOWUP_MAX_IDS + 1):
+            add_probe_id(candidate_id)
+
+    return selected_ids
+
+
 def extract_reply_target_post_id(message: Any) -> int | None:
     reply_header = getattr(message, "reply_to", None)
     if not reply_header:
@@ -4197,7 +4254,7 @@ def normalize_poll_option_key(value: Any) -> bytes:
 
 def extract_poll_from_api_message(message: Any) -> dict[str, Any] | None:
     media = getattr(message, "media", None)
-    poll = getattr(media, "poll", None)
+    poll = getattr(media, "poll", None) or getattr(message, "poll", None)
     if not poll:
         return None
 
@@ -4205,7 +4262,7 @@ def extract_poll_from_api_message(message: Any) -> dict[str, Any] | None:
     if not answers:
         return None
 
-    results = getattr(media, "results", None)
+    results = getattr(media, "results", None) or getattr(message, "poll_results", None)
     result_entries = list(getattr(results, "results", []) or [])
     result_by_option = {
         normalize_poll_option_key(getattr(result, "option", None)): result
@@ -4742,33 +4799,28 @@ async def fetch_reply_references_for_posts(config: SiteConfig, posts: list[dict[
         return result
 
 
-async def fetch_poll_results_for_posts(config: SiteConfig, posts: list[dict[str, Any]]) -> dict[int, dict[str, Any]]:
+async def fetch_poll_results_for_posts(
+    config: SiteConfig,
+    posts: list[dict[str, Any]],
+) -> tuple[dict[int, dict[str, Any]], list[dict[str, Any]]]:
     credentials = get_telegram_session_credentials()
     if not credentials:
         if any(post.get("poll") or post.get("unsupported_media") for post in posts):
             log.info("Telegram user session is not configured. API-only poll sync skipped.")
-        return {}
+        return {}, []
 
-    selected_ids = [
-        int(post["id"])
-        for post in posts
-        if post.get("id")
-        and (
-            post.get("poll")
-            or post.get("unsupported_media")
-            or (
-                not post.get("text")
-                and not (post.get("photos") or [])
-                and not (post.get("videos") or [])
-                and not post.get("video_url")
-            )
-        )
-    ]
+    selected_ids = select_poll_api_probe_ids(posts)
     if not selected_ids:
-        return {}
+        return {}, []
 
     api_id, api_hash, session_string = credentials
     results: dict[int, dict[str, Any]] = {}
+    recovered_posts: list[dict[str, Any]] = []
+    existing_ids = {
+        int(post.get("id") or 0)
+        for post in posts
+        if int(post.get("id") or 0) > 0
+    }
 
     from telethon import TelegramClient
     from telethon.sessions import StringSession
@@ -4788,7 +4840,13 @@ async def fetch_poll_results_for_posts(config: SiteConfig, posts: list[dict[str,
                 if not poll:
                     continue
 
-                results[int(message.id)] = poll
+                message_id = int(message.id)
+                results[message_id] = poll
+                if message_id not in existing_ids:
+                    recovered_post = build_post_from_api_message(message, config)
+                    if recovered_post:
+                        recovered_posts.append(recovered_post)
+                        existing_ids.add(message_id)
             await asyncio.sleep(0.1)
 
     if results:
@@ -4797,7 +4855,13 @@ async def fetch_poll_results_for_posts(config: SiteConfig, posts: list[dict[str,
             len(results),
             ", ".join(str(post_id) for post_id in sorted(results)),
         )
-    return results
+    if recovered_posts:
+        log.info(
+            "Recovered %s API-only poll post(s): %s",
+            len(recovered_posts),
+            ", ".join(str(int(post.get("id") or 0)) for post in recovered_posts),
+        )
+    return results, recovered_posts
 
 
 async def fetch_high_res_photos_for_posts(config: SiteConfig, posts: list[dict[str, Any]]) -> dict[int, list[bytes]]:
@@ -5935,7 +5999,21 @@ def main() -> int:
     enrich_forwarded_posts_from_source_pages(posts)
 
     reply_references = asyncio.run(fetch_reply_references_for_posts(config, posts))
-    poll_results = asyncio.run(fetch_poll_results_for_posts(config, posts))
+    poll_results, api_poll_posts = asyncio.run(fetch_poll_results_for_posts(config, posts))
+    if api_poll_posts:
+        existing_post_ids = {
+            int(post.get("id") or 0)
+            for post in posts
+            if int(post.get("id") or 0) > 0
+        }
+        for api_poll_post in api_poll_posts:
+            api_poll_post_id = int(api_poll_post.get("id") or 0)
+            if api_poll_post_id <= 0 or api_poll_post_id in existing_post_ids:
+                continue
+            posts.append(api_poll_post)
+            existing_post_ids.add(api_poll_post_id)
+        posts.sort(key=lambda post: post.get("date") or "", reverse=True)
+        posts = posts[: config.messages_limit]
     photo_overrides = asyncio.run(fetch_high_res_photos_for_posts(config, posts))
     if api_recovery_photo_overrides:
         photo_overrides = {
