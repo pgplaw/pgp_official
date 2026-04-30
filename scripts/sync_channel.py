@@ -2219,6 +2219,44 @@ def extract_div_inner_html_by_class(html_text: str, class_name: str, *, prefer_l
     return ""
 
 
+def extract_div_inner_blocks_by_class(html_text: str, class_name: str) -> list[str]:
+    open_tag_pattern = re.compile(
+        rf'<div[^>]+class="[^"]*\b{re.escape(class_name)}\b[^"]*"[^>]*>',
+        re.IGNORECASE,
+    )
+    token_pattern = re.compile(r"<div\b[^>]*>|</div>", re.IGNORECASE)
+    blocks: list[str] = []
+
+    for open_tag_match in open_tag_pattern.finditer(html_text):
+        start_index = open_tag_match.end()
+        depth = 1
+
+        for token_match in token_pattern.finditer(html_text, start_index):
+            token = token_match.group(0).lower()
+            if token.startswith("</div"):
+                depth -= 1
+                if depth == 0:
+                    blocks.append(html_text[start_index:token_match.start()])
+                    break
+            else:
+                depth += 1
+
+    return blocks
+
+
+def extract_inner_html_by_class(html_text: str, class_name: str) -> str:
+    div_markup = extract_div_inner_html_by_class(html_text, class_name)
+    if div_markup:
+        return div_markup
+
+    match = re.search(
+        rf'<(?P<tag>span|p|b|i)[^>]+class="[^"]*\b{re.escape(class_name)}\b[^"]*"[^>]*>(?P<body>.*?)</(?P=tag)>',
+        html_text,
+        re.IGNORECASE | re.DOTALL,
+    )
+    return match.group("body") if match else ""
+
+
 def strip_anchor_block_by_class(html_text: str, class_name: str) -> str:
     open_tag_match = re.search(
         rf'<a[^>]+class="[^"]*\b{re.escape(class_name)}\b[^"]*"[^>]*>',
@@ -3151,6 +3189,112 @@ def extract_reply_reference(block: str, config: SiteConfig) -> dict[str, Any] | 
     }
 
 
+def clean_poll_text(markup: str | None) -> str:
+    if not markup:
+        return ""
+    text = re.sub(r"<br\s*/?>", "\n", markup, flags=re.IGNORECASE)
+    text = strip_tags(html_lib.unescape(text))
+    return collapse_whitespace(text)
+
+
+def parse_poll_percent(value: str | None) -> float | None:
+    if not value:
+        return None
+    match = re.search(r"(\d+(?:[.,]\d+)?)\s*%", html_lib.unescape(value))
+    if not match:
+        return None
+    try:
+        percent = float(match.group(1).replace(",", "."))
+    except ValueError:
+        return None
+    return max(0.0, min(100.0, percent))
+
+
+def extract_poll_option_text(option_markup: str, percent: float | None) -> str:
+    for class_name in (
+        "tgme_widget_message_poll_option_text",
+        "tgme_widget_message_poll_option_title",
+        "tgme_widget_message_poll_answer",
+    ):
+        text = clean_poll_text(extract_inner_html_by_class(option_markup, class_name))
+        if text:
+            return text
+
+    text = clean_poll_text(option_markup)
+    text = re.sub(r"^\s*\d+(?:[.,]\d+)?\s*%\s*", "", text).strip()
+    if percent is not None:
+        text = re.sub(rf"\b{re.escape(f'{percent:g}')}\s*%", "", text, count=1).strip()
+    return text
+
+
+def extract_poll_from_html(block: str) -> dict[str, Any] | None:
+    poll_markup = extract_div_inner_html_by_class(block, "tgme_widget_message_poll")
+    if not poll_markup:
+        return None
+
+    type_text = ""
+    for class_name in (
+        "tgme_widget_message_poll_type",
+        "tgme_widget_message_poll_subtitle",
+        "tgme_widget_message_poll_header",
+    ):
+        type_text = clean_poll_text(extract_inner_html_by_class(poll_markup, class_name))
+        if type_text:
+            break
+
+    question = ""
+    for class_name in (
+        "tgme_widget_message_poll_question",
+        "tgme_widget_message_poll_title",
+    ):
+        question = clean_poll_text(extract_inner_html_by_class(poll_markup, class_name))
+        if question:
+            break
+
+    options: list[dict[str, Any]] = []
+    for option_markup in extract_div_inner_blocks_by_class(poll_markup, "tgme_widget_message_poll_option"):
+        percent_markup = ""
+        for class_name in (
+            "tgme_widget_message_poll_option_percent",
+            "tgme_widget_message_poll_option_value",
+        ):
+            percent_markup = clean_poll_text(extract_inner_html_by_class(option_markup, class_name))
+            if percent_markup:
+                break
+
+        percent = parse_poll_percent(percent_markup)
+        if percent is None:
+            percent = parse_poll_percent(option_markup)
+        text = extract_poll_option_text(option_markup, percent)
+        if not text:
+            continue
+
+        option: dict[str, Any] = {"text": text}
+        if percent is not None:
+            option["percent"] = percent
+        options.append(option)
+
+    if not options:
+        return None
+
+    total_voters = parse_count(clean_poll_text(extract_inner_html_by_class(block, "tgme_widget_message_voters")))
+    if not total_voters:
+        voters_match = re.search(
+            r"([\d\s.,KkMm]+)\s+(?:voters?|голос(?:ов|а)?)\b",
+            clean_poll_text(block),
+            re.IGNORECASE,
+        )
+        if voters_match:
+            total_voters = parse_count(voters_match.group(1))
+
+    return {
+        "type": type_text,
+        "question": question,
+        "total_voters": total_voters,
+        "options": options,
+    }
+
+
 def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
     blocks = split_telegram_post_blocks(html_text)
     posts: list[dict[str, Any]] = []
@@ -3190,8 +3334,9 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
         )
         text, text_html = build_text_fields(raw_text)
         forwarded_from = extract_forwarded_source(block)
+        poll = extract_poll_from_html(block)
 
-        if not text and not photos and not videos and not video_url and not video_media_hint and not select_link_preview_candidates(text_html):
+        if not text and not poll and not photos and not videos and not video_url and not video_media_hint and not select_link_preview_candidates(text_html):
             continue
 
         comments_url = None
@@ -3213,6 +3358,8 @@ def parse_posts(html_text: str, config: SiteConfig) -> list[dict[str, Any]]:
             "forwarded_from": forwarded_from,
             "reply_to": reply_to,
         }
+        if poll:
+            entry["poll"] = poll
         if video_note:
             entry["video_note"] = True
             video_poster = (round_video or primary_video or {}).get("poster")
@@ -5053,6 +5200,103 @@ def render_post_page_link_preview(post: dict[str, Any], root_prefix: str) -> str
     )
 
 
+def normalize_poll_entry(poll: Any) -> dict[str, Any] | None:
+    if not isinstance(poll, dict):
+        return None
+
+    options: list[dict[str, Any]] = []
+    for option in poll.get("options") or []:
+        if not isinstance(option, dict):
+            continue
+        text = collapse_whitespace(str(option.get("text") or ""))
+        if not text:
+            continue
+        normalized_option: dict[str, Any] = {"text": text}
+        try:
+            percent = float(option.get("percent"))
+        except (TypeError, ValueError):
+            percent = None
+        if percent is not None:
+            normalized_option["percent"] = max(0.0, min(100.0, percent))
+        options.append(normalized_option)
+
+    if not options:
+        return None
+
+    return {
+        "type": collapse_whitespace(str(poll.get("type") or "Опрос")) or "Опрос",
+        "question": collapse_whitespace(str(poll.get("question") or "")),
+        "total_voters": parse_count(str(poll.get("total_voters") or "")),
+        "options": options,
+    }
+
+
+def format_poll_type_label(value: str | None) -> str:
+    raw = collapse_whitespace(value)
+    if re.search(r"anonymous\s+quiz", raw, re.IGNORECASE):
+        return "Анонимный квиз"
+    if re.search(r"anonymous\s+poll", raw, re.IGNORECASE):
+        return "Анонимный опрос"
+    if re.search(r"quiz", raw, re.IGNORECASE):
+        return "Квиз"
+    if re.search(r"poll", raw, re.IGNORECASE):
+        return "Опрос"
+    return raw or "Опрос"
+
+
+def render_post_page_poll(post: dict[str, Any]) -> str:
+    poll = normalize_poll_entry(post.get("poll"))
+    if not poll:
+        return ""
+
+    options_markup = []
+    for option in poll["options"]:
+        percent = option.get("percent")
+        percent_label = ""
+        bar_markup = ""
+        if isinstance(percent, (int, float)):
+            percent_label = f"{percent:g}%"
+            bar_markup = (
+                '<div class="post-card__poll-bar" aria-hidden="true">'
+                f'<span style="width: {html_lib.escape(str(percent))}%"></span>'
+                '</div>'
+            )
+        options_markup.append(
+            '<div class="post-card__poll-option">'
+            '<div class="post-card__poll-option-head">'
+            f'<span class="post-card__poll-option-text">{html_lib.escape(option["text"])}</span>'
+            f'<span class="post-card__poll-option-percent">{html_lib.escape(percent_label)}</span>'
+            '</div>'
+            f"{bar_markup}"
+            '</div>'
+        )
+
+    voters_markup = (
+        f'<div class="post-card__poll-voters">{poll["total_voters"]} голосов</div>'
+        if poll.get("total_voters")
+        else ""
+    )
+    question_markup = (
+        f'<div class="post-card__poll-question">{html_lib.escape(poll["question"])}</div>'
+        if poll.get("question")
+        else ""
+    )
+    return (
+        '<section class="post-card__poll" aria-label="Результаты опроса">'
+        '<div class="post-card__poll-head">'
+        '<div>'
+        f'<div class="post-card__poll-label">{html_lib.escape(format_poll_type_label(poll["type"]))}</div>'
+        f"{question_markup}"
+        '</div>'
+        f"{voters_markup}"
+        '</div>'
+        '<div class="post-card__poll-options">'
+        f'{"".join(options_markup)}'
+        '</div>'
+        '</section>'
+    )
+
+
 def render_post_page_media(post: dict[str, Any]) -> str:
     root_prefix = "../../../" if CHANNEL_KEY else "../../"
     photos = [normalize_photo_entry(photo) for photo in post.get("photos") or []]
@@ -5233,6 +5477,7 @@ def render_post_page_html(config: SiteConfig, post: dict[str, Any], comments_ena
       {render_post_page_media(post)}
       <div class="post-card__body">
         <div class="post-card__text">{post.get("text_html") or html_lib.escape(post.get("text") or "").replace(chr(10), "<br>")}</div>
+        {render_post_page_poll(post)}
         {render_post_page_link_preview(post, root_prefix)}
       </div>
       <div class="post-card__footer">

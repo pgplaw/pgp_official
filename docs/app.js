@@ -2446,6 +2446,84 @@ function buildLinkPreviewMarkup(preview) {
   `;
 }
 
+function normalizePoll(poll) {
+  if (!poll || typeof poll !== 'object') return null;
+
+  const options = Array.isArray(poll.options)
+    ? poll.options
+      .map((option) => {
+        const text = String(option?.text || '').trim();
+        if (!text) return null;
+        const percent = Number(option?.percent);
+        return {
+          text,
+          percent: Number.isFinite(percent) ? Math.max(0, Math.min(100, percent)) : null,
+        };
+      })
+      .filter(Boolean)
+    : [];
+
+  if (!options.length) return null;
+  const totalVoters = Number.parseInt(poll.total_voters, 10) || 0;
+  return {
+    type: String(poll.type || 'Опрос').trim(),
+    question: String(poll.question || '').trim(),
+    totalVoters,
+    options,
+  };
+}
+
+function formatPollTypeLabel(value) {
+  const raw = String(value || '').trim();
+  if (/anonymous\s+quiz/i.test(raw)) return 'Анонимный квиз';
+  if (/anonymous\s+poll/i.test(raw)) return 'Анонимный опрос';
+  if (/quiz/i.test(raw)) return 'Квиз';
+  if (/poll/i.test(raw)) return 'Опрос';
+  return raw || 'Опрос';
+}
+
+function buildPollMarkup(poll) {
+  const normalizedPoll = normalizePoll(poll);
+  if (!normalizedPoll) return '';
+
+  const optionsMarkup = normalizedPoll.options.map((option) => {
+    const percent = option.percent ?? 0;
+    const percentLabel = option.percent == null ? '' : `${Number.isInteger(percent) ? percent : percent.toFixed(1)}%`;
+    return `
+      <div class="post-card__poll-option">
+        <div class="post-card__poll-option-head">
+          <span class="post-card__poll-option-text">${escapeHtml(option.text)}</span>
+          ${percentLabel ? `<span class="post-card__poll-option-percent">${escapeHtml(percentLabel)}</span>` : ''}
+        </div>
+        ${percentLabel ? `
+          <div class="post-card__poll-bar" aria-hidden="true">
+            <span style="width: ${percent}%"></span>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }).join('');
+
+  const votersMarkup = normalizedPoll.totalVoters
+    ? `<div class="post-card__poll-voters">${compactNumber(normalizedPoll.totalVoters)} голосов</div>`
+    : '';
+
+  return `
+    <section class="post-card__poll" aria-label="Результаты опроса">
+      <div class="post-card__poll-head">
+        <div>
+          <div class="post-card__poll-label">${escapeHtml(formatPollTypeLabel(normalizedPoll.type))}</div>
+          ${normalizedPoll.question ? `<div class="post-card__poll-question">${escapeHtml(normalizedPoll.question)}</div>` : ''}
+        </div>
+        ${votersMarkup}
+      </div>
+      <div class="post-card__poll-options">
+        ${optionsMarkup}
+      </div>
+    </section>
+  `;
+}
+
 function buildMedia(post) {
   const media = [];
   const roundVideoPost = isRoundVideoPost(post);
@@ -3084,11 +3162,13 @@ function renderPostCard(post) {
   const showVideoPostTitle = isRoundVideoOnly;
   const copyPostButtonMarkup = buildCopyPostButtonMarkup(postAnchorUrl);
   const linkPreviewMarkup = hasPhysicalPostMedia(post) ? '' : buildLinkPreviewMarkup(post.link_preview);
+  const pollMarkup = buildPollMarkup(post.poll);
   const metaMarkup = `
     ${showVideoPostTitle ? '<div class="post-card__title">Видео-пост</div>' : ''}
     ${replyTarget ? `<div class="post-card__reply">Опубликовано в ответ на <a href="#post-${replyTarget.postId}" data-reply-post-id="${replyTarget.postId}"${replyTarget.tgUrl ? ` data-reply-tg-url="${escapeHtml(replyTarget.tgUrl)}"` : ''}>${escapeHtml(formatReplyLinkLabel(replyTarget.label))}</a></div>` : ''}
     ${forwarded ? `<div class="post-card__forwarded">Переслано из канала <a href="${forwarded.href}"${forwarded.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(forwarded.label)}</a></div>` : ''}
     ${text ? `<div class="post-card__text">${text}</div>` : ''}
+    ${pollMarkup}
     ${linkPreviewMarkup}
   `;
   const roundVideoHeadMarkup = isRoundVideoOnly
@@ -3109,7 +3189,7 @@ function renderPostCard(post) {
     ${buildMedia(post)}
     <div class="post-card__body">
       <div class="post-card__content">
-        ${isRoundVideoOnly ? `${text ? `<div class="post-card__text">${text}</div>` : ''}${linkPreviewMarkup}` : metaMarkup}
+        ${isRoundVideoOnly ? `${text ? `<div class="post-card__text">${text}</div>` : ''}${pollMarkup}${linkPreviewMarkup}` : metaMarkup}
       </div>
       ${isRoundVideoOnly ? '' : copyPostButtonMarkup}
     </div>

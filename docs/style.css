@@ -1741,6 +1741,103 @@ label,
   -webkit-box-orient: vertical;
 }
 
+.post-card__poll {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border) 82%);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 8%, transparent), transparent 68%),
+    color-mix(in srgb, var(--bg-elevated) 90%, transparent 10%);
+  box-shadow: 0 12px 28px rgba(39, 44, 62, 0.08);
+}
+
+.post-card__poll-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.post-card__poll-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  opacity: 0.84;
+}
+
+.post-card__poll-question {
+  margin-top: 5px;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.28;
+}
+
+.post-card__poll-voters {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 11%, transparent);
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.post-card__poll-options {
+  display: grid;
+  gap: 10px;
+}
+
+.post-card__poll-option {
+  display: grid;
+  gap: 7px;
+}
+
+.post-card__poll-option-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.post-card__poll-option-text {
+  min-width: 0;
+  color: var(--text);
+  font-size: 0.94rem;
+  font-weight: 700;
+  line-height: 1.32;
+}
+
+.post-card__poll-option-percent {
+  color: var(--accent-strong);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.post-card__poll-bar {
+  position: relative;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 11%, var(--border) 42%);
+}
+
+.post-card__poll-bar span {
+  display: block;
+  height: 100%;
+  min-width: 3px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 72%, white 28%));
+}
+
 .post-card__media {
   display: grid;
   gap: 2px;
@@ -2508,6 +2605,21 @@ label,
     min-width: 0;
     flex-basis: auto;
     aspect-ratio: 16 / 10;
+  }
+
+  .post-card__poll {
+    margin-top: 16px;
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .post-card__poll-head {
+    display: grid;
+    gap: 10px;
+  }
+
+  .post-card__poll-voters {
+    width: max-content;
   }
 
   .comments-toolbar {

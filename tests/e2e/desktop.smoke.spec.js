@@ -602,6 +602,45 @@ test.describe('Desktop smoke', () => {
     expect(copyBox.x).toBeGreaterThanOrEqual(mediaBox.x + mediaBox.width + 8);
   });
 
+  test('renders telegram poll results as a read-only block', async ({ page }) => {
+    await page.goto('/?channel=pg-antitrust');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'poll-preview-host';
+      document.body.appendChild(host);
+      const card = window.renderPostCard({
+        id: 999982,
+        date: new Date().toISOString(),
+        text: 'Тестовый пост с итогами опроса',
+        text_html: 'Тестовый пост с итогами опроса',
+        photos: [],
+        videos: [],
+        video_url: null,
+        poll: {
+          type: 'Anonymous Poll',
+          question: 'Какой формат полезнее?',
+          total_voters: 128,
+          options: [
+            { text: 'Короткий обзор', percent: 64 },
+            { text: 'Подробный разбор', percent: 36 },
+          ],
+        },
+        tg_url: 'https://t.me/PgAntitrust/999982',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    });
+
+    const poll = page.locator('#poll-preview-host .post-card__poll');
+    await expect(poll).toBeVisible();
+    await expect(poll.locator('.post-card__poll-question')).toContainText('Какой формат полезнее?');
+    await expect(poll.locator('.post-card__poll-option')).toHaveCount(2);
+    await expect(poll.locator('.post-card__poll-option-percent').first()).toContainText('64%');
+    await expect(poll.locator('button')).toHaveCount(0);
+  });
+
   test('does not render link preview card when post already has physical media', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
