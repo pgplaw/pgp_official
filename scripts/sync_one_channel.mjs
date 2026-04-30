@@ -110,6 +110,18 @@ function writeResult(resultPath, payload) {
   fs.writeFileSync(resultPath, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
 }
 
+function loadJsonFile(filePath, fallback = null) {
+  if (!filePath || !fs.existsSync(filePath)) {
+    return fallback;
+  }
+
+  try {
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  } catch {
+    return fallback;
+  }
+}
+
 const channelKey = readArg('--channel') || process.argv[2] || null;
 const resultPath = readArg('--result-path');
 
@@ -127,9 +139,13 @@ if (!channel) {
 console.log(`\n=== Syncing ${channel.channel_title} (@${channel.channel_username}) ===`);
 const archiveBefore = collectChannelArchiveStats(channel.key);
 const startedAt = Date.now();
+const syncMetaPath = resultPath ? `${resultPath}.meta.json` : path.join(rootDir, '.sync-results', `${channel.key}.meta.json`);
 const result = spawnSync('python', ['scripts/sync_channel.py'], {
   cwd: rootDir,
-  env: buildChannelEnv(channel),
+  env: {
+    ...buildChannelEnv(channel),
+    TG_SYNC_META_PATH: syncMetaPath,
+  },
   stdio: 'inherit',
   timeout: channelTimeoutMs,
   killSignal: 'SIGKILL',
@@ -155,6 +171,13 @@ const payload = {
   signal: result.signal || null,
   duration_ms: durationMs,
   error: result.error ? result.error.message : null,
+  telegram_api_credentials: {
+    api_id: Boolean(process.env.TELEGRAM_API_ID),
+    api_hash: Boolean(process.env.TELEGRAM_API_HASH),
+    session_str: Boolean(process.env.TELEGRAM_SESSION_STR),
+    complete: Boolean(process.env.TELEGRAM_API_ID && process.env.TELEGRAM_API_HASH && process.env.TELEGRAM_SESSION_STR),
+  },
+  sync_meta: loadJsonFile(syncMetaPath, {}),
   archive_before: archiveBefore,
   archive_after: archiveAfter,
   archive_delta: archiveDelta,

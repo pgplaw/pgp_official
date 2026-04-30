@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import calendar
+import atexit
 import asyncio
 import hashlib
 import html as html_lib
@@ -107,9 +108,26 @@ FSRCNN_X2_MODEL_URL = "https://raw.githubusercontent.com/Saafke/FSRCNN_Tensorflo
 FAILED_EXTERNAL_PREVIEW_HOSTS: set[str] = set()
 FAILED_LINK_PREVIEW_HOSTS: set[str] = set()
 FAILED_SUPERRES_MODELS: dict[str, str] = {}
+SYNC_META_PATH = os.environ.get("TG_SYNC_META_PATH")
+SYNC_META: dict[str, Any] = {}
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("telegram-pages-mirror")
+
+
+def write_sync_meta() -> None:
+    if not SYNC_META_PATH:
+        return
+
+    try:
+        meta_path = Path(SYNC_META_PATH)
+        meta_path.parent.mkdir(parents=True, exist_ok=True)
+        meta_path.write_text(json.dumps(SYNC_META, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    except Exception as error:  # pragma: no cover - best-effort diagnostics
+        log.warning("Failed to write sync metadata: %s", error)
+
+
+atexit.register(write_sync_meta)
 
 
 @dataclass
@@ -327,6 +345,12 @@ def get_telegram_session_credentials() -> tuple[str, str, str] | None:
     api_id = os.environ.get("TELEGRAM_API_ID")
     api_hash = os.environ.get("TELEGRAM_API_HASH")
     session_string = os.environ.get("TELEGRAM_SESSION_STR")
+    SYNC_META["telegram_api_credentials"] = {
+        "api_id": bool(api_id),
+        "api_hash": bool(api_hash),
+        "session_str": bool(session_string),
+        "complete": bool(api_id and api_hash and session_string),
+    }
     if not all((api_id, api_hash, session_string)):
         return None
     return api_id, api_hash, session_string
@@ -4804,12 +4828,20 @@ async def fetch_poll_results_for_posts(
     posts: list[dict[str, Any]],
 ) -> tuple[dict[int, dict[str, Any]], list[dict[str, Any]]]:
     credentials = get_telegram_session_credentials()
+    poll_meta: dict[str, Any] = {
+        "credentials_complete": bool(credentials),
+        "selected_ids": [],
+        "fetched_ids": [],
+        "recovered_ids": [],
+    }
+    SYNC_META["poll_sync"] = poll_meta
     if not credentials:
         if any(post.get("poll") or post.get("unsupported_media") for post in posts):
             log.info("Telegram user session is not configured. API-only poll sync skipped.")
         return {}, []
 
     selected_ids = select_poll_api_probe_ids(posts)
+    poll_meta["selected_ids"] = selected_ids
     if not selected_ids:
         return {}, []
 
@@ -4842,10 +4874,12 @@ async def fetch_poll_results_for_posts(
 
                 message_id = int(message.id)
                 results[message_id] = poll
+                poll_meta["fetched_ids"] = sorted(results)
                 if message_id not in existing_ids:
                     recovered_post = build_post_from_api_message(message, config)
                     if recovered_post:
                         recovered_posts.append(recovered_post)
+                        poll_meta["recovered_ids"] = sorted(int(post.get("id") or 0) for post in recovered_posts)
                         existing_ids.add(message_id)
             await asyncio.sleep(0.1)
 

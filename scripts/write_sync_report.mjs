@@ -64,6 +64,8 @@ const channelResults = config.channels.map((channel) => {
     signal: result.signal || null,
     duration_ms: result.duration_ms || 0,
     error: result.error || null,
+    telegram_api_credentials: result.telegram_api_credentials || null,
+    sync_meta: result.sync_meta || null,
     archive_before: result.archive_before || {},
     archive_after: result.archive_after || {},
     archive_delta: result.archive_delta || {},
