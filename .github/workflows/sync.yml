@@ -149,6 +149,21 @@ jobs:
               break
             fi
 
+            echo "Publishing $channel_key immediately." | tee -a sync.log
+            git pull --rebase origin main 2>&1 | tee -a sync.log
+            pull_status=${PIPESTATUS[0]}
+            if [ "$pull_status" -ne 0 ]; then
+              status=1
+              break
+            fi
+
+            git push 2>&1 | tee -a sync.log
+            push_status=${PIPESTATUS[0]}
+            if [ "$push_status" -ne 0 ]; then
+              status=1
+              break
+            fi
+
           done
 
           echo "exit_code=$status" >> "$GITHUB_OUTPUT"
