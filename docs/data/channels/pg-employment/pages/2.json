@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-03T19:46:11.537086+00:00",
-  "build_id": "477a30826434",
+  "generated_at": "2026-05-03T20:32:03.899663+00:00",
+  "build_id": "341197f269bf",
   "pagination": {
     "page": 2,
     "page_size": 16,
-    "total_posts": 36,
+    "total_posts": 37,
     "total_pages": 3
   },
   "posts": [
@@ -57,6 +57,60 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/pgEmployment/1953",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1769",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      },
+      "reply_to": null
+    },
+    {
+      "id": 1955,
+      "date": "2026-03-23T08:58:04+00:00",
+      "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
+      "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
+      "views": 1990,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-employment/media/posts/thumbs/1955-1-f6d37c513d15-v8.jpg",
+          "full_url": "data/channels/pg-employment/media/posts/1955-1-f6d37c513d15-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/LIaZ8E8KdyX1-jy--lMhgnM6-qROEDoXYbSmuOdH0V2GaPebrX_uADCQD8vnfSHHHgE9bq7VbKuYx67chdIhvr_XbKYl2Q-Dcu5gaMXss9OfqAc4lqNVvyCcYnl04te3f9d-ihxM-9k7ajYVL7EIH3_CHlZwcXmQ2xRiv37Yw7ZPucwzHx_ZkNoghMj3MI6ldzS0zAZlbGKatNdWniUxz6vDE-44javWLbafQIhwWgB_9nAZCNjmmdaJOMLs4yK3nYUW2yy4ABEhhCRm5oasRdQX-FP_AtOy-h0-5OE7QooJgXX5ct6KE9cEdacEcQzROd9EYtn2oyL7b6HFzK8y1g.jpg",
+          "thumb_width": 800,
+          "thumb_height": 668,
+          "full_width": 800,
+          "full_height": 668,
+          "source_width": 800,
+          "source_height": 668
+        },
+        {
+          "thumb_url": "data/channels/pg-employment/media/posts/thumbs/1955-2-547b51bbd2ce-v8.jpg",
+          "full_url": "data/channels/pg-employment/media/posts/1955-2-547b51bbd2ce-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/eqgFvZ1oAYzgvpXtaf9goITncrRnsG-x3aI5wP4-pPdJPIOKR0HGy7Jc_AGimnBeTdoZJzDvVqXZXq2gkpzu0QNMuF3SZC9P2F49MxDF0ZgP6xFyOYfUwU8BeCHFvUopfD8mRGmV3EjWELFGuQef9xc2OwlctTeO62hZ_SoJV-z0hXncXIYpMAiPaSv0M07GHXQctuV_FqtfrAbH4Xjh8gUerFUR8OVeqCvStcrFBauZPegvLW9414WqOUdxV7h72p1vR0y2mWBWp6hkzQGba1E5AY_AYvWggaAdsyq3aDvE98t7Y2Wg_IR4nnK0RkPnWl1sEpvZndskwcjV03ONbg.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533
+        },
+        {
+          "thumb_url": "data/channels/pg-employment/media/posts/thumbs/1955-3-9513a9368fd7-v8.jpg",
+          "full_url": "data/channels/pg-employment/media/posts/1955-3-9513a9368fd7-v8.jpg",
+          "source_url": "https://cdn4.telesco.pe/file/AFpGz5d1WoiqWy7L6sd1PA0cWzVjecy1C9C7x_VKGHCVF19jS-A6HsynuXqkDmpQZyB9lO2SoHUfmuWK7W7u-VMJ8os79GLeQpcJDYoq0-hwY2G9cytSaWilbofMMeM83uVRpAcdIDOtAHFWjkBgMPpj8zaX0bGrIgXxyEelS-0qdrzLR4PGl6o5GkCIROlTOGaBapR6k1MQoS4vB7b7YnqxFqBr8bUfgxRBvcCmuUQLPRNQyumbQjlmTd1ZNjE3mv9A-9MxHrQufqMtr9VhMaxB56kdllGL4T_JzVSEf1D2laGdgW6q2amUXLe2KKwENUfp5Y8fBoHoe1rjRXze1w.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgEmployment/1955",
       "forwarded_from": {
         "source_url": "https://t.me/pgp_official/1769",
         "channel_url": "https://t.me/s/pgp_official",
@@ -349,21 +403,6 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/pgEmployment/1938",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1937,
-      "date": "2026-02-13T13:31:46+00:00",
-      "text": "💡 Упрощенную СОУТ распространят на малый бизнес\n\nПравительство утвердило масштабные изменения в перечень рабочих мест, для которых спецоценка (СОУТ) проводится по особым правилам.\n\n👉 Переход на упрощенный порядок будет возможен для гораздо большего числа предпринимателей. Изменения вступят в силу 1 сентября 2026 года.\n\n🔎 Что изменилось?\n1️⃣Раньше упрощенный порядок по СОУТ касалась только микропредприятий. \n2️⃣Теперь в список включили и малые предприятия (до 100 человек, доход до 800 млн. руб).\n3️⃣Перечень кодов ОКВЭД вырос с 12 до 55. Это значит, что льготный режим затронет сотни тысяч новых компаний.\n4️⃣В перечень добавили общественные организации и НКО.\n\n👀 Кто попал в обновленный список?\nТеперь проводить СОУТ с «особенностями» (упрощенно) смогут:\n🔵Производство продуктов: изготовители сэндвичей, свежей пиццы и полуфабрикатов, минеральных вод.\n🔵Индивидуальный пошив: мастерские по пошиву обуви, одежды, штор и меховых изделий по заказам населения.\n🔵Специализированная розница: магазины овощей и фруктов, антиквариата, ковров, музыкальных записей и тд. \n🔵Услуги и IT: IP-телефония, спутниковое ТВ, оценка имущества, защита информации и IT-систем.\n🔵Образование и культура: дома культуры и клубы.\n\n📅 Постановление вступает в силу 1 сентября 2026 года. К этому времени Минтруд должен подготовить обновленные методики проведения спецоценки для новых категорий из списка.\n\n❗ NB: Напомним, что упрощенный порядок допускает проведение СОУТ самостоятельно работодателем, не привлекая независимую аккредитованную организацию.\nОбязательно перепроверьте свой основной код ОКВЭД в выписке из ЕГРЮЛ/ЕГРИП. Если указанные выше критерии и код соответствуют — с сентября 2026 г. вы сможете существенно упростить проведение СОУТ.\n\n📎 Постановление Правительства РФ от 26.01.2026 № 39",
-      "text_html": "💡 Упрощенную СОУТ распространят на малый бизнес<br><br>Правительство утвердило масштабные изменения в перечень рабочих мест, для которых спецоценка (СОУТ) проводится по особым правилам.<br><br>👉 Переход на упрощенный порядок будет возможен для гораздо большего числа предпринимателей. Изменения вступят в силу 1 сентября 2026 года.<br><br>🔎 Что изменилось?<br>1️⃣Раньше упрощенный порядок по СОУТ касалась только микропредприятий. <br>2️⃣Теперь в список включили и малые предприятия (до 100 человек, доход до 800 млн. руб).<br>3️⃣Перечень кодов ОКВЭД вырос с 12 до 55. Это значит, что льготный режим затронет сотни тысяч новых компаний.<br>4️⃣В перечень добавили общественные организации и НКО.<br><br>👀 Кто попал в обновленный список?<br>Теперь проводить СОУТ с «особенностями» (упрощенно) смогут:<br>🔵Производство продуктов: изготовители сэндвичей, свежей пиццы и полуфабрикатов, минеральных вод.<br>🔵Индивидуальный пошив: мастерские по пошиву обуви, одежды, штор и меховых изделий по заказам населения.<br>🔵Специализированная розница: магазины овощей и фруктов, антиквариата, ковров, музыкальных записей и тд. <br>🔵Услуги и IT: IP-телефония, спутниковое ТВ, оценка имущества, защита информации и IT-систем.<br>🔵Образование и культура: дома культуры и клубы.<br><br>📅 Постановление вступает в силу 1 сентября 2026 года. К этому времени Минтруд должен подготовить обновленные методики проведения спецоценки для новых категорий из списка.<br><br>❗ NB: Напомним, что упрощенный порядок допускает проведение СОУТ самостоятельно работодателем, не привлекая независимую аккредитованную организацию.<br>Обязательно перепроверьте свой основной код ОКВЭД в выписке из ЕГРЮЛ/ЕГРИП. Если указанные выше критерии и код соответствуют — с сентября 2026 г. вы сможете существенно упростить проведение СОУТ.<br><br>📎 Постановление Правительства РФ от 26.01.2026 № 39",
-      "views": 2940,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgEmployment/1937",
       "forwarded_from": null,
       "reply_to": null
     }
