@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-06T11:26:53.620409+00:00",
-  "build_id": "bd84a321f90e",
+  "generated_at": "2026-05-06T13:14:30.587231+00:00",
+  "build_id": "bf75dd55c320",
   "pagination": {
     "page": 11,
     "page_size": 16,
-    "total_posts": 166,
+    "total_posts": 164,
     "total_pages": 11
   },
   "posts": [
@@ -124,65 +124,6 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/PG_Tax/2450",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2449,
-      "date": "2026-02-06T13:01:50+00:00",
-      "text": null,
-      "text_html": null,
-      "views": 1470,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": "data/channels/pg-tax/media/posts/videos/2449-video-note-85fd04db62ab-v1.mp4",
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2449",
-      "forwarded_from": null,
-      "reply_to": null,
-      "video_note": true,
-      "video_poster": {
-        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-b0fe4352cca5-v1.jpg",
-        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-b0fe4352cca5-v1.jpg",
-        "full_url": "data/channels/pg-tax/media/posts/video-posters/2449-video-note-poster-b0fe4352cca5-v1.jpg",
-        "thumb_width": 640,
-        "thumb_height": 640,
-        "feed_width": 640,
-        "feed_height": 640,
-        "full_width": 640,
-        "full_height": 640,
-        "source_width": 640,
-        "source_height": 640
-      }
-    },
-    {
-      "id": 2448,
-      "date": "2026-02-06T13:01:45+00:00",
-      "text": null,
-      "text_html": null,
-      "views": 1520,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2448-1-a032754da8fe-v8.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2448-1-a032754da8fe-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2448-1-a032754da8fe-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 420,
-          "feed_width": 1800,
-          "feed_height": 945,
-          "full_width": 1880,
-          "full_height": 987,
-          "source_width": 1880,
-          "source_height": 987,
-          "source_url": "https://cdn4.telesco.pe/file/B3PARBpWKY2eY0U-dFCdztMd64nJC-NQtAuYvtTyik2YZCv4OHneM6tyAsRxazw9nutkWopMFT0o2PP2adFXUXvU5HVwHj7wH75oYx_Hs1C9rlldvjblr_SdtsupxIfPntWejVMc8RjdACsKUkQYilLi-aOcasppYSiRinT5Hp9LiGVJxaOjjjqQbO2VPr4fau6PePtay301dL-9AyhcGnUQ-axtUFYnupBmfXh1klxjT1ssWlLC2NYW27JD8w61EHHHhghWh1yqR2c4inNvwe9QtTx38jilL1AyqmipBFXQsEUPfQmftbt902Hg99dOmg8O2IbguoyDHcP_L5p5iA.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2448",
       "forwarded_from": null,
       "reply_to": null
     }
