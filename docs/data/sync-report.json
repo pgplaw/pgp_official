@@ -1,10 +1,8 @@
 {
-  "generated_at": "2026-05-10T04:15:25.307Z",
-  "success_count": 7,
-  "failure_count": 1,
-  "failure_channels": [
-    "investment-law"
-  ],
+  "generated_at": "2026-05-10T06:51:48.169Z",
+  "success_count": 8,
+  "failure_count": 0,
+  "failure_channels": [],
   "channel_timeout_ms": 150000,
   "channels": [
     {
@@ -14,7 +12,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 46879,
+      "duration_ms": 52699,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -71,7 +69,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 42155,
+      "duration_ms": 51306,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -128,7 +126,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 78440,
+      "duration_ms": 87113,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -185,7 +183,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 64993,
+      "duration_ms": 73474,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -239,18 +237,31 @@
       "key": "investment-law",
       "channel_username": "InvestmentLaw",
       "channel_title": "СпецИнвестРежимы",
-      "status": "failed",
-      "exit_code": null,
-      "signal": "SIGKILL",
-      "duration_ms": 150106,
-      "error": "spawnSync python ETIMEDOUT",
+      "status": "success",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 60186,
+      "error": null,
       "telegram_api_credentials": {
         "api_id": false,
         "api_hash": false,
         "session_str": false,
         "complete": false
       },
-      "sync_meta": {},
+      "sync_meta": {
+        "telegram_api_credentials": {
+          "api_id": false,
+          "api_hash": false,
+          "session_str": false,
+          "complete": false
+        },
+        "poll_sync": {
+          "credentials_complete": false,
+          "selected_ids": [],
+          "fetched_ids": [],
+          "recovered_ids": []
+        }
+      },
       "archive_before": {
         "total_bytes": 356463917,
         "file_count": 2650,
@@ -286,7 +297,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 36797,
+      "duration_ms": 41032,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -343,7 +354,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 39651,
+      "duration_ms": 38383,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -400,7 +411,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 49723,
+      "duration_ms": 57264,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
