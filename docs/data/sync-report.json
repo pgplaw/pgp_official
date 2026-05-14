@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-14T22:05:55.628Z",
+  "generated_at": "2026-05-14T23:12:02.122Z",
   "success_count": 7,
   "failure_count": 1,
   "failure_channels": [
@@ -14,7 +14,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 17597,
+      "duration_ms": 15284,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -58,7 +58,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 50828,
+      "duration_ms": 43150,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -115,7 +115,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 86012,
+      "duration_ms": 76022,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -172,7 +172,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 79428,
+      "duration_ms": 63607,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -229,7 +229,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 58294,
+      "duration_ms": 51901,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -286,7 +286,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 42548,
+      "duration_ms": 41225,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -343,7 +343,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 42124,
+      "duration_ms": 34364,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -400,7 +400,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 60149,
+      "duration_ms": 48356,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
