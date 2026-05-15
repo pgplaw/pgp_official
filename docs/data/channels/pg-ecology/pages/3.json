@@ -1,13 +1,70 @@
 {
-  "generated_at": "2026-05-14T06:43:53.003328+00:00",
-  "build_id": "22135f417882",
+  "generated_at": "2026-05-15T04:22:34.284451+00:00",
+  "build_id": "0fd3636eba93",
   "pagination": {
     "page": 3,
     "page_size": 16,
-    "total_posts": 49,
+    "total_posts": 50,
     "total_pages": 4
   },
   "posts": [
+    {
+      "id": 1308,
+      "date": "2026-03-23T14:35:35+00:00",
+      "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
+      "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
+      "views": 520,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1308-1-73eca263bae3-v8.jpg",
+          "feed_url": "data/channels/pg-ecology/media/posts/1308-1-73eca263bae3-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1308-1-73eca263bae3-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 668,
+          "full_width": 800,
+          "full_height": 668,
+          "source_width": 800,
+          "source_height": 668,
+          "source_url": "https://cdn4.telesco.pe/file/SZJ3-ZAGUSXWid-MX-5o4ldFLFquoVe9NTvcIVM3bDE7gBlUkywDN0xyudFAhGu748dMqszJYFkghaS8VaEp4Ile2ZCeA1BmKfvp9TGqnch1iCrq0n6na3qIGWdNcZkl9wZKzJa8UAyIS1zRrDf_0pXCa9sONLFRx-asHmPPDq-rl8wLTqSfwqvv-RUrOxNHNcu1q57ADZY7CMrhmK3OdPdnXhO6XctMSqMEQxGc741_dxCrXMu5-01MdRPfYMkA1DFTPGHI_2T34wJl8GzL24jdif8qvRG3EFAb47sb5F4zCBSI47by7bVEXlvyy8oCdJWYRLLcBH8k9gHHQmR-Rg.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1308-2-880084b0f895-v8.jpg",
+          "feed_url": "data/channels/pg-ecology/media/posts/1308-2-880084b0f895-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1308-2-880084b0f895-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/kv0tx0Er4VYxoDdxI2N9Ll0GMSOdXcM87QdRkyhc5SQ6dXVY9_MDDyf49GbYmrHsjEVI8Scwz-h8_JDW4RA5DFnWCI5l3_DGXPDAWjm_NWoIgsg445lUL0yJtLz3tzK5tJV1q0yysJraKl5Yop7sCLjZ7i2nu7zKbZD5r1qLfx0y8f88nkKt2eKeeXGdJ9GAsU0rmlQyH2zNpcAXkumy_sf-YHHgbcu_3sxgYZnvLRxpmaE0IWZrG23Kbfey2ucRwsY9Ke1Cn_XVlQ-7FOt0mz2wVqn6OUbRcLNLUNM_tR7QUHlkkGVnO-Qav-JpTSe1VZfcBdUWo7oDLXuCO_gVEw.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1308-3-964e23f8e51e-v8.jpg",
+          "feed_url": "data/channels/pg-ecology/media/posts/1308-3-964e23f8e51e-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1308-3-964e23f8e51e-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/sOqbzGMiK2nLA586MUPu-fH5DJlgG9Vygh9n8qLn26I_oH8u8vutlNB2OfRrTdfT6jt6oOAXFFSvCschI8YEvL5ILMVd308NqTxAMuCFJrniznixPR_5mT-lVY9xlbuQ3O9rMogkhJHOJlQXBM0vOsdwRsjxEjItwRFKcxmnU4O2bYukkozJ9LnmCZxRyWIGuqfef9VI5tfjgGqIaQnw1Xj9KRj1L6mGVHZ8L-6_6COvD2ePHyh-etyKp9u-gMjn_jg3cIfmMWVeEtVosgiqvRNR8rXL3cw2Q_HU8-Z2d3X_tntkBO6ZRf_WZOiAZ8hHwKlKTVTLPLNuVl2JJbCUzw.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgecology/1308",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1769",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      },
+      "reply_to": null
+    },
     {
       "id": 1306,
       "date": "2026-03-23T04:01:07+00:00",
@@ -395,36 +452,6 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/pgecology/1290",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1289,
-      "date": "2026-02-20T04:00:13+00:00",
-      "text": "#РешаемСпор\n\n⚔️ Недропользователем оспорено предписание \n🛡Росприроднадзора об устранении нарушения – размещения более 11 месяцев отходов вскрыши на внешнем отвале, который не включен в ГРОРО.\n\n⚔️ Заявитель указал, что в соответствии с техпроектом, использует весь объем образованных вскрышных пород для формирования внутреннего отвала, как одного из этапов ведения горных работ.\n\n🛡Ответчик возразил, что уровень отвала вскрышных пород находится выше поверхности земельного участка, то есть на площадке месторождения отсыпается внешний отвал вскрыши, который является ОРО и подлежит включению в ГРОРО.\n\nА как считаете Вы \n\n1️⃣ отвал вскрыши, формируемый во внутреннем пространстве карьера, в соответствии с техпроектом, нельзя признать внешним отвалом и ОРО, вне зависимости от его формирования (на определенном этапе) выше поверхности земельного участка;\n\n2️⃣ объем вскрышных пород выше поверхности земельного участка подлежит квалификации как внешний отвал и ОРО.",
-      "text_html": "#РешаемСпор<br><br>⚔️ Недропользователем оспорено предписание <br>🛡Росприроднадзора об устранении нарушения – размещения более 11 месяцев отходов вскрыши на внешнем отвале, который не включен в ГРОРО.<br><br>⚔️ Заявитель указал, что в соответствии с техпроектом, использует весь объем образованных вскрышных пород для формирования внутреннего отвала, как одного из этапов ведения горных работ.<br><br>🛡Ответчик возразил, что уровень отвала вскрышных пород находится выше поверхности земельного участка, то есть на площадке месторождения отсыпается внешний отвал вскрыши, который является ОРО и подлежит включению в ГРОРО.<br><br>А как считаете Вы <br><br>1️⃣ отвал вскрыши, формируемый во внутреннем пространстве карьера, в соответствии с техпроектом, нельзя признать внешним отвалом и ОРО, вне зависимости от его формирования (на определенном этапе) выше поверхности земельного участка;<br><br>2️⃣ объем вскрышных пород выше поверхности земельного участка подлежит квалификации как внешний отвал и ОРО.",
-      "views": 858,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1289-1-870f51fd6b08-v8.jpg",
-          "feed_url": "data/channels/pg-ecology/media/posts/feed/1289-1-870f51fd6b08-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1289-1-870f51fd6b08-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752,
-          "source_url": "https://cdn4.telesco.pe/file/JtiVwxoskY8Hm3CFBqOtEF-ffcmWgfAKvl-di5WLrNaAzEUrMp4U_S23kWg7tL7w1GY2dTojBkFnybk9iRnUlSP6H004btp8-5IvSpvRtJua2t5tlqc5y-UY6qSFdckoLNw7Kx07RDYAdGKtA5uA1VT3bNfN2D37zqPjikpILOuE0KFQKDdtONKp4m8m5mLFDHD-MvWhXr19qq65kYhZl-e2FEZfzrnemiYybcoXt7ZPi0JQIchljc0_ACA-Ln__1Ka4kFZmIg-uAWUxNCkyKvdHY-JWr4lyrf_y9dPbMU8JFSJGKwsIyakn1fTbVgc1ClRL8cgrZ2FJt4_rESEl1w.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgecology/1289",
       "forwarded_from": null,
       "reply_to": null
     }
