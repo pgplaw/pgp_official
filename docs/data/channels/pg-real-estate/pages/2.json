@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-16T09:09:09.071057+00:00",
-  "build_id": "d4e980e9c13f",
+  "generated_at": "2026-05-16T15:22:47.522012+00:00",
+  "build_id": "b1aa8bdac9a9",
   "pagination": {
     "page": 2,
     "page_size": 16,
@@ -61,7 +61,7 @@
         {
           "type": "Anonymous Poll",
           "question": "Как Вы считаете, насколько обоснован подход законодателя и как быть дальше?",
-          "total_voters": 144,
+          "total_voters": 145,
           "options": [
             {
               "text": "Подход обоснован, ничего менять не надо",
