@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-19T10:09:12.783209+00:00",
-  "build_id": "9d0d10494cd5",
+  "generated_at": "2026-05-20T08:09:17.981182+00:00",
+  "build_id": "2af439351f45",
   "pagination": {
     "page": 4,
     "page_size": 16,
@@ -8,6 +8,63 @@
     "total_pages": 5
   },
   "posts": [
+    {
+      "id": 439,
+      "date": "2026-03-23T13:09:11+00:00",
+      "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
+      "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
+      "views": 317,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/439-1-dabe8a0b9db7-v8.jpg",
+          "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/439-1-dabe8a0b9db7-v8.jpg",
+          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/439-1-dabe8a0b9db7-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 668,
+          "full_width": 800,
+          "full_height": 668,
+          "source_width": 800,
+          "source_height": 668,
+          "source_url": "https://cdn4.telesco.pe/file/PR-JoSFx_Mg5XOfYbv6mlMw7yOPxNvqC5zqMIgzabEo2yQgq7AgCmKSQ3gJ77nVnKuur8uULWnJw2H4odnFCE587NDMz_J-JRcpywLSBHQd0Fod7haPH9yH-79Vv19I_DONreflFFuLGs4brjtpJ_hO-RaGNmWOMOvrpBIThcw2AoNi8yzKY9yDUotLaCCvyvQVBBE45zdbHgPzrn-A4JHUSm6sKZg9yw593UD0RkYLTXsqSWflmZIqeXeBSs3xiM4iyq5djy5_VzZ3Golf8p06p8pKqI3Mi8r-vfZaaJukUtHuEpY9bV8PC78iDfFvg_FP488ZfdK2cBwa9RkW1rA.jpg"
+        },
+        {
+          "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/439-2-3a1de4411683-v8.jpg",
+          "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/439-2-3a1de4411683-v8.jpg",
+          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/439-2-3a1de4411683-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/tBKKfH9nU2zPPXRoGG2i5cxYy7CzhLVBYbZ4PuM6RB06mK941_UAl-ZeCKFxePi-Oj57PTxO1F856Jj8a3ZDzGQHn6iTMpnzOXVEgSRdfWSg7UbvAKwsQ17ENh0Qx8afImNB6u6xhcvxiyDYKWB0DtGYhAGriNlEm1sizmuuSS7FnX2NiebbnkQOSIAfBQfrVXHpD1hHsVawPspTk46nwn_DF5LWDkhpNiJGRLpzVoEhpjRssBZA9swYc8DnZMrU2Y5mNxUJ18pXHwrxS4wH39Q0MfIyggQf9iiUAFntW4NrcWK84J_4JUbkqzMR5sQkg6050fvMRRkyvyq00bHLoQ.jpg"
+        },
+        {
+          "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/439-3-55ca4490844e-v8.jpg",
+          "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/439-3-55ca4490844e-v8.jpg",
+          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/439-3-55ca4490844e-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/kpJcKJ3fyAMFjhmnsL5WsBzDVh-QwXLO4nAsFdxXfdqXr-O2xmTnPF3iPyf_ORAhVkwVXSQ14UXdjNJZwiiVOZH3GNMiMaPoipRhmPy_beEy-VjOiopnjOAUWTdXiARYb2_U0bVZZsYyXUmLxMxtZ9IWIwebqlArQcYYmZ7j8xoeLaiFUwdAG5qchlF2cr1PeXj3ovNboTs2mBkfCbFalOrUAeyh_MRn6NA0U1wmP9Te-gvMNGfFcdI_QkZtAgrFGDkitlxYBjGMUES4LfoV20L-i6KhiJxcJite45RQkDKI5AU47QuoYYnY25maAXHZ7aa92RESqTxrW_F6s3coOA.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/bankrotstvo_mustknow/439",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1769",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      },
+      "reply_to": null
+    },
     {
       "id": 438,
       "date": "2026-03-22T13:12:39+00:00",
@@ -360,21 +417,6 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/bankrotstvo_mustknow/419",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 418,
-      "date": "2026-03-03T11:44:33+00:00",
-      "text": "​​⚖️ Подсудность корпоративных споров в банкротстве\n\nЮлия Литовцева, руководитель, Владимир Гоппе, специалист практики банкротства и антикризисной защиты бизнеса, о правилах рассмотрения корпоративных споров в рамках дела о банкротстве на примере постановления АC Московского округа.\n\n🔎 Ситуация:\n\nВ ходе банкротства гражданина было принято решение о продаже его доли в уставном капитале общества с ограниченной отнесенностью путем публичного предложения.\n\nФинансовый управляющий должника намеревался уже заключить договор купли-продажи с победителем торгов, но второй участник общества не согласился с переходом доли покупателю.\n\n📝 В итоге, победитель торгов обратился в деле о банкротстве с заявлением о разрешении разногласий с управляющим должника, в котором просил:\n🔹 указать стороной договора купли-продажи доли общество;\n🔹 обязать общество выкупить долю в случае отказа иных участников на переход доли.\n\n🗝️ Позиция судов:\n\nСуд первой и апелляционной инстанций рассмотрели разногласия по существу и включили в договор условие об обязанности общества выкупить долю по действительной стоимости, в случае отказа иных участников на ее приобретение.\n\n📌 Но кассационный суд отказал в удовлетворении заявления, поскольку:\n🔹 общество не было стороной договора, следовательно, данный договор не мог регулировать его права и обязанности (в том числе, порядок выплаты стоимости доли обществом);\n🔹 включение в договор условий о порядке и стоимости приобретения доли фактически направлено на разрешение корпоративного спора; возможные корпоративные разногласия подлежат рассмотрению в рамках отдельного судебного разбирательства;\n🔹 поскольку не связаны с вопросами нарушения интересов кредиторов, должника и конкурсной массы.\n\n📎 Выводы:\n\nНеобходимо помнить, что существует ряд категорий споров, которые не подлежат рассмотрению в деле о банкротстве. Например, корпоративные споры, споры о разделе совместной собственности должника и его супруга (в т. ч. бывшего), в период наблюдения – иски о неденежных требованиях к должнику, иски самого должника к дебиторам и т. п. \n\n#Процессуальные_вопросы \n#Корпоративные_споры\n#Подсудность",
-      "text_html": "<a href=\"http://telegraph.controller.bot/files/7064224270/AgACAgIAAxkBAAIMUmmmyZlZfIeiYeQkB_DYEVrExISYAAIhFWsbD7k4SfJ7Z5jCULhpAQADAgADeAADOgQ\" target=\"_blank\" rel=\"noopener noreferrer\">​​</a><a href=\"http://telegraph.controller.bot/files/7064224270/AgACAgIAAxkBAAIMUmmmyZlZfIeiYeQkB_DYEVrExISYAAIhFWsbD7k4SfJ7Z5jCULhpAQADAgADeAADOgQ\" target=\"_blank\" rel=\"noopener noreferrer\">⚖️</a> Подсудность корпоративных споров в банкротстве<br><br>Юлия Литовцева, руководитель, Владимир Гоппе, специалист <a href=\"https://www.pgplaw.ru/practice-and-industry/practices/bankruptcy/\" target=\"_blank\" rel=\"noopener noreferrer\">практики банкротства и антикризисной защиты бизнеса,</a> о правилах рассмотрения корпоративных споров в рамках дела о банкротстве на примере постановления <a href=\"https://ras.arbitr.ru/Document/Pdf/7debe67d-f222-469f-9227-91e427fc9d04/c9f7e003-4176-4982-a76f-05f55bcc9ea1/%D0%9045-30557-2022__20260211.pdf?isAddStamp=True\" target=\"_blank\" rel=\"noopener noreferrer\">АC Московского округа.</a><br><br>🔎 Ситуация:<br><br>В ходе банкротства гражданина было принято решение о продаже его доли в уставном капитале общества с ограниченной отнесенностью путем публичного предложения.<br><br>Финансовый управляющий должника намеревался уже заключить договор купли-продажи с победителем торгов, но второй участник общества не согласился с переходом доли покупателю.<br><br>📝 В итоге, победитель торгов обратился в деле о банкротстве с заявлением о разрешении разногласий с управляющим должника, в котором просил:<br>🔹 указать стороной договора купли-продажи доли общество;<br>🔹 обязать общество выкупить долю в случае отказа иных участников на переход доли.<br><br>🗝️ Позиция судов:<br><br>Суд первой и апелляционной инстанций рассмотрели разногласия по существу и включили в договор условие об обязанности общества выкупить долю по действительной стоимости, в случае отказа иных участников на ее приобретение.<br><br>📌 Но кассационный суд отказал в удовлетворении заявления, поскольку:<br>🔹 общество не было стороной договора, следовательно, данный договор не мог регулировать его права и обязанности (в том числе, порядок выплаты стоимости доли обществом);<br>🔹 включение в договор условий о порядке и стоимости приобретения доли фактически направлено на разрешение корпоративного спора; возможные корпоративные разногласия подлежат рассмотрению в рамках отдельного судебного разбирательства;<br>🔹 поскольку не связаны с вопросами нарушения интересов кредиторов, должника и конкурсной массы.<br><br>📎 Выводы:<br><br>Необходимо помнить, что существует ряд категорий споров, которые не подлежат рассмотрению в деле о банкротстве. Например, корпоративные споры, споры о разделе совместной собственности должника и его супруга (в т. ч. бывшего), в период наблюдения – иски о неденежных требованиях к должнику, иски самого должника к дебиторам и т. п. <br><br>#Процессуальные_вопросы <br>#Корпоративные_споры<br>#Подсудность",
-      "views": 398,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/bankrotstvo_mustknow/418",
       "forwarded_from": null,
       "reply_to": null
     }
