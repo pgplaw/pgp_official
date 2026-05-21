@@ -817,3 +817,36 @@ test.describe('Desktop smoke', () => {
     await expect(card.locator('.post-card__media video')).toHaveCount(0);
   });
 });
+
+test.describe('Desktop PWA smoke', () => {
+  test.use({ serviceWorkers: 'allow' });
+
+  test('loads more posts when the installed-app service worker controls the page', async ({ page }) => {
+    await page.goto('/?channel=pg-tax');
+    await waitForFeedReady(page);
+
+    await page.evaluate(async () => {
+      if (!('serviceWorker' in navigator)) return;
+      const registration = await navigator.serviceWorker.register('./sw.js');
+      await registration.update();
+      await navigator.serviceWorker.ready;
+    });
+
+    await page.reload();
+    await waitForFeedReady(page);
+    await expect.poll(() => page.evaluate(() => Boolean(navigator.serviceWorker?.controller))).toBe(true);
+
+    const initialCount = await page.locator('.post-card').count();
+    const loaded = await clickLoadMoreIfVisible(page);
+    expect(loaded).toBe(true);
+
+    const afterFirstClick = await page.locator('.post-card').count();
+    expect(afterFirstClick).toBeGreaterThan(initialCount);
+
+    const loadedAgain = await clickLoadMoreIfVisible(page);
+    expect(loadedAgain).toBe(true);
+
+    const afterSecondClick = await page.locator('.post-card').count();
+    expect(afterSecondClick).toBeGreaterThan(afterFirstClick);
+  });
+});

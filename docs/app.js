@@ -3325,14 +3325,23 @@ function cancelNextPagePrefetch() {
   state.nextPagePrefetchHandle = null;
 }
 
+function getNextUnloadedPageNumber() {
+  for (let pageNumber = 2; pageNumber <= state.totalPages; pageNumber += 1) {
+    if (!state.loadedPages.has(pageNumber)) {
+      return pageNumber;
+    }
+  }
+  return null;
+}
+
 function scheduleNextPagePrefetch() {
   cancelNextPagePrefetch();
 
-  if (state.rendered < state.posts.length || state.loadedPages.size >= state.totalPages) {
+  const nextPageNumber = getNextUnloadedPageNumber();
+  if (state.rendered < state.posts.length || !nextPageNumber) {
     return;
   }
 
-  const nextPageNumber = state.loadedPages.size + 1;
   if (state.pageLoadPromises.has(nextPageNumber)) {
     return;
   }
@@ -3360,7 +3369,7 @@ function resetFeed() {
 
 function updateLoadMoreVisibility() {
   const hasMoreLoadedPosts = state.rendered < state.posts.length;
-  const hasMoreRemotePages = state.loadedPages.size < state.totalPages;
+  const hasMoreRemotePages = Boolean(getNextUnloadedPageNumber());
   elements.loadMoreWrap.classList.toggle('hidden', !(hasMoreLoadedPosts || hasMoreRemotePages));
 }
 
@@ -3424,9 +3433,10 @@ async function appendNextPage() {
   state.appendNextPagePromise = (async () => {
     const requestRenderVersion = state.feedRenderVersion;
     try {
-      if (state.rendered >= state.posts.length && state.loadedPages.size < state.totalPages) {
+      const nextPageNumber = getNextUnloadedPageNumber();
+      if (state.rendered >= state.posts.length && nextPageNumber) {
         elements.loadMoreButton.disabled = true;
-        await loadPage(state.loadedPages.size + 1);
+        await loadPage(nextPageNumber);
       }
     } catch (error) {
       elements.loadMoreButton.disabled = false;
@@ -3959,9 +3969,11 @@ async function ensurePostVisible(postId) {
   const normalizedPostId = String(postId);
   let targetIndex = state.posts.findIndex((post) => String(post.id) === normalizedPostId);
 
-  while (targetIndex === -1 && state.loadedPages.size < state.totalPages) {
-    await loadPage(state.loadedPages.size + 1);
+  let nextPageNumber = getNextUnloadedPageNumber();
+  while (targetIndex === -1 && nextPageNumber) {
+    await loadPage(nextPageNumber);
     targetIndex = state.posts.findIndex((post) => String(post.id) === normalizedPostId);
+    nextPageNumber = getNextUnloadedPageNumber();
   }
 
   if (targetIndex === -1) {
