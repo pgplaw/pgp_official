@@ -1,15 +1,8 @@
 {
-  "generated_at": "2026-05-23T15:39:59.623Z",
-  "success_count": 2,
-  "failure_count": 6,
-  "failure_channels": [
-    "pg-tax",
-    "pg-real-estate",
-    "investment-law",
-    "pg-ecology",
-    "bankrotstvo-mustknow",
-    "pg-employment"
-  ],
+  "generated_at": "2026-05-23T16:46:51.370Z",
+  "success_count": 8,
+  "failure_count": 0,
+  "failure_channels": [],
   "channel_timeout_ms": 150000,
   "channels": [
     {
@@ -19,7 +12,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 51139,
+      "duration_ms": 53607,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -76,7 +69,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 38538,
+      "duration_ms": 38989,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -130,35 +123,53 @@
       "key": "pg-tax",
       "channel_username": "PG_Tax",
       "channel_title": "PG Tax | Налоги",
-      "status": "failed",
-      "exit_code": null,
+      "status": "success",
+      "exit_code": 0,
       "signal": null,
-      "duration_ms": 0,
-      "error": "Missing sync result",
-      "telegram_api_credentials": null,
-      "sync_meta": null,
+      "duration_ms": 67686,
+      "error": null,
+      "telegram_api_credentials": {
+        "api_id": false,
+        "api_hash": false,
+        "session_str": false,
+        "complete": false
+      },
+      "sync_meta": {
+        "telegram_api_credentials": {
+          "api_id": false,
+          "api_hash": false,
+          "session_str": false,
+          "complete": false
+        },
+        "poll_sync": {
+          "credentials_complete": false,
+          "selected_ids": [],
+          "fetched_ids": [],
+          "recovered_ids": []
+        }
+      },
       "archive_before": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 1483229905,
+        "file_count": 11275,
+        "media_bytes": 1481833392,
+        "media_files": 11265,
+        "json_files": 10,
+        "page_json_files": 9,
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 1483229905,
+        "file_count": 11275,
+        "media_bytes": 1481833392,
+        "media_files": 11265,
+        "json_files": 10,
+        "page_json_files": 9,
         "comment_json_files": 0
       },
       "archive_delta": {
         "total_bytes": 0,
-        "media_bytes": 0,
         "file_count": 0,
+        "media_bytes": 0,
         "media_files": 0,
         "json_files": 0,
         "page_json_files": 0,
@@ -169,35 +180,53 @@
       "key": "pg-real-estate",
       "channel_username": "PG_RealEstate",
       "channel_title": "PG Real Estate | Недвижимость",
-      "status": "failed",
-      "exit_code": null,
+      "status": "success",
+      "exit_code": 0,
       "signal": null,
-      "duration_ms": 0,
-      "error": "Missing sync result",
-      "telegram_api_credentials": null,
-      "sync_meta": null,
+      "duration_ms": 60105,
+      "error": null,
+      "telegram_api_credentials": {
+        "api_id": false,
+        "api_hash": false,
+        "session_str": false,
+        "complete": false
+      },
+      "sync_meta": {
+        "telegram_api_credentials": {
+          "api_id": false,
+          "api_hash": false,
+          "session_str": false,
+          "complete": false
+        },
+        "poll_sync": {
+          "credentials_complete": false,
+          "selected_ids": [],
+          "fetched_ids": [],
+          "recovered_ids": []
+        }
+      },
       "archive_before": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 86022484,
+        "file_count": 1114,
+        "media_bytes": 85829669,
+        "media_files": 1112,
+        "json_files": 2,
+        "page_json_files": 1,
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 86022484,
+        "file_count": 1114,
+        "media_bytes": 85829669,
+        "media_files": 1112,
+        "json_files": 2,
+        "page_json_files": 1,
         "comment_json_files": 0
       },
       "archive_delta": {
         "total_bytes": 0,
-        "media_bytes": 0,
         "file_count": 0,
+        "media_bytes": 0,
         "media_files": 0,
         "json_files": 0,
         "page_json_files": 0,
@@ -208,35 +237,53 @@
       "key": "investment-law",
       "channel_username": "InvestmentLaw",
       "channel_title": "СпецИнвестРежимы",
-      "status": "failed",
-      "exit_code": null,
+      "status": "success",
+      "exit_code": 0,
       "signal": null,
-      "duration_ms": 0,
-      "error": "Missing sync result",
-      "telegram_api_credentials": null,
-      "sync_meta": null,
+      "duration_ms": 37064,
+      "error": null,
+      "telegram_api_credentials": {
+        "api_id": false,
+        "api_hash": false,
+        "session_str": false,
+        "complete": false
+      },
+      "sync_meta": {
+        "telegram_api_credentials": {
+          "api_id": false,
+          "api_hash": false,
+          "session_str": false,
+          "complete": false
+        },
+        "poll_sync": {
+          "credentials_complete": false,
+          "selected_ids": [],
+          "fetched_ids": [],
+          "recovered_ids": []
+        }
+      },
       "archive_before": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 357163499,
+        "file_count": 2659,
+        "media_bytes": 356818148,
+        "media_files": 2656,
+        "json_files": 3,
+        "page_json_files": 2,
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 357163499,
+        "file_count": 2659,
+        "media_bytes": 356818148,
+        "media_files": 2656,
+        "json_files": 3,
+        "page_json_files": 2,
         "comment_json_files": 0
       },
       "archive_delta": {
         "total_bytes": 0,
-        "media_bytes": 0,
         "file_count": 0,
+        "media_bytes": 0,
         "media_files": 0,
         "json_files": 0,
         "page_json_files": 0,
@@ -247,35 +294,53 @@
       "key": "pg-ecology",
       "channel_username": "pgecology",
       "channel_title": "PG Ecology | Экология",
-      "status": "failed",
-      "exit_code": null,
+      "status": "success",
+      "exit_code": 0,
       "signal": null,
-      "duration_ms": 0,
-      "error": "Missing sync result",
-      "telegram_api_credentials": null,
-      "sync_meta": null,
+      "duration_ms": 21001,
+      "error": null,
+      "telegram_api_credentials": {
+        "api_id": false,
+        "api_hash": false,
+        "session_str": false,
+        "complete": false
+      },
+      "sync_meta": {
+        "telegram_api_credentials": {
+          "api_id": false,
+          "api_hash": false,
+          "session_str": false,
+          "complete": false
+        },
+        "poll_sync": {
+          "credentials_complete": false,
+          "selected_ids": [],
+          "fetched_ids": [],
+          "recovered_ids": []
+        }
+      },
       "archive_before": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 164202433,
+        "file_count": 1979,
+        "media_bytes": 163930250,
+        "media_files": 1975,
+        "json_files": 4,
+        "page_json_files": 3,
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 164202433,
+        "file_count": 1979,
+        "media_bytes": 163930250,
+        "media_files": 1975,
+        "json_files": 4,
+        "page_json_files": 3,
         "comment_json_files": 0
       },
       "archive_delta": {
         "total_bytes": 0,
-        "media_bytes": 0,
         "file_count": 0,
+        "media_bytes": 0,
         "media_files": 0,
         "json_files": 0,
         "page_json_files": 0,
@@ -286,35 +351,53 @@
       "key": "bankrotstvo-mustknow",
       "channel_username": "bankrotstvo_mustknow",
       "channel_title": "Банкротство | Взгляд эксперта",
-      "status": "failed",
-      "exit_code": null,
+      "status": "success",
+      "exit_code": 0,
       "signal": null,
-      "duration_ms": 0,
-      "error": "Missing sync result",
-      "telegram_api_credentials": null,
-      "sync_meta": null,
+      "duration_ms": 31158,
+      "error": null,
+      "telegram_api_credentials": {
+        "api_id": false,
+        "api_hash": false,
+        "session_str": false,
+        "complete": false
+      },
+      "sync_meta": {
+        "telegram_api_credentials": {
+          "api_id": false,
+          "api_hash": false,
+          "session_str": false,
+          "complete": false
+        },
+        "poll_sync": {
+          "credentials_complete": false,
+          "selected_ids": [],
+          "fetched_ids": [],
+          "recovered_ids": []
+        }
+      },
       "archive_before": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 562979884,
+        "file_count": 4750,
+        "media_bytes": 562375682,
+        "media_files": 4745,
+        "json_files": 5,
+        "page_json_files": 4,
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 562979884,
+        "file_count": 4750,
+        "media_bytes": 562375682,
+        "media_files": 4745,
+        "json_files": 5,
+        "page_json_files": 4,
         "comment_json_files": 0
       },
       "archive_delta": {
         "total_bytes": 0,
-        "media_bytes": 0,
         "file_count": 0,
+        "media_bytes": 0,
         "media_files": 0,
         "json_files": 0,
         "page_json_files": 0,
@@ -325,35 +408,53 @@
       "key": "pg-employment",
       "channel_username": "pgEmployment",
       "channel_title": "PG Employment | Трудовое право",
-      "status": "failed",
-      "exit_code": null,
+      "status": "success",
+      "exit_code": 0,
       "signal": null,
-      "duration_ms": 0,
-      "error": "Missing sync result",
-      "telegram_api_credentials": null,
-      "sync_meta": null,
+      "duration_ms": 41077,
+      "error": null,
+      "telegram_api_credentials": {
+        "api_id": false,
+        "api_hash": false,
+        "session_str": false,
+        "complete": false
+      },
+      "sync_meta": {
+        "telegram_api_credentials": {
+          "api_id": false,
+          "api_hash": false,
+          "session_str": false,
+          "complete": false
+        },
+        "poll_sync": {
+          "credentials_complete": false,
+          "selected_ids": [],
+          "fetched_ids": [],
+          "recovered_ids": []
+        }
+      },
       "archive_before": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 49495679,
+        "file_count": 559,
+        "media_bytes": 49232114,
+        "media_files": 556,
+        "json_files": 3,
+        "page_json_files": 2,
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 49495679,
+        "file_count": 559,
+        "media_bytes": 49232114,
+        "media_files": 556,
+        "json_files": 3,
+        "page_json_files": 2,
         "comment_json_files": 0
       },
       "archive_delta": {
         "total_bytes": 0,
-        "media_bytes": 0,
         "file_count": 0,
+        "media_bytes": 0,
         "media_files": 0,
         "json_files": 0,
         "page_json_files": 0,
@@ -362,12 +463,12 @@
     }
   ],
   "archive_totals": {
-    "total_bytes": 1187783072,
-    "media_bytes": 1187099618,
-    "file_count": 11269,
-    "media_files": 11261,
-    "json_files": 8,
-    "page_json_files": 6,
+    "total_bytes": 3890876956,
+    "media_bytes": 3887118873,
+    "file_count": 33605,
+    "media_files": 33570,
+    "json_files": 35,
+    "page_json_files": 27,
     "comment_json_files": 0
   }
 }
