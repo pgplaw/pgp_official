@@ -1,19 +1,76 @@
 {
-  "generated_at": "2026-05-27T14:48:26.471936+00:00",
-  "build_id": "928d56a646cf",
+  "generated_at": "2026-05-28T16:30:48.220746+00:00",
+  "build_id": "f117ba85fe53",
   "pagination": {
     "page": 2,
     "page_size": 16,
-    "total_posts": 21,
+    "total_posts": 22,
     "total_pages": 2
   },
   "posts": [
+    {
+      "id": 228,
+      "date": "2026-03-20T14:15:30+00:00",
+      "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
+      "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
+      "views": 1660,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-real-estate/media/posts/thumbs/228-1-2d4174656c81-v8.jpg",
+          "feed_url": "data/channels/pg-real-estate/media/posts/228-1-2d4174656c81-v8.jpg",
+          "full_url": "data/channels/pg-real-estate/media/posts/228-1-2d4174656c81-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 668,
+          "full_width": 800,
+          "full_height": 668,
+          "source_width": 800,
+          "source_height": 668,
+          "source_url": "https://cdn4.telesco.pe/file/cYo_4Yp4JzdeIBZauNG636euyHkXc9V4WGSEj8iClaY4Omyt9wt0mkT7kXrelDdGeAE1j8el_1xM3jsDcoRucNqIvlq3Uy1S3K_q2CW2Njzqtbhu8BgI3bBQMRexIG4A24yhXNBFcM8aMlSR5F8kT9i6QtVbeEEjwMslzm-lsQhQLsmRKVkk4ykVbJq9hRCmzeDW-6HSwKe3fp_no-zJJgVIVrocgeRespu5qbHdGoGAYQn6qraIrqS4mVEp6c_vEe8rStAo7CRjcqPP5zdauHAgI-V0VuwMAF1_7XdXxQPs0OLcGoZWuAu3EC9Igs2Vbk5Y64k3N8VTFANYRZw0Ng.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pg-real-estate/media/posts/thumbs/228-2-2f82c65f9ec7-v8.jpg",
+          "feed_url": "data/channels/pg-real-estate/media/posts/228-2-2f82c65f9ec7-v8.jpg",
+          "full_url": "data/channels/pg-real-estate/media/posts/228-2-2f82c65f9ec7-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/JF2NB78z2mxucaNMZpK8Vi8EMfAwjzDZV7rNg49r-_QN_4sfOH_890JUXOASYeVrB712BBw9RMtz710sCcDTqCxBVlOW9HIMMe2Oge_yqiSdoAnSnyfByyNDGy8ay54voz4jwAWiXlFSkKc_LOCy2kKEc_TOt3hoZfW1zSKlkYpV9f1hu68waudb2O1FeUPgySBqJXtGiUllQCbeQhFE4NKGTO9puaOoeRyX2136rNdLx8ul85E_Sre2CnN8-bD_-Bu2IjPyP8fgd1CPJbVctQkj_TguyukChOr3YBwtJ9CQIH7moK2eDq82aLMHZbB7fDSGNoM28WbNLbqZdtIcAQ.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pg-real-estate/media/posts/thumbs/228-3-a61f7fe69359-v8.jpg",
+          "feed_url": "data/channels/pg-real-estate/media/posts/228-3-a61f7fe69359-v8.jpg",
+          "full_url": "data/channels/pg-real-estate/media/posts/228-3-a61f7fe69359-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/rMX6BVKFw5KoA6loYUG-soRAxdSW6jjdtWgxomz-Oe2BkoqGsKlMHngDow5Rpca_DPcC7wq_CvXZ41u8PUpqJGl57EiU3iIIJ5qsNeI1Gb10BHJDjvu7aTSVyWoknDA3Y67XAD8kCWz5mzb8nEJ6a-16GWHC81yeW-c3aWwoDO0DEE6LLhzUskPgS3Mft2_s2Z9DZjylhs9RQz8CfC5gatqkdXvx6NZO9Xadrf2MCJpBJoe-z6pAn9j289uyrwK_rH8GHzSaJ-E9ckoSyhF5tMUkZV8UAyuflB5ACvfnvzdcRqVpbNFznWoyEpd34UPuoaDm8yUlKqLFbRpp9AWTIQ.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PG_RealEstate/228",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1769",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      },
+      "reply_to": null
+    },
     {
       "id": 227,
       "date": "2026-03-20T14:15:30+00:00",
       "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
       "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
-      "views": 1650,
+      "views": 1660,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
