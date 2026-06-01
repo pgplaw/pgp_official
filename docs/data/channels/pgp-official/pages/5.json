@@ -1,13 +1,65 @@
 {
-  "generated_at": "2026-05-31T21:44:28.836408+00:00",
-  "build_id": "acaafd4c40ff",
+  "generated_at": "2026-06-01T07:22:31.816056+00:00",
+  "build_id": "d544c217c6cd",
   "pagination": {
     "page": 5,
     "page_size": 16,
-    "total_posts": 85,
+    "total_posts": 86,
     "total_pages": 6
   },
   "posts": [
+    {
+      "id": 1769,
+      "date": "2026-03-20T14:05:01+00:00",
+      "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
+      "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
+      "views": 7750,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1769-1-34c5955fd054-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1769-1-34c5955fd054-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1769-1-34c5955fd054-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 668,
+          "full_width": 800,
+          "full_height": 668,
+          "source_width": 800,
+          "source_height": 668,
+          "source_url": "https://cdn4.telesco.pe/file/jdFKx1-F1l8M1f4uYakELqaj3CRZSQlRkQt0Ignt4SYNab0WLrQYn4epqwxNKisQNSE2PFttYQPOFoiQknKxEWpP614PVESTnwQ_BBklg4RYUUjvwp8Bw4dYBl2DNQremYJGE_jJhhA3xDdQG5Gf4G7sBce4yGCsIfr-dnupI5GxqpbjcnSbb4g-nklbTMmDs6b4IQJLBPaD0PjzWTOQaz8rMKWUG4xKWWymLjvrVvlB2j5-_PWKwTtjoyVcb4sP217r5T6R1MBTdDaQe_HCrOoBtlV6BJXHCHyRgQe-GPvSg8bhGR_dVSVR_g63atHuxhQCdLVT_EQGeYuZm6nmsA.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1769-2-30612e2afc86-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1769-2-30612e2afc86-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1769-2-30612e2afc86-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/EO5mDE7I5OdFgTEeXPB7E_360oup8SE9e7n3yXFOtW5EkDIvJ1QRpPgCsC_LzgsP2Zmr6qZyfHHpemZPaEQ7CLP2Cmk352Ph2iMhXQdR5fm91F3Td7WQh4hq7sEzKrMQXXpUrRovpWw67LxWecul-oEI1tgBcU47CvAdAsAiNYqOOrmR0EO7zhRbNUwvG2Z4cI_di674kWUMKXDJkrSk8glle9bTPmpeM2tZHvvpMrKjRJ40fopqsjZjkJq2GKa-3iT5TH6gnDRFSQIWtagwgLUcns6MOyFzDiPb9gNV0Bw3ErzPOyI4kL0W9ZJPgY7_KSOGB-g19d1IvBp6uNt35w.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1769-3-f33f57c76d00-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1769-3-f33f57c76d00-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1769-3-f33f57c76d00-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/RSNDBAQGeMYtbjM2m6nUJv2QHcohDLdZPm9uLyAMFom8Bc62Km8CMsZfLCLa-3KqbWaH-DvbIHF9sHWpyvphVoMCmhXd-xfIvUiZNRV74fZV5a83V9WdAAgUC801gg_79XgqUwR0hw3YhTFIf1BY44Hnh2eRkfLpcoFMOxblzZUX2AEYq5iQJ69kCn34ckKUKL0nQIMJJ2rWGnZw8aA0Q88ZcEDGoiIWwPutpgPPQhzWpvDsXuomdzget9hki3e659RB2dfWHR09Wl_ayJlMSlaihxyzcYf4bLRr3yeunkt1Dxq3rJaQmkb-93qkhOdfWzacWDYVVMAqiZKgBkQtMQ.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1769",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 1768,
       "date": "2026-03-19T10:01:34+00:00",
@@ -481,26 +533,6 @@
       "videos": [],
       "tg_url": "https://t.me/pgp_official/1753",
       "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1752,
-      "date": "2026-03-06T09:29:58+00:00",
-      "text": "⚡️ФАС считает нарушением размещение рекламы в Telegram\n\nВчера Президент публично высказался против использования Telegram на фронте.\n\nИ тем же вечером разошлась новость о возбуждении дела против ИП о нарушении закона о рекламе из-за рекламы в своем телеграм-канале. ФАС, комментируя новость, свою позицию подтвердила – реклама в ограниченных ресурсах незаконна.\n\nКакие последствия:\n🟡ответственность несут рекламодатель и рекламораспространитель.\n🟡штрафы до 500 тыс. руб. для юридических лиц, до 20 тыс. руб. для ИП.\n🟡штраф назначается за каждый факт размещения рекламы.\n\nКакие правовые перспективы: в отличие от всем известных запрещенных сетей в отношении Telegram нет пока никаких официальных решений об ограничении.\n\nНо эта история формально преодолимая в ближайшие сроки с учетом подтвержденной воли государства на блокировку Telegram. \n\nПо опыту других ограниченных сетей, если рынок перестроится в пользу иных мест для рекламы, то серьезной волны штрафов ожидать не стоит. Либо к уже имеющимся 3% нужно закладывать еще до 500 тыс. руб. штрафа.\nНо и это краткосрочная тактика – ответственность может оперативно быть ужесточена.\n\nКакие рекомендации:\n🟡не делать резких движений и не прекращать делать отчисления с запущенных рекламный кампаний.\n🟡для будущих размещений учитывать риск ответственности и соизмерять его с рекламным бюджетом.\n🟡искать другие альтернативные места.",
-      "text_html": "<a href=\"https://rg.ru/2026/03/05/v-fas-zaiavili-o-tom-chto-razmeshchenie-reklamy-v-telegram-narushaet-zakon.html?utm_referrer=https%3A%2F%2Fduckduckgo.com%2F\" target=\"_blank\" rel=\"noopener noreferrer\">⚡️ФАС считает нарушением размещение рекламы в Telegram</a><br><br>Вчера Президент публично <a href=\"http://kremlin.ru/events/president/news/79265\" target=\"_blank\" rel=\"noopener noreferrer\">высказался</a> против использования Telegram на фронте.<br><br>И тем же вечером разошлась новость о возбуждении дела против ИП о нарушении закона о рекламе из-за рекламы в своем телеграм-канале. ФАС, комментируя новость, свою позицию подтвердила – реклама в ограниченных ресурсах незаконна.<br><br>Какие последствия:<br>🟡ответственность несут рекламодатель и рекламораспространитель.<br>🟡штрафы до 500 тыс. руб. для юридических лиц, до 20 тыс. руб. для ИП.<br>🟡штраф назначается за каждый факт размещения рекламы.<br><br>Какие правовые перспективы: в отличие от всем известных запрещенных сетей в отношении Telegram нет пока никаких официальных решений об ограничении.<br><br>Но эта история формально преодолимая в ближайшие сроки с учетом подтвержденной воли государства на блокировку Telegram. <br><br>По опыту других ограниченных сетей, если рынок перестроится в пользу иных мест для рекламы, то серьезной волны штрафов ожидать не стоит. Либо к уже имеющимся 3% нужно закладывать еще до 500 тыс. руб. штрафа.<br>Но и это краткосрочная тактика – ответственность может оперативно быть ужесточена.<br><br>Какие рекомендации:<br>🟡не делать резких движений и не прекращать делать отчисления с запущенных рекламный кампаний.<br>🟡для будущих размещений учитывать риск ответственности и соизмерять его с рекламным бюджетом.<br>🟡искать другие альтернативные места.",
-      "views": 1240,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/1752",
-      "forwarded_from": {
-        "source_url": "https://t.me/PgAntitrust/1359",
-        "channel_url": "https://t.me/s/PgAntitrust",
-        "channel_username": "PgAntitrust",
-        "channel_title": "PG Antitrust | Антимонопольное право"
-      },
       "reply_to": null
     }
   ]
