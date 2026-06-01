@@ -1,13 +1,43 @@
 {
-  "generated_at": "2026-06-01T07:22:31.817741+00:00",
-  "build_id": "d544c217c6cd",
+  "generated_at": "2026-06-01T18:52:32.198145+00:00",
+  "build_id": "c4949759400a",
   "pagination": {
     "page": 6,
     "page_size": 16,
-    "total_posts": 86,
+    "total_posts": 87,
     "total_pages": 6
   },
   "posts": [
+    {
+      "id": 1753,
+      "date": "2026-03-08T06:59:58+00:00",
+      "text": "🌸 Милые дамы,\n\nВы сочетаете в себе силу и мягкость, точность и интуицию, профессионализм и искреннее человеческое тепло. Ваши решения формируют команды, проекты и будущее, а ваше присутствие наполняет пространство гармонией и уверенностью.\n\nПоздравляем вас с праздником весны и желаем вдохновения, внутреннего спокойствия, поддержки близких и радости в каждом дне! \n\nКоманда «Пепеляев Групп»🌺",
+      "text_html": "🌸 Милые дамы,<br><br>Вы сочетаете в себе силу и мягкость, точность и интуицию, профессионализм и искреннее человеческое тепло. Ваши решения формируют команды, проекты и будущее, а ваше присутствие наполняет пространство гармонией и уверенностью.<br><br>Поздравляем вас с праздником весны и желаем вдохновения, внутреннего спокойствия, поддержки близких и радости в каждом дне! <br><br>Команда «Пепеляев Групп»🌺",
+      "views": 1130,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1753-1-e52e686caa28-v8.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/feed/1753-1-e52e686caa28-v8.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1753-1-e52e686caa28-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 319,
+          "feed_width": 1800,
+          "feed_height": 718,
+          "full_width": 1880,
+          "full_height": 750,
+          "source_width": 1880,
+          "source_height": 750,
+          "source_url": "https://cdn4.telesco.pe/file/Ft_jhRW2EEtKY79-OMGChoix9ulPdeZUXJeNjr0W6iwDcxY_x338bM9Xn04BB24V3nH9FpziZuDDTJK_1K8ir5tG-SUzbDCjLlSwOsiam9DJZ1FE23ifrBz5V4dcb-7boVMZNBQrBB71XVZDvZkuSVPHv2Yuasc3RoZ7fClDNT0uBSlxoCckgd9AkfmGxdeITytXL2EBKgfNbfZmRa9yw_boc003ycfeUehO8avDcD_arbkY_LWANXGxEH0wmJsa3CpN1xdkes6f1XGiF69s_zxRjptGyvum_UQSxYxFbpCDcf5a1x8EYKzfTg39MX6OZU32GdOHbyQfI_s5d2XyRw.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1753",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 1752,
       "date": "2026-03-06T09:29:58+00:00",
@@ -83,7 +113,7 @@
       "date": "2026-03-04T13:29:58+00:00",
       "text": "🏆 Как мы восстановили права фармкомпании на реализацию препарата на территории РФ\n\nЮристы «Пепеляев Групп» защитили права иностранной фармацевтической компании на дизайн упаковки лекарственного препарата. Трехлетний спор потребовал глубокой экспертизы в области авторского и патентного права.\n\n👉В карточках и на сайте рассказываем, как удалось доказать авторство, аннулировать патент «лжеавтора» и восстановить импорт препарата в Россию.\n\n#pg_победы",
       "text_html": "🏆 Как мы восстановили права фармкомпании на реализацию препарата на территории РФ<br><br>Юристы «Пепеляев Групп» защитили права иностранной фармацевтической компании на дизайн упаковки лекарственного препарата. Трехлетний спор потребовал глубокой экспертизы в области авторского и патентного права.<br><br>👉В карточках и <a href=\"https://www.pgplaw.ru/our-experience/245634/\" target=\"_blank\" rel=\"noopener noreferrer\">на сайте</a> рассказываем, как удалось доказать авторство, аннулировать патент «лжеавтора» и восстановить импорт препарата в Россию.<br><br>#pg_победы",
-      "views": 1090,
+      "views": 1100,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
