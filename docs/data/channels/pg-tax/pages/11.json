@@ -1,13 +1,65 @@
 {
-  "generated_at": "2026-06-01T07:24:15.705886+00:00",
-  "build_id": "d0d396e2671c",
+  "generated_at": "2026-06-01T13:11:57.793234+00:00",
+  "build_id": "1c7151b986c4",
   "pagination": {
     "page": 11,
     "page_size": 16,
-    "total_posts": 165,
+    "total_posts": 166,
     "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2505,
+      "date": "2026-03-03T10:07:09+00:00",
+      "text": null,
+      "text_html": null,
+      "views": 1240,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [],
+      "video_url": "data/channels/pg-tax/media/posts/videos/2505-video-note-841f5fdf5f48-v1.mp4",
+      "videos": [],
+      "tg_url": "https://t.me/PG_Tax/2505",
+      "forwarded_from": null,
+      "reply_to": null,
+      "video_note": true,
+      "polls": [
+        {
+          "type": "Final Results",
+          "question": "В рулетке от Леонида Кравчинского я выбираю",
+          "total_voters": 52,
+          "options": [
+            {
+              "text": "32",
+              "percent": 23.0
+            },
+            {
+              "text": "82",
+              "percent": 42.0
+            },
+            {
+              "text": "zero - не представляю, о чем вы",
+              "percent": 35.0
+            }
+          ],
+          "source_post_id": 2506,
+          "source_date": "2026-03-03T10:07:18+00:00"
+        }
+      ],
+      "video_poster": {
+        "thumb_url": "data/channels/pg-tax/media/posts/video-posters/2505-video-note-poster-cd9cc74caf3c-v1.jpg",
+        "feed_url": "data/channels/pg-tax/media/posts/video-posters/2505-video-note-poster-cd9cc74caf3c-v1.jpg",
+        "full_url": "data/channels/pg-tax/media/posts/video-posters/2505-video-note-poster-cd9cc74caf3c-v1.jpg",
+        "thumb_width": 640,
+        "thumb_height": 640,
+        "feed_width": 640,
+        "feed_height": 640,
+        "full_width": 640,
+        "full_height": 640,
+        "source_width": 640,
+        "source_height": 640
+      }
+    },
     {
       "id": 2504,
       "date": "2026-03-03T10:06:46+00:00",
