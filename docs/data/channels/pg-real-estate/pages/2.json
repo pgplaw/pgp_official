@@ -1,19 +1,76 @@
 {
-  "generated_at": "2026-06-01T22:01:30.197051+00:00",
-  "build_id": "f117ba85fe53",
+  "generated_at": "2026-06-02T11:22:35.804760+00:00",
+  "build_id": "781c807660d4",
   "pagination": {
     "page": 2,
     "page_size": 16,
-    "total_posts": 22,
+    "total_posts": 23,
     "total_pages": 2
   },
   "posts": [
+    {
+      "id": 226,
+      "date": "2026-03-20T14:15:30+00:00",
+      "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
+      "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
+      "views": 1670,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-real-estate/media/posts/thumbs/226-1-1c0a581a2922-v8.jpg",
+          "feed_url": "data/channels/pg-real-estate/media/posts/226-1-1c0a581a2922-v8.jpg",
+          "full_url": "data/channels/pg-real-estate/media/posts/226-1-1c0a581a2922-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 668,
+          "full_width": 800,
+          "full_height": 668,
+          "source_width": 800,
+          "source_height": 668,
+          "source_url": "https://cdn4.telesco.pe/file/Mu7q8hN_D0WkJGNvv0Xurjn2nZsuxJzKCdSNCm5DiYnpRnMt6BPzNU5WKgItbxxqR4Lyh-pR_NYwtLEBwiRXajQykpgVvH7yRamz8fLp__ilOwOuOW-YR4cGjRT6DcTtn9EttqXT8bdUzEFI2f7KlMeQ-UDeLRIt-ZA0RSoQqeBn47_CIR-vzJxNxnJmmqCr41Vd9f8BrHfhKoCrfbSGbDm_z2Fd1v3IrxwCEdSqGFsp0XaiJOalhu-4GTroupYF5TYeDuSv-Zfky2x53LXH08YEx4UjYopN5s-72hqNAfiQEp_Lkj-Z8owaoFIZiXYGnfHCYS1XZLcvC-Yey5MXFg.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pg-real-estate/media/posts/thumbs/226-2-98bb67295ced-v8.jpg",
+          "feed_url": "data/channels/pg-real-estate/media/posts/226-2-98bb67295ced-v8.jpg",
+          "full_url": "data/channels/pg-real-estate/media/posts/226-2-98bb67295ced-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/Lkw04i7HwTkhH7DSq3nBWHmDa8CNcEWExO0RdSt3Y-0gZ-HL0IkbuOO69-XqnjsDkixZgeI5o-bEePL2yg660XjNcac-B4zQjdmUDtxtlA6fKVfD17bR_PJgtPBieQcRaYF56Ut3Qt3AcIFjl5xJAfLuQ9LoJz4KzHPZHJDTiOPiak2G1b6WcrApmKc8PwdCMEO_Xvvkc6x8cUkI7yHdU9xpiW_rTmgT1p8HlqyK6VU2Di9WtsdXNz-6fSTT-xgzGMdBQQt1KyOoJeE7WTpfHrRr8X_nqBZPXfagcOklKBpNiGs1vw4v3-rBiwcGrS3EdQa5U8NbyDHGsmv9o0uaYQ.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pg-real-estate/media/posts/thumbs/226-3-a49aa50e05b0-v8.jpg",
+          "feed_url": "data/channels/pg-real-estate/media/posts/226-3-a49aa50e05b0-v8.jpg",
+          "full_url": "data/channels/pg-real-estate/media/posts/226-3-a49aa50e05b0-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/jTW1htpgINfEjQosKfPkQIMaPm_mAqMhEuuvi_KVN3wAfA26hNsuFRRT2SH2lYHGTppRNbFItspu8axZE4thFAaYtKwlKcttkxw8lMLnigw9eF5-v8_9ZnmEekw4Spz93CoGFZSjTbLCDeCO7TXalN1SccHtipE1sBlhM68NSb3jX00-_eE9nMF6FKbpcYk1X5K7DZS6NjInwoDCUuTnbAZvEDS7yj-ZAOUqTmd5crGdbpwcnNgRtAR9GtRxd5LKQGnyh0n7DHCIboTkpaENC5aWBBW8Xg9xFV7WaQCgH0mIDn97tQTW5i9TFLzQTxSPfkiIdein15rOqkCbzcNHwA.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PG_RealEstate/226",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1769",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      },
+      "reply_to": null
+    },
     {
       "id": 228,
       "date": "2026-03-20T14:15:30+00:00",
       "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
       "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
-      "views": 1660,
+      "views": 1670,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -70,7 +127,7 @@
       "date": "2026-03-20T14:15:30+00:00",
       "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
       "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
-      "views": 1660,
+      "views": 1670,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -127,7 +184,7 @@
       "date": "2026-03-16T13:18:25+00:00",
       "text": "📧 Еженедельные рассылки «Пепеляев Групп»: чтобы важные изменения в законодательстве не прошли мимо\n\nДрузья, напоминаем, что у «Пепеляев Групп» выходят еженедельные рассылки по ключевым изменениям в законодательстве и правоприменительной практике.\n\n▫️Наши эксперты регулярно готовят аналитические материалы по наиболее актуальным темам — от налогов и банкротства до антимонопольного регулирования, антикризисной защиты бизнеса и других отраслевых вопросов. В рассылках краткие обзоры новостей, комментарии экспертов и практические рекомендации для бизнеса.\n\nСейчас, когда в работе Telegram могут возникать ограничения, для нас особенно важно оставаться с вами на связи и продолжать оперативно делиться экспертной аналитикой ❤️\n\n👉 Подписаться на рассылки",
       "text_html": "📧 Еженедельные рассылки «Пепеляев Групп»: чтобы важные изменения в законодательстве не прошли мимо<br><br>Друзья, напоминаем, что у «Пепеляев Групп» выходят <a href=\"https://www.pgplaw.ru/subscribe/?utm_source=telegram\" target=\"_blank\" rel=\"noopener noreferrer\">еженедельные рассылки</a> по ключевым изменениям в законодательстве и правоприменительной практике.<br><br>▫️Наши эксперты регулярно готовят аналитические материалы по наиболее актуальным темам — от налогов и банкротства до антимонопольного регулирования, антикризисной защиты бизнеса и других отраслевых вопросов. В рассылках краткие обзоры новостей, комментарии экспертов и практические рекомендации для бизнеса.<br><br>Сейчас, когда в работе Telegram могут возникать ограничения, для нас особенно важно оставаться с вами на связи и продолжать оперативно делиться экспертной аналитикой ❤️<br><br>👉 <a href=\"https://www.pgplaw.ru/subscribe/?utm_source=telegram\" target=\"_blank\" rel=\"noopener noreferrer\">Подписаться на рассылки</a>",
-      "views": 1480,
+      "views": 1490,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
