@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-06T11:13:42.185033+00:00",
-  "build_id": "d1dcf4280eb1",
+  "generated_at": "2026-06-06T12:23:28.459995+00:00",
+  "build_id": "9e06e5b1ac06",
   "pagination": {
     "page": 11,
     "page_size": 16,
-    "total_posts": 162,
+    "total_posts": 161,
     "total_pages": 11
   },
   "posts": [
@@ -64,26 +64,6 @@
           "source_date": "2026-03-06T13:04:48+00:00"
         }
       ]
-    },
-    {
-      "id": 2517,
-      "date": "2026-03-06T11:12:46+00:00",
-      "text": "Взгляд экспертов антимонопольной практики «Пепеляев Групп» на ситуацию читайте по плашке ⬆️",
-      "text_html": "Взгляд экспертов антимонопольной практики «Пепеляев Групп» на ситуацию читайте по плашке ⬆️",
-      "views": 1290,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2517",
-      "forwarded_from": null,
-      "reply_to": {
-        "post_id": 1359,
-        "title": "⚡️ФАС считает нарушением размещение рекламы в Telegram",
-        "tg_url": "https://t.me/PgAntitrust/1359",
-        "channel_username": "PgAntitrust"
-      }
     }
   ]
 }
