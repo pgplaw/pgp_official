@@ -1,13 +1,70 @@
 {
-  "generated_at": "2026-06-09T18:32:02.585737+00:00",
-  "build_id": "3364ba0284cd",
+  "generated_at": "2026-06-10T06:31:52.080072+00:00",
+  "build_id": "cb53c2961a2c",
   "pagination": {
     "page": 3,
     "page_size": 16,
-    "total_posts": 38,
+    "total_posts": 39,
     "total_pages": 3
   },
   "posts": [
+    {
+      "id": 1071,
+      "date": "2026-03-20T22:33:53+00:00",
+      "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
+      "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
+      "views": 234,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/investment-law/media/posts/thumbs/1071-1-0ac283539f84-v8.jpg",
+          "feed_url": "data/channels/investment-law/media/posts/1071-1-0ac283539f84-v8.jpg",
+          "full_url": "data/channels/investment-law/media/posts/1071-1-0ac283539f84-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 668,
+          "full_width": 800,
+          "full_height": 668,
+          "source_width": 800,
+          "source_height": 668,
+          "source_url": "https://cdn4.telesco.pe/file/RGj-WlxuYHvZnNEmcX8T_qMBeknsLp-GA6n0O9zCO0b4QmjyBGuoSnGGD4f06UQhTIg60Iojp7wFWtl5CiCpn_97KB05SYsITxXXOmQyE99OgCsXhjKkyx6ray68eg-YkTJQOAtxXw3nmV6x-J4qGS1oVQ8o3GNtFqtqX-OYqbA0I0kz-EiFs4ILYUVIAtYyjq3Zvz634txRiaZGGkgxEYBXMbDDVlPG0-dZSi-O5zl56Z4nUnvPC0y1KxiAg7EgUSdcwFaE_enpTeaR_oIr9u-oGTqbFAM60h4L6Rbi1KCulYYBge4530Aqc-wYqyY0JxHsgfMVXag1qUPG53RT_Q.jpg"
+        },
+        {
+          "thumb_url": "data/channels/investment-law/media/posts/thumbs/1071-2-2bd773a41624-v8.jpg",
+          "feed_url": "data/channels/investment-law/media/posts/1071-2-2bd773a41624-v8.jpg",
+          "full_url": "data/channels/investment-law/media/posts/1071-2-2bd773a41624-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/d9ZrRxofnlsBNNQwbilZMpLALgMc7DgWCYKjklSiJpUvyOrz4gcbd3TxhXEvc3PCoXTTNzvwmAmv4U5MKzeSVQDST2USo_sMcR_UiS4MIaLzkFNQ5D6mE8i196pUx4dAmVoCmlItBlYfGgzXB5hTl435wmoe74Y3nM9nBC_l25GBgvH1t4IBm4TUCE5Jx59rBrwmbISsl-QA-ZKDasf_sBIEr50pahQlq27yTAWDyPJdbJh8ecNbHN3GIX0sUXwcmDm0nNBV_xlYwhpQelYgWSf5Y-_AObuyhWNpZ8cSAlCO05LQl1xAY2msxNTdf7jWRFcDlZvayEiJpAhZCjrelg.jpg"
+        },
+        {
+          "thumb_url": "data/channels/investment-law/media/posts/thumbs/1071-3-9dff2f27c6e9-v8.jpg",
+          "feed_url": "data/channels/investment-law/media/posts/1071-3-9dff2f27c6e9-v8.jpg",
+          "full_url": "data/channels/investment-law/media/posts/1071-3-9dff2f27c6e9-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/Sx_4ikU1JSoVRykw5c9yeEIhsdCwxPKVqmivxHq_04P3PZ2Gw7ShUaL7pAOGvo8O-M1fHYiO5T8vziqaOc0-AjgCd8iCpWoS9N_0Ein6nYYFVVPGkl3VE6gzBB6Oaj4cpHTz5JSTxrDmuH61JfKRdoybFGyYgD-WCVRSLvomo86bgzPQioe96hYvduSC2xnwN5vo0CE6lSGIfA_UGEB6XNb_B-y3mx-j65z2VYnQjVFUPTXgC-OhJGviRdoe4qkI9RXsIrhIXa4Vk8WHtENVvTG3XJ0xxYmUBGP8GfkrsPpQ7EBF_4YFnDnwyvFWhX06ARvflG5FQUOf0y0q37fRNQ.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/InvestmentLaw/1071",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1769",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      },
+      "reply_to": null
+    },
     {
       "id": 1069,
       "date": "2026-03-20T04:52:38+00:00",
