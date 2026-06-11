@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-10T10:47:16.968153+00:00",
-  "build_id": "4348e31e3889",
+  "generated_at": "2026-06-11T07:22:08.342653+00:00",
+  "build_id": "59100a95fd1d",
   "pagination": {
     "page": 5,
     "page_size": 16,
@@ -8,6 +8,63 @@
     "total_pages": 5
   },
   "posts": [
+    {
+      "id": 439,
+      "date": "2026-03-23T13:09:11+00:00",
+      "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
+      "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
+      "views": 326,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/439-1-dabe8a0b9db7-v8.jpg",
+          "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/439-1-dabe8a0b9db7-v8.jpg",
+          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/439-1-dabe8a0b9db7-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 668,
+          "full_width": 800,
+          "full_height": 668,
+          "source_width": 800,
+          "source_height": 668,
+          "source_url": "https://cdn4.telesco.pe/file/PR-JoSFx_Mg5XOfYbv6mlMw7yOPxNvqC5zqMIgzabEo2yQgq7AgCmKSQ3gJ77nVnKuur8uULWnJw2H4odnFCE587NDMz_J-JRcpywLSBHQd0Fod7haPH9yH-79Vv19I_DONreflFFuLGs4brjtpJ_hO-RaGNmWOMOvrpBIThcw2AoNi8yzKY9yDUotLaCCvyvQVBBE45zdbHgPzrn-A4JHUSm6sKZg9yw593UD0RkYLTXsqSWflmZIqeXeBSs3xiM4iyq5djy5_VzZ3Golf8p06p8pKqI3Mi8r-vfZaaJukUtHuEpY9bV8PC78iDfFvg_FP488ZfdK2cBwa9RkW1rA.jpg"
+        },
+        {
+          "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/439-2-3a1de4411683-v8.jpg",
+          "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/439-2-3a1de4411683-v8.jpg",
+          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/439-2-3a1de4411683-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/tBKKfH9nU2zPPXRoGG2i5cxYy7CzhLVBYbZ4PuM6RB06mK941_UAl-ZeCKFxePi-Oj57PTxO1F856Jj8a3ZDzGQHn6iTMpnzOXVEgSRdfWSg7UbvAKwsQ17ENh0Qx8afImNB6u6xhcvxiyDYKWB0DtGYhAGriNlEm1sizmuuSS7FnX2NiebbnkQOSIAfBQfrVXHpD1hHsVawPspTk46nwn_DF5LWDkhpNiJGRLpzVoEhpjRssBZA9swYc8DnZMrU2Y5mNxUJ18pXHwrxS4wH39Q0MfIyggQf9iiUAFntW4NrcWK84J_4JUbkqzMR5sQkg6050fvMRRkyvyq00bHLoQ.jpg"
+        },
+        {
+          "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/439-3-55ca4490844e-v8.jpg",
+          "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/439-3-55ca4490844e-v8.jpg",
+          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/439-3-55ca4490844e-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/kpJcKJ3fyAMFjhmnsL5WsBzDVh-QwXLO4nAsFdxXfdqXr-O2xmTnPF3iPyf_ORAhVkwVXSQ14UXdjNJZwiiVOZH3GNMiMaPoipRhmPy_beEy-VjOiopnjOAUWTdXiARYb2_U0bVZZsYyXUmLxMxtZ9IWIwebqlArQcYYmZ7j8xoeLaiFUwdAG5qchlF2cr1PeXj3ovNboTs2mBkfCbFalOrUAeyh_MRn6NA0U1wmP9Te-gvMNGfFcdI_QkZtAgrFGDkitlxYBjGMUES4LfoV20L-i6KhiJxcJite45RQkDKI5AU47QuoYYnY25maAXHZ7aa92RESqTxrW_F6s3coOA.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/bankrotstvo_mustknow/439",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1769",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      },
+      "reply_to": null
+    },
     {
       "id": 438,
       "date": "2026-03-22T13:12:39+00:00",
@@ -48,7 +105,7 @@
       "date": "2026-03-20T06:01:42+00:00",
       "text": "📝 Уроки субсидиарной ответственности: что учесть в 2026 году.\n \nЮлия Литовцева, партнер, руководитель практики банкротства и антикризисной защиты бизнеса Пепеляев групп, рассказывает о новинках, появившихся в 2025 году, в спорах о субсидиарной ответственности в видео выпуске «Взгляд эксперта».\n\n👉 Смотрите на YouTube, Rutube, VK и нашем сайте. \n\n#Банкротство_взгляд_эксперта\n#Субсидиарная_ответственность",
       "text_html": "📝 Уроки субсидиарной ответственности: что учесть в 2026 году.<br> <br>Юлия Литовцева, партнер, руководитель <a href=\"https://www.pgplaw.ru/practice-and-industry/practices/bankruptcy/\" target=\"_blank\" rel=\"noopener noreferrer\">практики банкротства и антикризисной защиты бизнеса</a> Пепеляев групп, рассказывает о новинках, появившихся в 2025 году, в спорах о субсидиарной ответственности в видео выпуске «Взгляд эксперта».<br><br>👉 Смотрите на <a href=\"https://youtu.be/z5LbkayjGec\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube,</a> <a href=\"https://rutube.ru/video/13f47f54e3f59e65ef3dc5a9065966aa/\" target=\"_blank\" rel=\"noopener noreferrer\">Rutube,</a> <a href=\"https://vkvideo.ru/video-227047542_456239405\" target=\"_blank\" rel=\"noopener noreferrer\">VK</a> и <a href=\"https://www.pgplaw.ru/analytics-and-brochures/video/subsidiarnaya-otvetstvennost-chto-uchest-v-2026-2/\" target=\"_blank\" rel=\"noopener noreferrer\">нашем сайте.</a> <br><br>#Банкротство_взгляд_эксперта<br>#Субсидиарная_ответственность",
-      "views": 336,
+      "views": 337,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -240,36 +297,6 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/bankrotstvo_mustknow/427",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 426,
-      "date": "2026-03-11T06:56:55+00:00",
-      "text": "📪 Еженедельный обзор Банкротство: Взгляд эксперта     \n\nСамые интересные новости в сфере банкротства с авторскими рекомендациями от Юлии Литовцевой ⚡ в новом обзоре Банкротство: Взгляд эксперта от команды практики банкротства и антикризисной защиты бизнеса.\n\nВ этом выпуске 🗞:  \n\n⛓️‍💥 Риск отмены судебного акта не восстанавливает сроки \n\n🤝🏻 Мировое соглашение можно заключить и в Верховном Суде\n\n🗑️ Банкротство не свалка: почему утилизация техники подвела должника\n\n🗝️ Повышенный стандарт доказывания при оспаривании сделок между аффилированными лицами\n\n☕ Желаем приятного чтения по ссылке 🔎 Банкротство: Взгляд эксперта#Банкротство_mustread\n#Процессуальные_вопросы\n#Недействительность_сделок \n#Арбитражный_управляющий \n#Банкротство_граждан",
-      "text_html": "📪 Еженедельный обзор Банкротство: Взгляд эксперта     <br><br>Самые интересные новости в сфере банкротства с авторскими рекомендациями от Юлии Литовцевой ⚡ в новом обзоре Банкротство: Взгляд эксперта от команды <a href=\"https://www.pgplaw.ru/practice-and-industry/practices/bankruptcy/\" target=\"_blank\" rel=\"noopener noreferrer\">практики банкротства и антикризисной защиты бизнеса.</a><br><br>В этом выпуске 🗞:  <br><br>⛓️‍💥 Риск отмены судебного акта не восстанавливает сроки <br><br>🤝🏻 Мировое соглашение можно заключить и в Верховном Суде<br><br>🗑️ Банкротство не свалка: почему утилизация техники подвела должника<br><br>🗝️ Повышенный стандарт доказывания при оспаривании сделок между аффилированными лицами<br><br>☕ Желаем приятного чтения по ссылке 🔎 <a href=\"https://www.pgplaw.ru/analytics-and-brochures/bankruptcy-must-read/bankruptcy-must-read-28-01-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Банкротство: Взгляд эксперта</a>#Банкротство_mustread<br>#Процессуальные_вопросы<br>#Недействительность_сделок <br>#Арбитражный_управляющий <br>#Банкротство_граждан",
-      "views": 396,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/bankrotstvo-mustknow/media/posts/thumbs/426-1-44dea5071ed9-v8.jpg",
-          "feed_url": "data/channels/bankrotstvo-mustknow/media/posts/feed/426-1-44dea5071ed9-v8.jpg",
-          "full_url": "data/channels/bankrotstvo-mustknow/media/posts/426-1-44dea5071ed9-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752,
-          "source_url": "https://cdn4.telesco.pe/file/RN5GWuUcEDDFhK7ZkHYDG_HOV4s-Bco__duSwvaqm2FQcDtQuTucw1Kz6FWajCybSGCeiPyNgcfxy5ub2baTarDhdBSYuC_pRY8sQzlTy50I_Vzy7PtZX2stA-d5qKQhEA9FFBze8n02U2SHjeItxdL3DM7cRG-e6WKqYANuT3RtlZ1UkXxgukeXhpjMr9-p40aexLY1PxYbAUG3_3it6Qprel3FLnApfJ6r8bQLYg7nSJGFIjdfzAfplf47vXVanrj5_dRrtas_mxxRqhCaj9xbD3GOf1mJLnqBAnLNqCrnyWFJKUZzHeUWxjNcwR9trdP_Y5dZiVZ3wo0cej6RBw.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/bankrotstvo_mustknow/426",
       "forwarded_from": null,
       "reply_to": null
     }
