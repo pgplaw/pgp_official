@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-12T20:25:51.122967+00:00",
-  "build_id": "dcd99c05054b",
+  "generated_at": "2026-06-13T09:43:21.369599+00:00",
+  "build_id": "b32704e2efbc",
   "pagination": {
     "page": 3,
     "page_size": 16,
-    "total_posts": 40,
+    "total_posts": 39,
     "total_pages": 3
   },
   "posts": [
@@ -238,36 +238,6 @@
         "channel_username": "pgp_official",
         "channel_title": "Pepeliaev Group | Пепеляев Групп"
       },
-      "reply_to": null
-    },
-    {
-      "id": 1361,
-      "date": "2026-03-13T07:53:37+00:00",
-      "text": "📣 Президент подписал изменения в законодательство о стратегических инвестициях\n\nФедеральный закон от 08.03.2026 № 51-ФЗ\n\n🟡Расширена область применения закона: включены сделки по приобретению государственного имущества, контролю над некоммерческими организациями и участками недр.\n\n🟡Уточнено понятие стратегического хозяйственного общества — наличие лицензии автоматически делает его стратегическим.\n\n🟡Обязательное согласование сделок распространено на новые виды деятельности: добыча полезных ископаемых, аквакультура анадромных рыб, производство рыбной продукции.\n\n🟡Требование раскрытия бенефициаров теперь распространяется также на продавцов в сделках.\n\n 🟡Дополнительные основания для уведомления ФАС: приобретение лицензий или прав на добычу ресурсов.\n\nПодробнее с каждым аспектом разбираемся по ссылке...",
-      "text_html": "📣 Президент подписал изменения в законодательство о стратегических инвестициях<br><br><a href=\"http://publication.pravo.gov.ru/document/0001202603080007\" target=\"_blank\" rel=\"noopener noreferrer\">Федеральный закон от 08.03.2026 № 51-ФЗ</a><br><br>🟡Расширена область применения закона: включены сделки по приобретению государственного имущества, контролю над некоммерческими организациями и участками недр.<br><br>🟡Уточнено понятие стратегического хозяйственного общества — наличие лицензии автоматически делает его стратегическим.<br><br>🟡Обязательное согласование сделок распространено на новые виды деятельности: добыча полезных ископаемых, аквакультура анадромных рыб, производство рыбной продукции.<br><br>🟡Требование раскрытия бенефициаров теперь распространяется также на продавцов в сделках.<br><br> 🟡Дополнительные основания для уведомления ФАС: приобретение лицензий или прав на добычу ресурсов.<br><br>Подробнее с каждым аспектом разбираемся <a href=\"https://www.pgplaw.ru/analytics-and-brochures/alerts/inostrannye-investitsii-pereshli-na-novyy-uroven-regulirovaniya/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке...</a>",
-      "views": 648,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1361-1-3f90917396e8-v8.jpg",
-          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1361-1-3f90917396e8-v8.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1361-1-3f90917396e8-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752,
-          "source_url": "https://cdn4.telesco.pe/file/GyhJaJNNUf09FOxUBfHgdSTngJq_Dyvn7rs-AF9vlFywKYdpSMGCbE2Wq8cHa1O1sEmjy5RFCDyLZRsS6CGc6j80NLUySl51DM8mB4FKpscb4v6QGU1z6AJFuphkY4EvpWlBR9A8HeHX_8irYAzwpPKoUUSr6Gdmttn91O0gm-J405RD8BKlk3BFOT3ao6gL-tOTXsAUIsnuaUy_5XoGe1u4Qr_ZBG2oq67TgR6WPdkU8w6iXESp8p-ccyjbKQiXCuHjHfqEs334f-L3jJWIeZLajFhERUsp1hxBG2nX8HRNLC21ZeJCYmRTNdFdUtFyLTDkPF7wbXmhY2E-BFnFUQ.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PgAntitrust/1361",
-      "forwarded_from": null,
       "reply_to": null
     }
   ]
