@@ -1,13 +1,70 @@
 {
-  "generated_at": "2026-06-13T13:18:26.463496+00:00",
-  "build_id": "15d305b5069a",
+  "generated_at": "2026-06-16T12:36:11.724937+00:00",
+  "build_id": "8d8e55977071",
   "pagination": {
     "page": 3,
     "page_size": 16,
-    "total_posts": 35,
+    "total_posts": 36,
     "total_pages": 3
   },
   "posts": [
+    {
+      "id": 1954,
+      "date": "2026-03-23T08:58:04+00:00",
+      "text": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи\n\nПоскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.\n\n▫️Чтобы установить приложение, перейдите по ссылке и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. \n\nУстановить приложение 👉",
+      "text_html": "🧩 Продолжаем делиться сервисами, которые помогают нам оставаться с вами на связи<br><br>Поскольку Telegram работает нестабильно, мы сделали приложение, в котором можно без ограничений читать все наши каналы. Его можно скачать на телефон или компьютер и продолжать следить за нашими публикациями в удобном формате.<br><br>▫️Чтобы установить приложение, перейдите <a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">по ссылке</a> и сохраните его на главный экран своего устройства. В карточке к посту подготовили пошаговую инструкцию, как это сделать на IOS и Android. <br><br><a href=\"https://pgplaw.github.io/pgp_official/\" target=\"_blank\" rel=\"noopener noreferrer\">Установить приложение</a> 👉",
+      "views": 2120,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-employment/media/posts/thumbs/1954-1-e911f70d064b-v8.jpg",
+          "feed_url": "data/channels/pg-employment/media/posts/1954-1-e911f70d064b-v8.jpg",
+          "full_url": "data/channels/pg-employment/media/posts/1954-1-e911f70d064b-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 668,
+          "full_width": 800,
+          "full_height": 668,
+          "source_width": 800,
+          "source_height": 668,
+          "source_url": "https://cdn4.telesco.pe/file/XeVU6T0b0T6NkgNXMI0SI7lUXA1tydUuPKLqMXpt0Wvl9KjyNbOXr6bccP0oEci5RhxfzEm5B98jhsKfNCPzRO4uAzTMnb8rJkxE27G0KQ2bf91PHj-f4mQ9v8KBW9_ytezuvbcksHjZRe8vbwCQJxyE7i8DL_CniYKUXc88QnyXErnL4muQfa6nyQxKibRT8c184aJFRJexqyTF-wb2Ij6r1KYXEQF1uS1B5P9TebD7HYKheogSbw5PehSDIr8IBJet8O06e9pGRDKS23mLfyefW6pPY2t8Qtr118nMFl3b0m9wCOtyxloA4SJS0Svf4RFrXFCOBMJOB-uYSlW5UA.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pg-employment/media/posts/thumbs/1954-2-b981460f2ac9-v8.jpg",
+          "feed_url": "data/channels/pg-employment/media/posts/1954-2-b981460f2ac9-v8.jpg",
+          "full_url": "data/channels/pg-employment/media/posts/1954-2-b981460f2ac9-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/RMu7XmT3sO20EvuJ7Iv6VlaNrO_cplHig6t_p4me3lVLiI27Aq6-NjKyn0fHkyWyBKS9srL--IUqGXtyx2yTF0Kye-SN6GiLWw6_EqcOPvZRM2kKfCZnzQSW2eVjjtfApHpVBT2PtRHcXH0cbP0foBx5lP-wbr6zlSKCjf_qtxsqqc9eY2W8OagqskFPu-jOFsOZBUsXIvUmDdsRv9stef8snrQHPSE11yWE5N9iEVQUIq_ZM5XfoeZv09k3OgwP6BlAqnhv_M9yM1ouS0Qk05UwFvrp_ligMGw6YZ-lZpySh3U10Wuq1QCYVv0mc0sPp81GON2Q8OEcNsaJ92fWaA.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pg-employment/media/posts/thumbs/1954-3-1395bf12a428-v8.jpg",
+          "feed_url": "data/channels/pg-employment/media/posts/1954-3-1395bf12a428-v8.jpg",
+          "full_url": "data/channels/pg-employment/media/posts/1954-3-1395bf12a428-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 533,
+          "full_width": 800,
+          "full_height": 533,
+          "source_width": 800,
+          "source_height": 533,
+          "source_url": "https://cdn4.telesco.pe/file/PDgZC_jT4Si81ufEXSFkTzPxy4AjgwlXJLsarT5xgef_JXWhLDvMjvl9YWWWbk-yUFYO5hUe19Ej6-85xlMhU0AjXuFEjgA2gagInCPCKMLvRpFW8rNyDbfEDHpMnaoLNCg4bMnLaO9StqmuAjuOVpuO1KZMs-4ONcFxPwkpyZHFhqnGKcK8OvBOsZu08raa1YvSJHyyGl1n1om_75E5i10X6_uy5B4o7bkK_Innp1JfADrtmlX9tIe9UhzwjQk9BRAP0F2MoviWgMR6B6AMqnbcwmKOaX5Vq_TUm3gV8VKcnGjOuRm4jYJGwLBW_gJ7b9uULvQ5osj7l_PSTfdEpA.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgEmployment/1954",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1769",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      },
+      "reply_to": null
+    },
     {
       "id": 1952,
       "date": "2026-03-19T07:31:52+00:00",
