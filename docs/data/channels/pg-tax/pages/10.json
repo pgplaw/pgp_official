@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-26T09:31:30.531543+00:00",
-  "build_id": "9d285121320d",
+  "generated_at": "2026-06-26T12:03:17.013002+00:00",
+  "build_id": "f3179ec026cc",
   "pagination": {
     "page": 10,
     "page_size": 16,
-    "total_posts": 154,
+    "total_posts": 153,
     "total_pages": 10
   },
   "posts": [
@@ -277,43 +277,6 @@
       "tg_url": "https://t.me/PG_Tax/2565",
       "forwarded_from": null,
       "reply_to": null
-    },
-    {
-      "id": 2564,
-      "date": "2026-03-26T11:04:15+00:00",
-      "text": "🎬 Новое видео! Изменения в камеральном налоговом контроле\n\nСергей Пепеляев и Сергей Разгулин, действительный государственный советник, обсуждают существенные изменения в налоговом кодексе конца 2025 года, которые расширили полномочия налоговых органов.\n\nЧто это означает на практике и как нужно скорректировать линию своего поведения, узнайте из видео:\n\n📱  ВКВидео \n▶️ RuTube \n📱 YouTube\n\nСтатья в журнале «НАЛОГОВЕД», выпуск №2, февраль 2026 г.\n\n#видеоинтервью_Пепеляев_Налоговед",
-      "text_html": "🎬 Новое видео! Изменения в камеральном налоговом контроле<br><br>Сергей Пепеляев и Сергей Разгулин, действительный государственный советник, обсуждают существенные изменения в налоговом кодексе конца 2025 года, которые расширили полномочия налоговых органов.<br><br>Что это означает на практике и как нужно скорректировать линию своего поведения, узнайте из видео:<br><br>📱  <a href=\"https://vkvideo.ru/video-227047542_456239400?sh=4\" target=\"_blank\" rel=\"noopener noreferrer\">ВКВидео</a> <br>▶️ <a href=\"https://rutube.ru/video/55deb33c8d93e2f65eac900430bd6e39/?r=wd\" target=\"_blank\" rel=\"noopener noreferrer\">RuTube</a> <br>📱 <a href=\"https://youtu.be/koWssw1PGQI?si=B_rCHahy2zkobE_N\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube</a><br><br><a href=\"https://e.nalogoved.ru/1174269\" target=\"_blank\" rel=\"noopener noreferrer\">Статья в журнале «НАЛОГОВЕД»</a>, выпуск №2, февраль 2026 г.<br><br>#видеоинтервью_Пепеляев_Налоговед",
-      "views": 1100,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2564",
-      "forwarded_from": null,
-      "reply_to": null,
-      "link_preview": {
-        "href": "https://rutube.ru/video/55deb33c8d93e2f65eac900430bd6e39/?r=wd",
-        "title": "Изменения в камеральном налоговом контроле. Сергей Разгулин в гостях у Сергея Пепеляева. Налоговед.",
-        "site_name": "RUTUBE",
-        "host": "rutube.ru",
-        "is_video": true,
-        "description": "Из ролика вы узнаете о революционных поправках в Налоговый кодекс. Теперь камеральную проверку вашей компании может проводить любая инспекция страны, а не только местная. Как не стать жертвой новых правил ФНС, куда…",
-        "image": {
-          "thumb_url": "data/channels/pg-tax/media/posts/link-previews/2564-link-preview-e3886ea4ccd4-v8.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/link-previews/2564-link-preview-e3886ea4ccd4-v8.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/link-previews/2564-link-preview-e3886ea4ccd4-v8.jpg",
-          "thumb_width": 640,
-          "thumb_height": 359,
-          "feed_width": 640,
-          "feed_height": 359,
-          "full_width": 640,
-          "full_height": 359,
-          "source_width": 640,
-          "source_height": 359,
-          "source_url": "https://pic.rtbcdn.ru/video/2026-03-04/fb/61/fb61bc1213f8e18e331e5e4ae3984ca0.jpg?size=l"
-        }
-      }
     }
   ]
 }
