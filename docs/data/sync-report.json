@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-01T02:08:56.482Z",
+  "generated_at": "2026-07-01T06:47:04.874Z",
   "success_count": 8,
   "failure_count": 0,
   "failure_channels": [],
@@ -12,7 +12,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 57860,
+      "duration_ms": 42114,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -69,7 +69,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 29949,
+      "duration_ms": 20400,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -92,7 +92,7 @@
         }
       },
       "archive_before": {
-        "total_bytes": 249996247,
+        "total_bytes": 249989478,
         "file_count": 2509,
         "media_bytes": 249745596,
         "media_files": 2506,
@@ -110,7 +110,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": -6769,
+        "total_bytes": 0,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -126,7 +126,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 76012,
+      "duration_ms": 52642,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -149,15 +149,6 @@
         }
       },
       "archive_before": {
-        "total_bytes": 1521222142,
-        "file_count": 11649,
-        "media_bytes": 1519747828,
-        "media_files": 11639,
-        "json_files": 10,
-        "page_json_files": 9,
-        "comment_json_files": 0
-      },
-      "archive_after": {
         "total_bytes": 1521209871,
         "file_count": 11649,
         "media_bytes": 1519747828,
@@ -166,11 +157,20 @@
         "page_json_files": 9,
         "comment_json_files": 0
       },
+      "archive_after": {
+        "total_bytes": 1521559338,
+        "file_count": 11652,
+        "media_bytes": 1520081066,
+        "media_files": 11642,
+        "json_files": 10,
+        "page_json_files": 9,
+        "comment_json_files": 0
+      },
       "archive_delta": {
-        "total_bytes": -12271,
-        "file_count": 0,
-        "media_bytes": 0,
-        "media_files": 0,
+        "total_bytes": 349467,
+        "file_count": 3,
+        "media_bytes": 333238,
+        "media_files": 3,
         "json_files": 0,
         "page_json_files": 0,
         "comment_json_files": 0
@@ -183,7 +183,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 62610,
+      "duration_ms": 40587,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -240,7 +240,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 33468,
+      "duration_ms": 17978,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -263,12 +263,12 @@
         }
       },
       "archive_before": {
-        "total_bytes": 359868574,
-        "file_count": 2680,
+        "total_bytes": 359855923,
+        "file_count": 2679,
         "media_bytes": 359565706,
         "media_files": 2677,
-        "json_files": 3,
-        "page_json_files": 2,
+        "json_files": 2,
+        "page_json_files": 1,
         "comment_json_files": 0
       },
       "archive_after": {
@@ -278,63 +278,6 @@
         "media_files": 2677,
         "json_files": 2,
         "page_json_files": 1,
-        "comment_json_files": 0
-      },
-      "archive_delta": {
-        "total_bytes": -12651,
-        "file_count": -1,
-        "media_bytes": 0,
-        "media_files": 0,
-        "json_files": -1,
-        "page_json_files": -1,
-        "comment_json_files": 0
-      }
-    },
-    {
-      "key": "pg-ecology",
-      "channel_username": "pgecology",
-      "channel_title": "PG Ecology | Экология",
-      "status": "success",
-      "exit_code": 0,
-      "signal": null,
-      "duration_ms": 26445,
-      "error": null,
-      "telegram_api_credentials": {
-        "api_id": false,
-        "api_hash": false,
-        "session_str": false,
-        "complete": false
-      },
-      "sync_meta": {
-        "telegram_api_credentials": {
-          "api_id": false,
-          "api_hash": false,
-          "session_str": false,
-          "complete": false
-        },
-        "poll_sync": {
-          "credentials_complete": false,
-          "selected_ids": [],
-          "fetched_ids": [],
-          "recovered_ids": []
-        }
-      },
-      "archive_before": {
-        "total_bytes": 167564214,
-        "file_count": 2021,
-        "media_bytes": 167269982,
-        "media_files": 2017,
-        "json_files": 4,
-        "page_json_files": 3,
-        "comment_json_files": 0
-      },
-      "archive_after": {
-        "total_bytes": 167564214,
-        "file_count": 2021,
-        "media_bytes": 167269982,
-        "media_files": 2017,
-        "json_files": 4,
-        "page_json_files": 3,
         "comment_json_files": 0
       },
       "archive_delta": {
@@ -348,13 +291,13 @@
       }
     },
     {
-      "key": "bankrotstvo-mustknow",
-      "channel_username": "bankrotstvo_mustknow",
-      "channel_title": "Банкротство | Взгляд эксперта",
+      "key": "pg-ecology",
+      "channel_username": "pgecology",
+      "channel_title": "PG Ecology | Экология",
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 34274,
+      "duration_ms": 16964,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -377,7 +320,64 @@
         }
       },
       "archive_before": {
-        "total_bytes": 573492225,
+        "total_bytes": 167564214,
+        "file_count": 2021,
+        "media_bytes": 167269982,
+        "media_files": 2017,
+        "json_files": 4,
+        "page_json_files": 3,
+        "comment_json_files": 0
+      },
+      "archive_after": {
+        "total_bytes": 167815483,
+        "file_count": 2024,
+        "media_bytes": 167506712,
+        "media_files": 2020,
+        "json_files": 4,
+        "page_json_files": 3,
+        "comment_json_files": 0
+      },
+      "archive_delta": {
+        "total_bytes": 251269,
+        "file_count": 3,
+        "media_bytes": 236730,
+        "media_files": 3,
+        "json_files": 0,
+        "page_json_files": 0,
+        "comment_json_files": 0
+      }
+    },
+    {
+      "key": "bankrotstvo-mustknow",
+      "channel_username": "bankrotstvo_mustknow",
+      "channel_title": "Банкротство | Взгляд эксперта",
+      "status": "success",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 25261,
+      "error": null,
+      "telegram_api_credentials": {
+        "api_id": false,
+        "api_hash": false,
+        "session_str": false,
+        "complete": false
+      },
+      "sync_meta": {
+        "telegram_api_credentials": {
+          "api_id": false,
+          "api_hash": false,
+          "session_str": false,
+          "complete": false
+        },
+        "poll_sync": {
+          "credentials_complete": false,
+          "selected_ids": [],
+          "fetched_ids": [],
+          "recovered_ids": []
+        }
+      },
+      "archive_before": {
+        "total_bytes": 573480081,
         "file_count": 4849,
         "media_bytes": 572891706,
         "media_files": 4844,
@@ -395,7 +395,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": -12144,
+        "total_bytes": 0,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -411,7 +411,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 23558,
+      "duration_ms": 14201,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -434,15 +434,6 @@
         }
       },
       "archive_before": {
-        "total_bytes": 49715843,
-        "file_count": 561,
-        "media_bytes": 49496791,
-        "media_files": 559,
-        "json_files": 2,
-        "page_json_files": 1,
-        "comment_json_files": 0
-      },
-      "archive_after": {
         "total_bytes": 49710391,
         "file_count": 561,
         "media_bytes": 49496791,
@@ -451,8 +442,17 @@
         "page_json_files": 1,
         "comment_json_files": 0
       },
+      "archive_after": {
+        "total_bytes": 49718064,
+        "file_count": 561,
+        "media_bytes": 49496791,
+        "media_files": 559,
+        "json_files": 2,
+        "page_json_files": 1,
+        "comment_json_files": 0
+      },
       "archive_delta": {
-        "total_bytes": -5452,
+        "total_bytes": 7673,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -463,10 +463,10 @@
     }
   ],
   "archive_totals": {
-    "total_bytes": 3995592480,
-    "media_bytes": 3991820551,
-    "file_count": 34635,
-    "media_files": 34601,
+    "total_bytes": 3996200889,
+    "media_bytes": 3992390519,
+    "file_count": 34641,
+    "media_files": 34607,
     "json_files": 34,
     "page_json_files": 26,
     "comment_json_files": 0
