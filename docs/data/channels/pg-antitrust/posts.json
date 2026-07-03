@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-03T15:30:54.826461+00:00",
-  "build_id": "968f29bf50f8",
+  "generated_at": "2026-07-03T17:00:04.343353+00:00",
+  "build_id": "943bc925ab13",
   "site": {
     "channel_username": "PgAntitrust",
     "channel_title": "PG Antitrust | Антимонопольное право",
@@ -142,15 +142,15 @@
         {
           "type": "Anonymous Quiz",
           "question": "При обжаловании решений антимонопольного органа в судебной системе нет кассационной инстанции.",
-          "total_voters": 29,
+          "total_voters": 30,
           "options": [
             {
               "text": "🇷🇺",
-              "percent": 7.0
+              "percent": 10.0
             },
             {
               "text": "🇨🇳",
-              "percent": 93.0
+              "percent": 90.0
             }
           ],
           "source_post_id": 1443,
