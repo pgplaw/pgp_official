@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-12T23:36:02.136698+00:00",
-  "build_id": "fc71aa7cc7b0",
+  "generated_at": "2026-07-13T04:52:58.478281+00:00",
+  "build_id": "15bc0ddaf7a5",
   "pagination": {
     "page": 3,
     "page_size": 16,
@@ -8,6 +8,36 @@
     "total_pages": 4
   },
   "posts": [
+    {
+      "id": 1344,
+      "date": "2026-05-25T04:00:01+00:00",
+      "text": "📣Подготовлены корректировки требований к автоматическим средствам измерения и учета показателей выбросов/сбросов загрязняющих веществ \n\nПроходит общественное обсуждение проект постановления Правительства РФ «О внесении изменений в постановление Правительства Российской Федерации от 29 мая 2025 г. № 778».\n\n#ПроектНПА",
+      "text_html": "📣Подготовлены корректировки требований к автоматическим средствам измерения и учета показателей выбросов/сбросов загрязняющих веществ <br><br>Проходит общественное обсуждение <a href=\"https://regulation.gov.ru/projects/167205/\" target=\"_blank\" rel=\"noopener noreferrer\">проект постановления Правительства РФ</a> «О внесении изменений в постановление Правительства Российской Федерации от 29 мая 2025 г. № 778».<br><br>#ПроектНПА",
+      "views": 358,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1344-1-390dd2298ab6-v8.jpg",
+          "feed_url": "data/channels/pg-ecology/media/posts/feed/1344-1-390dd2298ab6-v8.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1344-1-390dd2298ab6-v8.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/t1e23z8vLh07LU2LqMbvMBtRoQ1GYx8BkByYMoA8Uxj5dBBdWkpqTY4KFF16_FfMUuNOABmm08BMRcE3yUwqCBGd2XzQvHebyPQks9Ep6HfYIniQ8JJkWYPS_J3KdK2mEXOFM0NHSfB5wQa5qSR2PiInRuq1JDXgJt3QU6gLh0kKIkymp8Df1GZxdwOIDsfAJM_genHy96NETLl-YpDhoU12rX17KJ0MQnBo7sntdBwklXGDy0EaCQY_-ajBG-1vHby9dmtAW6nIq88rEJLEOur8zCC2APXP3zxPeRajNBI0mEcDH1lAUkLAPmLhb-w4ZsnOGzGy0tA3u3r9fdJWMQ.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgecology/1344",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 1343,
       "date": "2026-05-22T04:00:06+00:00",
@@ -400,36 +430,6 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/pgecology/1329",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1328,
-      "date": "2026-04-22T04:00:08+00:00",
-      "text": "📣 До 12 мая проходит обсуждение проект Постановления Правительства РФ об утверждении перечня областей применения и критериев отнесения технологий (технологические процессы, оборудование, технические способы, методы), использование которых может оказать воздействие на окружающую среду, к технологиям, проекты технической документации на которые являются объектом государственной экологической экспертизы.\n\n⏱️Предусмотрено действие документа с 01.03.2027 по 01.03.2033.\n\n#ПроектНПА",
-      "text_html": "📣 До 12 мая проходит обсуждение <a href=\"https://regulation.gov.ru/projects/167241/\" target=\"_blank\" rel=\"noopener noreferrer\">проект Постановления Правительства РФ</a> об утверждении перечня областей применения и критериев отнесения технологий (технологические процессы, оборудование, технические способы, методы), использование которых может оказать воздействие на окружающую среду, к технологиям, проекты технической документации на которые являются объектом государственной экологической экспертизы.<br><br>⏱️Предусмотрено действие документа с 01.03.2027 по 01.03.2033.<br><br>#ПроектНПА",
-      "views": 323,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1328-1-ae0a00c82219-v8.jpg",
-          "feed_url": "data/channels/pg-ecology/media/posts/feed/1328-1-ae0a00c82219-v8.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1328-1-ae0a00c82219-v8.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752,
-          "source_url": "https://cdn4.telesco.pe/file/IUmGa9q0RwsjXJZkMV-CxMPliH3B_GF0pU4I6tGcWlRkhOLDP2W3GezDbIJnjv6wWFotU3GhhGVWjJssQBMqId0YzqCXomQLDxtu9U-zw5iy3xLNaMKNh-Vev29AVefkUc5LmPbcPyymtv6gfF6fchUBgq2a293Ql9cNcC7O5GBnENMIL_noBU-tcIpTnGnA_j6NyVtlxEsXw_2sfp9alt874k-bJEj-b167LvhJUwUBvqinVowAWq4hrNqr99AMUmATA1wQ0GBx-nmXT4L0TfVjTshNfo3Cw0DU17RYDrFWtURkB1Fa7ZWXxRIFOc6r1Q1o8ONh40T0BDyw7l4sRw.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgecology/1328",
       "forwarded_from": null,
       "reply_to": null
     }
