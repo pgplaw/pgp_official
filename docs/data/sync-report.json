@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-13T20:46:56.090Z",
+  "generated_at": "2026-07-13T21:41:16.026Z",
   "success_count": 0,
   "failure_count": 8,
   "failure_channels": [
@@ -21,7 +21,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 9163,
+      "duration_ms": 9091,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -65,7 +65,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 8866,
+      "duration_ms": 8798,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -109,7 +109,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 8889,
+      "duration_ms": 8768,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -153,7 +153,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 8700,
+      "duration_ms": 8758,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -197,7 +197,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 8701,
+      "duration_ms": 8743,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -241,7 +241,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 8727,
+      "duration_ms": 8755,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -285,7 +285,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 9014,
+      "duration_ms": 8761,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -329,7 +329,7 @@
       "status": "failed",
       "exit_code": 1,
       "signal": null,
-      "duration_ms": 8736,
+      "duration_ms": 8718,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
