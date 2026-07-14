@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T13:47:08.226072+00:00",
+  "generated_at": "2026-07-14T15:14:11.538338+00:00",
   "build_id": "aea94b938c7c",
   "pagination": {
     "page": 4,
@@ -130,8 +130,10 @@
       "videos": [],
       "tg_url": "https://t.me/pgp_official/1848",
       "forwarded_from": {
-        "source_url": "https://telegram.me/bankrotstvo_mustknow/502",
-        "channel_url": "https://telegram.me/bankrotstvo_mustknow/502"
+        "source_url": "https://t.me/bankrotstvo_mustknow/502",
+        "channel_url": "https://t.me/s/bankrotstvo_mustknow",
+        "channel_username": "bankrotstvo_mustknow",
+        "channel_title": "Банкротство | Взгляд эксперта"
       },
       "reply_to": null
     },
@@ -283,8 +285,10 @@
       "videos": [],
       "tg_url": "https://t.me/pgp_official/1843",
       "forwarded_from": {
-        "source_url": "https://telegram.me/pgEmployment/1978",
-        "channel_url": "https://telegram.me/pgEmployment/1978"
+        "source_url": "https://t.me/pgEmployment/1978",
+        "channel_url": "https://t.me/s/pgEmployment",
+        "channel_username": "pgEmployment",
+        "channel_title": "PG Employment | Трудовое право"
       },
       "reply_to": null
     },
@@ -391,8 +395,10 @@
       "videos": [],
       "tg_url": "https://t.me/pgp_official/1839",
       "forwarded_from": {
-        "source_url": "https://telegram.me/pravosummit/1258",
-        "channel_url": "https://telegram.me/pravosummit/1258"
+        "source_url": "https://t.me/pravosummit/1258",
+        "channel_url": "https://t.me/s/pravosummit",
+        "channel_username": "pravosummit",
+        "channel_title": "Петербургский Правовой Саммит"
       },
       "reply_to": null
     },
@@ -424,8 +430,10 @@
       "videos": [],
       "tg_url": "https://t.me/pgp_official/1838",
       "forwarded_from": {
-        "source_url": "https://telegram.me/PgAntitrust/1410",
-        "channel_url": "https://telegram.me/PgAntitrust/1410"
+        "source_url": "https://t.me/PgAntitrust/1410",
+        "channel_url": "https://t.me/s/PgAntitrust",
+        "channel_username": "PgAntitrust",
+        "channel_title": "PG Antitrust | Антимонопольное право"
       },
       "reply_to": null
     },
@@ -497,8 +505,10 @@
       "videos": [],
       "tg_url": "https://t.me/pgp_official/1835",
       "forwarded_from": {
-        "source_url": "https://telegram.me/PG_Tax/2661",
-        "channel_url": "https://telegram.me/PG_Tax/2661"
+        "source_url": "https://t.me/PG_Tax/2661",
+        "channel_url": "https://t.me/s/PG_Tax",
+        "channel_username": "PG_Tax",
+        "channel_title": "PG Tax | Налоги"
       },
       "reply_to": null
     },
@@ -552,8 +562,10 @@
       "videos": [],
       "tg_url": "https://t.me/pgp_official/1832",
       "forwarded_from": {
-        "source_url": "https://telegram.me/PgAntitrust/1407",
-        "channel_url": "https://telegram.me/PgAntitrust/1407"
+        "source_url": "https://t.me/PgAntitrust/1407",
+        "channel_url": "https://t.me/s/PgAntitrust",
+        "channel_username": "PgAntitrust",
+        "channel_title": "PG Antitrust | Антимонопольное право"
       },
       "reply_to": null
     }
