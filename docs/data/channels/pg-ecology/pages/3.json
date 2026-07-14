@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T13:49:21.550050+00:00",
+  "generated_at": "2026-07-14T15:16:52.368672+00:00",
   "build_id": "15bc0ddaf7a5",
   "pagination": {
     "page": 3,
@@ -231,8 +231,10 @@
       "videos": [],
       "tg_url": "https://t.me/pgecology/1337",
       "forwarded_from": {
-        "source_url": "https://telegram.me/pgp_official/1827",
-        "channel_url": "https://telegram.me/pgp_official/1827"
+        "source_url": "https://t.me/pgp_official/1827",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
       },
       "reply_to": null
     },
