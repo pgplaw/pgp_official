@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { test, expect } = require('@playwright/test');
 const {
+  findMirroredRoundVideoPost,
   waitForFeedReady,
   clickLoadMoreIfVisible,
   openFirstViewerFromFeed,
@@ -791,11 +792,12 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('#round-video-square-hint-host-desktop .post-card__media video')).toHaveCount(0);
   });
 
-  test('opens actual bankrotstvo round-video viewer on desktop without fallback', async ({ page }) => {
-    await page.goto('/?channel=bankrotstvo-mustknow#post-444');
+  test('opens an actual mirrored round-video viewer on desktop without fallback', async ({ page }) => {
+    const { channelKey, postId } = findMirroredRoundVideoPost({ requirePaged: true });
+    await page.goto(`/?channel=${encodeURIComponent(channelKey)}#post-${postId}`);
     await waitForFeedReady(page);
 
-    const card = page.locator('#post-444');
+    const card = page.locator(`#post-${postId}`);
     await expect(card).toBeVisible();
     await card.locator('.media-trigger').click();
     await expect(page.locator('#viewer')).toBeVisible();
@@ -807,11 +809,12 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('#viewer video')).toBeVisible();
   });
 
-  test('renders paged pg-tax round-video posts as round previews after deep-link loading', async ({ page }) => {
-    await page.goto('/?channel=pg-tax#post-2558');
+  test('renders a paged mirrored round-video post as a round preview after deep-link loading', async ({ page }) => {
+    const { channelKey, postId } = findMirroredRoundVideoPost({ requirePaged: true });
+    await page.goto(`/?channel=${encodeURIComponent(channelKey)}#post-${postId}`);
     await waitForFeedReady(page);
 
-    const card = page.locator('#post-2558');
+    const card = page.locator(`#post-${postId}`);
     await expect(card).toBeVisible();
     await expect(card.locator('.media-video-note img, .media-video-note__placeholder')).toBeVisible();
     await expect(card.locator('.post-card__media video')).toHaveCount(0);

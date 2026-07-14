@@ -1,5 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const {
+  findMirroredRoundVideoPost,
   waitForFeedReady,
   openFirstViewerFromFeed,
 } = require('./helpers');
@@ -152,11 +153,12 @@ test.describe('Mobile smoke', () => {
     expect(titleBox.y).toBeLessThan(mediaBox.y);
   });
 
-  test('renders actual bankrotstvo round-video post with header above media on mobile', async ({ page }) => {
-    await page.goto('/?channel=bankrotstvo-mustknow#post-444');
+  test('renders an actual mirrored round-video post with header above media on mobile', async ({ page }) => {
+    const { channelKey, postId } = findMirroredRoundVideoPost({ requirePaged: true });
+    await page.goto(`/?channel=${encodeURIComponent(channelKey)}#post-${postId}`);
     await waitForFeedReady(page);
 
-    const card = page.locator('#post-444');
+    const card = page.locator(`#post-${postId}`);
     await expect(card).toBeVisible();
     await card.scrollIntoViewIfNeeded();
     await expect(card.locator('.post-card__title')).toHaveText('Видео-пост');
@@ -175,11 +177,12 @@ test.describe('Mobile smoke', () => {
     expect(headPrecedesMedia).toBe(true);
   });
 
-  test('opens actual bankrotstvo round-video viewer without endless pending state on mobile', async ({ page }) => {
-    await page.goto('/?channel=bankrotstvo-mustknow#post-444');
+  test('opens an actual mirrored round-video viewer without endless pending state on mobile', async ({ page }) => {
+    const { channelKey, postId } = findMirroredRoundVideoPost({ requirePaged: true });
+    await page.goto(`/?channel=${encodeURIComponent(channelKey)}#post-${postId}`);
     await waitForFeedReady(page);
 
-    const card = page.locator('#post-444');
+    const card = page.locator(`#post-${postId}`);
     await expect(card).toBeVisible();
     await card.locator('.media-trigger').click();
     await expect(page.locator('#viewer')).toBeVisible();
