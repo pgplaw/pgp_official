@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T13:49:01.228949+00:00",
+  "generated_at": "2026-07-14T15:16:29.831494+00:00",
   "build_id": "3f725653c697",
   "site": {
     "channel_username": "InvestmentLaw",
@@ -82,8 +82,10 @@
       "videos": [],
       "tg_url": "https://t.me/InvestmentLaw/1125",
       "forwarded_from": {
-        "source_url": "https://telegram.me/PG_RealEstate/251",
-        "channel_url": "https://telegram.me/PG_RealEstate/251"
+        "source_url": "https://t.me/PG_RealEstate/251",
+        "channel_url": "https://t.me/s/PG_RealEstate",
+        "channel_username": "PG_RealEstate",
+        "channel_title": "PG Real Estate | Недвижимость"
       },
       "reply_to": null
     },
