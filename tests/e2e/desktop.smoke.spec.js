@@ -495,7 +495,7 @@ test.describe('Desktop smoke', () => {
       build_id: 'fresh-build',
     };
 
-    await page.route('**/data/channels/investment-law/posts.json', async (route) => {
+    await page.route('**/data/channels/investment-law/posts.json**', async (route) => {
       await route.fulfill({
         status: 200,
         contentType: 'application/json',
@@ -820,6 +820,33 @@ test.describe('Desktop smoke', () => {
 
 test.describe('Desktop PWA smoke', () => {
   test.use({ serviceWorkers: 'allow' });
+
+  test('refreshes the active feed on startup and when the app returns from the background', async ({ page }) => {
+    const feedRequests = [];
+    page.on('request', (request) => {
+      const url = new URL(request.url());
+      if (url.pathname.endsWith('/data/channels/pgp-official/posts.json')) {
+        feedRequests.push(url.toString());
+      }
+    });
+
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+    await expect.poll(() => feedRequests.length).toBeGreaterThanOrEqual(1);
+    expect(new URL(feedRequests[0]).searchParams.has('t')).toBe(true);
+
+    const requestCountBeforeResume = feedRequests.length;
+    await page.evaluate(() => {
+      document.dispatchEvent(new Event('freeze'));
+      document.dispatchEvent(new Event('resume'));
+      window.dispatchEvent(new PageTransitionEvent('pagehide', { persisted: true }));
+      window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true }));
+      window.dispatchEvent(new Event('online'));
+    });
+
+    await expect.poll(() => feedRequests.length).toBe(requestCountBeforeResume + 1);
+    expect(new URL(feedRequests.at(-1)).searchParams.has('t')).toBe(true);
+  });
 
   test('loads more posts when the installed-app service worker controls the page', async ({ page }) => {
     await page.goto('/?channel=pg-tax');

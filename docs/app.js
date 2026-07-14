@@ -14,6 +14,7 @@ const CHANNEL_DESKTOP_CONTENT_FADE_OUT_MS = 150;
 const CHANNEL_DESKTOP_CONTENT_FADE_IN_DELAY_MS = 18;
 const VIEWER_TRANSITION_MS = 360;
 const FEED_CACHE_MAX_ENTRIES = 6;
+const APP_LIFECYCLE_REFRESH_DEDUP_MS = 1500;
 const SCROLL_TOP_VISIBILITY_THRESHOLD_MIN = 360;
 const SCROLL_TOP_VISIBILITY_THRESHOLD_MAX = 720;
 const POST_ANCHOR_GAP_DESKTOP = 10;
@@ -37,6 +38,9 @@ const state = {
   channelFeedPrefetchPromises: new Map(),
   channelFeedPrefetchHandle: null,
   activeFeedManual: false,
+  activeFeedRefreshPromise: null,
+  appWasHidden: document.visibilityState === 'hidden',
+  lastLifecycleRefreshAt: 0,
   viewerItems: [],
   viewerIndex: 0,
   mediaRegistry: {},
@@ -4119,6 +4123,49 @@ async function loadFeed(channelKey, force = false) {
   }
 }
 
+function refreshActiveFeed() {
+  if (!state.activeChannelKey) {
+    return Promise.resolve();
+  }
+
+  if (state.activeFeedRefreshPromise) {
+    return state.activeFeedRefreshPromise;
+  }
+
+  const refreshPromise = loadFeed(state.activeChannelKey, true).finally(() => {
+    if (state.activeFeedRefreshPromise === refreshPromise) {
+      state.activeFeedRefreshPromise = null;
+    }
+  });
+  state.activeFeedRefreshPromise = refreshPromise;
+  return refreshPromise;
+}
+
+function refreshFeedForAppLifecycle() {
+  if (!state.catalog || !state.activeChannelKey) return;
+
+  const now = Date.now();
+  if (now - state.lastLifecycleRefreshAt < APP_LIFECYCLE_REFRESH_DEDUP_MS) {
+    return;
+  }
+
+  state.lastLifecycleRefreshAt = now;
+  cancelChannelFeedPrefetch();
+  invalidateFeedPayloadCache();
+  void refreshActiveFeed();
+}
+
+function handleAppVisibilityChange() {
+  if (document.visibilityState === 'hidden') {
+    state.appWasHidden = true;
+    return;
+  }
+
+  if (!state.appWasHidden) return;
+  state.appWasHidden = false;
+  refreshFeedForAppLifecycle();
+}
+
 async function switchChannel(channelKey, { replace = false, force = false, scrollToTop = false, prefetchedFeedPromise = null, fastTransition = false } = {}) {
   const resolvedChannelKey = resolveChannelKey(channelKey);
   if (!resolvedChannelKey) return;
@@ -4192,13 +4239,16 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
   }
 }
 
-async function loadCatalog() {
+async function loadCatalog({ force = false } = {}) {
   elements.loadingState.classList.remove('hidden');
   elements.emptyState.classList.add('hidden');
   elements.errorState.classList.add('hidden');
 
   try {
-    const response = await fetch(buildCatalogUrl(), getJsonFetchOptions());
+    const response = await fetch(
+      buildCatalogUrl({ manual: force }),
+      getJsonFetchOptions({ manual: force })
+    );
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     state.catalog = await response.json();
@@ -4214,7 +4264,7 @@ async function loadCatalog() {
       updateChannelUrl(initialChannelKey, { replace: true });
     }
 
-    await loadFeed(initialChannelKey);
+    await loadFeed(initialChannelKey, force);
     scheduleChannelCarouselAutotest();
   } catch (error) {
     elements.loadingState.classList.add('hidden');
@@ -4254,10 +4304,7 @@ elements.channelMenu.addEventListener('click', (event) => {
 });
 
 elements.refreshButton.addEventListener('click', () => {
-  if (state.activeChannelKey) {
-    invalidateFeedPayloadCache(state.activeChannelKey);
-    void loadFeed(state.activeChannelKey, true);
-  }
+  void refreshActiveFeed();
 });
 
 if (elements.scrollTopButton) {
@@ -4308,6 +4355,27 @@ window.addEventListener('hashchange', () => {
   void handleRoute();
 });
 window.addEventListener('popstate', handleLocationChange);
+document.addEventListener('visibilitychange', handleAppVisibilityChange);
+document.addEventListener('freeze', () => {
+  state.appWasHidden = true;
+});
+document.addEventListener('resume', () => {
+  if (document.visibilityState === 'hidden') {
+    state.appWasHidden = true;
+    return;
+  }
+  state.appWasHidden = false;
+  refreshFeedForAppLifecycle();
+});
+window.addEventListener('pagehide', () => {
+  state.appWasHidden = true;
+});
+window.addEventListener('pageshow', (event) => {
+  if (!event.persisted && !state.appWasHidden) return;
+  state.appWasHidden = false;
+  refreshFeedForAppLifecycle();
+});
+window.addEventListener('online', refreshFeedForAppLifecycle);
 window.addEventListener('beforeinstallprompt', (event) => {
   event.preventDefault();
   state.deferredInstallPrompt = event;
@@ -4346,6 +4414,6 @@ setupChannelMenuWheelScroll();
 setupChannelCarouselInteractions();
 attachCopyInteractions();
 syncPostAnchorOffset();
-loadCatalog();
+loadCatalog({ force: true });
 updateInstallButtonState();
 queueScrollTopButtonVisibilitySync();
