@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-14T13:49:54.174624+00:00",
+  "generated_at": "2026-07-14T15:17:19.721238+00:00",
   "build_id": "a8684efc394e",
   "pagination": {
     "page": 4,
@@ -126,8 +126,10 @@
       "videos": [],
       "tg_url": "https://t.me/bankrotstvo_mustknow/481",
       "forwarded_from": {
-        "source_url": "https://telegram.me/pgp_official/1817",
-        "channel_url": "https://telegram.me/pgp_official/1817"
+        "source_url": "https://t.me/pgp_official/1817",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
       },
       "reply_to": null
     },
