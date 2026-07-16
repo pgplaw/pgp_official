@@ -1887,7 +1887,8 @@ function bindTelegramDeepLinks(root) {
     if (!isTelegramWebUrl(anchor.getAttribute('href') || anchor.href)) return;
 
     const webHref = anchor.href;
-    const mirrorTarget = resolveMirroredTelegramPostLink(webHref);
+    const forceExternal = anchor.dataset.telegramExternal === 'true';
+    const mirrorTarget = forceExternal ? null : resolveMirroredTelegramPostLink(webHref);
     if (mirrorTarget) {
       anchor.dataset.telegramBound = 'true';
       anchor.dataset.telegramWebHref = webHref;
@@ -3226,7 +3227,7 @@ function renderPostCard(post) {
       </div>
       <div class="post-card__links">
         ${shouldShowComments ? `<button class="button button--ghost comments-trigger" type="button" data-post-id="${post.id}">${commentsLabel}</button>` : ''}
-        <a class="post-card__link" href="${post.tg_url}" target="_blank" rel="noopener">Открыть в Telegram</a>
+        <a class="post-card__link" href="${escapeHtml(post.tg_url)}" target="_blank" rel="noopener" data-telegram-external="true">Открыть в Telegram</a>
       </div>
     </div>
   `;

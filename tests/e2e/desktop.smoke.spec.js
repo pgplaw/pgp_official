@@ -230,6 +230,26 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator(`#post-${targetPostId}`)).toHaveClass(/post-card--targeted/);
   });
 
+  test('keeps the post footer action pointed at the exact Telegram post', async ({ page }) => {
+    const feedPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pgp-official', 'posts.json');
+    const feed = JSON.parse(fs.readFileSync(feedPath, 'utf8'));
+    const post = (feed.posts || []).find((entry) => entry?.id && entry?.tg_url);
+    expect(post).toBeTruthy();
+    const telegramPath = new URL(post.tg_url).pathname.split('/').filter(Boolean);
+    if (telegramPath[0] === 's') telegramPath.shift();
+    const expectedAppHref = `tg://resolve?domain=${encodeURIComponent(telegramPath[0])}&post=${encodeURIComponent(telegramPath[1])}`;
+
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const link = page.locator(`#post-${post.id} .post-card__link`);
+    await expect(link).toHaveAttribute('href', post.tg_url);
+    await expect(link).toHaveAttribute('data-telegram-external', 'true');
+    await expect(link).toHaveAttribute('data-telegram-web-href', post.tg_url);
+    await expect(link).toHaveAttribute('data-telegram-app-href', expectedAppHref);
+    await expect(link).not.toHaveAttribute('data-telegram-mirror-href', /.+/);
+  });
+
   test('forces a fresh mirrored channel feed before falling back from a telegram post link', async ({ page }) => {
     const targetFeedPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pg-tax', 'posts.json');
     const freshFeed = JSON.parse(fs.readFileSync(targetFeedPath, 'utf8'));
