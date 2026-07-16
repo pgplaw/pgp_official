@@ -6,12 +6,39 @@ const {
 } = require('./helpers');
 
 test.describe('Mobile smoke', () => {
+  test('keeps all four contact actions in one row on narrow in-app viewports', async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 800 });
+    await page.goto('/');
+
+    const contactBar = page.locator('.contact-bar');
+    const contactItems = contactBar.locator('.contact-bar__item');
+    await expect(contactItems).toHaveCount(4);
+
+    const [barBox, itemBoxes] = await Promise.all([
+      contactBar.boundingBox(),
+      contactItems.evaluateAll((elements) => elements.map((element) => {
+        const rect = element.getBoundingClientRect();
+        return { left: rect.left, right: rect.right, top: rect.top, width: rect.width };
+      })),
+    ]);
+
+    expect(barBox).not.toBeNull();
+    expect(itemBoxes.every((box) => Math.abs(box.top - itemBoxes[0].top) <= 1)).toBe(true);
+    expect(itemBoxes[0].left).toBeGreaterThanOrEqual(barBox.x - 1);
+    expect(itemBoxes[3].right).toBeLessThanOrEqual(barBox.x + barBox.width + 1);
+    expect(itemBoxes.every((box) => box.width >= 60)).toBe(true);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  });
+
   test('renders the ecosystem as a responsive mobile page without overflow', async ({ page }) => {
     await page.goto('/ecosystem.html');
 
     await expect(page.locator('.ecosystem-card')).toHaveCount(4);
     await expect(page.locator('.ecosystem-card__head').first()).toHaveCSS('justify-content', 'center');
     await expect(page.locator('.ecosystem-card__head').first()).toHaveCSS('text-align', 'center');
+    await expect(page.locator('.video-platforms > span')).toHaveCSS('text-align', 'center');
+    await expect(page.locator('.ecosystem-footer')).toHaveCSS('align-items', 'center');
+    await expect(page.locator('.ecosystem-footer')).toHaveCSS('text-align', 'center');
     await expect(page.locator('.ecosystem-intro h1')).toHaveCSS('display', 'grid');
     await expect(page.locator('.video-previews > a')).toHaveCount(2);
     await expect(page.locator('.social-links > a')).toHaveCount(2);

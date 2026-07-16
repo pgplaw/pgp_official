@@ -695,6 +695,10 @@
     font-size: 0.8rem;
   }
 
+  .video-platforms > span {
+    text-align: center;
+  }
+
   .video-platforms__links {
     gap: 8px;
   }
@@ -785,12 +789,13 @@
   }
 
   .ecosystem-footer {
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     gap: 12px;
     margin-top: 20px;
     padding: 12px 4px;
     font-size: 0.8rem;
+    text-align: center;
   }
 }
 

@@ -2775,26 +2775,28 @@ label,
   }
 
   .contact-bar {
-    gap: 10px;
+    width: 100%;
+    gap: clamp(4px, 2vw, 8px);
     margin-top: 12px;
     margin-bottom: 14px;
   }
 
   .contact-bar__item {
-    min-height: 58px;
+    width: 100%;
+    min-height: 52px;
     gap: 0;
-    padding: 12px;
-    border-radius: 18px;
+    padding: 8px 4px;
+    border-radius: 15px;
   }
 
   .contact-bar__icon {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
 
   .contact-bar__icon svg {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
 
   .site-footer {
