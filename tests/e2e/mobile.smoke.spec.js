@@ -36,6 +36,8 @@ test.describe('Mobile smoke', () => {
     await expect(page.locator('.ecosystem-card')).toHaveCount(4);
     await expect(page.locator('.ecosystem-card__head').first()).toHaveCSS('justify-content', 'center');
     await expect(page.locator('.ecosystem-card__head').first()).toHaveCSS('text-align', 'center');
+    await expect(page.locator('.ecosystem-card--video .ecosystem-card__head')).toHaveCSS('border-bottom-style', 'none');
+    await expect(page.locator('.ecosystem-card--social .ecosystem-card__head')).toHaveCSS('border-bottom-style', 'none');
     await expect(page.locator('.video-platforms > span')).toHaveCSS('text-align', 'center');
     await expect(page.locator('.ecosystem-footer')).toHaveCSS('align-items', 'center');
     await expect(page.locator('.ecosystem-footer')).toHaveCSS('text-align', 'center');
@@ -83,6 +85,18 @@ test.describe('Mobile smoke', () => {
       (element) => getComputedStyle(element).gridTemplateColumns.split(' ').length
     );
     expect(mobileKnowledgeColumns).toBe(2);
+    const [knowledgeTilesBox, mobileKnowledgeTileBoxes] = await Promise.all([
+      page.locator('.knowledge-tiles').boundingBox(),
+      knowledgeTiles.evaluateAll((tiles) => tiles.map((tile) => {
+        const rect = tile.getBoundingClientRect();
+        return { x: rect.x, width: rect.width };
+      })),
+    ]);
+    expect(knowledgeTilesBox).not.toBeNull();
+    expect(Math.abs(mobileKnowledgeTileBoxes[0].width - mobileKnowledgeTileBoxes[2].width)).toBeLessThanOrEqual(1);
+    const knowledgeTilesCenter = knowledgeTilesBox.x + (knowledgeTilesBox.width / 2);
+    const thirdKnowledgeTileCenter = mobileKnowledgeTileBoxes[2].x + (mobileKnowledgeTileBoxes[2].width / 2);
+    expect(Math.abs(knowledgeTilesCenter - thirdKnowledgeTileCenter)).toBeLessThanOrEqual(1);
     const touchTargets = page.locator('.video-platforms__links a, .social-links > a, .ecosystem-home-button');
     const touchTargetHeights = await touchTargets.evaluateAll((elements) => elements.map((element) => element.getBoundingClientRect().height));
     expect(touchTargetHeights.every((height) => height >= 44)).toBe(true);
@@ -93,6 +107,10 @@ test.describe('Mobile smoke', () => {
       (element) => getComputedStyle(element).gridTemplateColumns.split(' ').length
     );
     expect(narrowKnowledgeColumns).toBe(1);
+    const narrowKnowledgeTileWidths = await knowledgeTiles.evaluateAll((tiles) => tiles.map(
+      (tile) => tile.getBoundingClientRect().width
+    ));
+    expect(narrowKnowledgeTileWidths.every((width) => Math.abs(width - narrowKnowledgeTileWidths[0]) <= 1)).toBe(true);
     const narrowVideoColumns = await page.locator('.video-previews').evaluate(
       (element) => getComputedStyle(element).gridTemplateColumns.split(' ').length
     );

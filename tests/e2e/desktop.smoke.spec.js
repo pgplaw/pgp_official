@@ -76,6 +76,9 @@ test.describe('Desktop smoke', () => {
       (image) => image.getAttribute('src').endsWith('.svg') && image.complete && image.naturalWidth > 0
     ))).toBe(true);
     const newsletterButton = page.locator('.ecosystem-card--newsletter .ecosystem-button');
+    const newsletterButtonBox = await newsletterButton.boundingBox();
+    expect(newsletterButtonBox).not.toBeNull();
+    expect(Math.abs(newsletterCopyBox.width - newsletterButtonBox.width)).toBeLessThanOrEqual(1);
     await expect(newsletterButton).toHaveCSS('background-color', 'rgb(145, 39, 141)');
     await newsletterButton.hover();
     await expect(newsletterButton).toHaveCSS('background-color', 'rgb(167, 60, 162)');
@@ -123,6 +126,7 @@ test.describe('Desktop smoke', () => {
     const knowledgeLayoutCenter = knowledgeLayoutBox.x + (knowledgeLayoutBox.width / 2);
     const knowledgeButtonCenter = knowledgeButtonBox.x + (knowledgeButtonBox.width / 2);
     expect(Math.abs(knowledgeLayoutCenter - knowledgeButtonCenter)).toBeLessThanOrEqual(1);
+    expect(Math.abs(knowledgeLayoutBox.width - knowledgeButtonBox.width)).toBeLessThanOrEqual(1);
     const homeButton = page.locator('.ecosystem-home-button');
     await expect(homeButton).toHaveText('Вернуться на Главную');
     await expect(homeButton).toHaveAttribute('href', './');
@@ -136,6 +140,7 @@ test.describe('Desktop smoke', () => {
     expect(mainBox).not.toBeNull();
     expect(homeButtonBox).not.toBeNull();
     expect(footerBox).not.toBeNull();
+    expect(Math.abs(mainBox.width - homeButtonBox.width)).toBeLessThanOrEqual(1);
     expect(homeButtonBox.y).toBeGreaterThanOrEqual(mainBox.y + mainBox.height);
     expect(footerBox.y).toBeGreaterThanOrEqual(homeButtonBox.y + homeButtonBox.height);
 
