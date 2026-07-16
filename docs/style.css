@@ -866,7 +866,7 @@ label,
 
 .contact-bar {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
   margin-top: 18px;
   margin-bottom: 22px;
@@ -2529,7 +2529,7 @@ label,
   }
 
   .contact-bar {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
     margin-top: 14px;
     margin-bottom: 16px;

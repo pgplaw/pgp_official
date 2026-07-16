@@ -6,6 +6,65 @@ const {
 } = require('./helpers');
 
 test.describe('Mobile smoke', () => {
+  test('renders the ecosystem as a responsive mobile page without overflow', async ({ page }) => {
+    await page.goto('/ecosystem.html');
+
+    await expect(page.locator('.ecosystem-card')).toHaveCount(4);
+    await expect(page.locator('.ecosystem-card__head').first()).toHaveCSS('justify-content', 'center');
+    await expect(page.locator('.ecosystem-card__head').first()).toHaveCSS('text-align', 'center');
+    await expect(page.locator('.ecosystem-intro h1')).toHaveCSS('display', 'grid');
+    await expect(page.locator('.video-previews > a')).toHaveCount(2);
+    await expect(page.locator('.social-links > a')).toHaveCount(2);
+    await expect(page.locator('.knowledge-tiles > a')).toHaveCount(3);
+    await expect(page.locator('.ecosystem-home-button')).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+
+    const [newsletterHeadBox, firstFeatureBox, newsletterCopyBox, newsletterButtonBox] = await Promise.all([
+      page.locator('.ecosystem-card--newsletter .ecosystem-card__head').boundingBox(),
+      page.locator('.ecosystem-feature-list li').first().boundingBox(),
+      page.locator('.newsletter-copy').boundingBox(),
+      page.locator('.newsletter-copy .ecosystem-button').boundingBox(),
+    ]);
+    expect(newsletterHeadBox).not.toBeNull();
+    expect(firstFeatureBox).not.toBeNull();
+    expect(newsletterCopyBox).not.toBeNull();
+    expect(newsletterButtonBox).not.toBeNull();
+    expect(firstFeatureBox.y - (newsletterHeadBox.y + newsletterHeadBox.height)).toBeGreaterThanOrEqual(14);
+    const newsletterCopyCenter = newsletterCopyBox.x + (newsletterCopyBox.width / 2);
+    const newsletterButtonCenter = newsletterButtonBox.x + (newsletterButtonBox.width / 2);
+    expect(Math.abs(newsletterCopyCenter - newsletterButtonCenter)).toBeLessThanOrEqual(1);
+
+    const [logoBox, titleBox, brandBox] = await Promise.all([
+      page.locator('.ecosystem-intro__logo').boundingBox(),
+      page.locator('.ecosystem-intro h1 > span').boundingBox(),
+      page.locator('.ecosystem-intro__brand').boundingBox(),
+    ]);
+    expect(logoBox).not.toBeNull();
+    expect(titleBox).not.toBeNull();
+    expect(brandBox).not.toBeNull();
+    expect(logoBox.x).toBeLessThan(titleBox.x);
+    expect(Math.abs(titleBox.x - brandBox.x)).toBeLessThanOrEqual(1);
+
+    const mobileKnowledgeColumns = await page.locator('.knowledge-tiles').evaluate(
+      (element) => getComputedStyle(element).gridTemplateColumns.split(' ').length
+    );
+    expect(mobileKnowledgeColumns).toBe(2);
+    const touchTargets = page.locator('.video-platforms__links a, .social-links > a, .ecosystem-home-button');
+    const touchTargetHeights = await touchTargets.evaluateAll((elements) => elements.map((element) => element.getBoundingClientRect().height));
+    expect(touchTargetHeights.every((height) => height >= 44)).toBe(true);
+
+    await page.setViewportSize({ width: 320, height: 800 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    const narrowKnowledgeColumns = await page.locator('.knowledge-tiles').evaluate(
+      (element) => getComputedStyle(element).gridTemplateColumns.split(' ').length
+    );
+    expect(narrowKnowledgeColumns).toBe(1);
+    const narrowVideoColumns = await page.locator('.video-previews').evaluate(
+      (element) => getComputedStyle(element).gridTemplateColumns.split(' ').length
+    );
+    expect(narrowVideoColumns).toBe(1);
+  });
+
   test('switches channel from mobile carousel', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);

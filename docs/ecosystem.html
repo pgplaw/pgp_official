@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Экосистема | Пепеляев Групп</title>
+  <meta name="description" content="Рассылки, экспертные видео, социальные сети и база знаний Пепеляев Групп.">
+  <meta name="theme-color" content="#91278d">
+  <link rel="icon" href="data/channels/pgp-official/media/channel-avatar.jpg" sizes="320x320" type="image/jpeg">
+  <link rel="apple-touch-icon" href="data/channels/pgp-official/media/channel-avatar.jpg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ecosystem.css">
+  <script>
+    try {
+      const savedTheme = window.localStorage.getItem('theme');
+      const theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (_) {}
+  </script>
+</head>
+<body class="ecosystem-page">
+  <div class="ecosystem-shell">
+    <header class="ecosystem-intro">
+      <h1>
+        <img class="ecosystem-intro__logo" src="data/channels/pgp-official/media/channel-avatar.jpg" alt="">
+        <span>Экосистема</span>
+        <a class="ecosystem-intro__brand" href="https://www.pgplaw.ru/" target="_blank" rel="noopener noreferrer">Pepeliaev Group</a>
+      </h1>
+      <p>Профессиональная информация на одной странице</p>
+    </header>
+
+    <main class="ecosystem-grid">
+      <section class="ecosystem-card ecosystem-card--newsletter" aria-labelledby="newsletterTitle">
+        <div class="ecosystem-card__head">
+          <h2 id="newsletterTitle">Рассылки</h2>
+        </div>
+        <div class="newsletter-layout">
+          <div class="newsletter-copy">
+            <ul class="ecosystem-feature-list">
+              <li>
+                <img src="assets/ecosystem/bullet-events.png" alt="">
+                <span>Мероприятия</span>
+              </li>
+              <li>
+                <img src="assets/ecosystem/bullet-law.png" alt="">
+                <span>Изменения в законодательстве</span>
+              </li>
+              <li>
+                <img src="assets/ecosystem/bullet-languages.png" alt="">
+                <span>На русском и английском</span>
+              </li>
+            </ul>
+            <a class="ecosystem-button" href="https://www.pgplaw.ru/subscribe/" target="_blank" rel="noopener noreferrer">
+              <span>Подписаться</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+            </a>
+          </div>
+          <img class="newsletter-visual" src="assets/ecosystem/newsletter.png" alt="Пример экспертной рассылки Пепеляев Групп">
+        </div>
+      </section>
+
+      <section class="ecosystem-card ecosystem-card--video" aria-labelledby="videoTitle">
+        <div class="ecosystem-card__head">
+          <h2 id="videoTitle">Экспертные видео</h2>
+        </div>
+        <div class="video-content">
+          <div class="video-previews">
+            <a href="https://www.pgplaw.ru/analytics-and-brochures/video/subsidiarnaya-otvetstvennost-chto-uchest-v-2026/" target="_blank" rel="noopener noreferrer" aria-label="Субсидиарная ответственность: что учесть в 2026">
+              <img src="assets/ecosystem/video-bankruptcy.jpg" alt="Субсидиарная ответственность: что учесть в 2026">
+            </a>
+            <a href="https://www.pgplaw.ru/analytics-and-brochures/video/izmeneniya-v-kameralnom-nalogovom-kontrole/" target="_blank" rel="noopener noreferrer" aria-label="Изменения в камеральном налоговом контроле">
+              <img src="assets/ecosystem/video-tax.jpg" alt="Изменения в камеральном налоговом контроле">
+            </a>
+          </div>
+          <div class="video-platforms">
+            <span>Смотрите на площадках</span>
+            <div class="video-platforms__links">
+              <a href="https://www.youtube.com/channel/UCTI33e7sATSoEqzzZdZrXpA" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <img src="assets/ecosystem/youtube.png" alt="YouTube">
+              </a>
+              <a href="https://vkvideo.ru/@pg.video" target="_blank" rel="noopener noreferrer" aria-label="VK Видео">
+                <img src="assets/ecosystem/vk-video.png" alt="VK Видео">
+              </a>
+              <a href="https://rutube.ru/channel/44818639/" target="_blank" rel="noopener noreferrer" aria-label="Rutube">
+                <img src="assets/ecosystem/rutube.png" alt="Rutube">
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ecosystem-card ecosystem-card--social" aria-labelledby="socialTitle">
+        <div class="ecosystem-card__head">
+          <h2 id="socialTitle">Социальные сети</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://telegram.me/addlist/-vnU1mGmr0U1OTYy" target="_blank" rel="noopener noreferrer">
+            <img src="assets/ecosystem/telegram.svg" alt="">
+            <span class="social-links__copy">
+              <strong>Telegram</strong>
+              <small>8 тематических каналов</small>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </a>
+          <a href="https://max.ru/id7707301372_biz" target="_blank" rel="noopener noreferrer">
+            <img src="assets/ecosystem/max.svg" alt="">
+            <span class="social-links__copy">
+              <strong>Max</strong>
+              <small>Избранное</small>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </a>
+        </div>
+      </section>
+
+      <section class="ecosystem-card ecosystem-card--knowledge" aria-labelledby="knowledgeTitle">
+        <div class="ecosystem-card__head">
+          <h2 id="knowledgeTitle">База знаний</h2>
+        </div>
+        <div class="knowledge-layout">
+          <div class="knowledge-visual">
+            <img src="assets/ecosystem/knowledge-book-open.svg" alt="Открытая книга">
+            <p>Обзоры, алерты, статьи, видео, книги и журналы наших экспертов.</p>
+          </div>
+          <div class="knowledge-tiles">
+            <a href="https://www.pgplaw.ru/analytics-and-brochures/legislation/" target="_blank" rel="noopener noreferrer">
+              <strong>Обзоры</strong>
+              <small>Практика и законодательство</small>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+            </a>
+            <a href="https://www.pgplaw.ru/analytics-and-brochures/alerts/" target="_blank" rel="noopener noreferrer">
+              <strong>Алерты</strong>
+              <small>Важные изменения</small>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+            </a>
+            <a href="https://www.pgplaw.ru/analytics-and-brochures/books/" target="_blank" rel="noopener noreferrer">
+              <strong>Книги</strong>
+              <small>Экспертные издания</small>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+            </a>
+          </div>
+          <a class="ecosystem-button ecosystem-button--knowledge" href="https://www.pgplaw.ru/analytics-and-brochures/" target="_blank" rel="noopener noreferrer">
+            <span>Открыть базу знаний</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <a class="ecosystem-home-button" href="./">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+      <span>Вернуться на Главную</span>
+    </a>
+
+    <footer class="ecosystem-footer">
+      <p>© 2002-2026 ООО «Пепеляев Групп»</p>
+      <a href="mailto:info@pgplaw.ru">info@pgplaw.ru</a>
+    </footer>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').then((registration) => registration.update()).catch(() => {});
+    }
+  </script>
+</body>
+</html>

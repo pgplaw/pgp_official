@@ -19,6 +19,129 @@ test.describe('Desktop smoke', () => {
     expect(await page.locator('.post-card').count()).toBeGreaterThan(0);
   });
 
+  test('opens the ecosystem page from the fourth desktop contact action', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const contactItems = page.locator('.contact-bar__item');
+    await expect(contactItems).toHaveCount(4);
+    const ecosystemLink = page.locator('.contact-bar__item--ecosystem');
+    await expect(ecosystemLink).toBeVisible();
+    await expect(ecosystemLink).toContainText('Экосистема');
+
+    await ecosystemLink.click();
+    await expect(page).toHaveURL(/\/ecosystem\.html$/);
+    await expect(page.locator('.ecosystem-nav')).toHaveCount(0);
+    await expect(page.locator('h1 > span')).toHaveText('Экосистема');
+    await expect(page.locator('.ecosystem-intro > p')).toHaveText('Профессиональная информация на одной странице');
+    await expect(page.locator('.ecosystem-intro__eyebrow')).toHaveCount(0);
+    await expect(page.locator('.ecosystem-nav__brand')).toHaveCount(0);
+    const ecosystemLogo = page.locator('.ecosystem-intro__logo');
+    await expect(ecosystemLogo).toHaveAttribute('src', 'data/channels/pgp-official/media/channel-avatar.jpg');
+    expect(await ecosystemLogo.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
+    const ecosystemBrand = page.locator('.ecosystem-intro__brand');
+    await expect(ecosystemBrand).toHaveText('Pepeliaev Group');
+    await expect(ecosystemBrand).toHaveAttribute('href', 'https://www.pgplaw.ru/');
+    const [ecosystemTitleStyle, ecosystemBrandStyle] = await Promise.all([
+      page.locator('h1 > span').evaluate((element) => {
+        const style = getComputedStyle(element);
+        return { fontFamily: style.fontFamily, fontSize: style.fontSize, fontWeight: style.fontWeight };
+      }),
+      ecosystemBrand.evaluate((element) => {
+        const style = getComputedStyle(element);
+        return { fontFamily: style.fontFamily, fontSize: style.fontSize, fontWeight: style.fontWeight };
+      }),
+    ]);
+    expect(ecosystemBrandStyle).toEqual(ecosystemTitleStyle);
+    await expect(page.locator('.ecosystem-card')).toHaveCount(4);
+    await expect(page.locator('.ecosystem-card__index')).toHaveCount(0);
+    await expect(page.locator('#newsletterTitle')).toHaveText('Рассылки');
+    await expect(page.locator('#videoTitle')).toHaveText('Экспертные видео');
+    await expect(page.locator('#socialTitle')).toHaveText('Социальные сети');
+    await expect(page.locator('#knowledgeTitle')).toHaveText('База знаний');
+    await expect(page.locator('.newsletter-layout')).toHaveCSS('align-content', 'center');
+    await expect(page.locator('.video-content')).toHaveCSS('align-content', 'center');
+    await expect(page.locator('.social-links')).toHaveCSS('align-content', 'center');
+    await expect(page.locator('.newsletter-visual')).toBeVisible();
+    const [newsletterCopyBox, newsletterVisualBox] = await Promise.all([
+      page.locator('.newsletter-copy').boundingBox(),
+      page.locator('.newsletter-visual').boundingBox(),
+    ]);
+    expect(newsletterCopyBox).not.toBeNull();
+    expect(newsletterVisualBox).not.toBeNull();
+    expect(Math.abs(newsletterCopyBox.y - newsletterVisualBox.y)).toBeLessThanOrEqual(1);
+    const newsletterButton = page.locator('.ecosystem-card--newsletter .ecosystem-button');
+    await expect(newsletterButton).toHaveCSS('background-color', 'rgb(145, 39, 141)');
+    await newsletterButton.hover();
+    await expect(newsletterButton).toHaveCSS('background-color', 'rgb(167, 60, 162)');
+    await expect(newsletterButton).toHaveCSS('transform', /matrix/);
+    const telegramIcon = page.locator('.social-links a[href^="https://telegram"] > img');
+    await expect(telegramIcon).toHaveAttribute('src', 'assets/ecosystem/telegram.svg');
+    expect(await telegramIcon.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
+    const maxIcon = page.locator('.social-links a[href^="https://max.ru"] > img');
+    await expect(maxIcon).toHaveAttribute('src', 'assets/ecosystem/max.svg');
+    expect(await maxIcon.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
+    const socialTiles = page.locator('.social-links > a');
+    await expect(socialTiles).toHaveCount(2);
+    await expect(socialTiles.first()).toHaveCSS('box-shadow', 'none');
+    const [telegramTileBox, maxTileBox] = await Promise.all([
+      socialTiles.first().boundingBox(),
+      socialTiles.last().boundingBox(),
+    ]);
+    expect(telegramTileBox).not.toBeNull();
+    expect(maxTileBox).not.toBeNull();
+    expect(maxTileBox.y - (telegramTileBox.y + telegramTileBox.height)).toBeGreaterThanOrEqual(12);
+    await socialTiles.first().hover();
+    await expect(socialTiles.first()).not.toHaveCSS('box-shadow', 'none');
+    const knowledgeImage = page.locator('.knowledge-visual img');
+    await expect(knowledgeImage).toHaveAttribute('src', 'assets/ecosystem/knowledge-book-open.svg');
+    expect(await knowledgeImage.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
+    await expect(page.locator('.knowledge-copy, .knowledge-mark')).toHaveCount(0);
+    const knowledgeTiles = page.locator('.knowledge-tiles > a');
+    await expect(knowledgeTiles).toHaveCount(3);
+    await expect(knowledgeTiles.nth(0)).toHaveAttribute('href', 'https://www.pgplaw.ru/analytics-and-brochures/legislation/');
+    await expect(knowledgeTiles.nth(1)).toHaveAttribute('href', 'https://www.pgplaw.ru/analytics-and-brochures/alerts/');
+    await expect(knowledgeTiles.nth(2)).toHaveAttribute('href', 'https://www.pgplaw.ru/analytics-and-brochures/books/');
+    const knowledgeButton = page.locator('.ecosystem-button--knowledge');
+    await expect(knowledgeButton).toHaveAttribute('href', 'https://www.pgplaw.ru/analytics-and-brochures/');
+    const [knowledgeLayoutBox, knowledgeButtonBox] = await Promise.all([
+      page.locator('.knowledge-layout').boundingBox(),
+      knowledgeButton.boundingBox(),
+    ]);
+    expect(knowledgeLayoutBox).not.toBeNull();
+    expect(knowledgeButtonBox).not.toBeNull();
+    const knowledgeLayoutCenter = knowledgeLayoutBox.x + (knowledgeLayoutBox.width / 2);
+    const knowledgeButtonCenter = knowledgeButtonBox.x + (knowledgeButtonBox.width / 2);
+    expect(Math.abs(knowledgeLayoutCenter - knowledgeButtonCenter)).toBeLessThanOrEqual(1);
+    const homeButton = page.locator('.ecosystem-home-button');
+    await expect(homeButton).toHaveText('Вернуться на Главную');
+    await expect(homeButton).toHaveAttribute('href', './');
+    await homeButton.hover();
+    await expect(homeButton).toHaveCSS('box-shadow', 'none');
+    const [mainBox, homeButtonBox, footerBox] = await Promise.all([
+      page.locator('main').boundingBox(),
+      homeButton.boundingBox(),
+      page.locator('.ecosystem-footer').boundingBox(),
+    ]);
+    expect(mainBox).not.toBeNull();
+    expect(homeButtonBox).not.toBeNull();
+    expect(footerBox).not.toBeNull();
+    expect(homeButtonBox.y).toBeGreaterThanOrEqual(mainBox.y + mainBox.height);
+    expect(footerBox.y).toBeGreaterThanOrEqual(homeButtonBox.y + homeButtonBox.height);
+
+    const platformImages = page.locator('.video-platforms__links img');
+    await expect(platformImages.first()).toHaveCSS('filter', 'none');
+    await expect(platformImages.first()).toHaveCSS('opacity', '1');
+    await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'dark'));
+    const platformLinks = page.locator('.video-platforms__links a');
+    await expect(platformLinks).toHaveCount(3);
+    await expect(platformImages.first()).toHaveCSS('filter', 'none');
+    await expect(platformImages.first()).toHaveCSS('opacity', '1');
+    await platformLinks.first().hover();
+    await expect(platformLinks.first()).toHaveCSS('border-color', 'rgb(255, 0, 51)');
+    await expect(platformLinks.first()).toHaveCSS('transform', /matrix/);
+  });
+
   test('switches channel from desktop menu and updates hero + url', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);

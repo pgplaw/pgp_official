@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Max">
+  <defs>
+    <linearGradient id="max-gradient" x1="5" y1="43" x2="43" y2="5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#18cdf4"/>
+      <stop offset="0.5" stop-color="#4388ff"/>
+      <stop offset="1" stop-color="#8d3ee9"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="46" height="46" rx="13" fill="url(#max-gradient)"/>
+  <circle cx="24" cy="23" r="13.5" fill="none" stroke="#fff" stroke-width="6.5"/>
+  <path d="m14.5 32.5-5 6.2 2.4-8.1" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
