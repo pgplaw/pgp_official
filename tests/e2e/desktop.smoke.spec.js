@@ -35,6 +35,68 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('#siteTitle')).not.toHaveText(initialTitle);
   });
 
+  test('prefetches the neighboring channel with a fresh request before switching', async ({ page }) => {
+    const feedPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pg-antitrust', 'posts.json');
+    const freshFeed = JSON.parse(fs.readFileSync(feedPath, 'utf8'));
+    const latestPost = freshFeed.posts?.[0];
+    expect(latestPost?.id).toBeTruthy();
+    const staleFeed = {
+      ...freshFeed,
+      generated_at: '2020-01-01T00:00:00Z',
+      build_id: 'stale-prefetch',
+      posts: (freshFeed.posts || []).slice(1),
+    };
+    const feedRequests = [];
+
+    await page.route('**/data/channels/pg-antitrust/posts.json**', async (route) => {
+      const requestUrl = route.request().url();
+      feedRequests.push(requestUrl);
+      const payload = new URL(requestUrl).searchParams.has('t') ? freshFeed : staleFeed;
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(payload),
+      });
+    });
+
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+    await expect.poll(() => feedRequests.length).toBeGreaterThanOrEqual(1);
+    expect(new URL(feedRequests[0]).searchParams.has('t')).toBe(true);
+
+    await page.locator('#channelMenu .channel-tab[data-channel-key="pg-antitrust"]').click();
+    await waitForFeedReady(page);
+
+    await expect(page.locator(`#post-${latestPost.id}`)).toBeVisible();
+    expect(feedRequests.every((url) => new URL(url).searchParams.has('t'))).toBe(true);
+  });
+
+  test('expires in-memory channel feeds after one sync interval', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const result = await page.evaluate(() => {
+      const originalDateNow = Date.now;
+      let now = originalDateNow();
+      try {
+        Date.now = () => now;
+        window.rememberFeedPayload('cache-expiry-test', { posts: [{ id: 101 }] });
+        const fresh = window.readCachedFeedPayload('cache-expiry-test');
+        now += 6 * 60 * 1000;
+        const expired = window.readCachedFeedPayload('cache-expiry-test');
+        return {
+          freshPostId: fresh?.posts?.[0]?.id || null,
+          expired,
+        };
+      } finally {
+        Date.now = originalDateNow;
+      }
+    });
+
+    expect(result.freshPostId).toBe(101);
+    expect(result.expired).toBeNull();
+  });
+
   test('builds versioned feed urls as relative channel data paths', async ({ page }) => {
     await page.goto('/?channel=investment-law');
     await waitForFeedReady(page);

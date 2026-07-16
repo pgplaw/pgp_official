@@ -14,6 +14,7 @@ const CHANNEL_DESKTOP_CONTENT_FADE_OUT_MS = 150;
 const CHANNEL_DESKTOP_CONTENT_FADE_IN_DELAY_MS = 18;
 const VIEWER_TRANSITION_MS = 360;
 const FEED_CACHE_MAX_ENTRIES = 6;
+const FEED_CACHE_MAX_AGE_MS = AUTO_REFRESH_INTERVAL_MINUTES * 60 * 1000;
 const APP_LIFECYCLE_REFRESH_DEDUP_MS = 1500;
 const SCROLL_TOP_VISIBILITY_THRESHOLD_MIN = 360;
 const SCROLL_TOP_VISIBILITY_THRESHOLD_MAX = 720;
@@ -1205,7 +1206,10 @@ function rememberFeedPayload(channelKey, payload) {
   if (state.channelFeedCache.has(channelKey)) {
     state.channelFeedCache.delete(channelKey);
   }
-  state.channelFeedCache.set(channelKey, normalizedPayload);
+  state.channelFeedCache.set(channelKey, {
+    payload: normalizedPayload,
+    cachedAt: Date.now(),
+  });
   while (state.channelFeedCache.size > FEED_CACHE_MAX_ENTRIES) {
     const firstKey = state.channelFeedCache.keys().next().value;
     if (!firstKey) break;
@@ -1214,9 +1218,18 @@ function rememberFeedPayload(channelKey, payload) {
 }
 
 function readCachedFeedPayload(channelKey) {
-  const payload = state.channelFeedCache.get(channelKey);
-  if (!payload) return null;
-  const clonedPayload = cloneJsonValue(payload);
+  const entry = state.channelFeedCache.get(channelKey);
+  if (!entry) return null;
+  if (!Number.isFinite(entry.cachedAt) || Date.now() - entry.cachedAt > FEED_CACHE_MAX_AGE_MS) {
+    state.channelFeedCache.delete(channelKey);
+    return null;
+  }
+  if (!entry.payload) {
+    state.channelFeedCache.delete(channelKey);
+    return null;
+  }
+
+  const clonedPayload = cloneJsonValue(entry.payload);
   if (Array.isArray(clonedPayload.posts)) {
     clonedPayload.posts = dedupePostsById(clonedPayload.posts);
   }
@@ -1273,7 +1286,10 @@ async function prefetchChannelFeed(channelKey) {
 
   const promise = (async () => {
     try {
-      const response = await fetch(buildFeedUrl(channelKey), getJsonFetchOptions({ prefetch: true }));
+      const response = await fetch(
+        buildFeedUrl(channelKey, { manual: true }),
+        getJsonFetchOptions({ manual: true })
+      );
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const payload = await response.json();
       rememberFeedPayload(channelKey, payload);
@@ -4045,8 +4061,8 @@ async function fetchFeedPayload(channelKey, force = false) {
   }
 
   const response = await fetch(
-    buildFeedUrl(channelKey, { manual: force }),
-    getJsonFetchOptions({ manual: force })
+    buildFeedUrl(channelKey, { manual: true }),
+    getJsonFetchOptions({ manual: true })
   );
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   const payload = await response.json();
