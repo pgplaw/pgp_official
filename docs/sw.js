@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v63';
+const CACHE_VERSION = 'v64';
 const SHELL_CACHE_NAME = `telegram-pages-mirror-shell-${CACHE_VERSION}`;
 const DATA_CACHE_NAME = `telegram-pages-mirror-data-${CACHE_VERSION}`;
 const MEDIA_CACHE_NAME = `telegram-pages-mirror-media-${CACHE_VERSION}`;

@@ -42,7 +42,14 @@ test.describe('Mobile smoke', () => {
     await expect(page.locator('.ecosystem-intro h1')).toHaveCSS('display', 'grid');
     await expect(page.locator('.video-previews > a')).toHaveCount(2);
     await expect(page.locator('.social-links > a')).toHaveCount(2);
-    await expect(page.locator('.knowledge-tiles > a')).toHaveCount(3);
+    const knowledgeTiles = page.locator('.knowledge-tiles > a');
+    await expect(knowledgeTiles).toHaveCount(3);
+    await expect(knowledgeTiles.locator('.knowledge-tile__title > strong + svg')).toHaveCount(3);
+    const newsletterFeatureIcons = page.locator('.ecosystem-feature-list img');
+    await expect(newsletterFeatureIcons).toHaveCount(3);
+    expect(await newsletterFeatureIcons.evaluateAll((images) => images.every(
+      (image) => image.getAttribute('src').endsWith('.svg') && image.complete && image.naturalWidth > 0
+    ))).toBe(true);
     await expect(page.locator('.ecosystem-home-button')).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 

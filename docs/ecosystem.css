@@ -452,10 +452,10 @@
 .knowledge-tiles > a {
   --tile-color: #377699;
   display: grid;
-  grid-template-rows: auto minmax(34px, 1fr) auto;
-  gap: 7px;
+  align-content: start;
+  gap: 6px;
   min-width: 0;
-  min-height: 112px;
+  min-height: 88px;
   padding: 13px;
   border: 1px solid color-mix(in srgb, var(--tile-color) 32%, var(--border));
   border-radius: 11px;
@@ -470,6 +470,14 @@
 .knowledge-tiles > a:nth-child(2) { --tile-color: #a02080; }
 .knowledge-tiles > a:nth-child(3) { --tile-color: #d65b49; }
 
+.knowledge-tile__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  min-width: 0;
+}
+
 .knowledge-tiles strong {
   font-size: 0.98rem;
   font-weight: 800;
@@ -482,9 +490,9 @@
 }
 
 .knowledge-tiles svg {
-  justify-self: end;
-  width: 18px;
-  height: 18px;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
   fill: none;
   stroke: var(--tile-color);
   stroke-width: 2;
@@ -769,13 +777,11 @@
   }
 
   .knowledge-tiles > a {
-    min-height: 108px;
     padding: 12px;
   }
 
   .knowledge-tiles > a:nth-child(3) {
     grid-column: 1 / -1;
-    min-height: 88px;
   }
 
   .newsletter-visual {
@@ -849,6 +855,5 @@
 
   .knowledge-tiles > a:nth-child(3) {
     grid-column: auto;
-    min-height: 108px;
   }
 }

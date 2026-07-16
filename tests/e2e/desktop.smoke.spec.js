@@ -70,6 +70,11 @@ test.describe('Desktop smoke', () => {
     expect(newsletterCopyBox).not.toBeNull();
     expect(newsletterVisualBox).not.toBeNull();
     expect(Math.abs(newsletterCopyBox.y - newsletterVisualBox.y)).toBeLessThanOrEqual(1);
+    const newsletterFeatureIcons = page.locator('.ecosystem-feature-list img');
+    await expect(newsletterFeatureIcons).toHaveCount(3);
+    expect(await newsletterFeatureIcons.evaluateAll((images) => images.every(
+      (image) => image.getAttribute('src').endsWith('.svg') && image.complete && image.naturalWidth > 0
+    ))).toBe(true);
     const newsletterButton = page.locator('.ecosystem-card--newsletter .ecosystem-button');
     await expect(newsletterButton).toHaveCSS('background-color', 'rgb(145, 39, 141)');
     await newsletterButton.hover();
@@ -99,6 +104,11 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('.knowledge-copy, .knowledge-mark')).toHaveCount(0);
     const knowledgeTiles = page.locator('.knowledge-tiles > a');
     await expect(knowledgeTiles).toHaveCount(3);
+    await expect(knowledgeTiles.locator('.knowledge-tile__title > strong + svg')).toHaveCount(3);
+    const knowledgeTileHeights = await knowledgeTiles.evaluateAll((tiles) => tiles.map(
+      (tile) => tile.getBoundingClientRect().height
+    ));
+    expect(knowledgeTileHeights.every((height) => height <= 90)).toBe(true);
     await expect(knowledgeTiles.nth(0)).toHaveAttribute('href', 'https://www.pgplaw.ru/analytics-and-brochures/legislation/');
     await expect(knowledgeTiles.nth(1)).toHaveAttribute('href', 'https://www.pgplaw.ru/analytics-and-brochures/alerts/');
     await expect(knowledgeTiles.nth(2)).toHaveAttribute('href', 'https://www.pgplaw.ru/analytics-and-brochures/books/');
