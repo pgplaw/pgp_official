@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T03:47:02.961Z",
+  "generated_at": "2026-07-17T06:09:50.873Z",
   "success_count": 8,
   "failure_count": 0,
   "failure_channels": [],
@@ -12,7 +12,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 39889,
+      "duration_ms": 40373,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -69,7 +69,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 17201,
+      "duration_ms": 17604,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -126,7 +126,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 46319,
+      "duration_ms": 47135,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -183,7 +183,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 38732,
+      "duration_ms": 38029,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -240,7 +240,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 21864,
+      "duration_ms": 16377,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -297,7 +297,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 21534,
+      "duration_ms": 23492,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -329,19 +329,19 @@
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 170034368,
-        "file_count": 2045,
-        "media_bytes": 169738887,
-        "media_files": 2041,
+        "total_bytes": 170280203,
+        "file_count": 2048,
+        "media_bytes": 169983985,
+        "media_files": 2044,
         "json_files": 4,
         "page_json_files": 3,
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 0,
-        "file_count": 0,
-        "media_bytes": 0,
-        "media_files": 0,
+        "total_bytes": 245835,
+        "file_count": 3,
+        "media_bytes": 245098,
+        "media_files": 3,
         "json_files": 0,
         "page_json_files": 0,
         "comment_json_files": 0
@@ -354,7 +354,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 24971,
+      "duration_ms": 24175,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -386,7 +386,7 @@
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 573423505,
+        "total_bytes": 573434524,
         "file_count": 4848,
         "media_bytes": 572891706,
         "media_files": 4844,
@@ -395,7 +395,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 0,
+        "total_bytes": 11019,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -411,7 +411,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 12462,
+      "duration_ms": 12632,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -463,10 +463,10 @@
     }
   ],
   "archive_totals": {
-    "total_bytes": 4062088892,
-    "media_bytes": 4058444129,
-    "file_count": 35247,
-    "media_files": 35215,
+    "total_bytes": 4062345746,
+    "media_bytes": 4058689227,
+    "file_count": 35250,
+    "media_files": 35218,
     "json_files": 32,
     "page_json_files": 24,
     "comment_json_files": 0
