@@ -109,6 +109,81 @@ async function openFirstViewerFromFeed(page, { gallery = false } = {}) {
   await expect(page.locator('#viewerContent .viewer__viewport')).toBeVisible({ timeout: 10_000 });
 }
 
+async function expectLifecycleRefreshPreservesFeedPosition(
+  page,
+  { channelKey = 'pgp-official', reloadOnResume = false } = {},
+) {
+  const feedPath = path.join(process.cwd(), 'docs', 'data', 'channels', channelKey, 'posts.json');
+  const feedPayload = JSON.parse(fs.readFileSync(feedPath, 'utf8'));
+  const anchorPost = feedPayload.posts?.[5];
+  if (!anchorPost?.id) {
+    throw new Error(`Channel ${channelKey} does not contain enough posts for a scroll-preservation test.`);
+  }
+
+  const lifecyclePost = {
+    id: 999_997,
+    date: new Date().toISOString(),
+    text: 'Lifecycle refresh fixture',
+    text_html: 'Lifecycle refresh fixture',
+    views: 0,
+    comments_count: 0,
+    photos: [],
+    videos: [],
+    video_url: null,
+    tg_url: `https://t.me/${feedPayload.site?.channel_username || channelKey}/999997`,
+  };
+  const refreshedPayload = {
+    ...feedPayload,
+    generated_at: new Date().toISOString(),
+    posts: [lifecyclePost, ...(feedPayload.posts || [])],
+    pagination: {
+      ...(feedPayload.pagination || {}),
+      total_posts: Number(feedPayload.pagination?.total_posts || feedPayload.posts?.length || 0) + 1,
+    },
+  };
+  let feedRequestCount = 0;
+
+  await page.route(`**/data/channels/${channelKey}/posts.json**`, async (route) => {
+    feedRequestCount += 1;
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(feedRequestCount === 1 ? feedPayload : refreshedPayload),
+    });
+  });
+
+  await page.goto(`/?channel=${encodeURIComponent(channelKey)}`);
+  await waitForFeedReady(page);
+
+  const anchorCard = page.locator(`#post-${anchorPost.id}`);
+  await expect(anchorCard).toBeVisible();
+  await anchorCard.evaluate((element) => element.scrollIntoView({ block: 'center', behavior: 'auto' }));
+  await page.waitForTimeout(200);
+
+  const positionBeforeRefresh = await anchorCard.evaluate((element) => element.getBoundingClientRect().top);
+  const scrollBeforeRefresh = await page.evaluate(() => window.scrollY);
+  expect(scrollBeforeRefresh).toBeGreaterThan(100);
+
+  if (reloadOnResume) {
+    await page.evaluate(() => document.dispatchEvent(new Event('freeze')));
+    await page.reload();
+    await waitForFeedReady(page);
+  } else {
+    await page.evaluate(() => {
+      document.dispatchEvent(new Event('freeze'));
+      document.dispatchEvent(new Event('resume'));
+    });
+  }
+
+  await expect(page.locator('#post-999997')).toBeVisible();
+  await expect.poll(() => feedRequestCount).toBe(2);
+  await expect.poll(async () => {
+    const positionAfterRefresh = await anchorCard.evaluate((element) => element.getBoundingClientRect().top);
+    return Math.abs(positionAfterRefresh - positionBeforeRefresh);
+  }).toBeLessThanOrEqual(2);
+  expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(100);
+}
+
 module.exports = {
   findMirroredRoundVideoPost,
   waitForFeedReady,
@@ -116,4 +191,5 @@ module.exports = {
   ensureMediaInFeed,
   ensureGalleryInFeed,
   openFirstViewerFromFeed,
+  expectLifecycleRefreshPreservesFeedPosition,
 };

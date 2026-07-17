@@ -5,17 +5,19 @@ const DEFAULT_PAGE_SIZE = 16;
 const AUTO_REFRESH_INTERVAL_MINUTES = 5;
 const SYNC_STATUS_POLL_INTERVAL_MS = 30 * 1000;
 const LONG_PRESS_COPY_DELAY_MS = 650;
-const CHANNEL_CAROUSEL_TRANSITION_MS = 430;
-const CHANNEL_CONTENT_FADE_OUT_MS = 220;
-const CHANNEL_CONTENT_FADE_IN_DELAY_MS = 36;
-const CHANNEL_MOBILE_CONTENT_FADE_OUT_MS = 120;
-const CHANNEL_MOBILE_CONTENT_FADE_IN_DELAY_MS = 12;
-const CHANNEL_DESKTOP_CONTENT_FADE_OUT_MS = 150;
-const CHANNEL_DESKTOP_CONTENT_FADE_IN_DELAY_MS = 18;
+const CHANNEL_CAROUSEL_TRANSITION_MS = 520;
+const CHANNEL_CONTENT_FADE_OUT_MS = 320;
+const CHANNEL_CONTENT_FADE_IN_DELAY_MS = 40;
+const CHANNEL_MOBILE_CONTENT_FADE_OUT_MS = 280;
+const CHANNEL_MOBILE_CONTENT_FADE_IN_DELAY_MS = 30;
+const CHANNEL_DESKTOP_CONTENT_FADE_OUT_MS = 280;
+const CHANNEL_DESKTOP_CONTENT_FADE_IN_DELAY_MS = 32;
 const VIEWER_TRANSITION_MS = 360;
 const FEED_CACHE_MAX_ENTRIES = 6;
 const FEED_CACHE_MAX_AGE_MS = AUTO_REFRESH_INTERVAL_MINUTES * 60 * 1000;
 const APP_LIFECYCLE_REFRESH_DEDUP_MS = 1500;
+const FEED_SCROLL_ANCHOR_STORAGE_KEY = 'pep-feed-scroll-anchor-v1';
+const FEED_SCROLL_ANCHOR_MAX_AGE_MS = 12 * 60 * 60 * 1000;
 const SCROLL_TOP_VISIBILITY_THRESHOLD_MIN = 360;
 const SCROLL_TOP_VISIBILITY_THRESHOLD_MAX = 720;
 const POST_ANCHOR_GAP_DESKTOP = 10;
@@ -42,6 +44,7 @@ const state = {
   activeFeedRefreshPromise: null,
   appWasHidden: document.visibilityState === 'hidden',
   lastLifecycleRefreshAt: 0,
+  lifecycleFeedScrollAnchor: null,
   viewerItems: [],
   viewerIndex: 0,
   mediaRegistry: {},
@@ -867,6 +870,13 @@ function setChannelContentSwitching(active, { fast = false, mode = null } = {}) 
 }
 
 function getChannelSwitchTimings({ fast = false, desktopFast = false } = {}) {
+  if (prefersReducedMotion()) {
+    return {
+      fadeOut: 0,
+      fadeInDelay: 0,
+    };
+  }
+
   if (fast) {
     return {
       fadeOut: CHANNEL_MOBILE_CONTENT_FADE_OUT_MS,
@@ -1638,7 +1648,7 @@ function animateChannelCarouselShift(track, targetShift, { duration = getChannel
   }
 
   return new Promise((resolve) => {
-    const easing = 'cubic-bezier(0.16, 1, 0.3, 1)';
+    const easing = 'cubic-bezier(0.4, 0, 0.2, 1)';
     const transitionState = { timeoutId: null };
     let settled = false;
     const finish = () => {
@@ -2404,8 +2414,12 @@ function buildResponsiveImageTag(item, index, isGallery) {
   const renderMaxWidth = isGallery
     ? null
     : (item.full_width || item.feed_width || item.thumb_width || item.source_width || null);
+  const inlineStyles = [
+    renderMaxWidth ? `--media-max-inline-size:${renderMaxWidth}px` : '',
+    intrinsicWidth && intrinsicHeight ? `--media-natural-aspect-ratio:${intrinsicWidth} / ${intrinsicHeight}` : '',
+  ].filter(Boolean).join(';');
   const sizes = isGallery
-    ? '(max-width: 480px) calc(100vw - 44px), (max-width: 860px) calc(50vw - 28px), 520px'
+    ? '(max-width: 860px) calc(100vw - 44px), 520px'
     : '(max-width: 860px) calc(100vw - 44px), 980px';
 
   return `
@@ -2413,7 +2427,7 @@ function buildResponsiveImageTag(item, index, isGallery) {
       src="${fallbackSrc}"
       ${srcSet ? `srcset="${srcSet}" sizes="${sizes}"` : ''}
       ${intrinsicWidth && intrinsicHeight ? `width="${intrinsicWidth}" height="${intrinsicHeight}"` : ''}
-      ${renderMaxWidth ? `style="--media-max-inline-size:${renderMaxWidth}px"` : ''}
+      ${inlineStyles ? `style="${inlineStyles}"` : ''}
       ${renderMaxWidth ? `data-render-max-width="${renderMaxWidth}"` : ''}
       data-media-index="${index}"
       alt="Media ${index + 1}"
@@ -2568,6 +2582,41 @@ function buildPostPollsMarkup(post) {
     .join('');
 }
 
+function getImageAspectRatio(item) {
+  const width = item?.thumb_width || item?.feed_width || item?.full_width || item?.source_width || null;
+  const height = item?.thumb_height || item?.feed_height || item?.full_height || item?.source_height || null;
+  return width && height ? width / height : null;
+}
+
+function hasMatchingImageAspectRatio(left, right) {
+  if (left?.type !== 'image' || right?.type !== 'image') return false;
+
+  const leftRatio = getImageAspectRatio(left);
+  const rightRatio = getImageAspectRatio(right);
+  if (!Number.isFinite(leftRatio) || !Number.isFinite(rightRatio) || leftRatio <= 0 || rightRatio <= 0) {
+    return false;
+  }
+
+  return Math.abs(leftRatio - rightRatio) / Math.max(leftRatio, rightRatio) <= 0.04;
+}
+
+function getNaturalGalleryImageIndexes(media) {
+  const indexes = new Set();
+  const pairedItemCount = media.length - (media.length % 2);
+
+  for (let index = 0; index < pairedItemCount; index += 2) {
+    if (!hasMatchingImageAspectRatio(media[index], media[index + 1])) continue;
+    indexes.add(index);
+    indexes.add(index + 1);
+  }
+
+  if (media.length % 2 === 1 && media.at(-1)?.type === 'image') {
+    indexes.add(media.length - 1);
+  }
+
+  return indexes;
+}
+
 function buildMedia(post) {
   const media = [];
   const roundVideoPost = isRoundVideoPost(post);
@@ -2615,6 +2664,10 @@ function buildMedia(post) {
   const mediaId = `${state.activeChannelKey}-media-${post.id}`;
   state.mediaRegistry[mediaId] = media;
   const isGallery = media.length > 1;
+  const naturalGalleryImageIndexes = isGallery ? getNaturalGalleryImageIndexes(media) : new Set();
+  const isNaturalSingleImage = media.length === 1
+    && media[0]?.type === 'image'
+    && Number.isFinite(getImageAspectRatio(media[0]));
   const isSingleRoundVideo = media.length === 1 && media[0]?.type === 'round-video';
 
   const items = media.map((item, index) => {
@@ -2623,10 +2676,12 @@ function buildMedia(post) {
       : (item.type === 'round-video' && isSingleRoundVideo
           ? buildRoundVideoPreviewMarkup(item, index)
           : `<video src="${item.url}" preload="${item.type === 'round-video' ? 'auto' : 'metadata'}" muted playsinline webkit-playsinline controls${item.type === 'round-video' ? ' data-round-video="true"' : ''}${item.poster?.full_url || item.poster?.feed_url || item.poster?.thumb_url ? ` poster="${item.poster.full_url || item.poster.feed_url || item.poster.thumb_url}"` : ''}></video>`);
-    return `<button class="media-trigger${item.type === 'round-video' && isSingleRoundVideo ? ' media-trigger--round-video' : ''}" type="button" data-index="${index}" aria-label="${item.type === 'round-video' ? 'Открыть видеосообщение' : 'Открыть медиа'}">${content}</button>`;
+    const imageClass = item.type === 'image' ? ' media-trigger--image' : '';
+    const naturalImageClass = naturalGalleryImageIndexes.has(index) ? ' media-trigger--natural-image' : '';
+    return `<button class="media-trigger${imageClass}${naturalImageClass}${item.type === 'round-video' && isSingleRoundVideo ? ' media-trigger--round-video' : ''}" type="button" data-index="${index}" aria-label="${item.type === 'round-video' ? 'Открыть видеосообщение' : 'Открыть медиа'}">${content}</button>`;
   }).join('');
 
-  return `<div class="${galleryClass}${isSingleRoundVideo ? ' post-card__media--round-video' : ''}" data-media-id="${mediaId}">${items}</div>`;
+  return `<div class="${galleryClass}${isNaturalSingleImage ? ' post-card__media--natural-single-image' : ''}${isSingleRoundVideo ? ' post-card__media--round-video' : ''}" data-media-id="${mediaId}">${items}</div>`;
 }
 
 function normalizeMediaUrl(url) {
@@ -3924,6 +3979,123 @@ function getPostScrollOffset() {
   return stickyBottom + getPostAnchorGap();
 }
 
+function captureFeedScrollAnchor() {
+  if (
+    !state.activeChannelKey ||
+    !elements.feedView ||
+    elements.feedView.classList.contains('hidden') ||
+    /^#(?:comments|post)-/.test(window.location.hash)
+  ) {
+    return null;
+  }
+
+  const scrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  const anchorLine = getPostScrollOffset();
+  const readingLine = Math.max(anchorLine + 1, Math.min(window.innerHeight - 1, window.innerHeight * 0.5));
+  const cards = Array.from(elements.postFeed.querySelectorAll('.post-card[data-post-id]'));
+  const anchorCard = cards.find((card) => {
+    const rect = card.getBoundingClientRect();
+    return rect.top <= readingLine && rect.bottom > readingLine;
+  }) || cards.find((card) => {
+    const rect = card.getBoundingClientRect();
+    return rect.bottom > anchorLine + 1 && rect.top < window.innerHeight - 1;
+  });
+  const anchorRect = anchorCard?.getBoundingClientRect();
+
+  return {
+    channelKey: state.activeChannelKey,
+    postId: anchorCard?.dataset.postId || '',
+    viewportOffset: anchorRect ? anchorRect.top : null,
+    scrollY,
+    capturedAt: Date.now(),
+  };
+}
+
+function persistFeedScrollAnchor(anchor) {
+  if (!anchor) return;
+
+  try {
+    window.sessionStorage.setItem(FEED_SCROLL_ANCHOR_STORAGE_KEY, JSON.stringify(anchor));
+  } catch (_) {
+    // Session storage is optional in private and embedded browser modes.
+  }
+}
+
+function consumePersistedFeedScrollAnchor(channelKey) {
+  try {
+    const rawAnchor = window.sessionStorage.getItem(FEED_SCROLL_ANCHOR_STORAGE_KEY);
+    window.sessionStorage.removeItem(FEED_SCROLL_ANCHOR_STORAGE_KEY);
+    if (!rawAnchor || /^#(?:comments|post)-/.test(window.location.hash)) return null;
+
+    const anchor = JSON.parse(rawAnchor);
+    if (
+      anchor?.channelKey !== channelKey ||
+      !Number.isFinite(anchor?.capturedAt) ||
+      Date.now() - anchor.capturedAt > FEED_SCROLL_ANCHOR_MAX_AGE_MS
+    ) {
+      return null;
+    }
+    return anchor;
+  } catch (_) {
+    return null;
+  }
+}
+
+function rememberLifecycleFeedScrollAnchor() {
+  const anchor = captureFeedScrollAnchor();
+  if (!anchor) return;
+
+  state.lifecycleFeedScrollAnchor = anchor;
+  persistFeedScrollAnchor(anchor);
+}
+
+async function restoreFeedScrollAnchor(anchor) {
+  if (!anchor || anchor.channelKey !== state.activeChannelKey) return false;
+
+  if (Number(anchor.scrollY) <= 1) {
+    scrollPageToTop();
+    return true;
+  }
+
+  let target = null;
+  if (anchor.postId) {
+    try {
+      target = await ensurePostVisible(anchor.postId);
+    } catch (_) {
+      target = null;
+    }
+  }
+
+  await nextRenderFrame();
+  if (target && Number.isFinite(anchor.viewportOffset)) {
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      const currentOffset = target.getBoundingClientRect().top;
+      const delta = currentOffset - anchor.viewportOffset;
+      if (Math.abs(delta) <= 1) break;
+      window.scrollBy({ top: delta, behavior: 'auto' });
+      await nextRenderFrame();
+    }
+
+    await wait(180);
+    const settledDelta = target.getBoundingClientRect().top - anchor.viewportOffset;
+    if (Math.abs(settledDelta) > 1) {
+      window.scrollBy({ top: settledDelta, behavior: 'auto' });
+      await nextRenderFrame();
+    }
+  } else {
+    const maxScrollTop = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    window.scrollTo({
+      top: Math.min(Math.max(0, Number(anchor.scrollY) || 0), maxScrollTop),
+      behavior: 'auto',
+    });
+    await nextRenderFrame();
+  }
+
+  queueScrollTopButtonVisibilitySync();
+  queuePostAnchorOffsetSync();
+  return true;
+}
+
 function syncPostAnchorOffset() {
   const offset = Math.max(0, Math.ceil(getPostScrollOffset()));
   document.documentElement.style.setProperty('--post-anchor-offset', `${offset}px`);
@@ -4127,12 +4299,16 @@ function applyFeedPayload(channelKey, feedPayload, { manual = false } = {}) {
   scheduleChannelCarouselAutotest();
 }
 
-async function loadFeed(channelKey, force = false) {
-  showFeedLoadingState(true);
+async function loadFeed(channelKey, force = false, { scrollAnchor = null } = {}) {
+  const shouldRestoreScroll = Boolean(scrollAnchor && scrollAnchor.channelKey === channelKey);
+  showFeedLoadingState(!shouldRestoreScroll);
 
   try {
     const feedPayload = await fetchFeedPayload(channelKey, force);
     applyFeedPayload(channelKey, feedPayload, { manual: force });
+    if (shouldRestoreScroll) {
+      await restoreFeedScrollAnchor(scrollAnchor);
+    }
   } catch (error) {
     elements.loadingState.classList.add('hidden');
     elements.errorState.classList.remove('hidden');
@@ -4140,7 +4316,7 @@ async function loadFeed(channelKey, force = false) {
   }
 }
 
-function refreshActiveFeed() {
+function refreshActiveFeed({ scrollAnchor = captureFeedScrollAnchor() } = {}) {
   if (!state.activeChannelKey) {
     return Promise.resolve();
   }
@@ -4149,7 +4325,7 @@ function refreshActiveFeed() {
     return state.activeFeedRefreshPromise;
   }
 
-  const refreshPromise = loadFeed(state.activeChannelKey, true).finally(() => {
+  const refreshPromise = loadFeed(state.activeChannelKey, true, { scrollAnchor }).finally(() => {
     if (state.activeFeedRefreshPromise === refreshPromise) {
       state.activeFeedRefreshPromise = null;
     }
@@ -4158,7 +4334,7 @@ function refreshActiveFeed() {
   return refreshPromise;
 }
 
-function refreshFeedForAppLifecycle() {
+function refreshFeedForAppLifecycle({ scrollAnchor = null } = {}) {
   if (!state.catalog || !state.activeChannelKey) return;
 
   const now = Date.now();
@@ -4169,12 +4345,20 @@ function refreshFeedForAppLifecycle() {
   state.lastLifecycleRefreshAt = now;
   cancelChannelFeedPrefetch();
   invalidateFeedPayloadCache();
-  void refreshActiveFeed();
+  const anchorToRestore = scrollAnchor || state.lifecycleFeedScrollAnchor || captureFeedScrollAnchor();
+  state.lifecycleFeedScrollAnchor = null;
+  try {
+    window.sessionStorage.removeItem(FEED_SCROLL_ANCHOR_STORAGE_KEY);
+  } catch (_) {
+    // Session storage is optional in private and embedded browser modes.
+  }
+  void refreshActiveFeed({ scrollAnchor: anchorToRestore });
 }
 
 function handleAppVisibilityChange() {
   if (document.visibilityState === 'hidden') {
     state.appWasHidden = true;
+    rememberLifecycleFeedScrollAnchor();
     return;
   }
 
@@ -4190,10 +4374,11 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
   const isChannelChange = Boolean(state.activeChannelKey) && resolvedChannelKey !== state.activeChannelKey;
   const shouldClearHash = /^#(?:comments|post)-/.test(window.location.hash);
   const shouldUpdateUrl = getChannelKeyFromLocation() !== resolvedChannelKey || shouldClearHash;
-  const desktopFastTransition = !fastTransition && !isMobileCarouselViewport();
-  const switchMode = fastTransition ? 'mobile' : 'desktop';
+  const mobileSwitchTransition = isMobileCarouselViewport();
+  const desktopFastTransition = !mobileSwitchTransition;
+  const switchMode = mobileSwitchTransition ? 'mobile' : 'desktop';
   const switchTimings = getChannelSwitchTimings({
-    fast: fastTransition,
+    fast: mobileSwitchTransition,
     desktopFast: desktopFastTransition,
   });
   const feedPayloadTask = isChannelChange
@@ -4206,7 +4391,7 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
     setChannelCarouselListOpen(false);
   }
 
-  if (scrollToTop) {
+  if (scrollToTop && !isChannelChange) {
     scrollPageToTop();
   }
 
@@ -4221,9 +4406,13 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
     return;
   }
 
-  setChannelContentSwitching(true, { fast: fastTransition || desktopFastTransition, mode: switchMode });
+  setChannelContentSwitching(true, { fast: fastTransition || mobileSwitchTransition || desktopFastTransition, mode: switchMode });
   await nextRenderFrame();
   await wait(switchTimings.fadeOut);
+
+  if (scrollToTop) {
+    scrollPageToTop();
+  }
 
   try {
     const feedPayloadResult = feedPayloadTask
@@ -4251,9 +4440,6 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
     setChannelContentSwitching(false);
   }
 
-  if (scrollToTop) {
-    scrollPageToTop();
-  }
 }
 
 async function loadCatalog({ force = false } = {}) {
@@ -4281,7 +4467,8 @@ async function loadCatalog({ force = false } = {}) {
       updateChannelUrl(initialChannelKey, { replace: true });
     }
 
-    await loadFeed(initialChannelKey, force);
+    const startupScrollAnchor = consumePersistedFeedScrollAnchor(initialChannelKey);
+    await loadFeed(initialChannelKey, force, { scrollAnchor: startupScrollAnchor });
     scheduleChannelCarouselAutotest();
   } catch (error) {
     elements.loadingState.classList.add('hidden');
@@ -4375,6 +4562,7 @@ window.addEventListener('popstate', handleLocationChange);
 document.addEventListener('visibilitychange', handleAppVisibilityChange);
 document.addEventListener('freeze', () => {
   state.appWasHidden = true;
+  rememberLifecycleFeedScrollAnchor();
 });
 document.addEventListener('resume', () => {
   if (document.visibilityState === 'hidden') {
@@ -4386,6 +4574,7 @@ document.addEventListener('resume', () => {
 });
 window.addEventListener('pagehide', () => {
   state.appWasHidden = true;
+  rememberLifecycleFeedScrollAnchor();
 });
 window.addEventListener('pageshow', (event) => {
   if (!event.persisted && !state.appWasHidden) return;

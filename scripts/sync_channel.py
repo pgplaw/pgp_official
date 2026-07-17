@@ -48,12 +48,11 @@ POSTS_LINK_PREVIEWS_DIR = POSTS_MEDIA_DIR / "link-previews"
 CHANNEL_MEDIA_DIR = CHANNEL_DATA_DIR / "media"
 CHANNEL_AVATAR_PATH = CHANNEL_MEDIA_DIR / "channel-avatar.jpg"
 SUPERRES_MODEL_DIR = ROOT / "ops" / "models"
-EDSR_X2_MODEL_PATH = SUPERRES_MODEL_DIR / "EDSR_x2.pb"
 FSRCNN_X2_MODEL_PATH = SUPERRES_MODEL_DIR / "FSRCNN_x2.pb"
 POST_PAGES_DIR = DOCS_DIR / "channels" / CHANNEL_KEY / "posts" if CHANNEL_KEY else DOCS_DIR / "posts"
 MANIFEST_PATH = DOCS_DIR / "manifest.webmanifest"
 FEED_PAGE_SIZE = 16
-IMAGE_VARIANT_VERSION = "v8"
+IMAGE_VARIANT_VERSION = "v9"
 VIDEO_VARIANT_VERSION = "v1"
 STALE_MEDIA_RETENTION_DAYS = 3
 STALE_MEDIA_RETENTION_SECONDS = STALE_MEDIA_RETENTION_DAYS * 24 * 60 * 60
@@ -99,11 +98,10 @@ MAX_EXTERNAL_PREVIEW_OVERRIDE_POSTS = 10
 MAX_EXTERNAL_LINKS_TO_TRY = 2
 ENABLE_EXTERNAL_PREVIEW_OVERRIDE = os.environ.get("TG_ENABLE_EXTERNAL_PREVIEW_OVERRIDE", "").strip().lower() in {"1", "true", "yes", "on"}
 ENABLE_SUPERRES = os.environ.get("TG_ENABLE_SUPERRES", "").strip().lower() in {"1", "true", "yes", "on"}
-LOW_RES_SINGLE_UPSCALE_THRESHOLD = 1200
-LOW_RES_SINGLE_FEED_TARGET = 1800
-LOW_RES_SINGLE_FULL_TARGET = 2400
-LOW_RES_SINGLE_MAX_UPSCALE_FACTOR = 2.35
-EDSR_X2_MODEL_URL = "https://raw.githubusercontent.com/opencv/opencv_contrib/4.x/modules/dnn_superres/samples/EDSR_x2.pb"
+LOW_RES_IMAGE_UPSCALE_THRESHOLD = 1200
+LOW_RES_IMAGE_FEED_TARGET = 1800
+LOW_RES_IMAGE_FULL_TARGET = 2400
+LOW_RES_IMAGE_MAX_UPSCALE_FACTOR = 2.35
 FSRCNN_X2_MODEL_URL = "https://raw.githubusercontent.com/Saafke/FSRCNN_Tensorflow/master/models/FSRCNN_x2.pb"
 FAILED_EXTERNAL_PREVIEW_HOSTS: set[str] = set()
 FAILED_LINK_PREVIEW_HOSTS: set[str] = set()
@@ -601,6 +599,12 @@ def reuse_existing_photo_assets(
         full_url = photo.get("full_url")
         thumb_url = photo.get("thumb_url")
         feed_url = photo.get("feed_url") if is_single_photo_post else None
+        variant_urls = [full_url, thumb_url]
+        if feed_url:
+            variant_urls.append(feed_url)
+        if any(IMAGE_VARIANT_VERSION not in Path(str(url or "")).name for url in variant_urls):
+            return None
+
         full_path = resolve_local_asset_path(full_url)
         thumb_path = resolve_local_asset_path(thumb_url)
         feed_path = resolve_local_asset_path(feed_url) if feed_url else None
@@ -814,7 +818,7 @@ def ensure_superres_model(model_path: Path, model_url: str, label: str) -> Path:
         raise RuntimeError(FAILED_SUPERRES_MODELS[label]) from error
 
 
-def apply_single_image_super_resolution(image: Any, resampling: Any) -> Any | None:
+def apply_image_super_resolution(image: Any) -> Any | None:
     try:
         import cv2
         import numpy as np
@@ -825,23 +829,23 @@ def apply_single_image_super_resolution(image: Any, resampling: Any) -> Any | No
     rgb_array = np.array(image.convert("RGB"))
     bgr_array = cv2.cvtColor(rgb_array, cv2.COLOR_RGB2BGR)
 
-    for label, algorithm, scale, model_path, model_url in (
-        ("EDSR x2", "edsr", 2, EDSR_X2_MODEL_PATH, EDSR_X2_MODEL_URL),
-        ("FSRCNN x2", "fsrcnn", 2, FSRCNN_X2_MODEL_PATH, FSRCNN_X2_MODEL_URL),
-    ):
-        try:
-            resolved_model_path = ensure_superres_model(model_path, model_url, label)
-            sr = cv2.dnn_superres.DnnSuperResImpl_create()
-            sr.readModel(str(resolved_model_path))
-            sr.setModel(algorithm, scale)
-            upscaled = sr.upsample(bgr_array)
-            upscaled_rgb = cv2.cvtColor(upscaled, cv2.COLOR_BGR2RGB)
+    try:
+        resolved_model_path = ensure_superres_model(
+            FSRCNN_X2_MODEL_PATH,
+            FSRCNN_X2_MODEL_URL,
+            "FSRCNN x2",
+        )
+        sr = cv2.dnn_superres.DnnSuperResImpl_create()
+        sr.readModel(str(resolved_model_path))
+        sr.setModel("fsrcnn", 2)
+        upscaled = sr.upsample(bgr_array)
+        upscaled_rgb = cv2.cvtColor(upscaled, cv2.COLOR_BGR2RGB)
 
-            from PIL import Image
+        from PIL import Image
 
-            return Image.fromarray(upscaled_rgb)
-        except Exception as error:  # pragma: no cover - runtime/model path
-            log.warning("%s super-resolution fallback used: %s", label, error)
+        return Image.fromarray(upscaled_rgb)
+    except Exception as error:  # pragma: no cover - runtime/model path
+        log.warning("FSRCNN x2 super-resolution fallback used: %s", error)
 
     return None
 
@@ -852,7 +856,7 @@ def optimize_image_variants(
     feed_path: Path,
     thumb_path: Path,
     *,
-    allow_single_image_upscale: bool = False,
+    include_feed_variant: bool = True,
 ) -> bool:
     changes_detected = False
     try:
@@ -873,9 +877,10 @@ def optimize_image_variants(
             elif image.mode == "L":
                 image = image.convert("RGB")
 
+            is_low_resolution = max(original_size) < LOW_RES_IMAGE_UPSCALE_THRESHOLD
             superres_image = None
-            if ENABLE_SUPERRES and allow_single_image_upscale and max(original_size) < LOW_RES_SINGLE_UPSCALE_THRESHOLD:
-                superres_image = apply_single_image_super_resolution(image, resampling)
+            if ENABLE_SUPERRES and is_low_resolution:
+                superres_image = apply_image_super_resolution(image)
 
             def write_bytes_if_changed(path: Path, content: bytes) -> None:
                 nonlocal changes_detected
@@ -895,11 +900,7 @@ def optimize_image_variants(
                 preserve_max_bytes: int,
                 upscale_longest_side: int | None = None,
             ) -> None:
-                should_upscale = bool(
-                    allow_single_image_upscale
-                    and upscale_longest_side
-                    and max(original_size) < LOW_RES_SINGLE_UPSCALE_THRESHOLD
-                )
+                should_upscale = bool(upscale_longest_side and is_low_resolution)
                 use_superres_source = bool(should_upscale and superres_image is not None)
                 keep_original_jpeg = (
                     not should_upscale
@@ -913,15 +914,18 @@ def optimize_image_variants(
                     return
 
                 variant = superres_image.copy() if use_superres_source else image.copy()
-                if should_upscale and not use_superres_source:
+                if should_upscale:
                     scale_factor = min(
                         upscale_longest_side / max(max(original_size), 1),
-                        LOW_RES_SINGLE_MAX_UPSCALE_FACTOR,
+                        LOW_RES_IMAGE_MAX_UPSCALE_FACTOR,
                     )
-                    if scale_factor > 1.01:
+                    target_longest_side = max(1, round(max(original_size) * scale_factor))
+                    current_longest_side = max(variant.size)
+                    if target_longest_side > current_longest_side * 1.01:
+                        target_scale = target_longest_side / current_longest_side
                         target_size = (
-                            max(1, round(original_size[0] * scale_factor)),
-                            max(1, round(original_size[1] * scale_factor)),
+                            max(1, round(variant.size[0] * target_scale)),
+                            max(1, round(variant.size[1] * target_scale)),
                         )
                         variant = variant.resize(target_size, resample=resampling)
 
@@ -941,18 +945,19 @@ def optimize_image_variants(
                 sharpen_percent=122,
                 preserve_max_dimension=2600,
                 preserve_max_bytes=4_000_000,
-                upscale_longest_side=LOW_RES_SINGLE_FULL_TARGET,
+                upscale_longest_side=LOW_RES_IMAGE_FULL_TARGET,
             )
-            save_variant(
-                path=feed_path,
-                max_size=(1800, 1800),
-                quality=92,
-                sharpen_radius=0.74,
-                sharpen_percent=136,
-                preserve_max_dimension=1800,
-                preserve_max_bytes=3_000_000,
-                upscale_longest_side=LOW_RES_SINGLE_FEED_TARGET,
-            )
+            if include_feed_variant:
+                save_variant(
+                    path=feed_path,
+                    max_size=(1800, 1800),
+                    quality=92,
+                    sharpen_radius=0.74,
+                    sharpen_percent=136,
+                    preserve_max_dimension=1800,
+                    preserve_max_bytes=3_000_000,
+                    upscale_longest_side=LOW_RES_IMAGE_FEED_TARGET,
+                )
             save_variant(
                 path=thumb_path,
                 max_size=(1280, 1280),
@@ -965,7 +970,10 @@ def optimize_image_variants(
             )
     except Exception as error:  # pragma: no cover - runtime/image libs path
         log.warning("Image optimization fallback used: %s", error)
-        for path in (full_path, feed_path, thumb_path):
+        fallback_paths = [full_path, thumb_path]
+        if include_feed_variant:
+            fallback_paths.append(feed_path)
+        for path in fallback_paths:
             if not path.exists():
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_bytes(raw_bytes)
@@ -1283,7 +1291,7 @@ def mirror_post_photos(
             full_source = photo["full_url"]
             source_fetch_url = photo.get("source_url") or full_source
             override_bytes = post_photo_overrides[index] if index < len(post_photo_overrides) else None
-            if not override_bytes and not re.match(r"^https?://", source_fetch_url):
+            if not override_bytes and not re.match(r"^https?://", full_source):
                 local_full_path = DOCS_DIR / full_source.lstrip("./")
                 local_thumb_path = DOCS_DIR / photo["thumb_url"].lstrip("./")
                 local_feed_path = DOCS_DIR / photo.get("feed_url", "").lstrip("./") if photo.get("feed_url") else None
@@ -1365,7 +1373,7 @@ def mirror_post_photos(
                         full_path,
                         feed_path,
                         thumb_path,
-                        allow_single_image_upscale=is_single_photo_post,
+                        include_feed_variant=is_single_photo_post,
                     ):
                         log.info("Prepared image variants for post %s", post["id"])
                         changes_detected = True
@@ -5683,7 +5691,7 @@ def render_post_page_media(post: dict[str, Any]) -> str:
     total_items = len(photos) + len(videos) + (1 if post.get("video_url") else 0)
     is_gallery = total_items > 1
     sizes_attr = (
-        "(max-width: 480px) calc(100vw - 44px), (max-width: 860px) calc(50vw - 28px), 520px"
+        "(max-width: 860px) calc(100vw - 44px), 520px"
         if is_gallery
         else "(max-width: 860px) calc(100vw - 44px), 980px"
     )

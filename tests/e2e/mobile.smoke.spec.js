@@ -3,9 +3,18 @@ const {
   findMirroredRoundVideoPost,
   waitForFeedReady,
   openFirstViewerFromFeed,
+  expectLifecycleRefreshPreservesFeedPosition,
 } = require('./helpers');
 
 test.describe('Mobile smoke', () => {
+  test('keeps the current feed position after the app resumes', async ({ page }) => {
+    await expectLifecycleRefreshPreservesFeedPosition(page);
+  });
+
+  test('restores the feed position when the mobile OS reloads the suspended app', async ({ page }) => {
+    await expectLifecycleRefreshPreservesFeedPosition(page, { reloadOnResume: true });
+  });
+
   test('keeps all four contact actions in one row on narrow in-app viewports', async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 800 });
     await page.goto('/');
@@ -118,14 +127,38 @@ test.describe('Mobile smoke', () => {
   });
 
   test('switches channel from mobile carousel', async ({ page }) => {
+    let releaseTargetFeed;
+    const targetFeedGate = new Promise((resolve) => {
+      releaseTargetFeed = resolve;
+    });
+    await page.route('**/data/channels/pg-antitrust/posts.json**', async (route) => {
+      await targetFeedGate;
+      await route.continue();
+    });
+
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
 
     const initialTitle = (await page.locator('#siteTitle').innerText()).trim();
     const nextButton = page.locator('#channelCarousel .channel-carousel__surface--current .channel-carousel__nav--next');
+    const siteShell = page.locator('.site-shell');
+    const content = page.locator('.content');
     await expect(nextButton).toBeVisible();
 
+    await page.evaluate(() => window.scrollTo({ top: 720, behavior: 'auto' }));
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(300);
+
     await nextButton.click();
+    await expect(siteShell).toHaveClass(/is-channel-switching-mobile/);
+    expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(300);
+    await expect(content).toHaveCSS('transition-duration', '0.28s, 0.001s');
+    await expect.poll(async () => Number.parseFloat(await content.evaluate((element) => getComputedStyle(element).opacity))).toBeLessThan(0.02);
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+    releaseTargetFeed();
+
+    await expect(siteShell).not.toHaveClass(/is-channel-switching/);
+    await expect(content).toHaveCSS('opacity', '1');
+    await expect(content).toHaveCSS('transition-duration', '0.52s, 0.56s');
     await waitForFeedReady(page);
 
     await expect(page.locator('#siteTitle')).not.toHaveText(initialTitle);

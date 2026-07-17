@@ -6,6 +6,7 @@ const {
   waitForFeedReady,
   clickLoadMoreIfVisible,
   openFirstViewerFromFeed,
+  expectLifecycleRefreshPreservesFeedPosition,
 } = require('./helpers');
 
 test.describe('Desktop smoke', () => {
@@ -17,6 +18,44 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('#siteTitle')).toContainText(/Пепеляев Групп|Pepeliaev Group/);
     await expect(page.locator('.contact-bar')).toBeVisible();
     expect(await page.locator('.post-card').count()).toBeGreaterThan(0);
+  });
+
+  test('shows hover feedback on Telegram channel and post links', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const channelLink = page.locator('#channelLink');
+    const channelBefore = await channelLink.evaluate((element) => ({
+      color: getComputedStyle(element).color,
+      background: getComputedStyle(element).backgroundColor,
+      transform: getComputedStyle(element).transform,
+    }));
+    await channelLink.hover();
+    await expect.poll(() => channelLink.evaluate(
+      (element) => getComputedStyle(element).color
+    )).not.toBe(channelBefore.color);
+    await expect(channelLink).toHaveCSS('background-color', channelBefore.background);
+    await expect(channelLink).toHaveCSS('transform', channelBefore.transform);
+
+    const postLink = page.locator('.post-card__link').first();
+    await expect(postLink).toBeVisible();
+    const postBefore = await postLink.evaluate((element) => ({
+      color: getComputedStyle(element).color,
+      background: getComputedStyle(element).backgroundColor,
+      transform: getComputedStyle(element).transform,
+    }));
+    await postLink.hover();
+    await expect.poll(() => postLink.evaluate(
+      (element) => getComputedStyle(element).color
+    )).not.toBe(postBefore.color);
+    await expect(postLink).toHaveCSS('background-color', postBefore.background);
+    await expect(postLink).toHaveCSS('transform', postBefore.transform);
+    await expect(postLink).toHaveCSS('text-decoration-line', 'none');
+    await expect(postLink).toHaveCSS('box-shadow', 'none');
+  });
+
+  test('keeps the current feed position after returning to a desktop tab', async ({ page }) => {
+    await expectLifecycleRefreshPreservesFeedPosition(page);
   });
 
   test('publishes an installable manifest with required desktop icon sizes', async ({ page }) => {
@@ -191,14 +230,33 @@ test.describe('Desktop smoke', () => {
   });
 
   test('switches channel from desktop menu and updates hero + url', async ({ page }) => {
+    let releaseTargetFeed;
+    const targetFeedGate = new Promise((resolve) => {
+      releaseTargetFeed = resolve;
+    });
+    await page.route('**/data/channels/pg-tax/posts.json**', async (route) => {
+      await targetFeedGate;
+      await route.continue();
+    });
+
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
 
     const initialTitle = (await page.locator('#siteTitle').innerText()).trim();
     const targetButton = page.locator('#channelMenu .channel-tab[data-channel-key="pg-tax"]');
+    const siteShell = page.locator('.site-shell');
+    const content = page.locator('.content');
     await expect(targetButton).toBeVisible();
 
     await targetButton.click();
+    await expect(siteShell).toHaveClass(/is-channel-switching-desktop/);
+    await expect(content).toHaveCSS('transition-duration', '0.28s, 0.3s');
+    await expect.poll(async () => Number.parseFloat(await content.evaluate((element) => getComputedStyle(element).opacity))).toBeLessThan(0.02);
+    releaseTargetFeed();
+
+    await expect(siteShell).not.toHaveClass(/is-channel-switching/);
+    await expect(content).toHaveCSS('opacity', '1');
+    await expect(content).toHaveCSS('transition-duration', '0.5s, 0.58s');
     await waitForFeedReady(page);
 
     await expect(page).toHaveURL(/channel=pg-tax/);
@@ -682,6 +740,126 @@ test.describe('Desktop smoke', () => {
       (nodes) => nodes.map((node) => node.getAttribute('data-post-id')),
     );
     expect(renderedIds).toHaveLength(1);
+  });
+
+  test('uses natural image height for single images and every matched gallery row', async ({ page }) => {
+    const postsPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pgp-official', 'posts.json');
+    const postsPayload = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
+    const buildPhoto = (fileName, width, height) => ({
+      thumb_url: `assets/${fileName}`,
+      feed_url: `assets/${fileName}`,
+      full_url: `assets/${fileName}`,
+      thumb_width: width,
+      thumb_height: height,
+      feed_width: width,
+      feed_height: height,
+      full_width: width,
+      full_height: height,
+      source_width: width,
+      source_height: height,
+    });
+    const singleImagePost = {
+      id: 990003,
+      date: new Date().toISOString(),
+      text: 'Single image fixture',
+      text_html: 'Single image fixture',
+      views: 0,
+      comments_count: 0,
+      photos: [buildPhoto('app-icon-512.png', 512, 512)],
+      videos: [],
+      video_url: null,
+      tg_url: 'https://t.me/pgp_official/990003',
+    };
+    const matchedRowsPost = {
+      ...singleImagePost,
+      id: 990004,
+      text: 'Matched gallery rows fixture',
+      text_html: 'Matched gallery rows fixture',
+      photos: [
+        buildPhoto('app-icon-512.png', 512, 512),
+        buildPhoto('app-icon-192.png', 192, 192),
+        buildPhoto('app-icon-512.png', 512, 512),
+        buildPhoto('app-icon-192.png', 192, 192),
+        buildPhoto('app-icon-512.png', 512, 512),
+      ],
+      tg_url: 'https://t.me/pgp_official/990004',
+    };
+    const mismatchedRowPost = {
+      ...singleImagePost,
+      id: 990005,
+      text: 'Mismatched gallery row fixture',
+      text_html: 'Mismatched gallery row fixture',
+      photos: [
+        buildPhoto('app-icon-512.png', 512, 512),
+        buildPhoto('app-icon-192.png', 320, 180),
+      ],
+      tg_url: 'https://t.me/pgp_official/990005',
+    };
+    const fixturePayload = {
+      ...postsPayload,
+      posts: [singleImagePost, matchedRowsPost, mismatchedRowPost, ...(postsPayload.posts || [])],
+    };
+
+    await page.route('**/data/channels/pgp-official/posts.json**', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(fixturePayload),
+      });
+    });
+
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const singleMedia = page.locator('.post-card[data-post-id="990003"] .post-card__media--natural-single-image');
+    await expect(singleMedia).toBeVisible();
+    const singleLayout = await singleMedia.evaluate((root) => {
+      const trigger = root.querySelector('.media-trigger');
+      const image = trigger.querySelector('img');
+      const rootRect = root.getBoundingClientRect();
+      const triggerRect = trigger.getBoundingClientRect();
+      const imageRect = image.getBoundingClientRect();
+      return {
+        rootHeight: rootRect.height,
+        triggerHeight: triggerRect.height,
+        imageHeight: imageRect.height,
+        triggerBackground: getComputedStyle(trigger).backgroundColor,
+      };
+    });
+    expect(Math.abs(singleLayout.rootHeight - singleLayout.imageHeight)).toBeLessThanOrEqual(1);
+    expect(Math.abs(singleLayout.triggerHeight - singleLayout.imageHeight)).toBeLessThanOrEqual(1);
+    expect(singleLayout.triggerBackground).not.toBe('rgba(0, 0, 0, 0)');
+
+    const gallery = page.locator('.post-card[data-post-id="990004"] .post-card__media--gallery');
+    await expect(gallery).toBeVisible();
+    await expect(gallery.locator('img').first()).toHaveAttribute(
+      'sizes',
+      '(max-width: 860px) calc(100vw - 44px), 520px',
+    );
+    const layout = await gallery.evaluate((root) => ({
+      triggerSizes: [...root.querySelectorAll('.media-trigger')].map((trigger) => {
+        const image = trigger.querySelector('img');
+        const triggerRect = trigger.getBoundingClientRect();
+        const imageRect = image.getBoundingClientRect();
+        return {
+          triggerWidth: triggerRect.width,
+          triggerHeight: triggerRect.height,
+          imageWidth: imageRect.width,
+          imageHeight: imageRect.height,
+          imageBackground: getComputedStyle(image).backgroundColor,
+        };
+      }),
+    }));
+
+    expect(layout.triggerSizes).toHaveLength(5);
+    expect(layout.triggerSizes.every((item) => (
+      Math.abs(item.triggerWidth - item.imageWidth) <= 1
+      && Math.abs(item.triggerHeight - item.imageHeight) <= 1
+      && Math.abs(item.imageWidth - item.imageHeight) <= 1
+      && item.imageBackground === 'rgba(0, 0, 0, 0)'
+    ))).toBe(true);
+
+    await expect(page.locator('.post-card[data-post-id="990005"] .media-trigger--natural-image')).toHaveCount(0);
   });
 
   test('does not duplicate feed cards after overlapping load-more and refresh requests', async ({ page }) => {
