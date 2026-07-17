@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v66';
+const CACHE_VERSION = 'v67';
 const SHELL_CACHE_NAME = `telegram-pages-mirror-shell-${CACHE_VERSION}`;
 const DATA_CACHE_NAME = `telegram-pages-mirror-data-${CACHE_VERSION}`;
 const MEDIA_CACHE_NAME = `telegram-pages-mirror-media-${CACHE_VERSION}`;
@@ -20,6 +20,8 @@ const STATIC_ASSETS = [
   './assets/fonts/ibm-plex-mono-400-latin.woff2',
   './assets/fonts/ibm-plex-mono-500-cyrillic.woff2',
   './assets/fonts/ibm-plex-mono-500-latin.woff2',
+  './assets/app-icon-192.png',
+  './assets/app-icon-512.png',
   './manifest.webmanifest',
   './data/channels/index.json',
   './data/channels/pgp-official/media/channel-avatar.jpg',

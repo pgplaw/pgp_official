@@ -19,6 +19,32 @@ test.describe('Desktop smoke', () => {
     expect(await page.locator('.post-card').count()).toBeGreaterThan(0);
   });
 
+  test('publishes an installable manifest with required desktop icon sizes', async ({ page }) => {
+    await page.goto('/');
+
+    const manifest = await page.evaluate(() => fetch('./manifest.webmanifest', { cache: 'no-store' }).then(
+      (response) => response.json()
+    ));
+    const requiredIcons = manifest.icons.filter((icon) => ['192x192', '512x512'].includes(icon.sizes));
+    expect(requiredIcons).toHaveLength(2);
+    expect(requiredIcons.map((icon) => icon.sizes).sort()).toEqual(['192x192', '512x512']);
+    expect(requiredIcons.every((icon) => icon.type === 'image/png')).toBe(true);
+
+    const imageSizes = await page.evaluate((icons) => Promise.all(icons.map((icon) => new Promise((resolve, reject) => {
+      const image = new Image();
+      image.onload = () => resolve(`${image.naturalWidth}x${image.naturalHeight}`);
+      image.onerror = reject;
+      image.src = icon.src;
+    }))), requiredIcons);
+    expect(imageSizes.sort()).toEqual(['192x192', '512x512']);
+
+    const cdp = await page.context().newCDPSession(page);
+    await expect.poll(async () => {
+      const result = await cdp.send('Page.getInstallabilityErrors');
+      return result.installabilityErrors;
+    }).toEqual([]);
+  });
+
   test('opens the ecosystem page from the fourth desktop contact action', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
