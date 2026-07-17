@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-17T20:26:04.570397+00:00",
+  "generated_at": "2026-07-17T20:44:39.967741+00:00",
   "build_id": "3d7bcb58b891",
   "site": {
     "channel_username": "InvestmentLaw",
@@ -65,9 +65,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/investment-law/media/posts/thumbs/1126-1-8896d6855112-v9.jpg",
-          "full_url": "data/channels/investment-law/media/posts/1126-1-8896d6855112-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/AH0cMlytgBuM4AblbaM5pTv70ihabxFZGGrDmeHYbnYxRlJ3xOxJRj2d8ilALGugMjw-K2lJIlraCa_IHNnuFaevdnXOFuaM8GCajyXgMVzfShi3_PSerlFfCUvDJrZtITakBLbq_YxVBpV__s-DwMjiBMI4tRJwpHLTmYT3IpZajR0dVCaRpzrhIFDpEa0znt4EH_wNKQwCEA2B1s8-ByFeXjb7gQ26FlUDoD6wJn_-9SLNb9fOg9EAu1DFKYlBd_iFdSolTK-TCSA0XpoXlGuLvt7y65560l0Ai9qsKLBqEs0CekyFKcnr5d7FrFi4dRv85fUv_JSVm2HhoamNhA.jpg",
           "feed_url": "data/channels/investment-law/media/posts/feed/1126-1-8896d6855112-v9.jpg",
+          "full_url": "data/channels/investment-law/media/posts/1126-1-8896d6855112-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -75,7 +74,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/AH0cMlytgBuM4AblbaM5pTv70ihabxFZGGrDmeHYbnYxRlJ3xOxJRj2d8ilALGugMjw-K2lJIlraCa_IHNnuFaevdnXOFuaM8GCajyXgMVzfShi3_PSerlFfCUvDJrZtITakBLbq_YxVBpV__s-DwMjiBMI4tRJwpHLTmYT3IpZajR0dVCaRpzrhIFDpEa0znt4EH_wNKQwCEA2B1s8-ByFeXjb7gQ26FlUDoD6wJn_-9SLNb9fOg9EAu1DFKYlBd_iFdSolTK-TCSA0XpoXlGuLvt7y65560l0Ai9qsKLBqEs0CekyFKcnr5d7FrFi4dRv85fUv_JSVm2HhoamNhA.jpg"
         }
       ],
       "video_url": null,
@@ -115,9 +115,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/investment-law/media/posts/thumbs/1124-1-009067279239-v9.jpg",
-          "full_url": "data/channels/investment-law/media/posts/1124-1-009067279239-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/EPseQVP0htNTIkFZtgIgVx1m2qhk7HLcKEH8IwzcdcOH6qnD7c2YZKSBfKcdYuxC1UBuzFziviuYSRPd_3ZImr_iYWDtMHQTmcaX_9JCIh_Mzs-K30XVNtuOBwsWkDD-3Zfgs75v2Tg9YaDJ9dhafnlTZE09S-_T3p4Eg4V0DclolrDNrXqKeppDfNjdd4cT0mrYbFtPiy0ydrIHJ5JLQugWRjPLbQxGEdq5ezrna3bg0bBNrmrJSBympQqxeMO6ec13uLG0r_KPSvXF-lJFxUc2i5r3tOGtPe1N45VnavQYQ0Z5oQmrzTMiEqnbjqCfZ4Tq_FURhVAq-juXGy9fTQ.jpg",
           "feed_url": "data/channels/investment-law/media/posts/feed/1124-1-009067279239-v9.jpg",
+          "full_url": "data/channels/investment-law/media/posts/1124-1-009067279239-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -125,7 +124,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/EPseQVP0htNTIkFZtgIgVx1m2qhk7HLcKEH8IwzcdcOH6qnD7c2YZKSBfKcdYuxC1UBuzFziviuYSRPd_3ZImr_iYWDtMHQTmcaX_9JCIh_Mzs-K30XVNtuOBwsWkDD-3Zfgs75v2Tg9YaDJ9dhafnlTZE09S-_T3p4Eg4V0DclolrDNrXqKeppDfNjdd4cT0mrYbFtPiy0ydrIHJ5JLQugWRjPLbQxGEdq5ezrna3bg0bBNrmrJSBympQqxeMO6ec13uLG0r_KPSvXF-lJFxUc2i5r3tOGtPe1N45VnavQYQ0Z5oQmrzTMiEqnbjqCfZ4Tq_FURhVAq-juXGy9fTQ.jpg"
         }
       ],
       "video_url": null,
@@ -205,36 +205,39 @@
       "photos": [
         {
           "thumb_url": "data/channels/investment-law/media/posts/thumbs/1117-1-c83b223690bd-v9.jpg",
+          "feed_url": "data/channels/investment-law/media/posts/1117-1-c83b223690bd-v9.jpg",
           "full_url": "data/channels/investment-law/media/posts/1117-1-c83b223690bd-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Lm52JQDLuLrEVUM-PN_aqtZufZHbL5N34INztN79cobNlvQz0Pbm8UyL8IyMyWr5QxwO6KBK8zwWYYPkbXyRXEln98LcG5tf5W3OjCPbQrLCk8edF8fLEEQ0PpVDAwPEgAj0Eh4Y2sCeqpIXBiQSoDv6vXW5YuMlzhRgTtshsnIelfGH7gR3PoW1_KQ5KgvJ4-xcHv7sqsR3-tu3ce3utT5cXoC0gM3_PBqtdKHDggJL3oTukQNE6KmM-ZRqlzjfmJNCwnBs--ceazKqEThM4SyDt4pykk18ge7-NLfPI74SCfEFI3ZHJSOoy-SELOSCqeuPbJT957YwHHUas5dovw.jpg",
           "thumb_width": 476,
           "thumb_height": 800,
           "full_width": 1119,
           "full_height": 1880,
           "source_width": 1119,
-          "source_height": 1880
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/Lm52JQDLuLrEVUM-PN_aqtZufZHbL5N34INztN79cobNlvQz0Pbm8UyL8IyMyWr5QxwO6KBK8zwWYYPkbXyRXEln98LcG5tf5W3OjCPbQrLCk8edF8fLEEQ0PpVDAwPEgAj0Eh4Y2sCeqpIXBiQSoDv6vXW5YuMlzhRgTtshsnIelfGH7gR3PoW1_KQ5KgvJ4-xcHv7sqsR3-tu3ce3utT5cXoC0gM3_PBqtdKHDggJL3oTukQNE6KmM-ZRqlzjfmJNCwnBs--ceazKqEThM4SyDt4pykk18ge7-NLfPI74SCfEFI3ZHJSOoy-SELOSCqeuPbJT957YwHHUas5dovw.jpg"
         },
         {
           "thumb_url": "data/channels/investment-law/media/posts/thumbs/1117-2-8e25967ce5c1-v9.jpg",
+          "feed_url": "data/channels/investment-law/media/posts/1117-2-8e25967ce5c1-v9.jpg",
           "full_url": "data/channels/investment-law/media/posts/1117-2-8e25967ce5c1-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Xj2KYqWtpq-c0mAROKORb3OSLKuU06mBEMWkTgwV_HlqXmCbFM-W6Q8Lby2HNxWApCbPmmIR5SAnTGyOhtoW7H9VfEnHZPccu1qenBGyVSYUClWljlCePfxX63kXcuiTgoqnlFnrLKXTB66dkNELluKzqrTTm_pT3PPluFDAe1HMyhcQWzCNmERuvEGaq6XzBIa7X1_Y1WLeUAqzdV_I8fCJqnmvxX8BC07KqgMF1kJkQVZ7OCPVXZXf5pcZATQpTnLr8sZ7_KWhz5wurDQi-hT-S1VPssgE8rdQjicYC_zAKRjwD7wg_godEb8iw8VaB-nM0wpoeOdBjAIJSgOefQ.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 1880,
           "full_height": 1880,
           "source_width": 1880,
-          "source_height": 1880
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/Xj2KYqWtpq-c0mAROKORb3OSLKuU06mBEMWkTgwV_HlqXmCbFM-W6Q8Lby2HNxWApCbPmmIR5SAnTGyOhtoW7H9VfEnHZPccu1qenBGyVSYUClWljlCePfxX63kXcuiTgoqnlFnrLKXTB66dkNELluKzqrTTm_pT3PPluFDAe1HMyhcQWzCNmERuvEGaq6XzBIa7X1_Y1WLeUAqzdV_I8fCJqnmvxX8BC07KqgMF1kJkQVZ7OCPVXZXf5pcZATQpTnLr8sZ7_KWhz5wurDQi-hT-S1VPssgE8rdQjicYC_zAKRjwD7wg_godEb8iw8VaB-nM0wpoeOdBjAIJSgOefQ.jpg"
         },
         {
           "thumb_url": "data/channels/investment-law/media/posts/thumbs/1117-3-96dd618b127d-v9.jpg",
+          "feed_url": "data/channels/investment-law/media/posts/1117-3-96dd618b127d-v9.jpg",
           "full_url": "data/channels/investment-law/media/posts/1117-3-96dd618b127d-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/up879zKhnmIBKkGKhDjTjP9fcyvzXvhCODqXZXwdz-lOg54GatfA4bPadM7O2y9pKzIOnhNprGhZwB6ImmYajN7ezeV1P6LNRTM4UynpNV7hPU5yBKUOHPj7P7ebx_yN_FvOBgmQNmkOu8Z9xjodSDGdqfnxk3mse7JPcGVlRxyyIUsihIcBTRYtLt5A5yt-d73CQUEs5bo4y7BLr5DA96gqTCca0BDhuVgngkC7HvCvRqA5GBX2h1ugoiugL9FolF_F0Mly4GQ3nArcQMVd2LJShLrp0qp28b2LLzco2i9Tj2JlTzqE3GLDowXXifEiERS28WBc6MR4subybbWzww.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "full_width": 1880,
           "full_height": 1880,
           "source_width": 1880,
-          "source_height": 1880
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/up879zKhnmIBKkGKhDjTjP9fcyvzXvhCODqXZXwdz-lOg54GatfA4bPadM7O2y9pKzIOnhNprGhZwB6ImmYajN7ezeV1P6LNRTM4UynpNV7hPU5yBKUOHPj7P7ebx_yN_FvOBgmQNmkOu8Z9xjodSDGdqfnxk3mse7JPcGVlRxyyIUsihIcBTRYtLt5A5yt-d73CQUEs5bo4y7BLr5DA96gqTCca0BDhuVgngkC7HvCvRqA5GBX2h1ugoiugL9FolF_F0Mly4GQ3nArcQMVd2LJShLrp0qp28b2LLzco2i9Tj2JlTzqE3GLDowXXifEiERS28WBc6MR4subybbWzww.jpg"
         }
       ],
       "video_url": null,
@@ -299,9 +302,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/investment-law/media/posts/thumbs/1110-1-b577c1391319-v9.jpg",
-          "full_url": "data/channels/investment-law/media/posts/1110-1-b577c1391319-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/npZUMvfu75wk9RwTGdk9Vztdotdqdrs751JIw_pWlDWK1GsNN6FEdq2YVDsgaXvfCy_L-BKtNz5UMDJpO_nriwYXH5t0l0lNVU46vmt6LA_yCgMjEJEnmB8xgw8vGMyvy6zHZHEC7CnqFyCbvMH3Z7R842syuzVXj7nfSZJcbLiPlqTfNr5eBsBdnhuhHsD3CobSiA0zWD18RCiG28SSTe4fWvLxdacK3FwU2XhsS5eV_3e_7ZBxv-TtGMcLh0swIxY5xhKMLqkkuOQPulLeGk0v3b2nvLlPymuByOh6HP_FT0MLC2T5V86KgzcRmM51ElunOAF77ZBYplW4lqalxA.jpg",
           "feed_url": "data/channels/investment-law/media/posts/feed/1110-1-b577c1391319-v9.jpg",
+          "full_url": "data/channels/investment-law/media/posts/1110-1-b577c1391319-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -309,7 +311,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/npZUMvfu75wk9RwTGdk9Vztdotdqdrs751JIw_pWlDWK1GsNN6FEdq2YVDsgaXvfCy_L-BKtNz5UMDJpO_nriwYXH5t0l0lNVU46vmt6LA_yCgMjEJEnmB8xgw8vGMyvy6zHZHEC7CnqFyCbvMH3Z7R842syuzVXj7nfSZJcbLiPlqTfNr5eBsBdnhuhHsD3CobSiA0zWD18RCiG28SSTe4fWvLxdacK3FwU2XhsS5eV_3e_7ZBxv-TtGMcLh0swIxY5xhKMLqkkuOQPulLeGk0v3b2nvLlPymuByOh6HP_FT0MLC2T5V86KgzcRmM51ElunOAF77ZBYplW4lqalxA.jpg"
         }
       ],
       "video_url": null,
@@ -329,25 +332,27 @@
       "photos": [
         {
           "thumb_url": "data/channels/investment-law/media/posts/thumbs/1105-1-140bdb6874c1-v9.jpg",
+          "feed_url": "data/channels/investment-law/media/posts/1105-1-140bdb6874c1-v9.jpg",
           "full_url": "data/channels/investment-law/media/posts/1105-1-140bdb6874c1-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/viPxgtbo4xdVSS4iaqprDJZRh2gGcyw2rp7-Mczbs2kw3SuOmFTjpyzkalhak-XinC7-jfY1iQ2gJ3YUbJFNxXDAVX79GMQoCDyTq6KUwvy4XmnbO5XnOdI--q99iNkyWPfm_2goyFX_GpA4jrzG4NRShN3ksKD7JdUFZJlhYHeOg0iHEaW5QZezCmFWNx5ImkTaiWWq6hrd5harbz0pss85sOSq91C9yH6klyifYqRW6zlYHwxydvy1BBDJskkurOrYSBSmuQDeErky-EKPblyS8BaL9dmFdn0kKITnv1F3udpZzIUccbEdwd-Yzc4qFhJJ0oD2KKnpbi20itBe5g.jpg",
           "thumb_width": 800,
           "thumb_height": 450,
           "full_width": 1880,
           "full_height": 1058,
           "source_width": 1880,
-          "source_height": 1058
+          "source_height": 1058,
+          "source_url": "https://cdn4.telesco.pe/file/viPxgtbo4xdVSS4iaqprDJZRh2gGcyw2rp7-Mczbs2kw3SuOmFTjpyzkalhak-XinC7-jfY1iQ2gJ3YUbJFNxXDAVX79GMQoCDyTq6KUwvy4XmnbO5XnOdI--q99iNkyWPfm_2goyFX_GpA4jrzG4NRShN3ksKD7JdUFZJlhYHeOg0iHEaW5QZezCmFWNx5ImkTaiWWq6hrd5harbz0pss85sOSq91C9yH6klyifYqRW6zlYHwxydvy1BBDJskkurOrYSBSmuQDeErky-EKPblyS8BaL9dmFdn0kKITnv1F3udpZzIUccbEdwd-Yzc4qFhJJ0oD2KKnpbi20itBe5g.jpg"
         },
         {
           "thumb_url": "data/channels/investment-law/media/posts/thumbs/1105-2-a4f902c5e52f-v9.jpg",
+          "feed_url": "data/channels/investment-law/media/posts/1105-2-a4f902c5e52f-v9.jpg",
           "full_url": "data/channels/investment-law/media/posts/1105-2-a4f902c5e52f-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/bHzZar5zejh2G3yaunW59Va9nk_Yhj8BsROtG5QYk7V3Gn8RkdzZSh_3_-uW6zXB8QTQZkoZV2vZp8tiBexFwWmNXYq2mCjb0c6GBEV7cXSyCAUphqeKYjc_SWhlBabdzJDvMADGNMUBwHGAIN1gwsGJK24pm-QlMPEBWlu-8hzt_Rby8Ryk0j1C4PIBe7qzzeSNreYlNGrhyCPOMrZ0copYha5AB-7FhiOFHE1ny2Av7b2PhReh7GIoYKISsXpK8v5N974gYypB7W8hZ0H6zMeQPXelrH3LVmmPZnvxQR_W3UDqiMbfc3YvmkbB8NhMhrLJwxXtkaHsNgWntXEakg.jpg",
           "thumb_width": 800,
           "thumb_height": 600,
           "full_width": 1880,
           "full_height": 1410,
           "source_width": 1880,
-          "source_height": 1410
+          "source_height": 1410,
+          "source_url": "https://cdn4.telesco.pe/file/bHzZar5zejh2G3yaunW59Va9nk_Yhj8BsROtG5QYk7V3Gn8RkdzZSh_3_-uW6zXB8QTQZkoZV2vZp8tiBexFwWmNXYq2mCjb0c6GBEV7cXSyCAUphqeKYjc_SWhlBabdzJDvMADGNMUBwHGAIN1gwsGJK24pm-QlMPEBWlu-8hzt_Rby8Ryk0j1C4PIBe7qzzeSNreYlNGrhyCPOMrZ0copYha5AB-7FhiOFHE1ny2Av7b2PhReh7GIoYKISsXpK8v5N974gYypB7W8hZ0H6zMeQPXelrH3LVmmPZnvxQR_W3UDqiMbfc3YvmkbB8NhMhrLJwxXtkaHsNgWntXEakg.jpg"
         }
       ],
       "video_url": null,
