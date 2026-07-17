@@ -4422,6 +4422,13 @@ window.addEventListener('keydown', (event) => {
 });
 
 if ('serviceWorker' in navigator) {
+  let isReloadingForServiceWorkerUpdate = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (isReloadingForServiceWorkerUpdate) return;
+    isReloadingForServiceWorkerUpdate = true;
+    window.location.reload();
+  });
+
   navigator.serviceWorker.register('./sw.js')
     .then((registration) => registration.update())
     .catch(() => {});

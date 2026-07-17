@@ -1044,6 +1044,26 @@ test.describe('Desktop smoke', () => {
 test.describe('Desktop PWA smoke', () => {
   test.use({ serviceWorkers: 'allow' });
 
+  test('reloads the app shell when an updated service worker takes control', async ({ page }) => {
+    let mainFrameNavigations = 0;
+    page.on('framenavigated', (frame) => {
+      if (frame === page.mainFrame()) mainFrameNavigations += 1;
+    });
+
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+    const navigationsBeforeControllerChange = mainFrameNavigations;
+
+    await page.evaluate(() => {
+      navigator.serviceWorker.dispatchEvent(new Event('controllerchange'));
+    });
+
+    await expect.poll(() => mainFrameNavigations).toBeGreaterThan(navigationsBeforeControllerChange);
+    await waitForFeedReady(page);
+    await expect(page.locator('.contact-bar__item')).toHaveCount(4);
+    await expect(page.locator('.contact-bar__item--ecosystem')).toBeVisible();
+  });
+
   test('refreshes the active feed on startup and when the app returns from the background', async ({ page }) => {
     const feedRequests = [];
     page.on('request', (request) => {
