@@ -58,7 +58,7 @@ test.describe('Desktop smoke', () => {
     await ecosystemLink.click();
     await expect(page).toHaveURL(/\/ecosystem\.html$/);
     await expect(page.locator('.ecosystem-nav')).toHaveCount(0);
-    await expect(page.locator('h1 > span')).toHaveText('Экосистема');
+    await expect(page.locator('.ecosystem-intro__title')).toHaveText('Экосистема');
     await expect(page.locator('.ecosystem-intro > p')).toHaveText('Профессиональная информация на одной странице');
     await expect(page.locator('.ecosystem-intro__eyebrow')).toHaveCount(0);
     await expect(page.locator('.ecosystem-nav__brand')).toHaveCount(0);
@@ -66,10 +66,12 @@ test.describe('Desktop smoke', () => {
     await expect(ecosystemLogo).toHaveAttribute('src', 'data/channels/pgp-official/media/channel-avatar.jpg');
     expect(await ecosystemLogo.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
     const ecosystemBrand = page.locator('.ecosystem-intro__brand');
-    await expect(ecosystemBrand).toHaveText('Pepeliaev Group');
+    await expect(ecosystemBrand).toHaveText('«Пепеляев Групп»');
     await expect(ecosystemBrand).toHaveAttribute('href', 'https://www.pgplaw.ru/');
+    await expect(page.locator('.ecosystem-intro__separator')).toHaveCount(1);
+    await expect(ecosystemBrand).toHaveCSS('border-left-width', '0px');
     const [ecosystemTitleStyle, ecosystemBrandStyle] = await Promise.all([
-      page.locator('h1 > span').evaluate((element) => {
+      page.locator('.ecosystem-intro__title').evaluate((element) => {
         const style = getComputedStyle(element);
         return { fontFamily: style.fontFamily, fontSize: style.fontSize, fontWeight: style.fontWeight };
       }),
@@ -80,6 +82,9 @@ test.describe('Desktop smoke', () => {
     ]);
     expect(ecosystemBrandStyle).toEqual(ecosystemTitleStyle);
     await expect(page.locator('.ecosystem-card')).toHaveCount(4);
+    expect(await page.locator('.ecosystem-card').evaluateAll((cards) => cards.every(
+      (card) => getComputedStyle(card).borderTopColor === 'rgb(160, 32, 128)'
+    ))).toBe(true);
     await expect(page.locator('.ecosystem-card__index')).toHaveCount(0);
     await expect(page.locator('#newsletterTitle')).toHaveText('Рассылки');
     await expect(page.locator('#videoTitle')).toHaveText('Экспертные видео');
@@ -98,6 +103,7 @@ test.describe('Desktop smoke', () => {
     expect(Math.abs(newsletterCopyBox.y - newsletterVisualBox.y)).toBeLessThanOrEqual(1);
     const newsletterFeatureIcons = page.locator('.ecosystem-feature-list img');
     await expect(newsletterFeatureIcons).toHaveCount(3);
+    await expect(page.locator('.ecosystem-feature-list li').first()).toContainText('Анонсы мероприятий');
     expect(await newsletterFeatureIcons.evaluateAll((images) => images.every(
       (image) => image.getAttribute('src').endsWith('.svg') && image.complete && image.naturalWidth > 0
     ))).toBe(true);
@@ -110,10 +116,10 @@ test.describe('Desktop smoke', () => {
     await expect(newsletterButton).toHaveCSS('background-color', 'rgb(167, 60, 162)');
     await expect(newsletterButton).toHaveCSS('transform', /matrix/);
     const telegramIcon = page.locator('.social-links a[href^="https://telegram"] > img');
-    await expect(telegramIcon).toHaveAttribute('src', 'assets/ecosystem/telegram.svg');
+    await expect(telegramIcon).toHaveAttribute('src', 'assets/ecosystem/telegram.svg?v=3');
     expect(await telegramIcon.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
     const maxIcon = page.locator('.social-links a[href^="https://max.ru"] > img');
-    await expect(maxIcon).toHaveAttribute('src', 'assets/ecosystem/max.svg');
+    await expect(maxIcon).toHaveAttribute('src', 'assets/ecosystem/max.svg?v=2');
     expect(await maxIcon.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
     const socialTiles = page.locator('.social-links > a');
     await expect(socialTiles).toHaveCount(2);
@@ -143,6 +149,7 @@ test.describe('Desktop smoke', () => {
     await expect(knowledgeTiles.nth(2)).toHaveAttribute('href', 'https://www.pgplaw.ru/analytics-and-brochures/books/');
     const knowledgeButton = page.locator('.ecosystem-button--knowledge');
     await expect(knowledgeButton).toHaveAttribute('href', 'https://www.pgplaw.ru/analytics-and-brochures/');
+    await expect(knowledgeButton).toHaveCSS('background-color', 'rgb(145, 39, 141)');
     const [knowledgeLayoutBox, knowledgeButtonBox] = await Promise.all([
       page.locator('.knowledge-layout').boundingBox(),
       knowledgeButton.boundingBox(),

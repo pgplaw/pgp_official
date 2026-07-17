@@ -72,7 +72,7 @@ test.describe('Mobile smoke', () => {
 
     const [logoBox, titleBox, brandBox] = await Promise.all([
       page.locator('.ecosystem-intro__logo').boundingBox(),
-      page.locator('.ecosystem-intro h1 > span').boundingBox(),
+      page.locator('.ecosystem-intro__title').boundingBox(),
       page.locator('.ecosystem-intro__brand').boundingBox(),
     ]);
     expect(logoBox).not.toBeNull();
