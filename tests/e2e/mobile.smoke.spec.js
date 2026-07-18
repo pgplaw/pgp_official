@@ -7,6 +7,18 @@ const {
 } = require('./helpers');
 
 test.describe('Mobile smoke', () => {
+  test('keeps utility controls in the channel card on mobile', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const utilityActions = page.locator('.hero__panel > .hero__actions');
+    await expect(utilityActions).toBeVisible();
+    await expect(utilityActions.locator('#refreshButton')).toBeVisible();
+    await expect(utilityActions.locator('#installAppButton')).toBeVisible();
+    await expect(utilityActions.locator('.theme-toggle')).toBeVisible();
+    await expect(page.locator('#channelNavActionsHost .hero__actions')).toHaveCount(0);
+  });
+
   test('keeps the current feed position after the app resumes', async ({ page }) => {
     await expectLifecycleRefreshPreservesFeedPosition(page);
   });

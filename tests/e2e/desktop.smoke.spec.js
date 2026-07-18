@@ -17,7 +17,144 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('.channel-nav')).toBeVisible();
     await expect(page.locator('#siteTitle')).toContainText(/Пепеляев Групп|Pepeliaev Group/);
     await expect(page.locator('.contact-bar')).toBeVisible();
+    const contactBar = page.locator('.contact-bar');
+    const contactItems = contactBar.locator('.contact-bar__item');
+    await expect(contactItems).toHaveCount(4);
+    await expect(contactBar).toHaveCSS('gap', '0px');
+    await expect(contactBar).toHaveCSS('overflow', 'hidden');
+    await expect(contactItems.first()).toHaveCSS('box-shadow', 'none');
+    await expect(contactItems.first()).toHaveCSS('transform', 'none');
+    const contactBackgroundBeforeHover = await contactItems.first().evaluate(
+      (element) => getComputedStyle(element).backgroundColor,
+    );
+    await contactItems.first().hover();
+    await expect.poll(() => contactItems.first().evaluate(
+      (element) => getComputedStyle(element).backgroundColor,
+    )).not.toBe(contactBackgroundBeforeHover);
+    await expect(contactItems.first()).toHaveCSS('transform', 'none');
+    const leadTitle = page.locator('#siteTitle .hero__title-line--lead');
+    const secondaryTitle = page.locator('#siteTitle .hero__title-line:not(.hero__title-line--lead)');
+    const [leadColor, secondaryColor, leadSize, secondarySize] = await Promise.all([
+      leadTitle.evaluate((element) => getComputedStyle(element).color),
+      secondaryTitle.evaluate((element) => getComputedStyle(element).color),
+      leadTitle.evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize)),
+      secondaryTitle.evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize)),
+    ]);
+    expect(secondaryColor).not.toBe(leadColor);
+    expect(secondarySize).toBeLessThan(leadSize * 0.5);
+    const [avatarBox, titleBox, descriptionBox, panelBox] = await Promise.all([
+      page.locator('#channelAvatarWrap').boundingBox(),
+      page.locator('#siteTitle').boundingBox(),
+      page.locator('#siteDescription').boundingBox(),
+      page.locator('.hero__panel').boundingBox(),
+    ]);
+    expect(avatarBox).not.toBeNull();
+    expect(titleBox).not.toBeNull();
+    expect(descriptionBox).not.toBeNull();
+    expect(panelBox).not.toBeNull();
+    const titleCenter = titleBox.y + (titleBox.height / 2);
+    const avatarCenter = avatarBox.y + (avatarBox.height / 2);
+    expect(Math.abs(titleCenter - avatarCenter)).toBeLessThanOrEqual(2);
+    expect(Math.abs(avatarBox.x - descriptionBox.x)).toBeLessThanOrEqual(2);
+    expect(descriptionBox.x + descriptionBox.width).toBeLessThanOrEqual(panelBox.x - 12);
     expect(await page.locator('.post-card').count()).toBeGreaterThan(0);
+  });
+
+  test('shows compact Russian tooltips for channel icons', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const dock = page.locator('#channelMenu');
+    const actionsHost = page.locator('#channelNavActionsHost');
+    const utilityActions = actionsHost.locator('.hero__actions');
+    const tabs = dock.locator('.channel-tab');
+    const active = dock.locator('.channel-tab[data-channel-key="pgp-official"]');
+    const target = dock.locator('.channel-tab[data-channel-key="pg-tax"]');
+    const neighbor = dock.locator('.channel-tab[data-channel-key="pg-antitrust"]');
+
+    await expect(tabs).toHaveCount(8);
+    await expect(dock.locator('.channel-tab__avatar')).toHaveCount(8);
+    await expect(utilityActions).toBeVisible();
+    await expect(utilityActions.locator('#refreshButton')).toBeVisible();
+    await expect(utilityActions.locator('#installAppButton')).toBeVisible();
+    await expect(utilityActions.locator('.theme-toggle')).toBeVisible();
+    await expect(page.locator('.hero__panel .hero__actions')).toHaveCount(0);
+    const [dockBox, actionsBox] = await Promise.all([dock.boundingBox(), utilityActions.boundingBox()]);
+    expect(dockBox).not.toBeNull();
+    expect(actionsBox).not.toBeNull();
+    expect(actionsBox.x).toBeGreaterThanOrEqual(dockBox.x + dockBox.width);
+    await expect(target.locator('.channel-tab__title')).toHaveText('Налоги');
+    await expect(target.locator('.channel-tab__subtitle')).toHaveText('PG Tax');
+    await expect(target.locator('.channel-tab__subtitle')).toBeHidden();
+    await expect(target.locator('.channel-tab__label')).toHaveCSS('opacity', '0');
+    await expect.poll(() => active.evaluate(
+      (element) => new DOMMatrix(getComputedStyle(element).transform).a
+    )).toBeGreaterThan(1.05);
+    await expect(active).toHaveCSS('animation-name', 'active-tab-breathe');
+    await expect.poll(() => active.evaluate(
+      (element) => Math.abs(new DOMMatrix(getComputedStyle(element).transform).f)
+    )).toBeLessThan(0.1);
+    await expect.poll(() => active.evaluate((element) => {
+      const inactive = element.parentElement?.querySelector('.channel-tab:not(.is-active)');
+      if (!inactive) return Number.POSITIVE_INFINITY;
+      const activeRect = element.getBoundingClientRect();
+      const inactiveRect = inactive.getBoundingClientRect();
+      const activeCenter = activeRect.top + (activeRect.height / 2);
+      const inactiveCenter = inactiveRect.top + (inactiveRect.height / 2);
+      return Math.abs(activeCenter - inactiveCenter);
+    })).toBeLessThan(0.5);
+    await expect.poll(() => active.evaluate(
+      (element) => getComputedStyle(element, '::after').content
+    )).toBe('none');
+
+    await target.hover();
+    await expect(target.locator('.channel-tab__label')).toHaveCSS('opacity', '1');
+    await expect.poll(() => target.locator('.channel-tab__icon').evaluate(
+      (element) => Number.parseFloat(getComputedStyle(element).width),
+    )).toBeLessThan(60);
+    await expect(target.locator('.channel-tab__avatar')).toHaveCSS('opacity', '1');
+    await expect(target.locator('.channel-tab__label')).toHaveCSS('pointer-events', 'none');
+    await expect.poll(() => target.evaluate((element) => new DOMMatrix(getComputedStyle(element).transform).a)).toBeGreaterThan(1.1);
+    await expect.poll(() => neighbor.evaluate((element) => new DOMMatrix(getComputedStyle(element).transform).a)).toBeGreaterThan(1);
+    const [targetBox, labelBox] = await Promise.all([
+      target.boundingBox(),
+      target.locator('.channel-tab__label').boundingBox(),
+    ]);
+    expect(targetBox).not.toBeNull();
+    expect(labelBox).not.toBeNull();
+    expect(labelBox.y).toBeGreaterThanOrEqual(targetBox.y + targetBox.height - 3);
+    expect(labelBox.width).toBeLessThan(220);
+    await neighbor.hover();
+    await expect(neighbor.locator('.channel-tab__label')).toHaveCSS('opacity', '1');
+    await expect(target.locator('.channel-tab__label')).toHaveCSS('opacity', '0');
+  });
+
+  test('uses a compact title hierarchy for the long antitrust channel name', async ({ page }) => {
+    await page.goto('/?channel=pg-antitrust');
+    await waitForFeedReady(page);
+
+    const title = page.locator('#siteTitle');
+    const lead = title.locator('.hero__title-line--lead');
+    const subtitle = title.locator('.hero__title-line:not(.hero__title-line--lead)');
+    await expect(title).toHaveClass(/hero__title--compact/);
+    await expect(lead).toHaveText('Антимонопольное право');
+    await expect(subtitle).toHaveText('PG Antitrust');
+
+    const [leadSize, subtitleSize, leadBox, titleBox, avatarBox] = await Promise.all([
+      lead.evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize)),
+      subtitle.evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize)),
+      lead.boundingBox(),
+      title.boundingBox(),
+      page.locator('#channelAvatarWrap').boundingBox(),
+    ]);
+    expect(subtitleSize).toBeLessThan(leadSize * 0.65);
+    expect(leadBox).not.toBeNull();
+    expect(leadBox.height).toBeLessThan(52);
+    expect(titleBox).not.toBeNull();
+    expect(avatarBox).not.toBeNull();
+    const titleCenter = titleBox.y + (titleBox.height / 2);
+    const avatarCenter = avatarBox.y + (avatarBox.height / 2);
+    expect(Math.abs(titleCenter - avatarCenter)).toBeLessThanOrEqual(2);
   });
 
   test('shows hover feedback on Telegram channel and post links', async ({ page }) => {
@@ -347,24 +484,26 @@ test.describe('Desktop smoke', () => {
     expect(urls.comments).toBe('data/channels/investment-law/comments/1001.json?v=abc123');
   });
 
-  test('keeps narrow desktop channel menu scrollable and clickable', async ({ page }) => {
+  test('keeps narrow desktop channel dock contained and clickable', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
 
     const menu = page.locator('#channelMenu');
-    const hasOverflow = await menu.evaluate((node) => node.scrollWidth > node.clientWidth + 2);
-    if (!hasOverflow) {
-      return;
-    }
+    const iconBounds = await menu.locator('.channel-tab').evaluateAll((tabs) => tabs.map((tab) => {
+      const rect = tab.getBoundingClientRect();
+      return { left: rect.left, right: rect.right };
+    }));
+    const viewport = page.viewportSize();
+    expect(viewport).toBeTruthy();
+    expect(iconBounds).toHaveLength(8);
+    expect(iconBounds.every((rect) => rect.left >= 0 && rect.right <= viewport.width)).toBe(true);
 
     await menu.hover();
-    const scrollLeftBefore = await menu.evaluate((node) => node.scrollLeft);
     await page.mouse.wheel(0, 900);
-    await expect.poll(async () => menu.evaluate((node) => node.scrollLeft)).toBeGreaterThan(scrollLeftBefore);
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(300);
 
     const initialTitle = (await page.locator('#siteTitle').innerText()).trim();
     const targetButton = page.locator('#channelMenu .channel-tab[data-channel-key="pg-employment"]');
-    await targetButton.scrollIntoViewIfNeeded();
     await targetButton.click();
     await waitForFeedReady(page);
 
@@ -646,6 +785,45 @@ test.describe('Desktop smoke', () => {
     const anchor = page.locator('#emoji-host .post-card__text a').first();
     await expect(anchor).toContainText('🔥Важная ссылка');
     await expect(anchor).toHaveAttribute('href', 'https://example.com/story');
+  });
+
+  test('renders Telegram text formatting and removes unsafe markup', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'formatted-post-host';
+      document.body.appendChild(host);
+      const card = window.renderPostCard({
+        id: 999995,
+        date: new Date().toISOString(),
+        text: 'formatted post',
+        text_html: [
+          'Plain <strong onclick="window.formattingAttack = true">bold</strong> ',
+          '<em>italic</em> <u>underlined</u> <s>struck</s> ',
+          '<code>inline code</code>',
+          '<blockquote>Quoted text</blockquote>',
+          '<span class="post-text-spoiler" style="color:red">Spoiler</span>',
+          '<script>window.formattingAttack = true</script>',
+          '<a href="javascript:window.formattingAttack = true">unsafe link</a>',
+        ].join(''),
+        photos: [],
+        tg_url: 'https://t.me/example/999995',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    });
+
+    const text = page.locator('#formatted-post-host .post-card__text');
+    await expect(text.locator('strong')).toHaveText('bold');
+    await expect(text.locator('strong')).toHaveCSS('font-weight', /^(700|750|800)$/);
+    await expect(text.locator('em')).toHaveCSS('font-style', 'italic');
+    await expect(text.locator('blockquote')).toHaveText('Quoted text');
+    await expect(text.locator('.post-text-spoiler')).toHaveAttribute('tabindex', '0');
+    await expect(text.locator('script, [onclick], [style]')).toHaveCount(0);
+    await expect(text.locator('a:has-text("unsafe link")')).toHaveCount(0);
+    expect(await page.evaluate(() => window.formattingAttack)).toBeUndefined();
   });
 
   test('deduplicates repeated forwarded album posts in the antitrust feed', async ({ page }) => {

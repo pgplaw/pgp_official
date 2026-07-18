@@ -19,6 +19,7 @@ import time
 from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError
@@ -2170,50 +2171,141 @@ def replace_inline_emoji_markup(raw_html: str) -> str:
     return replaced
 
 
+class TelegramPostTextParser(HTMLParser):
+    TAG_ALIASES = {
+        "b": "strong",
+        "strong": "strong",
+        "i": "em",
+        "em": "em",
+        "u": "u",
+        "s": "s",
+        "strike": "s",
+        "del": "s",
+        "code": "code",
+        "pre": "pre",
+        "blockquote": "blockquote",
+    }
+    BLOCKED_TAGS = {"script", "style", "iframe", "object", "embed", "svg", "math", "form"}
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.html_parts: list[str] = []
+        self.plain_parts: list[str] = []
+        self.open_tags: list[tuple[str, str]] = []
+        self.blocked_tags: list[str] = []
+
+    @property
+    def inside_anchor(self) -> bool:
+        return any(target_tag == "a" for _, target_tag in self.open_tags)
+
+    def append_text_html(self, value: str) -> None:
+        if not value:
+            return
+        if self.inside_anchor:
+            self.html_parts.append(html_lib.escape(value, quote=False))
+            return
+
+        cursor = 0
+        for match in re.finditer(r"https?://[^\s<]+", value, re.IGNORECASE):
+            self.html_parts.append(html_lib.escape(value[cursor:match.start()], quote=False))
+            url = match.group(0)
+            escaped_url = html_lib.escape(url, quote=True)
+            self.html_parts.append(
+                f'<a href="{escaped_url}" target="_blank" rel="noopener noreferrer">'
+                f"{html_lib.escape(url, quote=False)}</a>"
+            )
+            cursor = match.end()
+        self.html_parts.append(html_lib.escape(value[cursor:], quote=False))
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        source_tag = tag.lower()
+        if self.blocked_tags:
+            if source_tag in self.BLOCKED_TAGS:
+                self.blocked_tags.append(source_tag)
+            return
+        if source_tag in self.BLOCKED_TAGS:
+            self.blocked_tags.append(source_tag)
+            return
+
+        if source_tag == "br":
+            self.html_parts.append("<br>")
+            self.plain_parts.append("\n")
+            return
+
+        target_tag = self.TAG_ALIASES.get(source_tag)
+        attributes = dict(attrs)
+        if source_tag == "a":
+            href = html_lib.unescape(attributes.get("href") or "").strip()
+            parsed = urlparse(href)
+            if parsed.scheme.lower() in {"http", "https"} and parsed.netloc:
+                target_tag = "a"
+                self.html_parts.append(
+                    f'<a href="{html_lib.escape(href, quote=True)}" '
+                    'target="_blank" rel="noopener noreferrer">'
+                )
+        elif source_tag == "tg-spoiler" or (
+            source_tag == "span"
+            and re.search(r"(?:^|\s)(?:tg-)?spoiler(?:\s|$)", attributes.get("class") or "", re.IGNORECASE)
+        ):
+            target_tag = "span"
+            self.html_parts.append('<span class="post-text-spoiler" tabindex="0">')
+        elif target_tag:
+            self.html_parts.append(f"<{target_tag}>")
+
+        if target_tag:
+            self.open_tags.append((source_tag, target_tag))
+
+    def handle_startendtag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() == "br":
+            self.handle_starttag(tag, attrs)
+            return
+        self.handle_starttag(tag, attrs)
+        self.handle_endtag(tag)
+
+    def handle_endtag(self, tag: str) -> None:
+        source_tag = tag.lower()
+        if self.blocked_tags:
+            if source_tag == self.blocked_tags[-1]:
+                self.blocked_tags.pop()
+            return
+
+        for index in range(len(self.open_tags) - 1, -1, -1):
+            if self.open_tags[index][0] != source_tag:
+                continue
+            closing_tags = self.open_tags[index:]
+            del self.open_tags[index:]
+            for _, target_tag in reversed(closing_tags):
+                self.html_parts.append(f"</{target_tag}>")
+            if any(target_tag in {"pre", "blockquote"} for _, target_tag in closing_tags):
+                self.plain_parts.append("\n")
+            return
+
+    def handle_data(self, data: str) -> None:
+        if self.blocked_tags or not data:
+            return
+        self.append_text_html(data)
+        self.plain_parts.append(data)
+
+    def finish(self) -> tuple[str | None, str | None]:
+        for _, target_tag in reversed(self.open_tags):
+            self.html_parts.append(f"</{target_tag}>")
+        self.open_tags.clear()
+
+        html_markup = "".join(self.html_parts).strip() or None
+        plain = "".join(self.plain_parts)
+        plain = re.sub(r"\n{3,}", "\n\n", plain).strip() or None
+        return plain, html_markup
+
+
 def build_text_fields(raw_html: str) -> tuple[str | None, str | None]:
     raw_html = raw_html or ""
-    raw_with_breaks = replace_inline_emoji_markup(re.sub(r"<br\s*/?>", "\n", raw_html))
-    anchors: list[str] = []
-
-    def anchor_replacer(match: re.Match[str]) -> str:
-        href = html_lib.unescape(match.group(1)).strip()
-        label = html_lib.unescape(re.sub(r"<[^>]+>", "", match.group(2))).strip() or href
-        if not href.startswith(("http://", "https://")):
-            return html_lib.escape(label)
-        token = f"__ANCHOR_{len(anchors)}__"
-        anchors.append(
-            f'<a href="{html_lib.escape(href)}" target="_blank" rel="noopener noreferrer">{html_lib.escape(label)}</a>'
-        )
-        return token
-
-    html_markup = re.sub(
-        r"<a[^>]+href=\"([^\"]+)\"[^>]*>(.*?)</a>",
-        anchor_replacer,
-        raw_with_breaks,
-        flags=re.DOTALL,
-    )
-    html_markup = re.sub(r"<[^>]+>", "", html_markup)
-    html_markup = html_lib.unescape(html_markup)
-    html_markup = re.sub(
-        r"(https?://[^\s<]+)",
-        r'<a href="\1" target="_blank" rel="noopener noreferrer">\1</a>',
-        html_markup,
-    )
-    for index, anchor in enumerate(anchors):
-        html_markup = html_markup.replace(f"__ANCHOR_{index}__", anchor)
+    parser = TelegramPostTextParser()
+    parser.feed(replace_inline_emoji_markup(raw_html))
+    parser.close()
+    plain, html_markup = parser.finish()
     html_markup, removed_url_anchors = strip_redundant_url_anchors(html_markup)
     html_markup = re.sub(r"(?<=[0-9A-Za-zА-Яа-яЁё«»„“\"'()])(?=<a\b)", " ", html_markup)
     html_markup = re.sub(r"(?<=</a>)(?=[0-9A-Za-zА-Яа-яЁё«»„“\"'(])", " ", html_markup)
-    html_markup = html_markup.replace("\n", "<br>").strip() or None
-
-    plain = re.sub(
-        r"<a[^>]+href=\"([^\"]+)\"[^>]*>(.*?)</a>",
-        lambda match: html_lib.unescape(re.sub(r"<[^>]+>", "", match.group(2))).strip() or html_lib.unescape(match.group(1)),
-        raw_with_breaks,
-        flags=re.DOTALL,
-    )
-    plain = re.sub(r"<[^>]+>", "", plain)
-    plain = html_lib.unescape(plain).strip() or None
     plain = strip_redundant_urls_from_plain_text(plain, removed_url_anchors)
     if plain:
         plain = re.sub(r"(?<=[0-9A-Za-zА-Яа-яЁё«»„“\"'()])(?=https?://)", " ", plain)

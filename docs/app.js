@@ -72,6 +72,7 @@ const elements = {
   channelMenu: document.getElementById('channelMenu'),
   channelCarousel: document.getElementById('channelCarousel'),
   channelNav: document.querySelector('.channel-nav'),
+  channelNavActionsHost: document.getElementById('channelNavActionsHost'),
   siteShell: document.querySelector('.site-shell'),
   siteTitle: document.getElementById('siteTitle'),
   siteDescription: document.getElementById('siteDescription'),
@@ -79,6 +80,8 @@ const elements = {
   channelAvatar: document.getElementById('channelAvatar'),
   channelLink: document.getElementById('channelLink'),
   updatedText: document.getElementById('updatedText'),
+  heroPanel: document.querySelector('.hero__panel'),
+  heroActions: document.querySelector('.hero__actions'),
   refreshButton: document.getElementById('refreshButton'),
   themeToggle: document.getElementById('themeToggle'),
   feedView: document.getElementById('feedView'),
@@ -368,6 +371,7 @@ function normalizePostHtml(html) {
   const template = document.createElement('template');
   template.innerHTML = html;
   replaceInlineEmojiElements(template.content);
+  sanitizePostHtmlFragment(template.content);
   const anchors = [...template.content.querySelectorAll('a[href]')];
   const namedHrefs = new Set();
 
@@ -416,6 +420,59 @@ function normalizePostHtml(html) {
     .replace(/<\/a><br>(?=(?:\s|&nbsp;)*(?:▫️|🔘|📌|👉|#|[A-ZА-ЯЁ]))/g, '</a><br><br>')
     .replace(/(?:<br\s*\/?>\s*){3,}/gi, '<br><br>')
     .trim();
+}
+
+function sanitizePostHtmlFragment(root) {
+  const allowedTags = new Set(['A', 'BR', 'STRONG', 'B', 'EM', 'I', 'U', 'S', 'DEL', 'CODE', 'PRE', 'BLOCKQUOTE', 'SPAN']);
+  const blockedTags = new Set(['SCRIPT', 'STYLE', 'IFRAME', 'OBJECT', 'EMBED', 'SVG', 'MATH', 'FORM', 'IMG']);
+
+  [...root.querySelectorAll('*')].forEach((element) => {
+    if (!root.contains(element)) return;
+    if (blockedTags.has(element.tagName)) {
+      element.remove();
+      return;
+    }
+    if (!allowedTags.has(element.tagName)) {
+      element.replaceWith(...element.childNodes);
+      return;
+    }
+
+    if (element.tagName === 'A') {
+      const rawHref = element.getAttribute('href') || '';
+      let safeUrl = null;
+      try {
+        const candidate = new URL(rawHref, window.location.href);
+        if (candidate.protocol === 'http:' || candidate.protocol === 'https:') {
+          safeUrl = candidate.href;
+        }
+      } catch (_error) {
+        safeUrl = null;
+      }
+      if (!safeUrl) {
+        element.replaceWith(...element.childNodes);
+        return;
+      }
+      [...element.attributes].forEach((attribute) => element.removeAttribute(attribute.name));
+      element.setAttribute('href', safeUrl);
+      element.setAttribute('target', '_blank');
+      element.setAttribute('rel', 'noopener noreferrer');
+      return;
+    }
+
+    if (element.tagName === 'SPAN') {
+      const isSpoiler = element.classList.contains('post-text-spoiler') || element.classList.contains('tg-spoiler');
+      if (!isSpoiler) {
+        element.replaceWith(...element.childNodes);
+        return;
+      }
+      [...element.attributes].forEach((attribute) => element.removeAttribute(attribute.name));
+      element.className = 'post-text-spoiler';
+      element.tabIndex = 0;
+      return;
+    }
+
+    [...element.attributes].forEach((attribute) => element.removeAttribute(attribute.name));
+  });
 }
 
 function normalizePostHtmlSpacing(html) {
@@ -1509,6 +1566,18 @@ function isMobileCarouselViewport() {
   return window.matchMedia('(max-width: 860px)').matches;
 }
 
+function syncUtilityActionsPlacement() {
+  if (!elements.heroActions || !elements.heroPanel || !elements.channelNavActionsHost) return;
+
+  const target = isMobileCarouselViewport()
+    ? elements.heroPanel
+    : elements.channelNavActionsHost;
+
+  if (elements.heroActions.parentElement !== target) {
+    target.appendChild(elements.heroActions);
+  }
+}
+
 function getChannelCarouselTransitionDuration() {
   const url = new URL(window.location.href);
   return url.searchParams.get('autotest') === 'carousel' ? 980 : CHANNEL_CAROUSEL_TRANSITION_MS;
@@ -1960,7 +2029,10 @@ function setupChannelMenuWheelScroll() {
   elements.channelMenu.dataset.wheelScrollBound = 'true';
   elements.channelMenu.addEventListener('wheel', (event) => {
     const isDesktopViewport = window.matchMedia('(min-width: 861px)').matches;
-    const hasHorizontalOverflow = elements.channelMenu.scrollWidth > elements.channelMenu.clientWidth + 2;
+    const overflowX = window.getComputedStyle(elements.channelMenu).overflowX;
+    const supportsHorizontalScroll = overflowX === 'auto' || overflowX === 'scroll';
+    const hasHorizontalOverflow = supportsHorizontalScroll
+      && elements.channelMenu.scrollWidth > elements.channelMenu.clientWidth + 2;
     const hasVerticalIntent = Math.abs(event.deltaY) > Math.abs(event.deltaX);
 
     if (!isDesktopViewport || !hasHorizontalOverflow || !hasVerticalIntent) {
@@ -2145,19 +2217,23 @@ function renderChannelMenu() {
   elements.channelMenu.innerHTML = channels.map((channel) => {
     const isActive = channel.key === state.activeChannelKey;
     const { rawLabel, title, subtitle } = getChannelMenuLabels(channel);
+    const avatarPath = channel.avatar_path || '';
     return `
         <button
           class="channel-tab${isActive ? ' is-active' : ''}"
           type="button"
           data-channel-key="${channel.key}"
-          ${isActive ? `style="${escapeHtml(buildChannelAccentStyle(channel))}"` : ''}
+          style="${escapeHtml(buildChannelAccentStyle(channel))}"
           aria-pressed="${isActive ? 'true' : 'false'}"
           aria-label="${escapeHtml(rawLabel)}"
-          title="${escapeHtml(rawLabel)}"
         >
-        <span class="channel-tab__meta">${isActive ? 'Открыт' : 'Канал'}</span>
-        <span class="channel-tab__title">${formatTextWithSoftBreaks(title)}</span>
-        <span class="channel-tab__subtitle">${formatTextWithSoftBreaks(subtitle)}</span>
+        <span class="channel-tab__icon" aria-hidden="true">
+          ${avatarPath ? `<img class="channel-tab__avatar" src="${escapeHtml(avatarPath)}" alt="" loading="eager" draggable="false">` : '<span class="channel-tab__fallback">PG</span>'}
+        </span>
+        <span class="channel-tab__label" aria-hidden="true">
+          <span class="channel-tab__title">${escapeHtml(title)}</span>
+          <span class="channel-tab__subtitle">${escapeHtml(subtitle)}</span>
+        </span>
       </button>
     `;
   }).join('');
@@ -2340,6 +2416,9 @@ function renderHeader(site, generatedAt) {
   const avatarSrc = resolveHeroAvatar(site);
   const fallbackAvatar = catalogSite.avatar_path || 'assets/channel-avatar.jpg';
 
+  const orderedTitleParts = getOrderedTitleParts(title);
+  const leadTitleLength = Array.from(orderedTitleParts[0] || '').length;
+  elements.siteTitle.classList.toggle('hero__title--compact', leadTitleLength > 18);
   elements.siteTitle.innerHTML = renderHeroTitle(title);
   elements.siteDescription.innerHTML = linkifyTelegramAwareText(description);
   elements.channelLink.textContent = handle;
@@ -4593,6 +4672,7 @@ window.addEventListener('appinstalled', () => {
   showCopyToast('Приложение установлено');
 });
 window.addEventListener('resize', () => {
+  syncUtilityActionsPlacement();
   if (!isMobileCarouselViewport() && state.channelCarouselListOpen) {
     state.channelCarouselListOpen = false;
     syncChannelCarouselListState();
@@ -4625,6 +4705,7 @@ if ('serviceWorker' in navigator) {
 
 setupChannelMenuWheelScroll();
 setupChannelCarouselInteractions();
+syncUtilityActionsPlacement();
 attachCopyInteractions();
 syncPostAnchorOffset();
 loadCatalog({ force: true });
