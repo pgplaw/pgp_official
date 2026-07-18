@@ -1,10 +1,12 @@
 {
-  "generated_at": "2026-07-17T23:37:33.880Z",
-  "success_count": 6,
-  "failure_count": 2,
+  "generated_at": "2026-07-18T00:48:41.462Z",
+  "success_count": 4,
+  "failure_count": 4,
   "failure_channels": [
     "pgp-official",
-    "pg-tax"
+    "pg-antitrust",
+    "pg-tax",
+    "pg-real-estate"
   ],
   "channel_timeout_ms": 150000,
   "channels": [
@@ -15,7 +17,7 @@
       "status": "failed",
       "exit_code": null,
       "signal": "SIGKILL",
-      "duration_ms": 150089,
+      "duration_ms": 150110,
       "error": "spawnSync python ETIMEDOUT",
       "telegram_api_credentials": {
         "api_id": false,
@@ -34,19 +36,19 @@
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 1039854882,
-        "file_count": 9571,
-        "media_bytes": 1039317736,
-        "media_files": 9565,
+        "total_bytes": 1045310393,
+        "file_count": 9606,
+        "media_bytes": 1044773247,
+        "media_files": 9600,
         "json_files": 6,
         "page_json_files": 5,
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 43739270,
-        "file_count": 239,
-        "media_bytes": 43739270,
-        "media_files": 239,
+        "total_bytes": 49194781,
+        "file_count": 274,
+        "media_bytes": 49194781,
+        "media_files": 274,
         "json_files": 0,
         "page_json_files": 0,
         "comment_json_files": 0
@@ -56,10 +58,10 @@
       "key": "pg-antitrust",
       "channel_username": "PgAntitrust",
       "channel_title": "PG Antitrust | Антимонопольное право",
-      "status": "success",
-      "exit_code": 0,
+      "status": "failed",
+      "exit_code": 1,
       "signal": null,
-      "duration_ms": 20740,
+      "duration_ms": 1276,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -67,20 +69,7 @@
         "session_str": false,
         "complete": false
       },
-      "sync_meta": {
-        "telegram_api_credentials": {
-          "api_id": false,
-          "api_hash": false,
-          "session_str": false,
-          "complete": false
-        },
-        "poll_sync": {
-          "credentials_complete": false,
-          "selected_ids": [],
-          "fetched_ids": [],
-          "recovered_ids": []
-        }
-      },
+      "sync_meta": {},
       "archive_before": {
         "total_bytes": 267251210,
         "file_count": 2637,
@@ -114,10 +103,10 @@
       "channel_username": "PG_Tax",
       "channel_title": "PG Tax | Налоги",
       "status": "failed",
-      "exit_code": null,
-      "signal": "SIGKILL",
-      "duration_ms": 150101,
-      "error": "spawnSync python ETIMEDOUT",
+      "exit_code": 1,
+      "signal": null,
+      "duration_ms": 3344,
+      "error": null,
       "telegram_api_credentials": {
         "api_id": false,
         "api_hash": false,
@@ -135,19 +124,19 @@
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 1622175617,
-        "file_count": 12497,
-        "media_bytes": 1620702275,
-        "media_files": 12487,
+        "total_bytes": 1576365276,
+        "file_count": 12151,
+        "media_bytes": 1574891934,
+        "media_files": 12141,
         "json_files": 10,
         "page_json_files": 9,
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 45810341,
-        "file_count": 346,
-        "media_bytes": 45810341,
-        "media_files": 346,
+        "total_bytes": 0,
+        "file_count": 0,
+        "media_bytes": 0,
+        "media_files": 0,
         "json_files": 0,
         "page_json_files": 0,
         "comment_json_files": 0
@@ -157,10 +146,10 @@
       "key": "pg-real-estate",
       "channel_username": "PG_RealEstate",
       "channel_title": "PG Real Estate | Недвижимость",
-      "status": "success",
-      "exit_code": 0,
+      "status": "failed",
+      "exit_code": 1,
       "signal": null,
-      "duration_ms": 51060,
+      "duration_ms": 1437,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -168,20 +157,7 @@
         "session_str": false,
         "complete": false
       },
-      "sync_meta": {
-        "telegram_api_credentials": {
-          "api_id": false,
-          "api_hash": false,
-          "session_str": false,
-          "complete": false
-        },
-        "poll_sync": {
-          "credentials_complete": false,
-          "selected_ids": [],
-          "fetched_ids": [],
-          "recovered_ids": []
-        }
-      },
+      "sync_meta": {},
       "archive_before": {
         "total_bytes": 89615717,
         "file_count": 1146,
@@ -217,7 +193,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 29341,
+      "duration_ms": 17994,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -249,7 +225,7 @@
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 367932641,
+        "total_bytes": 367936085,
         "file_count": 2716,
         "media_bytes": 367666420,
         "media_files": 2714,
@@ -258,7 +234,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 0,
+        "total_bytes": 3444,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -274,7 +250,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 18989,
+      "duration_ms": 17130,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -306,7 +282,7 @@
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 180428550,
+        "total_bytes": 180429864,
         "file_count": 2153,
         "media_bytes": 180132331,
         "media_files": 2149,
@@ -315,7 +291,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 0,
+        "total_bytes": 1314,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -331,7 +307,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 27261,
+      "duration_ms": 24337,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -363,7 +339,7 @@
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 594044186,
+        "total_bytes": 594050292,
         "file_count": 5001,
         "media_bytes": 593514619,
         "media_files": 4997,
@@ -372,7 +348,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 0,
+        "total_bytes": 6106,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -388,7 +364,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 14923,
+      "duration_ms": 12489,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -420,7 +396,7 @@
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 50367070,
+        "total_bytes": 50371132,
         "file_count": 567,
         "media_bytes": 50171285,
         "media_files": 565,
@@ -429,7 +405,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 0,
+        "total_bytes": 4062,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -440,10 +416,10 @@
     }
   ],
   "archive_totals": {
-    "total_bytes": 4211669873,
-    "media_bytes": 4208018166,
-    "file_count": 36288,
-    "media_files": 36256,
+    "total_bytes": 4171329969,
+    "media_bytes": 4167663336,
+    "file_count": 35977,
+    "media_files": 35945,
     "json_files": 32,
     "page_json_files": 24,
     "comment_json_files": 0
