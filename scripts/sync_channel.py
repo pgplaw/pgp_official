@@ -2304,8 +2304,10 @@ def build_text_fields(raw_html: str) -> tuple[str | None, str | None]:
     parser.close()
     plain, html_markup = parser.finish()
     html_markup, removed_url_anchors = strip_redundant_url_anchors(html_markup)
+    html_markup = html_markup or ""
     html_markup = re.sub(r"(?<=[0-9A-Za-zА-Яа-яЁё«»„“\"'()])(?=<a\b)", " ", html_markup)
     html_markup = re.sub(r"(?<=</a>)(?=[0-9A-Za-zА-Яа-яЁё«»„“\"'(])", " ", html_markup)
+    html_markup = html_markup or None
     plain = strip_redundant_urls_from_plain_text(plain, removed_url_anchors)
     if plain:
         plain = re.sub(r"(?<=[0-9A-Za-zА-Яа-яЁё«»„“\"'()])(?=https?://)", " ", plain)

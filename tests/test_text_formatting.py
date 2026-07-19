@@ -42,6 +42,13 @@ class TelegramTextFormattingTests(unittest.TestCase):
             '<a href="https://example.com/path" target="_blank" rel="noopener noreferrer">сайт</a>',
             markup,
         )
+    def test_handles_text_that_is_empty_after_custom_emoji_cleanup(self) -> None:
+        plain, markup = sync_channel.build_text_fields(
+            '<tg-emoji emoji-id="1"><i class="emoji" style="background-image:url(emoji.png)"></i></tg-emoji>'
+        )
+
+        self.assertIsNone(plain)
+        self.assertIsNone(markup)
 
 
 if __name__ == "__main__":

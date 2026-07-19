@@ -20,10 +20,14 @@ test.describe('Desktop smoke', () => {
     const contactBar = page.locator('.contact-bar');
     const contactItems = contactBar.locator('.contact-bar__item');
     await expect(contactItems).toHaveCount(4);
-    await expect(contactBar).toHaveCSS('gap', '0px');
-    await expect(contactBar).toHaveCSS('overflow', 'hidden');
-    await expect(contactItems.first()).toHaveCSS('box-shadow', 'none');
+    await expect(page.locator('#channelNavContactsHost > .contact-bar')).toBeVisible();
+    await expect(contactBar).toHaveCSS('gap', '6px');
+    await expect(contactBar).toHaveCSS('overflow', 'visible');
     await expect(contactItems.first()).toHaveCSS('transform', 'none');
+    const contactIconBox = await contactItems.first().locator('svg').boundingBox();
+    expect(contactIconBox).not.toBeNull();
+    expect(Math.round(contactIconBox.width)).toBe(22);
+    expect(Math.round(contactIconBox.height)).toBe(22);
     const contactBackgroundBeforeHover = await contactItems.first().evaluate(
       (element) => getComputedStyle(element).backgroundColor,
     );
@@ -31,7 +35,8 @@ test.describe('Desktop smoke', () => {
     await expect.poll(() => contactItems.first().evaluate(
       (element) => getComputedStyle(element).backgroundColor,
     )).not.toBe(contactBackgroundBeforeHover);
-    await expect(contactItems.first()).toHaveCSS('transform', 'none');
+    await expect(contactItems.first()).not.toHaveCSS('transform', 'none');
+    await expect(page.locator('#feedSearch')).toBeVisible();
     const leadTitle = page.locator('#siteTitle .hero__title-line--lead');
     const secondaryTitle = page.locator('#siteTitle .hero__title-line:not(.hero__title-line--lead)');
     const [leadColor, secondaryColor, leadSize, secondarySize] = await Promise.all([
@@ -41,7 +46,7 @@ test.describe('Desktop smoke', () => {
       secondaryTitle.evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize)),
     ]);
     expect(secondaryColor).not.toBe(leadColor);
-    expect(secondarySize).toBeLessThan(leadSize * 0.5);
+    expect(secondarySize).toBeLessThan(leadSize * 0.65);
     const [avatarBox, titleBox, descriptionBox, panelBox] = await Promise.all([
       page.locator('#channelAvatarWrap').boundingBox(),
       page.locator('#siteTitle').boundingBox(),
@@ -54,10 +59,46 @@ test.describe('Desktop smoke', () => {
     expect(panelBox).not.toBeNull();
     const titleCenter = titleBox.y + (titleBox.height / 2);
     const avatarCenter = avatarBox.y + (avatarBox.height / 2);
-    expect(Math.abs(titleCenter - avatarCenter)).toBeLessThanOrEqual(2);
-    expect(Math.abs(avatarBox.x - descriptionBox.x)).toBeLessThanOrEqual(2);
+    expect(Math.abs(titleCenter - avatarCenter)).toBeLessThanOrEqual(8);
+    expect(titleBox.x + titleBox.width).toBeLessThanOrEqual(descriptionBox.x - 12);
     expect(descriptionBox.x + descriptionBox.width).toBeLessThanOrEqual(panelBox.x - 12);
     expect(await page.locator('.post-card').count()).toBeGreaterThan(0);
+  });
+
+  test('matches only complete words and word prefixes in feed search', async ({ page }) => {
+    await page.goto('/?channel=pg-tax');
+    await waitForFeedReady(page);
+
+    const searchInput = page.locator('#feedSearchInput');
+    const searchStatus = page.locator('#feedSearchStatus');
+    const searchMatches = page.locator('#postFeed .post-card__search-match');
+
+    await searchInput.fill('нал');
+    await expect(searchMatches.first()).toBeVisible();
+    await expect(searchMatches.first()).toHaveText(/нал/i);
+    await expect(searchStatus).toHaveText('Результат поиска');
+    await expect(searchStatus).toHaveClass(/feed-search__status--result/);
+    await expect(searchStatus).toHaveCSS('text-align', 'center');
+    await expect(searchStatus).toHaveCSS('font-size', '14.4px');
+    await expect(searchStatus).toHaveCSS('color', 'rgb(0, 96, 160)');
+
+    await searchInput.fill('алог');
+    await expect(searchStatus).toHaveText('Ничего не найдено');
+    await expect(searchStatus).toHaveClass(/feed-search__status--empty/);
+    await expect(searchStatus).toHaveCSS('text-align', 'center');
+    await expect(page.locator('.site-shell')).toHaveClass(/is-empty-search/);
+    await expect(page.locator('#postFeed .post-card[data-post-id]')).toHaveCount(0);
+    await expect(searchMatches).toHaveCount(0);
+    const footerBox = await page.locator('.site-footer').boundingBox();
+    expect(footerBox).not.toBeNull();
+    expect(footerBox.y + footerBox.height).toBeGreaterThanOrEqual(page.viewportSize().height - 40);
+
+    await searchInput.fill('налог');
+    await expect(searchMatches.first()).toBeVisible();
+    await expect(searchMatches.first()).toHaveText(/налог/i);
+    await expect(searchStatus).toHaveText('Результат поиска');
+    await expect(searchStatus).toHaveClass(/feed-search__status--result/);
+    await expect(page.locator('.site-shell')).not.toHaveClass(/is-empty-search/);
   });
 
   test('shows compact Russian tooltips for channel icons', async ({ page }) => {
@@ -157,22 +198,23 @@ test.describe('Desktop smoke', () => {
     expect(Math.abs(titleCenter - avatarCenter)).toBeLessThanOrEqual(2);
   });
 
-  test('shows hover feedback on Telegram channel and post links', async ({ page }) => {
+  test('shows hover feedback on Telegram channel title and post links', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
 
-    const channelLink = page.locator('#channelLink');
-    const channelBefore = await channelLink.evaluate((element) => ({
-      color: getComputedStyle(element).color,
+    const channelTitle = page.locator('#siteTitle');
+    const channelTitleLead = channelTitle.locator('.hero__title-line--lead');
+    const channelBefore = await channelTitle.evaluate((element) => ({
+      leadColor: getComputedStyle(element.querySelector('.hero__title-line--lead')).color,
       background: getComputedStyle(element).backgroundColor,
       transform: getComputedStyle(element).transform,
     }));
-    await channelLink.hover();
-    await expect.poll(() => channelLink.evaluate(
+    await channelTitle.hover();
+    await expect.poll(() => channelTitleLead.evaluate(
       (element) => getComputedStyle(element).color
-    )).not.toBe(channelBefore.color);
-    await expect(channelLink).toHaveCSS('background-color', channelBefore.background);
-    await expect(channelLink).toHaveCSS('transform', channelBefore.transform);
+    )).not.toBe(channelBefore.leadColor);
+    await expect(channelTitle).toHaveCSS('background-color', channelBefore.background);
+    await expect(channelTitle).toHaveCSS('transform', channelBefore.transform);
 
     const postLink = page.locator('.post-card__link').first();
     await expect(postLink).toBeVisible();
@@ -920,7 +962,7 @@ test.describe('Desktop smoke', () => {
     expect(renderedIds).toHaveLength(1);
   });
 
-  test('uses natural image height for single images and every matched gallery row', async ({ page }) => {
+  test('uses natural image height for single images and the tallest item in each gallery row', async ({ page }) => {
     const postsPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pgp-official', 'posts.json');
     const postsPayload = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
     const buildPhoto = (fileName, width, height) => ({
@@ -968,8 +1010,8 @@ test.describe('Desktop smoke', () => {
       text: 'Mismatched gallery row fixture',
       text_html: 'Mismatched gallery row fixture',
       photos: [
-        buildPhoto('app-icon-512.png', 512, 512),
-        buildPhoto('app-icon-192.png', 320, 180),
+        buildPhoto('app-icon-512.png', 320, 180),
+        buildPhoto('app-icon-192.png', 192, 192),
       ],
       tg_url: 'https://t.me/pgp_official/990005',
     };
@@ -1037,7 +1079,27 @@ test.describe('Desktop smoke', () => {
       && item.imageBackground === 'rgba(0, 0, 0, 0)'
     ))).toBe(true);
 
-    await expect(page.locator('.post-card[data-post-id="990005"] .media-trigger--natural-image')).toHaveCount(0);
+    const mismatchedGallery = page.locator('.post-card[data-post-id="990005"] .post-card__media--gallery');
+    const mismatchedTriggers = mismatchedGallery.locator(':scope > .media-trigger');
+    await expect(mismatchedTriggers.nth(0)).not.toHaveClass(/media-trigger--natural-image/);
+    await expect(mismatchedTriggers.nth(1)).toHaveClass(/media-trigger--natural-image/);
+    const mismatchedLayout = await mismatchedGallery.evaluate((root) => (
+      [...root.querySelectorAll(':scope > .media-trigger')].map((trigger) => {
+        const image = trigger.querySelector('img');
+        const triggerRect = trigger.getBoundingClientRect();
+        const imageRect = image.getBoundingClientRect();
+        return {
+          topGap: imageRect.top - triggerRect.top,
+          bottomGap: triggerRect.bottom - imageRect.bottom,
+          triggerBackground: getComputedStyle(trigger).backgroundColor,
+        };
+      })
+    ));
+    expect(mismatchedLayout[0].topGap).toBeGreaterThan(0);
+    expect(mismatchedLayout[0].bottomGap).toBeGreaterThan(0);
+    expect(Math.abs(mismatchedLayout[1].topGap)).toBeLessThanOrEqual(1);
+    expect(Math.abs(mismatchedLayout[1].bottomGap)).toBeLessThanOrEqual(1);
+    expect(mismatchedLayout[1].triggerBackground).toBe('rgba(0, 0, 0, 0)');
   });
 
   test('does not duplicate feed cards after overlapping load-more and refresh requests', async ({ page }) => {

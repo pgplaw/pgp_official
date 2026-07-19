@@ -8,7 +8,7 @@ const configPath = path.join(rootDir, 'config', 'channels.json');
 const syncReportPath = path.join(rootDir, 'docs', 'data', 'sync-report.json');
 const resultsDir = path.resolve(process.argv[2] || path.join(rootDir, '.sync-results'));
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-const channelTimeoutMs = Number(process.env.TG_SYNC_CHANNEL_TIMEOUT_MS || 150000);
+const channelTimeoutMs = Number(process.env.TG_SYNC_CHANNEL_TIMEOUT_MS || 300000);
 
 function loadResult(channelKey) {
   const resultPath = path.join(resultsDir, `${channelKey}.json`);

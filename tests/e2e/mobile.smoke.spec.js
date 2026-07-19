@@ -1,3 +1,5 @@
+const fs = require('node:fs');
+const path = require('node:path');
 const { test, expect } = require('@playwright/test');
 const {
   findMirroredRoundVideoPost,
@@ -7,6 +9,40 @@ const {
 } = require('./helpers');
 
 test.describe('Mobile smoke', () => {
+  test('searches the full channel feed on mobile', async ({ page }) => {
+    await page.goto('/?channel=pg-tax');
+    await waitForFeedReady(page);
+
+    const search = page.locator('#feedSearch');
+    const searchInput = page.locator('#feedSearchInput');
+    const searchStatus = page.locator('#feedSearchStatus');
+    const searchMatches = page.locator('#postFeed .post-card__search-match');
+
+    await expect(search).toBeVisible();
+    await expect(searchInput).toHaveCSS('font-size', '16px');
+    const searchBox = await search.boundingBox();
+    expect(searchBox).not.toBeNull();
+    expect(searchBox.x).toBeGreaterThanOrEqual(0);
+    expect(searchBox.x + searchBox.width).toBeLessThanOrEqual(page.viewportSize().width);
+    expect(searchBox.height).toBeGreaterThanOrEqual(48);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+
+    await searchInput.fill('нал');
+    await expect(searchMatches.first()).toBeVisible();
+    await expect(searchStatus).toHaveText('Результат поиска');
+    await expect(searchStatus).toHaveCSS('text-align', 'center');
+    await expect(searchStatus).toHaveCSS('color', 'rgb(0, 96, 160)');
+
+    await searchInput.fill('алог');
+    await expect(searchStatus).toHaveText('Ничего не найдено');
+    await expect(page.locator('.site-shell')).toHaveClass(/is-empty-search/);
+    await expect(page.locator('#postFeed .post-card[data-post-id]')).toHaveCount(0);
+
+    await page.locator('#feedSearchClear').click();
+    await expect(page.locator('.site-shell')).not.toHaveClass(/is-empty-search/);
+    await expect(page.locator('#postFeed .post-card[data-post-id]').first()).toBeVisible();
+  });
+
   test('keeps utility controls in the channel card on mobile', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
@@ -228,6 +264,68 @@ test.describe('Mobile smoke', () => {
       document.getElementById('viewerClose')?.click();
     });
     await expect(page.locator('#viewer')).toBeHidden();
+  });
+
+  test('keeps edge-color side fills around narrow mobile images', async ({ page }) => {
+    const postsPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pgp-official', 'posts.json');
+    const postsPayload = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
+    const fixturePost = {
+      id: 990006,
+      date: new Date().toISOString(),
+      text: 'Mobile image fill fixture',
+      text_html: 'Mobile image fill fixture',
+      views: 0,
+      comments_count: 0,
+      photos: [{
+        thumb_url: 'assets/app-icon-192.png',
+        feed_url: 'assets/app-icon-192.png',
+        full_url: 'assets/app-icon-192.png',
+        thumb_width: 192,
+        thumb_height: 192,
+        feed_width: 192,
+        feed_height: 192,
+        full_width: 192,
+        full_height: 192,
+        source_width: 192,
+        source_height: 192,
+      }],
+      videos: [],
+      video_url: null,
+      tg_url: 'https://t.me/pgp_official/990006',
+    };
+
+    await page.route('**/data/channels/pgp-official/posts.json**', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          ...postsPayload,
+          posts: [fixturePost, ...(postsPayload.posts || [])],
+        }),
+      });
+    });
+
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const trigger = page.locator('.post-card[data-post-id="990006"] .media-trigger');
+    await expect(trigger).toHaveAttribute('data-fill-ready', 'true');
+    const layout = await trigger.evaluate((element) => {
+      const image = element.querySelector('img');
+      const triggerRect = element.getBoundingClientRect();
+      const imageRect = image.getBoundingClientRect();
+      return {
+        triggerWidth: triggerRect.width,
+        triggerHeight: triggerRect.height,
+        imageWidth: imageRect.width,
+        imageHeight: imageRect.height,
+        background: getComputedStyle(element).backgroundColor,
+      };
+    });
+
+    expect(layout.triggerWidth - layout.imageWidth).toBeGreaterThan(20);
+    expect(Math.abs(layout.triggerHeight - layout.imageHeight)).toBeLessThanOrEqual(1);
+    expect(layout.background).not.toBe('rgba(0, 0, 0, 0)');
   });
 
   test('aligns deep-linked post flush to the mobile sticky header', async ({ page }) => {

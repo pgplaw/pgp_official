@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="compact-header-preview">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,12 +19,13 @@
   <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=105">
 </head>
 <body>
   <div class="site-shell">
     <nav class="channel-nav" aria-label="Каналы практик">
       <div id="channelMenu" class="channel-tabs"></div>
+      <div id="channelNavContactsHost" class="channel-nav__contacts-host"></div>
       <div id="channelNavActionsHost" class="channel-nav__actions-host"></div>
       <div id="channelCarousel" class="channel-carousel" aria-label="Переключение каналов"></div>
     </nav>
@@ -92,16 +93,44 @@
       </div>
     </header>
 
+    <section id="feedSearch" class="feed-search" aria-label="Поиск по публикациям">
+      <div class="feed-search__field">
+        <span class="feed-search__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="6.75" />
+            <path d="m16 16 4.25 4.25" />
+          </svg>
+        </span>
+        <label class="sr-only" for="feedSearchInput">Поиск по публикациям</label>
+        <input
+          id="feedSearchInput"
+          class="feed-search__input"
+          type="search"
+          placeholder="Поиск по публикациям"
+          autocomplete="off"
+          enterkeyhint="search"
+          aria-describedby="feedSearchStatus"
+        >
+        <button id="feedSearchClear" class="feed-search__clear hidden" type="button" aria-label="Очистить поиск" title="Очистить поиск">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m7 7 10 10M17 7 7 17" />
+          </svg>
+        </button>
+      </div>
+      <p id="feedSearchStatus" class="feed-search__status" aria-live="polite"></p>
+    </section>
+
     <section class="contact-bar" aria-label="Контакты Пепеляев Групп">
       <a
         class="contact-bar__item"
         href="tel:+74957670007"
         data-copy-text="+7 (495) 767-00-07"
+        data-tooltip="Телефон"
         aria-label="Позвонить: +7 (495) 767-00-07"
       >
         <span class="contact-bar__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24">
-            <path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.49a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.24 1z" />
+            <path d="M21 16.7v2.65a1.85 1.85 0 0 1-2.02 1.85 18.3 18.3 0 0 1-7.98-2.84 18 18 0 0 1-5.55-5.55A18.3 18.3 0 0 1 2.61 4.8 1.85 1.85 0 0 1 4.45 2.8H7.1a1.85 1.85 0 0 1 1.85 1.59c.12.9.33 1.79.62 2.64a1.85 1.85 0 0 1-.42 1.95L8.03 10.1a14.8 14.8 0 0 0 5.55 5.55l1.12-1.12a1.85 1.85 0 0 1 1.95-.42c.85.3 1.73.5 2.64.62A1.85 1.85 0 0 1 21 16.7Z" />
           </svg>
         </span>
         <span class="contact-bar__text contact-bar__value">+7 (495) 767-00-07</span>
@@ -112,12 +141,13 @@
         target="_blank"
         rel="noopener noreferrer"
         data-copy-text="https://www.pgplaw.ru/"
+        data-tooltip="Сайт"
         aria-label="Открыть сайт Пепеляев Групп"
       >
         <span class="contact-bar__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="8.25" />
-            <path d="M3.75 12h16.5M12 3.75c2.45 2.42 3.82 5.25 3.82 8.25S14.45 17.83 12 20.25M12 3.75C9.55 6.17 8.18 9 8.18 12S9.55 17.83 12 20.25" />
+            <circle cx="12" cy="12" r="9" />
+            <path d="M3 12h18M12 3a14.6 14.6 0 0 1 3.6 9A14.6 14.6 0 0 1 12 21a14.6 14.6 0 0 1-3.6-9A14.6 14.6 0 0 1 12 3Z" />
           </svg>
         </span>
         <span class="contact-bar__text contact-bar__value">www.pgplaw.ru</span>
@@ -126,12 +156,13 @@
         class="contact-bar__item"
         href="mailto:info@pgplaw.ru"
         data-copy-text="info@pgplaw.ru"
+        data-tooltip="Почта"
         aria-label="Написать на info@pgplaw.ru"
       >
         <span class="contact-bar__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24">
-            <path d="M4.75 6.75h14.5a1.5 1.5 0 0 1 1.5 1.5v7.5a1.5 1.5 0 0 1-1.5 1.5H4.75a1.5 1.5 0 0 1-1.5-1.5v-7.5a1.5 1.5 0 0 1 1.5-1.5Z" />
-            <path d="m4 8 8 6 8-6" />
+            <rect x="3" y="5" width="18" height="14" rx="2.25" />
+            <path d="m3.8 7 8.2 6 8.2-6" />
           </svg>
         </span>
         <span class="contact-bar__text contact-bar__value">info@pgplaw.ru</span>
@@ -139,14 +170,15 @@
       <a
         class="contact-bar__item contact-bar__item--ecosystem"
         href="ecosystem.html"
+        data-tooltip="Экосистема"
         aria-label="Открыть экосистему Пепеляев Групп"
       >
         <span class="contact-bar__icon" aria-hidden="true">
           <svg viewBox="0 0 24 24">
-            <rect x="4" y="4" width="6" height="6" rx="1" />
-            <rect x="14" y="4" width="6" height="6" rx="1" />
-            <rect x="4" y="14" width="6" height="6" rx="1" />
-            <rect x="14" y="14" width="6" height="6" rx="1" />
+            <rect x="9" y="2.75" width="6" height="5.5" rx="1.25" />
+            <rect x="2.75" y="15.75" width="6" height="5.5" rx="1.25" />
+            <rect x="15.25" y="15.75" width="6" height="5.5" rx="1.25" />
+            <path d="M12 8.25v3.5M5.75 15.75v-1.5a2.5 2.5 0 0 1 2.5-2.5h7.5a2.5 2.5 0 0 1 2.5 2.5v1.5" />
           </svg>
         </span>
         <span class="contact-bar__text contact-bar__value">Экосистема</span>
@@ -218,6 +250,6 @@
     <button id="viewerNext" class="viewer__nav hidden" type="button" aria-label="Вперед">›</button>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=105"></script>
 </body>
 </html>

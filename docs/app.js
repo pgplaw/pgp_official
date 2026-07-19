@@ -66,14 +66,21 @@ const state = {
   scrollTopButtonVisible: false,
   scrollTopButtonSyncFrameId: null,
   postAnchorOffsetSyncFrameId: null,
+  feedSearchQuery: '',
+  feedSearchRequestId: 0,
+  feedSearchDebounceId: null,
+  feedSearchResults: [],
+  feedSearchRendered: 0,
 };
 
 const elements = {
   channelMenu: document.getElementById('channelMenu'),
   channelCarousel: document.getElementById('channelCarousel'),
   channelNav: document.querySelector('.channel-nav'),
+  channelNavContactsHost: document.getElementById('channelNavContactsHost'),
   channelNavActionsHost: document.getElementById('channelNavActionsHost'),
   siteShell: document.querySelector('.site-shell'),
+  hero: document.querySelector('.hero'),
   siteTitle: document.getElementById('siteTitle'),
   siteDescription: document.getElementById('siteDescription'),
   channelAvatarWrap: document.getElementById('channelAvatarWrap'),
@@ -82,6 +89,11 @@ const elements = {
   updatedText: document.getElementById('updatedText'),
   heroPanel: document.querySelector('.hero__panel'),
   heroActions: document.querySelector('.hero__actions'),
+  contactBar: document.querySelector('.contact-bar'),
+  feedSearch: document.getElementById('feedSearch'),
+  feedSearchInput: document.getElementById('feedSearchInput'),
+  feedSearchClear: document.getElementById('feedSearchClear'),
+  feedSearchStatus: document.getElementById('feedSearchStatus'),
   refreshButton: document.getElementById('refreshButton'),
   themeToggle: document.getElementById('themeToggle'),
   feedView: document.getElementById('feedView'),
@@ -1566,6 +1578,17 @@ function isMobileCarouselViewport() {
   return window.matchMedia('(max-width: 860px)').matches;
 }
 
+function isCompactHeaderDesktopPreview() {
+  return (
+    document.documentElement.classList.contains('compact-header-preview') &&
+    !isMobileCarouselViewport()
+  );
+}
+
+function isFeedSearchAvailable() {
+  return document.documentElement.classList.contains('compact-header-preview');
+}
+
 function syncUtilityActionsPlacement() {
   if (!elements.heroActions || !elements.heroPanel || !elements.channelNavActionsHost) return;
 
@@ -1576,6 +1599,63 @@ function syncUtilityActionsPlacement() {
   if (elements.heroActions.parentElement !== target) {
     target.appendChild(elements.heroActions);
   }
+}
+
+function syncCompactHeaderEnhancements() {
+  const compactDesktop = isCompactHeaderDesktopPreview();
+
+  if (!isFeedSearchAvailable() && (state.feedSearchQuery || elements.feedSearchInput?.value)) {
+    resetFeedSearch();
+  }
+
+  if (elements.contactBar && elements.channelNavContactsHost && elements.hero) {
+    if (compactDesktop) {
+      if (elements.contactBar.parentElement !== elements.channelNavContactsHost) {
+        elements.channelNavContactsHost.appendChild(elements.contactBar);
+      }
+    } else if (elements.hero.nextElementSibling !== elements.contactBar) {
+      elements.hero.insertAdjacentElement('afterend', elements.contactBar);
+    }
+  }
+
+  if (!elements.siteTitle) return;
+
+  elements.siteTitle.classList.toggle('hero__title--telegram-link', compactDesktop);
+  if (compactDesktop) {
+    const channelTitle = elements.siteTitle.textContent.trim() || 'канал';
+    elements.siteTitle.setAttribute('role', 'link');
+    elements.siteTitle.setAttribute('tabindex', '0');
+    elements.siteTitle.setAttribute('title', 'Открыть канал в Telegram');
+    elements.siteTitle.setAttribute('aria-label', `Открыть ${channelTitle} в Telegram`);
+  } else {
+    elements.siteTitle.removeAttribute('role');
+    elements.siteTitle.removeAttribute('tabindex');
+    elements.siteTitle.removeAttribute('title');
+    elements.siteTitle.removeAttribute('aria-label');
+  }
+}
+
+function setupCompactHeaderTitleLink() {
+  if (!elements.siteTitle || elements.siteTitle.dataset.telegramLinkBound === 'true') return;
+
+  elements.siteTitle.dataset.telegramLinkBound = 'true';
+  const openActiveChannel = () => {
+    if (!isCompactHeaderDesktopPreview() || !elements.channelLink) return;
+    openTelegramAnchor(elements.channelLink);
+  };
+
+  elements.siteTitle.addEventListener('click', (event) => {
+    if (!isCompactHeaderDesktopPreview()) return;
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    openActiveChannel();
+  });
+
+  elements.siteTitle.addEventListener('keydown', (event) => {
+    if (!isCompactHeaderDesktopPreview() || (event.key !== 'Enter' && event.key !== ' ')) return;
+    event.preventDefault();
+    openActiveChannel();
+  });
 }
 
 function getChannelCarouselTransitionDuration() {
@@ -2423,6 +2503,7 @@ function renderHeader(site, generatedAt) {
   elements.siteDescription.innerHTML = linkifyTelegramAwareText(description);
   elements.channelLink.textContent = handle;
   elements.channelLink.href = site.channel_username ? `https://t.me/${site.channel_username}` : 'https://t.me';
+  syncCompactHeaderEnhancements();
   startSyncStatusPolling();
   document.title = getOrderedTitleParts(title).join(' | ') || title;
 
@@ -2684,9 +2765,23 @@ function getNaturalGalleryImageIndexes(media) {
   const pairedItemCount = media.length - (media.length % 2);
 
   for (let index = 0; index < pairedItemCount; index += 2) {
-    if (!hasMatchingImageAspectRatio(media[index], media[index + 1])) continue;
-    indexes.add(index);
-    indexes.add(index + 1);
+    const left = media[index];
+    const right = media[index + 1];
+    if (left?.type !== 'image' || right?.type !== 'image') continue;
+
+    const leftRatio = getImageAspectRatio(left);
+    const rightRatio = getImageAspectRatio(right);
+    if (!Number.isFinite(leftRatio) || !Number.isFinite(rightRatio) || leftRatio <= 0 || rightRatio <= 0) {
+      continue;
+    }
+
+    if (hasMatchingImageAspectRatio(left, right)) {
+      indexes.add(index);
+      indexes.add(index + 1);
+      continue;
+    }
+
+    indexes.add(leftRatio < rightRatio ? index : index + 1);
   }
 
   if (media.length % 2 === 1 && media.at(-1)?.type === 'image') {
@@ -3382,6 +3477,10 @@ function renderPostCard(post) {
     </div>
   `;
 
+  if (state.feedSearchQuery) {
+    highlightFeedSearchMatches(article.querySelector('.post-card__text'), state.feedSearchQuery);
+  }
+
   const mediaRoot = article.querySelector('[data-media-id]');
   if (mediaRoot) {
     const items = state.mediaRegistry[mediaRoot.dataset.mediaId] || [];
@@ -3512,6 +3611,348 @@ function scheduleNextPagePrefetch() {
   }
 
   state.nextPagePrefetchHandle = window.setTimeout(callback, 220);
+}
+
+function normalizeFeedSearchValue(value) {
+  return String(value || '')
+    .normalize('NFKC')
+    .toLocaleLowerCase('ru-RU')
+    .replace(/ё/g, 'е')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function isFeedSearchWordCharacter(character) {
+  return Boolean(character && /[\p{L}\p{N}\p{M}_]/u.test(character));
+}
+
+function findFeedSearchMatchIndexes(normalizedText, query) {
+  if (!normalizedText || !query) return [];
+
+  const matches = [];
+  const queryStartsWithWord = isFeedSearchWordCharacter(Array.from(query)[0]);
+  let matchIndex = normalizedText.indexOf(query);
+  while (matchIndex !== -1) {
+    const previousCharacter = matchIndex > 0
+      ? Array.from(normalizedText.slice(0, matchIndex)).at(-1)
+      : '';
+    if (!queryStartsWithWord || !isFeedSearchWordCharacter(previousCharacter)) {
+      matches.push(matchIndex);
+    }
+    matchIndex = normalizedText.indexOf(query, matchIndex + query.length);
+  }
+  return matches;
+}
+
+function doesFeedSearchTextMatch(normalizedText, query) {
+  return findFeedSearchMatchIndexes(normalizedText, query).length > 0;
+}
+
+function highlightFeedSearchMatches(root, query) {
+  if (!root || !query) return;
+
+  const textNodes = [];
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  let sourceText = '';
+  let node = walker.nextNode();
+  while (node) {
+    const value = node.nodeValue || '';
+    if (value) {
+      textNodes.push({ node, start: sourceText.length, end: sourceText.length + value.length });
+      sourceText += value;
+    }
+    node = walker.nextNode();
+  }
+  if (!sourceText) return;
+
+  const normalizedChars = [];
+  const sourceOffsets = [];
+  let sourceOffset = 0;
+  let previousWasSpace = false;
+  for (const character of sourceText) {
+    const characterLength = character.length;
+    const normalizedCharacter = character
+      .normalize('NFKC')
+      .toLocaleLowerCase('ru-RU')
+      .replace(/ё/g, 'е');
+
+    if (/\s/u.test(normalizedCharacter)) {
+      if (!previousWasSpace) {
+        normalizedChars.push(' ');
+        sourceOffsets.push({ start: sourceOffset, end: sourceOffset + characterLength });
+      } else {
+        sourceOffsets[sourceOffsets.length - 1].end = sourceOffset + characterLength;
+      }
+      previousWasSpace = true;
+    } else {
+      for (let normalizedIndex = 0; normalizedIndex < normalizedCharacter.length; normalizedIndex += 1) {
+        normalizedChars.push(normalizedCharacter[normalizedIndex]);
+        sourceOffsets.push({ start: sourceOffset, end: sourceOffset + characterLength });
+      }
+      previousWasSpace = false;
+    }
+    sourceOffset += characterLength;
+  }
+
+  const normalizedText = normalizedChars.join('');
+  const matchRanges = [];
+  findFeedSearchMatchIndexes(normalizedText, query).forEach((matchIndex) => {
+    const firstOffset = sourceOffsets[matchIndex];
+    const lastOffset = sourceOffsets[matchIndex + query.length - 1];
+    if (firstOffset && lastOffset) {
+      matchRanges.push({ start: firstOffset.start, end: lastOffset.end });
+    }
+  });
+  if (!matchRanges.length) return;
+
+  textNodes.forEach(({ node: textNode, start, end }) => {
+    const overlaps = matchRanges
+      .map((range) => ({ start: Math.max(start, range.start), end: Math.min(end, range.end) }))
+      .filter((range) => range.start < range.end);
+    if (!overlaps.length) return;
+
+    const fragment = document.createDocumentFragment();
+    const value = textNode.nodeValue || '';
+    let cursor = 0;
+    overlaps.forEach((range) => {
+      const localStart = range.start - start;
+      const localEnd = range.end - start;
+      if (localStart > cursor) {
+        fragment.appendChild(document.createTextNode(value.slice(cursor, localStart)));
+      }
+      const mark = document.createElement('mark');
+      mark.className = 'post-card__search-match';
+      mark.textContent = value.slice(localStart, localEnd);
+      fragment.appendChild(mark);
+      cursor = localEnd;
+    });
+    if (cursor < value.length) {
+      fragment.appendChild(document.createTextNode(value.slice(cursor)));
+    }
+    textNode.replaceWith(fragment);
+  });
+}
+
+function getFeedSearchText(post) {
+  const htmlDocument = new DOMParser().parseFromString(String(post?.text_html || ''), 'text/html');
+  const htmlText = htmlDocument.body?.textContent || '';
+  const forwarded = post?.forwarded_from || {};
+  const reply = post?.reply_to || {};
+  const preview = post?.link_preview || {};
+
+  return normalizeFeedSearchValue([
+    post?.text,
+    htmlText,
+    post?.title,
+    post?.date,
+    post?.id,
+    forwarded?.title,
+    forwarded?.channel_title,
+    forwarded?.channel_username,
+    reply?.title,
+    reply?.text,
+    preview?.title,
+    preview?.description,
+    preview?.site_name,
+  ].filter(Boolean).join(' '));
+}
+
+function dedupeFeedSearchResults(posts) {
+  const seenPostIds = new Set();
+  const seenCanonicalKeys = new Set();
+  const seenDuplicateFingerprints = new Set();
+  const seenLooseDuplicateFingerprints = new Set();
+
+  return posts.filter((post) => {
+    const postId = String(post?.id ?? '').trim();
+    const canonicalKey = getPostCanonicalKey(post);
+    const duplicateFingerprint = getPostDuplicateFingerprint(post);
+    const looseDuplicateFingerprint = getPostLooseDuplicateFingerprint(post);
+    if (
+      (postId && seenPostIds.has(postId)) ||
+      (canonicalKey && seenCanonicalKeys.has(canonicalKey)) ||
+      (duplicateFingerprint && seenDuplicateFingerprints.has(duplicateFingerprint)) ||
+      (looseDuplicateFingerprint && seenLooseDuplicateFingerprints.has(looseDuplicateFingerprint))
+    ) {
+      return false;
+    }
+    if (postId) seenPostIds.add(postId);
+    if (canonicalKey) seenCanonicalKeys.add(canonicalKey);
+    if (duplicateFingerprint) seenDuplicateFingerprints.add(duplicateFingerprint);
+    if (looseDuplicateFingerprint) seenLooseDuplicateFingerprints.add(looseDuplicateFingerprint);
+    return true;
+  });
+}
+
+function syncFeedSearchControls({ status = '', busy = false, variant = '' } = {}) {
+  if (!elements.feedSearchInput || !elements.feedSearchClear || !elements.feedSearchStatus) return;
+
+  const hasValue = Boolean(elements.feedSearchInput.value.trim());
+  elements.feedSearchClear.classList.toggle('hidden', !hasValue);
+  elements.feedSearchStatus.textContent = status;
+  elements.feedSearchStatus.classList.toggle('feed-search__status--result', variant === 'result');
+  elements.feedSearchStatus.classList.toggle('feed-search__status--empty', variant === 'empty');
+  elements.feedSearchStatus.classList.toggle('feed-search__status--error', variant === 'error');
+  elements.siteShell?.classList.toggle('is-empty-search', variant === 'empty');
+  elements.feedSearchInput.setAttribute('aria-busy', busy ? 'true' : 'false');
+}
+
+function resetFeedSearch({ render = true, focus = false } = {}) {
+  state.feedSearchRequestId += 1;
+  state.feedSearchQuery = '';
+  state.feedSearchResults = [];
+  state.feedSearchRendered = 0;
+  if (state.feedSearchDebounceId) {
+    window.clearTimeout(state.feedSearchDebounceId);
+    state.feedSearchDebounceId = null;
+  }
+
+  if (elements.feedSearchInput) {
+    elements.feedSearchInput.value = '';
+  }
+  syncFeedSearchControls();
+  elements.postFeed?.setAttribute('aria-label', 'Посты канала');
+  if (elements.loadMoreButton) {
+    elements.loadMoreButton.textContent = 'Показать ещё';
+  }
+
+  if (render && state.feed && state.posts.length && elements.feedView && !elements.feedView.classList.contains('hidden')) {
+    resetFeed();
+  }
+  if (focus && isFeedSearchAvailable()) {
+    elements.feedSearchInput?.focus();
+  }
+}
+
+async function loadAllFeedPagesForSearch(requestId, channelKey, renderVersion) {
+  for (let pageNumber = 2; pageNumber <= state.totalPages; pageNumber += 1) {
+    if (
+      requestId !== state.feedSearchRequestId ||
+      channelKey !== state.activeChannelKey ||
+      renderVersion !== state.feedRenderVersion
+    ) {
+      return false;
+    }
+    await loadPage(pageNumber);
+  }
+  return true;
+}
+
+function appendFeedSearchResults() {
+  if (!state.feedSearchQuery) return;
+
+  const nextResults = state.feedSearchResults.slice(
+    state.feedSearchRendered,
+    state.feedSearchRendered + state.pageSize,
+  );
+  const fragment = document.createDocumentFragment();
+  nextResults.forEach((post) => fragment.appendChild(renderPostCard(post)));
+  elements.postFeed.appendChild(fragment);
+  state.feedSearchRendered += nextResults.length;
+
+  elements.loadMoreButton.disabled = false;
+  elements.loadMoreButton.textContent = 'Показать ещё результаты';
+  elements.loadMoreWrap.classList.toggle(
+    'hidden',
+    state.feedSearchRendered >= state.feedSearchResults.length,
+  );
+  queueScrollTopButtonVisibilitySync();
+}
+
+function renderFeedSearchResults(matches, query) {
+  cancelNextPagePrefetch();
+  state.mediaRegistry = {};
+  state.feedSearchResults = matches;
+  state.feedSearchRendered = 0;
+  elements.postFeed.innerHTML = '';
+  elements.emptyState.classList.add('hidden');
+  elements.errorState.classList.add('hidden');
+  elements.postFeed.setAttribute('aria-label', `Результаты поиска: ${query}`);
+  appendFeedSearchResults();
+}
+
+async function runFeedSearch(rawValue) {
+  const query = normalizeFeedSearchValue(rawValue);
+  if (!query) {
+    resetFeedSearch();
+    return;
+  }
+  if (!isFeedSearchAvailable() || !state.activeChannelKey || !state.feed) return;
+
+  const requestId = state.feedSearchRequestId + 1;
+  state.feedSearchRequestId = requestId;
+  state.feedSearchQuery = query;
+  const channelKey = state.activeChannelKey;
+  const renderVersion = state.feedRenderVersion;
+  cancelNextPagePrefetch();
+  elements.loadMoreWrap.classList.add('hidden');
+  syncFeedSearchControls({ status: 'Ищем во всех публикациях...', busy: true });
+
+  try {
+    const completed = await loadAllFeedPagesForSearch(requestId, channelKey, renderVersion);
+    if (
+      !completed ||
+      requestId !== state.feedSearchRequestId ||
+      channelKey !== state.activeChannelKey ||
+      renderVersion !== state.feedRenderVersion
+    ) {
+      return;
+    }
+
+    const matches = dedupeFeedSearchResults(
+      state.posts.filter((post) => doesFeedSearchTextMatch(getFeedSearchText(post), query)),
+    );
+    renderFeedSearchResults(matches, query);
+    syncFeedSearchControls({
+      status: matches.length ? 'Результат поиска' : 'Ничего не найдено',
+      variant: matches.length ? 'result' : 'empty',
+    });
+  } catch (_) {
+    if (requestId !== state.feedSearchRequestId) return;
+    syncFeedSearchControls({ status: 'Не удалось выполнить поиск', variant: 'error' });
+  }
+}
+
+function scheduleFeedSearch(rawValue) {
+  state.feedSearchRequestId += 1;
+  if (state.feedSearchDebounceId) {
+    window.clearTimeout(state.feedSearchDebounceId);
+  }
+  state.feedSearchDebounceId = window.setTimeout(() => {
+    state.feedSearchDebounceId = null;
+    void runFeedSearch(rawValue);
+  }, 240);
+}
+
+function setupFeedSearchInteractions() {
+  if (!elements.feedSearchInput || !elements.feedSearchClear || elements.feedSearchInput.dataset.searchBound === 'true') {
+    return;
+  }
+
+  elements.feedSearchInput.dataset.searchBound = 'true';
+  elements.feedSearchInput.addEventListener('input', () => {
+    const value = elements.feedSearchInput.value;
+    if (!value.trim()) {
+      resetFeedSearch();
+      return;
+    }
+    syncFeedSearchControls();
+    scheduleFeedSearch(value);
+  });
+
+  elements.feedSearchInput.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter') return;
+    event.preventDefault();
+    if (state.feedSearchDebounceId) {
+      window.clearTimeout(state.feedSearchDebounceId);
+      state.feedSearchDebounceId = null;
+    }
+    void runFeedSearch(elements.feedSearchInput.value);
+  });
+
+  elements.feedSearchClear.addEventListener('click', () => {
+    resetFeedSearch({ focus: true });
+  });
 }
 
 function resetFeed() {
@@ -3965,6 +4406,7 @@ function renderViewer() {
 function showFeedView() {
   elements.commentsView.classList.add('hidden');
   elements.feedView.classList.remove('hidden');
+  elements.feedSearch?.classList.remove('hidden');
 }
 
 function sanitizeCommentText(text) {
@@ -3994,6 +4436,7 @@ async function showComments(postId) {
   setStatus(elements.commentsStatus, null);
   elements.feedView.classList.add('hidden');
   elements.commentsView.classList.remove('hidden');
+  elements.feedSearch?.classList.add('hidden');
 
   try {
     const commentsBuildId = state.activeFeedBuildId;
@@ -4351,6 +4794,7 @@ function applyFeedPayload(channelKey, feedPayload, { manual = false } = {}) {
   state.totalPages = Number(pagination.total_pages) || 1;
   state.pageSize = Number(pagination.page_size) || DEFAULT_PAGE_SIZE;
   state.loadedPages = new Set(state.posts.length ? [1] : []);
+  resetFeedSearch({ render: false });
 
   renderChannelMenu();
   renderHeader(state.feed.site || getActiveChannelMeta() || getCatalogSite(), state.feed.generated_at);
@@ -4596,7 +5040,13 @@ if (elements.scrollTopButton) {
   });
 }
 
-elements.loadMoreButton.addEventListener('click', appendNextPage);
+elements.loadMoreButton.addEventListener('click', () => {
+  if (state.feedSearchQuery) {
+    appendFeedSearchResults();
+    return;
+  }
+  void appendNextPage();
+});
 elements.backButton.addEventListener('click', () => {
   if (window.location.hash.startsWith('#comments-')) {
     window.location.hash = '';
@@ -4673,6 +5123,7 @@ window.addEventListener('appinstalled', () => {
 });
 window.addEventListener('resize', () => {
   syncUtilityActionsPlacement();
+  syncCompactHeaderEnhancements();
   if (!isMobileCarouselViewport() && state.channelCarouselListOpen) {
     state.channelCarouselListOpen = false;
     syncChannelCarouselListState();
@@ -4706,6 +5157,9 @@ if ('serviceWorker' in navigator) {
 setupChannelMenuWheelScroll();
 setupChannelCarouselInteractions();
 syncUtilityActionsPlacement();
+setupCompactHeaderTitleLink();
+setupFeedSearchInteractions();
+syncCompactHeaderEnhancements();
 attachCopyInteractions();
 syncPostAnchorOffset();
 loadCatalog({ force: true });
