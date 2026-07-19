@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v105';
+const CACHE_VERSION = 'v122';
 const SHELL_CACHE_NAME = `telegram-pages-mirror-shell-${CACHE_VERSION}`;
 const DATA_CACHE_NAME = `telegram-pages-mirror-data-${CACHE_VERSION}`;
 const MEDIA_CACHE_NAME = `telegram-pages-mirror-media-${CACHE_VERSION}`;
@@ -10,6 +10,7 @@ const MEDIA_CACHE_TRIM_INTERVAL_MS = 30 * 60 * 1000;
 const STATIC_ASSETS = [
   './',
   './app.js',
+  './page-transitions.js',
   './style.css',
   './ecosystem.html',
   './ecosystem.css',

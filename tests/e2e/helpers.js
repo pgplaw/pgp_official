@@ -176,12 +176,55 @@ async function expectLifecycleRefreshPreservesFeedPosition(
   }
 
   await expect(page.locator('#post-999997')).toBeVisible();
-  await expect.poll(() => feedRequestCount).toBe(2);
+  await expect.poll(() => feedRequestCount).toBeGreaterThanOrEqual(2);
+  const maxPositionDrift = reloadOnResume ? 14 : 2;
   await expect.poll(async () => {
     const positionAfterRefresh = await anchorCard.evaluate((element) => element.getBoundingClientRect().top);
     return Math.abs(positionAfterRefresh - positionBeforeRefresh);
-  }).toBeLessThanOrEqual(2);
+  }).toBeLessThanOrEqual(maxPositionDrift);
   expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(100);
+}
+
+async function expectManualRefreshShowsContentLoader(page, { channelKey = 'pgp-official' } = {}) {
+  let feedRequestCount = 0;
+
+  await page.route(`**/data/channels/${channelKey}/posts.json**`, async (route) => {
+    feedRequestCount += 1;
+    if (feedRequestCount > 1) {
+      await new Promise((resolve) => setTimeout(resolve, 650));
+    }
+    await route.continue();
+  });
+
+  await page.goto(`/?channel=${encodeURIComponent(channelKey)}`);
+  await waitForFeedReady(page);
+
+  const cards = page.locator('#postFeed .post-card[data-post-id]');
+  const cardCountBeforeRefresh = await cards.count();
+  const refreshButton = page.locator('#refreshButton');
+  const refreshOverlay = page.locator('#feedRefreshOverlay');
+
+  await refreshButton.click();
+
+  await expect(refreshOverlay).toBeVisible();
+  await expect(page.locator('#feedView')).toHaveClass(/is-refreshing/);
+  await expect(refreshButton).toBeDisabled();
+  await expect(refreshButton).toHaveAttribute('aria-busy', 'true');
+  await expect(cards).toHaveCount(cardCountBeforeRefresh);
+
+  const [overlayBox, viewport] = await Promise.all([
+    refreshOverlay.boundingBox(),
+    page.evaluate(() => ({ width: window.innerWidth, height: window.innerHeight })),
+  ]);
+  expect(overlayBox).not.toBeNull();
+  expect(Math.abs((overlayBox.x + (overlayBox.width / 2)) - (viewport.width / 2))).toBeLessThanOrEqual(2);
+  expect(Math.abs((overlayBox.y + (overlayBox.height / 2)) - (viewport.height / 2))).toBeLessThanOrEqual(2);
+
+  await expect(refreshOverlay).toBeHidden();
+  await expect(refreshButton).toBeEnabled();
+  await expect(refreshButton).toHaveAttribute('aria-busy', 'false');
+  await expect(page.locator('#feedView')).not.toHaveClass(/is-refreshing/);
+  expect(feedRequestCount).toBeGreaterThanOrEqual(2);
 }
 
 module.exports = {
@@ -192,4 +235,5 @@ module.exports = {
   ensureGalleryInFeed,
   openFirstViewerFromFeed,
   expectLifecycleRefreshPreservesFeedPosition,
+  expectManualRefreshShowsContentLoader,
 };

@@ -12,8 +12,8 @@
   <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="ecosystem.css">
+  <link rel="stylesheet" href="style.css?v=122">
+  <link rel="stylesheet" href="ecosystem.css?v=122">
   <script>
     try {
       const savedTheme = window.localStorage.getItem('theme');
@@ -158,7 +158,7 @@
       </section>
     </main>
 
-    <a class="ecosystem-home-button" href="./">
+    <a class="ecosystem-home-button" href="./" data-page-transition>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
       <span>Вернуться на Главную</span>
     </a>
@@ -169,6 +169,7 @@
     </footer>
   </div>
 
+  <script src="page-transitions.js?v=122"></script>
   <script>
     if ('serviceWorker' in navigator) {
       let isReloadingForServiceWorkerUpdate = false;

@@ -7,6 +7,7 @@ const {
   clickLoadMoreIfVisible,
   openFirstViewerFromFeed,
   expectLifecycleRefreshPreservesFeedPosition,
+  expectManualRefreshShowsContentLoader,
 } = require('./helpers');
 
 test.describe('Desktop smoke', () => {
@@ -17,26 +18,72 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('.channel-nav')).toBeVisible();
     await expect(page.locator('#siteTitle')).toContainText(/Пепеляев Групп|Pepeliaev Group/);
     await expect(page.locator('.contact-bar')).toBeVisible();
+    const currentChannel = page.locator('#channelNavCurrentLink');
+    await expect(currentChannel).toBeVisible();
+    await expect(currentChannel).toHaveText('@pgp_official');
+    await expect(currentChannel).toHaveAttribute('href', 'https://t.me/pgp_official');
     const contactBar = page.locator('.contact-bar');
     const contactItems = contactBar.locator('.contact-bar__item');
     await expect(contactItems).toHaveCount(4);
     await expect(page.locator('#channelNavContactsHost > .contact-bar')).toBeVisible();
-    await expect(contactBar).toHaveCSS('gap', '6px');
+    await expect(contactBar).toHaveCSS('gap', '2px');
     await expect(contactBar).toHaveCSS('overflow', 'visible');
     await expect(contactItems.first()).toHaveCSS('transform', 'none');
     const contactIconBox = await contactItems.first().locator('svg').boundingBox();
     expect(contactIconBox).not.toBeNull();
-    expect(Math.round(contactIconBox.width)).toBe(22);
-    expect(Math.round(contactIconBox.height)).toBe(22);
+    expect(Math.round(contactIconBox.width)).toBe(20);
+    expect(Math.round(contactIconBox.height)).toBe(20);
+    const contactItemBox = await contactItems.first().boundingBox();
+    expect(contactItemBox).not.toBeNull();
+    expect(Math.round(contactItemBox.width)).toBe(38);
+    expect(Math.round(contactItemBox.height)).toBe(38);
+    await expect(contactItems.first()).toHaveCSS('border-top-width', '0px');
+    await expect(contactItems.first().locator('.contact-bar__icon')).not.toHaveCSS('color', 'rgb(255, 255, 255)');
     const contactBackgroundBeforeHover = await contactItems.first().evaluate(
       (element) => getComputedStyle(element).backgroundColor,
     );
+    expect(contactBackgroundBeforeHover).toBe('rgba(0, 0, 0, 0)');
     await contactItems.first().hover();
     await expect.poll(() => contactItems.first().evaluate(
       (element) => getComputedStyle(element).backgroundColor,
     )).not.toBe(contactBackgroundBeforeHover);
     await expect(contactItems.first()).not.toHaveCSS('transform', 'none');
-    await expect(page.locator('#feedSearch')).toBeVisible();
+    const headerGroupGaps = await page.evaluate(() => {
+      const channelTabs = Array.from(document.querySelectorAll('#channelMenu .channel-tab'));
+      const contactItems = Array.from(document.querySelectorAll('#channelNavContactsHost .contact-bar__item'));
+      const actionsHost = document.querySelector('#channelNavActionsHost');
+      const actions = actionsHost.querySelector('.hero__actions');
+      const nav = document.querySelector('.channel-nav').getBoundingClientRect();
+      const channelMenu = document.querySelector('#channelMenu').getBoundingClientRect();
+      const contactsHost = document.querySelector('#channelNavContactsHost').getBoundingClientRect();
+      const actionsHostBox = actionsHost.getBoundingClientRect();
+      const actionsBox = actions.getBoundingClientRect();
+      return {
+        contactsCenterOffset: Math.abs(
+          (contactsHost.left + (contactsHost.width / 2)) -
+          (channelMenu.right + ((actionsHostBox.left - channelMenu.right) / 2))
+        ),
+        actionsRightInset: nav.right - actionsHostBox.right,
+        actionsCenterOffset: Math.abs(
+          (actionsBox.left + (actionsBox.width / 2)) -
+          (actionsHostBox.left + (actionsHostBox.width / 2))
+        ),
+      };
+    });
+    expect(headerGroupGaps.contactsCenterOffset).toBeLessThanOrEqual(1);
+    expect(headerGroupGaps.actionsRightInset).toBeLessThanOrEqual(14);
+    expect(headerGroupGaps.actionsCenterOffset).toBeLessThanOrEqual(1);
+    const feedSearch = page.locator('#feedSearch');
+    await expect(feedSearch).toBeVisible();
+    await expect(feedSearch).toHaveCSS('border-top-style', 'solid');
+    await expect(feedSearch.locator('.feed-search__field')).toHaveCSS('height', '44px');
+    const [heroBox, searchBox] = await Promise.all([
+      page.locator('.hero').boundingBox(),
+      feedSearch.boundingBox(),
+    ]);
+    expect(heroBox).not.toBeNull();
+    expect(searchBox).not.toBeNull();
+    expect(Math.abs(searchBox.y - (heroBox.y + heroBox.height))).toBeLessThanOrEqual(1);
     const leadTitle = page.locator('#siteTitle .hero__title-line--lead');
     const secondaryTitle = page.locator('#siteTitle .hero__title-line:not(.hero__title-line--lead)');
     const [leadColor, secondaryColor, leadSize, secondarySize] = await Promise.all([
@@ -115,6 +162,18 @@ test.describe('Desktop smoke', () => {
 
     await expect(tabs).toHaveCount(8);
     await expect(dock.locator('.channel-tab__avatar')).toHaveCount(8);
+    await expect(active).toBeVisible();
+    const channelIconBox = await target.locator('.channel-tab__icon').boundingBox();
+    expect(channelIconBox).not.toBeNull();
+    expect(Math.round(channelIconBox.width)).toBe(46);
+    expect(Math.round(channelIconBox.height)).toBe(46);
+    const channelLayoutGaps = await tabs.evaluateAll((elements) => elements.slice(1).map(
+      (element, index) => element.offsetLeft - (
+        elements[index].offsetLeft + elements[index].offsetWidth
+      ),
+    ));
+    expect(channelLayoutGaps.every((gap) => Math.abs(gap - 12) <= 0.1)).toBe(true);
+    await expect(dock).toHaveCSS('border-top-width', '1px');
     await expect(utilityActions).toBeVisible();
     await expect(utilityActions.locator('#refreshButton')).toBeVisible();
     await expect(utilityActions.locator('#installAppButton')).toBeVisible();
@@ -128,26 +187,20 @@ test.describe('Desktop smoke', () => {
     await expect(target.locator('.channel-tab__subtitle')).toHaveText('PG Tax');
     await expect(target.locator('.channel-tab__subtitle')).toBeHidden();
     await expect(target.locator('.channel-tab__label')).toHaveCSS('opacity', '0');
+    await expect(active).toHaveCSS('animation-name', 'active-tab-breathe');
     await expect.poll(() => active.evaluate(
       (element) => new DOMMatrix(getComputedStyle(element).transform).a
     )).toBeGreaterThan(1.05);
-    await expect(active).toHaveCSS('animation-name', 'active-tab-breathe');
-    await expect.poll(() => active.evaluate(
-      (element) => Math.abs(new DOMMatrix(getComputedStyle(element).transform).f)
-    )).toBeLessThan(0.1);
-    await expect.poll(() => active.evaluate((element) => {
-      const inactive = element.parentElement?.querySelector('.channel-tab:not(.is-active)');
-      if (!inactive) return Number.POSITIVE_INFINITY;
-      const activeRect = element.getBoundingClientRect();
-      const inactiveRect = inactive.getBoundingClientRect();
-      const activeCenter = activeRect.top + (activeRect.height / 2);
-      const inactiveCenter = inactiveRect.top + (inactiveRect.height / 2);
-      return Math.abs(activeCenter - inactiveCenter);
-    })).toBeLessThan(0.5);
-    await expect.poll(() => active.evaluate(
-      (element) => getComputedStyle(element, '::after').content
-    )).toBe('none');
-
+    const stableCentersBeforeHover = await tabs.evaluateAll((elements) => elements
+      .filter((element) => element.offsetParent !== null && element.dataset.channelKey !== 'pg-tax')
+      .map((element) => {
+        const rect = element.getBoundingClientRect();
+        return {
+          key: element.dataset.channelKey,
+          x: rect.left + (rect.width / 2),
+          y: rect.top + (rect.height / 2),
+        };
+      }));
     await target.hover();
     await expect(target.locator('.channel-tab__label')).toHaveCSS('opacity', '1');
     await expect.poll(() => target.locator('.channel-tab__icon').evaluate(
@@ -155,8 +208,23 @@ test.describe('Desktop smoke', () => {
     )).toBeLessThan(60);
     await expect(target.locator('.channel-tab__avatar')).toHaveCSS('opacity', '1');
     await expect(target.locator('.channel-tab__label')).toHaveCSS('pointer-events', 'none');
-    await expect.poll(() => target.evaluate((element) => new DOMMatrix(getComputedStyle(element).transform).a)).toBeGreaterThan(1.1);
-    await expect.poll(() => neighbor.evaluate((element) => new DOMMatrix(getComputedStyle(element).transform).a)).toBeGreaterThan(1);
+    await expect.poll(() => target.evaluate((element) => new DOMMatrix(getComputedStyle(element).transform).a)).toBeGreaterThan(1.05);
+    await expect.poll(() => neighbor.evaluate((element) => new DOMMatrix(getComputedStyle(element).transform).a)).toBeCloseTo(1, 3);
+    const stableCentersAfterHover = await tabs.evaluateAll((elements) => elements
+      .filter((element) => element.offsetParent !== null && element.dataset.channelKey !== 'pg-tax')
+      .map((element) => {
+        const rect = element.getBoundingClientRect();
+        return {
+          key: element.dataset.channelKey,
+          x: rect.left + (rect.width / 2),
+          y: rect.top + (rect.height / 2),
+        };
+      }));
+    stableCentersAfterHover.forEach((center, index) => {
+      expect(center.key).toBe(stableCentersBeforeHover[index].key);
+      expect(Math.abs(center.x - stableCentersBeforeHover[index].x)).toBeLessThanOrEqual(0.5);
+      expect(Math.abs(center.y - stableCentersBeforeHover[index].y)).toBeLessThanOrEqual(0.5);
+    });
     const [targetBox, labelBox] = await Promise.all([
       target.boundingBox(),
       target.locator('.channel-tab__label').boundingBox(),
@@ -204,6 +272,8 @@ test.describe('Desktop smoke', () => {
 
     const channelTitle = page.locator('#siteTitle');
     const channelTitleLead = channelTitle.locator('.hero__title-line--lead');
+    const channelTitleSubtitle = channelTitle.locator('.hero__title-line:not(.hero__title-line--lead)');
+    await page.locator('#themeToggle').uncheck();
     const channelBefore = await channelTitle.evaluate((element) => ({
       leadColor: getComputedStyle(element.querySelector('.hero__title-line--lead')).color,
       background: getComputedStyle(element).backgroundColor,
@@ -213,6 +283,7 @@ test.describe('Desktop smoke', () => {
     await expect.poll(() => channelTitleLead.evaluate(
       (element) => getComputedStyle(element).color
     )).not.toBe(channelBefore.leadColor);
+    await expect(channelTitleSubtitle).not.toHaveCSS('color', 'rgb(255, 255, 255)');
     await expect(channelTitle).toHaveCSS('background-color', channelBefore.background);
     await expect(channelTitle).toHaveCSS('transform', channelBefore.transform);
 
@@ -231,10 +302,19 @@ test.describe('Desktop smoke', () => {
     await expect(postLink).toHaveCSS('transform', postBefore.transform);
     await expect(postLink).toHaveCSS('text-decoration-line', 'none');
     await expect(postLink).toHaveCSS('box-shadow', 'none');
+
+    await page.locator('label[for="themeToggle"]').click();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+    await channelTitle.hover();
+    await expect(channelTitleSubtitle).toHaveCSS('color', 'rgb(255, 255, 255)');
   });
 
   test('keeps the current feed position after returning to a desktop tab', async ({ page }) => {
     await expectLifecycleRefreshPreservesFeedPosition(page);
+  });
+
+  test('shows a centered content loader during a manual refresh', async ({ page }) => {
+    await expectManualRefreshShowsContentLoader(page);
   });
 
   test('publishes an installable manifest with required desktop icon sizes', async ({ page }) => {
@@ -273,8 +353,10 @@ test.describe('Desktop smoke', () => {
     await expect(ecosystemLink).toBeVisible();
     await expect(ecosystemLink).toContainText('Экосистема');
 
-    await ecosystemLink.click();
+    await ecosystemLink.click({ noWaitAfter: true });
+    await expect(page.locator('html')).toHaveClass(/is-page-leaving/);
     await expect(page).toHaveURL(/\/ecosystem\.html$/);
+    await expect(page.locator('.ecosystem-shell')).toHaveCSS('animation-name', 'ecosystem-page-enter');
     await expect(page.locator('.ecosystem-nav')).toHaveCount(0);
     await expect(page.locator('.ecosystem-intro__title')).toHaveText('Экосистема');
     await expect(page.locator('.ecosystem-intro > p')).toHaveText('Профессиональная информация на одной странице');
@@ -440,7 +522,13 @@ test.describe('Desktop smoke', () => {
 
     await expect(page).toHaveURL(/channel=pg-tax/);
     await expect(page.locator('#channelLink')).toContainText('@PG_Tax');
+    await expect(page.locator('#channelNavCurrentLink')).toHaveText('@PG_Tax');
+    await expect(page.locator('#channelNavCurrentLink')).toHaveAttribute('href', 'https://t.me/PG_Tax');
     await expect(page.locator('#siteTitle')).not.toHaveText(initialTitle);
+    await expect(page.locator('#channelMenu .channel-tab[data-channel-key="pg-tax"]')).toBeVisible();
+    await expect(page.locator('#channelMenu .channel-tab[data-channel-key="pg-tax"]')).toHaveAttribute('aria-pressed', 'true');
+    await expect(page.locator('#channelMenu .channel-tab[data-channel-key="pgp-official"]')).toBeVisible();
+    await expect(page.locator('#channelMenu .channel-tab[data-channel-key="pgp-official"]')).toHaveAttribute('aria-pressed', 'false');
   });
 
   test('prefetches the neighboring channel with a fresh request before switching', async ({ page }) => {

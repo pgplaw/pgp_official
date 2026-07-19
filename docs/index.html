@@ -19,11 +19,21 @@
   <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css">
-  <link rel="stylesheet" href="style.css?v=105">
+  <link rel="stylesheet" href="style.css?v=122">
 </head>
 <body>
   <div class="site-shell">
     <nav class="channel-nav" aria-label="Каналы практик">
+      <div class="channel-nav__current" aria-label="Выбранный канал">
+        <span class="channel-nav__current-label">Выбранный канал</span>
+        <a
+          id="channelNavCurrentLink"
+          class="channel-nav__current-link"
+          href="https://t.me"
+          target="_blank"
+          rel="noopener noreferrer"
+        >@channel</a>
+      </div>
       <div id="channelMenu" class="channel-tabs"></div>
       <div id="channelNavContactsHost" class="channel-nav__contacts-host"></div>
       <div id="channelNavActionsHost" class="channel-nav__actions-host"></div>
@@ -170,6 +180,7 @@
       <a
         class="contact-bar__item contact-bar__item--ecosystem"
         href="ecosystem.html"
+        data-page-transition
         data-tooltip="Экосистема"
         aria-label="Открыть экосистему Пепеляев Групп"
       >
@@ -231,6 +242,11 @@
     </footer>
   </div>
 
+  <div id="feedRefreshOverlay" class="feed-refresh-overlay hidden" role="status" aria-live="polite">
+    <span class="feed-refresh-overlay__spinner" aria-hidden="true"></span>
+    <span>Обновляем публикации...</span>
+  </div>
+
   <button id="scrollTopButton" class="scroll-top-button" type="button" aria-label="Прокрутить наверх" title="Наверх" aria-hidden="true">
     <span class="scroll-top-button__icon" aria-hidden="true">
       <svg viewBox="0 0 24 24">
@@ -250,6 +266,7 @@
     <button id="viewerNext" class="viewer__nav hidden" type="button" aria-label="Вперед">›</button>
   </div>
 
-  <script src="app.js?v=105"></script>
+  <script src="page-transitions.js?v=122"></script>
+  <script src="app.js?v=122"></script>
 </body>
 </html>

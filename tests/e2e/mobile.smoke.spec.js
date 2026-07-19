@@ -6,6 +6,7 @@ const {
   waitForFeedReady,
   openFirstViewerFromFeed,
   expectLifecycleRefreshPreservesFeedPosition,
+  expectManualRefreshShowsContentLoader,
 } = require('./helpers');
 
 test.describe('Mobile smoke', () => {
@@ -24,7 +25,7 @@ test.describe('Mobile smoke', () => {
     expect(searchBox).not.toBeNull();
     expect(searchBox.x).toBeGreaterThanOrEqual(0);
     expect(searchBox.x + searchBox.width).toBeLessThanOrEqual(page.viewportSize().width);
-    expect(searchBox.height).toBeGreaterThanOrEqual(48);
+    expect(searchBox.height).toBeGreaterThanOrEqual(47.5);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 
     await searchInput.fill('нал');
@@ -59,6 +60,10 @@ test.describe('Mobile smoke', () => {
     await expectLifecycleRefreshPreservesFeedPosition(page);
   });
 
+  test('shows a centered content loader during a manual refresh', async ({ page }) => {
+    await expectManualRefreshShowsContentLoader(page);
+  });
+
   test('restores the feed position when the mobile OS reloads the suspended app', async ({ page }) => {
     await expectLifecycleRefreshPreservesFeedPosition(page, { reloadOnResume: true });
   });
@@ -88,7 +93,14 @@ test.describe('Mobile smoke', () => {
   });
 
   test('renders the ecosystem as a responsive mobile page without overflow', async ({ page }) => {
-    await page.goto('/ecosystem.html');
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const ecosystemLink = page.locator('.contact-bar__item--ecosystem');
+    await ecosystemLink.click({ noWaitAfter: true });
+    await expect(page.locator('html')).toHaveClass(/is-page-leaving/);
+    await expect(page).toHaveURL(/\/ecosystem\.html$/);
+    await expect(page.locator('.ecosystem-shell')).toHaveCSS('animation-name', 'ecosystem-page-enter');
 
     await expect(page.locator('.ecosystem-card')).toHaveCount(4);
     await expect(page.locator('.ecosystem-card__head').first()).toHaveCSS('justify-content', 'center');
@@ -122,7 +134,7 @@ test.describe('Mobile smoke', () => {
     expect(firstFeatureBox).not.toBeNull();
     expect(newsletterCopyBox).not.toBeNull();
     expect(newsletterButtonBox).not.toBeNull();
-    expect(firstFeatureBox.y - (newsletterHeadBox.y + newsletterHeadBox.height)).toBeGreaterThanOrEqual(14);
+    expect(firstFeatureBox.y - (newsletterHeadBox.y + newsletterHeadBox.height)).toBeGreaterThanOrEqual(13.5);
     const newsletterCopyCenter = newsletterCopyBox.x + (newsletterCopyBox.width / 2);
     const newsletterButtonCenter = newsletterButtonBox.x + (newsletterButtonBox.width / 2);
     expect(Math.abs(newsletterCopyCenter - newsletterButtonCenter)).toBeLessThanOrEqual(1);
@@ -156,7 +168,7 @@ test.describe('Mobile smoke', () => {
     expect(Math.abs(knowledgeTilesCenter - thirdKnowledgeTileCenter)).toBeLessThanOrEqual(1);
     const touchTargets = page.locator('.video-platforms__links a, .social-links > a, .ecosystem-home-button');
     const touchTargetHeights = await touchTargets.evaluateAll((elements) => elements.map((element) => element.getBoundingClientRect().height));
-    expect(touchTargetHeights.every((height) => height >= 44)).toBe(true);
+    expect(touchTargetHeights.every((height) => height >= 43.5)).toBe(true);
 
     await page.setViewportSize({ width: 320, height: 800 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);

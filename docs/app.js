@@ -16,6 +16,7 @@ const VIEWER_TRANSITION_MS = 360;
 const FEED_CACHE_MAX_ENTRIES = 6;
 const FEED_CACHE_MAX_AGE_MS = AUTO_REFRESH_INTERVAL_MINUTES * 60 * 1000;
 const APP_LIFECYCLE_REFRESH_DEDUP_MS = 1500;
+const MANUAL_REFRESH_INDICATOR_MIN_MS = 520;
 const FEED_SCROLL_ANCHOR_STORAGE_KEY = 'pep-feed-scroll-anchor-v1';
 const FEED_SCROLL_ANCHOR_MAX_AGE_MS = 12 * 60 * 60 * 1000;
 const SCROLL_TOP_VISIBILITY_THRESHOLD_MIN = 360;
@@ -42,6 +43,7 @@ const state = {
   channelFeedPrefetchHandle: null,
   activeFeedManual: false,
   activeFeedRefreshPromise: null,
+  manualRefreshIndicatorActive: false,
   appWasHidden: document.visibilityState === 'hidden',
   lastLifecycleRefreshAt: 0,
   lifecycleFeedScrollAnchor: null,
@@ -79,6 +81,7 @@ const elements = {
   channelNav: document.querySelector('.channel-nav'),
   channelNavContactsHost: document.getElementById('channelNavContactsHost'),
   channelNavActionsHost: document.getElementById('channelNavActionsHost'),
+  channelNavCurrentLink: document.getElementById('channelNavCurrentLink'),
   siteShell: document.querySelector('.site-shell'),
   hero: document.querySelector('.hero'),
   siteTitle: document.getElementById('siteTitle'),
@@ -99,6 +102,7 @@ const elements = {
   feedView: document.getElementById('feedView'),
   postFeed: document.getElementById('postFeed'),
   loadingState: document.getElementById('loadingState'),
+  feedRefreshOverlay: document.getElementById('feedRefreshOverlay'),
   emptyState: document.getElementById('emptyState'),
   errorState: document.getElementById('errorState'),
   errorMessage: document.getElementById('errorMessage'),
@@ -2503,6 +2507,11 @@ function renderHeader(site, generatedAt) {
   elements.siteDescription.innerHTML = linkifyTelegramAwareText(description);
   elements.channelLink.textContent = handle;
   elements.channelLink.href = site.channel_username ? `https://t.me/${site.channel_username}` : 'https://t.me';
+  if (elements.channelNavCurrentLink) {
+    elements.channelNavCurrentLink.textContent = handle;
+    elements.channelNavCurrentLink.href = elements.channelLink.href;
+    elements.channelNavCurrentLink.setAttribute('aria-label', `Открыть канал ${handle} в Telegram`);
+  }
   syncCompactHeaderEnhancements();
   startSyncStatusPolling();
   document.title = getOrderedTitleParts(title).join(' | ') || title;
@@ -4734,8 +4743,8 @@ async function handleRoute() {
   showFeedView();
 }
 
-function showFeedLoadingState(clearPosts = true) {
-  elements.loadingState.classList.remove('hidden');
+function showFeedLoadingState(clearPosts = true, showLoader = true) {
+  elements.loadingState.classList.toggle('hidden', !showLoader);
   elements.emptyState.classList.add('hidden');
   elements.errorState.classList.add('hidden');
   if (clearPosts) {
@@ -4822,9 +4831,9 @@ function applyFeedPayload(channelKey, feedPayload, { manual = false } = {}) {
   scheduleChannelCarouselAutotest();
 }
 
-async function loadFeed(channelKey, force = false, { scrollAnchor = null } = {}) {
+async function loadFeed(channelKey, force = false, { scrollAnchor = null, showLoadingState = true } = {}) {
   const shouldRestoreScroll = Boolean(scrollAnchor && scrollAnchor.channelKey === channelKey);
-  showFeedLoadingState(!shouldRestoreScroll);
+  showFeedLoadingState(!shouldRestoreScroll, showLoadingState);
 
   try {
     const feedPayload = await fetchFeedPayload(channelKey, force);
@@ -4839,7 +4848,7 @@ async function loadFeed(channelKey, force = false, { scrollAnchor = null } = {})
   }
 }
 
-function refreshActiveFeed({ scrollAnchor = captureFeedScrollAnchor() } = {}) {
+function refreshActiveFeed({ scrollAnchor = captureFeedScrollAnchor(), showLoadingState = true } = {}) {
   if (!state.activeChannelKey) {
     return Promise.resolve();
   }
@@ -4848,13 +4857,41 @@ function refreshActiveFeed({ scrollAnchor = captureFeedScrollAnchor() } = {}) {
     return state.activeFeedRefreshPromise;
   }
 
-  const refreshPromise = loadFeed(state.activeChannelKey, true, { scrollAnchor }).finally(() => {
+  const refreshPromise = loadFeed(state.activeChannelKey, true, { scrollAnchor, showLoadingState }).finally(() => {
     if (state.activeFeedRefreshPromise === refreshPromise) {
       state.activeFeedRefreshPromise = null;
     }
   });
   state.activeFeedRefreshPromise = refreshPromise;
   return refreshPromise;
+}
+
+function setManualRefreshIndicator(active) {
+  state.manualRefreshIndicatorActive = active;
+  elements.feedRefreshOverlay?.classList.toggle('hidden', !active);
+  elements.feedView?.classList.toggle('is-refreshing', active);
+  elements.postFeed?.setAttribute('aria-busy', active ? 'true' : 'false');
+
+  if (elements.refreshButton) {
+    elements.refreshButton.disabled = active;
+    elements.refreshButton.setAttribute('aria-busy', active ? 'true' : 'false');
+  }
+}
+
+async function handleManualFeedRefresh() {
+  if (state.manualRefreshIndicatorActive) return;
+
+  const startedAt = Date.now();
+  setManualRefreshIndicator(true);
+  try {
+    await refreshActiveFeed({ showLoadingState: false });
+  } finally {
+    const remaining = MANUAL_REFRESH_INDICATOR_MIN_MS - (Date.now() - startedAt);
+    if (remaining > 0) {
+      await wait(remaining);
+    }
+    setManualRefreshIndicator(false);
+  }
 }
 
 function refreshFeedForAppLifecycle({ scrollAnchor = null } = {}) {
@@ -5031,7 +5068,7 @@ elements.channelMenu.addEventListener('click', (event) => {
 });
 
 elements.refreshButton.addEventListener('click', () => {
-  void refreshActiveFeed();
+  void handleManualFeedRefresh();
 });
 
 if (elements.scrollTopButton) {
