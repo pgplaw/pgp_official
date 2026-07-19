@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-19T00:12:54.194223+00:00",
+  "generated_at": "2026-07-19T07:13:42.719337+00:00",
   "build_id": "e809695fcc56",
   "pagination": {
     "page": 2,
@@ -19,9 +19,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2779-1-e6d49bdc610e-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2779-1-e6d49bdc610e-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/qHqVh8Zsfb6BfkJTBvIm3GkFe9wFeZfZMEpXs9hc7Fd8rl925ZAPjhl31e1vVtu0207sAKbrKM76FYjhhMRnu2JzfcexgbLbp7jmnlFgnfT_JwQu1gdXYmTnPkv3BFdE8SmRWkStuytbCdsRY-5No_NlJ7h42crOvjIBkHKFG54G26Jt-WFzzbgxW08l3yi2Fh3MJaHsII3YAfnvY7G0rGBzW0rWxg2V3waMSGswihZQYTCt7HuozgfPXJVjx4WquCe_ZBGkAv-eutQ_AUYLxElRcLds9vHJnNzaERU3vxDAOyJMX1IbZkiIYLiNMyZd-vuVKW-oRejIkLO-K6cxrw.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2779-1-e6d49bdc610e-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2779-1-e6d49bdc610e-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 450,
           "feed_width": 1800,
@@ -29,7 +28,8 @@
           "full_width": 1880,
           "full_height": 1058,
           "source_width": 1880,
-          "source_height": 1058
+          "source_height": 1058,
+          "source_url": "https://cdn4.telesco.pe/file/qHqVh8Zsfb6BfkJTBvIm3GkFe9wFeZfZMEpXs9hc7Fd8rl925ZAPjhl31e1vVtu0207sAKbrKM76FYjhhMRnu2JzfcexgbLbp7jmnlFgnfT_JwQu1gdXYmTnPkv3BFdE8SmRWkStuytbCdsRY-5No_NlJ7h42crOvjIBkHKFG54G26Jt-WFzzbgxW08l3yi2Fh3MJaHsII3YAfnvY7G0rGBzW0rWxg2V3waMSGswihZQYTCt7HuozgfPXJVjx4WquCe_ZBGkAv-eutQ_AUYLxElRcLds9vHJnNzaERU3vxDAOyJMX1IbZkiIYLiNMyZd-vuVKW-oRejIkLO-K6cxrw.jpg"
         }
       ],
       "video_url": null,
@@ -49,9 +49,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2778-1-42c6a5c845c5-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2778-1-42c6a5c845c5-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Ge6PyQPAJq7SjnRW__-0gK0e2G_2IG1fIY8PGPTZL7YhDPAPNltv1xI2xRcB60N7nrXa9u-HEK2xOZJnhBJeRsZ9nJU8iURNnY3vrmYju19SnmVAOgmK5-v63OypLMmcG0VB9_0azEHSe9bbSRXddlB_oQHLotvM8RmEdIenIZRIUU4CmJrWIBXfcAckqjuqGJ9Y3l8yYeNMeHdGx-psr4jwau16hi3AvYJORvJSPTo67xgmOJxavzJF7WuCsma3q_nYE0cMujDaE4AYKH1rQclsTCWEO_EtBCABKydYTdqdAv3AQWF1epL80gXH9pxcuAdwNZHyKegT4S_k4hVXQw.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2778-1-42c6a5c845c5-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2778-1-42c6a5c845c5-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -59,7 +58,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/Ge6PyQPAJq7SjnRW__-0gK0e2G_2IG1fIY8PGPTZL7YhDPAPNltv1xI2xRcB60N7nrXa9u-HEK2xOZJnhBJeRsZ9nJU8iURNnY3vrmYju19SnmVAOgmK5-v63OypLMmcG0VB9_0azEHSe9bbSRXddlB_oQHLotvM8RmEdIenIZRIUU4CmJrWIBXfcAckqjuqGJ9Y3l8yYeNMeHdGx-psr4jwau16hi3AvYJORvJSPTo67xgmOJxavzJF7WuCsma3q_nYE0cMujDaE4AYKH1rQclsTCWEO_EtBCABKydYTdqdAv3AQWF1epL80gXH9pxcuAdwNZHyKegT4S_k4hVXQw.jpg"
         }
       ],
       "video_url": null,
@@ -116,9 +116,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2776-1-c7c16a94ac33-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2776-1-c7c16a94ac33-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Om5pL49yNwvv2tn8byvF46DX10x9vW5CRvZn1K0O8mpgeTg6A1RCG7dSQe5l3sOGFdzt8KRCXe2xCeSGYr7Yu-Iw_t6Oq7NyrW1delQCTe83Nw-x8ksadsoyTLqUweAVB1svipTJrCakYhd16vfnnO8Siy_PFoME5kxtX7zrUj2AQMUArk_hbblRbmtgmKxM7m7pxerljpgc2vAe1MIimCt68p4Cu5oN_rTyLwz4C1HOEbIdgQSL3b7eACtUnfjMtqhR4PTM6pZFINBNxyYTUhLVv2-RZmoQVRKz6q3Jdta41hHDXOXEWK27yWKZCKxb9Ak7hDKWOaJaDL95WN6S6g.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2776-1-c7c16a94ac33-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2776-1-c7c16a94ac33-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -126,7 +125,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/Om5pL49yNwvv2tn8byvF46DX10x9vW5CRvZn1K0O8mpgeTg6A1RCG7dSQe5l3sOGFdzt8KRCXe2xCeSGYr7Yu-Iw_t6Oq7NyrW1delQCTe83Nw-x8ksadsoyTLqUweAVB1svipTJrCakYhd16vfnnO8Siy_PFoME5kxtX7zrUj2AQMUArk_hbblRbmtgmKxM7m7pxerljpgc2vAe1MIimCt68p4Cu5oN_rTyLwz4C1HOEbIdgQSL3b7eACtUnfjMtqhR4PTM6pZFINBNxyYTUhLVv2-RZmoQVRKz6q3Jdta41hHDXOXEWK27yWKZCKxb9Ak7hDKWOaJaDL95WN6S6g.jpg"
         }
       ],
       "video_url": null,
@@ -146,9 +146,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2775-1-f9419d361313-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2775-1-f9419d361313-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/HR7wpPU465XOOFt43PLzSDZmZqmKPD2lIJD4dMDMDzohoRfmIXRvkTX3v5Xra_6sf_ebSHtb3qp_-ciSyZup4h9BA9v6Iz80fNwWXFxc2ARk1OWR5dpTpwCAkHMIX4opFgqbJebGfwkvpZe3jxK9rX7lKY2UO5so0NckLAkZvcRI3oaqomuoihdLCy-iCvxy1uqu-xMxIcjQPn0tIZOYScUbyDw_7TvyDiCgrxdkCvc0980w5fAZRPjVvofnb3JQlQFtumF-TJRAE38GsRt56zg_gMB7WEFQVuhXtME12GKP7sgUe9hnJt3PUufTI9L5sUmIHkUMmilLwLXf_VPXyQ.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2775-1-f9419d361313-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2775-1-f9419d361313-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 292,
           "feed_width": 1800,
@@ -156,7 +155,8 @@
           "full_width": 1880,
           "full_height": 686,
           "source_width": 1880,
-          "source_height": 686
+          "source_height": 686,
+          "source_url": "https://cdn4.telesco.pe/file/HR7wpPU465XOOFt43PLzSDZmZqmKPD2lIJD4dMDMDzohoRfmIXRvkTX3v5Xra_6sf_ebSHtb3qp_-ciSyZup4h9BA9v6Iz80fNwWXFxc2ARk1OWR5dpTpwCAkHMIX4opFgqbJebGfwkvpZe3jxK9rX7lKY2UO5so0NckLAkZvcRI3oaqomuoihdLCy-iCvxy1uqu-xMxIcjQPn0tIZOYScUbyDw_7TvyDiCgrxdkCvc0980w5fAZRPjVvofnb3JQlQFtumF-TJRAE38GsRt56zg_gMB7WEFQVuhXtME12GKP7sgUe9hnJt3PUufTI9L5sUmIHkUMmilLwLXf_VPXyQ.jpg"
         }
       ],
       "video_url": null,
@@ -181,9 +181,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2774-1-625e615ac3a3-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2774-1-625e615ac3a3-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/wBNuyFtRuolnQzVLAq0pAtKxf4hf9hFRgSZpBHb7CIBwCzqM7_PIewrvA1sqalBZplpB8vyninpFMQEqYorll4RUHEbKMthcl2Mm5Gs2DRG9h5ZgfmfQE31HQewWruSXYeFq1pXLc9BdhRitWVrqyu0p0QERezVlMJIjFL3LWP-Nfuftlcatm8Ebxzm0sQv9uGV2eDNjIn-iTPNL2QGzILjI2gVfKvSxZvIAYEfKTo8qwhH8qt370JWIeTydYZlVOgjTHKQORvQT2qNK8ap9iVkWfRh-DCjhAxOZXWrKahIbLnEACp2RUuqEnyBiGFnRV31bl1PVaC7b0lS9FoSxNw.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2774-1-625e615ac3a3-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2774-1-625e615ac3a3-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -191,7 +190,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/wBNuyFtRuolnQzVLAq0pAtKxf4hf9hFRgSZpBHb7CIBwCzqM7_PIewrvA1sqalBZplpB8vyninpFMQEqYorll4RUHEbKMthcl2Mm5Gs2DRG9h5ZgfmfQE31HQewWruSXYeFq1pXLc9BdhRitWVrqyu0p0QERezVlMJIjFL3LWP-Nfuftlcatm8Ebxzm0sQv9uGV2eDNjIn-iTPNL2QGzILjI2gVfKvSxZvIAYEfKTo8qwhH8qt370JWIeTydYZlVOgjTHKQORvQT2qNK8ap9iVkWfRh-DCjhAxOZXWrKahIbLnEACp2RUuqEnyBiGFnRV31bl1PVaC7b0lS9FoSxNw.jpg"
         }
       ],
       "video_url": null,
@@ -211,9 +211,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2773-1-5143539016d3-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2773-1-5143539016d3-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/ZG8scz3baKRmxvRR13YsCsGBYh11CAtgZ4iiUX1IDOLSc_AUDgwMOgWU0WDJAb5QdZYHeg7brPheLieKhuRq6mzAjRJ3rtZC2y2XHN_pf7iZTfUnsrfzMh-8yJD8Q69YFxfic5bVFRHpA8wZOKbJlgtjSIu5vbtXyGiZ8doKdb9dYtQ2z6tfUWcMW2AVMDcIaCy9s9Lxa6y4LwC7Vdgdw_nonrrqnsG0L0nPWZQKDmN27UG3gIRWIkvFnNUzyNa99VM_mWZG7dtMQA6zKEWufXgk6W8UTfUP2sRFvRU3S4NLhAowpPYtVlnIjnymRo3P-47632xBrOJTz8jUz_CNeg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2773-1-5143539016d3-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2773-1-5143539016d3-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -221,7 +220,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/ZG8scz3baKRmxvRR13YsCsGBYh11CAtgZ4iiUX1IDOLSc_AUDgwMOgWU0WDJAb5QdZYHeg7brPheLieKhuRq6mzAjRJ3rtZC2y2XHN_pf7iZTfUnsrfzMh-8yJD8Q69YFxfic5bVFRHpA8wZOKbJlgtjSIu5vbtXyGiZ8doKdb9dYtQ2z6tfUWcMW2AVMDcIaCy9s9Lxa6y4LwC7Vdgdw_nonrrqnsG0L0nPWZQKDmN27UG3gIRWIkvFnNUzyNa99VM_mWZG7dtMQA6zKEWufXgk6W8UTfUP2sRFvRU3S4NLhAowpPYtVlnIjnymRo3P-47632xBrOJTz8jUz_CNeg.jpg"
         }
       ],
       "video_url": null,
@@ -241,9 +241,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2772-1-b668a9edea9c-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2772-1-b668a9edea9c-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/gRWmd-pBokUgPe-YlHZ1ORcZWm5wvU0tl0o2KQdcyCiuIwVR4Ho_p9h60vuXnFIa26hmCXGBL4BZA0_DJOtYplCGsmHBJ4IrMHV_ukeJ8thN1JtWOZmaHSs5-A0ZCyRGkERFnXAFKaxsVA4-0F_CdSHk__ZWxfo-z8wMCAsqA9b3RrVE1ojdGFKVQPAzUTiEj8ONpy3xH5deC9AxkgRSqNGr4IWybGRUc1swiyB6cEloZZo0Jc6uTbz8higN-FBtu60LneMIteHj3sNyjKbR7e00ZyrSYW142hs4B2OvhQAYfxTcb8UQ2x9dk9GiQXAE_WuU6vvCLPHQQ1kdEg8Hrg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2772-1-b668a9edea9c-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2772-1-b668a9edea9c-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 360,
           "feed_width": 1800,
@@ -251,7 +250,8 @@
           "full_width": 1880,
           "full_height": 846,
           "source_width": 1880,
-          "source_height": 846
+          "source_height": 846,
+          "source_url": "https://cdn4.telesco.pe/file/gRWmd-pBokUgPe-YlHZ1ORcZWm5wvU0tl0o2KQdcyCiuIwVR4Ho_p9h60vuXnFIa26hmCXGBL4BZA0_DJOtYplCGsmHBJ4IrMHV_ukeJ8thN1JtWOZmaHSs5-A0ZCyRGkERFnXAFKaxsVA4-0F_CdSHk__ZWxfo-z8wMCAsqA9b3RrVE1ojdGFKVQPAzUTiEj8ONpy3xH5deC9AxkgRSqNGr4IWybGRUc1swiyB6cEloZZo0Jc6uTbz8higN-FBtu60LneMIteHj3sNyjKbR7e00ZyrSYW142hs4B2OvhQAYfxTcb8UQ2x9dk9GiQXAE_WuU6vvCLPHQQ1kdEg8Hrg.jpg"
         }
       ],
       "video_url": null,
@@ -271,9 +271,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2771-1-b1d6792c1728-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2771-1-b1d6792c1728-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/slnp9XgSMG1soT4nKQsZs8YKr1xf99ydcqk_ljJd3n4LTPpwvcEty_Uy0dz8oRycSUzEhuIWCiCwcm7auDnrPQPSuOqbnQ1u1uxVMr8rJV6dWVbSo7b2KkJb5BcX1DB-Sy5JjS2smQkCir2zrY57Fvf3RB0p5M7580WayrVnQcx0td0xozVlH6QCWBi05P1N-ISTWTibUive200iOIb1nra6unvnG0rSBFgojUm3VKbnQgwLD8zvjfnSDK8N0FEcjDwsfs9b-8iVIhVVK_r0Jjq0i2RS8cfaOdYEIPgILXijiFh7H_BZCkEzV-KcXDX7YewNDYmThfp5j_X_ScsnMA.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2771-1-b1d6792c1728-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2771-1-b1d6792c1728-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "feed_width": 1800,
@@ -281,7 +280,8 @@
           "full_width": 1880,
           "full_height": 1880,
           "source_width": 1880,
-          "source_height": 1880
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/slnp9XgSMG1soT4nKQsZs8YKr1xf99ydcqk_ljJd3n4LTPpwvcEty_Uy0dz8oRycSUzEhuIWCiCwcm7auDnrPQPSuOqbnQ1u1uxVMr8rJV6dWVbSo7b2KkJb5BcX1DB-Sy5JjS2smQkCir2zrY57Fvf3RB0p5M7580WayrVnQcx0td0xozVlH6QCWBi05P1N-ISTWTibUive200iOIb1nra6unvnG0rSBFgojUm3VKbnQgwLD8zvjfnSDK8N0FEcjDwsfs9b-8iVIhVVK_r0Jjq0i2RS8cfaOdYEIPgILXijiFh7H_BZCkEzV-KcXDX7YewNDYmThfp5j_X_ScsnMA.jpg"
         }
       ],
       "video_url": null,
@@ -306,9 +306,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2770-1-c8039bb48c3f-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2770-1-c8039bb48c3f-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/YjQ4f7amkTY79qrp3xuHBmgUyrR0V9OIlxX-1ZTL64xSP_qHubnaNdxsFyDFDio3cllhMX20dG37jCH5t6CO6_fu-BD5Zt2Ui2jWwkBbrlSE6IXqSV2ssxtIm72dnc-q99qgD5QO-sX2XpAm7Q4-HvL2J-elIw1Y9hGyHVQC1W0o1PuSRxNBF5KS9fUAd1kheFp7HhH0ohAtsaPu8DfO8zmRBysHuP7kzyYSTCbyBKuTkdikB1fwru3OKhfs-mrRioPJTFTZktdx4WHrIIPz4hdq-AWUmnzLBs4GLZBsjkT9_ns6uwtGTuFmUwBpioVPBJPGI_pzLuhFkf6SeWwWWw.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2770-1-c8039bb48c3f-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2770-1-c8039bb48c3f-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -316,7 +315,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/YjQ4f7amkTY79qrp3xuHBmgUyrR0V9OIlxX-1ZTL64xSP_qHubnaNdxsFyDFDio3cllhMX20dG37jCH5t6CO6_fu-BD5Zt2Ui2jWwkBbrlSE6IXqSV2ssxtIm72dnc-q99qgD5QO-sX2XpAm7Q4-HvL2J-elIw1Y9hGyHVQC1W0o1PuSRxNBF5KS9fUAd1kheFp7HhH0ohAtsaPu8DfO8zmRBysHuP7kzyYSTCbyBKuTkdikB1fwru3OKhfs-mrRioPJTFTZktdx4WHrIIPz4hdq-AWUmnzLBs4GLZBsjkT9_ns6uwtGTuFmUwBpioVPBJPGI_pzLuhFkf6SeWwWWw.jpg"
         }
       ],
       "video_url": null,
@@ -336,9 +336,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2769-1-6d85e27af6e3-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2769-1-6d85e27af6e3-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/faxcxZgn4JmPWp0zhkoMdECnhAfxoNxCKj-aTtbA33V3q-t2ItnfnNHT7jW2rOCQyio6kssVsOPcQRKLEj29p3c2PCXB0joyaZyrTRYKQxnQsmgGX3wR87w9nR6HeDXqvZ7P3Eg8tYwa7pW-B2JaP4XVXWCDHQR8BzepLj766rh0S3wzoPcPPhNAJgsRrKx-f0OGcnyFqwEN6oJXF_Yswm33XDdttwE6wRTIHq_kLXBVASSpXz_Pba86CzRtU3Wo4yqWU6nlTEff64yyFAAPb8IwlgU9XvyiEp27StSG60O-UQ4-ZHwk3zrMI4eH-oiG8O5DZ9epyZfj2bSxiDkZew.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2769-1-6d85e27af6e3-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2769-1-6d85e27af6e3-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -346,7 +345,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/faxcxZgn4JmPWp0zhkoMdECnhAfxoNxCKj-aTtbA33V3q-t2ItnfnNHT7jW2rOCQyio6kssVsOPcQRKLEj29p3c2PCXB0joyaZyrTRYKQxnQsmgGX3wR87w9nR6HeDXqvZ7P3Eg8tYwa7pW-B2JaP4XVXWCDHQR8BzepLj766rh0S3wzoPcPPhNAJgsRrKx-f0OGcnyFqwEN6oJXF_Yswm33XDdttwE6wRTIHq_kLXBVASSpXz_Pba86CzRtU3Wo4yqWU6nlTEff64yyFAAPb8IwlgU9XvyiEp27StSG60O-UQ4-ZHwk3zrMI4eH-oiG8O5DZ9epyZfj2bSxiDkZew.jpg"
         }
       ],
       "video_url": null,
@@ -360,15 +360,14 @@
       "date": "2026-07-02T07:35:57+00:00",
       "text": "✍️ Нормативное регулирование\n \n🔘Председатель Союза кинематографистов РФ Никита Михалков сообщил, что законопроект о введении специального налога на зарубежное кино готовится.\nПрезидент РФ поручил разработать и провести документ через Госдуму в приоритетном порядке в срок до 25 сентября 2026 г.Предполагается, что иностранные картины обложат налогом, а дистрибуторов, если они пожелают продвинуть на рынок ту или иную иностранную картину.\n\nОбяжут оплатить пошлину (входной билет) уже за то, чтобы подать заявку в Минкульт на получение прокатного удостоверения.\n \n🔘Законы о развитии ответственного ведения бизнеса приняты уже в 55 регионах России.\nНа прошлой неделе законы были приняты в Камчатском крае, Калининградской и Курганской областях. Нововведение позволит компаниям, придерживающимся принципов устойчивого развития, получать финансовые и нефинансовые меры поддержки.\n\n \n⚙️ Практика\n \n🔘Число новых предприятий за 4 мес. 2026 г. просело до исторического минимума — с начала года была открыта лишь 51 тыс. организаций. \nБольше всего компаний появилось в оптовой и розничной торговле (почти 15 тыс.), в строительстве (7 тыс.) \nОднако в тех же отраслях число ликвидаций превысило приток новых игроков, следует из данных Росстата. Работа многих организаций стала менее прибыльной на фоне высокой ключевой ставки и налоговых изменений.\n\n \n🔘ФНС России в 3 квартале расширит критерии, используемые сервисом оценки бизнеса с 57 до 82.\nОб этом сообщил замглавы СлужбыТимур Шиналиев. В настоящее время среди критериев есть сведения о налоговых разрывах по НДС и оперативная информация о задолженности перед бюджетом.\n\n \n🔘С 1 сентября россияне смогут получить налоговый вычет по НДФЛ на долгосрочные сбережения (страховые взносы по договорам добровольного страхования жизни, заключенным с начала 2025 г.)\nТакже увеличивается лимит вычета для родителей, вносящих средства в пользу детей, — с 400 000 до 500 000 руб.\n \n#главные_налоговые_новости",
       "text_html": "✍️ <strong>Нормативное регулирование</strong><br> <br>🔘Председатель Союза кинематографистов РФ Никита Михалков <a href=\"https://www.kommersant.ru/doc/8780841?query=%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3\" target=\"_blank\" rel=\"noopener noreferrer\"><u>сообщил</u></a>, что законопроект о введении специального налога на зарубежное кино готовится.<br><blockquote>Президент РФ поручил разработать и провести документ через Госдуму в приоритетном порядке в срок до 25 сентября 2026 г.Предполагается, что иностранные картины обложат налогом, а дистрибуторов, если они пожелают продвинуть на рынок ту или иную иностранную картину.</blockquote><br>Обяжут оплатить пошлину (входной билет) уже за то, чтобы подать заявку в Минкульт на получение прокатного удостоверения.<br> <br>🔘Законы о развитии ответственного ведения бизнеса <a href=\"https://minfin.gov.ru/ru/press-center/?id_4=40475-v_rossii_55_regionov_prinyali_zakony_o_razvitii_otvetstvennogo_vedeniya_biznesa\" target=\"_blank\" rel=\"noopener noreferrer\"><u>приняты</u></a> уже в 55 регионах России.<br><blockquote>На прошлой неделе законы были приняты в Камчатском крае, Калининградской и Курганской областях. Нововведение позволит компаниям, придерживающимся принципов устойчивого развития, получать финансовые и нефинансовые меры поддержки.</blockquote><br> <br>⚙️ <strong>Практика</strong><br> <br>🔘Число новых предприятий за 4 мес. 2026 г. <a href=\"https://iz.ru/2125336/olga-anaseva-milana-gadzhieva/predprinimateli-vsyo-rezhe-reshayutsya-otkryvat-novye-kompanii\" target=\"_blank\" rel=\"noopener noreferrer\"><u>просело</u></a> до исторического минимума — с начала года была открыта лишь 51 тыс. организаций. <br><blockquote>Больше всего компаний появилось в оптовой и розничной торговле (почти 15 тыс.), в строительстве (7 тыс.) <br>Однако в тех же отраслях число ликвидаций превысило приток новых игроков, следует из данных Росстата. Работа многих организаций стала менее прибыльной на фоне высокой ключевой ставки и налоговых изменений.</blockquote><br> <br>🔘ФНС России в 3 квартале <a href=\"https://tass.ru/ekonomika/27874019\" target=\"_blank\" rel=\"noopener noreferrer\"><u>расширит</u></a> критерии, используемые сервисом оценки бизнеса с 57 до 82.<br><blockquote>Об этом сообщил замглавы СлужбыТимур Шиналиев. В настоящее время среди критериев есть сведения о налоговых разрывах по НДС и оперативная информация о задолженности перед бюджетом.</blockquote><br> <br>🔘С 1 сентября россияне <a href=\"https://www.vedomosti.ru/society/news/2026/07/02/1210528-rossiyane-smogut-poluchit?from=newsline\" target=\"_blank\" rel=\"noopener noreferrer\"><u>смогут получить</u></a> налоговый вычет по НДФЛ на долгосрочные сбережения (страховые взносы по договорам добровольного страхования жизни, заключенным с начала 2025 г.)<br>Также увеличивается лимит вычета для родителей, вносящих средства в пользу детей, — с 400 000 до 500 000 руб.<br> <br>#главные_налоговые_новости",
-      "views": 856,
+      "views": 857,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2768-1-509d0d14142c-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2768-1-509d0d14142c-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/iijJ3z7GV7IXxrRC4YUd4jEe5Nx06Oxw8VR_0YuIFnjfGXzaHzMzrJbgc_LRudA2cgG-faVTwjGaxarGfw5wv3MhRCoExc2T2b4DqdjiK-GRgCBrVPAZIxwxoNT6FeIiCO-FF9BOlLXQEV9EBOGmXrC-IyBcZq-l8TTQ7gDcWOkv-pF9pfEjEh3R8-dgRGcECJxe9iAJPjrjKCfKzu_fOlYAaR9OkKw3dF6MG2ci5HgVS6G6o225-MkLhDsysLelO13TkBm7wUb4m1kyFPEYRGMWrEdaiubYxFy2w1TVEFE8fWqcY9PU7ntuSf5ddPwqyyAE9Tgf1Ia9Lbmqb8-CfA.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2768-1-509d0d14142c-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2768-1-509d0d14142c-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -376,7 +375,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/iijJ3z7GV7IXxrRC4YUd4jEe5Nx06Oxw8VR_0YuIFnjfGXzaHzMzrJbgc_LRudA2cgG-faVTwjGaxarGfw5wv3MhRCoExc2T2b4DqdjiK-GRgCBrVPAZIxwxoNT6FeIiCO-FF9BOlLXQEV9EBOGmXrC-IyBcZq-l8TTQ7gDcWOkv-pF9pfEjEh3R8-dgRGcECJxe9iAJPjrjKCfKzu_fOlYAaR9OkKw3dF6MG2ci5HgVS6G6o225-MkLhDsysLelO13TkBm7wUb4m1kyFPEYRGMWrEdaiubYxFy2w1TVEFE8fWqcY9PU7ntuSf5ddPwqyyAE9Tgf1Ia9Lbmqb8-CfA.jpg"
         }
       ],
       "video_url": null,
@@ -396,9 +396,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2766-1-4babe0c36294-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2766-1-4babe0c36294-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/e6_eYnORJ2_mP8JN_sE9_EzbkfRMaWJSmBT18OcAC_tx6-Y_G0HVW81ZZL4OqXwrdyNFjd-9Me_aXIfJ6KlKKdsIHEm8S22O6U6PKEFfVaaBkJyAwC5tz6vCT3jPQr22E29sU4kHwFQQooAqk0YEzRrfTN0m0GIwJR1HHnsoDGqhvMd1NyYqU4Ld4_TBH02Z1-lFnujv-bFPP8KVyNx-FH25sip5DaznjvMe6z7c0YYJ_V_y8O1m1_1UypTmQIceESQPhq_kFsSFrPeU945lrcxATTJ6bCCD2GK5uaOxkyRrezmf2HLHYyKi4iWwiJ1NF5wmNP8qeEj0bKt_76BMsA.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2766-1-4babe0c36294-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2766-1-4babe0c36294-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -406,7 +405,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/e6_eYnORJ2_mP8JN_sE9_EzbkfRMaWJSmBT18OcAC_tx6-Y_G0HVW81ZZL4OqXwrdyNFjd-9Me_aXIfJ6KlKKdsIHEm8S22O6U6PKEFfVaaBkJyAwC5tz6vCT3jPQr22E29sU4kHwFQQooAqk0YEzRrfTN0m0GIwJR1HHnsoDGqhvMd1NyYqU4Ld4_TBH02Z1-lFnujv-bFPP8KVyNx-FH25sip5DaznjvMe6z7c0YYJ_V_y8O1m1_1UypTmQIceESQPhq_kFsSFrPeU945lrcxATTJ6bCCD2GK5uaOxkyRrezmf2HLHYyKi4iWwiJ1NF5wmNP8qeEj0bKt_76BMsA.jpg"
         }
       ],
       "video_url": null,
@@ -426,9 +426,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2765-1-78d0276679e0-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2765-1-78d0276679e0-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/d8rMzbyhjZoaUNYjwl7X61lCk2CnGojZlroCO5_roU2JiqVWNhezO4Lbn8Tmup4TDugq9tRFPBqNDBPltg3wwgl1QdNMDHaViAu5XP-MACEssF7b8N0qxQuod9p6ieVj7jwiRXOuM5nE01KX9UskFshN_69iUxALgI3fBfJGE8DSvWAMBIhIyL3o6NOvlkCHrq8A8M6hzjEPx_4PLltlBwajUjhash7xjell6vMVusgZZShylSzSBqkMoRQfiHOR4Zb3ae3lMQFyfQ5UqzXB4NDMMcqJRm9-q5IQ8aUamb8k4XnZ0vxlP1bZX4OSs1KBBSz5b2JRYSfuKXtzTyEz3A.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2765-1-78d0276679e0-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2765-1-78d0276679e0-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -436,7 +435,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/d8rMzbyhjZoaUNYjwl7X61lCk2CnGojZlroCO5_roU2JiqVWNhezO4Lbn8Tmup4TDugq9tRFPBqNDBPltg3wwgl1QdNMDHaViAu5XP-MACEssF7b8N0qxQuod9p6ieVj7jwiRXOuM5nE01KX9UskFshN_69iUxALgI3fBfJGE8DSvWAMBIhIyL3o6NOvlkCHrq8A8M6hzjEPx_4PLltlBwajUjhash7xjell6vMVusgZZShylSzSBqkMoRQfiHOR4Zb3ae3lMQFyfQ5UqzXB4NDMMcqJRm9-q5IQ8aUamb8k4XnZ0vxlP1bZX4OSs1KBBSz5b2JRYSfuKXtzTyEz3A.jpg"
         }
       ],
       "video_url": null,
@@ -456,9 +456,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2763-1-ba331ad83dd6-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2763-1-ba331ad83dd6-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/KMwaECtXf0dV-ZhfRl3oj-UCHQTBwHiQ6BfF3erqPR2cqhqEFD1fKwj01aTIfEG4ADDproLs8WJn90jdsld8gCmwwOIxHJFoiMY6Bz25BMkZMzkutoxFX7MdyxS0eXNlh8AIwBUyesa5P6BozB0g0yrzfYt2Nfb_25DUH3-zGhuNUbhDICLzd96SVv120N1nwtpKRijJNQi-SxeCjj1Mj_FLf2IyHUjE8r3DQcysTu0Ucmpd819F38m_mYYXj73BM-baVEmbEWuj24X7nKYaF26Rx-PlZnwJn4xG9_K-uG43ud9fTnKptvN-k4AOpLMjV0JIsVkTNzis7oIX64sGAA.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2763-1-ba331ad83dd6-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2763-1-ba331ad83dd6-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -466,7 +465,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/KMwaECtXf0dV-ZhfRl3oj-UCHQTBwHiQ6BfF3erqPR2cqhqEFD1fKwj01aTIfEG4ADDproLs8WJn90jdsld8gCmwwOIxHJFoiMY6Bz25BMkZMzkutoxFX7MdyxS0eXNlh8AIwBUyesa5P6BozB0g0yrzfYt2Nfb_25DUH3-zGhuNUbhDICLzd96SVv120N1nwtpKRijJNQi-SxeCjj1Mj_FLf2IyHUjE8r3DQcysTu0Ucmpd819F38m_mYYXj73BM-baVEmbEWuj24X7nKYaF26Rx-PlZnwJn4xG9_K-uG43ud9fTnKptvN-k4AOpLMjV0JIsVkTNzis7oIX64sGAA.jpg"
         }
       ],
       "video_url": null,
