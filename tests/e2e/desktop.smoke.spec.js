@@ -173,7 +173,7 @@ test.describe('Desktop smoke', () => {
       ),
     ));
     expect(channelLayoutGaps.every((gap) => Math.abs(gap - 12) <= 0.1)).toBe(true);
-    await expect(dock).toHaveCSS('border-top-width', '1px');
+    await expect(dock).toHaveCSS('border-top-width', '0px');
     await expect(utilityActions).toBeVisible();
     await expect(utilityActions.locator('#refreshButton')).toBeVisible();
     await expect(utilityActions.locator('#installAppButton')).toBeVisible();
@@ -264,6 +264,31 @@ test.describe('Desktop smoke', () => {
     const titleCenter = titleBox.y + (titleBox.height / 2);
     const avatarCenter = avatarBox.y + (avatarBox.height / 2);
     expect(Math.abs(titleCenter - avatarCenter)).toBeLessThanOrEqual(2);
+  });
+
+  test('truncates a long selected channel handle without touching the channel icons', async ({ page }) => {
+    await page.goto('/?channel=bankrotstvo-mustknow');
+    await waitForFeedReady(page);
+
+    const currentLink = page.locator('#channelNavCurrentLink');
+    await expect(currentLink).toHaveText('@bankrotstvo_mustknow');
+    await expect(currentLink).toHaveCSS('text-overflow', 'ellipsis');
+    await expect(page.locator('#channelMenu')).toHaveCSS('border-top-width', '0px');
+
+    const spacing = await page.evaluate(() => {
+      const nav = document.querySelector('.channel-nav').getBoundingClientRect();
+      const link = document.querySelector('#channelNavCurrentLink');
+      const linkBox = link.getBoundingClientRect();
+      const firstIcon = document.querySelector('#channelMenu .channel-tab__icon').getBoundingClientRect();
+      return {
+        isTruncated: link.scrollWidth > link.clientWidth,
+        leftGap: linkBox.left - nav.left,
+        rightGap: firstIcon.left - linkBox.right,
+      };
+    });
+
+    expect(spacing.isTruncated).toBe(true);
+    expect(Math.abs(spacing.leftGap - spacing.rightGap)).toBeLessThanOrEqual(1);
   });
 
   test('shows hover feedback on Telegram channel title and post links', async ({ page }) => {
