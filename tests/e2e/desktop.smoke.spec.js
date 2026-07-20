@@ -459,8 +459,21 @@ test.describe('Desktop smoke', () => {
     await socialTiles.first().hover();
     await expect(socialTiles.first()).not.toHaveCSS('box-shadow', 'none');
     const knowledgeImage = page.locator('.knowledge-visual img');
-    await expect(knowledgeImage).toHaveAttribute('src', 'assets/ecosystem/knowledge-book-open.svg');
+    await expect(knowledgeImage).toHaveAttribute('src', 'assets/ecosystem/knowledge-folder.svg');
+    await expect(knowledgeImage).toHaveAttribute('alt', 'Папка с документами');
     expect(await knowledgeImage.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
+    const [knowledgeVisualBox, knowledgeImageBox, knowledgeDescriptionBox] = await Promise.all([
+      page.locator('.knowledge-visual').boundingBox(),
+      knowledgeImage.boundingBox(),
+      page.locator('.knowledge-visual p').boundingBox(),
+    ]);
+    expect(knowledgeVisualBox).not.toBeNull();
+    expect(knowledgeImageBox).not.toBeNull();
+    expect(knowledgeDescriptionBox).not.toBeNull();
+    const knowledgeLeftZoneCenter = knowledgeVisualBox.x
+      + ((knowledgeDescriptionBox.x - knowledgeVisualBox.x) / 2);
+    const knowledgeImageCenter = knowledgeImageBox.x + (knowledgeImageBox.width / 2);
+    expect(Math.abs(knowledgeLeftZoneCenter - knowledgeImageCenter)).toBeLessThanOrEqual(1);
     await expect(page.locator('.knowledge-copy, .knowledge-mark')).toHaveCount(0);
     const knowledgeTiles = page.locator('.knowledge-tiles > a');
     await expect(knowledgeTiles).toHaveCount(3);

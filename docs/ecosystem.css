@@ -469,9 +469,10 @@ html.is-page-leaving .ecosystem-shell {
 
 .knowledge-visual img {
   display: block;
-  width: 100%;
-  max-width: 190px;
-  height: 100px;
+  width: min(100%, 152px);
+  max-width: 152px;
+  height: 112px;
+  justify-self: center;
   object-fit: contain;
   filter: drop-shadow(0 14px 18px rgba(23, 37, 92, 0.2));
 }
