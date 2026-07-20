@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-19T00:12:54.218848+00:00",
-  "build_id": "e809695fcc56",
+  "generated_at": "2026-07-20T11:00:25.282642+00:00",
+  "build_id": "dec3e449c996",
   "pagination": {
     "page": 9,
     "page_size": 16,
@@ -8,6 +8,66 @@
     "total_pages": 10
   },
   "posts": [
+    {
+      "id": 2628,
+      "date": "2026-05-06T07:13:52+00:00",
+      "text": "✍️ Нормотворчество\n \nВ Госдуму внесли законопроект № 1220208-8 (инициаторы - депутаты), который возлагает функции налогового агента по НДФЛ на брокеров и депозитариев по ПИФам при «каскадных выплатах». \n🛑 Когда же средства инвестору перечисляет напрямую управляющая компания ПИФа или депозитарий, обязанность по удержанию налога будет лежать на них, в зависимости от того, кто проводит выплату.\n \n⚙️ Практика\n \nФНС России зафиксировала рост объемов сделок с займами за рубеж, которые могут быть фиктивными и нарушающими налоговое законодательство.\nСреди них - закрытие займов зарубежным структурам с непогашенным долгом, займы за рубеж без признаков возвратности, разовые выплаты через «транзитные» компании, вывод накопленной прибыли под видом приобретения услуг, через займы банкротным компаниям.\n\nНаиболее заметно за последние годы выросли риски по займам с признаками фиктивных. Но общий объем потенциально рисковых трансграничных сделок в последние три года ниже 10%.\n \n⚖️ Судебные дела\n \nСуды в 2025 г. рассмотрели требования налоговых органов на 287 млрд руб. (+1,3% к результату 2024 г.), удовлетворено почти 90% исков на 258,3 млрд руб. \nЧисло споров с участием налоговых органов в прошлом году сократилось на 12%: с 6 118 годом ранее до 5 384.\n💰 Отрицательную динамику показала и доля банкротных процедур в отношении юрлиц, инициированных ФНС: сократилась с 24,3% в 2024 г. до 16,4% по итогам 2025 г.\n \n#главные_налоговые_новости",
+      "text_html": "✍️ <strong>Нормотворчество</strong><br> <br>В Госдуму <a href=\"https://www.rbc.ru/quote/news/article/69f9ff449a79471e76d0aa02\" target=\"_blank\" rel=\"noopener noreferrer\"><u>внесли</u></a> законопроект № <a href=\"https://sozd.duma.gov.ru/bill/1220208-8?ysclid=mospkac9pc358574340\" target=\"_blank\" rel=\"noopener noreferrer\"><u>1220208-8</u></a> (инициаторы - депутаты), который возлагает функции налогового агента по НДФЛ на брокеров и депозитариев по ПИФам при «каскадных выплатах». <br>🛑 Когда же средства инвестору перечисляет напрямую управляющая компания ПИФа или депозитарий, обязанность по удержанию налога будет лежать на них, в зависимости от того, кто проводит выплату.<br> <br>⚙️ <strong>Практика</strong><br> <br>ФНС России <a href=\"https://www.forbes.ru/finansy/560264-fns-uvidela-rost-riskovyh-sdelok-po-zajmam-rossijskih-kompanij-za-rubez\" target=\"_blank\" rel=\"noopener noreferrer\"><u>зафиксировала</u></a> рост объемов сделок с займами за рубеж, которые могут быть фиктивными и нарушающими налоговое законодательство.<br><blockquote>Среди них - закрытие займов зарубежным структурам с непогашенным долгом, займы за рубеж без признаков возвратности, разовые выплаты через «транзитные» компании, вывод накопленной прибыли под видом приобретения услуг, через займы банкротным компаниям.</blockquote><br>Наиболее заметно за последние годы выросли риски по займам с признаками фиктивных. Но общий объем потенциально рисковых трансграничных сделок в последние три года ниже 10%.<br> <br>⚖️ <strong>Судебные дела</strong><br> <br>Суды в 2025 г. <a href=\"https://www.vedomosti.ru/economics/articles/2026/05/06/1195403-sudi-udovletvorili-trebovanii-nalogovih-organov\" target=\"_blank\" rel=\"noopener noreferrer\"><u>рассмотрели</u></a> требования налоговых органов на 287 млрд руб. (+1,3% к результату 2024 г.), удовлетворено почти 90% исков на 258,3 млрд руб. <br>Число споров с участием налоговых органов в прошлом году сократилось на 12%: с 6 118 годом ранее до 5 384.<br>💰 Отрицательную динамику показала и доля банкротных процедур в отношении юрлиц, инициированных ФНС: сократилась с 24,3% в 2024 г. до 16,4% по итогам 2025 г.<br> <br>#главные_налоговые_новости",
+      "views": 886,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2628-1-e54809fe0402-v9.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2628-1-e54809fe0402-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2628-1-e54809fe0402-v9.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/DvjwBYGN8IJKApA84kO-gdXfoKSW_nAQSnaaKaqcnYGaBAAnKshdXtwJmABDnXtL65GUbPamAGdMEWU7G3f6_ERtC-xPoptmvbdh4Vab33MR99bu6xVruMKxqc0vtt-ihGhL_2SZNIEGMFlObP8w4V__fZllR0ODyMg9GuDtoZDb-9Z_TzKLu-wZRernLdrgKFHEPTEAjTd94YoI0xxXu2gaHmem_RE_ITmoxp5qaa83fykkgK4GwLK_YSepHe2d-pJOs5fTE6VD9dHMFUGeqJw1rjApPYo5wXjwcwPJrtXjfhWICWmC2qnY9QM9OjCOfzRUmfrjtyBGt6_kg9ISiQ.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PG_Tax/2628",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
+      "id": 2627,
+      "date": "2026-05-05T11:05:37+00:00",
+      "text": "🧩 От перестановки мест множителей – что-то меняется?\n\nСергей Сосновский, Партнер «Пепеляев Групп», о парадоксах земельного налога.\n\nОт перестановки множителей произведение не меняется – помним мы со второго класса. По-научному, переместительное свойство умножения. Но всегда ли так в налоговом праве?\n\n🔍 Контекст \n\nМы писали о повышающих коэффициентах при обложении участков, предоставленных для жилищного строительства и подпадающих под налоговую ставку 1,5%. В начале года Верховный Суд не стал вносить ясность. \n\nЗа прошедшее время ситуация не определилась. \n\n🔴По одному из дел, которые кассация разрешила в пользу плательщика, а судья ВС РФ не нашла оснований для пересмотра, инспекция решила воспользоваться экстраординарным шансом и обжаловала отказное определение судьи зампреду Суда. Тот истребовал материалы, но принять процессуальное решение не успел и недавно ушел в отставку. \n\n🔴Другое дело, в котором в Волго-Вятском округе суды наоборот поддержали инспекцию, судья истребовала по  жалобе плательщика, но пока определение не вынесла. \n\n🔴Суд Северо-Западного округа теперь приостанавливает производство по жалобам до разрешения этих дел в ВС РФ.\n\nИсторический обзор закончен. Давайте задумаемся над сутью. \n\n❌ Конфликт\n\nПозиция инспекций означает, что земельный налог может составить (при коэффициенте 4) 6% от кадастровой стоимости участка в год. \n\nПлательщики утверждают, что так нельзя: максимальная налоговая ставка по закону составляет 1,5%. Применение коэффициентов означает, что ставка будет 3% (если коэффициент 2) или 6% (если коэффициент 4), а этого Налоговый кодекс не предусматривает.\n\nℹ️ Контраргумент налоговых органов: вы путаете юридические элементы состава налога! Коэффициент применяется не к ставке, а к сумме налога, исчисленной перемножением ставки на налоговую базу. Ставка остается прежней – 1,5%.\n\n❓ Так можно?\n\nФормально что-то в этом есть. Налоговым ставкам посвящена ст. 394 НК РФ и в ней нет коэффициентов. Про коэффициенты – в п. 15 ст. 396 «Порядок исчисления налога…»:\n«исчисление суммы налога … производится с учетом коэффициента».\n\nВ итоге переместительное свойство умножения не работает – если бы на коэффициент умножалась ставка, она составляла бы 6%. Что выше предельных 1,5%. А так как умножается сумма налога (чтобы получить совсем окончательную сумму) – то природа у ситуации якобы совсем другая.\n\nМы тоже гордимся юридической профессией и испытываем благоговение перед миром презумпций и фикций, в котором бывшее может стать небывшим и наоборот. Но отказываться от детских впечатлений не готовы! \n \n#налоги_у_застройщиков\n\n➖➖\n📧 Если Вы столкнулись со сложностями в решении юридических формул при налогообложении недвижимости, обратитесь к Сергею Сосновскому: s.sosnovsky@pgplaw.ru",
+      "text_html": "🧩 <strong>От перестановки мест множителей – что-то меняется?</strong><br><br><a href=\"https://www.pgplaw.ru/to-get-the-team/sergey-sosnovskiy/\" target=\"_blank\" rel=\"noopener noreferrer\">Сергей Сосновский,</a> Партнер «Пепеляев Групп», о парадоксах земельного налога.<br><br>От перестановки множителей произведение не меняется – помним мы со второго класса. По-научному, переместительное свойство умножения. Но всегда ли так в налоговом праве?<br><br>🔍 <strong>Контекст </strong><br><br>Мы <a href=\"https://t.me/PG_Tax/2336\" target=\"_blank\" rel=\"noopener noreferrer\">писали</a> о повышающих коэффициентах при обложении участков, предоставленных для жилищного строительства и подпадающих под налоговую ставку 1,5%. В начале года Верховный Суд не стал вносить <a href=\"https://t.me/PG_Tax/2445\" target=\"_blank\" rel=\"noopener noreferrer\">ясность.</a> <br><br>За прошедшее время ситуация не определилась. <br><br>🔴По одному из <a href=\"https://kad.arbitr.ru/Card/3ed716ba-8eca-4449-a202-5e314787c4a2\" target=\"_blank\" rel=\"noopener noreferrer\">дел,</a> которые кассация разрешила в пользу плательщика, а судья ВС РФ не нашла оснований для пересмотра, инспекция решила воспользоваться экстраординарным шансом и обжаловала отказное определение судьи зампреду Суда. Тот истребовал материалы, но принять процессуальное решение не успел и недавно ушел в отставку. <br><br>🔴Другое <a href=\"https://kad.arbitr.ru/Card/dfa68c1f-e6d9-49c2-a0f6-4cb74e001073\" target=\"_blank\" rel=\"noopener noreferrer\">дело,</a> в котором в Волго-Вятском округе суды наоборот поддержали инспекцию, судья истребовала по  жалобе плательщика, но пока определение не вынесла. <br><br>🔴Суд Северо-Западного округа теперь <a href=\"https://kad.arbitr.ru/Card/a7f2e17c-d558-49f8-9add-8c69109c674a\" target=\"_blank\" rel=\"noopener noreferrer\">приостанавливает</a> <a href=\"https://kad.arbitr.ru/Card/13e3986e-d2bf-44ab-9988-273184abd9c4\" target=\"_blank\" rel=\"noopener noreferrer\">производство</a> по жалобам до разрешения этих дел в ВС РФ.<br><br>Исторический обзор закончен. Давайте задумаемся над сутью. <br><br>❌ <strong>Конфликт<br></strong><br>Позиция инспекций означает, что земельный налог может составить (при коэффициенте 4) 6% от кадастровой стоимости участка в год. <br><br>Плательщики утверждают, что так нельзя: максимальная налоговая ставка по закону составляет 1,5%. Применение коэффициентов означает, что ставка будет 3% (если коэффициент 2) или 6% (если коэффициент 4), а этого Налоговый кодекс не предусматривает.<br><br>ℹ️ Контраргумент налоговых органов: вы путаете юридические элементы состава налога! Коэффициент применяется не к ставке, а к сумме налога, исчисленной перемножением ставки на налоговую базу. Ставка остается прежней – 1,5%.<br><br>❓ <strong>Так можно?</strong><br><br>Формально что-то в этом есть. Налоговым ставкам посвящена ст. 394 НК РФ и в ней нет коэффициентов. Про коэффициенты – в п. 15 ст. 396 «Порядок исчисления налога…»:<br>«исчисление суммы налога … производится с учетом коэффициента».<br><br><blockquote>В итоге переместительное свойство умножения не работает – если бы на коэффициент умножалась ставка, она составляла бы 6%. Что выше предельных 1,5%. А так как умножается сумма налога (чтобы получить совсем окончательную сумму) – то природа у ситуации якобы совсем другая.</blockquote><br><br>Мы тоже гордимся юридической профессией и испытываем благоговение перед миром презумпций и фикций, в котором бывшее может стать небывшим и наоборот. Но отказываться от <a href=\"https://deti-online.com/pesni/shkolnye-pesni/uchat-v-shkole/\" target=\"_blank\" rel=\"noopener noreferrer\">детских впечатлений</a> не готовы! <br> <br>#налоги_у_застройщиков<br><br>➖➖<em><br></em><em><em><strong>📧</strong></em></em><em> Если Вы столкнулись со сложностями в решении юридических формул при налогообложении недвижимости, обратитесь к Сергею Сосновскому: </em><em>s.sosnovsky@pgplaw.ru</em>",
+      "views": 2020,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2627-1-dfa5d38ff2ee-v9.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2627-1-dfa5d38ff2ee-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2627-1-dfa5d38ff2ee-v9.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/tXJ_lL5Chu09sBQVBSZ0ZyMXZzz0QtTsgOHb7wOMrOQFOIJ7wlVjS05cxCXdKDlI0_veVWsaHURbRkZw5KCKTIXwxXWXf7uoA7yVH55-NZjPOQ-oJrpZmH_yyIc8zRcwO108a2mZYTfvyKYtXKj-jjPoWHkiFH7jQ7SxHSVmxZWnHsSVO82NfRaFPtMcx6idYVij85PpH_dthIl9lDtGdLDX7YMHXM1KuI9om2gKTKdSEpJ_TN6Erpyqm8lNlgcPdYVcEifwyc5vusFo4BWP5VcYM-VlmKltLPACcpvRzPbMWImSRKNoEItIJQfEgMvjpJWfUTtNAFUu-0pBDODqGA.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PG_Tax/2627",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 2626,
       "date": "2026-05-05T07:37:33+00:00",
@@ -19,9 +79,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2626-1-087d3a8c81ae-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2626-1-087d3a8c81ae-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/cYh-HIC_MoHUTi9SAQxq1830gNxvoMD_GGe560nCG8QzkOsmWdA8SEhGZ5n1jeZedjt0kmwn7TpyDsgOG-tB5kbw0czDcJBtPjw5Xw2BFSjqMh1oAVrdDPvdohmdZuv8GnqZuyTOkiPpqlkF8-tAFHmFmwxoq5xr8K3Q21d7jxgBypklqLlcdpqZsu8GvSh7EWzwRTAgzNmPPsoc0NoWquHFD34eb9IE1uWwrWNQbjvAPHM-yEQlu7h3KD6_s00bqoyxXfa2rgUCDK312kjmEo0V-oF9gPT6po5_yCVLONn1cl9ueKIyYu5HeCRhaezHPs7k6CNhektqagaf6VWQ1w.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2626-1-087d3a8c81ae-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2626-1-087d3a8c81ae-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -29,7 +88,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/cYh-HIC_MoHUTi9SAQxq1830gNxvoMD_GGe560nCG8QzkOsmWdA8SEhGZ5n1jeZedjt0kmwn7TpyDsgOG-tB5kbw0czDcJBtPjw5Xw2BFSjqMh1oAVrdDPvdohmdZuv8GnqZuyTOkiPpqlkF8-tAFHmFmwxoq5xr8K3Q21d7jxgBypklqLlcdpqZsu8GvSh7EWzwRTAgzNmPPsoc0NoWquHFD34eb9IE1uWwrWNQbjvAPHM-yEQlu7h3KD6_s00bqoyxXfa2rgUCDK312kjmEo0V-oF9gPT6po5_yCVLONn1cl9ueKIyYu5HeCRhaezHPs7k6CNhektqagaf6VWQ1w.jpg"
         }
       ],
       "video_url": null,
@@ -49,9 +109,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2625-1-ed41175ad3c3-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2625-1-ed41175ad3c3-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/J3YBS74eapsZDfZO0gz39MXSBrb_qjCdoftvdts1NIEMGE6f_bD8ryqX8mHBXO-AR8yi-RIdmhn1kG0j1q4TAM5DwkjS2S15ixRr80yDk9QmawTKKGAz5gPywlc9HQGgMDxWgiB2M0rkgdsQFkW9Y0GWQyuR7-J7lUnjnLWBxcw7x9R8T9AYzza-EpRtigVRh7Bkq9HpnVHGE5T37pkYjI_cyO4joOvQk7AuSWp-Wq9OWCIoznQQnRMFKSduVImpc5mtw7JXfzcVqNy4ql-GMsPtA7d90XFqtqcVGE_1EqiG0kQADLeyck7tIlI34dE-twNjPMKyknJG63jSy08r8g.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2625-1-ed41175ad3c3-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2625-1-ed41175ad3c3-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 300,
           "feed_width": 1800,
@@ -59,7 +118,8 @@
           "full_width": 1880,
           "full_height": 705,
           "source_width": 1880,
-          "source_height": 705
+          "source_height": 705,
+          "source_url": "https://cdn4.telesco.pe/file/J3YBS74eapsZDfZO0gz39MXSBrb_qjCdoftvdts1NIEMGE6f_bD8ryqX8mHBXO-AR8yi-RIdmhn1kG0j1q4TAM5DwkjS2S15ixRr80yDk9QmawTKKGAz5gPywlc9HQGgMDxWgiB2M0rkgdsQFkW9Y0GWQyuR7-J7lUnjnLWBxcw7x9R8T9AYzza-EpRtigVRh7Bkq9HpnVHGE5T37pkYjI_cyO4joOvQk7AuSWp-Wq9OWCIoznQQnRMFKSduVImpc5mtw7JXfzcVqNy4ql-GMsPtA7d90XFqtqcVGE_1EqiG0kQADLeyck7tIlI34dE-twNjPMKyknJG63jSy08r8g.jpg"
         }
       ],
       "video_url": null,
@@ -79,9 +139,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2624-1-fbd77ad52b40-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2624-1-fbd77ad52b40-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/OnFmDA3Iz1Z16RKL3cxE2NE8lI0JLxfAvF_sixgj40Q-pOSwEokwpiy0zpSSe0UMGvmJ2j9yintg-4z__1k58p01f8X0l516AbMIi_ttMt4igmhYywKzOoEwRsvrUkGj383d4qeLozPNHhbpLeWIlJS6dEngL7g1VTZt-8HnjGqVP0j0D8-xijZLp3IOa5IOBznNuvAay-IarfIDNLznRwOpLd4nrAvjfhM-z3hzwF_hBUXWPcrJq2mIrKSz09UeQbhdyODnnQSe7BfQRfqKajptef2_H9WvaY8JrqXlwNqXjWbMtd-kGrudur2ndQwA7ySi0DVawhjLGwMQIDOetQ.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2624-1-fbd77ad52b40-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2624-1-fbd77ad52b40-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 249,
           "feed_width": 1800,
@@ -89,7 +148,8 @@
           "full_width": 1880,
           "full_height": 585,
           "source_width": 1880,
-          "source_height": 585
+          "source_height": 585,
+          "source_url": "https://cdn4.telesco.pe/file/OnFmDA3Iz1Z16RKL3cxE2NE8lI0JLxfAvF_sixgj40Q-pOSwEokwpiy0zpSSe0UMGvmJ2j9yintg-4z__1k58p01f8X0l516AbMIi_ttMt4igmhYywKzOoEwRsvrUkGj383d4qeLozPNHhbpLeWIlJS6dEngL7g1VTZt-8HnjGqVP0j0D8-xijZLp3IOa5IOBznNuvAay-IarfIDNLznRwOpLd4nrAvjfhM-z3hzwF_hBUXWPcrJq2mIrKSz09UeQbhdyODnnQSe7BfQRfqKajptef2_H9WvaY8JrqXlwNqXjWbMtd-kGrudur2ndQwA7ySi0DVawhjLGwMQIDOetQ.jpg"
         }
       ],
       "video_url": null,
@@ -109,9 +169,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2623-1-4b48086bc2ca-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2623-1-4b48086bc2ca-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/V8VI79HFEioeFgpupsTBqbDBWEJwpQSc3XMf_rf77jJ6zq2K2CKHYoixY2Q82rOimAwkB350uhjeIv4cFdJOozi8CciWLR-4lQ0nuLt4ewyu_CrlWtnkbzjvMCk0fcL7xhZIuAr78fs4i4u-wb5zwfhTts85c4MVaRtM_EDMfjL5T-Ryq5DxkeP1TEEHN7mqMLmJVaBpsY3UD7wS9Jz6oMpGkT61ik9Tom9yV9zx8JHSzUDwVfMNZUaP1yOKny4nQ0_8WqVbdIR1foqArB_wX408JjqfFnq3m1wPGAfMlPGI0lBoPckVSq1WqnqvLk7_t0x0BclDrn7xM1wTUD9b9A.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2623-1-4b48086bc2ca-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2623-1-4b48086bc2ca-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -119,7 +178,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/V8VI79HFEioeFgpupsTBqbDBWEJwpQSc3XMf_rf77jJ6zq2K2CKHYoixY2Q82rOimAwkB350uhjeIv4cFdJOozi8CciWLR-4lQ0nuLt4ewyu_CrlWtnkbzjvMCk0fcL7xhZIuAr78fs4i4u-wb5zwfhTts85c4MVaRtM_EDMfjL5T-Ryq5DxkeP1TEEHN7mqMLmJVaBpsY3UD7wS9Jz6oMpGkT61ik9Tom9yV9zx8JHSzUDwVfMNZUaP1yOKny4nQ0_8WqVbdIR1foqArB_wX408JjqfFnq3m1wPGAfMlPGI0lBoPckVSq1WqnqvLk7_t0x0BclDrn7xM1wTUD9b9A.jpg"
         }
       ],
       "video_url": null,
@@ -139,9 +199,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2622-1-56b3d1311309-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2622-1-56b3d1311309-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/OKAJedTw4hlnV2lNAyuU6klJtd7XVR4ocGRCQd6jCq5cF6xZnw_qwEdhc8h0_OdYPJYJE74VuEkxN_T2U4YvdOnGMml7nwrPyxj4ZvOS0fbcVvsI4lOToYZpuFGfHThi2289VtWCJ-0m1MmweiR2d0vX9V0kH6QNggXIxJxyEnT1QDNGj4xyBeW0mufvv62Jg4GQPeKQQdaeVvIA1HrIgo6mv_pkDMo9rJwHM9QC03b9gacUPMtuc1pmo3ZrNAUDi6u7T0nXGDy4IGvqhkhpnoQT01idPGa9YKW1VXOdlHRXPaqvmEAjF0ZZ-eyTzRS4ti1xkjBU6nUuf4LIw5MKbg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2622-1-56b3d1311309-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2622-1-56b3d1311309-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 222,
           "feed_width": 1800,
@@ -149,7 +208,8 @@
           "full_width": 1880,
           "full_height": 522,
           "source_width": 1880,
-          "source_height": 522
+          "source_height": 522,
+          "source_url": "https://cdn4.telesco.pe/file/OKAJedTw4hlnV2lNAyuU6klJtd7XVR4ocGRCQd6jCq5cF6xZnw_qwEdhc8h0_OdYPJYJE74VuEkxN_T2U4YvdOnGMml7nwrPyxj4ZvOS0fbcVvsI4lOToYZpuFGfHThi2289VtWCJ-0m1MmweiR2d0vX9V0kH6QNggXIxJxyEnT1QDNGj4xyBeW0mufvv62Jg4GQPeKQQdaeVvIA1HrIgo6mv_pkDMo9rJwHM9QC03b9gacUPMtuc1pmo3ZrNAUDi6u7T0nXGDy4IGvqhkhpnoQT01idPGa9YKW1VXOdlHRXPaqvmEAjF0ZZ-eyTzRS4ti1xkjBU6nUuf4LIw5MKbg.jpg"
         }
       ],
       "video_url": null,
@@ -169,9 +229,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2621-1-f825e97ecf79-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2621-1-f825e97ecf79-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/WSb0TXf_52WL3sKs2NA0PchFlJTuaiaEdBeKkZFwLW4sSunlsxr50w6jjEsweWtAWdDqXbUP7ZTD2gS3LEAfSFgeExuJzXZBnEw23Cz8GiOr34ZBjc9a1x7HuWcoixrK0m9wnnOsg6wgY-sPnUxm0NROlyWSUAi20KoBpMakcVvB5B1xhtENXuNl-EDR8n6qzfb5vuPooQChOTfNt2-AXKlw83bNz-Hle3MM5bn6P51IQ2IKW9hcfgt7kYlQIG8bwkDbvGfFBmXCBZZxBaJVqzGYu7-DoSrQvaxKpkaIZOzZ54T5hBcsF8bT8z-jlQYvSncwGwojT-GKHM32_FCAYg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2621-1-f825e97ecf79-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2621-1-f825e97ecf79-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -179,7 +238,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/WSb0TXf_52WL3sKs2NA0PchFlJTuaiaEdBeKkZFwLW4sSunlsxr50w6jjEsweWtAWdDqXbUP7ZTD2gS3LEAfSFgeExuJzXZBnEw23Cz8GiOr34ZBjc9a1x7HuWcoixrK0m9wnnOsg6wgY-sPnUxm0NROlyWSUAi20KoBpMakcVvB5B1xhtENXuNl-EDR8n6qzfb5vuPooQChOTfNt2-AXKlw83bNz-Hle3MM5bn6P51IQ2IKW9hcfgt7kYlQIG8bwkDbvGfFBmXCBZZxBaJVqzGYu7-DoSrQvaxKpkaIZOzZ54T5hBcsF8bT8z-jlQYvSncwGwojT-GKHM32_FCAYg.jpg"
         }
       ],
       "video_url": null,
@@ -199,9 +259,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2620-1-af6532e9f699-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2620-1-af6532e9f699-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/mAGPdiyggiaKFy6vNN9elgUNS7FYKhc3LMfUJhZOdqjeO9lv495ZzWj-iINUgyY4Uw4iOZx-4Dz4L0WHAVC3Y42HGHWsl3Aow04-34gp9EC-5pY_gcNpgXhZoniUsRDWCluR22vlKv77amsCDF69jAfJH-rKrVpSuOUNUJ_j82LZG9rj0J2JVijATfXPV_p8j9tb8z9I--2q1QCWweQXOW_tNHlZTV4eT3yLYDUKQVeaLEhwKP6WqhazGduVgUmg3e0tQHJK9TkyET4c6AVWs09cb29AN2mi8KewvfbiT2VsqiJ_IXtnZKTDsKxhbJYxYgzTD80gv3HoDNwYalCeeg.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2620-1-af6532e9f699-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2620-1-af6532e9f699-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -209,7 +268,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/mAGPdiyggiaKFy6vNN9elgUNS7FYKhc3LMfUJhZOdqjeO9lv495ZzWj-iINUgyY4Uw4iOZx-4Dz4L0WHAVC3Y42HGHWsl3Aow04-34gp9EC-5pY_gcNpgXhZoniUsRDWCluR22vlKv77amsCDF69jAfJH-rKrVpSuOUNUJ_j82LZG9rj0J2JVijATfXPV_p8j9tb8z9I--2q1QCWweQXOW_tNHlZTV4eT3yLYDUKQVeaLEhwKP6WqhazGduVgUmg3e0tQHJK9TkyET4c6AVWs09cb29AN2mi8KewvfbiT2VsqiJ_IXtnZKTDsKxhbJYxYgzTD80gv3HoDNwYalCeeg.jpg"
         }
       ],
       "video_url": null,
@@ -229,9 +289,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2619-1-f781fbb324ae-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2619-1-f781fbb324ae-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/gE39ZaCGXvYo3_84SzC9EyMxoehUv9z6V80EkHR8rSceHY3cfvCTQcshzodOLOVHp98QjQBGDtGarmypBE0WWQRVHiI3TsreU5dIRMSA26Tb_X9X6q9EBrwoK7uY5CKWzUYmVksgSFMpMYta9YBBmyimYT0_1GV9y2liDpXDR48D0IjPdOyLr-nYbfu2863IZEOeo5QMBw7LvvDhCeHl9OlopRpR2dmv_L79MAZyxzj-GvAKd0x55uhinl4oXIKSINPom3_1KNR59M_G1FRChTTaHqMJgVGXbO0QcQniX9fWLA_WffIHKMWOQ1Vx_tAYvBxxhsLegaiwkRfq-38bhA.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2619-1-f781fbb324ae-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2619-1-f781fbb324ae-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 420,
           "feed_width": 1800,
@@ -239,7 +298,8 @@
           "full_width": 1880,
           "full_height": 987,
           "source_width": 1880,
-          "source_height": 987
+          "source_height": 987,
+          "source_url": "https://cdn4.telesco.pe/file/gE39ZaCGXvYo3_84SzC9EyMxoehUv9z6V80EkHR8rSceHY3cfvCTQcshzodOLOVHp98QjQBGDtGarmypBE0WWQRVHiI3TsreU5dIRMSA26Tb_X9X6q9EBrwoK7uY5CKWzUYmVksgSFMpMYta9YBBmyimYT0_1GV9y2liDpXDR48D0IjPdOyLr-nYbfu2863IZEOeo5QMBw7LvvDhCeHl9OlopRpR2dmv_L79MAZyxzj-GvAKd0x55uhinl4oXIKSINPom3_1KNR59M_G1FRChTTaHqMJgVGXbO0QcQniX9fWLA_WffIHKMWOQ1Vx_tAYvBxxhsLegaiwkRfq-38bhA.jpg"
         }
       ],
       "video_url": null,
@@ -264,9 +324,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2618-1-08ec6f628f91-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2618-1-08ec6f628f91-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/s5zouoRWU_U_rDi0ki-X-jlx4K-6xjBTSLBGNkw-RPZB65IP9BU11SN_OTrgyx4if4NuuonhXulK77J2SIdoLGHaRVWc-PZo-dU1TVlQzWFcGp-VpwucixRb6FJJu908uloelEERAGWiZ18nR9wXn4e8P2rO1N8UJlFIoMZIsdr3gJulibPVJ6BQIFWdlj3vKhmSn80y6UIbvIdA704eqnXuHVBo2w6xioYddCmfVXGU-GDyecEb8Kgpm341sGm2hx8OjL8IgWduLdTyH8Yt0BPRPRRuDLebY-HVU77ZwLAmrsv0oqSGDb-eGnXlwZ-G7Yayk2kwHjaIgiobFoM8gA.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2618-1-08ec6f628f91-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2618-1-08ec6f628f91-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -274,7 +333,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/s5zouoRWU_U_rDi0ki-X-jlx4K-6xjBTSLBGNkw-RPZB65IP9BU11SN_OTrgyx4if4NuuonhXulK77J2SIdoLGHaRVWc-PZo-dU1TVlQzWFcGp-VpwucixRb6FJJu908uloelEERAGWiZ18nR9wXn4e8P2rO1N8UJlFIoMZIsdr3gJulibPVJ6BQIFWdlj3vKhmSn80y6UIbvIdA704eqnXuHVBo2w6xioYddCmfVXGU-GDyecEb8Kgpm341sGm2hx8OjL8IgWduLdTyH8Yt0BPRPRRuDLebY-HVU77ZwLAmrsv0oqSGDb-eGnXlwZ-G7Yayk2kwHjaIgiobFoM8gA.jpg"
         }
       ],
       "video_url": null,
@@ -288,15 +348,14 @@
       "date": "2026-04-29T06:59:15+00:00",
       "text": "✍️ Нормативное регулирование\n \n🔴Правительственная комиссия по законопроектной деятельности одобрила проект поправок в НК РФ, значительно увеличивающий размер сборов для иностранцев за визовые и регистрационные действия. \n\nПошлину за выдачу многократной визы в РФ предложено увеличить с 1,92 тыс. до 6 тыс. руб., сбор за выдачу вида на жительство — с 6 тыс. до 30 тыс. руб. \nПошлину за выдачу разрешения на работу планируют повысить с 4,2 тыс. до 5 тыс. руб., а за разрешение на привлечение зарубежных работников взимать не 12 тыс. руб., а 15 тыс. руб.\n\n \n💰 Минфин России ожидает, что дополнительные поступления в бюджет в 2026 г. составят около 7,9 млрд руб., в 2027 г. — около 15,8 млрд руб.\n \n🔴ФНС России направила предложение в Минфин России снять ограничения по налоговой тайне региональным властям для контроля использования льгот на территории регионов.\n \n⚙️ Практика\n \n🔴Налоговые органы по итогам проведения выездных проверок (ВНП) и аналитической работы обеспечили поступления в бюджет в размере 496 млрд руб., что на 22% выше показателя 2024 г. (408 млрд руб.)\n\nБольше половины поступлений от контрольной работы обеспечили аналитические мероприятия – 310 млрд руб.\nВ 2025 г. налоговые органы завершили 5 400 ВНП (4 900 в 2024 г.)\n\nДоначисления по итогам камеральных проверок достигли 150,6 млрд руб. (132,6 млрд руб. в 2024 г. В прошлом году среднее доначисление за одно такое мероприятие составило 65 900 руб. (на 24,2% больше показателя 2024 г.).\nПри этом отрицательную динамику показали результаты участников налогового мониторинга: урегулированная с участниками мониторинга сумма платежей в бюджет в 2025 г. сократилась более чем в 4 раза до 7,4 млрд руб., при том что число присоединившихся к нему компаний увеличилось сразу до 729 с 586 годом ранее.\n\n \nЭкспертный комментарий ПГ - позже в канале 🛑\n\n🔴По итогам первого этапа налоговой амнистии под обеление попало более 10 тыс. групп налогоплательщиков, это почти 25,4 тыс. организаций. Сумма под амнистию - 22,1 млрд руб.\n \n🔴Налоговые органы с начала 2026 г. в автоматизированном режиме предоставили вычеты по НДФЛ на сумму более 200 млрд руб.\n \n🔴ФНС России описала «портрет» типичной организации-неплательщика: небольшой штат сотрудников с фондом оплаты труда до 5 млн руб., нулевые или отрицательные чистые активы, околонулевая рентабельность, низкие прибыль и выручка. \n\n📣 Такие предприятия как правило не входят в группы компаний и не декларируют проценты. От добросовестного бизнеса они отличаются отсутствием признаков реальной экономической деятельности.\n\n#главные_налоговые_новости",
       "text_html": "✍️ <strong>Нормативное регулирование<br></strong> <br>🔴Правительственная комиссия по законопроектной деятельности <a href=\"https://www.kommersant.ru/doc/8624352\" target=\"_blank\" rel=\"noopener noreferrer\">одобрила</a> проект поправок в НК РФ, значительно <a href=\"https://www.vedomosti.ru/society/articles/2026/04/28/1193509-minfin-predlozhil-uvelichit-razmer-gosposhlin-dlya-migrantov\" target=\"_blank\" rel=\"noopener noreferrer\">увеличивающий</a> размер сборов для иностранцев за визовые и регистрационные действия. <br><br><blockquote>Пошлину за выдачу многократной визы в РФ предложено увеличить с 1,92 тыс. до 6 тыс. руб., сбор за выдачу вида на жительство — с 6 тыс. до 30 тыс. руб. <br>Пошлину за выдачу разрешения на работу планируют повысить с 4,2 тыс. до 5 тыс. руб., а за разрешение на привлечение зарубежных работников взимать не 12 тыс. руб., а 15 тыс. руб.</blockquote><br> <br>💰 Минфин России ожидает, что дополнительные поступления в бюджет в 2026 г. составят около 7,9 млрд руб., в 2027 г. — около 15,8 млрд руб.<br> <br>🔴ФНС России <a href=\"https://tass.ru/ekonomika/27250857\" target=\"_blank\" rel=\"noopener noreferrer\">направила</a> предложение в Минфин России снять ограничения по налоговой тайне региональным властям для контроля использования льгот на территории регионов.<br> <br>⚙️ <strong>Практика</strong><br> <strong><br></strong><strong>🔴</strong>Налоговые органы по итогам проведения выездных проверок (ВНП) и аналитической работы <a href=\"https://www.vedomosti.ru/economics/articles/2026/04/29/1193850-postupleniya-v-byudzhet-ot-viezdnih-nalogovih-proverok-virosli\" target=\"_blank\" rel=\"noopener noreferrer\">обеспечили</a> поступления в бюджет в размере 496 млрд руб., что на 22% выше показателя 2024 г. (408 млрд руб.)<br><br>Больше половины поступлений от контрольной работы обеспечили аналитические мероприятия – 310 млрд руб.<br>В 2025 г. налоговые органы завершили 5 400 ВНП (4 900 в 2024 г.)<br><br><blockquote>Доначисления по итогам камеральных проверок достигли 150,6 млрд руб. (132,6 млрд руб. в 2024 г. В прошлом году среднее доначисление за одно такое мероприятие составило 65 900 руб. (на 24,2% больше показателя 2024 г.).<br>При этом отрицательную динамику показали результаты участников налогового мониторинга: урегулированная с участниками мониторинга сумма платежей в бюджет в 2025 г. сократилась более чем в 4 раза до 7,4 млрд руб., при том что число присоединившихся к нему компаний увеличилось сразу до 729 с 586 годом ранее.</blockquote><br> <br>Экспертный комментарий ПГ - позже в канале 🛑<br><br>🔴По итогам первого этапа налоговой амнистии под обеление <a href=\"https://www.kommersant.ru/doc/8624737?query=%D1%84%D0%BD%D1%81\" target=\"_blank\" rel=\"noopener noreferrer\">попало</a> более 10 тыс. групп налогоплательщиков, это почти 25,4 тыс. организаций. Сумма под амнистию - 22,1 млрд руб.<br> <br>🔴Налоговые органы <a href=\"https://www.nalog.gov.ru/rn77/news/activities_fts/16620768/\" target=\"_blank\" rel=\"noopener noreferrer\">с начала</a> 2026 г. в автоматизированном режиме <a href=\"https://www.kommersant.ru/doc/8624737?query=%D1%84%D0%BD%D1%81\" target=\"_blank\" rel=\"noopener noreferrer\">предоставили</a> вычеты по НДФЛ на сумму более 200 млрд руб.<br> <br>🔴ФНС России <a href=\"https://www.forbes.ru/finansy/560074-fns-sostavila-portret-kompanii-neplatel-sika\" target=\"_blank\" rel=\"noopener noreferrer\">описала</a> «портрет» типичной организации-неплательщика: небольшой штат сотрудников с фондом оплаты труда до 5 млн руб., нулевые или отрицательные чистые активы, околонулевая рентабельность, низкие прибыль и выручка. <br><br>📣 Такие предприятия как правило не входят в группы компаний и не декларируют проценты. От добросовестного бизнеса они отличаются отсутствием признаков реальной экономической деятельности.<br><br>#главные_налоговые_новости",
-      "views": 960,
+      "views": 961,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2617-1-061a163d41b4-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2617-1-061a163d41b4-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/Eh-beLBldQTl8aUrlWIbYuQOxcWIkI7bMJgh_S3-EQcmIzNb7YUPU2FJ0HeMMaLZUNnUo3aLG7lQB6iQGsAIOPnBkxDcCaheosYQ6_XT8Z_q0Ir4wBGNYkVGkriFXvIB38aKpY_rwpogBV3rlaLCi2Rzenpipx2p_KEA7S_c2Qb8aABnRCrzAAVizIq3xo1YJaWPADr5-pC_XJ6Tr3HAK6RpOXzaNx1H3G-8LBe1leS6KRPrWkVEcWxPwfHenQIxlSriQJ-MaVYhRnaCOdn0-4IjslCF2tkkDmdxZF27QNRxmbkfD1kYQPiYSESI5qQP-Pi-WfEsLVcQqtdwSYm_bQ.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2617-1-061a163d41b4-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2617-1-061a163d41b4-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -304,7 +363,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/Eh-beLBldQTl8aUrlWIbYuQOxcWIkI7bMJgh_S3-EQcmIzNb7YUPU2FJ0HeMMaLZUNnUo3aLG7lQB6iQGsAIOPnBkxDcCaheosYQ6_XT8Z_q0Ir4wBGNYkVGkriFXvIB38aKpY_rwpogBV3rlaLCi2Rzenpipx2p_KEA7S_c2Qb8aABnRCrzAAVizIq3xo1YJaWPADr5-pC_XJ6Tr3HAK6RpOXzaNx1H3G-8LBe1leS6KRPrWkVEcWxPwfHenQIxlSriQJ-MaVYhRnaCOdn0-4IjslCF2tkkDmdxZF27QNRxmbkfD1kYQPiYSESI5qQP-Pi-WfEsLVcQqtdwSYm_bQ.jpg"
         }
       ],
       "video_url": null,
@@ -324,9 +384,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2616-1-7bff895e58b0-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2616-1-7bff895e58b0-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/rjOUSfwa7-bttbpc-EtkDqIySaAwU_uar4XkHGNCVj2x145S38xs2vSkR2vZ5AJV361gCyNcesHbZ9ZRTld8E19otPCcfcBCocEeQ1go9vLrhJNrqUN4lpi7rki2ajc3kTmsDaBNhcx5Kg541DqzdPb-zVh2JxFCIiw-Oy3-vX8v_tLUuHPMoiOtngp8re1hIVyI111pObnlatpU1Rui3jKHJRrut5XfYSbt_lEfaZr_owY4jgeaSy9eMWoSUaqdVRkqMtiTuh7SIYy2cogz5Nt5Z7uy1NPe5CCO9c6lQAiEV3lNMuUzcG2qZ4esDY7kHhsAe_Dp53ikoXKCMRYUTQ.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2616-1-7bff895e58b0-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2616-1-7bff895e58b0-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 448,
           "feed_width": 1800,
@@ -334,7 +393,8 @@
           "full_width": 1880,
           "full_height": 1053,
           "source_width": 1880,
-          "source_height": 1053
+          "source_height": 1053,
+          "source_url": "https://cdn4.telesco.pe/file/rjOUSfwa7-bttbpc-EtkDqIySaAwU_uar4XkHGNCVj2x145S38xs2vSkR2vZ5AJV361gCyNcesHbZ9ZRTld8E19otPCcfcBCocEeQ1go9vLrhJNrqUN4lpi7rki2ajc3kTmsDaBNhcx5Kg541DqzdPb-zVh2JxFCIiw-Oy3-vX8v_tLUuHPMoiOtngp8re1hIVyI111pObnlatpU1Rui3jKHJRrut5XfYSbt_lEfaZr_owY4jgeaSy9eMWoSUaqdVRkqMtiTuh7SIYy2cogz5Nt5Z7uy1NPe5CCO9c6lQAiEV3lNMuUzcG2qZ4esDY7kHhsAe_Dp53ikoXKCMRYUTQ.jpg"
         }
       ],
       "video_url": null,
@@ -359,9 +419,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2615-1-4406458751ba-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2615-1-4406458751ba-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/stKS7mpZCBkDff06YM2cvdwXM7bv6aZ-wBz6nhw8bgBThw2m9MoCwdLhEj6i2G2ai-ncL11RNea1ENPf8Wtt9AUt_uwSE85iPTKFqHBl6Jse2Hiz1xY2MLZ7-r-EDZHREWPucQaaUmllI1gFUVZgI5rCJInoPTDb9Tiz0m019IwFGKsyvPAdNzYqRCz22EWuU-U59obHzcEe2SKiTOnyBtUAwwaXVZvDjBBRMpA18yfkrvf8OX1SUap6flRkgl5GRFsEDDEovmMFB74p3HrDSdF3S_NgX_mitV0EfwYX2kH921t76SARI-mxIp5exKC_xctsB6Q6af88tA8fH4f2UA.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2615-1-4406458751ba-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2615-1-4406458751ba-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -369,7 +428,8 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/stKS7mpZCBkDff06YM2cvdwXM7bv6aZ-wBz6nhw8bgBThw2m9MoCwdLhEj6i2G2ai-ncL11RNea1ENPf8Wtt9AUt_uwSE85iPTKFqHBl6Jse2Hiz1xY2MLZ7-r-EDZHREWPucQaaUmllI1gFUVZgI5rCJInoPTDb9Tiz0m019IwFGKsyvPAdNzYqRCz22EWuU-U59obHzcEe2SKiTOnyBtUAwwaXVZvDjBBRMpA18yfkrvf8OX1SUap6flRkgl5GRFsEDDEovmMFB74p3HrDSdF3S_NgX_mitV0EfwYX2kH921t76SARI-mxIp5exKC_xctsB6Q6af88tA8fH4f2UA.jpg"
         }
       ],
       "video_url": null,
@@ -398,15 +458,14 @@
       "date": "2026-04-27T10:00:21+00:00",
       "text": "🔥 Квалификация для НДС услуг, оказываемых организациями фармацевтического рынка иностранным компаниям: Меморандум ФНС\n\nСтарший партнер «Пепеляев Групп» Сергей Савсерис комментирует Протокол и Меморандум экспертного совета при ФНС по вопросам квалификации в целях исчисления и уплаты НДС оказываемых иностранным компаниям услуг организациями фармацевтической отрасли и отрасли обращения медицинских изделий.\n\n🔍 Контекст\n\nРанее уже публиковалась информация о проведении ФНС заседания экспертного совета по налоговой квалификации услуг, которые российские компании оказывают иностранным заказчикам (прежде всего — в части продвижения лекарственных препаратов).\n\nРечь идет о довольно чувствительной теме: в основном это визиты медпредставителей, к врачам, их выступление на круглых столах и конференциях.\n\nКлючевой вопрос — как квалифицировать эти услуги для целей НДС, потому что от этого напрямую зависит, возникает ли налог в России (ст. 148 НК РФ).\n\nПо итогам обсуждения утвержден Меморандум с подходами к квалификации и создана рабочая группа для дальнейшей проработки.\n\n🏢 Комментарий эксперта \n\nС одной стороны, в Меморандуме прямо закрепляется принцип приоритета фактического содержания деятельности (п. 2.1): квалификация должна исходить из реальной сути операций, а не из их формального наименования.\n\nНо открываем Протокол — и видим совсем другой вектор:\nпонятие рекламных услуг предлагается толковать через отраслевое законодательство (Закон «О рекламе» и подзаконные акты), из чего делается вывод, что деятельность медицинских представителей рекламой не является.\n\n❌ И вот здесь возникает ключевое противоречие.\n\nЕсли действительно оценивать содержание деятельности медпредставителей, значительная часть их активности — это, по сути, реклама и есть: доведение информации о препарате, формирование интереса, влияние на назначение препаратов. Да, со своей спецификой и ограничениями, но реклама.\n\nОднако такой вывод имеет понятные налоговые последствия: услуги по рекламе, оказанные иностранным заказчикам, не образуют объекта по НДС в РФ.\n\nИ именно поэтому, у ФНС возникает необходимость «переименования» этих услуг — через ссылку на отраслевую нормативку — в нечто иное, чем то, что прямо указано в подп. 4 п. 1 ст. 148 НК РФ, как необлагаемые НДС в России услуги. \n\n❓ Отсюда главный вопрос к подходу\n\nЕсли по сути применяете формальный подход, зачем ссылаетесь на применимость принципа содержательной оценки деятельности? \n\nВыглядит как попытка одновременно сохранить и принцип «существо над формой», и удобный для бюджета результат.\n\nЧестно говоря — довольно циничная конструкция.\n\n#комментарий_эксперта",
       "text_html": "🔥 <strong>Квалификация для НДС услуг, оказываемых организациями фармацевтического рынка иностранным компаниям: Меморандум ФНС</strong><br><br>Старший партнер «Пепеляев Групп» <a href=\"https://www.pgplaw.ru/to-get-the-team/sergey-savseris/\" target=\"_blank\" rel=\"noopener noreferrer\">Сергей Савсерис</a> комментирует Протокол и Меморандум экспертного совета при ФНС по вопросам квалификации в целях исчисления и уплаты НДС оказываемых иностранным компаниям услуг организациями фармацевтической отрасли и отрасли обращения медицинских изделий.<br><br>🔍 <strong>Контекст</strong><br><br>Ранее уже публиковалась <a href=\"https://www.nalog.gov.ru/rn77/news/activities_fts/16615416/\" target=\"_blank\" rel=\"noopener noreferrer\">информация</a> о проведении ФНС заседания экспертного совета по налоговой квалификации услуг, которые российские компании оказывают иностранным заказчикам (прежде всего — в части продвижения лекарственных препаратов).<br><br>Речь идет о довольно чувствительной теме: в основном это визиты медпредставителей, к врачам, их выступление на круглых столах и конференциях.<br><br><blockquote>Ключевой вопрос — <strong>как квалифицировать эти услуги для целей НДС</strong>, потому что от этого напрямую зависит, возникает ли налог в России (ст. 148 НК РФ).</blockquote><br><br>По итогам обсуждения утвержден Меморандум с подходами к квалификации и создана рабочая группа для дальнейшей проработки.<br><br>🏢 <strong>Комментарий эксперта <br></strong><br>С одной стороны, в Меморандуме прямо закрепляется принцип <strong>приоритета фактического содержания деятельности </strong>(п. 2.1): квалификация должна исходить из реальной сути операций, а не из их формального наименования.<br><br>Но открываем Протокол — и видим совсем другой вектор:<br>понятие рекламных услуг предлагается толковать через отраслевое законодательство (Закон «О рекламе» и подзаконные акты), из чего делается вывод, что деятельность медицинских представителей рекламой не является.<br><br>❌ <strong>И вот здесь возникает ключевое противоречие.<br></strong><br>Если действительно оценивать <strong>содержание деятельности медпредставителей, значительная часть их активности — это, по сути, реклама </strong>и есть: доведение информации о препарате, формирование интереса, влияние на назначение препаратов. Да, со своей спецификой и ограничениями, но реклама.<br><br><blockquote>Однако такой вывод имеет понятные налоговые последствия: услуги по рекламе, оказанные иностранным заказчикам, <strong>не образуют объекта по НДС в РФ.</strong></blockquote><br><br>И именно поэтому, у ФНС возникает необходимость «переименования» этих услуг — через ссылку на отраслевую нормативку — в нечто иное, чем то, что прямо указано в подп. 4 п. 1 ст. 148 НК РФ, как необлагаемые НДС в России услуги. <br><br>❓ <strong>Отсюда главный вопрос к подходу</strong><br><br><blockquote>Если по сути применяете формальный подход, зачем ссылаетесь на применимость принципа содержательной оценки деятельности? </blockquote><br><br>Выглядит как попытка одновременно сохранить и принцип «существо над формой», и удобный для бюджета результат.<br><br>Честно говоря — довольно циничная конструкция.<br><br>#комментарий_эксперта",
-      "views": 1180,
+      "views": 1190,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
         {
           "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2613-1-b330f8153f2a-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2613-1-b330f8153f2a-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/VUxZ06z28-8SkQGg95BBSQXfz7PTHG28zWl5Xdc8i-0ohGwkML_TzSO_IrsL_qdqz7IdeV-GUebkf3Ph7nIeTzJciOCiLH1_ZHHIvZtTZ-H8977KdjaccJ9V6U6FYmsl6Ak2WDVYaXhiO7tCHsKMPX-_SdMbBEA9cDVVmseZncpJBwvrRcH0uK3w1CxQ8tmzB0ZOvMQOCfDowOufLtjq5633igu9x907_PfHz3Wx3QpFgE4h5t7DF1AkBrCfqTFljZ9jl3y0q4Gj29Q2HX9OQPAKXrdGetlaux_e7BBxeruc8zts4OVoidbDeKjvu_8euYlenCNxon5pMMZ-jDxPjw.jpg",
           "feed_url": "data/channels/pg-tax/media/posts/feed/2613-1-b330f8153f2a-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2613-1-b330f8153f2a-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 320,
           "feed_width": 1800,
@@ -414,78 +473,14 @@
           "full_width": 1880,
           "full_height": 752,
           "source_width": 1880,
-          "source_height": 752
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/VUxZ06z28-8SkQGg95BBSQXfz7PTHG28zWl5Xdc8i-0ohGwkML_TzSO_IrsL_qdqz7IdeV-GUebkf3Ph7nIeTzJciOCiLH1_ZHHIvZtTZ-H8977KdjaccJ9V6U6FYmsl6Ak2WDVYaXhiO7tCHsKMPX-_SdMbBEA9cDVVmseZncpJBwvrRcH0uK3w1CxQ8tmzB0ZOvMQOCfDowOufLtjq5633igu9x907_PfHz3Wx3QpFgE4h5t7DF1AkBrCfqTFljZ9jl3y0q4Gj29Q2HX9OQPAKXrdGetlaux_e7BBxeruc8zts4OVoidbDeKjvu_8euYlenCNxon5pMMZ-jDxPjw.jpg"
         }
       ],
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/PG_Tax/2613",
       "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2612,
-      "date": "2026-04-27T08:01:04+00:00",
-      "text": "✍️ Нормотворчество\n \n🔴Группа депутатов внесла в Госдуму законопроект № 1215257-8 об отмене штрафов за несдачу «нулевых» деклараций, так как администрирование этих взысканий сейчас приносит бюджету больше расходов, чем доходов. \n\n🛑 Также для бизнеса предлагается ввести упрощенный порядок начисления штрафов за просрочку подачи «ненулевых» деклараций, для граждан - освобождение от ответственности за отсутствие отчетов при продаже недвижимости (налоговые органы будут рассчитывать налог самостоятельно).\n \n🔴Минфин России направил в Правительство РФ пакет законопроектов о регулировании трансграничной торговли.\n\nПредложено:\n• выделить товары электронной торговли в отдельную категорию,\n• ввести для них специальную декларацию,\n• создать новый правовой институт — оператора электронной торговли,\n• ввести НДС поэтапно: по ставке 7% в 2027 г., в 2028 — 14%, а с 2029 - 22%.\n\n \n🔴Зарубежным онлайн-продавцам гаджетов наряду с российскими планируют вменить уплату сбора с их продаж в РФ. С соответствующим предложением в Минпромторг России обратилась отраслевая ассоциация РАТЭК.\n \n⚙️ Практика\n \n🔴ФНС России рассказала о порядке проведения камеральной проверки в дистанционном формате.\n \n🔴Минфин, ФНС и Росреестр признаны самыми клиентоцентричными ведомствами при оказании госуслуг.\n \n✈️ Международные новости\n \nМировой опыт windfall tax обощили Ведомости.\n\n#главные_налоговые_новости\n\nОбзор новостей прошлой недели читайте на сайте ПГ 👉",
-      "text_html": "✍️ <strong>Нормотворчество</strong><br> <br>🔴Группа депутатов внесла в Госдуму <a href=\"https://pravo.ru/news/263439/?utm_source=telegram&amp;utm_medium=smm&amp;utm_campaign=tg_channel\" target=\"_blank\" rel=\"noopener noreferrer\">законопроект</a> № <a href=\"https://sozd.duma.gov.ru/bill/1215257-8\" target=\"_blank\" rel=\"noopener noreferrer\">1215257-8</a> об отмене штрафов за несдачу «нулевых» деклараций, так как администрирование этих взысканий сейчас приносит бюджету больше расходов, чем доходов. <br><br>🛑 Также для бизнеса предлагается ввести упрощенный порядок начисления штрафов за просрочку подачи «ненулевых» деклараций, для граждан - освобождение от ответственности за отсутствие отчетов при продаже недвижимости (налоговые органы будут рассчитывать налог самостоятельно).<br> <br>🔴Минфин России <a href=\"https://www.kommersant.ru/doc/8622733?query=%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3\" target=\"_blank\" rel=\"noopener noreferrer\">направил</a> в Правительство РФ пакет законопроектов о регулировании трансграничной торговли.<br><br><blockquote>Предложено:<br>• выделить товары электронной торговли в отдельную категорию,<br>• ввести для них специальную декларацию,<br>• создать новый правовой институт — оператора электронной торговли,<br>• ввести НДС поэтапно: по ставке 7% в 2027 г., в 2028 — 14%, а с 2029 - 22%.</blockquote><br> <br>🔴Зарубежным онлайн-продавцам гаджетов наряду с российскими <a href=\"https://iz.ru/2084599/valerii-kodachigov/s-inostrannyh-prodavcov-hotyat-vzimat-sbor-ot-realizacii-gadzhetov-v-rf\" target=\"_blank\" rel=\"noopener noreferrer\">планируют</a> вменить уплату сбора с их продаж в РФ. С соответствующим предложением в Минпромторг России <a href=\"https://www.forbes.ru/biznes/559858-ratek-predlozil-rasprostranit-tehsbor-na-zarubeznyh-onlajn-prodavcov-gadzetov\" target=\"_blank\" rel=\"noopener noreferrer\">обратилась</a> отраслевая ассоциация РАТЭК.<br> <br>⚙️ <strong>Практика</strong><br> <br>🔴ФНС России <a href=\"https://www.garant.ru/news/2067529/\" target=\"_blank\" rel=\"noopener noreferrer\">рассказала</a> о порядке проведения камеральной проверки в дистанционном формате.<br> <br>🔴Минфин, ФНС и Росреестр <a href=\"https://www.forbes.ru/society/559922-minfin-i-fsin-vosli-v-top-5-rejtinga-vedomstv-po-udobstvu-predostavlenia-gosuslug\" target=\"_blank\" rel=\"noopener noreferrer\">признаны</a> самыми клиентоцентричными ведомствами при оказании госуслуг.<br> <br>✈️ <strong>Международные новости<br></strong> <br>Мировой опыт windfall tax обощили <a href=\"https://www.vedomosti.ru/opinion/columns/2026/04/27/1193186-mirovoi-windfall-tax\" target=\"_blank\" rel=\"noopener noreferrer\">Ведомости</a>.<br><br>#главные_налоговые_новости<br><br>Обзор новостей прошлой недели читайте <a href=\"https://www.pgplaw.ru/analytics-and-brochures/tax-reviews/tax-news-digest-27-04-26/\" target=\"_blank\" rel=\"noopener noreferrer\">на сайте</a> ПГ 👉",
-      "views": 970,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2612-1-c3c96c2f6906-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2612-1-c3c96c2f6906-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/NOFEb13JastkTfgzfF8abn-OASKHA9Ha315r9j3dE2rvYxtIGZ8nNgmJDugaM8WOpRfoEUOD2lSP6KqZdG_YO3epomnAUCPloZrfeAub-BOVBOtHazK1UXKwFK-kihkP1Ea2okZgwyXP1M0Fz8wACbYzEjqYnAChtKBYYWUMxF4DG1bqErCnWYoA_JwN9V0xrPow9KvZVsm4tgjdHeyR97iSJKn8tbLr3noyj8xAy-9Vwlu27tuVIAS0N4ZM96wMQx32Fc-q8Prmxs_eMTgmh3NftEwssfhhdDuaO_16ubaXz7WnI99ZQOhWAl9ZrESKlD1K91UNrYEEgtwsQspbZQ.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2612-1-c3c96c2f6906-v9.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2612",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2611,
-      "date": "2026-04-24T13:04:53+00:00",
-      "text": "🗓 Срок давности по спорам о приватизации хотят ограничить десятью годами \n\nПравительство внесло в Госдуму законопроект о сроках давности по искам об изъятии приватизированного госимущества — три года с момента выявления нарушения, но не более десяти лет. Предусмотрены исключения. \n\n💬 Партнер «Пепеляев Групп» Юрий Воробьёв в эфире РБК ТВ прокомментировал, что «наличие такого законопроекта лучше, нежели та ситуация, которая есть сейчас».\n\nКак будет работать новый механизм и что он изменит для предпринимателей, смотрите по ссылке.\n\nПолный комментарий Юрия с 05:00 мин.\n\n👉 СМОТРЕТЬ\n\n🏢 Подписаться на рассылки | MAX | Приложение PG",
-      "text_html": "🗓 <strong>Срок давности по спорам о приватизации хотят ограничить десятью годами </strong><br><br><blockquote>Правительство <a href=\"https://www.rbc.ru/society/16/04/2026/69e101549a79476bdedec7b0\" target=\"_blank\" rel=\"noopener noreferrer\">внесло</a> в Госдуму законопроект о сроках давности по искам об изъятии приватизированного госимущества — три года с момента выявления нарушения, но не более десяти лет. Предусмотрены исключения. </blockquote><br><br>💬 Партнер «Пепеляев Групп» <a href=\"https://www.pgplaw.ru/to-get-the-team/yuriy-vorobev/\" target=\"_blank\" rel=\"noopener noreferrer\">Юрий Воробьёв</a> в эфире РБК ТВ прокомментировал, что «наличие такого законопроекта лучше, нежели та ситуация, которая есть сейчас».<br><br>Как будет работать новый механизм и что он изменит для предпринимателей, смотрите по ссылке.<br><br>Полный комментарий Юрия с 05:00 мин.<br><br>👉 <a href=\"https://tv.rbc.ru/archive/chez/69e275d42ae5962fee09ed61\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>СМОТРЕТЬ</strong></a><br><br>🏢 <a href=\"https://www.pgplaw.ru/subscribe/\" target=\"_blank\" rel=\"noopener noreferrer\">Подписаться на рассылки |</a> <a href=\"https://max.ru/id7707301372_biz\" target=\"_blank\" rel=\"noopener noreferrer\">MAX |</a> <a href=\"https://t.me/pgp_official/1769\" target=\"_blank\" rel=\"noopener noreferrer\">Приложение PG</a>",
-      "views": 1050,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2611-1-f75214b13705-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2611-1-f75214b13705-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/ZccerI-f7O7iHzT65rJIqKBkSGISacd4VdEyJ41DtNwewyw-pejVOPTIaxcfxRzKyAZQv6E2qL_6Zm3pZFc6OzCmtXg4lzCbC2BZ51XYNQH2_py8GFGmJ2iiYjL3-q1KDhh7J9WOAMohDJknX-eEf0E_fVvRmgH2gW7BYMNgN3cqvZWiIEO9mgvPd-xAVYw9bd9lNPeMXXh7k7PrCu6RbhdbJ6vd2eYHJx3K6sCxOlIBOtb9VQXBTWUMB7vcxtzRcnxdLd1-rp0fr7GlxOHAskij5bKpUsh8_14SZ2qrj1pJtJ6rk2U6XYw3oz8CHz2YiOsFK3aVxOfTKN7fzqn_Hg.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2611-1-f75214b13705-v9.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2611",
-      "forwarded_from": {
-        "source_url": "https://t.me/pgp_official/1810",
-        "channel_url": "https://t.me/s/pgp_official",
-        "channel_username": "pgp_official",
-        "channel_title": "Pepeliaev Group | Пепеляев Групп"
-      },
       "reply_to": null
     }
   ]
