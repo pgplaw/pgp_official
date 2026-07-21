@@ -1,18 +1,20 @@
 {
-  "generated_at": "2026-07-21T15:20:10.511Z",
-  "success_count": 8,
-  "failure_count": 0,
-  "failure_channels": [],
+  "generated_at": "2026-07-21T16:50:38.667Z",
+  "success_count": 7,
+  "failure_count": 1,
+  "failure_channels": [
+    "pgp-official"
+  ],
   "channel_timeout_ms": 300000,
   "channels": [
     {
       "key": "pgp-official",
       "channel_username": "pgp_official",
       "channel_title": "Pepeliaev Group | Пепеляев Групп",
-      "status": "success",
-      "exit_code": 0,
+      "status": "failed",
+      "exit_code": 1,
       "signal": null,
-      "duration_ms": 109421,
+      "duration_ms": 21379,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -20,25 +22,12 @@
         "session_str": false,
         "complete": false
       },
-      "sync_meta": {
-        "telegram_api_credentials": {
-          "api_id": false,
-          "api_hash": false,
-          "session_str": false,
-          "complete": false
-        },
-        "poll_sync": {
-          "credentials_complete": false,
-          "selected_ids": [],
-          "fetched_ids": [],
-          "recovered_ids": []
-        }
-      },
+      "sync_meta": {},
       "archive_before": {
-        "total_bytes": 1051671400,
-        "file_count": 9645,
-        "media_bytes": 1051121773,
-        "media_files": 9639,
+        "total_bytes": 1058099352,
+        "file_count": 9677,
+        "media_bytes": 1057522965,
+        "media_files": 9671,
         "json_files": 6,
         "page_json_files": 5,
         "comment_json_files": 0
@@ -53,10 +42,10 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 6427952,
-        "file_count": 32,
-        "media_bytes": 6401192,
-        "media_files": 32,
+        "total_bytes": 0,
+        "file_count": 0,
+        "media_bytes": 0,
+        "media_files": 0,
         "json_files": 0,
         "page_json_files": 0,
         "comment_json_files": 0
@@ -69,7 +58,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 26611,
+      "duration_ms": 25875,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -126,7 +115,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 68871,
+      "duration_ms": 65016,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -183,7 +172,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 55888,
+      "duration_ms": 54976,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -240,7 +229,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 26416,
+      "duration_ms": 25239,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -297,7 +286,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 21703,
+      "duration_ms": 21442,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -354,7 +343,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 38367,
+      "duration_ms": 25608,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -377,7 +366,7 @@
         }
       },
       "archive_before": {
-        "total_bytes": 595648175,
+        "total_bytes": 595648176,
         "file_count": 5009,
         "media_bytes": 595114917,
         "media_files": 5005,
@@ -395,7 +384,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 1,
+        "total_bytes": 0,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -411,7 +400,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 18909,
+      "duration_ms": 18638,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
