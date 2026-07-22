@@ -97,6 +97,7 @@ const elements = {
   feedSearchInput: document.getElementById('feedSearchInput'),
   feedSearchClear: document.getElementById('feedSearchClear'),
   feedSearchStatus: document.getElementById('feedSearchStatus'),
+  channelSwitchOverlay: document.getElementById('channelSwitchOverlay'),
   refreshButton: document.getElementById('refreshButton'),
   themeToggle: document.getElementById('themeToggle'),
   feedView: document.getElementById('feedView'),
@@ -970,6 +971,9 @@ function setChannelContentSwitching(active, { fast = false, mode = null } = {}) 
   elements.siteShell.classList.toggle('is-channel-switching-fast', isActive && Boolean(fast));
   elements.siteShell.classList.toggle('is-channel-switching-mobile', isActive && mode === 'mobile');
   elements.siteShell.classList.toggle('is-channel-switching-desktop', isActive && mode === 'desktop');
+  const showMobileOverlay = isActive && mode === 'mobile';
+  elements.channelSwitchOverlay?.classList.toggle('is-visible', showMobileOverlay);
+  elements.channelSwitchOverlay?.setAttribute('aria-hidden', showMobileOverlay ? 'false' : 'true');
   if (!isActive) {
     elements.siteShell.classList.remove('is-channel-switching-fast');
     elements.siteShell.classList.remove('is-channel-switching-mobile');
@@ -1767,13 +1771,9 @@ function getChannelCarouselWidth(stage = getChannelCarouselStage()) {
   );
 }
 
-function setChannelCarouselShift(track, shift, stageOrWidth = getChannelCarouselStage()) {
+function setChannelCarouselShift(track, shift) {
   if (!track) return;
-  const width = typeof stageOrWidth === 'number'
-    ? stageOrWidth
-    : getChannelCarouselWidth(stageOrWidth);
-  const baseOffset = -width;
-  track.style.transform = `translate3d(${Math.round(baseOffset + shift)}px, 0, 0)`;
+  track.style.transform = `translate3d(calc(-33.333333% + ${Math.round(shift)}px), 0, 0)`;
 }
 
 function getRelativeChannel(offset) {
@@ -2312,6 +2312,48 @@ async function handleInstallButtonClick() {
   updateInstallButtonState();
 }
 
+function setupInputModalityHandling() {
+  const root = document.documentElement;
+  const touchControlSelector = '.contact-bar__item, .hero__actions .icon-button, .hero__actions .theme-toggle';
+
+  if (navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches) {
+    root.classList.add('is-touch-input');
+  }
+
+  document.addEventListener('pointerdown', (event) => {
+    root.classList.toggle('is-touch-input', event.pointerType !== 'mouse');
+  }, { capture: true, passive: true });
+
+  document.addEventListener('pointermove', (event) => {
+    if (event.pointerType === 'mouse' && event.buttons === 0) {
+      root.classList.remove('is-touch-input');
+    }
+  }, { capture: true, passive: true });
+
+  document.addEventListener('touchstart', () => {
+    root.classList.add('is-touch-input');
+  }, { capture: true, passive: true });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Tab') {
+      root.classList.remove('is-touch-input');
+    }
+  }, true);
+
+  document.addEventListener('click', (event) => {
+    if (!root.classList.contains('is-touch-input')) return;
+    const control = event.target instanceof Element ? event.target.closest(touchControlSelector) : null;
+    if (!control) return;
+
+    window.setTimeout(() => {
+      const focusedElement = document.activeElement;
+      if (focusedElement instanceof HTMLElement && (focusedElement === control || control.contains(focusedElement))) {
+        focusedElement.blur();
+      }
+    }, 0);
+  }, true);
+}
+
 function getLastScheduledSyncTime(reference = new Date()) {
   const syncTime = new Date(reference);
   syncTime.setSeconds(0, 0);
@@ -2365,6 +2407,10 @@ function buildMobileChannelCarouselSurface(channel, index, total, { current = fa
   const safeChannel = channel || getActiveChannelMeta() || {};
   const { title, subtitle, rawLabel } = getChannelMenuLabels(safeChannel);
   const hasMultiple = total > 1;
+  const avatarPath = safeChannel.avatar_path || '';
+  const channelUsername = String(safeChannel.channel_username || '').replace(/^@/, '');
+  const telegramTag = channelUsername ? `@${channelUsername}` : subtitle;
+  const compactTitle = title.replace(/\s+/g, '').length > 18;
 
   return `
     <article
@@ -2394,13 +2440,17 @@ function buildMobileChannelCarouselSurface(channel, index, total, { current = fa
         aria-expanded="${state.channelCarouselListOpen ? 'true' : 'false'}"
         aria-label="${escapeHtml(`${rawLabel}. ${state.channelCarouselListOpen ? 'Свернуть список каналов' : 'Показать все каналы'}`)}"
       >
-        <span class="channel-carousel__meta">${escapeHtml(`Канал ${index + 1} из ${total}`)}</span>
-        <span class="channel-carousel__title">${formatTextWithSoftBreaks(title)}</span>
-        <span class="channel-carousel__subtitle">${formatTextWithSoftBreaks(subtitle)}</span>
-        <span class="channel-carousel__disclosure" aria-hidden="true">
-          <svg viewBox="0 0 20 20" aria-hidden="true">
-            <path d="m5 7 5 5 5-5" />
-          </svg>
+        <span class="channel-carousel__avatar" aria-hidden="true">
+          ${avatarPath ? `<img src="${escapeHtml(avatarPath)}" alt="" loading="eager" draggable="false">` : '<span class="channel-carousel__avatar-fallback">PG</span>'}
+        </span>
+        <span class="channel-carousel__copy${compactTitle ? ' channel-carousel__copy--compact' : ''}">
+          <span class="channel-carousel__title">${formatTextWithSoftBreaks(title)}</span>
+          <span class="channel-carousel__subtitle">${escapeHtml(telegramTag)}</span>
+          <span class="channel-carousel__disclosure" aria-hidden="true">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="m5 7 5 5 5-5" />
+            </svg>
+          </span>
         </span>
       </button>
       <button
@@ -2418,7 +2468,7 @@ function buildMobileChannelCarouselSurface(channel, index, total, { current = fa
   `;
 }
 
-function buildMobileChannelCarouselPickerItem(channel, index) {
+function buildMobileChannelCarouselPickerItem(channel) {
   const { title, subtitle, rawLabel } = getChannelMenuLabels(channel);
   const isActive = channel?.key === state.activeChannelKey;
 
@@ -2432,7 +2482,6 @@ function buildMobileChannelCarouselPickerItem(channel, index) {
       aria-label="${escapeHtml(rawLabel)}"
       aria-pressed="${isActive ? 'true' : 'false'}"
     >
-      <span class="channel-carousel__picker-meta">${isActive ? 'Открыт' : `Канал ${index + 1}`}</span>
       <span class="channel-carousel__picker-title">${formatTextWithSoftBreaks(title)}</span>
       <span class="channel-carousel__picker-subtitle">${formatTextWithSoftBreaks(subtitle)}</span>
     </button>
@@ -2483,7 +2532,7 @@ function renderMobileChannelCarousel() {
   if (carouselList) {
     carouselList.innerHTML = `
       <div class="channel-carousel__picker" role="listbox" aria-label="Все каналы">
-        ${channels.map((channel, index) => buildMobileChannelCarouselPickerItem(channel, index)).join('')}
+        ${channels.map((channel) => buildMobileChannelCarouselPickerItem(channel)).join('')}
       </div>
     `;
   }
@@ -4973,6 +5022,10 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
   if (!resolvedChannelKey) return;
 
   const isChannelChange = Boolean(state.activeChannelKey) && resolvedChannelKey !== state.activeChannelKey;
+  const targetChannel = getChannelByKey(resolvedChannelKey);
+  const targetChannelAccent = normalizeAccentHex(
+    targetChannel?.accent_color || state.channelAccentCache[resolvedChannelKey] || '#91278d'
+  );
   const shouldClearHash = /^#(?:comments|post)-/.test(window.location.hash);
   const shouldUpdateUrl = getChannelKeyFromLocation() !== resolvedChannelKey || shouldClearHash;
   const mobileSwitchTransition = isMobileCarouselViewport();
@@ -5007,6 +5060,7 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
     return;
   }
 
+  elements.channelSwitchOverlay?.style.setProperty('--channel-switch-accent', targetChannelAccent);
   setChannelContentSwitching(true, { fast: fastTransition || mobileSwitchTransition || desktopFastTransition, mode: switchMode });
   await nextRenderFrame();
   await wait(switchTimings.fadeOut);
@@ -5091,6 +5145,7 @@ function handleLocationChange() {
 }
 
 initTheme();
+setupInputModalityHandling();
 
 if (elements.themeToggle) {
   elements.themeToggle.addEventListener('change', (event) => {

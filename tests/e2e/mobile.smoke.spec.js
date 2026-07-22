@@ -87,11 +87,59 @@ test.describe('Mobile smoke', () => {
     await waitForFeedReady(page);
 
     const utilityActions = page.locator('.hero__panel > .hero__actions');
+    await expect(page.locator('.hero__row--channel')).toBeHidden();
     await expect(utilityActions).toBeVisible();
     await expect(utilityActions.locator('#refreshButton')).toBeVisible();
     await expect(utilityActions.locator('#installAppButton')).toBeVisible();
     await expect(utilityActions.locator('.theme-toggle')).toBeVisible();
     await expect(page.locator('#channelNavActionsHost .hero__actions')).toHaveCount(0);
+    await expect(utilityActions).toHaveCSS('display', 'grid');
+    await expect(utilityActions).toHaveCSS('column-gap', '0px');
+    await expect(utilityActions.locator('#refreshButton')).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+    expect(await utilityActions.locator('#refreshButton').evaluate(
+      (element) => getComputedStyle(element, '::after').content
+    )).toBe('none');
+    expect(await utilityActions.locator('#installAppButton').evaluate(
+      (element) => getComputedStyle(element, '::after').content
+    )).toBe('none');
+
+    const expectThemeInsideActions = async () => {
+      const [actionsBox, themeBox] = await Promise.all([
+        utilityActions.boundingBox(),
+        utilityActions.locator('.theme-toggle__track').boundingBox(),
+      ]);
+      expect(actionsBox).toBeTruthy();
+      expect(themeBox).toBeTruthy();
+      expect(themeBox.x).toBeGreaterThanOrEqual(actionsBox.x);
+      expect(themeBox.x + themeBox.width).toBeLessThanOrEqual(actionsBox.x + actionsBox.width + 0.5);
+      expect((actionsBox.x + actionsBox.width) - (themeBox.x + themeBox.width)).toBeGreaterThanOrEqual(8);
+    };
+    await expectThemeInsideActions();
+    await utilityActions.locator('.theme-toggle').click();
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+    await expectThemeInsideActions();
+
+    const contactBar = page.locator('.contact-bar');
+    await expect(contactBar).toBeVisible();
+    await expect(contactBar).toHaveCSS('column-gap', '0px');
+    await expect(contactBar.locator('.contact-bar__item')).toHaveCount(4);
+    await expect(contactBar.locator('.contact-bar__item').first()).toHaveCSS('border-top-width', '0px');
+    expect(await contactBar.locator('.contact-bar__item').first().evaluate(
+      (element) => getComputedStyle(element, '::after').content
+    )).toBe('none');
+
+    const firstContact = contactBar.locator('.contact-bar__item').first();
+    await firstContact.evaluate((element) => {
+      element.addEventListener('click', (event) => event.preventDefault(), { once: true });
+    });
+    await firstContact.tap();
+    await expect(page.locator('html')).toHaveClass(/is-touch-input/);
+    await expect(firstContact).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+    await expect(firstContact).toHaveCSS('background-image', 'none');
+    await firstContact.hover();
+    await page.evaluate(() => document.documentElement.classList.add('is-touch-input'));
+    await expect(firstContact).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+    await expect(firstContact).toHaveCSS('background-image', 'none');
   });
 
   test('keeps the current feed position after the app resumes', async ({ page }) => {
@@ -236,11 +284,13 @@ test.describe('Mobile smoke', () => {
 
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
+    await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'dark'));
 
     const initialTitle = (await page.locator('#siteTitle').innerText()).trim();
     const nextButton = page.locator('#channelCarousel .channel-carousel__surface--current .channel-carousel__nav--next');
     const siteShell = page.locator('.site-shell');
     const content = page.locator('.content');
+    const switchOverlay = page.locator('.channel-switch-overlay');
     await expect(nextButton).toBeVisible();
 
     await page.evaluate(() => window.scrollTo({ top: 720, behavior: 'auto' }));
@@ -248,19 +298,101 @@ test.describe('Mobile smoke', () => {
 
     await nextButton.click();
     await expect(siteShell).toHaveClass(/is-channel-switching-mobile/);
+    await expect(switchOverlay).toBeVisible();
+    await expect(switchOverlay.locator('.channel-switch-overlay__status')).toHaveCSS('color', 'rgb(224, 96, 32)');
+    await expect(switchOverlay.locator('.channel-switch-overlay__spinner')).toHaveCSS('border-top-color', 'rgb(224, 96, 32)');
+    const [navBox, overlayBox] = await Promise.all([
+      page.locator('.channel-nav').boundingBox(),
+      switchOverlay.boundingBox(),
+    ]);
+    expect(navBox).toBeTruthy();
+    expect(overlayBox).toBeTruthy();
+    expect(overlayBox.y).toBeGreaterThanOrEqual(navBox.y + navBox.height - 1);
+    await expect.poll(() => page.locator('.channel-nav').evaluate(
+      (element) => Number.parseFloat(getComputedStyle(element, '::after').opacity)
+    )).toBe(0);
     expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(300);
     await expect(content).toHaveCSS('transition-duration', '0.28s, 0.001s');
-    await expect.poll(async () => Number.parseFloat(await content.evaluate((element) => getComputedStyle(element).opacity))).toBeLessThan(0.02);
+    await expect.poll(async () => Number.parseFloat(await content.evaluate((element) => getComputedStyle(element).opacity))).toBeLessThan(0.25);
+    expect(Number.parseFloat(await content.evaluate((element) => getComputedStyle(element).opacity))).toBeGreaterThan(0.05);
     await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
     releaseTargetFeed();
 
     await expect(siteShell).not.toHaveClass(/is-channel-switching/);
+    await expect(switchOverlay).toBeHidden();
     await expect(content).toHaveCSS('opacity', '1');
     await expect(content).toHaveCSS('transition-duration', '0.52s, 0.56s');
     await waitForFeedReady(page);
 
     await expect(page.locator('#siteTitle')).not.toHaveText(initialTitle);
     expect(page.url()).not.toContain('channel=pgp-official');
+  });
+
+  test('keeps mobile channel header centered after viewport resize', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 820 });
+    await page.goto('/?channel=pg-employment');
+    await waitForFeedReady(page);
+
+    const carousel = page.locator('#channelCarousel');
+    const stage = carousel.locator('.channel-carousel__stage');
+    const currentSurface = carousel.locator('.channel-carousel__surface--current');
+    const avatar = currentSurface.locator('.channel-carousel__avatar img');
+    const subtitle = currentSurface.locator('.channel-carousel__subtitle');
+    const heroAvatar = page.locator('#channelAvatarWrap');
+
+    await expect(currentSurface.locator('.channel-carousel__meta')).toHaveCount(0);
+    await expect(avatar).toBeVisible();
+    await expect(avatar).toHaveAttribute('src', /data\/channels\/pg-employment\/media\/channel-avatar\.jpg$/);
+    await expect(subtitle).toHaveText('@pgEmployment');
+    await expect(heroAvatar).toBeHidden();
+
+    await page.setViewportSize({ width: 459, height: 820 });
+    await expect.poll(async () => {
+      const [stageBox, surfaceBox] = await Promise.all([
+        stage.boundingBox(),
+        currentSurface.boundingBox(),
+      ]);
+      if (!stageBox || !surfaceBox) return false;
+      return Math.abs(stageBox.x - surfaceBox.x) <= 1
+        && Math.abs(stageBox.width - surfaceBox.width) <= 1;
+    }).toBe(true);
+
+    const alignment = await currentSurface.evaluate((surface) => {
+      const avatarBox = surface.querySelector('.channel-carousel__avatar')?.getBoundingClientRect();
+      const copyBox = surface.querySelector('.channel-carousel__copy')?.getBoundingClientRect();
+      const titleBox = surface.querySelector('.channel-carousel__title')?.getBoundingClientRect();
+      const subtitleBox = surface.querySelector('.channel-carousel__subtitle')?.getBoundingClientRect();
+      const disclosureBox = surface.querySelector('.channel-carousel__disclosure')?.getBoundingClientRect();
+      if (!avatarBox || !copyBox || !titleBox || !subtitleBox || !disclosureBox) return null;
+      const surfaceBox = surface.getBoundingClientRect();
+      return {
+        surfaceCenter: surfaceBox.left + (surfaceBox.width / 2),
+        surfaceVerticalCenter: surfaceBox.top + (surfaceBox.height / 2),
+        groupCenter: avatarBox.left + ((copyBox.right - avatarBox.left) / 2),
+        avatarCenter: avatarBox.top + (avatarBox.height / 2),
+        copyCenter: copyBox.top + (copyBox.height / 2),
+        avatarRight: avatarBox.right,
+        copyLeft: copyBox.left,
+        titleLeft: titleBox.left,
+        subtitleLeft: subtitleBox.left,
+        contentBottom: Math.max(avatarBox.bottom, copyBox.bottom),
+        disclosureTop: disclosureBox.top,
+        disclosureCenter: disclosureBox.left + (disclosureBox.width / 2),
+        disclosureWidth: disclosureBox.width,
+        disclosureBottom: disclosureBox.bottom,
+        surfaceBottom: surfaceBox.bottom,
+      };
+    });
+    expect(alignment).toBeTruthy();
+    expect(Math.abs(alignment.surfaceCenter - alignment.groupCenter)).toBeLessThanOrEqual(2);
+    expect(Math.abs(alignment.surfaceVerticalCenter - alignment.avatarCenter)).toBeLessThanOrEqual(2);
+    expect(Math.abs(alignment.avatarCenter - alignment.copyCenter)).toBeLessThanOrEqual(3);
+    expect(Math.abs(alignment.surfaceCenter - alignment.disclosureCenter)).toBeLessThanOrEqual(1);
+    expect(alignment.disclosureWidth).toBeGreaterThanOrEqual(44);
+    expect(alignment.disclosureTop).toBeGreaterThanOrEqual(alignment.contentBottom - 1);
+    expect(alignment.disclosureBottom).toBeLessThanOrEqual(alignment.surfaceBottom + 1);
+    expect(Math.abs(alignment.titleLeft - alignment.subtitleLeft)).toBeLessThanOrEqual(1);
+    expect(alignment.copyLeft).toBeGreaterThan(alignment.avatarRight);
   });
 
   test('toggles mobile channel list and switches channel from it', async ({ page }) => {
@@ -274,6 +406,7 @@ test.describe('Mobile smoke', () => {
     await toggle.click();
     await expect(page.locator('#channelCarousel')).toHaveClass(/is-list-open/);
     await expect(panel).toBeVisible();
+    await expect(panel.locator('.channel-carousel__picker-meta')).toHaveCount(0);
 
     const panelBox = await panel.boundingBox();
     const viewport = page.viewportSize();

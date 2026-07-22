@@ -19,7 +19,7 @@
   <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css">
-  <link rel="stylesheet" href="style.css?v=128">
+  <link rel="stylesheet" href="style.css?v=155">
 </head>
 <body>
   <div class="site-shell">
@@ -52,7 +52,7 @@
       </div>
 
       <div class="hero__panel">
-        <div class="hero__row">
+        <div class="hero__row hero__row--channel">
           <span class="meta-label">Канал</span>
           <a id="channelLink" class="channel-link" href="https://t.me" target="_blank" rel="noopener">
             @channel
@@ -242,6 +242,13 @@
     </footer>
   </div>
 
+  <div id="channelSwitchOverlay" class="channel-switch-overlay" aria-hidden="true">
+    <div class="channel-switch-overlay__status" role="status" aria-live="polite">
+      <span class="channel-switch-overlay__spinner" aria-hidden="true"></span>
+      <span>Загружаем канал...</span>
+    </div>
+  </div>
+
   <div id="feedRefreshOverlay" class="feed-refresh-overlay hidden" role="status" aria-live="polite">
     <span class="feed-refresh-overlay__spinner" aria-hidden="true"></span>
     <span>Обновляем публикации...</span>
@@ -267,6 +274,6 @@
   </div>
 
   <script src="page-transitions.js?v=123"></script>
-  <script src="app.js?v=128"></script>
+  <script src="app.js?v=155"></script>
 </body>
 </html>

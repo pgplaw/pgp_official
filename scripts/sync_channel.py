@@ -3,6 +3,7 @@ from __future__ import annotations
 import calendar
 import atexit
 import asyncio
+import colorsys
 import hashlib
 import html as html_lib
 import io
@@ -2408,6 +2409,94 @@ def convert_custom_emoji_preview_to_webp(raw_bytes: bytes) -> bytes | None:
         return None
 
 
+def theme_monochrome_custom_emoji_preview(raw_bytes: bytes, accent_color: str) -> bytes:
+    color_match = re.fullmatch(r"#?([0-9a-fA-F]{6})", str(accent_color or "").strip())
+    if not raw_bytes or not color_match:
+        return raw_bytes
+
+    try:
+        from PIL import Image
+
+        target_hex = color_match.group(1)
+        target_rgb = tuple(int(target_hex[index:index + 2], 16) / 255 for index in (0, 2, 4))
+        target_hue = colorsys.rgb_to_hls(*target_rgb)[0]
+
+        with Image.open(io.BytesIO(raw_bytes)) as source:
+            source.seek(0)
+            source.load()
+            image = source.convert("RGBA")
+        pixels = list(
+            image.get_flattened_data()
+            if hasattr(image, "get_flattened_data")
+            else image.getdata()
+        )
+
+        hue_x = 0.0
+        hue_y = 0.0
+        hue_weight = 0.0
+        for red, green, blue, alpha in pixels:
+            if alpha < 32:
+                continue
+            hue, lightness, saturation = colorsys.rgb_to_hls(red / 255, green / 255, blue / 255)
+            if saturation < 0.1 or lightness < 0.02 or lightness > 0.98:
+                continue
+            weight = (alpha / 255) * (0.25 + 0.75 * saturation)
+            hue_x += math.cos(2 * math.pi * hue) * weight
+            hue_y += math.sin(2 * math.pi * hue) * weight
+            hue_weight += weight
+
+        if hue_weight < 8:
+            return raw_bytes
+
+        hue_concentration = math.hypot(hue_x, hue_y) / hue_weight
+        if hue_concentration < 0.92:
+            return raw_bytes
+
+        source_hue = math.atan2(hue_y, hue_x) / (2 * math.pi) % 1.0
+        hue_shift = (target_hue - source_hue + 0.5) % 1.0 - 0.5
+        if abs(hue_shift) < (1 / 360):
+            return raw_bytes
+
+        themed_pixels: list[tuple[int, int, int, int]] = []
+        for red, green, blue, alpha in pixels:
+            if alpha == 0:
+                themed_pixels.append((red, green, blue, alpha))
+                continue
+            hue, lightness, saturation = colorsys.rgb_to_hls(red / 255, green / 255, blue / 255)
+            if saturation >= 0.06:
+                red_value, green_value, blue_value = colorsys.hls_to_rgb(
+                    (hue + hue_shift) % 1.0,
+                    lightness,
+                    saturation,
+                )
+                red = round(red_value * 255)
+                green = round(green_value * 255)
+                blue = round(blue_value * 255)
+            themed_pixels.append((red, green, blue, alpha))
+
+        image.putdata(themed_pixels)
+        output = io.BytesIO()
+        image.save(output, format="WEBP", lossless=True, method=6)
+        return output.getvalue()
+    except Exception:
+        return raw_bytes
+
+
+def theme_existing_custom_emoji_assets(config: SiteConfig, emoji_ids: set[int]) -> bool:
+    changes_detected = False
+    for emoji_id in sorted(emoji_ids):
+        asset_path = CUSTOM_EMOJI_MEDIA_DIR / f"{emoji_id}.webp"
+        if not asset_path.exists():
+            continue
+        raw_bytes = asset_path.read_bytes()
+        themed_bytes = theme_monochrome_custom_emoji_preview(raw_bytes, config.accent_color)
+        if themed_bytes == raw_bytes:
+            continue
+        asset_path.write_bytes(themed_bytes)
+        changes_detected = True
+    return changes_detected
+
+
 def fetch_public_custom_emoji_preview(config: SiteConfig, emoji_id: int) -> bytes | None:
     metadata_url = f"https://t.me/i/emoji/{emoji_id}.json"
     request_headers = {"Referer": config.channel_web_url}
@@ -2470,9 +2559,10 @@ async def mirror_custom_emoji_assets_for_posts(
         for emoji_id in emoji_ids
         if (CUSTOM_EMOJI_MEDIA_DIR / f"{emoji_id}.webp").exists()
     }
+    changes_detected = theme_existing_custom_emoji_assets(config, available_ids)
     missing_ids = [emoji_id for emoji_id in emoji_ids if emoji_id not in available_ids]
     if not missing_ids:
-        return available_ids, False
+        return available_ids, changes_detected
 
     public_download_limit = asyncio.Semaphore(8)
 
@@ -2482,10 +2572,10 @@ async def mirror_custom_emoji_assets_for_posts(
             return emoji_id, preview_bytes
 
     public_results = await asyncio.gather(*(download_public_preview(emoji_id) for emoji_id in missing_ids))
-    changes_detected = False
     for emoji_id, preview_bytes in public_results:
         if not preview_bytes:
             continue
+        preview_bytes = theme_monochrome_custom_emoji_preview(preview_bytes, config.accent_color)
         asset_path = CUSTOM_EMOJI_MEDIA_DIR / f"{emoji_id}.webp"
         if not asset_path.exists() or asset_path.read_bytes() != preview_bytes:
             asset_path.write_bytes(preview_bytes)
@@ -2555,6 +2645,7 @@ async def mirror_custom_emoji_assets_for_posts(
                     log.warning("Custom emoji %s has no browser-compatible preview; Unicode fallback kept", emoji_id)
                     continue
 
+                preview_bytes = theme_monochrome_custom_emoji_preview(preview_bytes, config.accent_color)
                 asset_path = CUSTOM_EMOJI_MEDIA_DIR / f"{emoji_id}.webp"
                 if not asset_path.exists() or asset_path.read_bytes() != preview_bytes:
                     asset_path.write_bytes(preview_bytes)
