@@ -2408,6 +2408,54 @@ def convert_custom_emoji_preview_to_webp(raw_bytes: bytes) -> bytes | None:
         return None
 
 
+def fetch_public_custom_emoji_preview(config: SiteConfig, emoji_id: int) -> bytes | None:
+    metadata_url = f"https://t.me/i/emoji/{emoji_id}.json"
+    request_headers = {"Referer": config.channel_web_url}
+    try:
+        metadata_text = fetch_url(
+            metadata_url,
+            timeout=15,
+            retry_delays=FAST_EXTERNAL_RETRY_DELAYS,
+            log_failures=False,
+            accept="application/json",
+            extra_headers=request_headers,
+        )
+        metadata = json.loads(str(metadata_text))
+    except Exception as error:
+        log.debug("Public custom emoji %s metadata request failed: %s", emoji_id, error)
+        return None
+
+    emoji_type = str(metadata.get("type") or "").strip().lower()
+    candidates: list[tuple[str, str]] = []
+    if emoji_type == "webp":
+        candidates.extend(((str(metadata.get("emoji") or ""), "webp"), (str(metadata.get("thumb") or ""), "webp")))
+    else:
+        candidates.append((str(metadata.get("thumb") or ""), "webp"))
+        if emoji_type == "webm":
+            candidates.append((str(metadata.get("emoji") or ""), "webm"))
+
+    for candidate_url, candidate_type in candidates:
+        if not candidate_url:
+            continue
+        try:
+            raw_bytes = fetch_binary(
+                urljoin(metadata_url, candidate_url),
+                timeout=20,
+                retry_delays=FAST_EXTERNAL_RETRY_DELAYS,
+                log_failures=False,
+                extra_headers=request_headers,
+            )
+            if candidate_type == "webm":
+                raw_bytes = extract_video_poster_bytes(raw_bytes, "webm") or b""
+            preview_bytes = convert_custom_emoji_preview_to_webp(raw_bytes)
+            if preview_bytes:
+                return preview_bytes
+        except Exception as error:
+            log.debug("Public custom emoji %s asset request failed: %s", emoji_id, error)
+
+    return None
+
+
 async def mirror_custom_emoji_assets_for_posts(
     config: SiteConfig,
     posts: list[dict[str, Any]],
@@ -2426,16 +2474,44 @@ async def mirror_custom_emoji_assets_for_posts(
     if not missing_ids:
         return available_ids, False
 
+    public_download_limit = asyncio.Semaphore(8)
+
+    async def download_public_preview(emoji_id: int) -> tuple[int, bytes | None]:
+        async with public_download_limit:
+            preview_bytes = await asyncio.to_thread(fetch_public_custom_emoji_preview, config, emoji_id)
+            return emoji_id, preview_bytes
+
+    public_results = await asyncio.gather(*(download_public_preview(emoji_id) for emoji_id in missing_ids))
+    changes_detected = False
+    for emoji_id, preview_bytes in public_results:
+        if not preview_bytes:
+            continue
+        asset_path = CUSTOM_EMOJI_MEDIA_DIR / f"{emoji_id}.webp"
+        if not asset_path.exists() or asset_path.read_bytes() != preview_bytes:
+            asset_path.write_bytes(preview_bytes)
+            changes_detected = True
+        available_ids.add(emoji_id)
+
+    if available_ids:
+        log.info(
+            "Mirrored %s of %s custom emoji asset(s) through Telegram's public widget endpoint",
+            len(available_ids),
+            len(emoji_ids),
+        )
+
+    missing_ids = [emoji_id for emoji_id in emoji_ids if emoji_id not in available_ids]
+    if not missing_ids:
+        return available_ids, changes_detected
+
     credentials = get_telegram_session_credentials()
     if not credentials:
         log.info(
             "Telegram user session is not configured. %s custom emoji asset(s) use Unicode fallback.",
             len(missing_ids),
         )
-        return available_ids, False
+        return available_ids, changes_detected
 
     api_id, api_hash, session_string = credentials
-    changes_detected = False
 
     from telethon import TelegramClient
     from telethon.sessions import StringSession
