@@ -1198,7 +1198,7 @@ function getPostDuplicateFingerprint(post) {
   );
 
   if (forwardedSourceUrl) {
-    return `fwd:${forwardedSourceUrl}|${dateValue}|${textFingerprint}|${mediaFingerprint}`;
+    return `fwd:${forwardedSourceUrl}|${dateValue}|${textFingerprint}`;
   }
   if (hasPhysicalMedia) {
     return `media:${dateValue}|${textFingerprint}|${mediaFingerprint}`;

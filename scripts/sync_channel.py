@@ -5354,7 +5354,9 @@ def get_post_duplicate_fingerprint(post: dict[str, Any]) -> str:
     )
 
     if forwarded_source_url:
-        return f"fwd:{forwarded_source_url}|{date_value}|{text_value}|{media_fingerprint}"
+        # Telegram can assign different CDN URLs to repeated forwards of the
+        # same source post. The source URL, timestamp, and text are stable.
+        return f"fwd:{forwarded_source_url}|{date_value}|{text_value}"
     if has_physical_media:
         return f"media:{date_value}|{text_value}|{media_fingerprint}"
     return ""

@@ -997,8 +997,27 @@ test.describe('Desktop smoke', () => {
   test('deduplicates repeated forwarded album posts in the antitrust feed', async ({ page }) => {
     const postsPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pg-antitrust', 'posts.json');
     const postsPayload = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
-    const sourcePost = postsPayload.posts[0];
+    const sourcePost = (postsPayload.posts || []).find((post) => Array.isArray(post.photos) && post.photos.length > 0);
     expect(sourcePost).toBeTruthy();
+    const remapPhotos = (photos, token) => photos.map((photo, index) => ({
+      ...photo,
+      thumb_url: `data/channels/pg-antitrust/media/posts/thumbs/${token}-${index + 1}.jpg`,
+      feed_url: `data/channels/pg-antitrust/media/posts/feed/${token}-${index + 1}.jpg`,
+      full_url: `data/channels/pg-antitrust/media/posts/${token}-${index + 1}.jpg`,
+      source_url: `https://cdn4.telesco.pe/file/${token}-${index + 1}.jpg`,
+    }));
+    const buildDuplicate = (id, token) => ({
+      ...sourcePost,
+      id,
+      date: '2026-07-21T13:03:03+00:00',
+      tg_url: `https://t.me/PgAntitrust/${id}`,
+      forwarded_from: {
+        source_url: 'https://t.me/bankrotstvo_mustknow/547',
+        channel_url: 'https://t.me/s/bankrotstvo_mustknow',
+        channel_username: 'bankrotstvo_mustknow',
+      },
+      photos: remapPhotos(sourcePost.photos, token),
+    });
 
     const duplicatedPayload = {
       ...postsPayload,
@@ -1009,12 +1028,12 @@ test.describe('Desktop smoke', () => {
         total_posts: (postsPayload.posts || []).length + 4,
       },
       posts: [
-        { ...sourcePost, id: 990001, tg_url: 'https://t.me/PgAntitrust/990001' },
-        { ...sourcePost, id: 990002, tg_url: 'https://t.me/PgAntitrust/990002' },
-        { ...sourcePost, id: 990003, tg_url: 'https://t.me/PgAntitrust/990003' },
-        { ...sourcePost, id: 990004, tg_url: 'https://t.me/PgAntitrust/990004' },
-        { ...sourcePost, id: 990005, tg_url: 'https://t.me/PgAntitrust/990005' },
-        ...(postsPayload.posts || []).slice(1),
+        buildDuplicate(990001, 'forward-copy-a'),
+        buildDuplicate(990002, 'forward-copy-b'),
+        buildDuplicate(990003, 'forward-copy-c'),
+        buildDuplicate(990004, 'forward-copy-d'),
+        buildDuplicate(990005, 'forward-copy-e'),
+        ...(postsPayload.posts || []).filter((post) => post.id !== sourcePost.id),
       ],
     };
 
@@ -1029,17 +1048,14 @@ test.describe('Desktop smoke', () => {
     await page.goto('/?channel=pg-antitrust');
     await waitForFeedReady(page);
 
-    const duplicateInfo = await page.evaluate(() => {
-      const cards = Array.from(document.querySelectorAll('.post-card[data-post-id]'));
-      const counts = cards.reduce((map, node) => {
-        const key = String(node.dataset.postCanonicalKey || node.dataset.postId || '');
-        map[key] = (map[key] || 0) + 1;
-        return map;
-      }, {});
-      return Object.entries(counts).filter(([, count]) => count > 1);
-    });
-
-    expect(duplicateInfo).toEqual([]);
+    const renderedDuplicates = page.locator(
+      '.post-card[data-post-id="990001"], '
+      + '.post-card[data-post-id="990002"], '
+      + '.post-card[data-post-id="990003"], '
+      + '.post-card[data-post-id="990004"], '
+      + '.post-card[data-post-id="990005"]',
+    );
+    await expect(renderedDuplicates).toHaveCount(1);
   });
 
   test('deduplicates repeated mirrored media posts even when ids and local asset paths differ', async ({ page }) => {
