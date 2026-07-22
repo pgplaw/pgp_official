@@ -148,6 +148,68 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('.site-shell')).not.toHaveClass(/is-empty-search/);
   });
 
+  test('matches ВС and КС only as complete words in feed search', async ({ page }) => {
+    const postsPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pgp-official', 'posts.json');
+    const postsPayload = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
+    const sourcePost = postsPayload.posts[0];
+    expect(sourcePost).toBeTruthy();
+    const buildSearchPost = (id, text) => ({
+      ...sourcePost,
+      id,
+      date: '2026-07-22T12:00:00+00:00',
+      text,
+      text_html: text,
+      photos: [],
+      videos: [],
+      video_url: null,
+      video_note: false,
+      forwarded_from: null,
+      reply_to: null,
+      link_preview: null,
+      tg_url: `https://t.me/pgp_official/${id}`,
+    });
+    const searchPosts = [
+      buildSearchPost(991001, 'ВС рассмотрел спор'),
+      buildSearchPost(991002, 'Всегда актуальная информация'),
+      buildSearchPost(991003, 'КС дал разъяснение'),
+      buildSearchPost(991004, 'Кстати, опубликован новый обзор'),
+    ];
+    const searchPayload = {
+      ...postsPayload,
+      pagination: {
+        ...(postsPayload.pagination || {}),
+        page: 1,
+        total_pages: 1,
+        total_posts: searchPosts.length,
+      },
+      posts: searchPosts,
+    };
+
+    await page.route('**/data/channels/pgp-official/posts.json**', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(searchPayload),
+      });
+    });
+
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const searchInput = page.locator('#feedSearchInput');
+    const renderedPosts = page.locator('#postFeed .post-card[data-post-id]');
+
+    await searchInput.fill('ВС');
+    await expect(renderedPosts).toHaveCount(1);
+    await expect(page.locator('#post-991001')).toBeVisible();
+    await expect(page.locator('#post-991002')).toHaveCount(0);
+
+    await searchInput.fill('КС');
+    await expect(renderedPosts).toHaveCount(1);
+    await expect(page.locator('#post-991003')).toBeVisible();
+    await expect(page.locator('#post-991004')).toHaveCount(0);
+  });
+
   test('shows compact Russian tooltips for channel icons', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
@@ -953,6 +1015,49 @@ test.describe('Desktop smoke', () => {
     const anchor = page.locator('#emoji-host .post-card__text a').first();
     await expect(anchor).toContainText('🔥Важная ссылка');
     await expect(anchor).toHaveAttribute('href', 'https://example.com/story');
+  });
+
+  test('renders only mirrored custom emoji assets inline with post text', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'custom-emoji-host';
+      document.body.appendChild(host);
+      const card = window.renderPostCard({
+        id: 999996,
+        date: new Date().toISOString(),
+        text: 'Custom emoji fixture',
+        text_html: [
+          'Before ',
+          '<img class="post-custom-emoji" data-emoji-id="5321286874256412860" ',
+          'src="data/channels/pgp-official/media/custom-emoji/5321286874256412860.webp" ',
+          'alt="umbrella" width="24" height="24">',
+          ' after ',
+          '<img class="post-custom-emoji" data-emoji-id="999" ',
+          'src="https://example.com/untrusted.webp" alt="fallback">',
+        ].join(''),
+        photos: [],
+        tg_url: 'https://t.me/example/999996',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    });
+
+    const customEmoji = page.locator('#custom-emoji-host img.post-custom-emoji');
+    await expect(customEmoji).toHaveCount(1);
+    await expect(customEmoji).toHaveAttribute('data-emoji-id', '5321286874256412860');
+    await expect(customEmoji).toHaveAttribute(
+      'src',
+      /data\/channels\/pgp-official\/media\/custom-emoji\/5321286874256412860\.webp$/,
+    );
+    await expect(customEmoji).toHaveAttribute('alt', 'umbrella');
+    const emojiBox = await customEmoji.boundingBox();
+    expect(emojiBox).not.toBeNull();
+    expect(emojiBox.width).toBeGreaterThanOrEqual(20);
+    expect(emojiBox.width).toBeLessThanOrEqual(24);
+    await expect(page.locator('#custom-emoji-host .post-card__text')).toContainText('fallback');
   });
 
   test('renders Telegram text formatting and removes unsafe markup', async ({ page }) => {

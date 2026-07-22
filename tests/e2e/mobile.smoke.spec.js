@@ -44,6 +44,44 @@ test.describe('Mobile smoke', () => {
     await expect(page.locator('#postFeed .post-card[data-post-id]').first()).toBeVisible();
   });
 
+  test('keeps mirrored custom emoji aligned with mobile post text', async ({ page }) => {
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await page.evaluate(() => {
+      const host = document.createElement('div');
+      host.id = 'mobile-custom-emoji-host';
+      document.body.appendChild(host);
+      const card = window.renderPostCard({
+        id: 999997,
+        date: new Date().toISOString(),
+        text: 'Mobile custom emoji fixture',
+        text_html: [
+          'Before ',
+          '<img class="post-custom-emoji" data-emoji-id="5321286874256412860" ',
+          'src="data/channels/pgp-official/media/custom-emoji/5321286874256412860.webp" ',
+          'alt="umbrella" width="24" height="24">',
+          ' after',
+        ].join(''),
+        photos: [],
+        tg_url: 'https://t.me/example/999997',
+        comments_count: 0,
+      });
+      host.appendChild(card);
+    });
+
+    const customEmoji = page.locator('#mobile-custom-emoji-host img.post-custom-emoji');
+    await expect(customEmoji).toHaveCount(1);
+    const emojiBox = await customEmoji.boundingBox();
+    const textBox = await page.locator('#mobile-custom-emoji-host .post-card__text').boundingBox();
+    expect(emojiBox).not.toBeNull();
+    expect(textBox).not.toBeNull();
+    expect(emojiBox.width).toBeGreaterThanOrEqual(20);
+    expect(emojiBox.width).toBeLessThanOrEqual(24);
+    expect(emojiBox.y).toBeGreaterThanOrEqual(textBox.y);
+    expect(emojiBox.y + emojiBox.height).toBeLessThanOrEqual(textBox.y + textBox.height + 1);
+  });
+
   test('keeps utility controls in the channel card on mobile', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);

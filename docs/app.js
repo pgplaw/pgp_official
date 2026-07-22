@@ -315,6 +315,7 @@ function replaceInlineEmojiElements(root) {
   if (!root) return;
 
   root.querySelectorAll('img, tg-emoji, span, i').forEach((element) => {
+    if (element.tagName === 'IMG' && element.classList.contains('post-custom-emoji')) return;
     if (!isInlineEmojiElement(element)) return;
 
     const replacement = extractInlineEmojiValue(element);
@@ -439,8 +440,8 @@ function normalizePostHtml(html) {
 }
 
 function sanitizePostHtmlFragment(root) {
-  const allowedTags = new Set(['A', 'BR', 'STRONG', 'B', 'EM', 'I', 'U', 'S', 'DEL', 'CODE', 'PRE', 'BLOCKQUOTE', 'SPAN']);
-  const blockedTags = new Set(['SCRIPT', 'STYLE', 'IFRAME', 'OBJECT', 'EMBED', 'SVG', 'MATH', 'FORM', 'IMG']);
+  const allowedTags = new Set(['A', 'BR', 'STRONG', 'B', 'EM', 'I', 'U', 'S', 'DEL', 'CODE', 'PRE', 'BLOCKQUOTE', 'SPAN', 'IMG']);
+  const blockedTags = new Set(['SCRIPT', 'STYLE', 'IFRAME', 'OBJECT', 'EMBED', 'SVG', 'MATH', 'FORM']);
 
   [...root.querySelectorAll('*')].forEach((element) => {
     if (!root.contains(element)) return;
@@ -450,6 +451,40 @@ function sanitizePostHtmlFragment(root) {
     }
     if (!allowedTags.has(element.tagName)) {
       element.replaceWith(...element.childNodes);
+      return;
+    }
+
+    if (element.tagName === 'IMG') {
+      const rawSrc = element.getAttribute('src') || '';
+      const emojiId = String(element.getAttribute('data-emoji-id') || '').trim();
+      const alt = String(element.getAttribute('alt') || '').trim();
+      let safeUrl = null;
+      try {
+        const candidate = new URL(rawSrc, window.location.href);
+        const isLocalCustomEmoji = (
+          candidate.origin === window.location.origin
+          && /\/data\/(?:channels\/[^/]+\/)?media\/custom-emoji\/\d+\.webp$/i.test(candidate.pathname)
+          && /^\d+$/.test(emojiId)
+        );
+        if (isLocalCustomEmoji) {
+          safeUrl = candidate.href;
+        }
+      } catch (_error) {
+        safeUrl = null;
+      }
+      if (!safeUrl) {
+        element.replaceWith(document.createTextNode(alt));
+        return;
+      }
+      [...element.attributes].forEach((attribute) => element.removeAttribute(attribute.name));
+      element.className = 'post-custom-emoji';
+      element.setAttribute('data-emoji-id', emojiId);
+      element.setAttribute('src', safeUrl);
+      element.setAttribute('alt', alt);
+      element.setAttribute('width', '24');
+      element.setAttribute('height', '24');
+      element.setAttribute('loading', 'lazy');
+      element.setAttribute('decoding', 'async');
       return;
     }
 
@@ -3635,17 +3670,23 @@ function isFeedSearchWordCharacter(character) {
   return Boolean(character && /[\p{L}\p{N}\p{M}_]/u.test(character));
 }
 
+const FEED_SEARCH_EXACT_WORD_QUERIES = new Set(['вс', 'кс']);
+
 function findFeedSearchMatchIndexes(normalizedText, query) {
   if (!normalizedText || !query) return [];
 
   const matches = [];
   const queryStartsWithWord = isFeedSearchWordCharacter(Array.from(query)[0]);
+  const queryRequiresWholeWord = FEED_SEARCH_EXACT_WORD_QUERIES.has(query);
   let matchIndex = normalizedText.indexOf(query);
   while (matchIndex !== -1) {
     const previousCharacter = matchIndex > 0
       ? Array.from(normalizedText.slice(0, matchIndex)).at(-1)
       : '';
-    if (!queryStartsWithWord || !isFeedSearchWordCharacter(previousCharacter)) {
+    const nextCharacter = Array.from(normalizedText.slice(matchIndex + query.length))[0] || '';
+    const hasValidStart = !queryStartsWithWord || !isFeedSearchWordCharacter(previousCharacter);
+    const hasValidEnd = !queryRequiresWholeWord || !isFeedSearchWordCharacter(nextCharacter);
+    if (hasValidStart && hasValidEnd) {
       matches.push(matchIndex);
     }
     matchIndex = normalizedText.indexOf(query, matchIndex + query.length);

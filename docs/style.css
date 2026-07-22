@@ -1926,6 +1926,15 @@ html.is-page-leaving .site-shell {
   word-break: break-word;
 }
 
+.post-card__text .post-custom-emoji {
+  display: inline-block;
+  width: 1.35em;
+  height: 1.35em;
+  margin: 0 0.03em;
+  vertical-align: -0.31em;
+  object-fit: contain;
+}
+
 .post-card__text strong,
 .post-card__text b {
   font-weight: 750;

@@ -42,14 +42,38 @@ class TelegramTextFormattingTests(unittest.TestCase):
             '<a href="https://example.com/path" target="_blank" rel="noopener noreferrer">сайт</a>',
             markup,
         )
-    def test_handles_text_that_is_empty_after_custom_emoji_cleanup(self) -> None:
+    def test_preserves_custom_emoji_id_until_asset_materialization(self) -> None:
         plain, markup = sync_channel.build_text_fields(
-            '<tg-emoji emoji-id="1"><i class="emoji" style="background-image:url(emoji.png)"></i></tg-emoji>'
+            '<tg-emoji emoji-id="5321286874256412860">'
+            '<i class="emoji" style="background-image:url(emoji.png)"><b>umbrella</b></i>'
+            '</tg-emoji>'
         )
 
-        self.assertIsNone(plain)
-        self.assertIsNone(markup)
+        self.assertEqual(plain, "umbrella")
+        self.assertEqual(
+            markup,
+            '<span class="post-custom-emoji" data-emoji-id="5321286874256412860">umbrella</span>',
+        )
 
+    def test_materializes_available_custom_emoji_and_keeps_fallback_for_missing_asset(self) -> None:
+        posts = [
+            {
+                "text_html": (
+                    '<span class="post-custom-emoji" data-emoji-id="100">one</span> '
+                    '<span class="post-custom-emoji" data-emoji-id="200">two</span>'
+                )
+            }
+        ]
+
+        changed = sync_channel.materialize_custom_emoji_markup(posts, {100})
+
+        self.assertTrue(changed)
+        self.assertIn('class="post-custom-emoji"', posts[0]["text_html"])
+        self.assertIn('data-emoji-id="100"', posts[0]["text_html"])
+        self.assertIn('src="data/media/custom-emoji/100.webp"', posts[0]["text_html"])
+        self.assertIn('alt="one"', posts[0]["text_html"])
+        self.assertNotIn('data-emoji-id="200"', posts[0]["text_html"])
+        self.assertTrue(posts[0]["text_html"].endswith(" two"))
 
 if __name__ == "__main__":
     unittest.main()

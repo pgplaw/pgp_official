@@ -48,6 +48,7 @@ POSTS_ATTACHED_VIDEO_POSTERS_DIR = POSTS_MEDIA_DIR / "attached-video-posters"
 POSTS_LINK_PREVIEWS_DIR = POSTS_MEDIA_DIR / "link-previews"
 CHANNEL_MEDIA_DIR = CHANNEL_DATA_DIR / "media"
 CHANNEL_AVATAR_PATH = CHANNEL_MEDIA_DIR / "channel-avatar.jpg"
+CUSTOM_EMOJI_MEDIA_DIR = CHANNEL_MEDIA_DIR / "custom-emoji"
 SUPERRES_MODEL_DIR = ROOT / "ops" / "models"
 FSRCNN_X2_MODEL_PATH = SUPERRES_MODEL_DIR / "FSRCNN_x2.pb"
 POST_PAGES_DIR = DOCS_DIR / "channels" / CHANNEL_KEY / "posts" if CHANNEL_KEY else DOCS_DIR / "posts"
@@ -2159,6 +2160,12 @@ def replace_inline_emoji_markup(raw_html: str) -> str:
             return match.group(0)
 
         fallback = extract_inline_emoji_fallback(attrs, inner_html)
+        emoji_id_match = re.search(r'emoji-id=["\'](\d+)["\']', attrs, re.IGNORECASE)
+        if tag_name == "tg-emoji" and emoji_id_match:
+            return (
+                f'<span class="post-custom-emoji" data-emoji-id="{emoji_id_match.group(1)}">'
+                f'{html_lib.escape(fallback) if fallback else ""}</span>'
+            )
         return html_lib.escape(fallback) if fallback else ""
 
     replaced = re.sub(r"<img\b([^>]*)>", replace_img, raw_html, flags=re.IGNORECASE | re.DOTALL)
@@ -2249,6 +2256,17 @@ class TelegramPostTextParser(HTMLParser):
         ):
             target_tag = "span"
             self.html_parts.append('<span class="post-text-spoiler" tabindex="0">')
+        elif source_tag == "span" and re.search(
+            r"(?:^|\s)post-custom-emoji(?:\s|$)",
+            attributes.get("class") or "",
+            re.IGNORECASE,
+        ):
+            emoji_id = str(attributes.get("data-emoji-id") or "").strip()
+            if emoji_id.isdigit():
+                target_tag = "span"
+                self.html_parts.append(
+                    f'<span class="post-custom-emoji" data-emoji-id="{emoji_id}">'
+                )
         elif target_tag:
             self.html_parts.append(f"<{target_tag}>")
 
@@ -2314,6 +2332,168 @@ def build_text_fields(raw_html: str) -> tuple[str | None, str | None]:
         plain = re.sub(r"(https?://\S+)(?=[A-Za-zА-Яа-яЁё«»„“\"'(])", r"\1 ", plain)
 
     return plain, html_markup
+
+
+CUSTOM_EMOJI_PLACEHOLDER_PATTERN = re.compile(
+    r'<span class="post-custom-emoji" data-emoji-id="(\d+)">(.*?)</span>',
+    re.IGNORECASE | re.DOTALL,
+)
+
+
+def extract_custom_emoji_ids(posts: list[dict[str, Any]]) -> list[int]:
+    emoji_ids = {
+        int(match.group(1))
+        for post in posts
+        for match in CUSTOM_EMOJI_PLACEHOLDER_PATTERN.finditer(str(post.get("text_html") or ""))
+    }
+    return sorted(emoji_ids)
+
+
+def get_custom_emoji_asset_url(emoji_id: int) -> str:
+    if CHANNEL_KEY:
+        return f"data/channels/{CHANNEL_KEY}/media/custom-emoji/{emoji_id}.webp"
+    return f"data/media/custom-emoji/{emoji_id}.webp"
+
+
+def materialize_custom_emoji_markup(
+    posts: list[dict[str, Any]],
+    available_emoji_ids: set[int],
+) -> bool:
+    changed = False
+
+    def replace_placeholder(match: re.Match[str]) -> str:
+        emoji_id = int(match.group(1))
+        fallback_markup = match.group(2) or ""
+        if emoji_id not in available_emoji_ids:
+            return fallback_markup
+
+        fallback_text = html_lib.unescape(strip_tags(fallback_markup)).strip()
+        return (
+            '<img class="post-custom-emoji" '
+            f'data-emoji-id="{emoji_id}" '
+            f'src="{html_lib.escape(get_custom_emoji_asset_url(emoji_id), quote=True)}" '
+            f'alt="{html_lib.escape(fallback_text, quote=True)}" '
+            'width="24" height="24" loading="lazy" decoding="async">'
+        )
+
+    for post in posts:
+        text_html = post.get("text_html")
+        if not text_html:
+            continue
+        next_html = CUSTOM_EMOJI_PLACEHOLDER_PATTERN.sub(replace_placeholder, str(text_html))
+        if next_html != text_html:
+            post["text_html"] = next_html
+            changed = True
+
+    return changed
+
+
+def convert_custom_emoji_preview_to_webp(raw_bytes: bytes) -> bytes | None:
+    if not raw_bytes:
+        return None
+
+    try:
+        from PIL import Image
+
+        with Image.open(io.BytesIO(raw_bytes)) as image:
+            image.seek(0)
+            image.load()
+            resampling = getattr(getattr(Image, "Resampling", Image), "LANCZOS")
+            image = image.convert("RGBA")
+            image.thumbnail((128, 128), resample=resampling)
+            output = io.BytesIO()
+            image.save(output, format="WEBP", lossless=True, method=6)
+            return output.getvalue()
+    except Exception:
+        return None
+
+
+async def mirror_custom_emoji_assets_for_posts(
+    config: SiteConfig,
+    posts: list[dict[str, Any]],
+) -> tuple[set[int], bool]:
+    emoji_ids = extract_custom_emoji_ids(posts)
+    if not emoji_ids:
+        return set(), False
+
+    CUSTOM_EMOJI_MEDIA_DIR.mkdir(parents=True, exist_ok=True)
+    available_ids = {
+        emoji_id
+        for emoji_id in emoji_ids
+        if (CUSTOM_EMOJI_MEDIA_DIR / f"{emoji_id}.webp").exists()
+    }
+    missing_ids = [emoji_id for emoji_id in emoji_ids if emoji_id not in available_ids]
+    if not missing_ids:
+        return available_ids, False
+
+    credentials = get_telegram_session_credentials()
+    if not credentials:
+        log.info(
+            "Telegram user session is not configured. %s custom emoji asset(s) use Unicode fallback.",
+            len(missing_ids),
+        )
+        return available_ids, False
+
+    api_id, api_hash, session_string = credentials
+    changes_detected = False
+
+    from telethon import TelegramClient
+    from telethon.sessions import StringSession
+    from telethon.tl.functions.messages import GetCustomEmojiDocumentsRequest
+
+    async with TelegramClient(StringSession(session_string), int(api_id), api_hash) as client:
+        if not await client.is_user_authorized():
+            raise RuntimeError("TELEGRAM_SESSION_STR is not authorized.")
+
+        for batch in chunked(missing_ids, 100):
+            try:
+                documents = await client(
+                    GetCustomEmojiDocumentsRequest(document_id=[int(emoji_id) for emoji_id in batch])
+                )
+            except Exception as error:  # pragma: no cover - Telegram runtime path
+                log.warning("Custom emoji metadata download failed: %s", error)
+                continue
+            for document in documents:
+                emoji_id = int(getattr(document, "id", 0) or 0)
+                if emoji_id <= 0:
+                    continue
+
+                preview_bytes: bytes | None = None
+                try:
+                    thumbnail_bytes = await client.download_media(document, file=bytes, thumb=-1)
+                    preview_bytes = convert_custom_emoji_preview_to_webp(thumbnail_bytes or b"")
+                except Exception as error:  # pragma: no cover - Telegram runtime path
+                    log.debug("Custom emoji %s thumbnail download failed: %s", emoji_id, error)
+
+                if not preview_bytes:
+                    try:
+                        document_bytes = await client.download_media(document, file=bytes)
+                        preview_bytes = convert_custom_emoji_preview_to_webp(document_bytes or b"")
+                        if not preview_bytes and str(getattr(document, "mime_type", "")).lower() == "video/webm":
+                            poster_bytes = extract_video_poster_bytes(document_bytes or b"", "webm")
+                            preview_bytes = convert_custom_emoji_preview_to_webp(poster_bytes or b"")
+                    except Exception as error:  # pragma: no cover - Telegram runtime path
+                        log.warning("Custom emoji %s download failed: %s", emoji_id, error)
+
+                if not preview_bytes:
+                    log.warning("Custom emoji %s has no browser-compatible preview; Unicode fallback kept", emoji_id)
+                    continue
+
+                asset_path = CUSTOM_EMOJI_MEDIA_DIR / f"{emoji_id}.webp"
+                if not asset_path.exists() or asset_path.read_bytes() != preview_bytes:
+                    asset_path.write_bytes(preview_bytes)
+                    changes_detected = True
+                available_ids.add(emoji_id)
+
+            await asyncio.sleep(0.05)
+
+    log.info(
+        "Mirrored %s of %s custom emoji asset(s) for @%s",
+        len(available_ids),
+        len(emoji_ids),
+        config.channel_username,
+    )
+    return available_ids, changes_detected
 
 
 def extract_div_inner_html_by_class(html_text: str, class_name: str, *, prefer_last: bool = False) -> str:
@@ -6184,7 +6364,15 @@ def main() -> int:
 
     posts = attach_poll_only_posts_to_previous_posts(posts)
 
-    changes_detected = avatar_changed
+    available_custom_emoji_ids, custom_emoji_assets_changed = asyncio.run(
+        mirror_custom_emoji_assets_for_posts(config, posts)
+    )
+    custom_emoji_markup_changed = materialize_custom_emoji_markup(
+        posts,
+        available_custom_emoji_ids,
+    )
+
+    changes_detected = avatar_changed or custom_emoji_assets_changed or custom_emoji_markup_changed
     changes_detected = mirror_post_photos(
         posts,
         photo_overrides=photo_overrides,
