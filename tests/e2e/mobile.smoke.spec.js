@@ -82,20 +82,58 @@ test.describe('Mobile smoke', () => {
     expect(emojiBox.y + emojiBox.height).toBeLessThanOrEqual(textBox.y + textBox.height + 1);
   });
 
-  test('keeps utility controls in the channel card on mobile', async ({ page }) => {
+  test('connects utility tabs below the title card on mobile', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
 
-    const utilityActions = page.locator('.hero__panel > .hero__actions');
+    const leadTitle = page.locator('#siteTitle .hero__title-line--lead');
+    const secondaryTitle = page.locator('#siteTitle .hero__title-line:not(.hero__title-line--lead)');
+    const description = page.locator('#siteDescription');
+    const utilityPanel = page.locator('.hero__panel');
+    const utilityHost = page.locator('#mobileUtilityActionsHost');
+    const utilityActions = utilityHost.locator(':scope > .hero__actions');
+    const themeHost = page.locator('#mobileThemeToggleHost');
+    const themeToggle = themeHost.locator('.theme-toggle');
+    const contactBar = page.locator('.contact-bar');
     await expect(page.locator('.hero__row--channel')).toBeHidden();
+    await expect(page.locator('.hero__row--updated')).toBeHidden();
+    await expect(page.locator('#siteTitle')).toHaveCSS('text-align', 'left');
+    await expect(description).toHaveCSS('text-align', 'left');
+    const [leadTitleBox, secondaryTitleBox, descriptionBox] = await Promise.all([
+      leadTitle.boundingBox(),
+      secondaryTitle.boundingBox(),
+      description.boundingBox(),
+    ]);
+    expect(leadTitleBox).toBeTruthy();
+    expect(secondaryTitleBox).toBeTruthy();
+    expect(descriptionBox).toBeTruthy();
+    expect(Math.abs(leadTitleBox.x - secondaryTitleBox.x)).toBeLessThanOrEqual(1);
+    expect(Math.abs(leadTitleBox.x - descriptionBox.x)).toBeLessThanOrEqual(1);
+    await expect(utilityPanel).toBeHidden();
+    await expect(utilityHost).toBeVisible();
+    expect(await utilityHost.evaluate(
+      (host) => host.nextElementSibling?.classList.contains('contact-bar')
+    )).toBe(true);
     await expect(utilityActions).toBeVisible();
     await expect(utilityActions.locator('#refreshButton')).toBeVisible();
     await expect(utilityActions.locator('#installAppButton')).toBeVisible();
-    await expect(utilityActions.locator('.theme-toggle')).toBeVisible();
+    await expect(utilityActions.locator('.theme-toggle')).toHaveCount(0);
+    await expect(themeHost).toBeVisible();
+    await expect(themeToggle).toBeVisible();
+    await expect(utilityActions.locator('#refreshButton .icon-button__label')).toHaveText('Обновить');
+    await expect(utilityActions.locator('#installAppButton .icon-button__label')).toHaveText('Установить');
+    await expect(utilityActions.locator('.icon-button__label')).toHaveCount(2);
     await expect(page.locator('#channelNavActionsHost .hero__actions')).toHaveCount(0);
     await expect(utilityActions).toHaveCSS('display', 'grid');
+    await expect(utilityActions).toHaveCSS('width', `${Math.round((await utilityHost.boundingBox()).width)}px`);
     await expect(utilityActions).toHaveCSS('column-gap', '0px');
+    await expect(utilityActions).toHaveCSS('border-top-width', '1px');
+    await expect(utilityActions).not.toHaveCSS('background-image', 'none');
+    await expect(utilityActions).not.toHaveCSS('box-shadow', 'none');
     await expect(utilityActions.locator('#refreshButton')).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+    await expect(utilityActions.locator('#refreshButton')).toHaveCSS('height', '33px');
+    await expect(utilityActions.locator('#refreshButton svg')).toHaveCSS('width', '19px');
+    await expect(utilityActions.locator('#installAppButton svg')).toHaveCSS('width', '19px');
     expect(await utilityActions.locator('#refreshButton').evaluate(
       (element) => getComputedStyle(element, '::after').content
     )).toBe('none');
@@ -103,24 +141,43 @@ test.describe('Mobile smoke', () => {
       (element) => getComputedStyle(element, '::after').content
     )).toBe('none');
 
-    const expectThemeInsideActions = async () => {
-      const [actionsBox, themeBox] = await Promise.all([
-        utilityActions.boundingBox(),
-        utilityActions.locator('.theme-toggle__track').boundingBox(),
-      ]);
-      expect(actionsBox).toBeTruthy();
-      expect(themeBox).toBeTruthy();
-      expect(themeBox.x).toBeGreaterThanOrEqual(actionsBox.x);
-      expect(themeBox.x + themeBox.width).toBeLessThanOrEqual(actionsBox.x + actionsBox.width + 0.5);
-      expect((actionsBox.x + actionsBox.width) - (themeBox.x + themeBox.width)).toBeGreaterThanOrEqual(8);
-    };
-    await expectThemeInsideActions();
-    await utilityActions.locator('.theme-toggle').click();
+    const [heroBox, actionsBox, refreshBox, installBox, themeBox, contactBox] = await Promise.all([
+      page.locator('.hero').boundingBox(),
+      utilityActions.boundingBox(),
+      utilityActions.locator('#refreshButton').boundingBox(),
+      utilityActions.locator('#installAppButton').boundingBox(),
+      themeToggle.boundingBox(),
+      contactBar.boundingBox(),
+    ]);
+    expect(heroBox).toBeTruthy();
+    expect(actionsBox).toBeTruthy();
+    expect(refreshBox).toBeTruthy();
+    expect(installBox).toBeTruthy();
+    expect(themeBox).toBeTruthy();
+    expect(contactBox).toBeTruthy();
+    expect(Math.abs(actionsBox.y - (heroBox.y + heroBox.height))).toBeLessThanOrEqual(1);
+    expect(contactBox.y).toBeGreaterThanOrEqual(actionsBox.y + actionsBox.height + 10);
+    expect(actionsBox.width).toBeLessThan(contactBox.width);
+    await expect(page.locator('.hero')).toHaveCSS('border-bottom-left-radius', '20px');
+    await expect(utilityActions).toHaveCSS('border-top-left-radius', '0px');
+    await expect(utilityActions).toHaveCSS('border-bottom-left-radius', '17px');
+    expect(Math.abs(refreshBox.y - installBox.y)).toBeLessThanOrEqual(1);
+    expect(Math.abs(refreshBox.width - installBox.width)).toBeLessThanOrEqual(1);
+    expect(themeBox.x + themeBox.width).toBeLessThanOrEqual(heroBox.x + heroBox.width - 13);
+    expect(themeBox.y).toBeGreaterThanOrEqual(heroBox.y + 13);
+    expect(leadTitleBox.x + leadTitleBox.width).toBeLessThanOrEqual(themeBox.x - 8);
+    await themeToggle.click();
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
-    await expectThemeInsideActions();
+    const darkSurfaceColors = await page.locator(
+      '.hero, #mobileUtilityActionsHost > .hero__actions, .contact-bar, .feed-search, .site-footer'
+    ).evaluateAll(
+      (surfaces) => surfaces.map((surface) => getComputedStyle(surface).backgroundColor),
+    );
+    expect(new Set(darkSurfaceColors).size).toBe(1);
 
-    const contactBar = page.locator('.contact-bar');
     await expect(contactBar).toBeVisible();
+    await expect(page.locator('.feed-search')).toHaveCSS('border-radius', '20px');
+    await expect(page.locator('.feed-search__field')).toHaveCSS('border-radius', '16px');
     await expect(contactBar).toHaveCSS('column-gap', '0px');
     await expect(contactBar.locator('.contact-bar__item')).toHaveCount(4);
     await expect(contactBar.locator('.contact-bar__item').first()).toHaveCSS('border-top-width', '0px');
@@ -140,6 +197,40 @@ test.describe('Mobile smoke', () => {
     await page.evaluate(() => document.documentElement.classList.add('is-touch-input'));
     await expect(firstContact).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
     await expect(firstContact).toHaveCSS('background-image', 'none');
+
+    await page.setViewportSize({ width: 320, height: 720 });
+    await expect(utilityActions.locator('.icon-button__label')).toHaveCount(2);
+    const narrowLabelFit = await utilityActions.locator('.icon-button__label').evaluateAll(
+      (labels) => labels.map((label) => label.scrollWidth <= label.clientWidth + 1),
+    );
+    expect(narrowLabelFit).toEqual([true, true]);
+    const [narrowTitleBox, narrowThemeBox] = await Promise.all([
+      page.locator('#siteTitle').boundingBox(),
+      themeToggle.boundingBox(),
+    ]);
+    expect(narrowTitleBox).toBeTruthy();
+    expect(narrowThemeBox).toBeTruthy();
+    expect(narrowTitleBox.y).toBeGreaterThanOrEqual(narrowThemeBox.y + narrowThemeBox.height + 4);
+  });
+
+  test('breaks the antitrust mobile title before the word pravo', async ({ page }) => {
+    await page.goto('/?channel=pg-antitrust');
+    await waitForFeedReady(page);
+
+    const title = page.locator('#siteTitle');
+    const mobileLine = title.locator('.hero__title-mobile-line');
+    await expect(title).toHaveClass(/hero__title--antitrust/);
+    await expect(mobileLine).toHaveText('право');
+    await expect(mobileLine).toHaveCSS('display', 'block');
+
+    const [titleBox, mobileLineBox] = await Promise.all([
+      title.boundingBox(),
+      mobileLine.boundingBox(),
+    ]);
+    expect(titleBox).toBeTruthy();
+    expect(mobileLineBox).toBeTruthy();
+    expect(mobileLineBox.x).toBeGreaterThanOrEqual(titleBox.x);
+    expect(mobileLineBox.y).toBeGreaterThan(titleBox.y);
   });
 
   test('keeps the current feed position after the app resumes', async ({ page }) => {
@@ -338,12 +429,14 @@ test.describe('Mobile smoke', () => {
     const currentSurface = carousel.locator('.channel-carousel__surface--current');
     const avatar = currentSurface.locator('.channel-carousel__avatar img');
     const subtitle = currentSurface.locator('.channel-carousel__subtitle');
+    const disclosure = currentSurface.locator('.channel-carousel__disclosure');
     const heroAvatar = page.locator('#channelAvatarWrap');
 
     await expect(currentSurface.locator('.channel-carousel__meta')).toHaveCount(0);
     await expect(avatar).toBeVisible();
     await expect(avatar).toHaveAttribute('src', /data\/channels\/pg-employment\/media\/channel-avatar\.jpg$/);
     await expect(subtitle).toHaveText('@pgEmployment');
+    await expect(disclosure).toBeHidden();
     await expect(heroAvatar).toBeHidden();
 
     await page.setViewportSize({ width: 459, height: 820 });
@@ -362,8 +455,7 @@ test.describe('Mobile smoke', () => {
       const copyBox = surface.querySelector('.channel-carousel__copy')?.getBoundingClientRect();
       const titleBox = surface.querySelector('.channel-carousel__title')?.getBoundingClientRect();
       const subtitleBox = surface.querySelector('.channel-carousel__subtitle')?.getBoundingClientRect();
-      const disclosureBox = surface.querySelector('.channel-carousel__disclosure')?.getBoundingClientRect();
-      if (!avatarBox || !copyBox || !titleBox || !subtitleBox || !disclosureBox) return null;
+      if (!avatarBox || !copyBox || !titleBox || !subtitleBox) return null;
       const surfaceBox = surface.getBoundingClientRect();
       return {
         surfaceCenter: surfaceBox.left + (surfaceBox.width / 2),
@@ -375,22 +467,12 @@ test.describe('Mobile smoke', () => {
         copyLeft: copyBox.left,
         titleLeft: titleBox.left,
         subtitleLeft: subtitleBox.left,
-        contentBottom: Math.max(avatarBox.bottom, copyBox.bottom),
-        disclosureTop: disclosureBox.top,
-        disclosureCenter: disclosureBox.left + (disclosureBox.width / 2),
-        disclosureWidth: disclosureBox.width,
-        disclosureBottom: disclosureBox.bottom,
-        surfaceBottom: surfaceBox.bottom,
       };
     });
     expect(alignment).toBeTruthy();
     expect(Math.abs(alignment.surfaceCenter - alignment.groupCenter)).toBeLessThanOrEqual(2);
     expect(Math.abs(alignment.surfaceVerticalCenter - alignment.avatarCenter)).toBeLessThanOrEqual(2);
     expect(Math.abs(alignment.avatarCenter - alignment.copyCenter)).toBeLessThanOrEqual(3);
-    expect(Math.abs(alignment.surfaceCenter - alignment.disclosureCenter)).toBeLessThanOrEqual(1);
-    expect(alignment.disclosureWidth).toBeGreaterThanOrEqual(44);
-    expect(alignment.disclosureTop).toBeGreaterThanOrEqual(alignment.contentBottom - 1);
-    expect(alignment.disclosureBottom).toBeLessThanOrEqual(alignment.surfaceBottom + 1);
     expect(Math.abs(alignment.titleLeft - alignment.subtitleLeft)).toBeLessThanOrEqual(1);
     expect(alignment.copyLeft).toBeGreaterThan(alignment.avatarRight);
   });

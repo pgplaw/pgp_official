@@ -10,6 +10,10 @@ const {
   expectManualRefreshShowsContentLoader,
 } = require('./helpers');
 
+async function getQueuedMetrikaCalls(page) {
+  return page.evaluate(() => Array.from(window.ym?.a || [], (args) => Array.from(args)));
+}
+
 test.describe('Desktop smoke', () => {
   test('loads desktop shell and active channel feed', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
@@ -240,6 +244,8 @@ test.describe('Desktop smoke', () => {
     await expect(utilityActions.locator('#refreshButton')).toBeVisible();
     await expect(utilityActions.locator('#installAppButton')).toBeVisible();
     await expect(utilityActions.locator('.theme-toggle')).toBeVisible();
+    await expect(utilityActions.locator('.icon-button__label')).toHaveCount(2);
+    await expect(utilityActions.locator('.icon-button__label').first()).toBeHidden();
     await expect(page.locator('.hero__panel .hero__actions')).toHaveCount(0);
     const [dockBox, actionsBox] = await Promise.all([dock.boundingBox(), utilityActions.boundingBox()]);
     expect(dockBox).not.toBeNull();
@@ -588,6 +594,43 @@ test.describe('Desktop smoke', () => {
     await platformLinks.first().hover();
     await expect(platformLinks.first()).toHaveCSS('border-color', 'rgb(255, 0, 51)');
     await expect(platformLinks.first()).toHaveCSS('transform', /matrix/);
+  });
+
+  test('initializes Yandex Metrika on each page and records successful channel switches', async ({ page }) => {
+    await page.route('https://mc.yandex.ru/**', (route) => route.abort());
+
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    await expect(page.locator('script[src^="https://mc.yandex.ru/metrika/tag.js"]')).toHaveCount(1);
+    const initialCalls = await getQueuedMetrikaCalls(page);
+    const initCalls = initialCalls.filter((call) => call[0] === 110948894 && call[1] === 'init');
+    expect(initCalls).toHaveLength(1);
+    expect(initCalls[0][2]).toMatchObject({
+      ssr: true,
+      webvisor: true,
+      clickmap: true,
+      accurateTrackBounce: true,
+      trackLinks: true,
+    });
+
+    await page.locator('#channelMenu .channel-tab[data-channel-key="pg-tax"]').click();
+    await expect(page).toHaveURL(/channel=pg-tax/);
+    await waitForFeedReady(page);
+
+    const switchedCalls = await getQueuedMetrikaCalls(page);
+    const hitCalls = switchedCalls.filter((call) => call[0] === 110948894 && call[1] === 'hit');
+    expect(hitCalls).toHaveLength(1);
+    expect(hitCalls[0][2]).toContain('channel=pg-tax');
+    expect(hitCalls[0][3].referer).toContain('channel=pgp-official');
+
+    await page.locator('#channelMenu .channel-tab[data-channel-key="pg-tax"]').click();
+    expect((await getQueuedMetrikaCalls(page)).filter((call) => call[1] === 'hit')).toHaveLength(1);
+
+    await page.goto('/ecosystem.html');
+    await expect(page.locator('script[src^="https://mc.yandex.ru/metrika/tag.js"]')).toHaveCount(1);
+    const ecosystemCalls = await getQueuedMetrikaCalls(page);
+    expect(ecosystemCalls.filter((call) => call[0] === 110948894 && call[1] === 'init')).toHaveLength(1);
   });
 
   test('switches channel from desktop menu and updates hero + url', async ({ page }) => {

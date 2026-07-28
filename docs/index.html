@@ -3,6 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Yandex.Metrika counter -->
+  <script>
+    (function(m,e,t,r,i,k,a){
+      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
+    })(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=110948894','ym');
+
+    ym(110948894,'init',{
+      ssr:true,
+      webvisor:true,
+      clickmap:true,
+      ecommerce:'dataLayer',
+      referrer:document.referrer,
+      url:location.href,
+      accurateTrackBounce:true,
+      trackLinks:true
+    });
+  </script>
+  <!-- /Yandex.Metrika counter -->
   <title>Pepeliaev Group | Практики</title>
   <meta name="description" content="Зеркало Telegram-каналов практик «Пепеляев Групп». Выберите нужное направление в верхнем меню.">
   <meta property="og:type" content="website">
@@ -19,9 +40,10 @@
   <link rel="preload" href="assets/fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/fonts.css">
-  <link rel="stylesheet" href="style.css?v=155">
+  <link rel="stylesheet" href="style.css?v=174">
 </head>
 <body>
+  <noscript><div><img src="https://mc.yandex.ru/watch/110948894" style="position:absolute;left:-9999px" alt=""></div></noscript>
   <div class="site-shell">
     <nav class="channel-nav" aria-label="Каналы практик">
       <div class="channel-nav__current" aria-label="Выбранный канал">
@@ -51,6 +73,8 @@
         </p>
       </div>
 
+      <div id="mobileThemeToggleHost" class="mobile-theme-toggle-host"></div>
+
       <div class="hero__panel">
         <div class="hero__row hero__row--channel">
           <span class="meta-label">Канал</span>
@@ -58,7 +82,7 @@
             @channel
           </a>
         </div>
-        <div class="hero__row">
+        <div class="hero__row hero__row--updated">
           <span class="meta-label">Обновлено</span>
           <span id="updatedText">—</span>
         </div>
@@ -70,6 +94,7 @@
               <path d="M4 14a8 8 0 0 0 13.66 4.66L20 16.33" />
               <path d="M19.83 20.5v-4.17h-4.17" />
             </svg>
+            <span class="icon-button__label">Обновить</span>
           </button>
           <button id="installAppButton" class="icon-button icon-button--install" type="button" aria-label="Установить приложение" title="Установить приложение">
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -77,6 +102,7 @@
               <path d="m8.5 10.25 3.5 3.5 3.5-3.5" />
               <path d="M5 15.75v1.75A2.5 2.5 0 0 0 7.5 20h9A2.5 2.5 0 0 0 19 17.5v-1.75" />
             </svg>
+            <span class="icon-button__label">Установить</span>
           </button>
           <label class="theme-toggle" for="themeToggle" aria-label="Переключить тему">
             <input id="themeToggle" class="theme-toggle__input" type="checkbox" aria-label="Темная тема">
@@ -102,6 +128,8 @@
         </div>
       </div>
     </header>
+
+    <div id="mobileUtilityActionsHost" class="mobile-utility-actions-host"></div>
 
     <section id="feedSearch" class="feed-search" aria-label="Поиск по публикациям">
       <div class="feed-search__field">
@@ -274,6 +302,6 @@
   </div>
 
   <script src="page-transitions.js?v=123"></script>
-  <script src="app.js?v=155"></script>
+  <script src="app.js?v=174"></script>
 </body>
 </html>

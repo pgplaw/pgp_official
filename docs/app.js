@@ -23,6 +23,7 @@ const SCROLL_TOP_VISIBILITY_THRESHOLD_MIN = 360;
 const SCROLL_TOP_VISIBILITY_THRESHOLD_MAX = 720;
 const POST_ANCHOR_GAP_DESKTOP = 10;
 const POST_ANCHOR_GAP_MOBILE = 8;
+const YANDEX_METRIKA_COUNTER_ID = 110948894;
 
 const state = {
   catalog: null,
@@ -73,6 +74,7 @@ const state = {
   feedSearchDebounceId: null,
   feedSearchResults: [],
   feedSearchRendered: 0,
+  metrikaLastTrackedUrl: window.location.href,
 };
 
 const elements = {
@@ -81,6 +83,8 @@ const elements = {
   channelNav: document.querySelector('.channel-nav'),
   channelNavContactsHost: document.getElementById('channelNavContactsHost'),
   channelNavActionsHost: document.getElementById('channelNavActionsHost'),
+  mobileUtilityActionsHost: document.getElementById('mobileUtilityActionsHost'),
+  mobileThemeToggleHost: document.getElementById('mobileThemeToggleHost'),
   channelNavCurrentLink: document.getElementById('channelNavCurrentLink'),
   siteShell: document.querySelector('.site-shell'),
   hero: document.querySelector('.hero'),
@@ -92,6 +96,7 @@ const elements = {
   updatedText: document.getElementById('updatedText'),
   heroPanel: document.querySelector('.hero__panel'),
   heroActions: document.querySelector('.hero__actions'),
+  themeToggleControl: document.querySelector('.theme-toggle'),
   contactBar: document.querySelector('.contact-bar'),
   feedSearch: document.getElementById('feedSearch'),
   feedSearchInput: document.getElementById('feedSearchInput'),
@@ -134,6 +139,20 @@ const IMAGE_DEBUG_ENABLED = (() => {
     return false;
   }
 })();
+
+function trackMetrikaPageView() {
+  if (typeof window.ym !== 'function') return;
+
+  const url = window.location.href;
+  if (url === state.metrikaLastTrackedUrl) return;
+
+  const referer = state.metrikaLastTrackedUrl || document.referrer;
+  state.metrikaLastTrackedUrl = url;
+  window.ym(YANDEX_METRIKA_COUNTER_ID, 'hit', url, {
+    title: document.title,
+    referer,
+  });
+}
 
 function escapeHtml(value) {
   return String(value ?? '')
@@ -1633,14 +1652,28 @@ function isFeedSearchAvailable() {
 }
 
 function syncUtilityActionsPlacement() {
-  if (!elements.heroActions || !elements.heroPanel || !elements.channelNavActionsHost) return;
+  if (
+    !elements.heroActions ||
+    !elements.themeToggleControl ||
+    !elements.mobileUtilityActionsHost ||
+    !elements.mobileThemeToggleHost ||
+    !elements.channelNavActionsHost
+  ) return;
 
-  const target = isMobileCarouselViewport()
-    ? elements.heroPanel
+  const mobileViewport = isMobileCarouselViewport();
+  const target = mobileViewport
+    ? elements.mobileUtilityActionsHost
     : elements.channelNavActionsHost;
 
   if (elements.heroActions.parentElement !== target) {
     target.appendChild(elements.heroActions);
+  }
+
+  const themeTarget = mobileViewport
+    ? elements.mobileThemeToggleHost
+    : elements.heroActions;
+  if (elements.themeToggleControl.parentElement !== themeTarget) {
+    themeTarget.appendChild(elements.themeToggleControl);
   }
 }
 
@@ -1656,8 +1689,11 @@ function syncCompactHeaderEnhancements() {
       if (elements.contactBar.parentElement !== elements.channelNavContactsHost) {
         elements.channelNavContactsHost.appendChild(elements.contactBar);
       }
-    } else if (elements.hero.nextElementSibling !== elements.contactBar) {
-      elements.hero.insertAdjacentElement('afterend', elements.contactBar);
+    } else {
+      const mobileContactAnchor = elements.mobileUtilityActionsHost || elements.hero;
+      if (mobileContactAnchor.nextElementSibling !== elements.contactBar) {
+        mobileContactAnchor.insertAdjacentElement('afterend', elements.contactBar);
+      }
     }
   }
 
@@ -2314,7 +2350,7 @@ async function handleInstallButtonClick() {
 
 function setupInputModalityHandling() {
   const root = document.documentElement;
-  const touchControlSelector = '.contact-bar__item, .hero__actions .icon-button, .hero__actions .theme-toggle';
+  const touchControlSelector = '.contact-bar__item, .hero__actions .icon-button, .hero__actions .theme-toggle, .mobile-theme-toggle-host .theme-toggle';
 
   if (navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches) {
     root.classList.add('is-touch-input');
@@ -2566,12 +2602,23 @@ function getOrderedTitleParts(title) {
   );
 }
 
-function renderHeroTitle(title) {
+function formatHeroTitlePart(part, index, channelKey) {
+  const formattedPart = formatTextWithSoftBreaks(part);
+  if (channelKey === 'pg-antitrust' && index === 0) {
+    return formattedPart.replace(
+      /\s+(право)$/iu,
+      '<span class="hero__title-mobile-line"> $1</span>'
+    );
+  }
+  return formattedPart;
+}
+
+function renderHeroTitle(title, channelKey = '') {
   const orderedParts = getOrderedTitleParts(title);
   if (!orderedParts.length) return '';
 
   return orderedParts.map((part, index) => `
-      <span class="hero__title-line${index === 0 ? ' hero__title-line--lead' : ''}">${formatTextWithSoftBreaks(part)}</span>
+      <span class="hero__title-line${index === 0 ? ' hero__title-line--lead' : ''}">${formatHeroTitlePart(part, index, channelKey)}</span>
     `).join('');
 }
 
@@ -2586,8 +2633,10 @@ function renderHeader(site, generatedAt) {
 
   const orderedTitleParts = getOrderedTitleParts(title);
   const leadTitleLength = Array.from(orderedTitleParts[0] || '').length;
+  const activeChannelKey = activeChannel?.key || state.activeChannelKey || '';
   elements.siteTitle.classList.toggle('hero__title--compact', leadTitleLength > 18);
-  elements.siteTitle.innerHTML = renderHeroTitle(title);
+  elements.siteTitle.classList.toggle('hero__title--antitrust', activeChannelKey === 'pg-antitrust');
+  elements.siteTitle.innerHTML = renderHeroTitle(title, activeChannelKey);
   elements.siteDescription.innerHTML = linkifyTelegramAwareText(description);
   elements.channelLink.textContent = handle;
   elements.channelLink.href = site.channel_username ? `https://t.me/${site.channel_username}` : 'https://t.me';
@@ -5084,6 +5133,7 @@ async function switchChannel(channelKey, { replace = false, force = false, scrol
     if (shouldUpdateUrl) {
       updateChannelUrl(resolvedChannelKey, { replace, clearHash: shouldClearHash });
     }
+    trackMetrikaPageView();
   } catch (error) {
     elements.errorMessage.textContent = `РћС€РёР±РєР°: ${error.message}`;
     showCopyToast(`Не удалось открыть канал: ${error.message}`);
