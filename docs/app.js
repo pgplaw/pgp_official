@@ -3803,6 +3803,41 @@ function isFeedSearchWordCharacter(character) {
 }
 
 const FEED_SEARCH_EXACT_WORD_QUERIES = new Set(['вс', 'кс']);
+const FEED_SEARCH_RUSSIAN_INFLECTION_SUFFIXES = [
+  'иями', 'ьями',
+  'ием', 'ьем', 'ией', 'ьей', 'иею', 'ьею',
+  'иям', 'ьям', 'иях', 'ьях',
+  'ого', 'его', 'ому', 'ему', 'ыми', 'ими',
+  'ами', 'ями',
+  'ию', 'ью', 'ия', 'ья', 'ии', 'ьи', 'ие', 'ье',
+  'ою', 'ею', 'ая', 'яя', 'ое', 'ее', 'ые', 'ую', 'юю',
+  'ов', 'ев', 'ам', 'ям', 'ах', 'ях', 'ом', 'ем',
+  'ой', 'ей', 'ым', 'им', 'ых', 'их', 'ий', 'ый',
+  'ы', 'и', 'а', 'я', 'у', 'ю', 'е', 'о',
+];
+
+function getFeedSearchRussianStem(word) {
+  if (!/^[а-я]+$/u.test(word) || word.length < 4) return word;
+
+  const suffix = FEED_SEARCH_RUSSIAN_INFLECTION_SUFFIXES.find(
+    (candidate) => word.endsWith(candidate) && word.length - candidate.length >= 3,
+  );
+  if (suffix) {
+    return word.slice(0, -suffix.length);
+  }
+  if (/[ьй]$/u.test(word) && word.length > 4) {
+    return word.slice(0, -1);
+  }
+  return word;
+}
+
+function findFeedSearchWordRanges(normalizedText) {
+  return Array.from(normalizedText.matchAll(/[\p{L}\p{N}\p{M}_]+/gu), (match) => ({
+    start: match.index,
+    end: match.index + match[0].length,
+    value: match[0],
+  }));
+}
 
 function findFeedSearchMatchIndexes(normalizedText, query) {
   if (!normalizedText || !query) return [];
@@ -3826,8 +3861,29 @@ function findFeedSearchMatchIndexes(normalizedText, query) {
   return matches;
 }
 
+function findFeedSearchMatchRanges(normalizedText, query) {
+  const literalRanges = findFeedSearchMatchIndexes(normalizedText, query)
+    .map((start) => ({ start, end: start + query.length }));
+  if (
+    FEED_SEARCH_EXACT_WORD_QUERIES.has(query) ||
+    !/^[а-я]+$/u.test(query) ||
+    query.length < 4
+  ) {
+    return literalRanges;
+  }
+
+  const queryStem = getFeedSearchRussianStem(query);
+  const ranges = [...literalRanges];
+  findFeedSearchWordRanges(normalizedText).forEach((word) => {
+    if (getFeedSearchRussianStem(word.value) !== queryStem) return;
+    if (ranges.some((range) => range.start < word.end && range.end > word.start)) return;
+    ranges.push({ start: word.start, end: word.end });
+  });
+  return ranges.sort((left, right) => left.start - right.start);
+}
+
 function doesFeedSearchTextMatch(normalizedText, query) {
-  return findFeedSearchMatchIndexes(normalizedText, query).length > 0;
+  return findFeedSearchMatchRanges(normalizedText, query).length > 0;
 }
 
 function highlightFeedSearchMatches(root, query) {
@@ -3878,9 +3934,9 @@ function highlightFeedSearchMatches(root, query) {
 
   const normalizedText = normalizedChars.join('');
   const matchRanges = [];
-  findFeedSearchMatchIndexes(normalizedText, query).forEach((matchIndex) => {
-    const firstOffset = sourceOffsets[matchIndex];
-    const lastOffset = sourceOffsets[matchIndex + query.length - 1];
+  findFeedSearchMatchRanges(normalizedText, query).forEach((range) => {
+    const firstOffset = sourceOffsets[range.start];
+    const lastOffset = sourceOffsets[range.end - 1];
     if (firstOffset && lastOffset) {
       matchRanges.push({ start: firstOffset.start, end: lastOffset.end });
     }

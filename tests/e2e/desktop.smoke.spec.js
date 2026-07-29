@@ -152,6 +152,76 @@ test.describe('Desktop smoke', () => {
     await expect(page.locator('.site-shell')).not.toHaveClass(/is-empty-search/);
   });
 
+  test('matches Russian words across case endings in feed search', async ({ page }) => {
+    const postsPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pgp-official', 'posts.json');
+    const postsPayload = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
+    const sourcePost = postsPayload.posts[0];
+    expect(sourcePost).toBeTruthy();
+    const buildSearchPost = (id, text) => ({
+      ...sourcePost,
+      id,
+      date: '2026-07-22T12:00:00+00:00',
+      text,
+      text_html: text,
+      photos: [],
+      videos: [],
+      video_url: null,
+      video_note: false,
+      forwarded_from: null,
+      reply_to: null,
+      link_preview: null,
+      tg_url: `https://t.me/pgp_official/${id}`,
+    });
+    const searchPosts = [
+      buildSearchPost(991011, 'Компания завершила налоговую проверку'),
+      buildSearchPost(991012, 'Правило опубликовано в новом обзоре'),
+    ];
+    const searchPayload = {
+      ...postsPayload,
+      pagination: {
+        ...(postsPayload.pagination || {}),
+        page: 1,
+        total_pages: 1,
+        total_posts: searchPosts.length,
+      },
+      posts: searchPosts,
+    };
+
+    await page.route('**/data/channels/pgp-official/posts.json**', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify(searchPayload),
+      });
+    });
+
+    await page.goto('/?channel=pgp-official');
+    await waitForFeedReady(page);
+
+    const searchInput = page.locator('#feedSearchInput');
+    const renderedPosts = page.locator('#postFeed .post-card[data-post-id]');
+    const searchMatch = page.locator('#postFeed .post-card__search-match');
+
+    await searchInput.fill('компанию');
+    await expect(renderedPosts).toHaveCount(1);
+    await expect(page.locator('#post-991011')).toBeVisible();
+    await expect(searchMatch).toHaveText('Компания');
+
+    await searchInput.fill('проверкой');
+    await expect(renderedPosts).toHaveCount(1);
+    await expect(page.locator('#post-991011')).toBeVisible();
+    await expect(searchMatch).toHaveText('проверку');
+
+    await searchInput.fill('налоговой');
+    await expect(renderedPosts).toHaveCount(1);
+    await expect(page.locator('#post-991011')).toBeVisible();
+    await expect(searchMatch).toHaveText('налоговую');
+
+    await searchInput.fill('правами');
+    await expect(renderedPosts).toHaveCount(0);
+    await expect(page.locator('#post-991012')).toHaveCount(0);
+  });
+
   test('matches ВС and КС only as complete words in feed search', async ({ page }) => {
     const postsPath = path.join(process.cwd(), 'docs', 'data', 'channels', 'pgp-official', 'posts.json');
     const postsPayload = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
