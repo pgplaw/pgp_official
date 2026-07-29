@@ -24,6 +24,7 @@ const SCROLL_TOP_VISIBILITY_THRESHOLD_MAX = 720;
 const POST_ANCHOR_GAP_DESKTOP = 10;
 const POST_ANCHOR_GAP_MOBILE = 8;
 const YANDEX_METRIKA_COUNTER_ID = 110948894;
+const APP_INSTALLED_STORAGE_KEY = 'pgp-pwa-installed';
 
 const state = {
   catalog: null,
@@ -1613,6 +1614,34 @@ function isStandaloneMode() {
   return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 }
 
+function readInstalledAppMarker() {
+  try {
+    return window.localStorage.getItem(APP_INSTALLED_STORAGE_KEY) === 'true';
+  } catch {
+    return false;
+  }
+}
+
+function writeInstalledAppMarker(installed) {
+  try {
+    if (installed) {
+      window.localStorage.setItem(APP_INSTALLED_STORAGE_KEY, 'true');
+    } else {
+      window.localStorage.removeItem(APP_INSTALLED_STORAGE_KEY);
+    }
+  } catch {
+    // Standalone detection still works when storage is unavailable.
+  }
+}
+
+function isAppInstalled() {
+  const standalone = isStandaloneMode();
+  if (standalone) {
+    writeInstalledAppMarker(true);
+  }
+  return standalone || readInstalledAppMarker();
+}
+
 function isIosDevice() {
   const userAgent = window.navigator.userAgent || '';
   return /iphone|ipad|ipod/i.test(userAgent) || (window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1);
@@ -1626,10 +1655,14 @@ function isChromiumLikeBrowser() {
 function updateInstallButtonState() {
   if (!elements.installAppButton) return;
 
-  const installed = isStandaloneMode();
+  const installed = isAppInstalled();
+  const label = elements.installAppButton.querySelector('.icon-button__label');
   elements.installAppButton.classList.toggle('is-installed', installed);
   elements.installAppButton.setAttribute('aria-label', installed ? 'Приложение уже установлено' : 'Установить приложение');
   elements.installAppButton.setAttribute('title', installed ? 'Приложение уже установлено' : 'Установить приложение');
+  if (label) {
+    label.textContent = installed ? 'Установлено' : 'Установить';
+  }
 }
 
 function prefersReducedMotion() {
@@ -2307,7 +2340,7 @@ function setupChannelCarouselInteractions() {
 }
 
 function getInstallFallbackMessage() {
-  if (isStandaloneMode()) {
+  if (isAppInstalled()) {
     return 'Приложение уже установлено';
   }
 
@@ -2323,7 +2356,8 @@ function getInstallFallbackMessage() {
 }
 
 async function handleInstallButtonClick() {
-  if (isStandaloneMode()) {
+  if (isAppInstalled()) {
+    updateInstallButtonState();
     showCopyToast('Приложение уже установлено');
     return;
   }
@@ -5297,10 +5331,12 @@ window.addEventListener('online', refreshFeedForAppLifecycle);
 window.addEventListener('beforeinstallprompt', (event) => {
   event.preventDefault();
   state.deferredInstallPrompt = event;
+  writeInstalledAppMarker(false);
   updateInstallButtonState();
 });
 window.addEventListener('appinstalled', () => {
   state.deferredInstallPrompt = null;
+  writeInstalledAppMarker(true);
   updateInstallButtonState();
   showCopyToast('Приложение установлено');
 });

@@ -133,7 +133,12 @@ test.describe('Mobile smoke', () => {
     await expect(utilityActions.locator('#refreshButton')).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
     await expect(utilityActions.locator('#refreshButton')).toHaveCSS('height', '33px');
     await expect(utilityActions.locator('#refreshButton svg')).toHaveCSS('width', '19px');
-    await expect(utilityActions.locator('#installAppButton svg')).toHaveCSS('width', '19px');
+    const installButton = utilityActions.locator('#installAppButton');
+    const installIcon = installButton.locator('.icon-button__icon--install');
+    const installedIcon = installButton.locator('.icon-button__icon--installed');
+    await expect(installIcon).toHaveCSS('width', '19px');
+    await expect(installIcon).toBeVisible();
+    await expect(installedIcon).toBeHidden();
     expect(await utilityActions.locator('#refreshButton').evaluate(
       (element) => getComputedStyle(element, '::after').content
     )).toBe('none');
@@ -166,8 +171,34 @@ test.describe('Mobile smoke', () => {
     expect(themeBox.x + themeBox.width).toBeLessThanOrEqual(heroBox.x + heroBox.width - 13);
     expect(themeBox.y).toBeGreaterThanOrEqual(heroBox.y + 13);
     expect(leadTitleBox.x + leadTitleBox.width).toBeLessThanOrEqual(themeBox.x - 8);
+
+    await expect(installButton).not.toHaveClass(/is-installed/);
+    await page.evaluate(() => window.localStorage.setItem('pgp-pwa-installed', 'true'));
+    await installButton.tap();
+    await expect(page.locator('#copyToast')).toHaveText('Приложение уже установлено');
+    await expect.poll(() => installButton.evaluate((button) => document.activeElement !== button)).toBe(true);
+    await expect(installButton).toHaveClass(/is-installed/);
+    await expect(installButton.locator('.icon-button__label')).toHaveText('Установлено');
+    await expect(installIcon).toBeHidden();
+    await expect(installedIcon).toBeVisible();
+    await expect(installButton).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+    await expect(installButton).toHaveCSS('background-image', 'none');
+    await expect(installButton).toHaveCSS('box-shadow', 'none');
+    await page.reload();
+    await waitForFeedReady(page);
+    await expect(installButton).toHaveClass(/is-installed/);
+    await expect(installButton.locator('.icon-button__label')).toHaveText('Установлено');
+    await expect(installIcon).toBeHidden();
+    await expect(installedIcon).toBeVisible();
+    await expect(installButton).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+    await expect(installButton).toHaveCSS('background-image', 'none');
+    await expect(installButton).toHaveCSS('box-shadow', 'none');
+
     await themeToggle.click();
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+    await expect(installButton).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+    await expect(installButton).toHaveCSS('background-image', 'none');
+    await expect(installButton).toHaveCSS('box-shadow', 'none');
     const darkSurfaceColors = await page.locator(
       '.hero, #mobileUtilityActionsHost > .hero__actions, .contact-bar, .feed-search, .site-footer'
     ).evaluateAll(

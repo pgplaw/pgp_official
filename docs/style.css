@@ -1542,6 +1542,10 @@ html.is-page-leaving .site-shell {
   display: none;
 }
 
+.icon-button__icon--installed {
+  display: none;
+}
+
 .icon-button:hover {
   transform: translateY(-1px);
   border-color: color-mix(in srgb, var(--accent) 24%, rgba(255, 255, 255, 0.18));
@@ -3440,11 +3444,21 @@ html.is-page-leaving .site-shell {
     white-space: nowrap;
   }
 
-  .hero__actions .icon-button--install.is-installed {
+  .hero__actions .icon-button--install.is-installed,
+  :root[data-theme="dark"] .hero__actions .icon-button--install.is-installed {
     border-color: transparent;
-    background: color-mix(in srgb, #48aa74 12%, transparent);
+    background: transparent;
     color: var(--text);
     box-shadow: none;
+    filter: none;
+  }
+
+  .hero__actions .icon-button--install.is-installed .icon-button__icon--install {
+    display: none;
+  }
+
+  .hero__actions .icon-button--install.is-installed .icon-button__icon--installed {
+    display: block;
   }
 
   .mobile-theme-toggle-host .theme-toggle,
