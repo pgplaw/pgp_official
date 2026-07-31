@@ -1,13 +1,43 @@
 {
-  "generated_at": "2026-07-29T17:42:06.158101+00:00",
-  "build_id": "df4d7229a5f7",
+  "generated_at": "2026-07-31T04:48:28.666538+00:00",
+  "build_id": "9cfaa53ac7ac",
   "pagination": {
     "page": 4,
     "page_size": 16,
-    "total_posts": 54,
+    "total_posts": 55,
     "total_pages": 4
   },
   "posts": [
+    {
+      "id": 1340,
+      "date": "2026-05-18T04:00:05+00:00",
+      "text": "📣 Для общественного обсуждения размещен проект постановления Правительства РФ «О внесении изменений в постановление Правительства Российской Федерации от 9 декабря 2020 г. № 2055».\n\nПроект подготовлен в связи с истечением 01.01.2027 срока действия Положения о предельно допустимых выбросах, временно разрешенных выбросах, предельно допустимых нормативах вредных физических воздействий на атмосферный воздух и разрешениях на выбросы загрязняющих веществ в атмосферный воздух, утв. постановления Правительства РФ от 09.12.2020 № 2055.\n\n#ПроектНПА",
+      "text_html": "📣 Для общественного обсуждения размещен <a href=\"https://regulation.gov.ru/projects/166857/\" target=\"_blank\" rel=\"noopener noreferrer\">проект постановления Правительства РФ</a> «О внесении изменений в постановление Правительства Российской Федерации от 9 декабря 2020 г. № 2055».<br><br>Проект подготовлен в связи с истечением 01.01.2027 срока действия Положения о предельно допустимых выбросах, временно разрешенных выбросах, предельно допустимых нормативах вредных физических воздействий на атмосферный воздух и разрешениях на выбросы загрязняющих веществ в атмосферный воздух, утв. постановления Правительства РФ от 09.12.2020 № 2055.<br><br><strong>#ПроектНПА</strong>",
+      "views": 304,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1340-1-de5594f4089b-v9.jpg",
+          "feed_url": "data/channels/pg-ecology/media/posts/feed/1340-1-de5594f4089b-v9.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1340-1-de5594f4089b-v9.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/N5PS_3GFvZqay_hDqb0U7Va_K4XKKKQCI3YeU67ypriNgpxgeS3vMXpCQUOr8CjhBXqsB_V9eZriqxAMCKguJFJaEfJp1UlnCwmGCaUCbU9dqC18U4XZP6qHBclpHkgYAFIOhv0wlCwLHUaIOuXQswW9Wv3RjQzWJB8uhVE_tUudDusOvgMB0HMDSVH-YKF0ifNyhKFItfSSRslw0vdB2w_eNPbDoShx7XAQ-p3PQ3EXGekz9PY5aj1kKWpFcbZdcJUAoncNJxdB-iEnj5XUGyDdXIDyWXb0Y4SARRfBF2V9bDTH13w25x8tFzr8_orE92qTJXoduEBxUuVr7R1MZg.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgecology/1340",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 1339,
       "date": "2026-05-15T04:00:12+00:00",
