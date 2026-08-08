@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-08T13:11:42.719Z",
+  "generated_at": "2026-08-08T14:00:28.850Z",
   "success_count": 8,
   "failure_count": 0,
   "failure_channels": [],
@@ -12,7 +12,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 49139,
+      "duration_ms": 54239,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -69,7 +69,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 16482,
+      "duration_ms": 17483,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -126,7 +126,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 52000,
+      "duration_ms": 55295,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -149,7 +149,7 @@
         }
       },
       "archive_before": {
-        "total_bytes": 1658788574,
+        "total_bytes": 1658780115,
         "file_count": 12831,
         "media_bytes": 1657005153,
         "media_files": 12821,
@@ -167,7 +167,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": -8459,
+        "total_bytes": 0,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -183,7 +183,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 27725,
+      "duration_ms": 28691,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -240,7 +240,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 15882,
+      "duration_ms": 17451,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -297,7 +297,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 10084,
+      "duration_ms": 11510,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -354,7 +354,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 42586,
+      "duration_ms": 43532,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -411,7 +411,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 17705,
+      "duration_ms": 21432,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
