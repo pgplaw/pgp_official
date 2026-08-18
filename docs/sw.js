@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v178';
+const CACHE_VERSION = 'v179';
 const SHELL_CACHE_NAME = `telegram-pages-mirror-shell-${CACHE_VERSION}`;
 const DATA_CACHE_NAME = `telegram-pages-mirror-data-${CACHE_VERSION}`;
 const MEDIA_CACHE_NAME = `telegram-pages-mirror-media-${CACHE_VERSION}`;
@@ -7,6 +7,7 @@ const CACHE_NAMES = [SHELL_CACHE_NAME, DATA_CACHE_NAME, MEDIA_CACHE_NAME, MEDIA_
 const MEDIA_CACHE_MAX_ENTRIES = 360;
 const MEDIA_CACHE_MAX_AGE_MS = 14 * 24 * 60 * 60 * 1000;
 const MEDIA_CACHE_TRIM_INTERVAL_MS = 30 * 60 * 1000;
+const DATA_NETWORK_TIMEOUT_MS = 4000;
 const STATIC_ASSETS = [
   './',
   './app.js',
@@ -37,7 +38,15 @@ function isSuccessfulResponse(response) {
 
 function getCacheKey(request) {
   const url = new URL(request.url);
-  url.searchParams.delete('t');
+  const isDataRequest = url.pathname.includes('/data/');
+  if (request.mode === 'navigate') {
+    url.search = '';
+  } else {
+    url.searchParams.delete('t');
+    if (!isDataRequest) {
+      url.searchParams.delete('v');
+    }
+  }
   return url.toString();
 }
 
@@ -165,9 +174,40 @@ async function matchCached(request, { cacheName, trackMedia = false } = {}) {
   return cached;
 }
 
+async function fetchWithTimeout(request, timeoutMs = DATA_NETWORK_TIMEOUT_MS) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    return await fetch(request, { signal: controller.signal });
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
+async function migratePreviousDataCaches(cacheNames) {
+  const previousDataCacheNames = cacheNames.filter(
+    (cacheName) => cacheName.startsWith('telegram-pages-mirror-data-') && cacheName !== DATA_CACHE_NAME,
+  );
+  if (!previousDataCacheNames.length) return;
+
+  const targetCache = await caches.open(DATA_CACHE_NAME);
+  for (const cacheName of previousDataCacheNames) {
+    const sourceCache = await caches.open(cacheName);
+    const requests = await sourceCache.keys();
+    for (const request of requests) {
+      if (await targetCache.match(request)) continue;
+      const response = await sourceCache.match(request);
+      if (response) {
+        await targetCache.put(request, response);
+      }
+    }
+  }
+}
+
 async function staleWhileRevalidate(request, options) {
   const cached = await matchCached(request, options);
-  const networkFetch = fetch(request)
+  const networkFetch = fetchWithTimeout(request)
     .then((response) => cacheResponse(request, response, options))
     .catch(() => null);
 
@@ -181,7 +221,7 @@ async function staleWhileRevalidate(request, options) {
 
 async function networkFirst(request, options) {
   try {
-    const response = await fetch(request);
+    const response = await fetchWithTimeout(request);
     return cacheResponse(request, response, options);
   } catch {
     const cached = await matchCached(request, options);
@@ -208,7 +248,10 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((key) => !CACHE_NAMES.includes(key)).map((key) => caches.delete(key))))
+      .then(async (keys) => {
+        await migratePreviousDataCaches(keys);
+        await Promise.all(keys.filter((key) => !CACHE_NAMES.includes(key)).map((key) => caches.delete(key)));
+      })
       .then(() => trimMediaCache(true))
       .then(() => self.clients.claim())
   );

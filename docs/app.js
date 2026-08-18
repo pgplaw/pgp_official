@@ -1126,6 +1126,24 @@ function getJsonFetchOptions({ manual = false, prefetch = false } = {}) {
   return { cache: 'default' };
 }
 
+const JSON_FETCH_TIMEOUT_MS = 9000;
+
+async function fetchJsonResource(url, options = {}) {
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), JSON_FETCH_TIMEOUT_MS);
+
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } catch (error) {
+    if (controller.signal.aborted) {
+      throw new Error('Сервер не ответил вовремя. Повторите попытку.');
+    }
+    throw error;
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
 function cloneJsonValue(value) {
   if (typeof structuredClone === 'function') {
     return structuredClone(value);
@@ -1428,7 +1446,7 @@ async function prefetchChannelFeed(channelKey) {
 
   const promise = (async () => {
     try {
-      const response = await fetch(
+      const response = await fetchJsonResource(
         buildFeedUrl(channelKey, { manual: true }),
         getJsonFetchOptions({ manual: true })
       );
@@ -4222,7 +4240,7 @@ async function loadPage(pageNumber) {
     const requestBuildId = state.activeFeedBuildId;
     const defaultManual = state.activeChannelKey === requestChannelKey && state.activeFeedManual;
     const fetchPagePayload = async (manualRequest = defaultManual) => {
-      const response = await fetch(
+      const response = await fetchJsonResource(
         buildPageUrl(requestChannelKey, pageNumber, {
           manual: manualRequest,
           buildId: requestBuildId,
@@ -4678,7 +4696,7 @@ async function showComments(postId) {
 
   try {
     const commentsBuildId = state.activeFeedBuildId;
-    const response = await fetch(
+    const response = await fetchJsonResource(
       buildCommentsUrl(state.activeChannelKey, postId, {
         manual: state.activeFeedManual,
         buildId: commentsBuildId,
@@ -4992,7 +5010,7 @@ async function fetchFeedPayload(channelKey, force = false) {
     invalidateFeedPayloadCache(channelKey);
   }
 
-  const response = await fetch(
+  const response = await fetchJsonResource(
     buildFeedUrl(channelKey, { manual: true }),
     getJsonFetchOptions({ manual: true })
   );
@@ -5243,7 +5261,7 @@ async function loadCatalog({ force = false } = {}) {
   elements.errorState.classList.add('hidden');
 
   try {
-    const response = await fetch(
+    const response = await fetchJsonResource(
       buildCatalogUrl({ manual: force }),
       getJsonFetchOptions({ manual: force })
     );

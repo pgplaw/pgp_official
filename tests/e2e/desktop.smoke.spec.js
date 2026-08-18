@@ -15,6 +15,19 @@ async function getQueuedMetrikaCalls(page) {
 }
 
 test.describe('Desktop smoke', () => {
+  test('ends the loading state when the channel catalog request stalls', async ({ page }) => {
+    await page.route('**/data/channels/index.json**', async (route) => {
+      await new Promise((resolve) => setTimeout(resolve, 12_000));
+      await route.abort('timedout');
+    });
+
+    await page.goto('/?channel=pgp-official');
+
+    await expect(page.locator('#loadingState')).toHaveClass(/hidden/, { timeout: 11_000 });
+    await expect(page.locator('#errorState')).toBeVisible();
+    await expect(page.locator('#errorMessage')).toContainText('Сервер не ответил вовремя');
+  });
+
   test('loads desktop shell and active channel feed', async ({ page }) => {
     await page.goto('/?channel=pgp-official');
     await waitForFeedReady(page);
@@ -1929,5 +1942,27 @@ test.describe('Desktop PWA smoke', () => {
 
     const afterSecondClick = await page.locator('.post-card').count();
     expect(afterSecondClick).toBeGreaterThan(afterFirstClick);
+  });
+
+  test('opens the cached PWA feed when the data network is unavailable', async ({ page, context }) => {
+    await page.goto('/?channel=pg-tax');
+    await waitForFeedReady(page);
+
+    await page.evaluate(async () => {
+      if (!('serviceWorker' in navigator)) return;
+      const registration = await navigator.serviceWorker.register('./sw.js');
+      await registration.update();
+      await navigator.serviceWorker.ready;
+    });
+
+    await page.reload();
+    await waitForFeedReady(page);
+    await expect.poll(() => page.evaluate(() => Boolean(navigator.serviceWorker?.controller))).toBe(true);
+
+    await context.setOffline(true);
+    await page.reload();
+    await waitForFeedReady(page);
+    await expect(page.locator('.post-card').first()).toBeVisible();
+    await expect(page.locator('#errorState')).toHaveClass(/hidden/);
   });
 });
