@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-18T02:54:51.918436+00:00",
-  "build_id": "5230c0e0936d",
+  "generated_at": "2026-08-18T04:12:06.462088+00:00",
+  "build_id": "242f1bc623e0",
   "site": {
     "channel_username": "pgecology",
     "channel_title": "PG Ecology | Экология",
@@ -20,7 +20,7 @@
   "pagination": {
     "page": 1,
     "page_size": 16,
-    "total_posts": 60,
+    "total_posts": 58,
     "total_pages": 4
   },
   "posts": [
@@ -35,9 +35,8 @@
       "photos": [
         {
           "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1399-1-ca16554b064f-v9.jpg",
-          "full_url": "data/channels/pg-ecology/media/posts/1399-1-ca16554b064f-v9.jpg",
-          "source_url": "https://cdn4.telesco.pe/file/soM_1o4xzkFFSz0R3Ax9gncn8jUGidkLuf63fmQ4ZEEXTMpElnegFk8qMMyivZEaxoHmxiAHTS-8d_8-W60-TwTt8jzO4DH3zjHX6zAadVVlHtQEMBMONu3LcV4CLm8EeGcXA85QaH9Uqf4Cl22t2G2uOimKTQr_ofcHKeUnRmpe1CTR_iqlqqMx5b9r-y9NKoywaNYldWdS6jp7cJceuV8REbNjDjXQkZ4LfkwUGLIWnHERNNlURqL_hpdQwElpHAjr2DMRnUrY44wDM2AJkq9wIbsgXpUjzw42LdR_Ch4hEkaEdBGsHfZBOl5QTW_lZQFaao3BxpneWpabVg6vhA.jpg",
           "feed_url": "data/channels/pg-ecology/media/posts/feed/1399-1-ca16554b064f-v9.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1399-1-ca16554b064f-v9.jpg",
           "thumb_width": 800,
           "thumb_height": 800,
           "feed_width": 1800,
@@ -45,7 +44,8 @@
           "full_width": 1880,
           "full_height": 1880,
           "source_width": 1880,
-          "source_height": 1880
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/soM_1o4xzkFFSz0R3Ax9gncn8jUGidkLuf63fmQ4ZEEXTMpElnegFk8qMMyivZEaxoHmxiAHTS-8d_8-W60-TwTt8jzO4DH3zjHX6zAadVVlHtQEMBMONu3LcV4CLm8EeGcXA85QaH9Uqf4Cl22t2G2uOimKTQr_ofcHKeUnRmpe1CTR_iqlqqMx5b9r-y9NKoywaNYldWdS6jp7cJceuV8REbNjDjXQkZ4LfkwUGLIWnHERNNlURqL_hpdQwElpHAjr2DMRnUrY44wDM2AJkq9wIbsgXpUjzw42LdR_Ch4hEkaEdBGsHfZBOl5QTW_lZQFaao3BxpneWpabVg6vhA.jpg"
         }
       ],
       "video_url": null,
