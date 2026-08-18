@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-17T11:36:54.912008+00:00",
-  "build_id": "50a8422ca5e1",
+  "generated_at": "2026-08-18T08:02:36.086176+00:00",
+  "build_id": "2250ebaf53ad",
   "pagination": {
     "page": 6,
     "page_size": 16,
-    "total_posts": 87,
+    "total_posts": 86,
     "total_pages": 6
   },
   "posts": [
@@ -186,46 +186,6 @@
         "channel_username": "PgAntitrust",
         "channel_title": "PG Antitrust | Антимонопольное право"
       },
-      "reply_to": null
-    },
-    {
-      "id": 1836,
-      "date": "2026-05-18T07:04:36+00:00",
-      "text": "🔍 Начинаем рабочую неделю с рубрикой #PG_Грамотность \n\n☝️ Главным образом: когда выделяется запятыми?\n\nЧитайте в карточке правописания!\n\n🏢 Подписаться на рассылки | MAX | Приложение PG",
-      "text_html": "<img class=\"post-custom-emoji\" data-emoji-id=\"5321326250516584206\" src=\"data/channels/pgp-official/media/custom-emoji/5321326250516584206.webp\" alt=\"🔍\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> Начинаем рабочую неделю с рубрикой #PG_Грамотность <br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321504994170539644\" src=\"data/channels/pgp-official/media/custom-emoji/5321504994170539644.webp\" alt=\"☝️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <strong><em>Главным образом: когда выделяется запятыми?</em></strong><br><br>Читайте в карточке правописания!<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5318819699012703056\" src=\"data/channels/pgp-official/media/custom-emoji/5318819699012703056.webp\" alt=\"🏢\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://www.pgplaw.ru/subscribe/\" target=\"_blank\" rel=\"noopener noreferrer\">Подписаться на рассылки |</a> <a href=\"https://max.ru/id7707301372_biz\" target=\"_blank\" rel=\"noopener noreferrer\">MAX |</a> <a href=\"https://t.me/pgp_official/1769\" target=\"_blank\" rel=\"noopener noreferrer\">Приложение PG</a>",
-      "views": 702,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1836-1-9b519052ee8f-v9.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/1836-1-9b519052ee8f-v9.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1836-1-9b519052ee8f-v9.jpg",
-          "thumb_width": 800,
-          "thumb_height": 800,
-          "full_width": 1880,
-          "full_height": 1880,
-          "source_width": 1880,
-          "source_height": 1880,
-          "source_url": "https://cdn4.telesco.pe/file/C6kSTPld_k6mOaUBy164RzovHKv5-szZp91UNqFounOZJ8dVzr82wKwaKpHFAktNJ5qTCgohB0DFNZzwe7_woqKh_MFHtlZJOxYc5Wq0Zrb6D14myLFY1olE2H2n_GZd9tlTEak6BTy2dy-84Hs9xziEIZg3L5QQQlDP0An9cb_7TOf2bHli7_jj8hsZDk2Vac8j2aY8Po3p2ynVPL4YlHObwqEj14M29OB6m_wUFN6N6OSDK-fEbahKU7r3EebEPfEodtxayCrrmEAOmcFdlZJY_llF8an1h5r-NscIxiEGu-SE5MF_2g6nbs7XyyT8aEgEb-zhf0LyImKH_P9yog.jpg"
-        },
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1836-2-0e229c879ebf-v9.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/1836-2-0e229c879ebf-v9.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1836-2-0e229c879ebf-v9.jpg",
-          "thumb_width": 800,
-          "thumb_height": 800,
-          "full_width": 1880,
-          "full_height": 1880,
-          "source_width": 1880,
-          "source_height": 1880,
-          "source_url": "https://cdn4.telesco.pe/file/rB7mXz20OpBkNgI7Nee3EZgsja2tkrbbNwJA1xQOrdtbEZfb-EsfV1d0E7jsSSuX0o1wdgzfDY_TA7gZ42j4I9H3es9sENFjEXP1uxekHVopuuzOzelldMX20FkYnpAbjO9Ukr6YXw8UYTByUnwCrX5_jh-70L-XwKF8l0SEW-ptX9GHKvOsrN6VbUn01Vzkf4PiDAsyOxqINtK7Fs13nQn9inu77QLOR4SEFDQA5a8zBxvC2i92raY_12PpW004Fs9hyzZ8q4Tm2H62VjZCIEQndoQ93S8t-g8Z0CX_S3hxISBPPeXGa13R6Q0Z0f9H6aLubVIYIP4KEBi5NSOfuw.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/1836",
-      "forwarded_from": null,
       "reply_to": null
     }
   ]
