@@ -1,11 +1,8 @@
 {
-  "generated_at": "2026-08-18T02:55:09.458Z",
-  "success_count": 6,
-  "failure_count": 2,
-  "failure_channels": [
-    "bankrotstvo-mustknow",
-    "pg-employment"
-  ],
+  "generated_at": "2026-08-18T03:31:19.557Z",
+  "success_count": 8,
+  "failure_count": 0,
+  "failure_channels": [],
   "channel_timeout_ms": 300000,
   "channels": [
     {
@@ -15,7 +12,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 68541,
+      "duration_ms": 66260,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -72,7 +69,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 30636,
+      "duration_ms": 32469,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -129,7 +126,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 74011,
+      "duration_ms": 71573,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -186,7 +183,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 36182,
+      "duration_ms": 33650,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -243,7 +240,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 33407,
+      "duration_ms": 38972,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -300,7 +297,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 15858,
+      "duration_ms": 15532,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -354,35 +351,53 @@
       "key": "bankrotstvo-mustknow",
       "channel_username": "bankrotstvo_mustknow",
       "channel_title": "Банкротство | Взгляд эксперта",
-      "status": "failed",
-      "exit_code": null,
+      "status": "success",
+      "exit_code": 0,
       "signal": null,
-      "duration_ms": 0,
-      "error": "Missing sync result",
-      "telegram_api_credentials": null,
-      "sync_meta": null,
+      "duration_ms": 56725,
+      "error": null,
+      "telegram_api_credentials": {
+        "api_id": false,
+        "api_hash": false,
+        "session_str": false,
+        "complete": false
+      },
+      "sync_meta": {
+        "telegram_api_credentials": {
+          "api_id": false,
+          "api_hash": false,
+          "session_str": false,
+          "complete": false
+        },
+        "poll_sync": {
+          "credentials_complete": false,
+          "selected_ids": [],
+          "fetched_ids": [],
+          "recovered_ids": []
+        }
+      },
       "archive_before": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 602370231,
+        "file_count": 5176,
+        "media_bytes": 601725922,
+        "media_files": 5172,
+        "json_files": 4,
+        "page_json_files": 3,
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 602370231,
+        "file_count": 5176,
+        "media_bytes": 601725922,
+        "media_files": 5172,
+        "json_files": 4,
+        "page_json_files": 3,
         "comment_json_files": 0
       },
       "archive_delta": {
         "total_bytes": 0,
-        "media_bytes": 0,
         "file_count": 0,
+        "media_bytes": 0,
         "media_files": 0,
         "json_files": 0,
         "page_json_files": 0,
@@ -393,35 +408,53 @@
       "key": "pg-employment",
       "channel_username": "pgEmployment",
       "channel_title": "PG Employment | Трудовое право",
-      "status": "failed",
-      "exit_code": null,
+      "status": "success",
+      "exit_code": 0,
       "signal": null,
-      "duration_ms": 0,
-      "error": "Missing sync result",
-      "telegram_api_credentials": null,
-      "sync_meta": null,
+      "duration_ms": 27868,
+      "error": null,
+      "telegram_api_credentials": {
+        "api_id": false,
+        "api_hash": false,
+        "session_str": false,
+        "complete": false
+      },
+      "sync_meta": {
+        "telegram_api_credentials": {
+          "api_id": false,
+          "api_hash": false,
+          "session_str": false,
+          "complete": false
+        },
+        "poll_sync": {
+          "credentials_complete": false,
+          "selected_ids": [],
+          "fetched_ids": [],
+          "recovered_ids": []
+        }
+      },
       "archive_before": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 51143632,
+        "file_count": 609,
+        "media_bytes": 50901987,
+        "media_files": 607,
+        "json_files": 2,
+        "page_json_files": 1,
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 0,
-        "media_bytes": 0,
-        "file_count": 0,
-        "media_files": 0,
-        "json_files": 0,
-        "page_json_files": 0,
+        "total_bytes": 51143632,
+        "file_count": 609,
+        "media_bytes": 50901987,
+        "media_files": 607,
+        "json_files": 2,
+        "page_json_files": 1,
         "comment_json_files": 0
       },
       "archive_delta": {
         "total_bytes": 0,
-        "media_bytes": 0,
         "file_count": 0,
+        "media_bytes": 0,
         "media_files": 0,
         "json_files": 0,
         "page_json_files": 0,
@@ -430,12 +463,12 @@
     }
   ],
   "archive_totals": {
-    "total_bytes": 3659373781,
-    "media_bytes": 3656002811,
-    "file_count": 31594,
-    "media_files": 31569,
-    "json_files": 25,
-    "page_json_files": 19,
+    "total_bytes": 4312887644,
+    "media_bytes": 4308630720,
+    "file_count": 37379,
+    "media_files": 37348,
+    "json_files": 31,
+    "page_json_files": 23,
     "comment_json_files": 0
   }
 }
