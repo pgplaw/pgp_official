@@ -1,13 +1,43 @@
 {
-  "generated_at": "2026-08-20T05:57:27.703508+00:00",
-  "build_id": "923ac0e655b8",
+  "generated_at": "2026-08-21T04:00:35.286275+00:00",
+  "build_id": "6dcbe37a6fb8",
   "pagination": {
     "page": 4,
     "page_size": 16,
-    "total_posts": 59,
+    "total_posts": 60,
     "total_pages": 4
   },
   "posts": [
+    {
+      "id": 1354,
+      "date": "2026-06-08T04:00:07+00:00",
+      "text": "📣 19.05.2026 опубликован Приказ Минприроды России от 03.03.2026 № 113 об утверждении Порядка государственной или муниципальной экспертизы проекта освоения лесов.\n\nПроект подготовлен взамен действующего Порядка, утв. Приказом Минприроды России от 30.07.2020 N 513.\n\n⏱️ Вступает в силу с 01.09.2026 и действует до 01.09.2032.\n\n#ИзмененияЗаконодательства",
+      "text_html": "📣 19.05.2026 <a href=\"http://publication.pravo.gov.ru/document/0001202605190004\" target=\"_blank\" rel=\"noopener noreferrer\">опубликован</a> Приказ Минприроды России от 03.03.2026 № 113 об утверждении Порядка государственной или муниципальной экспертизы проекта освоения лесов.<br><br>Проект подготовлен взамен действующего Порядка, утв. Приказом Минприроды России от 30.07.2020 N 513.<br><br>⏱️ Вступает в силу с 01.09.2026 и действует до 01.09.2032.<br><br><strong>#ИзмененияЗаконодательства</strong>",
+      "views": 492,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-ecology/media/posts/thumbs/1354-1-2ccf0b7b02e1-v9.jpg",
+          "feed_url": "data/channels/pg-ecology/media/posts/feed/1354-1-2ccf0b7b02e1-v9.jpg",
+          "full_url": "data/channels/pg-ecology/media/posts/1354-1-2ccf0b7b02e1-v9.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/XD__3k1WElZjEUw6XsxY7MVMitP-qalX5erzfYMwYEdlYWYcnYRHOed6ocmllvtR71XyPGbo1-UJusDrdnro9PlZr15Mt63qFFsccrwE3GMZTA8lKIhylGarbg4V30bo-Xo0rcvQbv3MdbBIL5ZBPCnlCUaWDsY_TYlyNuXqtf1WFCoAJnS1BxBZht95k4wAseVsFIgvJG_t9y2IAebkcp9QXfT-u86EbVp5CfVlVzImXWdXtuyFccIttUIoDfmNqfYwJyi__rOjs6iNvLQge2kDe7wP3p6p9mwfqNrwipEjyq1GsPvjIMqmymAXIGZk68ym8tGMo-AVyA7NAf74XA.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgecology/1354",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 1353,
       "date": "2026-06-05T04:00:02+00:00",
