@@ -1,10 +1,8 @@
 {
-  "generated_at": "2026-08-23T17:56:13.428Z",
-  "success_count": 7,
-  "failure_count": 1,
-  "failure_channels": [
-    "pg-tax"
-  ],
+  "generated_at": "2026-08-23T18:45:43.459Z",
+  "success_count": 8,
+  "failure_count": 0,
+  "failure_channels": [],
   "channel_timeout_ms": 300000,
   "channels": [
     {
@@ -14,7 +12,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 248950,
+      "duration_ms": 243753,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -71,7 +69,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 127959,
+      "duration_ms": 112077,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -125,18 +123,31 @@
       "key": "pg-tax",
       "channel_username": "PG_Tax",
       "channel_title": "PG Tax | Налоги",
-      "status": "failed",
-      "exit_code": null,
-      "signal": "SIGKILL",
-      "duration_ms": 300105,
-      "error": "spawnSync python ETIMEDOUT",
+      "status": "success",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 288772,
+      "error": null,
       "telegram_api_credentials": {
         "api_id": false,
         "api_hash": false,
         "session_str": false,
         "complete": false
       },
-      "sync_meta": {},
+      "sync_meta": {
+        "telegram_api_credentials": {
+          "api_id": false,
+          "api_hash": false,
+          "session_str": false,
+          "complete": false
+        },
+        "poll_sync": {
+          "credentials_complete": false,
+          "selected_ids": [],
+          "fetched_ids": [],
+          "recovered_ids": []
+        }
+      },
       "archive_before": {
         "total_bytes": 1671652304,
         "file_count": 12934,
@@ -172,7 +183,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 150652,
+      "duration_ms": 130090,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -229,7 +240,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 90123,
+      "duration_ms": 101976,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -286,7 +297,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 57943,
+      "duration_ms": 49939,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -343,7 +354,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 162921,
+      "duration_ms": 157481,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -400,7 +411,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 118378,
+      "duration_ms": 113325,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
