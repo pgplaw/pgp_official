@@ -1,13 +1,147 @@
 {
-  "generated_at": "2026-08-30T00:44:54.909640+00:00",
-  "build_id": "b35d4c9d8b77",
+  "generated_at": "2026-08-31T09:40:54.727503+00:00",
+  "build_id": "c47c626cf08a",
   "pagination": {
     "page": 2,
     "page_size": 16,
-    "total_posts": 31,
+    "total_posts": 32,
     "total_pages": 2
   },
   "posts": [
+    {
+      "id": 1437,
+      "date": "2026-07-03T07:13:40+00:00",
+      "text": "🇷🇺 или 🇨🇳? Проверьте ваши знания после серии постов\n\nШесть фактов об антимонопольном регулировании. Угадайте, к какой стране относится каждый. К каждому факту прикрепляем опрос в режиме «Викторина» – ответ подсветится сразу после голосования.",
+      "text_html": "<strong>🇷🇺 или 🇨🇳? Проверьте ваши знания после </strong><a href=\"https://t.me/PgAntitrust/1415\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>серии постов</strong></a><br><br>Шесть фактов об антимонопольном регулировании. Угадайте, к какой стране относится каждый. К каждому факту прикрепляем опрос в режиме «Викторина» – ответ подсветится сразу после голосования.",
+      "views": 327,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1437-1-d08c99552f52-v9.jpg",
+          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1437-1-d08c99552f52-v9.jpg",
+          "full_url": "data/channels/pg-antitrust/media/posts/1437-1-d08c99552f52-v9.jpg",
+          "thumb_width": 800,
+          "thumb_height": 320,
+          "feed_width": 1800,
+          "feed_height": 720,
+          "full_width": 1880,
+          "full_height": 752,
+          "source_width": 1880,
+          "source_height": 752,
+          "source_url": "https://cdn4.telesco.pe/file/He7hqZd6cOlzs-YiFmGiMRoL2gnjcAwprGbwGOeC_PAGf8h8AivIQPiboB18TDK-hdHtU_x4YM7rwk8vv6aVZ40ucanbPdbL5Y3UixQ1Xy53n-UDx4RQVs_ihysPGTw8urVh-VOYy92okE-gmRtpJ3F5Sn5EMwYi5G9CHNp6gQ_YcTaEoyo0EIX_MF1BF12H30txCkq-brLzHrOUcsbLWym2MUURYJ1g5l4I8XM6Jk1onG4oD_7O262JWh5tqAfa8rbWr_RzY4c__jjfk5F9uepOf6OfJQOmVa851MAzn96-kC4eQ4jrRxBlSx5tWh9FZnezxmn13vLI9opKPi79Kg.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PgAntitrust/1437",
+      "forwarded_from": null,
+      "reply_to": null,
+      "polls": [
+        {
+          "type": "Anonymous Quiz",
+          "question": "Первый участник картеля, сообщивший о нем регулятору, получает снижение штрафа не менее чем на 80%.",
+          "total_voters": 54,
+          "options": [
+            {
+              "text": "🇷🇺",
+              "percent": 9.0
+            },
+            {
+              "text": "🇨🇳",
+              "percent": 91.0
+            }
+          ],
+          "source_post_id": 1438,
+          "source_date": "2026-07-03T07:13:53+00:00"
+        },
+        {
+          "type": "Anonymous Quiz",
+          "question": "До реформы антимонопольные функции были разделены между тремя отдельными ведомствами.",
+          "total_voters": 52,
+          "options": [
+            {
+              "text": "🇷🇺",
+              "percent": 27.0
+            },
+            {
+              "text": "🇨🇳",
+              "percent": 73.0
+            }
+          ],
+          "source_post_id": 1439,
+          "source_date": "2026-07-03T07:14:07+00:00"
+        },
+        {
+          "type": "Anonymous Quiz",
+          "question": "Антимонопольный орган может затребовать уведомление о сделке даже при недостижении пороговых значений концентрации.",
+          "total_voters": 49,
+          "options": [
+            {
+              "text": "🇷🇺",
+              "percent": 47.0
+            },
+            {
+              "text": "🇨🇳",
+              "percent": 53.0
+            }
+          ],
+          "source_post_id": 1440,
+          "source_date": "2026-07-03T07:14:35+00:00"
+        },
+        {
+          "type": "Anonymous Quiz",
+          "question": "Коллективное доминирование устанавливается для двух субъектов при совокупной доле рынка 2/3.",
+          "total_voters": 48,
+          "options": [
+            {
+              "text": "🇷🇺",
+              "percent": 42.0
+            },
+            {
+              "text": "🇨🇳",
+              "percent": 58.0
+            }
+          ],
+          "source_post_id": 1441,
+          "source_date": "2026-07-03T07:14:55+00:00"
+        },
+        {
+          "type": "Anonymous Quiz",
+          "question": "Монопольное соглашение может быть признано допустимым, если направлено на смягчение последствий экономического спада.",
+          "total_voters": 47,
+          "options": [
+            {
+              "text": "🇷🇺",
+              "percent": 19.0
+            },
+            {
+              "text": "🇨🇳",
+              "percent": 81.0
+            }
+          ],
+          "source_post_id": 1442,
+          "source_date": "2026-07-03T07:15:10+00:00"
+        },
+        {
+          "type": "Anonymous Quiz",
+          "question": "При обжаловании решений антимонопольного органа в судебной системе нет кассационной инстанции.",
+          "total_voters": 53,
+          "options": [
+            {
+              "text": "🇷🇺",
+              "percent": 11.0
+            },
+            {
+              "text": "🇨🇳",
+              "percent": 89.0
+            }
+          ],
+          "source_post_id": 1443,
+          "source_date": "2026-07-03T07:15:19+00:00"
+        }
+      ]
+    },
     {
       "id": 1436,
       "date": "2026-07-01T09:52:01+00:00",
@@ -43,7 +177,7 @@
       "date": "2026-06-30T09:55:21+00:00",
       "text": "‼️ Когда строгие правила выгоднее закона: как саморегулирование снижает антимонопольные риски\n\nВ 2026 году ФАС усиливает контроль за цифровыми платформами и цепочками дистрибуции и все чаще исходит из того, что производитель отвечает за действия дистрибьютора, на которого имеет экономическое влияние. Формальной оговорки в договоре «партнер обязуется соблюдать закон» больше недостаточно.\n\nВ новом материале журнала «Конкуренция и право» руководитель службы комплаенса АО «Систэм Электрик» Светлана Медведовская разбирает, как производителям выстроить реальный, а не «бумажный» контроль за партнерами и почему добровольные отраслевые стандарты, более строгие, чем требует закон, оказываются выгоднее минимального комплаенса.\n\nО чем статья:\n🔸почему вертикальные соглашения (ст. 11 Закона о защите конкуренции) стали зоной риска и почему производителя могут привлечь по ст. 14.32 КоАП за действия дистрибьютора;\n🔸как подарочные сертификаты представителям торговых сетей превращаются из маркетинга в коммерческий подкуп;\n🔸что входит в «реальный» комплаенс: предварительное согласование акций, право на аудит партнера, внутренние стандарты стимулирующих мероприятий;\n🔸опыт Ассоциации «Честная позиция»: добровольный отказ от «аналогов денег» и прозрачная модерация конкурсов как способ заранее снять претензии регулятора.\n\nГлавный тезис: антимонопольный комплаенс сегодня не система запретов, а инструмент создания правил, по которым экономически эффективно работать добросовестно.\n\n📖 Читать полностью здесь",
       "text_html": "<img class=\"post-custom-emoji\" data-emoji-id=\"5431771055360324810\" src=\"data/channels/pg-antitrust/media/custom-emoji/5431771055360324810.webp\" alt=\"‼️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <strong>Когда строгие правила выгоднее закона: как саморегулирование снижает антимонопольные риски</strong><br><br>В 2026 году ФАС усиливает контроль за цифровыми платформами и цепочками дистрибуции и все чаще исходит из того, что производитель отвечает за действия дистрибьютора, на которого имеет экономическое влияние. Формальной оговорки в договоре «партнер обязуется соблюдать закон» больше недостаточно.<br><br>В новом материале журнала «Конкуренция и право» руководитель службы комплаенса АО «Систэм Электрик» Светлана Медведовская разбирает, как производителям выстроить реальный, а не «бумажный» контроль за партнерами и почему добровольные отраслевые стандарты, более строгие, чем требует закон, оказываются выгоднее минимального комплаенса.<br><br><strong>О чем статья:</strong><br><img class=\"post-custom-emoji\" data-emoji-id=\"5433960784306649469\" src=\"data/channels/pg-antitrust/media/custom-emoji/5433960784306649469.webp\" alt=\"🔸\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">почему вертикальные соглашения (ст. 11 Закона о защите конкуренции) стали зоной риска и почему производителя могут привлечь по ст. 14.32 КоАП за действия дистрибьютора;<br><img class=\"post-custom-emoji\" data-emoji-id=\"5433960784306649469\" src=\"data/channels/pg-antitrust/media/custom-emoji/5433960784306649469.webp\" alt=\"🔸\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">как подарочные сертификаты представителям торговых сетей превращаются из маркетинга в коммерческий подкуп;<br><img class=\"post-custom-emoji\" data-emoji-id=\"5433960784306649469\" src=\"data/channels/pg-antitrust/media/custom-emoji/5433960784306649469.webp\" alt=\"🔸\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">что входит в «реальный» комплаенс: предварительное согласование акций, право на аудит партнера, внутренние стандарты стимулирующих мероприятий;<br><img class=\"post-custom-emoji\" data-emoji-id=\"5433960784306649469\" src=\"data/channels/pg-antitrust/media/custom-emoji/5433960784306649469.webp\" alt=\"🔸\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">опыт Ассоциации «Честная позиция»: добровольный отказ от «аналогов денег» и прозрачная модерация конкурсов как способ заранее снять претензии регулятора.<br><br><strong>Главный тезис:</strong> антимонопольный комплаенс сегодня не система запретов, а инструмент создания правил, по которым экономически эффективно работать добросовестно.<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5436301356799375632\" src=\"data/channels/pg-antitrust/media/custom-emoji/5436301356799375632.webp\" alt=\"📖\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://cljournal.ru/vybor/287/\" target=\"_blank\" rel=\"noopener noreferrer\">Читать полностью здесь</a>",
-      "views": 339,
+      "views": 340,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -197,7 +331,7 @@
       "date": "2026-06-23T11:47:40+00:00",
       "text": "📣 Антитраст на ПМЮФ-2026\n \nВ ходе XIV Петербургского международного юридического форума, который состоится в Санкт-Петербурге с 24 по 26 июня 2026 г., запланирована сессия «Антимонопольное регулирование в эпоху глобальных перемен: от адаптации к опережению»\n\nВ повестке следующие вопросы:\n\n🔸Какие меры антимонопольного реагирования доказывают наибольшую эффективность в условиях цифровой экономики?\n🔸Как сформировать комплексный подход к интеллектуальным правам в рамках антимонопольного законодательства и как он может повлиять на развитие российской системы защиты конкуренции?\n🔸Какие уроки и выводы из международного опыта и сравнительного анализа могут быть полезны для формирования будущего законодательства о конкуренции в России, в том числе в контексте ожидаемого шестого антимонопольного пакета?\n\n🎙Модератор: Сергей Пузыревский, статс-секретарь – заместитель руководителя ФАС России.\n\n🔖24 июня, 13:30–15:00\n \n➡️ Онлайн-трансляция",
       "text_html": "<img class=\"post-custom-emoji\" data-emoji-id=\"5424818078833715060\" src=\"data/channels/pg-antitrust/media/custom-emoji/5424818078833715060.webp\" alt=\"📣\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <strong>Антитраст на ПМЮФ-2026</strong><br> <br><strong>В ходе </strong><a href=\"https://legalforum.info/programme/business-programme/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>XIV Петербургского международного юридического форума</strong></a><strong>, который состоится в Санкт-Петербурге с 24 по 26 июня 2026 г., запланирована сессия </strong><a href=\"https://legalforum.info/programme/business-programme/10256/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>«Антимонопольное регулирование в эпоху глобальных перемен: от адаптации к опережению»</strong></a><br><br>В повестке следующие вопросы:<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5433960784306649469\" src=\"data/channels/pg-antitrust/media/custom-emoji/5433960784306649469.webp\" alt=\"🔸\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">Какие меры антимонопольного реагирования доказывают наибольшую эффективность в условиях цифровой экономики?<br><img class=\"post-custom-emoji\" data-emoji-id=\"5433960784306649469\" src=\"data/channels/pg-antitrust/media/custom-emoji/5433960784306649469.webp\" alt=\"🔸\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">Как сформировать комплексный подход к интеллектуальным правам в рамках антимонопольного законодательства и как он может повлиять на развитие российской системы защиты конкуренции?<br><img class=\"post-custom-emoji\" data-emoji-id=\"5433960784306649469\" src=\"data/channels/pg-antitrust/media/custom-emoji/5433960784306649469.webp\" alt=\"🔸\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">Какие уроки и выводы из международного опыта и сравнительного анализа могут быть полезны для формирования будущего законодательства о конкуренции в России, в том числе в контексте ожидаемого шестого антимонопольного пакета?<br><br><strong><img class=\"post-custom-emoji\" data-emoji-id=\"5436014276890343784\" src=\"data/channels/pg-antitrust/media/custom-emoji/5436014276890343784.webp\" alt=\"🎙\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"></strong><strong>Модератор</strong>: Сергей Пузыревский, статс-секретарь – заместитель руководителя ФАС России.<br><br><strong><img class=\"post-custom-emoji\" data-emoji-id=\"5434053680154293261\" src=\"data/channels/pg-antitrust/media/custom-emoji/5434053680154293261.webp\" alt=\"🔖\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"></strong><strong>24 июня, 13:30–15:00</strong><br> <br><img class=\"post-custom-emoji\" data-emoji-id=\"5434004391109604295\" src=\"data/channels/pg-antitrust/media/custom-emoji/5434004391109604295.webp\" alt=\"➡️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://legalforum.info/programme/business-programme/10256/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Онлайн-трансляция</strong></a>",
-      "views": 376,
+      "views": 377,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
