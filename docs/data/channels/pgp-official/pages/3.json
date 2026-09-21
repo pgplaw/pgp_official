@@ -1,13 +1,89 @@
 {
-  "generated_at": "2026-09-20T23:16:56.325919+00:00",
-  "build_id": "c8e0b0b75405",
+  "generated_at": "2026-09-21T13:14:49.914193+00:00",
+  "build_id": "f3618827d5aa",
   "pagination": {
     "page": 3,
     "page_size": 16,
-    "total_posts": 82,
+    "total_posts": 83,
     "total_pages": 6
   },
   "posts": [
+    {
+      "id": 1963,
+      "date": "2026-08-11T07:03:53+00:00",
+      "text": "🤓  ФНП разъяснила, когда корпоративные решения ООО нужно удостоверять у нотариуса\n\nФедеральная нотариальная палата разъяснила порядок оформления решений о продлении полномочий директора, передаче функций управляющей организации, назначении ликвидатора и принятии решений за пределами России.\n\n▫️Главный практический момент: продление полномочий действующего директора — это тоже избрание на новый срок, поэтому решение требует обязательного нотариального удостоверения. При этом вносить изменения в ЕГРЮЛ и подавать форму Р13014 не нужно.\n\nРазбираем основные правила и практические выводы в карточках ☝️\n\n👉  Полный материал с подробным разбором на сайте",
+      "text_html": "<img class=\"post-custom-emoji\" data-emoji-id=\"5321253901792478726\" src=\"data/channels/pgp-official/media/custom-emoji/5321253901792478726.webp\" alt=\"🤓\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">  <strong>ФНП разъяснила, когда корпоративные решения ООО нужно удостоверять у нотариуса</strong><br><br>Федеральная нотариальная палата разъяснила порядок оформления решений о продлении полномочий директора, передаче функций управляющей организации, назначении ликвидатора и принятии решений за пределами России.<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321258901134412612\" src=\"data/channels/pgp-official/media/custom-emoji/5321258901134412612.webp\" alt=\"▫️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><strong>Главный практический момент: </strong>продление полномочий действующего директора — это тоже избрание на новый срок, поэтому решение требует обязательного нотариального удостоверения. При этом вносить изменения в ЕГРЮЛ и подавать форму Р13014 не нужно.<br><br><em>Разбираем основные правила и практические выводы в карточках </em><em><em><strong>☝️</strong></em></em><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321445783751396709\" src=\"data/channels/pgp-official/media/custom-emoji/5321445783751396709.webp\" alt=\"👉\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">  <a href=\"https://www.pgplaw.ru/analytics-and-brochures/articles-comments-interviews/fnp-razyasnila-poryadok-notarialnogo-oformleniya-korporativnykh-resheniy-ooo/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Полный материал с подробным разбором на сайте</strong></a>",
+      "views": 967,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1963-1-2bb9fa5df5ae-v9.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1963-1-2bb9fa5df5ae-v9.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1963-1-2bb9fa5df5ae-v9.jpg",
+          "thumb_width": 640,
+          "thumb_height": 800,
+          "full_width": 1504,
+          "full_height": 1880,
+          "source_width": 1504,
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/DETdpA_EOImDQdYz4BIgvZWcABfGoUIP7jiA6TY-RHE2cIaqY20Nr9kZk0cn0u_2lWLLLxcMY67FrbN5De80AIwUQJbVfY8plJjKLNulwSbXtFLjXgibF7DHOfQfIjbJQl7X_TgQ_mPNjfgcEi9TMl8gavzauyXg9ksxlrkBF4goUS0VjVrBcdCKJgPwFOST1RJInzgjacD1TYv2vdrR4CcldZis4IKvHwKfsutBxJBEyUj0mOvUHE35H26iGfZCKiEfoTVgC1yNDquTCMNsNkfH3kO0SUjRGdh8iD4DOOWlLY0HbYMGhpt3dN2-A7kS1flIUrENgXf7J-S_c2P47Q.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1963-2-cd86a76d7d36-v9.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1963-2-cd86a76d7d36-v9.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1963-2-cd86a76d7d36-v9.jpg",
+          "thumb_width": 640,
+          "thumb_height": 800,
+          "full_width": 1504,
+          "full_height": 1880,
+          "source_width": 1504,
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/p_ho1pzXD2fqqIoZCuFv-NqDc0hpTN9eH-IDqRaDfYE9KE2kNkPIboQ5wTvdNh4rnh9Mql3-5BO8J68JpGldfYiiWC8xVt7yTgM9j3UWcmuvzeFu17IclPsUS_8HMnK1hyUkDl5MGXAHZJitIclswXrwqhiWvRtXm3slZC7ySQc6fzN0tGaRJm9UdOOsnNxT7HbdbyidYhh-_63OdeYOGR_w0yIPDCpKTm5bfHCUMdniOZ4CjD6O8HF6EElRokMjTjU-7_5UKOCY943ioAIkG8FGTOszd2OT5h3UfHrDjNujfA0WMaspvDvaZPMKdQLjgzirfOqY8Js9xiaKzC5OZQ.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1963-3-dde7e31a05d7-v9.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1963-3-dde7e31a05d7-v9.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1963-3-dde7e31a05d7-v9.jpg",
+          "thumb_width": 640,
+          "thumb_height": 800,
+          "full_width": 1504,
+          "full_height": 1880,
+          "source_width": 1504,
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/cAbZsofPYj2FA50RTPcGFGGWZ30P8qEo4z6Pl_HX1KQHj4KUyqJda9AQF5aj6m6p3KgDFIcvpKsqQg4acgLC0a1u17pvYgFnL34eUoTsScwPW5SpZpQPNL6L2BmiILsrH2MQPU-XNMLVT46a-cOr_-CYHgvYs-U5myNn08kDRR6mV-4595xKqjsL6Qd_FLyLRoSdJ5Vm1M0rcVCVhfNizfg1HgDb3LhlIOeCLh5473Onpk1JZOO7j0mARZMtpDt7CNuX3QCgDmcCNPiIDNZiWewsriBK7IqwyCKG-TlGdzZpQaWBJ0DfH8s1nmSWVf2QN3gyFO_hSZAm1oNNY9Dt6g.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1963-4-a3f3f88298dc-v9.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1963-4-a3f3f88298dc-v9.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1963-4-a3f3f88298dc-v9.jpg",
+          "thumb_width": 640,
+          "thumb_height": 800,
+          "full_width": 1504,
+          "full_height": 1880,
+          "source_width": 1504,
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/YA7PMyOw56L3Qm1MS6suLG89CH6gg6icRVR4rXmps62Kpre4UW4KS0xpYh-DFg5pPEi8XgoEe4vXorafTfsIuOpdrXb-I859nIauSRI9WWaoIKjZ-9u6CHNY-Sp8hXruO6WgNAeoH64vFInbb0fb2OeoQ49pWuv0HR1dRkHs-V4tMcSnzpqAnWYc5TFZJUMbqEgOQDMrWanxFAqiT_hSmvfJfkHT7bIEeuvQY4eixsNWBPXhPPV_fCS1Bj8FjdUXBBFFEqfjUjhkfqM2ba2uGJm6SsXH0BF8A3TlR6WPgG0AKkSLEnEbJKZQ6l1P-hRuZixSF2dluL1OTQLaVoiyPQ.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1963-5-32ce5d51014c-v9.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1963-5-32ce5d51014c-v9.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1963-5-32ce5d51014c-v9.jpg",
+          "thumb_width": 640,
+          "thumb_height": 800,
+          "full_width": 1504,
+          "full_height": 1880,
+          "source_width": 1504,
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/pWXXuWgHFmXDCOcQ-XQNyJsx2REsvzeq8so2MZ4xYsvZ11NXgpNrdxEYzzdTjBG5ih5ZrKupOk3hC7g7AuOKnSUTNFxG-XTNQY3xkerLommC8PjfM85lV8W0-H1krdaSEugKjUZLrpXJZnA2MiXxdpiEVxEArvzbgdHBXbNhLyF8cI9VcomnZUdKhu0K7yBWxlsQVnIz3A-4IupjJP-TGt3h6Avz3qaID5GahxN60DrPPa2NJGmjliqxc_kCbFxOHI91MRssJ4PGjbGLcfpya75VdXbKvbxMWzkmL0Xiv9sIEDygR4bosRZlv6wBCZIH-fR1ERf8QciHnAZwjl8Pmw.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1963",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 1962,
       "date": "2026-08-10T12:51:50+00:00",
@@ -143,7 +219,7 @@
       "date": "2026-08-06T10:10:01+00:00",
       "text": "🏢 Еженедельная подборка обзоров от практик «Пепеляев Групп»\n\nЧто изменилось за последнюю неделю, и на что стоит обратить внимание бизнесу?\n\n▫️ Письма Минфина и ФНС, обновления июля 2026 г.\n\n▫️ Налоговые новости. Дайджест за 27 июля - 2 августа 2026 г.\n\n▫️ СпецИнвестРежимы в Сибири и на Дальнем Востоке. Дайджест 27 июля - 2 августа 2026 г.\n\n▫️ Банкротство: взгляд эксперта. Обзор № 332 за 30 июля – 5 августа 2026 г.\n\nЧитайте другие наши материалы:\n\n🔘 Алерт «Принят закон о реформе банкротства: что изменится для бизнеса»\n\n🔘 Алерт «Блокчейн в законе: что готовит новый Закон о цифровых валютах и цифровых правах»\n\n#pg_обзоры_недели\n\n☝️ Подписаться на рассылки | MAX | Приложение PG",
       "text_html": "<strong><img class=\"post-custom-emoji\" data-emoji-id=\"5318819699012703056\" src=\"data/channels/pgp-official/media/custom-emoji/5318819699012703056.webp\" alt=\"🏢\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"></strong><strong> Еженедельная подборка обзоров от практик «Пепеляев Групп»</strong><br><br>Что изменилось за последнюю неделю, и на что стоит обратить внимание бизнесу?<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321258901134412612\" src=\"data/channels/pgp-official/media/custom-emoji/5321258901134412612.webp\" alt=\"▫️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://www.pgplaw.ru/analytics-and-brochures/tax-reviews/pisma-minfina-i-fns-obnovleniya-iyulya-2026-g/\" target=\"_blank\" rel=\"noopener noreferrer\">Письма Минфина и ФНС, обновления июля 2026 г.</a><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321258901134412612\" src=\"data/channels/pgp-official/media/custom-emoji/5321258901134412612.webp\" alt=\"▫️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://www.pgplaw.ru/analytics-and-brochures/tax-reviews/tax-news-digest-03-08-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Налоговые новости. Дайджест за 27 июля - 2 августа 2026 г.</a><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321258901134412612\" src=\"data/channels/pgp-official/media/custom-emoji/5321258901134412612.webp\" alt=\"▫️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://www.pgplaw.ru/analytics-and-brochures/spec-invest-obzor/invest-news-digest-26-08-03/\" target=\"_blank\" rel=\"noopener noreferrer\">СпецИнвестРежимы в Сибири и на Дальнем Востоке. Дайджест 27 июля - 2 августа 2026 г.</a><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321258901134412612\" src=\"data/channels/pgp-official/media/custom-emoji/5321258901134412612.webp\" alt=\"▫️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://www.pgplaw.ru/analytics-and-brochures/bankruptcy-must-read/bankruptcy-digest-05-08-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Банкротство: взгляд эксперта. Обзор № 332 за 30 июля – 5 августа 2026 г.</a><br><br><blockquote><strong>Читайте другие наши материалы:</strong><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321219365960451450\" src=\"data/channels/pgp-official/media/custom-emoji/5321219365960451450.webp\" alt=\"🔘\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> Алерт <a href=\"https://www.pgplaw.ru/analytics-and-brochures/alerts/prinyat-zakon-o-reforme-bankrotstva/\" target=\"_blank\" rel=\"noopener noreferrer\">«Принят закон о реформе банкротства: что изменится для бизнеса»</a><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321219365960451450\" src=\"data/channels/pgp-official/media/custom-emoji/5321219365960451450.webp\" alt=\"🔘\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> Алерт <a href=\"https://www.pgplaw.ru/analytics-and-brochures/alerts/novyy-zakon-o-tsifrovykh-valyutakh-i-pravakh/\" target=\"_blank\" rel=\"noopener noreferrer\">«Блокчейн в законе: что готовит новый Закон о цифровых валютах и цифровых правах»</a></blockquote><br><br>#pg_обзоры_недели<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321504994170539644\" src=\"data/channels/pgp-official/media/custom-emoji/5321504994170539644.webp\" alt=\"☝️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://www.pgplaw.ru/subscribe/\" target=\"_blank\" rel=\"noopener noreferrer\">Подписаться на рассылки |</a> <a href=\"https://max.ru/id7707301372_biz\" target=\"_blank\" rel=\"noopener noreferrer\">MAX |</a> <a href=\"https://t.me/pgp_official/1769\" target=\"_blank\" rel=\"noopener noreferrer\">Приложение PG</a>",
-      "views": 805,
+      "views": 806,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -213,7 +289,7 @@
       "date": "2026-08-05T10:19:44+00:00",
       "text": "💰 Блокчейн в законе: что изменит новый Закон о цифровых валютах и цифровых правах\n\n4 августа Президент РФ подписал Федеральный закон № 282-ФЗ «О цифровых валютах и цифровых правах».  Документ не просто обновляет действующее регулирование – он фактически создает новую архитектуру российского рынка цифровых валют и цифровых прав.\n\n📜 Закон определяет новых профессиональных участников рынка, закрепляет правовой статус цифровых валют как имущества, вводит новые категории цифровых прав и иностранных цифровых инструментов, устанавливает правила майнинга, обращения цифровых активов, допуска инвесторов и торговли цифровыми валютами.\n\n▫️В алерте подробно разбираем:\n\n 🔴как изменится структура рынка цифровых валют и цифровых прав;\n 🔴какие новые требования вводятся для участников рынка;\n 🔴как будут регулироваться сделки, майнинг и биржевое обращение цифровых валют;\n 🔴какие ограничения устанавливаются для резидентов и инвесторов;\n 🔴когда вступят в силу новые правила и сколько времени остается на подготовку.\n\n⚡️Большинство ключевых положений начнет действовать с 1 июля 2027 года, однако готовиться к изменениям стоит уже сейчас.\n\nПодробнее о новом Законе читайте в алерте на сайте👉\n\n➖➖\n📧 Если у вашей компании возникнут вопросы по применению нового Закона или подготовке к его вступлению в силу, Лидия Горшкова, партнер «Пепеляев Групп», готова помочь разобраться в новых требованиях и выстроить работу с учетом изменившегося регулирования.",
       "text_html": "<img class=\"post-custom-emoji\" data-emoji-id=\"5321443077921998493\" src=\"data/channels/pgp-official/media/custom-emoji/5321443077921998493.webp\" alt=\"💰\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <strong>Блокчейн в законе: что изменит новый Закон о цифровых валютах и цифровых правах</strong><br><br>4 августа Президент РФ подписал <em>Федеральный закон № 282-ФЗ «О цифровых валютах и цифровых правах»</em>.  Документ не просто обновляет действующее регулирование – он <strong>фактически создает новую архитектуру российского рынка цифровых валют и цифровых прав</strong>.<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321481715447793920\" src=\"data/channels/pgp-official/media/custom-emoji/5321481715447793920.webp\" alt=\"📜\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> Закон определяет новых профессиональных участников рынка, закрепляет правовой статус цифровых валют как имущества, вводит новые категории цифровых прав и иностранных цифровых инструментов, устанавливает правила майнинга, обращения цифровых активов, допуска инвесторов и торговли цифровыми валютами.<br><br><blockquote><strong><img class=\"post-custom-emoji\" data-emoji-id=\"5285105099092290769\" src=\"data/channels/pgp-official/media/custom-emoji/5285105099092290769.webp\" alt=\"▫️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"></strong><strong>В алерте подробно разбираем:</strong><br><br> <img class=\"post-custom-emoji\" data-emoji-id=\"5321201473126700659\" src=\"data/channels/pgp-official/media/custom-emoji/5321201473126700659.webp\" alt=\"🔴\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">как изменится структура рынка цифровых валют и цифровых прав;<br> <img class=\"post-custom-emoji\" data-emoji-id=\"5321201473126700659\" src=\"data/channels/pgp-official/media/custom-emoji/5321201473126700659.webp\" alt=\"🔴\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">какие новые требования вводятся для участников рынка;<br> <img class=\"post-custom-emoji\" data-emoji-id=\"5321201473126700659\" src=\"data/channels/pgp-official/media/custom-emoji/5321201473126700659.webp\" alt=\"🔴\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">как будут регулироваться сделки, майнинг и биржевое обращение цифровых валют;<br> <img class=\"post-custom-emoji\" data-emoji-id=\"5321201473126700659\" src=\"data/channels/pgp-official/media/custom-emoji/5321201473126700659.webp\" alt=\"🔴\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">какие ограничения устанавливаются для резидентов и инвесторов;<br> <img class=\"post-custom-emoji\" data-emoji-id=\"5321201473126700659\" src=\"data/channels/pgp-official/media/custom-emoji/5321201473126700659.webp\" alt=\"🔴\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">когда вступят в силу новые правила и сколько времени остается на подготовку.</blockquote><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321536725388922266\" src=\"data/channels/pgp-official/media/custom-emoji/5321536725388922266.webp\" alt=\"⚡️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">Большинство ключевых положений начнет действовать с <strong>1 июля 2027 года</strong>, однако готовиться к изменениям стоит уже сейчас.<br><br>Подробнее о новом Законе читайте в <a href=\"https://www.pgplaw.ru/analytics-and-brochures/alerts/novyy-zakon-o-tsifrovykh-valyutakh-i-pravakh/\" target=\"_blank\" rel=\"noopener noreferrer\">алерте на сайте</a><img class=\"post-custom-emoji\" data-emoji-id=\"5321445783751396709\" src=\"data/channels/pgp-official/media/custom-emoji/5321445783751396709.webp\" alt=\"👉\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321084718735724039\" src=\"data/channels/pgp-official/media/custom-emoji/5321084718735724039.webp\" alt=\"➖\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><img class=\"post-custom-emoji\" data-emoji-id=\"5321084718735724039\" src=\"data/channels/pgp-official/media/custom-emoji/5321084718735724039.webp\" alt=\"➖\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321534994517103056\" src=\"data/channels/pgp-official/media/custom-emoji/5321534994517103056.webp\" alt=\"📧\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <em>Если у вашей компании возникнут вопросы по применению нового Закона или подготовке к его вступлению в силу, </em><a href=\"https://www.pgplaw.ru/to-get-the-team/lidiya-gorshkova/\" target=\"_blank\" rel=\"noopener noreferrer\"><em>Лидия Горшкова</em></a><em>, партнер «Пепеляев Групп», готова помочь разобраться в новых требованиях и выстроить работу с учетом изменившегося регулирования.</em>",
-      "views": 726,
+      "views": 728,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -278,7 +354,7 @@
       "date": "2026-07-30T10:00:42+00:00",
       "text": "🏢 Еженедельная подборка обзоров от практик «Пепеляев Групп»\n\nЧто изменилось за последнюю неделю, и на что стоит обратить внимание бизнесу?\n\n▫️ Налоговые новости. Дайджест за 20-26 июля 2026 г.\n\n▫️ СпецИнвестРежимы в Сибири и на Дальнем Востоке. Дайджест 20 - 26 июля 2026 г.\n\n▫️ Ограничения и меры поддержки для бизнеса: дайджест за 13-26 июля 2026 г.\n\n▫️ Банкротство: взгляд эксперта. Обзор № 331 за 23 – 29 июля 2026 г.\n\nЧитайте и смотрите другие наши материалы:\n\n🔘 Алерт «КС РФ подтвердил неизменность конституционных принципов обложения местными налогами в условиях бюджетного дефицита»\n\n🔘 Итоги работы 8-го созыва Государственной Думы\n\n🔘 Налог на прибыль застройщика: когда возникает экономия по мнению ФНС. N-ское ноу-хау ч. 2 \nVK | Rutube | YouTube\n\n🔘 НДС в долевом участии. Сергей Сосновский о том, когда застройщик все-таки платит НДС\nVK | Rutube | YouTube\n\n#pg_обзоры_недели\n\n☝️ Подписаться на рассылки | MAX | Приложение PG",
       "text_html": "<strong><img class=\"post-custom-emoji\" data-emoji-id=\"5318819699012703056\" src=\"data/channels/pgp-official/media/custom-emoji/5318819699012703056.webp\" alt=\"🏢\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"></strong><strong> Еженедельная подборка обзоров от практик «Пепеляев Групп»</strong><br><br>Что изменилось за последнюю неделю, и на что стоит обратить внимание бизнесу?<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321258901134412612\" src=\"data/channels/pgp-official/media/custom-emoji/5321258901134412612.webp\" alt=\"▫️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://www.pgplaw.ru/analytics-and-brochures/tax-reviews/tax-news-digest-27-07-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Налоговые новости. Дайджест за 20-26 июля 2026 г.</a><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321258901134412612\" src=\"data/channels/pgp-official/media/custom-emoji/5321258901134412612.webp\" alt=\"▫️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://www.pgplaw.ru/analytics-and-brochures/spec-invest-obzor/invest-news-digest-26-07-27/\" target=\"_blank\" rel=\"noopener noreferrer\">СпецИнвестРежимы в Сибири и на Дальнем Востоке. Дайджест 20 - 26 июля 2026 г.</a><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321258901134412612\" src=\"data/channels/pgp-official/media/custom-emoji/5321258901134412612.webp\" alt=\"▫️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://www.pgplaw.ru/analytics-and-brochures/sanctions-support-digest/support-digest-27-07-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Ограничения и меры поддержки для бизнеса: дайджест за 13-26 июля 2026 г.</a><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321258901134412612\" src=\"data/channels/pgp-official/media/custom-emoji/5321258901134412612.webp\" alt=\"▫️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://www.pgplaw.ru/analytics-and-brochures/bankruptcy-must-read/bankruptcy-digest-29-07-26/\" target=\"_blank\" rel=\"noopener noreferrer\">Банкротство: взгляд эксперта. Обзор № 331 за 23 – 29 июля 2026 г.</a><br><br><blockquote><strong>Читайте и смотрите другие наши материалы:</strong><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321219365960451450\" src=\"data/channels/pgp-official/media/custom-emoji/5321219365960451450.webp\" alt=\"🔘\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> Алерт <a href=\"https://www.pgplaw.ru/analytics-and-brochures/alerts/ks-rf-podtverdil-neizmennost-konstitutsionnykh-printsipov/\" target=\"_blank\" rel=\"noopener noreferrer\">«КС РФ подтвердил неизменность конституционных принципов обложения местными налогами в условиях бюджетного дефицита»</a><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321219365960451450\" src=\"data/channels/pgp-official/media/custom-emoji/5321219365960451450.webp\" alt=\"🔘\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://www.pgplaw.ru/analytics-and-brochures/tax-reviews/itogi-raboty-8-go-sozyva-gosudarstvennoy-dumy/\" target=\"_blank\" rel=\"noopener noreferrer\">Итоги работы 8-го созыва Государственной Думы</a><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321219365960451450\" src=\"data/channels/pgp-official/media/custom-emoji/5321219365960451450.webp\" alt=\"🔘\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> Налог на прибыль застройщика: когда возникает экономия по мнению ФНС. N-ское ноу-хау ч. 2 <br><a href=\"https://vkvideo.ru/video-227047542_456239427\" target=\"_blank\" rel=\"noopener noreferrer\">VK </a>| <a href=\"https://rutube.ru/video/6570b094ffafb55e07ee21cec31e5c4d/\" target=\"_blank\" rel=\"noopener noreferrer\">Rutube </a>| <a href=\"https://youtu.be/fi7ekiHB_bc\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube</a><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321219365960451450\" src=\"data/channels/pgp-official/media/custom-emoji/5321219365960451450.webp\" alt=\"🔘\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> НДС в долевом участии. Сергей Сосновский о том, когда застройщик все-таки платит НДС<br><a href=\"https://vkvideo.ru/video-227047542_456239428\" target=\"_blank\" rel=\"noopener noreferrer\">VK </a>| <a href=\"https://rutube.ru/video/c5eaef2b0e043404450b1a36e1cecb13/\" target=\"_blank\" rel=\"noopener noreferrer\">Rutube </a>| <a href=\"https://youtu.be/ixSTmsjYs0M\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube</a></blockquote><br><br>#pg_обзоры_недели<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321504994170539644\" src=\"data/channels/pgp-official/media/custom-emoji/5321504994170539644.webp\" alt=\"☝️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://www.pgplaw.ru/subscribe/\" target=\"_blank\" rel=\"noopener noreferrer\">Подписаться на рассылки |</a> <a href=\"https://max.ru/id7707301372_biz\" target=\"_blank\" rel=\"noopener noreferrer\">MAX |</a> <a href=\"https://t.me/pgp_official/1769\" target=\"_blank\" rel=\"noopener noreferrer\">Приложение PG</a>",
-      "views": 883,
+      "views": 884,
       "comments_count": 0,
       "comments_url": null,
       "photos": [
@@ -592,41 +668,6 @@
         "channel_url": "https://t.me/s/bankrotstvo_mustknow",
         "channel_username": "bankrotstvo_mustknow",
         "channel_title": "Банкротство | Взгляд эксперта"
-      },
-      "reply_to": null
-    },
-    {
-      "id": 1935,
-      "date": "2026-07-21T07:32:15+00:00",
-      "text": "🔥Что нового в антимонопольном регулировании и практике\n\nЛето не снижает темп антимонопольной повестки: ФАС усиливает внимание к цифровым платформам, цепочкам дистрибуции и ценообразованию, законодатели готовят новые правила для маркетплейсов и иностранных инвестиций, а суды формируют подходы, которые напрямую влияют на рекламные механики и взаимодействие компаний с партнерами.\n\nЧтобы ориентироваться в изменениях и своевременно оценивать возникающие риски, читайте новый дайджест антимонопольных новостей. В нем собраны ключевые события, законодательные инициативы и практические выводы за период с 1 июня по 12 июля 2026 года.\n\n📌 В новом выпуске:\n\n🔸  как выстроить контроль за дистрибьюторами и снизить риски квалификации вертикальных соглашений;\n\n🔸  чем отличаются антимонопольные требования в России и Китае и что учитывать компаниям при выходе на китайский рынок;\n\n🔸 какие изменения готовятся в правилах пересмотра решений ФАС, контроле иностранных инвестиций в ИТ-сектор и регулировании маркетплейсов;\n\n🔸 какие выводы для бизнеса следуют из свежей практики Верховного Суда по рекламным рассылкам.\n\n©️Читать дайджест полностью\n\n➖➖\n✉️ При возникновении вопросов по новому регулированию или правоприменительной практике обращайтесь к Илье Тюленеву, руководителю антимонопольной практики «Пепеляев Групп».",
-      "text_html": "<strong><img class=\"post-custom-emoji\" data-emoji-id=\"5438266330107097494\" src=\"data/channels/pgp-official/media/custom-emoji/5438266330107097494.webp\" alt=\"🔥\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"></strong><strong>Что нового в антимонопольном регулировании и практике</strong><br><br>Лето не снижает темп антимонопольной повестки: ФАС усиливает внимание к цифровым платформам, цепочкам дистрибуции и ценообразованию, законодатели готовят новые правила для маркетплейсов и иностранных инвестиций, а суды формируют подходы, которые напрямую влияют на рекламные механики и взаимодействие компаний с партнерами.<br><br>Чтобы ориентироваться в изменениях и своевременно оценивать возникающие риски, читайте <strong>новый дайджест антимонопольных новостей</strong>. В нем собраны ключевые события, законодательные инициативы и практические выводы за период <strong>с 1 июня по 12 июля 2026 года</strong>.<br><br><blockquote><img class=\"post-custom-emoji\" data-emoji-id=\"5433905954754148349\" src=\"data/channels/pgp-official/media/custom-emoji/5433905954754148349.webp\" alt=\"📌\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <strong>В новом выпуске:</strong><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5433960784306649469\" src=\"data/channels/pgp-official/media/custom-emoji/5433960784306649469.webp\" alt=\"🔸\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">  как выстроить контроль за дистрибьюторами и снизить риски квалификации вертикальных соглашений;<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5433960784306649469\" src=\"data/channels/pgp-official/media/custom-emoji/5433960784306649469.webp\" alt=\"🔸\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">  чем отличаются антимонопольные требования в России и Китае и что учитывать компаниям при выходе на китайский рынок;<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5433960784306649469\" src=\"data/channels/pgp-official/media/custom-emoji/5433960784306649469.webp\" alt=\"🔸\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> какие изменения готовятся в правилах пересмотра решений ФАС, контроле иностранных инвестиций в ИТ-сектор и регулировании маркетплейсов;<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5433960784306649469\" src=\"data/channels/pgp-official/media/custom-emoji/5433960784306649469.webp\" alt=\"🔸\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> какие выводы для бизнеса следуют из свежей практики Верховного Суда по рекламным рассылкам.</blockquote><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5433789681399510668\" src=\"data/channels/pgp-official/media/custom-emoji/5433789681399510668.webp\" alt=\"©️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><a href=\"https://www.pgplaw.ru/analytics-and-brochures/antitrust-reviews/antitrust-digest-26-07-20/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Читать дайджест полностью</strong></a><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5433983362949722599\" src=\"data/channels/pgp-official/media/custom-emoji/5433983362949722599.webp\" alt=\"➖\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><img class=\"post-custom-emoji\" data-emoji-id=\"5433983362949722599\" src=\"data/channels/pgp-official/media/custom-emoji/5433983362949722599.webp\" alt=\"➖\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><br><img class=\"post-custom-emoji\" data-emoji-id=\"5224512207286447796\" src=\"data/channels/pgp-official/media/custom-emoji/5224512207286447796.webp\" alt=\"✉️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <em>При возникновении вопросов по новому регулированию или правоприменительной практике обращайтесь к </em><a href=\"https://www.pgplaw.ru/to-get-the-team/tiulenev/\" target=\"_blank\" rel=\"noopener noreferrer\"><em>Илье Тюленеву</em></a><em>, руководителю антимонопольной практики «Пепеляев Групп».</em>",
-      "views": 633,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1935-1-0cf523673052-v9.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/feed/1935-1-0cf523673052-v9.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/1935-1-0cf523673052-v9.jpg",
-          "thumb_width": 800,
-          "thumb_height": 240,
-          "feed_width": 1800,
-          "feed_height": 540,
-          "full_width": 1880,
-          "full_height": 564,
-          "source_width": 1880,
-          "source_height": 564,
-          "source_url": "https://cdn4.telesco.pe/file/BtHjrq-yb8N-HUHVfqceLUR74FJUJxUg5lftT0gVPIeNbJFJHl1CWOXIE7OBi4YUdzLbjqhVAIGyYYyBuOFIN6CxuuEDLyszcJ_O2NxEHtC8PV7uBtemrjxPWuRCV8VgXAM402lq_CCFPmDVfRKZaKVbF6ZKmCybhWl1dVsm3YGdtLiZGvptlCnxr-pKSwXNeZXwN3NHmOsHJDjpXxe_o14bXbdGO8fmt_DXovhYeftDWfh0E7oBfg8MjIgtTL5KzAwy5UBJGMfF3lPlzUFTjdVZSlxklGp5agkKPKIM0Tx8XbeyA5cuz-f4BwdrneJBd5W2PlOekbNwJ2m96c14-Q.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/1935",
-      "forwarded_from": {
-        "source_url": "https://t.me/PgAntitrust/1453",
-        "channel_url": "https://t.me/s/PgAntitrust",
-        "channel_username": "PgAntitrust",
-        "channel_title": "PG Antitrust | Антимонопольное право"
       },
       "reply_to": null
     }
