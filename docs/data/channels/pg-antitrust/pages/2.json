@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-06T00:23:41.637891+00:00",
-  "build_id": "152774cb21aa",
+  "generated_at": "2026-10-06T13:40:10.156059+00:00",
+  "build_id": "6ecfd156ca32",
   "pagination": {
     "page": 2,
     "page_size": 16,
-    "total_posts": 21,
+    "total_posts": 20,
     "total_pages": 2
   },
   "posts": [
@@ -110,36 +110,6 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/PgAntitrust/1449",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 1445,
-      "date": "2026-07-06T09:34:16+00:00",
-      "text": "Ваше мнение и выводы серии\n\nМы разобрали обе системы – теперь интересно, что думаете вы.",
-      "text_html": "<strong>Ваше мнение и выводы серии</strong><br><br>Мы разобрали обе системы – теперь интересно, что думаете вы.",
-      "views": 362,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-antitrust/media/posts/thumbs/1445-1-f209d09732d5-v9.jpg",
-          "feed_url": "data/channels/pg-antitrust/media/posts/feed/1445-1-f209d09732d5-v9.jpg",
-          "full_url": "data/channels/pg-antitrust/media/posts/1445-1-f209d09732d5-v9.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752,
-          "source_url": "https://cdn4.telesco.pe/file/bI8EVJN4NexozQ-BPT-dnOX3FJDPD5hu0VDQYSQOhrEKLvFld84ZmPBFcKUQECuKN77YIZWzGNJcdNaX67TLVwgnBUOIOKPH9OgCaTIRPOOnpiFORjboHibLf4ZQcrNCziwga11LNvyEaU4Q2in-LwyaO-stFgpFBy8YLYsjXwEfNjFtqEI8c1KslKnHB64GI4z90dE2jubgqy0trz6EELaVCieVC5xhOORe2FvdBhq9TRXi5iNHkGGXZWl0cAIkGXC97LSjWuXTI0rj-fURKAn0ShJBtgtITPT2rDuZ2RsLJAia0jSG9A5CzpeSqq0y57WUKlS3tj40DWSyzl_gWA.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PgAntitrust/1445",
       "forwarded_from": null,
       "reply_to": null
     }
