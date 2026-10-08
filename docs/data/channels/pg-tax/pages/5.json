@@ -1,13 +1,48 @@
 {
-  "generated_at": "2026-10-07T16:01:27.913907+00:00",
-  "build_id": "1e07592089c8",
+  "generated_at": "2026-10-08T07:20:15.813552+00:00",
+  "build_id": "2297b5787dd5",
   "pagination": {
     "page": 5,
     "page_size": 16,
-    "total_posts": 160,
-    "total_pages": 10
+    "total_posts": 161,
+    "total_pages": 11
   },
   "posts": [
+    {
+      "id": 2888,
+      "date": "2026-09-04T14:04:16+00:00",
+      "text": "⭐️ Сергей Пепеляев вновь возглавил рейтинг юридических консультантов с самым сильным личным брендом по версии Legal Insight.\n\n🔘Журнал Legal Insight подвел итоги ежегодного опроса о самых узнаваемых юристах. Рейтинг формируется на основе ответов подписчиков издания: участникам предлагалось назвать семь инхаус-юристов и семь юристов-консультантов с сильным личным брендом.\n\nВ 2026 году респонденты назвали 223 консультанта против 124 годом ранее и 177 инхаус-юристов против 98 в 2025 году. Рост более чем на 80% отражает усиливающуюся конкуренцию в юридическом сообществе и растущее внимание юристов к развитию личного бренда.\n\n🔥 Управляющий партнёр «Пепеляев Групп» Сергей Пепеляев второй год подряд занимает первую строчку рейтинга.",
+      "text_html": "<img class=\"post-custom-emoji\" data-emoji-id=\"5321143400873888081\" src=\"data/channels/pg-tax/media/custom-emoji/5321143400873888081.webp\" alt=\"⭐️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <strong>Сергей Пепеляев вновь возглавил рейтинг юридических консультантов с самым сильным личным брендом по версии Legal Insight.</strong><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321219365960451450\" src=\"data/channels/pg-tax/media/custom-emoji/5321219365960451450.webp\" alt=\"🔘\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">Журнал Legal Insight подвел итоги <a href=\"https://legalinsight.ru/articles/rejting-izvestnosti-sredi-yuristov-2026/\" target=\"_blank\" rel=\"noopener noreferrer\">ежегодного опроса о самых узнаваемых юристах</a>. Рейтинг формируется на основе ответов подписчиков издания: участникам предлагалось назвать семь инхаус-юристов и семь юристов-консультантов с сильным личным брендом.<br><br><blockquote>В 2026 году респонденты назвали 223 консультанта против 124 годом ранее и 177 инхаус-юристов против 98 в 2025 году. Рост более чем на 80% отражает усиливающуюся конкуренцию в юридическом сообществе и растущее внимание юристов к развитию личного бренда.</blockquote><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321405617217241517\" src=\"data/channels/pg-tax/media/custom-emoji/5321405617217241517.webp\" alt=\"🔥\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> Управляющий партнёр «Пепеляев Групп» Сергей Пепеляев второй год подряд занимает первую строчку рейтинга.",
+      "views": 987,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2888-1-31e8eb127033-v9.jpg",
+          "feed_url": "data/channels/pg-tax/media/posts/feed/2888-1-31e8eb127033-v9.jpg",
+          "full_url": "data/channels/pg-tax/media/posts/2888-1-31e8eb127033-v9.jpg",
+          "thumb_width": 800,
+          "thumb_height": 272,
+          "feed_width": 1800,
+          "feed_height": 612,
+          "full_width": 1880,
+          "full_height": 639,
+          "source_width": 1880,
+          "source_height": 639,
+          "source_url": "https://cdn4.telesco.pe/file/HNVPsyo7cEJuQDtSIR-ebdkKKFKfy3-C0eGBOSz6qZ9yrSWtzFO-251oMJ1QD2HBYQlOIwDhf3siXeWSDwAj7Z9fp6gJnoup9aFuENaw5XLhpeAxwiZB0LRoJIZ30J5YhFz8r1OKpcqar4jaurl9cNey164gZrn51feSRXwLSIAwRC0MHhIW4iU3ESvS4ANaetIQdsWLp2O8QwUT1jLm2XonaXaIkGwHRMh4J19g8SwY09HTMRLa8tVHjBkXwyQVfyRzvZx1PQnvadmzJQhEVnWb2__HwMZRtz1Yo7Q0NtdqBjOvJNWHatpIRdRqIyZF-uC_dUtioa4fRT1rWNn2RQ.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/PG_Tax/2888",
+      "forwarded_from": {
+        "source_url": "https://t.me/pgp_official/1995",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+      },
+      "reply_to": null
+    },
     {
       "id": 2887,
       "date": "2026-09-04T11:05:37+00:00",
@@ -455,36 +490,6 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/PG_Tax/2873",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2872,
-      "date": "2026-08-26T08:39:14+00:00",
-      "text": "⚡️ Тема дня\n \nФНС России планирует расширить периметр эксперимента по обелению отрасли предоставления персонала, который полноценно заработает с сентября для цифровых платформ и крупного ритейла — со ссылкой на заседание рабочей группы ТПП России по налоговому администрированию рассказывают Ведомости. \n\nВ число участников будут включены производственные компании. Заинтересованность в участии выразила и строительная отрасль. В Службе понимают, что отдельные условия эксперимента могут не подходить новым отраслям-участникам, поэтому планируют практиковать гибкий подход при обсуждении конкретных параметров.\n\n🔍 Подробности об этом заседании рабочей группы — скоро из первых уст в нашем канале и на сайте. \n\n✍️ Нормативное регулирование\n \nСенаторы предложили закрепить «семейное предпринимательство» — выделить в отдельную категорию. \nПолучить статус «семейной компании» можно будет микропредприятиям с выручкой до 120 млн руб. и штатом до 15 человек, где не менее половины работников — родственники. Такие же правила будут действовать для кооперативов и фермерских хозяйств. Предприниматели смогут рассчитывать на финансовую помощь и льготы. Мы приравниваем «семейное» предпринимательство к «социальному», а меры поддержки для последнего уже описаны в законодательстве – пояснили инициаторы законопроекта (№1323727-8).\n\n ✈️ За рубежом\n \nСтраны Евросоюза вправе самостоятельно вводить налоги на сверхприбыли энергетических компаний на фоне резкого роста цен на энергоносители – решила Еврокомиссия. \nЗаявление прозвучало после того, как Германия, Испания, Италия, Польша, Португалия и Австрия предложили обсудить создание общеевропейского механизма налогообложения сверхприбылей нефтяных компаний на неформальной встрече глав минфинов ЕС 18-19 сентября в Дублине.\n\n#главные_налоговые_новости",
-      "text_html": "<img class=\"post-custom-emoji\" data-emoji-id=\"5321536725388922266\" src=\"data/channels/pg-tax/media/custom-emoji/5321536725388922266.webp\" alt=\"⚡️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><strong> Тема дня</strong><br> <br>ФНС России планирует расширить периметр эксперимента по обелению отрасли предоставления персонала, который полноценно заработает с сентября для цифровых платформ и крупного ритейла — со ссылкой на <a href=\"https://t.me/PG_Tax/2850\" target=\"_blank\" rel=\"noopener noreferrer\">заседание рабочей группы ТПП России</a> по налоговому администрированию <a href=\"https://www.vedomosti.ru/economics/articles/2026/08/26/1223683-fns-planiruet-privlech-k-obeleniyu-autstaffinga-proizvodstvennie-kompanii\" target=\"_blank\" rel=\"noopener noreferrer\">рассказывают</a> Ведомости. <br><br><blockquote>В число участников будут включены производственные компании. Заинтересованность в участии выразила и строительная отрасль. В Службе понимают, что отдельные условия эксперимента могут не подходить новым отраслям-участникам, поэтому планируют практиковать гибкий подход при обсуждении конкретных параметров.</blockquote><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321326250516584206\" src=\"data/channels/pg-tax/media/custom-emoji/5321326250516584206.webp\" alt=\"🔍\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <em>Подробности об этом заседании рабочей группы — скоро из первых уст в нашем канале и на сайте</em>. <br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321562095760740194\" src=\"data/channels/pg-tax/media/custom-emoji/5321562095760740194.webp\" alt=\"✍️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <strong>Нормативное регулирование</strong><br> <br>Сенаторы <a href=\"https://www.kommersant.ru/doc/8908069?query=%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3\" target=\"_blank\" rel=\"noopener noreferrer\">предложили</a> закрепить «семейное предпринимательство» — выделить в отдельную категорию. <br><blockquote>Получить статус «семейной компании» можно будет микропредприятиям с выручкой до 120 млн руб. и штатом до 15 человек, где не менее половины работников — родственники. Такие же правила будут действовать для кооперативов и фермерских хозяйств. Предприниматели смогут рассчитывать на финансовую помощь и льготы. Мы приравниваем «семейное» предпринимательство к «социальному», а меры поддержки для последнего уже описаны в законодательстве – пояснили инициаторы законопроекта (№<a href=\"https://sozd.duma.gov.ru/bill/1323727-8\" target=\"_blank\" rel=\"noopener noreferrer\">1323727-8</a>).</blockquote><br><em><br> </em><img class=\"post-custom-emoji\" data-emoji-id=\"5318960543875237896\" src=\"data/channels/pg-tax/media/custom-emoji/5318960543875237896.webp\" alt=\"✈️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <strong>За рубежом<br> </strong><br>Страны Евросоюза <a href=\"https://ria.ru/20260825/es-2113088301.html\" target=\"_blank\" rel=\"noopener noreferrer\">вправе</a> самостоятельно вводить налоги на сверхприбыли энергетических компаний на фоне резкого роста цен на энергоносители – <a href=\"https://ria.ru/20260825/es-2113088301.html\" target=\"_blank\" rel=\"noopener noreferrer\">решила</a> Еврокомиссия. <br><blockquote>Заявление прозвучало после того, как Германия, Испания, Италия, Польша, Португалия и Австрия предложили обсудить создание общеевропейского механизма налогообложения сверхприбылей нефтяных компаний на неформальной встрече глав минфинов ЕС 18-19 сентября в Дублине.</blockquote><br><br>#главные_налоговые_новости",
-      "views": 1010,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2872-1-53d8cd563413-v9.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2872-1-53d8cd563413-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2872-1-53d8cd563413-v9.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752,
-          "source_url": "https://cdn4.telesco.pe/file/t3cckFmihJTw1YFv9TJ_Sqk8CeekWH5OX1KwVMF0hirDxETsKUlaFGyj7EhT-s9t42NvPbdCjnQlXL72sYffh6pYnquhQFQFBUb4JT58RH_t2nrAtlUmKzeGX8CshN2yHxh5uhCO19Sq7a8cAajDs0ySRb9pSVlYLqPWSiXN2ujnN13JA8WVGN9VoL2wuOWCFr-SI40ixa-bqK_p1LkueoH8R2Z284yrtSTQ2qEF45vRgNiL53OVESy6oEpN7tl_wdCSmjHj5EQCxBPzvn7VUHYKPflJnu7g9ovrruX3a1ZAwyIcYv948nvzVu09lOnfcKkaC2GOHZh7mbNuIl9T0Q.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2872",
       "forwarded_from": null,
       "reply_to": null
     }
