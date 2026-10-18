@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-18T21:41:43.660340+00:00",
-  "build_id": "04e2949b1ac3",
+  "generated_at": "2026-10-18T23:43:51.185156+00:00",
+  "build_id": "1fe54c1156b7",
   "site": {
     "channel_username": "PG_Tax",
     "channel_title": "PG Tax | Налоги",
@@ -20,7 +20,7 @@
   "pagination": {
     "page": 1,
     "page_size": 16,
-    "total_posts": 166,
+    "total_posts": 165,
     "total_pages": 11
   },
   "posts": [
@@ -512,9 +512,10 @@
       "videos": [],
       "tg_url": "https://t.me/PG_Tax/2970",
       "forwarded_from": {
-        "source_url": "https://t.me/PG_Tax/2970?single",
-        "channel_url": "https://t.me/s/PG_Tax",
-        "channel_username": "PG_Tax"
+        "source_url": "https://t.me/pgp_official/2028",
+        "channel_url": "https://t.me/s/pgp_official",
+        "channel_username": "pgp_official",
+        "channel_title": "Pepeliaev Group | Пепеляев Групп"
       },
       "reply_to": null
     }
