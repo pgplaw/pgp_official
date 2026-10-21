@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T07:40:53.716393+00:00",
+  "generated_at": "2026-10-21T04:34:56.644581+00:00",
   "build_id": "35071eccc623",
   "pagination": {
     "page": 2,
@@ -156,10 +156,9 @@
       "videos": [],
       "tg_url": "https://t.me/pgEmployment/1996",
       "forwarded_from": {
-        "source_url": "https://t.me/PG_Tax/2765",
-        "channel_url": "https://t.me/s/PG_Tax",
-        "channel_username": "PG_Tax",
-        "channel_title": "PG Tax | Налоги"
+        "source_url": "https://t.me/pgEmployment/1996",
+        "channel_url": "https://t.me/s/pgEmployment",
+        "channel_username": "pgEmployment"
       },
       "reply_to": null
     },
@@ -206,10 +205,9 @@
       "videos": [],
       "tg_url": "https://t.me/pgEmployment/1994",
       "forwarded_from": {
-        "source_url": "https://t.me/pgp_official/1927",
-        "channel_url": "https://t.me/s/pgp_official",
-        "channel_username": "pgp_official",
-        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+        "source_url": "https://t.me/pgEmployment/1994",
+        "channel_url": "https://t.me/s/pgEmployment",
+        "channel_username": "pgEmployment"
       },
       "reply_to": null
     }
