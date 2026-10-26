@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-25T22:00:05.012683+00:00",
+  "generated_at": "2026-10-26T00:07:47.232527+00:00",
   "build_id": "035c9f40838b",
   "site": {
     "channel_username": "PG_Tax",
@@ -52,10 +52,9 @@
       "videos": [],
       "tg_url": "https://t.me/PG_Tax/3003",
       "forwarded_from": {
-        "source_url": "https://t.me/pgp_official/2045",
-        "channel_url": "https://t.me/s/pgp_official",
-        "channel_username": "pgp_official",
-        "channel_title": "Pepeliaev Group | Пепеляев Групп"
+        "source_url": "https://t.me/PG_Tax/3003",
+        "channel_url": "https://t.me/s/PG_Tax",
+        "channel_username": "PG_Tax"
       },
       "reply_to": null
     },
