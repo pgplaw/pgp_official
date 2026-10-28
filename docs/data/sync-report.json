@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T00:27:04.041Z",
+  "generated_at": "2026-10-28T06:06:54.226Z",
   "success_count": 8,
   "failure_count": 0,
   "failure_channels": [],
@@ -12,7 +12,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 75298,
+      "duration_ms": 77114,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -44,7 +44,7 @@
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 1112921593,
+        "total_bytes": 1112921391,
         "file_count": 10120,
         "media_bytes": 1112431605,
         "media_files": 10115,
@@ -53,7 +53,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 0,
+        "total_bytes": -202,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -69,7 +69,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 37458,
+      "duration_ms": 39330,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -101,7 +101,7 @@
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 277381424,
+        "total_bytes": 277381270,
         "file_count": 2774,
         "media_bytes": 277213468,
         "media_files": 2772,
@@ -110,7 +110,7 @@
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 0,
+        "total_bytes": -154,
         "file_count": 0,
         "media_bytes": 0,
         "media_files": 0,
@@ -126,7 +126,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 78202,
+      "duration_ms": 72477,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -183,7 +183,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 59857,
+      "duration_ms": 68577,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -240,7 +240,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 58017,
+      "duration_ms": 48808,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -297,7 +297,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 17916,
+      "duration_ms": 15096,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -329,19 +329,19 @@
         "comment_json_files": 0
       },
       "archive_after": {
-        "total_bytes": 192772315,
-        "file_count": 2287,
-        "media_bytes": 192446612,
-        "media_files": 2283,
+        "total_bytes": 193003648,
+        "file_count": 2290,
+        "media_bytes": 192669553,
+        "media_files": 2286,
         "json_files": 4,
         "page_json_files": 3,
         "comment_json_files": 0
       },
       "archive_delta": {
-        "total_bytes": 0,
-        "file_count": 0,
-        "media_bytes": 0,
-        "media_files": 0,
+        "total_bytes": 231333,
+        "file_count": 3,
+        "media_bytes": 222941,
+        "media_files": 3,
         "json_files": 0,
         "page_json_files": 0,
         "comment_json_files": 0
@@ -354,7 +354,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 27110,
+      "duration_ms": 28821,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -411,7 +411,7 @@
       "status": "success",
       "exit_code": 0,
       "signal": null,
-      "duration_ms": 20722,
+      "duration_ms": 23840,
       "error": null,
       "telegram_api_credentials": {
         "api_id": false,
@@ -463,10 +463,10 @@
     }
   ],
   "archive_totals": {
-    "total_bytes": 4451548353,
-    "media_bytes": 4447311166,
-    "file_count": 38565,
-    "media_files": 38533,
+    "total_bytes": 4451779330,
+    "media_bytes": 4447534107,
+    "file_count": 38568,
+    "media_files": 38536,
     "json_files": 32,
     "page_json_files": 24,
     "comment_json_files": 0
