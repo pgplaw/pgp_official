@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-28T12:43:23.605819+00:00",
-  "build_id": "f74a41b01a75",
+  "generated_at": "2026-10-29T08:24:23.119675+00:00",
+  "build_id": "4d8f7ac19418",
   "pagination": {
     "page": 11,
     "page_size": 16,
-    "total_posts": 169,
+    "total_posts": 168,
     "total_pages": 11
   },
   "posts": [
@@ -245,36 +245,6 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/PG_Tax/2820",
-      "forwarded_from": null,
-      "reply_to": null
-    },
-    {
-      "id": 2819,
-      "date": "2026-07-29T07:55:23+00:00",
-      "text": "⚙️ Практика\n \n🔘ТПП РФ поддержала проведение эксперимента по обелению отрасли предоставления персонала, но предложила перенести его начало с 1 сентября на 1 ноября 2026 г., ограничив на первом этапе Москвой и Московской областью. \n☝️ Переход к новой модели потребует от бизнеса технической подготовки, отладки программного обеспечения и обновления договоров с аутсорсинговыми компаниями.\n \n🔘На цифровой платформе «Единое блокчейн-хранилище машиночитаемых доверенностей (МЧД) - распределенный реестр ФНС России» зарегистрирована и загружена пятимиллионная МЧД.\nНа указанной платформе налогоплательщики могут создавать МЧД в едином формате для обмена с государственными органами и между собой. Все доверенности, созданные по единому формату и загруженные через портал, хранятся в едином блокчейн-хранилище ФНС России, что ускоряет их проверку при работе с контрагентами. \n\nВ настоящее время ФНС совместно с Минцифры реализуют дорожную карту, которой предусмотрена интеграция единого блокчейн-реестра МЧД и платформы «Госуслуги».\n\n#главные_налоговые_новости",
-      "text_html": "<img class=\"post-custom-emoji\" data-emoji-id=\"5318752572968832009\" src=\"data/channels/pg-tax/media/custom-emoji/5318752572968832009.webp\" alt=\"⚙️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <strong>Практика</strong><br> <br><img class=\"post-custom-emoji\" data-emoji-id=\"5321219365960451450\" src=\"data/channels/pg-tax/media/custom-emoji/5321219365960451450.webp\" alt=\"🔘\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">ТПП РФ поддержала проведение эксперимента по обелению отрасли предоставления персонала, но <a href=\"https://tass.ru/ekonomika/27959445\" target=\"_blank\" rel=\"noopener noreferrer\">предложила</a> перенести его начало с 1 сентября на 1 ноября 2026 г., ограничив на первом этапе Москвой и Московской областью. <br><img class=\"post-custom-emoji\" data-emoji-id=\"5321504994170539644\" src=\"data/channels/pg-tax/media/custom-emoji/5321504994170539644.webp\" alt=\"☝️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> Переход к новой модели потребует от бизнеса технической подготовки, отладки программного обеспечения и обновления договоров с аутсорсинговыми компаниями.<br> <br><img class=\"post-custom-emoji\" data-emoji-id=\"5321219365960451450\" src=\"data/channels/pg-tax/media/custom-emoji/5321219365960451450.webp\" alt=\"🔘\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">На цифровой платформе «Единое блокчейн-хранилище машиночитаемых доверенностей (МЧД) - распределенный реестр ФНС России» <a href=\"https://www.nalog.gov.ru/rn77/news/activities_fts/16639371/\" target=\"_blank\" rel=\"noopener noreferrer\">зарегистрирована</a> и загружена пятимиллионная МЧД.<br><blockquote>На указанной платформе налогоплательщики могут создавать МЧД в едином формате для обмена с государственными органами и между собой. Все доверенности, созданные по единому формату и загруженные через портал, хранятся в едином блокчейн-хранилище ФНС России, что ускоряет их проверку при работе с контрагентами. </blockquote><br>В настоящее время ФНС совместно с Минцифры реализуют дорожную карту, которой предусмотрена интеграция единого блокчейн-реестра МЧД и платформы «Госуслуги».<br><br>#главные_налоговые_новости",
-      "views": 1040,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pg-tax/media/posts/thumbs/2819-1-c6d7b937aca5-v9.jpg",
-          "feed_url": "data/channels/pg-tax/media/posts/feed/2819-1-c6d7b937aca5-v9.jpg",
-          "full_url": "data/channels/pg-tax/media/posts/2819-1-c6d7b937aca5-v9.jpg",
-          "thumb_width": 800,
-          "thumb_height": 320,
-          "feed_width": 1800,
-          "feed_height": 720,
-          "full_width": 1880,
-          "full_height": 752,
-          "source_width": 1880,
-          "source_height": 752,
-          "source_url": "https://cdn4.telesco.pe/file/pP3_RGM0xs5lLYj-YAUZumAJO1NcDlraU16nhzjLKEK731qX9H_bi5IMsbRCa3DhU5Lk3gqHWh19wjYvL4V5CiP9MMbGjw7AS-4y2N02g3Vc516Q7fA8_S32uerFA5PmUm99fIpGZDeLCP538RuMD1H42zZwa0iUJfJUvpzEwCPHUHZqNEmor8Xog5QMeAGlQCfEg2daGeVFYCoLrgrVVVNRH0yeNpARpPbuqrU7ZHtc80CodB6MgR4qmktOOorgOkQ7fDwhoaGLTNJ_u_9hzGq-RIr_llggq3gDWo8M5qqHJZzeM52TfNYnJUp3wHdUfmLSlYQ1r0DK6M89snqLFQ.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/PG_Tax/2819",
       "forwarded_from": null,
       "reply_to": null
     }
