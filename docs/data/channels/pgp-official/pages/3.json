@@ -1,53 +1,13 @@
 {
-  "generated_at": "2026-11-05T16:49:37.866116+00:00",
-  "build_id": "46aaab4bf47d",
+  "generated_at": "2026-11-05T22:26:32.872881+00:00",
+  "build_id": "4106fa7a03bf",
   "pagination": {
     "page": 3,
     "page_size": 16,
-    "total_posts": 70,
+    "total_posts": 69,
     "total_pages": 5
   },
   "posts": [
-    {
-      "id": 2008,
-      "date": "2026-09-21T07:04:51+00:00",
-      "text": "💡 Начинаем очередную рабочую неделю с рубрикой #PGГрамотность\n\n🔘Позитивный. Какие есть синонимы?\n\nЧитайте в карточке правописания!\n\n🏢 Подписаться на рассылки | MAX | Приложение PG",
-      "text_html": "<img class=\"post-custom-emoji\" data-emoji-id=\"5319123537884123914\" src=\"data/channels/pgp-official/media/custom-emoji/5319123537884123914.webp\" alt=\"💡\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> Начинаем очередную рабочую неделю с рубрикой #PGГрамотность<br><br><strong><em><em><strong>🔘</strong></em></em></strong><strong><em>Позитивный. Какие есть синонимы?</em></strong><br><br>Читайте в карточке правописания!<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5318819699012703056\" src=\"data/channels/pgp-official/media/custom-emoji/5318819699012703056.webp\" alt=\"🏢\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> <a href=\"https://www.pgplaw.ru/subscribe/\" target=\"_blank\" rel=\"noopener noreferrer\">Подписаться на рассылки |</a> <a href=\"https://max.ru/id7707301372_biz\" target=\"_blank\" rel=\"noopener noreferrer\">MAX |</a> <a href=\"https://t.me/pgp_official/1769\" target=\"_blank\" rel=\"noopener noreferrer\">Приложение PG</a>",
-      "views": 848,
-      "comments_count": 0,
-      "comments_url": null,
-      "photos": [
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/2008-1-ff825578b145-v9.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/2008-1-ff825578b145-v9.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/2008-1-ff825578b145-v9.jpg",
-          "thumb_width": 599,
-          "thumb_height": 800,
-          "full_width": 1408,
-          "full_height": 1880,
-          "source_width": 1408,
-          "source_height": 1880,
-          "source_url": "https://cdn4.telesco.pe/file/kltlwt1TOLtByx9gtmcuYxopDZvtPi_2s4idaFARfIX_WBHLuOSJy-HQP97lkFDKvbYjA5QgHbU02ia7vb6OHj9IlDnMEydI1aQPI-xroVu9eMKk-f1JP8QEX2LUJaMahfulYbBTt-voGUAEENGU4TKLEGN-Em2UjLxVK7dpf-lSi6TwJouWO5OS9Ze3VCqRbcNilHnxTY--G4W9yhByNJ5qBEe3HnvZqwPYL4_x2f8pQpDa-y7nWiye64M8HWOWTlR679aBssQdXNwL0m_eW__wYO1b5mn3i7EjdjFFB6k9gx9gaq_w49GsrzxtwKTFGqOMKcHhe2nSHmRNzGkHKw.jpg"
-        },
-        {
-          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/2008-2-63c6acd3c348-v9.jpg",
-          "feed_url": "data/channels/pgp-official/media/posts/2008-2-63c6acd3c348-v9.jpg",
-          "full_url": "data/channels/pgp-official/media/posts/2008-2-63c6acd3c348-v9.jpg",
-          "thumb_width": 601,
-          "thumb_height": 800,
-          "full_width": 1412,
-          "full_height": 1880,
-          "source_width": 1412,
-          "source_height": 1880,
-          "source_url": "https://cdn4.telesco.pe/file/f2Fb8U9nGo639lC6sGxugCfYixLbGQwo0AjuK0xs2SKDlEs_g2AUbmXodC5tB5QNC0uR5FLB0OhOcfLeKqNTV1i19u_3k_Z6J28tezGrBJeBBY8v6mS5-V-mx4RDKpT7ThM9KvqKuv-FhPFVBLW96d3aLqTWTGPwDx_3b_kf6YELILn6YFao8ooKKUf4DUjMe0HNuGAAR4m8kJHgw69wm9PqGeHBQil8JCSNtMIFXiKOVgPtWy6a87fecx1cglytEnWiGUOppOtMzl_VZz0rBtOnnn4c9kMrufXic-5CByALGAXIUNjnd9YWJnodmdkyrNQJDxHl_H1o8Oi0YAZuwQ.jpg"
-        }
-      ],
-      "video_url": null,
-      "videos": [],
-      "tg_url": "https://t.me/pgp_official/2008",
-      "forwarded_from": null,
-      "reply_to": null
-    },
     {
       "id": 2007,
       "date": "2026-09-17T11:10:01+00:00",
@@ -106,9 +66,10 @@
       "videos": [],
       "tg_url": "https://t.me/pgp_official/2006",
       "forwarded_from": {
-        "source_url": "https://t.me/pgp_official/2006",
-        "channel_url": "https://t.me/s/pgp_official",
-        "channel_username": "pgp_official"
+        "source_url": "https://t.me/PgAntitrust/1469",
+        "channel_url": "https://t.me/s/PgAntitrust",
+        "channel_username": "PgAntitrust",
+        "channel_title": "PG Antitrust | Антимонопольное право"
       },
       "reply_to": null
     },
@@ -170,9 +131,10 @@
       "videos": [],
       "tg_url": "https://t.me/pgp_official/2004",
       "forwarded_from": {
-        "source_url": "https://t.me/pgp_official/2004",
-        "channel_url": "https://t.me/s/pgp_official",
-        "channel_username": "pgp_official"
+        "source_url": "https://t.me/PG_Tax/2913",
+        "channel_url": "https://t.me/s/PG_Tax",
+        "channel_username": "PG_Tax",
+        "channel_title": "PG Tax | Налоги"
       },
       "reply_to": null
     },
@@ -419,10 +381,10 @@
       "videos": [],
       "tg_url": "https://t.me/pgp_official/1994",
       "forwarded_from": {
-        "source_url": "https://t.me/pgp_official/1994",
-        "channel_url": "https://t.me/s/pgp_official",
-        "channel_username": "pgp_official",
-        "channel_title": "14:58\n\n  \n    Media is too big\n    VIEW IN TELEGRAM"
+        "source_url": "https://t.me/PgAntitrust/1467",
+        "channel_url": "https://t.me/s/PgAntitrust",
+        "channel_username": "PgAntitrust",
+        "channel_title": "PG Antitrust | Антимонопольное право"
       },
       "reply_to": null
     },
@@ -523,6 +485,36 @@
       "video_url": null,
       "videos": [],
       "tg_url": "https://t.me/pgp_official/1990",
+      "forwarded_from": null,
+      "reply_to": null
+    },
+    {
+      "id": 1987,
+      "date": "2026-09-02T13:50:30+00:00",
+      "text": "📑 Что считать моментом утечки персональных данных?\n\nПартнер Наталья Коваленко комментирует два различных подхода судов в отношении одного и того же оператора ПДн. \n\n⚖️ В деле № А19-25808/2025 АС Иркутской области и Четвертый арбитражный апелляционный суд признали ООО «Орион Телеком» виновным по ч. 13 ст. 13.11 КоАП РФ за утечку данных 36 544 абонентов, опубликованных хакерской группировкой в Telegram-канале 29.07.2025.\n\nCуды указали, что деяние считается оконченным в момент неправомерной передачи, предоставления, распространения или доступа к данным, то есть в момент их публикации, а не в момент более раннего проникновения в информационную систему в период с 24 по 26 мая 2025 года. Само проникновение в информационную систему суды назвали лишь подготовительным действием, не образующим объективную сторону правонарушения. \n\n🔍 Напротив, в деле № А74-10378/2025 АС Республики Хакасия по факту утечки данных того же оператора пришел к противоположному выводу. Суд установил, что неправомерный доступ третьих лиц к информационной системе произошел 24 мая 2025 года, то есть до вступления в силу ч. 13 ст. 13.11 КоАП РФ, и на этом основании переквалифицировал действия общества на более «мягкую» ч. 1 ст. 13.11 КоАП РФ. По мнению суда, правонарушение, предусмотренное ч. 13 ст. 13.11 КоАП РФ, считается оконченным в момент, когда действия (бездействие) оператора повлекли любое из перечисленных в статье последствий (неправомерная передача (предоставление, распространение, доступ) информации). \n\nТаким образом, по мнению суда, в данном случае вменяемое обществу нарушение является оконченным при наступлении последствий в виде несанкционированного доступа к персональным данным, находящимся у общества, состоявшегося 24 мая 2025 года.\n\nЭто расхождение показывает, что судебная практика по квалификации утечек ПДн не единообразна, и итоговая квалификация может критически зависеть от того, что суд признает моментом окончания правонарушения, сам взлом или последующую публикацию похищенных данных. \n\n🛑 Для операторов ПДн это означает, что дата фактической публикации украденных данных сохраняет решающее значение для риска привлечения к ответственности по ч. 13 ст. 13.11 КоАП РФ и исход спора может отличаться в зависимости от суда и представленных доказательств о хронологии инцидента.\n\n➖➖➖➖➖\n📧 В случае возникновения вопросов, связанных с утечкой персональных данных, партнер «Пепеляев Групп» Наталья Коваленко (N.Kovalenko@pgplaw.ru) готова на них ответить.",
+      "text_html": "<strong><img class=\"post-custom-emoji\" data-emoji-id=\"5321292483483700996\" src=\"data/channels/pgp-official/media/custom-emoji/5321292483483700996.webp\" alt=\"📑\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"></strong><strong> Что считать моментом утечки персональных данных?</strong><br><br>Партнер <em>Наталья Коваленко</em> комментирует два различных подхода судов в отношении одного и того же оператора ПДн. <br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321129794417496443\" src=\"data/channels/pgp-official/media/custom-emoji/5321129794417496443.webp\" alt=\"⚖️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> В деле № А19-25808/2025 АС Иркутской области и Четвертый арбитражный апелляционный суд признали ООО «Орион Телеком» виновным по ч. 13 ст. 13.11 КоАП РФ за утечку данных 36 544 абонентов, опубликованных хакерской группировкой в Telegram-канале 29.07.2025.<br><br><blockquote>Cуды указали, что деяние считается оконченным в момент неправомерной передачи, предоставления, распространения или доступа к данным, то есть в момент их публикации, а не в момент более раннего проникновения в информационную систему в период с 24 по 26 мая 2025 года. Само проникновение в информационную систему суды назвали лишь подготовительным действием, не образующим объективную сторону правонарушения. </blockquote><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321326250516584206\" src=\"data/channels/pgp-official/media/custom-emoji/5321326250516584206.webp\" alt=\"🔍\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> Напротив, в деле № А74-10378/2025 АС Республики Хакасия по факту утечки данных того же оператора пришел к противоположному выводу. Суд установил, что неправомерный доступ третьих лиц к информационной системе произошел 24 мая 2025 года, то есть до вступления в силу ч. 13 ст. 13.11 КоАП РФ, и на этом основании переквалифицировал действия общества на более «мягкую» ч. 1 ст. 13.11 КоАП РФ. По мнению суда, правонарушение, предусмотренное ч. 13 ст. 13.11 КоАП РФ, считается оконченным в момент, когда действия (бездействие) оператора повлекли любое из перечисленных в статье последствий (неправомерная передача (предоставление, распространение, доступ) информации). <br><br><blockquote>Таким образом, по мнению суда, в данном случае вменяемое обществу нарушение является оконченным при наступлении последствий в виде несанкционированного доступа к персональным данным, находящимся у общества, состоявшегося 24 мая 2025 года.</blockquote><br><br>Это расхождение показывает, что судебная практика по квалификации утечек ПДн <strong>не единообразна</strong>, и итоговая квалификация может критически зависеть от того, что суд признает моментом окончания правонарушения, сам взлом или последующую публикацию похищенных данных. <br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321188077123702053\" src=\"data/channels/pgp-official/media/custom-emoji/5321188077123702053.webp\" alt=\"🛑\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> Для операторов ПДн это означает, что дата фактической публикации украденных данных сохраняет решающее значение для риска привлечения к ответственности по ч. 13 ст. 13.11 КоАП РФ и исход спора может отличаться в зависимости от суда и представленных доказательств о хронологии инцидента.<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321084718735724039\" src=\"data/channels/pgp-official/media/custom-emoji/5321084718735724039.webp\" alt=\"➖\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><img class=\"post-custom-emoji\" data-emoji-id=\"5321084718735724039\" src=\"data/channels/pgp-official/media/custom-emoji/5321084718735724039.webp\" alt=\"➖\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><img class=\"post-custom-emoji\" data-emoji-id=\"5321084718735724039\" src=\"data/channels/pgp-official/media/custom-emoji/5321084718735724039.webp\" alt=\"➖\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><img class=\"post-custom-emoji\" data-emoji-id=\"5321084718735724039\" src=\"data/channels/pgp-official/media/custom-emoji/5321084718735724039.webp\" alt=\"➖\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><img class=\"post-custom-emoji\" data-emoji-id=\"5321084718735724039\" src=\"data/channels/pgp-official/media/custom-emoji/5321084718735724039.webp\" alt=\"➖\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321534994517103056\" src=\"data/channels/pgp-official/media/custom-emoji/5321534994517103056.webp\" alt=\"📧\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"> В случае возникновения вопросов, связанных с утечкой персональных данных, партнер «Пепеляев Групп» <a href=\"https://www.pgplaw.ru/to-get-the-team/natalya-ivashchenko/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong><u>Наталья Коваленко</u></strong></a><strong> </strong>(N.Kovalenko@pgplaw.ru) готова на них ответить.",
+      "views": 757,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1987-1-e401a9a94826-v9.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/feed/1987-1-e401a9a94826-v9.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1987-1-e401a9a94826-v9.jpg",
+          "thumb_width": 800,
+          "thumb_height": 238,
+          "feed_width": 1800,
+          "feed_height": 536,
+          "full_width": 1880,
+          "full_height": 559,
+          "source_width": 1880,
+          "source_height": 559,
+          "source_url": "https://cdn4.telesco.pe/file/C8sc52NSShRCDfbprcqqNBeITosjHRSQ7W5o7qMH-Z-H1gkZfTcUqgATkdGiId3PkrJ1-7vM0QDsbv8vbiO8fc1-dKlYOVZYdEKP25uZaq7yGJemuDQTA0xjxSJvh_Rn9RrROaI-EH5Mb_7zmBz7tX9THUoX7Q7hP_M-MuxbkEi2o765D-b9bP_asmisPZJa72HTYgzoKjRrHyj33SpZHoAqBFu63SyDUWXkWUcQB3yW2DNYxNUBiDWFp2EfjxeoaAn-U-i9rbjZb6vCScBy8GbZfanmpol_shwpYB7pRSch7tNKPzrHdUkDG2neyqM-FeLyCViCNIgsQcd1-Z0MKA.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1987",
       "forwarded_from": null,
       "reply_to": null
     }
