@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-05T22:29:44.568327+00:00",
-  "build_id": "bbc6badc813a",
+  "generated_at": "2026-11-06T02:48:52.137274+00:00",
+  "build_id": "ab404452ea18",
   "site": {
     "channel_username": "InvestmentLaw",
     "channel_title": "СпецИнвестРежимы",
@@ -20,7 +20,7 @@
   "pagination": {
     "page": 1,
     "page_size": 16,
-    "total_posts": 31,
+    "total_posts": 30,
     "total_pages": 2
   },
   "posts": [
@@ -202,10 +202,9 @@
       "videos": [],
       "tg_url": "https://t.me/InvestmentLaw/1154",
       "forwarded_from": {
-        "source_url": "https://t.me/Koshelevaprim/2010",
-        "channel_url": "https://t.me/s/Koshelevaprim",
-        "channel_username": "Koshelevaprim",
-        "channel_title": "Кошелева Наталия"
+        "source_url": "https://t.me/InvestmentLaw/1154",
+        "channel_url": "https://t.me/s/InvestmentLaw",
+        "channel_username": "InvestmentLaw"
       },
       "reply_to": null
     },
@@ -222,10 +221,8 @@
       "videos": [],
       "tg_url": "https://t.me/InvestmentLaw/1153",
       "forwarded_from": {
-        "source_url": "https://t.me/Koshelevaprim/2009",
-        "channel_url": "https://t.me/s/Koshelevaprim",
-        "channel_username": "Koshelevaprim",
-        "channel_title": "Кошелева Наталия"
+        "source_url": "https://t.me?q=%23%D0%BF%D1%80%D0%BE%D0%B1%D0%BE%D0%BD%D0%BE",
+        "channel_url": "https://t.me?q=%23%D0%BF%D1%80%D0%BE%D0%B1%D0%BE%D0%BD%D0%BE"
       },
       "reply_to": null
     },
