@@ -1,13 +1,89 @@
 {
-  "generated_at": "2026-11-05T22:26:32.877821+00:00",
-  "build_id": "4106fa7a03bf",
+  "generated_at": "2026-11-06T09:58:00.009334+00:00",
+  "build_id": "9f54c15de69c",
   "pagination": {
     "page": 5,
     "page_size": 16,
-    "total_posts": 69,
+    "total_posts": 70,
     "total_pages": 5
   },
   "posts": [
+    {
+      "id": 1963,
+      "date": "2026-08-11T07:03:53+00:00",
+      "text": "🤓  ФНП разъяснила, когда корпоративные решения ООО нужно удостоверять у нотариуса\n\nФедеральная нотариальная палата разъяснила порядок оформления решений о продлении полномочий директора, передаче функций управляющей организации, назначении ликвидатора и принятии решений за пределами России.\n\n▫️Главный практический момент: продление полномочий действующего директора — это тоже избрание на новый срок, поэтому решение требует обязательного нотариального удостоверения. При этом вносить изменения в ЕГРЮЛ и подавать форму Р13014 не нужно.\n\nРазбираем основные правила и практические выводы в карточках ☝️\n\n👉  Полный материал с подробным разбором на сайте",
+      "text_html": "<img class=\"post-custom-emoji\" data-emoji-id=\"5321253901792478726\" src=\"data/channels/pgp-official/media/custom-emoji/5321253901792478726.webp\" alt=\"🤓\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">  <strong>ФНП разъяснила, когда корпоративные решения ООО нужно удостоверять у нотариуса</strong><br><br>Федеральная нотариальная палата разъяснила порядок оформления решений о продлении полномочий директора, передаче функций управляющей организации, назначении ликвидатора и принятии решений за пределами России.<br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321258901134412612\" src=\"data/channels/pgp-official/media/custom-emoji/5321258901134412612.webp\" alt=\"▫️\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\"><strong>Главный практический момент: </strong>продление полномочий действующего директора — это тоже избрание на новый срок, поэтому решение требует обязательного нотариального удостоверения. При этом вносить изменения в ЕГРЮЛ и подавать форму Р13014 не нужно.<br><br><em>Разбираем основные правила и практические выводы в карточках </em><em><em><strong>☝️</strong></em></em><br><br><img class=\"post-custom-emoji\" data-emoji-id=\"5321445783751396709\" src=\"data/channels/pgp-official/media/custom-emoji/5321445783751396709.webp\" alt=\"👉\" width=\"24\" height=\"24\" loading=\"lazy\" decoding=\"async\">  <a href=\"https://www.pgplaw.ru/analytics-and-brochures/articles-comments-interviews/fnp-razyasnila-poryadok-notarialnogo-oformleniya-korporativnykh-resheniy-ooo/\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>Полный материал с подробным разбором на сайте</strong></a>",
+      "views": 1050,
+      "comments_count": 0,
+      "comments_url": null,
+      "photos": [
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1963-1-2bb9fa5df5ae-v9.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1963-1-2bb9fa5df5ae-v9.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1963-1-2bb9fa5df5ae-v9.jpg",
+          "thumb_width": 640,
+          "thumb_height": 800,
+          "full_width": 1504,
+          "full_height": 1880,
+          "source_width": 1504,
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/DETdpA_EOImDQdYz4BIgvZWcABfGoUIP7jiA6TY-RHE2cIaqY20Nr9kZk0cn0u_2lWLLLxcMY67FrbN5De80AIwUQJbVfY8plJjKLNulwSbXtFLjXgibF7DHOfQfIjbJQl7X_TgQ_mPNjfgcEi9TMl8gavzauyXg9ksxlrkBF4goUS0VjVrBcdCKJgPwFOST1RJInzgjacD1TYv2vdrR4CcldZis4IKvHwKfsutBxJBEyUj0mOvUHE35H26iGfZCKiEfoTVgC1yNDquTCMNsNkfH3kO0SUjRGdh8iD4DOOWlLY0HbYMGhpt3dN2-A7kS1flIUrENgXf7J-S_c2P47Q.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1963-2-cd86a76d7d36-v9.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1963-2-cd86a76d7d36-v9.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1963-2-cd86a76d7d36-v9.jpg",
+          "thumb_width": 640,
+          "thumb_height": 800,
+          "full_width": 1504,
+          "full_height": 1880,
+          "source_width": 1504,
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/p_ho1pzXD2fqqIoZCuFv-NqDc0hpTN9eH-IDqRaDfYE9KE2kNkPIboQ5wTvdNh4rnh9Mql3-5BO8J68JpGldfYiiWC8xVt7yTgM9j3UWcmuvzeFu17IclPsUS_8HMnK1hyUkDl5MGXAHZJitIclswXrwqhiWvRtXm3slZC7ySQc6fzN0tGaRJm9UdOOsnNxT7HbdbyidYhh-_63OdeYOGR_w0yIPDCpKTm5bfHCUMdniOZ4CjD6O8HF6EElRokMjTjU-7_5UKOCY943ioAIkG8FGTOszd2OT5h3UfHrDjNujfA0WMaspvDvaZPMKdQLjgzirfOqY8Js9xiaKzC5OZQ.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1963-3-dde7e31a05d7-v9.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1963-3-dde7e31a05d7-v9.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1963-3-dde7e31a05d7-v9.jpg",
+          "thumb_width": 640,
+          "thumb_height": 800,
+          "full_width": 1504,
+          "full_height": 1880,
+          "source_width": 1504,
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/cAbZsofPYj2FA50RTPcGFGGWZ30P8qEo4z6Pl_HX1KQHj4KUyqJda9AQF5aj6m6p3KgDFIcvpKsqQg4acgLC0a1u17pvYgFnL34eUoTsScwPW5SpZpQPNL6L2BmiILsrH2MQPU-XNMLVT46a-cOr_-CYHgvYs-U5myNn08kDRR6mV-4595xKqjsL6Qd_FLyLRoSdJ5Vm1M0rcVCVhfNizfg1HgDb3LhlIOeCLh5473Onpk1JZOO7j0mARZMtpDt7CNuX3QCgDmcCNPiIDNZiWewsriBK7IqwyCKG-TlGdzZpQaWBJ0DfH8s1nmSWVf2QN3gyFO_hSZAm1oNNY9Dt6g.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1963-4-a3f3f88298dc-v9.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1963-4-a3f3f88298dc-v9.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1963-4-a3f3f88298dc-v9.jpg",
+          "thumb_width": 640,
+          "thumb_height": 800,
+          "full_width": 1504,
+          "full_height": 1880,
+          "source_width": 1504,
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/YA7PMyOw56L3Qm1MS6suLG89CH6gg6icRVR4rXmps62Kpre4UW4KS0xpYh-DFg5pPEi8XgoEe4vXorafTfsIuOpdrXb-I859nIauSRI9WWaoIKjZ-9u6CHNY-Sp8hXruO6WgNAeoH64vFInbb0fb2OeoQ49pWuv0HR1dRkHs-V4tMcSnzpqAnWYc5TFZJUMbqEgOQDMrWanxFAqiT_hSmvfJfkHT7bIEeuvQY4eixsNWBPXhPPV_fCS1Bj8FjdUXBBFFEqfjUjhkfqM2ba2uGJm6SsXH0BF8A3TlR6WPgG0AKkSLEnEbJKZQ6l1P-hRuZixSF2dluL1OTQLaVoiyPQ.jpg"
+        },
+        {
+          "thumb_url": "data/channels/pgp-official/media/posts/thumbs/1963-5-32ce5d51014c-v9.jpg",
+          "feed_url": "data/channels/pgp-official/media/posts/1963-5-32ce5d51014c-v9.jpg",
+          "full_url": "data/channels/pgp-official/media/posts/1963-5-32ce5d51014c-v9.jpg",
+          "thumb_width": 640,
+          "thumb_height": 800,
+          "full_width": 1504,
+          "full_height": 1880,
+          "source_width": 1504,
+          "source_height": 1880,
+          "source_url": "https://cdn4.telesco.pe/file/pWXXuWgHFmXDCOcQ-XQNyJsx2REsvzeq8so2MZ4xYsvZ11NXgpNrdxEYzzdTjBG5ih5ZrKupOk3hC7g7AuOKnSUTNFxG-XTNQY3xkerLommC8PjfM85lV8W0-H1krdaSEugKjUZLrpXJZnA2MiXxdpiEVxEArvzbgdHBXbNhLyF8cI9VcomnZUdKhu0K7yBWxlsQVnIz3A-4IupjJP-TGt3h6Avz3qaID5GahxN60DrPPa2NJGmjliqxc_kCbFxOHI91MRssJ4PGjbGLcfpya75VdXbKvbxMWzkmL0Xiv9sIEDygR4bosRZlv6wBCZIH-fR1ERf8QciHnAZwjl8Pmw.jpg"
+        }
+      ],
+      "video_url": null,
+      "videos": [],
+      "tg_url": "https://t.me/pgp_official/1963",
+      "forwarded_from": null,
+      "reply_to": null
+    },
     {
       "id": 1962,
       "date": "2026-08-10T12:51:50+00:00",
